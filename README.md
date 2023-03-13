@@ -1,5 +1,5 @@
 # Guardians-of-Zenith
-RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Degree in Videogames Design and Development at [CITM](https://www.citm.upc.edu/) - UPC.
+RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Degree in Videogames Design and Development at [CITM](https://www.citm.upc.edu/) - [UPC](https://www.upc.edu/ca).
 
 # Team Members
 
