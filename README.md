@@ -1,7 +1,17 @@
-# Guardians-of-Zenith
-RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Degree in Videogames Design and Development at [CITM](https://www.citm.upc.edu/) - [UPC](https://www.upc.edu/ca).
+# Guardians of Zenith
+RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project II subject for Degree in Videogames Design and Development at [CITM](https://www.citm.upc.edu/) - [UPC](https://www.upc.edu/ca).
 
-# Team Members
+## Media
+
+## Controls
+
+### Keyboard & mouse
+
+### Gamepad
+
+## Debug
+
+## Developers
 
 **Sergio Corona Gómez**
 - Team Lead, Management
@@ -43,7 +53,9 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Degree in
 - Design, UI
 - Github account: [AdriRamirez](https://github.com/AdriRamirez)
 
-# Index sections
+## Wiki Index sections
+
+[Home](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki)
 
 [1. GDD (Game Design Document)](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki)
 
@@ -58,3 +70,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Degree in
 [6. Audio Bible](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki/Audio-Bible)
 
 [7. QA Workflow](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki/QA-Workflow)
+
+## License
+
+This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
