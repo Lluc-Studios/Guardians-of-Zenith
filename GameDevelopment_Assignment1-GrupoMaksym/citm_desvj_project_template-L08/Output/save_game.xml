@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<save_state>
+	<input />
+	<window />
+	<textures />
+	<audio />
+	<intro />
+	<:anonymous />
+	<scene />
+	<entitymanager>
+		<player_stats position_x="468" position_y="224" jumpCounter="0" state="6" />
+		<enemy_stats position_x="1270" position_y="194" state="0" />
+		<enemy_stats position_x="2220" position_y="403" state="0" />
+		<enemy_stats position_x="2900" position_y="387" state="0" />
+		<enemy_stats position_x="3050" position_y="387" state="0" />
+		<flyingEnemy_stats />
+		<flyingEnemy_stats />
+		<flyingEnemy_stats />
+	</entitymanager>
+	<map />
+	<:anonymous />
+	<pathfinding />
+	<menu />
+	<mainmenu />
+	<guiManager />
+	<renderer>
+		<camera x="-1292" y="-536" />
+	</renderer>
+</save_state>
