@@ -39,13 +39,13 @@ body:
   - type: dropdown
     id: browsers
     attributes:
-      label: What browsers are you seeing the problem on?
+      label: What operating system are you seeing the problem on?
       multiple: true
       options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
+        - Windows
+        - MAC
+        - Ubuntu
+        - Linux
   - type: textarea
     id: logs
     attributes:
