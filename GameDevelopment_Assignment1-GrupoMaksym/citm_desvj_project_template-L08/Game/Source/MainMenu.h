@@ -31,7 +31,6 @@ public:
 	// Called before all Updates
 	bool PostUpdate();
 
-	//void SaveSelection();
 
 	// Called before quitting
 	bool CleanUp();
@@ -53,23 +52,9 @@ public:
 
 	int WF, GF, YF, change, select, fading = 255, fading2 = 0, MX,FX, RGB = 150, RGB1 = 150;
 	bool fadeIn = true, fadeOut = false, options = false, FS = false, VS = false;
-	//GuiButton* button1;
-	//GuiButton* button2;
 
 
 private:
-	//enum class SELECTED {
-	//	PLAY = 1,
-	//	OPTIONS,
-	//	EXIT,
-	//	MUSIC,
-	//	BACK
-	//};
-
-	//SELECTED option = SELECTED::PLAY;
-	//int WF, GF, change, select, fading = 255, fading2 = 0;
-	//bool fadeIn = true, fadeOut = false, options = false;
-	
 
 };
 

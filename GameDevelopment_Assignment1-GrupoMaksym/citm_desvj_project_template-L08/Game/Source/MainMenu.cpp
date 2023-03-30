@@ -61,10 +61,10 @@ bool MainMenu::Update(float dt)
 {
 	bool ret = true;
 
-	//app->render->DrawTexture(BG,0,0);
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
 
+	//Funcion llamada desde el menu de muerte para volver al menu principal (Se desactiva a si misma)
 	if (app->deathmenu->finished == true) {
 		fading = 255;
 		fading2 = 0;
@@ -73,25 +73,28 @@ bool MainMenu::Update(float dt)
 		options = false;
 		app->deathmenu->finished = false;
 	}
-
+	//FadeIn para empezar a ver el menu
 	if (fadeIn == true) {
 		if (fading >= 1) { fading--; };
 		if (fading == 0) { fadeIn = false; };
 	}
+	//Fadeout para empezar el gameplay
 	if (fadeOut == true) {
 		if (fading2 <= 254) { fading2++; };
 	}
+	//Se activan todos los modulos necesarios para empezar el gameplay y se desactiva este mismo modulo
 	if (fading2 == 255) {
 		app->scene->active = true;
 		app->scene->player->active = true;
 		app->entityManager->active = true;
 		app->physics->active = true;
 		app->scene->CanPlayerMove = true;
-		//app->menu->active = true;
 		app->mainmenu->active = false;
 
 	}
+	//Nombre del juego (el original)
 	app->font->BlitText(134, 10, YF, "obsolete");
+	//Funcion para detectar el raton en la parte principal del menu
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
 		if (option == SELECTED::PLAY) {
 			app->audio->PlayFxWithVolume(select, 0, 70);
@@ -105,6 +108,7 @@ bool MainMenu::Update(float dt)
 			ret = false;
 		}
 	}
+	//Condicional para dibujar los ajustes cuando se seleccionan las 'opciones'
 	if (options == true) {
 		int x, y;
 		x = app->input->GetMousePositionX();
@@ -124,12 +128,14 @@ bool MainMenu::Update(float dt)
 		app->render->DrawRectangle({ 153,135,8,8 }, 0, 0, 0);
 		app->render->DrawRectangle({ 154,110,6,6 }, 0, 200, 0);
 		app->render->DrawRectangle({ 154,136,6,6 }, 0, 200, 0);
+		//Cuadrados rojos
 		if (FS == false) {
 			app->render->DrawRectangle({ 154,110,6,6 }, 200, 0, 0);
 		}
 		if (VS == false) {
 			app->render->DrawRectangle({ 154,136,6,6 }, 200, 0, 0);
 		}
+		//Funciones para detectar el ratón
 		if (x >= MX && x <= (MX+6) && y >= 56 && y <= 62) {
 			app->render->DrawRectangle({ 125,58,64,2 }, 255, 255, 255);
 			app->render->DrawRectangle({ MX,56,5,6 }, 255, 255, 255);
@@ -137,6 +143,7 @@ bool MainMenu::Update(float dt)
 				option = SELECTED::MUSIC;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
+			//Funcion para arrastrar el boton
 			if (option == SELECTED::MUSIC && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
 				MX = x-2;
 				if (x < 125) MX = 125;
@@ -153,6 +160,7 @@ bool MainMenu::Update(float dt)
 				option = SELECTED::FX;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
+			//Funcion para arrastrar el boton
 			if (option == SELECTED::FX && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
 				FX = x - 2;
 				if (x < 125) FX = 125;
@@ -171,7 +179,6 @@ bool MainMenu::Update(float dt)
 			if (option == SELECTED::FS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
 				FS = !FS;
 				app->audio->PlayFxWithVolume(select, 0, 70);
-				//SaveSelection();
 			}
 
 		}
@@ -184,7 +191,6 @@ bool MainMenu::Update(float dt)
 			if (option == SELECTED::VS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
 				VS = !VS;
 				app->audio->PlayFxWithVolume(select, 0, 70);
-				//SaveSelection();
 			}
 
 		}
@@ -204,6 +210,7 @@ bool MainMenu::Update(float dt)
 			option = SELECTED::NONE;
 		}
 	}
+	//Funcion para detectar sobre que boton esta el ratón
 	if (options == false) {
 		int x, y;
 		x = app->input->GetMousePositionX();
@@ -242,7 +249,7 @@ bool MainMenu::Update(float dt)
 			option = SELECTED::NONE;
 		}
 	}
-
+	//Rectangulos negros para realizar los fades
 	app->render->DrawRectangle({ 0,0,1100,800 }, 0, 0, 0, fading);
 	app->render->DrawRectangle({ 0,0,1100,800 }, 0, 0, 0, fading2);
 
@@ -256,12 +263,6 @@ bool MainMenu::PostUpdate()
 	return ret;
 }
 
-//void MainMenu::SaveSelection(pugi::xml_node& config) {
-//	pugi::xml_node Selection = config.append_child("renderer");
-//	Selection.append_child("vsync").append_attribute("value") = VS;
-//	pugi::xml_node Selection1 = config.append_child("window");
-//	Selection1.append_child("fullscreen").append_attribute("value") = FS;
-//}
 // Called before quitting
 bool MainMenu::CleanUp()
 {
