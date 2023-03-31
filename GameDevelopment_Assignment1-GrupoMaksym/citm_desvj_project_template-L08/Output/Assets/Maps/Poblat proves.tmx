@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="135">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="135">
  <tileset firstgid="1" name="RVFloors" tilewidth="16" tileheight="16" tilecount="84" columns="12">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVFloors.png" width="192" height="112"/>
+  <image source="Tileset/RVFloors.png" width="192" height="112"/>
  </tileset>
  <tileset firstgid="85" name="RVTerrain" tilewidth="16" tileheight="16" tilecount="576" columns="24">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVTerrain.png" width="384" height="384"/>
+  <image source="Tileset/RVTerrain.png" width="384" height="384"/>
  </tileset>
  <tileset firstgid="661" name="RVDecoration" tilewidth="16" tileheight="16" tilecount="351" columns="13">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVDecoration.png" width="208" height="432"/>
+  <image source="Tileset/RVDecoration.png" width="208" height="432"/>
  </tileset>
  <tileset firstgid="1012" name="RVWalls" tilewidth="16" tileheight="16" tilecount="324" columns="18">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVWalls.png" width="288" height="288"/>
+  <image source="Tileset/RVWalls.png" width="288" height="288"/>
  </tileset>
  <tileset firstgid="1336" name="RVRoofs" tilewidth="16" tileheight="16" tilecount="684" columns="18">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVRoofs.png" width="288" height="608"/>
+  <image source="Tileset/RVRoofs.png" width="288" height="608"/>
  </tileset>
  <tileset firstgid="2020" name="RVDoorsWindows" tilewidth="16" tileheight="16" tilecount="84" columns="7">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVDoorsWindows.png" width="112" height="192"/>
+  <image source="Tileset/RVDoorsWindows.png" width="112" height="192"/>
  </tileset>
  <tileset firstgid="2104" name="RVWater" tilewidth="16" tileheight="16" tilecount="286" columns="13">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVWater.png" width="208" height="352"/>
+  <image source="Tileset/RVWater.png" width="208" height="352"/>
  </tileset>
  <tileset firstgid="2390" name="RVNature" tilewidth="16" tileheight="16" tilecount="384" columns="16">
-  <image source="World of Solaria Rural Village Update 07/16x16/Tilesets/RVNature.png" width="256" height="384"/>
+  <image source="Tileset/RVNature.png" width="256" height="384"/>
  </tileset>
  <layer id="7" name="11" width="80" height="45">
   <properties>
