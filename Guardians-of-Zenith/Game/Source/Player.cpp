@@ -44,8 +44,6 @@ bool Player::Start() {
 	pbody->listener = this;
 	pbody->ctype = ColliderType::PLAYER;
 
-	jumpCounter = 0; 
-	playerState = State::LANDED; 
 	alive = true; 
 
 
@@ -58,7 +56,6 @@ bool Player::Start() {
 	StepMetalic1 = app->audio->LoadFx("Assets/Sounds/Player/StepMetal1.wav");
 	StepMetalic2 = app->audio->LoadFx("Assets/Sounds/Player/StepMetal2.wav");
 	DeathSound = app->audio->LoadFx("Assets/Sounds/Player/Fire2.wav");
-	Jump1 = app->audio->LoadFx("Assets/Sounds/Player/Jump1.wav");
 	Swing = app->audio->LoadFx("Assets/Sounds/Player/Swing.wav");
 	DamageFx = app->audio->LoadFx("Assets/Sounds/Enemy/Dead2.wav");
 	tpFX = app->audio->LoadFx("Assets/Sounds/TeleportSound.wav");
@@ -78,9 +75,6 @@ bool Player::Start() {
 	//Animations
 	playerIdleR.PushBack({ 0 * width,0 * height,width,height });
 	playerIdleL.PushBack({ 0 * width,1 * height,width,height });
-
-	playerJumpR.PushBack({ 0 * width,4 * height,width,height });
-	playerJumpL.PushBack({ 0 * width,5 * height,width,height });
 
 	playerAttackR.PushBack({ 0 * width,6 * height,width,height });
 	playerAttackL.PushBack({ 0 * width,7 * height,width,height });
@@ -222,8 +216,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::FLOOR:
 		LOG("Collision FLOOR");
-		jumpCounter = 0;
-		playerState = State::LANDED;
 		break;
 	case ColliderType::SPIKES:
 		LOG("Collision SPIKES");
@@ -241,9 +233,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::WALL:
 		LOG("Collision WALL");
-		if (playerState != State::LANDED) {
-			playerState = State::COLLIDING;
-		}
+
 		break; 
 	case ColliderType::TELEPORT:
 		if (physB->id == 1) {
@@ -284,7 +274,6 @@ bool Player::LoadState(pugi::xml_node& data) {
 
 	position.x = data.child("player_stats").attribute("position_x").as_int();
 	position.y = data.child("player_stats").attribute("position_y").as_int();
-	jumpCounter = data.child("player_stats").attribute("jumpCounter").as_int();
 	playerState = (State)data.child("player_stats").attribute("state").as_int();
 	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 
@@ -295,7 +284,6 @@ bool Player::SaveState(pugi::xml_node& data) {
 	pugi::xml_node player_stats = data.append_child("player_stats");
 	data.child("player_stats").append_attribute("position_x") = position.x;
 	data.child("player_stats").append_attribute("position_y") = position.y;
-	data.child("player_stats").append_attribute("jumpCounter") = jumpCounter;
 	data.child("player_stats").append_attribute("state") =	(int)playerState;
 
 	return true; 
@@ -306,17 +294,25 @@ void Player::Move() {
 	float speed = 3;
 	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
-		vel = b2Vec2(-speed, pbody->body->GetLinearVelocity().y);
+		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
-		vel = b2Vec2(speed, pbody->body->GetLinearVelocity().y);
+		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && app->scene->CanPlayerMove == true && jumpCounter < MaxJumps) {
-		Jump(); 
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
+		vel = b2Vec2(0, -speed);
+		facing = DIRECTION::UP;
 	}
+
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
+		vel = b2Vec2(0, speed);
+		facing = DIRECTION::DOWN;
+	}
+
 	//Fx
 	if (vel.x != 0 && vel.y == 0) {
 		aux++;
@@ -341,12 +337,7 @@ void Player::Move() {
 	if (facing == DIRECTION::LEFT && vel.x != 0) {
 		currentAnim = &playerRunL;
 	}
-	if (facing == DIRECTION::RIGHT && vel.y != 0) {
-		currentAnim = &playerJumpR;
-	}
-	if (facing == DIRECTION::LEFT && vel.y != 0) {
-		currentAnim = &playerJumpL;
-	}
+
 
 	//Set the velocity of the pbody of the player
 	pbody->body->SetLinearVelocity(vel);
@@ -380,25 +371,15 @@ void Player::Attack(int frames) {
 	
 }
 
-void Player::Jump() {
-	vel = b2Vec2(pbody->body->GetLinearVelocity().x, 0);
-	pbody->body->SetLinearVelocity(vel);
-	pbody->body->ApplyForce(b2Vec2(0, -45), pbody->body->GetPosition(), true);
-	app->audio->PlayFxWithVolume(Jump1, 0, 35);
-	jumpCounter++;
-	playerState = State::JUMPING;
-}
 
 void Player::debugKeys() {
 
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
 		if (invincible == false) {
 			invincible = true;
-			MaxJumps = 1000;
 		}
 		else if (invincible == true) {
 			invincible = false;
-			MaxJumps = 2;
 		}
 	}
 

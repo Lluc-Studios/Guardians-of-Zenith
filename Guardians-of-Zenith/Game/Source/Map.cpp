@@ -555,9 +555,7 @@ void Map::CreateColliders(ColData c) {
     else if (c.type == 3) {
         collider1->ctype = ColliderType::WALL;
     }
-    else if (c.type == 4) {
-        collider1->ctype = ColliderType::JUMPTERRAIN; 
-    }
+
 
 }
 

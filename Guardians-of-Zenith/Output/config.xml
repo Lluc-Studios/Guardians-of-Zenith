@@ -76,7 +76,7 @@
 
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile path="Assets/Maps/sixteen.tmx"/>
+    <mapfile path="Assets/Maps/Poblat proves.tmx"/>
   </map>
   
 </config>

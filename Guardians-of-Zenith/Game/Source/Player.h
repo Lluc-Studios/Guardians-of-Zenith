@@ -11,8 +11,6 @@
 struct SDL_Texture;
 
 enum class State {
-	LANDED,
-	JUMPING,
 	COLLIDING,
 	MOVING_RIGHT,
 	MOVING_LEFT,
@@ -44,8 +42,6 @@ public:
 	bool LoadState(pugi::xml_node& data);
 
 	bool SaveState(pugi::xml_node& data);
-
-	void Jump(); 
 	
 	void Move(); 
 
@@ -76,12 +72,10 @@ private:
 	const char* texturePath;
 
 	//Fx
-	int Step1, Step2, StepMetalic1, StepMetalic2, Jump1, DeathSound, Swing, DamageFx, aux, tpFX = -1;
+	int Step1, Step2, StepMetalic1, StepMetalic2, DeathSound, Swing, DamageFx, aux, tpFX = -1;
 
 	int width;
 	int height;
-	int jumpCounter; 
-	int MaxJumps = 2;
 
 	int attackCD = 0;
 	int attackFrames = 10; 
@@ -102,8 +96,6 @@ private:
 	Animation playerIdleL;
 	Animation playerRunR;
 	Animation playerRunL;
-	Animation playerJumpR;
-	Animation playerJumpL;
 	Animation playerAttackR;
 	Animation playerAttackL;
 	Animation playerDie;

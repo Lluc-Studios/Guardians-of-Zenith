@@ -197,11 +197,6 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->audio->PlayFxWithVolume(dedFx, 0, 35);
 		}
 		break;
-	case ColliderType::JUMPTERRAIN:
-		LOG("JUMP");
-		jumping = true; 
-		pbody->body->ApplyForce(b2Vec2(0, -60), pbody->body->GetPosition(), true);
-		break;
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
