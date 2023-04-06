@@ -107,4 +107,40 @@ private:
 
 };
 
+class Laurea : public Player
+{
+public:
+
+	// stats
+	struct stats
+	{
+		int hp, mp, atk, def, spe, limit;
+		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+	};
+};
+
+class Lapis : public Player
+{
+public:
+
+	// stats
+	struct stats
+	{
+		int hp, mp, atk, def, spe, limit;
+		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+	};
+};
+
+class Lucca : public Player
+{
+public:
+
+	// stats
+	struct stats
+	{
+		int hp, mp, atk, def, spe, limit;
+		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+	};
+};
+
 #endif // __PLAYER_H__

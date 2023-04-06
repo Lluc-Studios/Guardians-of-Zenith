@@ -31,6 +31,12 @@ bool Player::Awake() {
 	height = parameters.attribute("height").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
 
+	Laurea::stats laurea{ 35,10,20,25,10,2,1,4,3,2,3 };
+	Lapis::stats lapis{ 25,20,25,18,12,4,1,3,4,3,2 };
+	Lucca::stats lucca{ 20,23,30,12,15,3,1,3,3,3,2 };
+
+	//LOG("stats Laurea: %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d", laurea.hp, laurea.mp, laurea.atk, laurea.def, laurea.spe, laurea.limit, laurea.lvl, laurea.hpGrowth, laurea.mpGrowth, laurea.atkGrowth, laurea.defGrowth);
+
 	return true;
 }
 
