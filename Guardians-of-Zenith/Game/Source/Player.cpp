@@ -44,7 +44,8 @@ bool Player::Start() {
 
 	//initilize textures
 	texture = app->tex->Load(texturePath);
-	pbody = app->physics->CreateRectangle(position.x + width/2, position.y + height/2, width-55, height-2, bodyType::DYNAMIC);
+	//pbody = app->physics->CreateRectangle(position.x + width/2, position.y + height/2, width-55, height-2, bodyType::DYNAMIC);
+	pbody = app->physics->CreateRectangle(position.x, position.y, 18, 29, bodyType::DYNAMIC);
 	//pbody = app->physics->CreateCircle(position.x + width / 2, position.y + height / 2,14/2, bodyType::DYNAMIC);
 	pbody->body->SetFixedRotation(true);
 	pbody->listener = this;
@@ -78,33 +79,33 @@ bool Player::Start() {
 
 
 
-	//Animations
-	playerIdleR.PushBack({ 0 * width,0 * height,width,height });
-	playerIdleL.PushBack({ 0 * width,1 * height,width,height });
+	////Animations
+	//playerIdleR.PushBack({ 0 * width,0 * height,width,height });
+	//playerIdleL.PushBack({ 0 * width,1 * height,width,height });
 
-	playerAttackR.PushBack({ 0 * width,6 * height,width,height });
-	playerAttackL.PushBack({ 0 * width,7 * height,width,height });
+	//playerAttackR.PushBack({ 0 * width,6 * height,width,height });
+	//playerAttackL.PushBack({ 0 * width,7 * height,width,height });
 
-	
-	for (int i = 0; i < 6; i++) {
-		playerRunR.PushBack({ i * width,2 * height,width,height });
-	}
-	playerRunR.loop = true;
-	playerRunR.speed = 0.3f;
-	
-	for (int i = 0; i < 6; i++) {
-		playerRunL.PushBack({ i * width,3 * height,width,height });
-	}
-	playerRunL.loop = true;
-	playerRunL.speed = 0.3f;
+	//
+	//for (int i = 0; i < 6; i++) {
+	//	playerRunR.PushBack({ i * width,2 * height,width,height });
+	//}
+	//playerRunR.loop = true;
+	//playerRunR.speed = 0.3f;
+	//
+	//for (int i = 0; i < 6; i++) {
+	//	playerRunL.PushBack({ i * width,3 * height,width,height });
+	//}
+	//playerRunL.loop = true;
+	//playerRunL.speed = 0.3f;
 
-	for (int i = 0; i < 6; i++) {
-		playerDie.PushBack({ i * width,8 * height,width,height });
-	}
-	playerDie.loop = false;
-	playerDie.speed = 0.3f;
+	//for (int i = 0; i < 6; i++) {
+	//	playerDie.PushBack({ i * width,8 * height,width,height });
+	//}
+	//playerDie.loop = false;
+	//playerDie.speed = 0.3f;
 
-	currentAnim = &playerIdleR;
+	//currentAnim = &playerIdleR;
 
 	return true;
 }
@@ -142,9 +143,13 @@ bool Player::Update()
 		Death(); 
 	}
 	
-	SDL_Rect rect = currentAnim->GetCurrentFrame();
-	currentAnim->Update();
-	
+	//SDL_Rect rect = currentAnim->GetCurrentFrame();
+	//currentAnim->Update();
+	SDL_Rect rectDown = { 8,2,19,28 };
+	SDL_Rect rectUp = { 39,2,18,28 };
+	SDL_Rect rectLeft = { 72,2,21,29 };
+	SDL_Rect rectRight = { 100,2,21,29 };
+
 	position.x = METERS_TO_PIXELS((pbody->body->GetTransform().p.x) - width / 2);
 	position.y = METERS_TO_PIXELS((pbody->body->GetTransform().p.y) - height / 2);
 
@@ -161,12 +166,23 @@ bool Player::Update()
 		tp2 = false;
 	}
 
-	app->render->camera.x = (-1 * (position.x * app->win->GetScale() - app->render->camera.w / 2))-60;
+	app->render->camera.x = ((-1 * (position.x * app->win->GetScale() - app->render->camera.w / 2))-60)-70;
 	app->render->camera.y = -1 * (position.y * app->win->GetScale() - app->render->camera.h / 2);
-	
-	app->render->DrawTexture(texture, position.x, position.y, &rect);
 
-	
+	//Player draw
+	if (facing == DIRECTION::RIGHT) {
+		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectRight);
+	}
+	if (facing == DIRECTION::LEFT) {
+		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectLeft);
+	}
+	if (facing == DIRECTION::DOWN) {
+		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectDown);
+	}
+	if (facing == DIRECTION::UP) {
+		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectUp);
+	}
+
 	//Player Health Damage
 	if ((lifeAux >= 1 && lifeAux <= 40) || (lifeAux >= 60 && lifeAux <= 100) || (lifeAux >= 120 && lifeAux <= 150)) {
 		app->render->DrawRectangle({ position.x + 139, position.y + 69,32,18 }, 255, 255, 255);
@@ -299,21 +315,21 @@ void Player::Move() {
 
 	float speed = 3;
 	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true) {
+		vel = b2Vec2(0, 0);
+	}
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 	}
-
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 	}
-
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
 	}
-
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
@@ -331,18 +347,18 @@ void Player::Move() {
 		}
 	}
 
-	if (facing == DIRECTION::RIGHT && vel.x == 0) {
-		currentAnim = &playerIdleR;
-	}
-	if (facing == DIRECTION::LEFT && vel.x == 0) {
-		currentAnim = &playerIdleL;
-	}
-	if (facing == DIRECTION::RIGHT && vel.x != 0) {
-		currentAnim = &playerRunR;
-	}
-	if (facing == DIRECTION::LEFT && vel.x != 0) {
-		currentAnim = &playerRunL;
-	}
+	//if (facing == DIRECTION::RIGHT && vel.x == 0) {
+	//	currentAnim = &playerIdleR;
+	//}
+	//if (facing == DIRECTION::LEFT && vel.x == 0) {
+	//	currentAnim = &playerIdleL;
+	//}
+	//if (facing == DIRECTION::RIGHT && vel.x != 0) {
+	//	currentAnim = &playerRunR;
+	//}
+	//if (facing == DIRECTION::LEFT && vel.x != 0) {
+	//	currentAnim = &playerRunL;
+	//}
 
 
 	//Set the velocity of the pbody of the player
@@ -358,12 +374,12 @@ void Player::Attack(int frames) {
 		if (facing == DIRECTION::RIGHT) {
 			attackHitbox->body->SetTransform({ PIXEL_TO_METERS((position.x+50)),  PIXEL_TO_METERS((position.y+8)) }, 0);
 			//app->render->DrawRectangle({ position.x+21, position.y, 50, 20 }, 255, 0, 0, 200);
-			currentAnim = &playerAttackR;
+			//currentAnim = &playerAttackR;
 		}
 		if (facing == DIRECTION::LEFT) {
 			attackHitbox->body->SetTransform({ PIXEL_TO_METERS((position.x +15)), PIXEL_TO_METERS((position.y+8)) }, 0);
 			//app->render->DrawRectangle({ position.x-39, position.y, 50, 20 }, 255, 0, 0, 200);
-			currentAnim = &playerAttackL;
+			//currentAnim = &playerAttackL;
 		}
 	}
 	else {
