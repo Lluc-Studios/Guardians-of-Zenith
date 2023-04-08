@@ -30,8 +30,8 @@ bool Tavern::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = config.child("mapfile").attribute("path1").as_string();
-    mapFolder = config.child("mapfolder").attribute("path").as_string();
+    mapFileName = "Assets/Maps/Tavern.tmx";
+    mapFolder = "Assets/Maps/";
 
     ////Initialize the path
     //frontier.Push(iPoint(20, 14), 0);
@@ -72,7 +72,7 @@ void Tavern::Draw()
 
     while (mapLayerItem != NULL) {
 
-        //L06: DONE 7: use GetProperty method to ask each layer if your “DrawEproperty is true.
+        //L06: DONE 7: use GetProperty method to ask each layer if your Draw property is true.
         if (mapLayerItem->data->properties.GetProperty("Draw") != NULL && mapLayerItem->data->properties.GetProperty("Draw")->value) {
 
             for (int x = 0; x < mapLayerItem->data->width; x++)
@@ -90,7 +90,7 @@ void Tavern::Draw()
 
                     app->render->DrawTexture(tileset->texture,
                         pos.x,
-                        pos.y,
+                        pos.y-250,
                         &r);
                 }
             }

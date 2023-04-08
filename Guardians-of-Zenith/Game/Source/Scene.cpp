@@ -12,6 +12,7 @@
 #include "Intro.h"
 #include "Enemy.h"
 #include "Pathfinding.h"
+#include "Tavern.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -154,7 +155,12 @@ bool Scene::Update(float dt)
 	app->render->camera.y = -1 * (player->position.y * app->win->GetScale() - app->render->camera.h / 2);*/
 
 	// Draw map
-	app->map->Draw();
+	if (app->Instance == 0) {
+		app->map->Draw();
+	}
+	if (app->Instance == 1) {
+		app->tavern->Draw();
+	}
 
 
 	//Pathfinding

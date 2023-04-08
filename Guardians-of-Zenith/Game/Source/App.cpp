@@ -66,7 +66,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(deathmenu);
 	AddModule(mainmenu);
 	AddModule(guiManager);
-	tavern->active = false;
+	//tavern->active = false;
 	deathmenu->active = false;
 	mainmenu->active = false;
 	//menu->active = false;

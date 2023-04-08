@@ -558,7 +558,7 @@ void Map::CreateColliders(ColData c) {
     else if (c.type == 8) {
         collider1->ctype = ColliderType::TAVERN;
     }
-    else if (c.type == 9) {
+    else if (c.type == 90) {
         collider1->ctype = ColliderType::TOWN;
     }
 

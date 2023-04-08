@@ -12,6 +12,8 @@
 #include "DeathMenu.h"
 #include "ModuleFonts.h"
 #include "EntityManager.h"
+#include "Map.h"
+#include "Tavern.h"
 
 Player::Player() : Entity(EntityType::PLAYER)
 {
@@ -117,6 +119,14 @@ bool Player::Update()
 	
 	//LOG("Attack Cooldown: %i",attackCD);
 
+	if (auxBool == true) {
+		auxCounter++;
+		if (auxCounter == 50) {
+			auxCounter = 0;
+			auxBool = false;
+		}
+	}
+
 	debugKeys();
 
 	if (playerState != State::ATTACKING)
@@ -154,14 +164,14 @@ bool Player::Update()
 	position.y = METERS_TO_PIXELS((pbody->body->GetTransform().p.y) - height / 2);
 
 	if (tp1) {
-		position.x = 3440;
-		position.y = 391;
+		position.x = 185;
+		position.y = -175;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp1 = false; 
 	}
 	if (tp2) {
-		position.x = 2240;
-		position.y = 56;
+		position.x = 1015;
+		position.y = 190;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp2 = false;
 	}
@@ -285,6 +295,20 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		}
 	case ColliderType::TAVERN:
 		LOG("Collision Tavern");
+		if (auxBool == false) {
+			app->Instance = 1;
+			app->tavern->Load();
+			tp1 = true;
+			auxBool = true;
+		}
+
+	case ColliderType::TOWN:
+		LOG("Collision Town");
+		if (auxBool == false) {
+			app->Instance = 0;
+			tp2 = true;
+			auxBool = true;
+		}
 
 	}
 

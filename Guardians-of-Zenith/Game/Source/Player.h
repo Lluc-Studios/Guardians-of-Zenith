@@ -66,6 +66,9 @@ public:
 
 	Uint32 TotalTime, Time = 0;
 
+	int auxCounter = 0;
+	bool auxBool = false;
+
 private:
 
 	SDL_Texture* texture;
