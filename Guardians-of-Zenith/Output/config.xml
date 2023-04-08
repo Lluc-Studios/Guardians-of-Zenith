@@ -76,9 +76,7 @@
 
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile path="Assets/Maps/Poblat proves.tmx"/>
-	<mapfolder1 path="Assets/Maps/"/>
-	<mapfile1 path="Assets/Maps/Tavern.tmx"/>
+    <mapfile path="Assets/Maps/Poblat proves.tmx" path1="Assets/Maps/Tavern.tmx"/>
   </map>
 	
   

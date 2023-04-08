@@ -18,7 +18,7 @@ class Audio;
 class Scene;
 class EntityManager;
 class Map;
-//class Tavern;
+class Tavern;
 class Intro;
 class Menu;
 class ModuleFonts;
@@ -97,7 +97,7 @@ public:
 	Scene* scene;
 	EntityManager* entityManager;
 	Map* map;
-	//Tavern* tavern;
+	Tavern* tavern;
 	Intro* intro;
 	Menu* menu;
 	ModuleFonts* font;
@@ -109,6 +109,9 @@ public:
 
 	int FPS = 60;
 	int frameDelay = 1000 / FPS;
+
+	//This int determines which instance is loaded, 0 = town, 1 = tavern
+	int Instance = 0;
 
 private:
 

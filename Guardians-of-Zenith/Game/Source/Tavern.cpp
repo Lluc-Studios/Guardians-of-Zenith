@@ -30,8 +30,8 @@ bool Tavern::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = config.child("mapfile1").attribute("path").as_string();
-    mapFolder = config.child("mapfolder1").attribute("path").as_string();
+    mapFileName = config.child("mapfile").attribute("path1").as_string();
+    mapFolder = config.child("mapfolder").attribute("path").as_string();
 
     ////Initialize the path
     //frontier.Push(iPoint(20, 14), 0);

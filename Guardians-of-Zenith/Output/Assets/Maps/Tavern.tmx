@@ -19,6 +19,9 @@
   <image source="Tileset/Tables.png" width="64" height="48"/>
  </tileset>
  <layer id="1" name="Walls" width="20" height="15">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile gid="683"/>
    <tile gid="683"/>
@@ -323,6 +326,9 @@
   </data>
  </layer>
  <layer id="2" name="Door" width="20" height="15">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -627,6 +633,9 @@
   </data>
  </layer>
  <layer id="3" name="Floor" width="20" height="15">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -931,6 +940,9 @@
   </data>
  </layer>
  <layer id="5" name="Bar" width="20" height="15">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -1235,6 +1247,9 @@
   </data>
  </layer>
  <layer id="4" name="Decoration" width="20" height="15">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
