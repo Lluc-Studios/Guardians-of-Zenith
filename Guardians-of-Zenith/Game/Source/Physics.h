@@ -36,6 +36,8 @@ enum class ColliderType {
 	WALL,
 	ENEMY,
 	PLAYER_ATTACK,
+	TAVERN,
+	TOWN,
 	UNKNOWN
 };
 

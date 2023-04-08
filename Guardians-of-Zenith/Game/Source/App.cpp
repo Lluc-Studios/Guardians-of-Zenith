@@ -7,6 +7,7 @@
 #include "Scene.h"
 #include "EntityManager.h"
 #include "Map.h"
+//#include "Tavern.h"
 #include "Physics.h"
 #include "Intro.h"
 #include "Menu.h"
@@ -37,6 +38,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics();
 	entityManager = new EntityManager();
 	map = new Map();
+	//tavern = new Tavern();
 	pathfinding = new PathFinding();
 	//menu = new Menu();
 	deathmenu = new DeathMenu();
@@ -57,12 +59,14 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(scene);
 	AddModule(entityManager);
 	AddModule(map);
+	//AddModule(tavern);
 	//AddModule(menu);
 	AddModule(font);
 	AddModule(pathfinding);
 	AddModule(deathmenu);
 	AddModule(mainmenu);
 	AddModule(guiManager);
+	//tavern->active = false;
 	deathmenu->active = false;
 	mainmenu->active = false;
 	//menu->active = false;

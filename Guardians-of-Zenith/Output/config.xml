@@ -25,7 +25,7 @@
 	 <!-- player Starting pos, x: 500 y: 220-->
     <player x="500" y="220" width="64" height="16" texturepath="Assets/Textures/personatge_direccions_prototip.png"/>
 
-	<enemy x="1270" y="190" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
+	  <!--enemy x="1270" y="190" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
 	<enemy x="2220" y="400" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
 	<enemy x="2900" y="380" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
 	<enemy x="3050" y="380" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
@@ -42,7 +42,7 @@
 	<teleport x="2250" y="48" texturepath="Assets/Textures/portal.png" id="1"/>
 	<teleport x="3450" y="384" texturepath="Assets/Textures/portal.png" id ="2"/>
 	  
-	<!--<saw x="856" y="144" noMove="true" texturepath="Assets/Textures/saw.png"/>
+	<<saw x="856" y="144" noMove="true" texturepath="Assets/Textures/saw.png"/>
     <saw x="1000" y="192" noMove="true" texturepath="Assets/Textures/saw.png"/>
 	<saw x="1000" y="144" noMove="true" texturepath="Assets/Textures/saw.png"/>
 	  
@@ -77,6 +77,9 @@
   <map>
     <mapfolder path="Assets/Maps/"/>
     <mapfile path="Assets/Maps/Poblat proves.tmx"/>
+	<mapfolder1 path="Assets/Maps/"/>
+	<mapfile1 path="Assets/Maps/Tavern.tmx"/>
   </map>
+	
   
 </config>

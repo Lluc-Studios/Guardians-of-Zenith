@@ -18,6 +18,7 @@ class Audio;
 class Scene;
 class EntityManager;
 class Map;
+//class Tavern;
 class Intro;
 class Menu;
 class ModuleFonts;
@@ -26,6 +27,7 @@ class DeathMenu;
 class MainMenu;
 class PathFinding; 
 class GuiManager;
+
 
 class App
 {
@@ -95,6 +97,7 @@ public:
 	Scene* scene;
 	EntityManager* entityManager;
 	Map* map;
+	//Tavern* tavern;
 	Intro* intro;
 	Menu* menu;
 	ModuleFonts* font;

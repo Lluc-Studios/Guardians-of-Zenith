@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="1">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="13">
  <tileset firstgid="1" name="RVDoorsWindows" tilewidth="16" tileheight="16" tilecount="84" columns="7">
   <image source="Tileset/RVDoorsWindows.png" width="112" height="192"/>
  </tileset>
@@ -113,4 +113,20 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="6" name="Collisions">
+  <object id="2" x="-0.615799" y="47.4165" width="144.097" height="44.6454"/>
+  <object id="5" x="0.5" y="0" width="319.5" height="46.5"/>
+  <object id="6" x="-6" y="45" width="6" height="200"/>
+  <object id="7" x="0.5" y="239.5" width="322" height="7.5"/>
+  <object id="8" x="320.5" y="45.5" width="9.5" height="193"/>
+  <object id="9" x="224.5" y="177" width="30.5" height="42.5"/>
+  <object id="10" x="128.5" y="176.5" width="31" height="43"/>
+  <object id="11" x="32.5" y="176.5" width="30" height="42.5"/>
+ </objectgroup>
+ <objectgroup id="7" name="Exit">
+  <properties>
+   <property name="Type" type="int" value="9"/>
+  </properties>
+  <object id="12" x="176" y="31.5" width="15.5" height="16"/>
+ </objectgroup>
 </map>

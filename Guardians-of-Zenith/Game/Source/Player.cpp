@@ -283,7 +283,11 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 				alive = false;
 			}
 		}
+	case ColliderType::TAVERN:
+		LOG("Collision Tavern");
+
 	}
+
 	
 }
 
