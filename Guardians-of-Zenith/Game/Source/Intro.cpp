@@ -35,7 +35,7 @@ bool Intro::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Intro::Start()
 {
-	logo = app->tex->Load("Assets/Textures/LongCat_Logo.png");
+	logo = app->tex->Load("Assets/Textures/LlucStudios_logo.png");
 	return true;
 }
 
