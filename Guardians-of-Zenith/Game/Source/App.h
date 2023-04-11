@@ -107,8 +107,8 @@ public:
 	PathFinding* pathfinding; 
 	GuiManager* guiManager;
 
-	int FPS = 60;
-	int frameDelay = 1000 / FPS;
+	//int FPS = 60;
+	//int frameDelay = 1000 / FPS;
 
 	//This int determines which instance is loaded, 0 = town, 1 = tavern
 	int Instance = 0;

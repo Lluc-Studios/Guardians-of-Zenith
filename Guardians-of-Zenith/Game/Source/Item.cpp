@@ -69,7 +69,7 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 	switch (physB->ctype)
 	{
 	case ColliderType::PLAYER:
-		app->scene->player->score += score;
+		//app->scene->player->score += score;
 		isPicked = true; 
 		break;
 	}
