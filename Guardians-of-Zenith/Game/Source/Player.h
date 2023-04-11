@@ -64,6 +64,9 @@ public:
 
 	iPoint x;
 
+	bool tp1 = false;
+	bool tp2 = false;
+
 	//Uint32 TotalTime, Time = 0;
 
 	int auxCounter = 0;
@@ -82,9 +85,6 @@ private:
 
 	int attackCD = 0;
 	int attackFrames = 10; 
-
-	bool tp1 = false;
-	bool tp2 = false;
 
 	State playerState; 
 

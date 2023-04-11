@@ -190,6 +190,31 @@ bool Scene::Update(float dt)
 		}
 	}
 
+	//fading
+	if (fade == true) {
+		fading += 10;
+		if (fading >= 255) {
+			fading == 255;
+			if (selected == 1) {
+				app->Instance = 1;
+				app->scene->player->tp1 = true;
+				fade = false;
+			}
+			if (selected == 2) {
+				app->Instance = 0;
+				app->scene->player->tp2 = true;
+				fade = false;
+			}
+		}
+	}
+	if (fading > 0 && fade == false) {
+		fading -= 10;
+		if (fading <= 0) {
+			fading = 0;
+		}
+	}
+	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
+
 	return true;
 }
 

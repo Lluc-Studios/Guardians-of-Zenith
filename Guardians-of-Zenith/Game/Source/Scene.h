@@ -44,6 +44,9 @@ public:
 
 public:
 
+	//fading
+	int fading = 0, selected = 0;
+	bool fade = false;
 	//L02: DONE 3: Declare a Player attribute 
 	Player* player;
 	bool CanPlayerMove = false;

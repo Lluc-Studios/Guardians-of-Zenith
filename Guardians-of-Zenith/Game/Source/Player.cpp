@@ -121,7 +121,7 @@ bool Player::Update()
 
 	if (auxBool == true) {
 		auxCounter++;
-		if (auxCounter == 50) {
+		if (auxCounter == 100) {
 			auxCounter = 0;
 			auxBool = false;
 		}
@@ -193,41 +193,6 @@ bool Player::Update()
 		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectUp);
 	}
 
-	////Player Health Damage
-	//if ((lifeAux >= 1 && lifeAux <= 40) || (lifeAux >= 60 && lifeAux <= 100) || (lifeAux >= 120 && lifeAux <= 150)) {
-	//	app->render->DrawRectangle({ position.x + 139, position.y + 69,32,18 }, 255, 255, 255);
-	//	app->render->DrawRectangle({ position.x + 171, position.y + 75,2,6 }, 255, 255, 255);
-	//}
-
-	////Player Health Draw
-	//if (life >= 3) {
-	//	app->render->DrawTexture(LFHH, position.x + 140, position.y + 70);
-	//}
-	//if (life == 2) {
-	//	app->render->DrawTexture(LFH, position.x + 140, position.y + 70);
-	//}
-	//if (life == 1) {
-	//	app->render->DrawTexture(LFL, position.x + 140, position.y + 70);
-	//}
-	//if (life == 0) {
-	//	app->render->DrawTexture(LFE, position.x + 140, position.y + 70);
-	//}
-
-	////Score Print
-	//char ConvertAux[12];
-	//sprintf_s(ConvertAux, "%d", score);
-	//app->font->BlitText(x.x+1, x.y+170, WF, "score");
-	//app->font->BlitText(x.x + 34, x.y + 170, WF, ConvertAux);
-
-	////Timer
-	//if (TotalTime - Time >= 1000) {
-	//	Time = TotalTime;
-	//	timer++;
-	//}
-	//sprintf_s(ConvertAux, "%d", timer);
-	//app->font->BlitText(x.x + 140, x.y+1, YF, "time");
-	//app->font->BlitText(x.x + 167, x.y + 1, YF, ConvertAux);
-
 	return true;
 }
 
@@ -296,22 +261,25 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TAVERN:
 		LOG("Collision Tavern");
 		if (auxBool == false) {
-			app->Instance = 1;
-			tp1 = true;
+			//app->Instance = 1;
+			//tp1 = true;
+			app->scene->selected = 1;
+			app->scene->fade = true;
 			auxBool = true;
 		}
 
 	case ColliderType::TOWN:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->Instance = 0;
-			tp2 = true;
+			//app->Instance = 0;
+			//tp2 = true;
+			app->scene->selected = 2;
+			app->scene->fade = true;
 			auxBool = true;
 		}
 
 	}
-
-	
+		
 }
 
 
