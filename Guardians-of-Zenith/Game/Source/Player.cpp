@@ -69,11 +69,11 @@ bool Player::Start() {
 	DamageFx = app->audio->LoadFx("Assets/Sounds/Enemy/Dead2.wav");
 	tpFX = app->audio->LoadFx("Assets/Sounds/TeleportSound.wav");
 
-	//Textures
-	LFHH = app->tex->Load("Assets/Textures/FULL.png");
-	LFH = app->tex->Load("Assets/Textures/HALF.png");
-	LFL = app->tex->Load("Assets/Textures/LOW.png");
-	LFE = app->tex->Load("Assets/Textures/EMPTY.png");
+	////Textures
+	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
+	//LFH = app->tex->Load("Assets/Textures/HALF.png");
+	//LFL = app->tex->Load("Assets/Textures/LOW.png");
+	//LFE = app->tex->Load("Assets/Textures/EMPTY.png");
 
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
@@ -132,7 +132,7 @@ bool Player::Update()
 	if (playerState != State::ATTACKING)
 		Move();
 
-	TotalTime = SDL_GetTicks();
+	//TotalTime = SDL_GetTicks();
 
 	if ((app->input->GetMouseButtonDown(1) && attackCD <= 0) || (attackFrames > 0 && playerState == State::ATTACKING)) {
 		playerState = State::ATTACKING;
@@ -193,40 +193,40 @@ bool Player::Update()
 		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectUp);
 	}
 
-	//Player Health Damage
-	if ((lifeAux >= 1 && lifeAux <= 40) || (lifeAux >= 60 && lifeAux <= 100) || (lifeAux >= 120 && lifeAux <= 150)) {
-		app->render->DrawRectangle({ position.x + 139, position.y + 69,32,18 }, 255, 255, 255);
-		app->render->DrawRectangle({ position.x + 171, position.y + 75,2,6 }, 255, 255, 255);
-	}
+	////Player Health Damage
+	//if ((lifeAux >= 1 && lifeAux <= 40) || (lifeAux >= 60 && lifeAux <= 100) || (lifeAux >= 120 && lifeAux <= 150)) {
+	//	app->render->DrawRectangle({ position.x + 139, position.y + 69,32,18 }, 255, 255, 255);
+	//	app->render->DrawRectangle({ position.x + 171, position.y + 75,2,6 }, 255, 255, 255);
+	//}
 
-	//Player Health Draw
-	if (life >= 3) {
-		app->render->DrawTexture(LFHH, position.x + 140, position.y + 70);
-	}
-	if (life == 2) {
-		app->render->DrawTexture(LFH, position.x + 140, position.y + 70);
-	}
-	if (life == 1) {
-		app->render->DrawTexture(LFL, position.x + 140, position.y + 70);
-	}
-	if (life == 0) {
-		app->render->DrawTexture(LFE, position.x + 140, position.y + 70);
-	}
+	////Player Health Draw
+	//if (life >= 3) {
+	//	app->render->DrawTexture(LFHH, position.x + 140, position.y + 70);
+	//}
+	//if (life == 2) {
+	//	app->render->DrawTexture(LFH, position.x + 140, position.y + 70);
+	//}
+	//if (life == 1) {
+	//	app->render->DrawTexture(LFL, position.x + 140, position.y + 70);
+	//}
+	//if (life == 0) {
+	//	app->render->DrawTexture(LFE, position.x + 140, position.y + 70);
+	//}
 
-	//Score Print
-	char ConvertAux[12];
-	sprintf_s(ConvertAux, "%d", score);
-	app->font->BlitText(x.x+1, x.y+170, WF, "score");
-	app->font->BlitText(x.x + 34, x.y + 170, WF, ConvertAux);
+	////Score Print
+	//char ConvertAux[12];
+	//sprintf_s(ConvertAux, "%d", score);
+	//app->font->BlitText(x.x+1, x.y+170, WF, "score");
+	//app->font->BlitText(x.x + 34, x.y + 170, WF, ConvertAux);
 
-	//Timer
-	if (TotalTime - Time >= 1000) {
-		Time = TotalTime;
-		timer++;
-	}
-	sprintf_s(ConvertAux, "%d", timer);
-	app->font->BlitText(x.x + 140, x.y+1, YF, "time");
-	app->font->BlitText(x.x + 167, x.y + 1, YF, ConvertAux);
+	////Timer
+	//if (TotalTime - Time >= 1000) {
+	//	Time = TotalTime;
+	//	timer++;
+	//}
+	//sprintf_s(ConvertAux, "%d", timer);
+	//app->font->BlitText(x.x + 140, x.y+1, YF, "time");
+	//app->font->BlitText(x.x + 167, x.y + 1, YF, ConvertAux);
 
 	return true;
 }

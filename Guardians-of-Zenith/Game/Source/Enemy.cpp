@@ -190,7 +190,7 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (life == 1) {
 			life--;
 			Death();
-			app->scene->player->score += 100;
+			//app->scene->player->score += 100;
 		}
 		if (life == 2) {
 			life--;

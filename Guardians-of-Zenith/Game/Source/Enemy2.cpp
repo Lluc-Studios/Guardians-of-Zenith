@@ -186,7 +186,7 @@ void Enemy2::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::PLAYER_ATTACK:
 		LOG("Enemy die");
-		app->scene->player->score += 150;
+		//app->scene->player->score += 150;
 		Death();
 		break;
 	case ColliderType::UNKNOWN:
