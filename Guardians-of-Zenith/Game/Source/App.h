@@ -26,7 +26,7 @@ class Physics;
 class DeathMenu;
 class MainMenu;
 class PathFinding; 
-class GuiManager;
+class Combat;
 
 
 class App
@@ -105,7 +105,7 @@ public:
 	DeathMenu* deathmenu;
 	MainMenu* mainmenu;
 	PathFinding* pathfinding; 
-	GuiManager* guiManager;
+	Combat* combat;
 
 	//int FPS = 60;
 	//int frameDelay = 1000 / FPS;

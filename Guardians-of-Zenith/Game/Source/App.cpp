@@ -15,6 +15,7 @@
 #include "ModuleFonts.h"
 #include "DeathMenu.h"
 #include "Pathfinding.h"
+#include "Combat.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -43,6 +44,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	deathmenu = new DeathMenu();
 	mainmenu = new MainMenu();
 	font = new ModuleFonts();
+	combat = new Combat();
 
 
 	// Ordered for awake / Start / Update
@@ -63,6 +65,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(deathmenu);
 	AddModule(mainmenu);
+	AddModule(combat);
 	//tavern->active = false;
 	deathmenu->active = false;
 	mainmenu->active = false;
