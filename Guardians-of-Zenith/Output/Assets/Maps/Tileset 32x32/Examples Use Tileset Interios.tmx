@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="300" columns="20">
   <image source="Tileset_Interiors.png" width="640" height="480"/>
  </tileset>
- <tileset firstgid="301" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="300" columns="20">
+ <tileset firstgid="301" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="0" columns="20">
   <image source="../../../../../../../../../../ZCopia/_- DOCUMENTOS -_/Universitat/Videojocs/22_23/2_SE/Proyecto II/Tileset_Interiors.png" width="640" height="480"/>
  </tileset>
  <layer id="1" name="Capa de patrones 1" width="30" height="20">
@@ -30,7 +30,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="4" name="Oj_2" width="30" height="20">
+ <layer id="4" name="Oj_2" width="30" height="20" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -57,7 +57,7 @@
  <layer id="3" name="objetos" width="30" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,121,122,122,123,104,105,102,104,105,0,0,0,0,0,0,0,109,110,407,0,109,110,0,0,109,110,109,110,0,
+0,121,122,122,123,104,105,102,104,105,0,0,0,0,0,0,0,109,110,107,0,109,110,0,0,109,110,109,110,0,
 0,141,142,142,143,124,125,101,124,125,0,0,0,0,0,0,0,129,130,106,0,129,130,0,0,129,130,129,130,0,
 0,0,0,0,0,144,0,0,144,145,0,0,0,0,0,0,0,149,150,0,0,149,150,0,0,149,150,149,150,0,
 0,222,223,223,223,224,0,0,0,0,104,105,0,104,105,0,0,0,0,0,0,0,0,27,29,0,0,0,0,0,
