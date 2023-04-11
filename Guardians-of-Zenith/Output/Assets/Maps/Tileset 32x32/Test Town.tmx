@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="155">
  <tileset firstgid="1" name="RVDecoration" tilewidth="16" tileheight="16" tilecount="351" columns="13">
-  <image source="Tileset/RVDecoration.png" width="208" height="432"/>
+  <image source="../Tileset/RVDecoration.png" width="208" height="432"/>
  </tileset>
  <tileset firstgid="352" name="RVWalls" tilewidth="16" tileheight="16" tilecount="324" columns="18">
-  <image source="Tileset/RVWalls.png" width="288" height="288"/>
+  <image source="../Tileset/RVWalls.png" width="288" height="288"/>
  </tileset>
  <tileset firstgid="676" name="RVWater" tilewidth="16" tileheight="16" tilecount="286" columns="13">
-  <image source="Tileset/RVWater.png" width="208" height="352"/>
+  <image source="../Tileset/RVWater.png" width="208" height="352"/>
  </tileset>
  <tileset firstgid="962" name="RVNature" tilewidth="16" tileheight="16" tilecount="384" columns="16">
-  <image source="Tileset/RVNature.png" width="256" height="384"/>
+  <image source="../Tileset/RVNature.png" width="256" height="384"/>
  </tileset>
  <tileset firstgid="1346" name="Tileset_Town" tilewidth="32" tileheight="32" tilecount="132" columns="11">
-  <image source="../../../../../../../Users/Luxary/Downloads/Github Projects/Guardians-of-Zenith/Guardians-of-Zenith/Output/Assets/Maps/Tileset 32x32/Tileset_Town.png" width="352" height="384"/>
+  <image source="Tileset_Town.png" width="352" height="384"/>
  </tileset>
  <tileset firstgid="1478" name="Tileset_House" tilewidth="32" tileheight="32" tilecount="920" columns="40">
-  <image source="../../../../../../../Users/Luxary/Downloads/Github Projects/Guardians-of-Zenith/Guardians-of-Zenith/Output/Assets/Maps/Tileset 32x32/Tileset_House.png" width="1280" height="736"/>
+  <image source="Tileset_House.png" width="1280" height="736"/>
  </tileset>
  <layer id="1" name="Fondo" width="80" height="45" locked="1">
   <properties>
