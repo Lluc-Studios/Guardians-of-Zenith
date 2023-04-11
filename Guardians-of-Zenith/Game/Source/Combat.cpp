@@ -67,7 +67,16 @@ bool Combat::CleanUp()
 	return true;
 }
 
-void Combat::StartCombat() 
+void Combat::StartCombat(int CurrentInstance) //Input the current instance number to disable it and enable it when exiting this mode
 {
-
+	//Disable map print
+	SaveInstance = app->Instance;
+	app->Instance = -1;
 }
+
+void Combat::ExitCombat()
+{
+	//Enable map print
+	app->Instance = SaveInstance;
+}
+

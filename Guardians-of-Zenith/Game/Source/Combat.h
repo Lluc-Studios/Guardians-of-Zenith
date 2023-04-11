@@ -33,12 +33,14 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	void StartCombat();
+	void StartCombat(int CurrentInstance);
+
+	void ExitCombat();
 
 public:
 
 private:
-
+	int SaveInstance;
 };
 
 #endif // __COMBAT_H__
