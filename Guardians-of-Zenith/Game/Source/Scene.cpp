@@ -85,6 +85,7 @@ bool Scene::Start()
 	bool retLoad = app->map->Load();
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
+	app->tavern->Load();
 	// L04: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d FPS:%d",
 		app->map->mapData.width,
@@ -126,7 +127,7 @@ bool Scene::PreUpdate()
 bool Scene::Update(float dt)
 {
 	if (Music == false) {
-		app->audio->PlayMusic("Assets/Sounds/candybattleLONG.wav");
+		//app->audio->PlayMusic("Assets/Sounds/candybattleLONG.wav");
 		Music = true;
 	}
 	// L03: DONE 3: Request App to Load / Save when pressing the keys F5 (save) / F6 (load)

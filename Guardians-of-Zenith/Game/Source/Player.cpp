@@ -297,7 +297,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision Tavern");
 		if (auxBool == false) {
 			app->Instance = 1;
-			app->tavern->Load();
 			tp1 = true;
 			auxBool = true;
 		}
@@ -364,16 +363,16 @@ void Player::Move() {
 	}
 
 	//Fx
-	if (vel.x != 0 && vel.y == 0) {
-		aux++;
-		if (aux == 0) {
-			app->audio->PlayFxWithVolume(Step1, 0, 25);
-		}
-		if (aux == 10) {
-			app->audio->PlayFxWithVolume(Step2, 0, 25);
-			aux = -10;
-		}
-	}
+	//if (vel.x != 0 && vel.y == 0) {
+	//	aux++;
+	//	if (aux == 0) {
+	//		app->audio->PlayFxWithVolume(Step1, 0, 25);
+	//	}
+	//	if (aux == 10) {
+	//		app->audio->PlayFxWithVolume(Step2, 0, 25);
+	//		aux = -10;
+	//	}
+	//}
 
 	//if (facing == DIRECTION::RIGHT && vel.x == 0) {
 	//	currentAnim = &playerIdleR;
