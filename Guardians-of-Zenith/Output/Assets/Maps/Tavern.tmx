@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="13">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="23">
+ <properties>
+  <property name="Type" type="int" value="90"/>
+ </properties>
  <tileset firstgid="1" name="RVDoorsWindows" tilewidth="16" tileheight="16" tilecount="84" columns="7">
   <image source="Tileset/RVDoorsWindows.png" width="112" height="192"/>
  </tileset>
@@ -1553,4 +1556,21 @@
    <tile/>
   </data>
  </layer>
+ <objectgroup id="8" name="Collisions">
+  <object id="13" x="0.359874" y="-0.719748" width="318.489" height="47.5034"/>
+  <object id="14" x="128.115" y="46.0639" width="14.7548" height="44.2645"/>
+  <object id="15" x="-0.359874" y="80.2519" width="129.555" height="10.7962"/>
+  <object id="16" x="32.3887" y="175.978" width="30.2294" height="43.5448"/>
+  <object id="17" x="128.475" y="175.978" width="30.2294" height="43.1849"/>
+  <object id="18" x="224.921" y="177.058" width="29.5097" height="43.1849"/>
+  <object id="19" x="318.489" y="46.0639" width="5.03824" height="194.332"/>
+  <object id="20" x="-4.31849" y="46.7836" width="5.03824" height="193.252"/>
+  <object id="21" x="-0.359874" y="239.316" width="319.928" height="6.11786"/>
+ </objectgroup>
+ <objectgroup id="9" name="TavernExit">
+  <properties>
+   <property name="Type" type="int" value="9"/>
+  </properties>
+  <object id="22" x="176.698" y="34.188" width="15.1147" height="15.8345"/>
+ </objectgroup>
 </map>

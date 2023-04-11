@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="155">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="155">
  <tileset firstgid="1" name="RVFloors" tilewidth="16" tileheight="16" tilecount="84" columns="12">
   <image source="Tileset/RVFloors.png" width="192" height="112"/>
  </tileset>
@@ -28935,26 +28935,11 @@
   <object id="140" x="928.5" y="0" width="180" height="100.5"/>
   <object id="141" x="113.333" y="-0.666667" width="205.333" height="173.333"/>
   <object id="142" x="431.333" y="0.666667" width="172" height="170.667"/>
-  <object id="145" x="1.33333" y="-250" width="318.667" height="50"/>
-  <object id="146" x="129.333" y="-200" width="17.3333" height="44.6667"/>
-  <object id="147" x="1.33333" y="-168.667" width="145.333" height="13.3333"/>
-  <object id="148" x="-9.33333" y="-200" width="10" height="192.667"/>
-  <object id="149" x="34" y="-72.6667" width="32.6667" height="49.3333"/>
-  <object id="150" x="130" y="-72.6667" width="30.6667" height="48"/>
-  <object id="151" x="225.333" y="-71.3333" width="30.6667" height="46.6667"/>
-  <object id="152" x="320" y="-200.667" width="14" height="194"/>
-  <object id="153" x="-9.33333" y="-7.33333" width="344.667" height="16"/>
  </objectgroup>
  <objectgroup id="10" name="TavernEntry">
   <properties>
    <property name="Type" type="int" value="8"/>
   </properties>
   <object id="143" x="1007" y="140.5" width="17.5" height="36.5"/>
- </objectgroup>
- <objectgroup id="11" name="TavernExit">
-  <properties>
-   <property name="Type" type="int" value="90"/>
-  </properties>
-  <object id="154" x="176" y="-211.333" width="18.6667" height="14"/>
  </objectgroup>
 </map>
