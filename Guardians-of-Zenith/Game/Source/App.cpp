@@ -15,7 +15,6 @@
 #include "ModuleFonts.h"
 #include "DeathMenu.h"
 #include "Pathfinding.h"
-#include "GuiManager.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -43,7 +42,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	//menu = new Menu();
 	deathmenu = new DeathMenu();
 	mainmenu = new MainMenu();
-	guiManager = new GuiManager();
 	font = new ModuleFonts();
 
 
@@ -65,7 +63,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(deathmenu);
 	AddModule(mainmenu);
-	AddModule(guiManager);
 	//tavern->active = false;
 	deathmenu->active = false;
 	mainmenu->active = false;

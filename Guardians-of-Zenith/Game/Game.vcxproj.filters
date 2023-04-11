@@ -32,8 +32,6 @@
     <ClCompile Include="Source\Pathfinding.cpp" />
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Enemy2.cpp" />
-    <ClCompile Include="Source\GuiButton.cpp" />
-    <ClCompile Include="Source\GuiManager.cpp" />
     <ClCompile Include="Source\Teleport.cpp" />
     <ClCompile Include="Source\Tavern.cpp" />
   </ItemGroup>
@@ -100,9 +98,6 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\Enemy2.h" />
-    <ClInclude Include="Source\GuiButton.h" />
-    <ClInclude Include="Source\GuiControl.h" />
-    <ClInclude Include="Source\GuiManager.h" />
     <ClInclude Include="Source\Teleport.h" />
     <ClInclude Include="Source\Tavern.h" />
   </ItemGroup>

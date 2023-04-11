@@ -11,7 +11,6 @@
 #include "Physics.h"
 #include "ModuleFonts.h"
 #include "DeathMenu.h"
-#include "GuiManager.h"
 
 
 #include "Defs.h"
