@@ -73,7 +73,7 @@
 	  
 	
   </scene>
-
+	<!--THIS IS NOT FUNCTIONAL-->
   <map>
     <mapfolder path="Assets/Maps/"/>
     <mapfile path="Assets/Maps/Poblat proves.tmx" path1="Assets/Maps/Tavern.tmx"/>

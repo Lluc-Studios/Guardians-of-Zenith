@@ -30,8 +30,8 @@ bool Map::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = config.child("mapfile").attribute("path").as_string();
-    mapFolder = config.child("mapfolder").attribute("path").as_string();
+    mapFileName = "Assets/Maps/Poblat proves.tmx";
+    mapFolder = "Assets/Maps/";
 
     ////Initialize the path
     //frontier.Push(iPoint(20, 14), 0);
