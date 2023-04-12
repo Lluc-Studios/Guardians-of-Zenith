@@ -13,6 +13,11 @@
 #include "Enemy.h"
 #include "Pathfinding.h"
 #include "Tavern.h"
+#include "Blacksmith.h"
+#include "House.h"
+#include "LakeDungeon.h"
+#include "ForestDungeon.h"
+#include "CaveDungeon.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -162,6 +167,22 @@ bool Scene::Update(float dt)
 	if (app->Instance == 1) {
 		app->tavern->Draw();
 	}
+	//DO NOT TOUCH!!!
+	//if (app->Instance == 2) {
+	//	app->blacksmith->Draw();
+	//}
+	//if (app->Instance == 3) {
+	//	app->house->Draw();
+	//}
+	//if (app->Instance == 4) {
+	//	app->lakedungeon->Draw();
+	//}
+	//if (app->Instance == 5) {
+	//	app->forestdungeon->Draw();
+	//}
+	//if (app->Instance == 6) {
+	//	app->cavedungeon->Draw();
+	//}
 
 
 	//Pathfinding
@@ -205,6 +226,57 @@ bool Scene::Update(float dt)
 				app->scene->player->tp2 = true;
 				fade = false;
 			}
+			if (selected == 3) {
+				app->Instance = 2;
+				app->scene->player->tp3 = true;
+				fade = false;
+			}
+			if (selected == 4) {
+				app->Instance = 0;
+				app->scene->player->tp4 = true;
+				fade = false;
+			}
+			if (selected == 5) {
+				app->Instance = 3;
+				app->scene->player->tp5 = true;
+				fade = false;
+			}
+			if (selected == 6) {
+				app->Instance = 0;
+				app->scene->player->tp6 = true;
+				fade = false;
+			}
+			if (selected == 7) {
+				app->Instance = 4;
+				app->scene->player->tp7 = true;
+				fade = false;
+			}
+			if (selected == 8) {
+				app->Instance = 0;
+				app->scene->player->tp8 = true;
+				fade = false;
+			}
+			if (selected == 9) {
+				app->Instance = 5;
+				app->scene->player->tp9 = true;
+				fade = false;
+			}
+			if (selected == 10) {
+				app->Instance = 0;
+				app->scene->player->tp10 = true;
+				fade = false;
+			}
+			if (selected == 11) {
+				app->Instance = 6;
+				app->scene->player->tp11 = true;
+				fade = false;
+			}
+			if (selected == 12) {
+				app->Instance = 0;
+				app->scene->player->tp12 = true;
+				fade = false;
+			}
+
 		}
 	}
 	if (fading > 0 && fade == false) {

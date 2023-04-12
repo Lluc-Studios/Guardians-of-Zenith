@@ -17,7 +17,6 @@
     <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\Item.cpp" />
-    <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Intro.cpp" />
     <ClCompile Include="Source\Menu.cpp" />
@@ -33,8 +32,28 @@
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Enemy2.cpp" />
     <ClCompile Include="Source\Teleport.cpp" />
-    <ClCompile Include="Source\Tavern.cpp" />
     <ClCompile Include="Source\Combat.cpp" />
+    <ClCompile Include="Source\Map.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Tavern.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Blacksmith.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\House.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LakeDungeon.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ForestDungeon.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CaveDungeon.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -76,7 +95,6 @@
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\Item.h" />
-    <ClInclude Include="Source\Map.h" />
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\Intro.h" />
     <ClInclude Include="Source\Menu.h" />
@@ -100,8 +118,28 @@
     </ClInclude>
     <ClInclude Include="Source\Enemy2.h" />
     <ClInclude Include="Source\Teleport.h" />
-    <ClInclude Include="Source\Tavern.h" />
     <ClInclude Include="Source\Combat.h" />
+    <ClInclude Include="Source\Map.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Tavern.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Blacksmith.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\House.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LakeDungeon.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ForestDungeon.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CaveDungeon.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -112,6 +150,9 @@
     </Filter>
     <Filter Include="External\PugiXml">
       <UniqueIdentifier>{2855ff7f-53a1-413d-a75b-18b4ade921dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Maps">
+      <UniqueIdentifier>{38073a22-c1f1-42ae-ad7a-ee4cc58e2b58}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

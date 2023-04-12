@@ -17,7 +17,7 @@
 
 Tavern::Tavern() : Module(), mapLoaded(false)
 {
-    name.Create("tavern");
+    name.Create("Tavern");
 }
 
 // Destructor
@@ -559,7 +559,37 @@ void Tavern::CreateColliders(ColDataT c) {
         collider1->ctype = ColliderType::TAVERN;
     }
     else if (c.type == 9) {
-        collider1->ctype = ColliderType::TOWN;
+        collider1->ctype = ColliderType::TOWNTAVERN;
+    }
+    else if (c.type == 10) {
+        collider1->ctype = ColliderType::BLACKSMITH;
+    }
+    else if (c.type == 11) {
+        collider1->ctype = ColliderType::TOWNBLACKSMITH;
+    }
+    else if (c.type == 12) {
+        collider1->ctype = ColliderType::HOUSE;
+    }
+    else if (c.type == 13) {
+        collider1->ctype = ColliderType::TOWNHOUSE;
+    }
+    else if (c.type == 14) {
+        collider1->ctype = ColliderType::LAKEDUNGEON;
+    }
+    else if (c.type == 15) {
+        collider1->ctype = ColliderType::TOWNLAKEDUNGEON;
+    }
+    else if (c.type == 16) {
+        collider1->ctype = ColliderType::FORESTDUNGEON;
+    }
+    else if (c.type == 17) {
+        collider1->ctype = ColliderType::TOWNFORESTDUNGEON;
+    }
+    else if (c.type == 18) {
+        collider1->ctype = ColliderType::CAVEDUNGEON;
+    }
+    else if (c.type == 19) {
+        collider1->ctype = ColliderType::TOWNCAVEDUNGEON;
     }
 
 }

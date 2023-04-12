@@ -66,6 +66,17 @@ public:
 
 	bool tp1 = false;
 	bool tp2 = false;
+	bool tp3 = false;
+	bool tp4 = false;
+	bool tp5 = false;
+	bool tp6 = false;
+	bool tp7 = false;
+	bool tp8 = false;
+	bool tp9 = false;
+	bool tp10 = false;
+	bool tp11 = false;
+	bool tp12 = false;
+
 
 	//Uint32 TotalTime, Time = 0;
 
