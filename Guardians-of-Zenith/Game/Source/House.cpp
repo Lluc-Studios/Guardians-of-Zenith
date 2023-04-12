@@ -2,7 +2,7 @@
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
-#include "Map.h"
+#include "House.h"
 #include "Physics.h"
 #include "Window.h"
 #include "Pathfinding.h"
@@ -15,22 +15,22 @@
 #include "SDL_image/include/SDL_image.h"
 
 
-Map::Map() : Module(), mapLoaded(false)
+House::House() : Module(), mapLoaded(false)
 {
-    name.Create("Map");
+    name.Create("House");
 }
 
 // Destructor
-Map::~Map()
+House::~House()
 {}
 
 // Called before render is available
-bool Map::Awake(pugi::xml_node& config)
+bool House::Awake(pugi::xml_node& config)
 {
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Poblat proves.tmx";
+    mapFileName = "Assets/Maps/Tavern.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path
@@ -44,12 +44,12 @@ bool Map::Awake(pugi::xml_node& config)
     return ret;
 }
 
-void Map::Draw()
+void House::Draw()
 {
     if(mapLoaded == false)
         return;
 
-    ListItem<ImageLayer*>* imageLayerItem;
+    ListItem<ImageLayerH*>* imageLayerItem;
     imageLayerItem = mapData.imagelayers.start;
 
     while (imageLayerItem != NULL) {
@@ -67,12 +67,12 @@ void Map::Draw()
 
 
 
-    ListItem<MapLayer*>* mapLayerItem;
+    ListItem<MapLayerH*>* mapLayerItem;
     mapLayerItem = mapData.maplayers.start;
 
     while (mapLayerItem != NULL) {
 
-        //L06: DONE 7: use GetProperty method to ask each layer if your “DrawEproperty is true.
+        //L06: DONE 7: use GetProperty method to ask each layer if your Draw property is true.
         if (mapLayerItem->data->properties.GetProperty("Draw") != NULL && mapLayerItem->data->properties.GetProperty("Draw")->value) {
 
             for (int x = 0; x < mapLayerItem->data->width; x++)
@@ -83,14 +83,14 @@ void Map::Draw()
                     int gid = mapLayerItem->data->Get(x, y);
 
                     //L06: DONE 3: Obtain the tile set using GetTilesetFromTileId
-                    TileSet* tileset = GetTilesetFromTileId(gid);
+                    TileSetH* tileset = GetTilesetFromTileId(gid);
 
                     SDL_Rect r = tileset->GetTileRect(gid);
                     iPoint pos = MapToWorld(x, y);
 
                     app->render->DrawTexture(tileset->texture,
                         pos.x,
-                        pos.y,
+                        pos.y-250,
                         &r);
                 }
             }
@@ -103,15 +103,15 @@ void Map::Draw()
 }
 
 // L12: Create walkability map for pathfinding
-bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
+bool House::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 {
     bool ret = false;
-    ListItem<MapLayer*>* item;
+    ListItem<MapLayerH*>* item;
     item = mapData.maplayers.start;
 
     for (item = mapData.maplayers.start; item != NULL; item = item->next)
     {
-        MapLayer* layer = item->data;
+        MapLayerH* layer = item->data;
 
         LOG("Layer: %d", layer->id);
         
@@ -133,13 +133,13 @@ bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
                 /*LOG("i : %d", i);
                 LOG("id : %u",layer->data[i]);
                 */
-                TileSet* tileset = (tileId > -1) ? GetTilesetFromTileId(tileId) : NULL;
+                TileSetH* tileset = (tileId > -1) ? GetTilesetFromTileId(tileId) : NULL;
 
                 if (tileset != NULL)
                 {
                     //map[i] = (tileId - tileset->firstgid) > 0 ? 0 : 1;
-                    if (mapData.type == MapTypes::MAPTYPE_ISOMETRIC && tileId == 25) map[i] = 1;
-                    else if (mapData.type == MapTypes::MAPTYPE_ORTHOGONAL && tileId == 119) map[i] = 1;
+                    if (mapData.type == MapTypesH::MAPTYPEH_ISOMETRIC && tileId == 25) map[i] = 1;
+                    else if (mapData.type == MapTypesH::MAPTYPEH_ORTHOGONAL && tileId == 119) map[i] = 1;
                     else map[i] = 0;
                 }
                 else {
@@ -163,7 +163,7 @@ bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 
 
 // L05: DONE 8: Create a method that translates x,y coordinates from map positions to world positions
-iPoint Map::MapToWorld(int x, int y) const
+iPoint House::MapToWorld(int x, int y) const
 {
     iPoint ret;
 
@@ -174,16 +174,16 @@ iPoint Map::MapToWorld(int x, int y) const
 }
 
 // L08: DONE 3: Add method WorldToMap to obtain  map coordinates from screen coordinates
-iPoint Map::WorldToMap(int x, int y)
+iPoint House::WorldToMap(int x, int y)
 {
     iPoint ret(0, 0);
 
-    if (mapData.type == MAPTYPE_ORTHOGONAL)
+    if (mapData.type == MAPTYPEH_ORTHOGONAL)
     {
         ret.x = x / mapData.tileWidth;
         ret.y = y / mapData.tileHeight;
     }
-    else if (mapData.type == MAPTYPE_ISOMETRIC)
+    else if (mapData.type == MAPTYPEH_ISOMETRIC)
     {
         float halfWidth = mapData.tileWidth * 0.5f;
         float halfHeight = mapData.tileHeight * 0.5f;
@@ -201,7 +201,7 @@ iPoint Map::WorldToMap(int x, int y)
 
 
 // Get relative Tile rectangle
-SDL_Rect TileSet::GetTileRect(int gid) const
+SDL_Rect TileSetH::GetTileRect(int gid) const
 {
     SDL_Rect rect = { 0 };
     int relativeIndex = gid - firstgid;
@@ -217,10 +217,10 @@ SDL_Rect TileSet::GetTileRect(int gid) const
 
 
 // L06: DONE 2: Pick the right Tileset based on a tile id
-TileSet* Map::GetTilesetFromTileId(int gid) const
+TileSetH* House::GetTilesetFromTileId(int gid) const
 {
-    ListItem<TileSet*>* item = mapData.tilesets.start;
-    TileSet* set = NULL;
+    ListItem<TileSetH*>* item = mapData.tilesets.start;
+    TileSetH* set = NULL;
 
     while (item)
     {
@@ -236,12 +236,12 @@ TileSet* Map::GetTilesetFromTileId(int gid) const
 }
 
 // Called before quitting
-bool Map::CleanUp()
+bool House::CleanUp()
 {
     LOG("Unloading map");
 
     // L04: DONE 2: Make sure you clean up any memory allocated from tilesets/map
-	ListItem<TileSet*>* item;
+	ListItem<TileSetH*>* item;
 	item = mapData.tilesets.start;
 
 	while (item != NULL)
@@ -253,7 +253,7 @@ bool Map::CleanUp()
 
     // L05: DONE 2: clean up all layer data
     // Remove all layers
-    ListItem<MapLayer*>* layerItem;
+    ListItem<MapLayerH*>* layerItem;
     layerItem = mapData.maplayers.start;
 
     while (layerItem != NULL)
@@ -266,7 +266,7 @@ bool Map::CleanUp()
 }
 
 // Load new map
-bool Map::Load()
+bool House::Load()
 {
     bool ret = true;
     tileX = app->tex->Load("Assets/Maps/path_square.png");
@@ -315,7 +315,7 @@ bool Map::Load()
         
         LOG("Tilesets----");
 
-        ListItem<TileSet*>* tileset;
+        ListItem<TileSetH*>* tileset;
         tileset = mapData.tilesets.start;
 
         while (tileset != NULL) {
@@ -326,7 +326,7 @@ bool Map::Load()
         }
 
         // L05: DONE 4: LOG the info for each loaded layer
-        ListItem<MapLayer*>* mapLayer;
+        ListItem<MapLayerH*>* mapLayer;
         mapLayer = mapData.maplayers.start;
 
         while (mapLayer != NULL) {
@@ -344,7 +344,7 @@ bool Map::Load()
 }
 
 // L04: DONE 3: Implement LoadMap to load the map properties
-bool Map::LoadMap(pugi::xml_node mapFile)
+bool House::LoadMap(pugi::xml_node mapFile)
 {
     bool ret = true;
     pugi::xml_node map = mapFile.child("map");
@@ -367,14 +367,14 @@ bool Map::LoadMap(pugi::xml_node mapFile)
 }
 
 // L04: DONE 4: Implement the LoadTileSet function to load the tileset properties
-bool Map::LoadTileSet(pugi::xml_node mapFile){
+bool House::LoadTileSet(pugi::xml_node mapFile){
 
     bool ret = true; 
 
     pugi::xml_node tileset;
     for (tileset = mapFile.child("map").child("tileset"); tileset && ret; tileset = tileset.next_sibling("tileset"))
     {
-        TileSet* set = new TileSet();
+        TileSetH* set = new TileSetH();
 
         // L04: DONE 4: Load Tileset attributes
         set->name = tileset.attribute("name").as_string();
@@ -398,7 +398,7 @@ bool Map::LoadTileSet(pugi::xml_node mapFile){
 
 
 // L05: DONE 3: Implement a function that loads a single layer layer
-bool Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
+bool House::LoadLayer(pugi::xml_node& node, MapLayerH* layer)
 {
     bool ret = true;
 
@@ -432,12 +432,12 @@ bool Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 }
 
 // L05: DONE 4: Iterate all layers and load each of them
-bool Map::LoadAllLayers(pugi::xml_node mapNode) {
+bool House::LoadAllLayers(pugi::xml_node mapNode) {
     bool ret = true;
 
     for (pugi::xml_node imageNode = mapNode.child("imagelayer"); imageNode && ret; imageNode = imageNode.next_sibling("imagelayer")) {
 
-        ImageLayer* imageLayer = new ImageLayer();
+        ImageLayerH* imageLayer = new ImageLayerH();
 
         imageLayer->name = imageNode.attribute("name").as_string();
         imageLayer->texturePath = (const char*)imageNode.child("image").attribute("source").as_string();
@@ -457,7 +457,7 @@ bool Map::LoadAllLayers(pugi::xml_node mapNode) {
     for (pugi::xml_node layerNode = mapNode.child("layer"); layerNode && ret; layerNode = layerNode.next_sibling("layer"))
     {
         //Load the layer
-        MapLayer* mapLayer = new MapLayer();
+        MapLayerH* mapLayer = new MapLayerH();
         ret = LoadLayer(layerNode, mapLayer);
 
         //add the layer to the map
@@ -468,13 +468,13 @@ bool Map::LoadAllLayers(pugi::xml_node mapNode) {
 }
 
 // L06: DONE 6: Load a group of properties from a node and fill a list with it
-bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
+bool House::LoadProperties(pugi::xml_node& node, PropertiesH& properties)
 {
     bool ret = false;
 
     for (pugi::xml_node propertieNode = node.child("properties").child("property"); propertieNode; propertieNode = propertieNode.next_sibling("property"))
     {
-        Properties::Property* p = new Properties::Property();
+        PropertiesH::Property* p = new PropertiesH::Property();
         p->name = propertieNode.attribute("name").as_string();
         p->value = propertieNode.attribute("value").as_bool(); // (!!) I'm assuming that all values are bool !!
 
@@ -486,7 +486,7 @@ bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
 
 
 // L06: DONE 7: Ask for the value of a custom property
-Properties::Property* Properties::GetProperty(const char* name)
+PropertiesH::Property* PropertiesH::GetProperty(const char* name)
 {
     ListItem<Property*>* item = list.start;
     Property* p = NULL;
@@ -504,15 +504,15 @@ Properties::Property* Properties::GetProperty(const char* name)
 }
 
 
-bool Map::LoadColliders(pugi::xml_node& node) {
+bool House::LoadColliders(pugi::xml_node& node) {
 
     bool ret = true;
     
     for (pugi::xml_node colLayerNode = node.child("objectgroup"); colLayerNode; colLayerNode = colLayerNode.next_sibling("objectgroup")) {
-        ColTypes ct = (ColTypes)colLayerNode.child("properties").child("property").attribute("value").as_int();
+        ColTypesH ct = (ColTypesH)colLayerNode.child("properties").child("property").attribute("value").as_int();
         for (pugi::xml_node colNode = colLayerNode.child("object"); colNode; colNode = colNode.next_sibling("object")) {
 
-            ColData col;
+            ColDataH col;
 
             col.x = colNode.attribute("x").as_int();
             col.y = colNode.attribute("y").as_int();
@@ -529,18 +529,18 @@ bool Map::LoadColliders(pugi::xml_node& node) {
     return ret;
 }
 
-void Map::CreateColliders(ColData c) {
+void House::CreateColliders(ColDataH c) {
 
     PhysBody* collider1;
 
-    if (c.type == ColTypes::FLOOR) {
-        collider1 = app->physics->CreateRectangleSensor(c.x + c.width / 2, c.y + c.height / 2, c.width, c.height, bodyType::STATIC);
+    if (c.type == ColTypesH::FLOORH) {
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor(c.x + c.width / 2, c.y + c.height / 2, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle(c.x + c.width / 2, c.y + c.height / 2, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {
@@ -596,7 +596,7 @@ void Map::CreateColliders(ColData c) {
 
 //TEMPORARY PATHFINDING -----------------------------------------------------------------------------------------------------------------
 
-void Map::ResetPath()
+void House::ResetPath()
 {
     frontier.Clear();
     visited.Clear();
@@ -614,18 +614,18 @@ void Map::ResetPath()
 }
 
 //Draw the visited nodes
-void Map::DrawPath()
+void House::DrawPath()
 {
     iPoint point;
 
     // Draw visited
     ListItem<iPoint>* item = visited.start;
-    if (app->map->DrawPathing == true) {
+    if (app->house->DrawPathing == true) {
 
         while (item)
         {
             point = item->data;
-            TileSet* tileset = GetTilesetFromTileId(119);
+            TileSetH* tileset = GetTilesetFromTileId(119);
 
             SDL_Rect rec = tileset->GetTileRect(119);
             iPoint pos = MapToWorld(point.x, point.y);
@@ -639,7 +639,7 @@ void Map::DrawPath()
         for (uint i = 0; i < frontier.Count(); ++i)
         {
             point = *(frontier.Peek(i));
-            TileSet* tileset = GetTilesetFromTileId(118);
+            TileSetH* tileset = GetTilesetFromTileId(118);
 
             SDL_Rect rec = tileset->GetTileRect(118);
             iPoint pos = MapToWorld(point.x, point.y);
@@ -649,7 +649,7 @@ void Map::DrawPath()
 
         // L09 DONE 4: Draw destination point
         iPoint posDestination = MapToWorld(destination.x, destination.y);
-        TileSet* tileset = GetTilesetFromTileId(118);
+        TileSetH* tileset = GetTilesetFromTileId(118);
         SDL_Rect rec = tileset->GetTileRect(118);
         //app->render->DrawRectangle({ posDestination.x, posDestination.y, 16,16 }, 150, 150, 0, 200);
         app->render->DrawTexture(tileset->texture, posDestination.x, posDestination.y, &rec);
@@ -674,7 +674,7 @@ void Map::DrawPath()
 
 }
 
-int Map::MovementCost(int x, int y) const
+int House::MovementCost(int x, int y) const
 {
     int ret = -1;
 
@@ -689,16 +689,16 @@ int Map::MovementCost(int x, int y) const
     return ret;
 }
 
-bool Map::IsWalkable(int x, int y) const
+bool House::IsWalkable(int x, int y) const
 {
     bool isWalkable = false;
 
     // L09: DONE 3: return true only if x and y are within map limits
     // and the tile is walkable (tile id 0 in the navigation layer)
 
-    ListItem<MapLayer*>* mapLayerItem;
+    ListItem<MapLayerH*>* mapLayerItem;
     mapLayerItem = mapData.maplayers.start;
-    MapLayer* navigationLayer = mapLayerItem->data;
+    MapLayerH* navigationLayer = mapLayerItem->data;
 
     //Search the layer in the map that contains information for navigation
     while (mapLayerItem != NULL) {
@@ -718,7 +718,7 @@ bool Map::IsWalkable(int x, int y) const
     return isWalkable;
 }
 
-void Map::ComputePath(int x, int y)
+void House::ComputePath(int x, int y)
 {
     path.Clear();
     iPoint goal = iPoint(x, y);
@@ -738,7 +738,7 @@ void Map::ComputePath(int x, int y)
 
 }
 
-void Map::PropagateDijkstra()
+void House::PropagateDijkstra()
 {
     // L10: DONE 3: Taking BFS as a reference, implement the Dijkstra algorithm
     // use the 2 dimensional array "costSoFar" to track the accumulated costs

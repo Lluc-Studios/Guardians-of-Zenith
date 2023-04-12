@@ -8,6 +8,11 @@
 #include "EntityManager.h"
 #include "Map.h"
 #include "Tavern.h"
+#include "Blacksmith.h"
+#include "House.h"
+#include "LakeDungeon.h"
+#include "ForestDungeon.h"
+#include "CaveDungeon.h"
 #include "Physics.h"
 #include "Intro.h"
 #include "Menu.h"
@@ -39,6 +44,11 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	entityManager = new EntityManager();
 	map = new Map();
 	tavern = new Tavern();
+	blacksmith = new Blacksmith();
+	house = new House();
+	lakedungeon = new LakeDungeon();
+	forestdungeon = new ForestDungeon();
+	cavedungeon = new CaveDungeon();
 	pathfinding = new PathFinding();
 	//menu = new Menu();
 	deathmenu = new DeathMenu();
@@ -60,6 +70,11 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(entityManager);
 	AddModule(map);
 	AddModule(tavern);
+	AddModule(blacksmith);
+	AddModule(house);
+	AddModule(lakedungeon);
+	AddModule(forestdungeon);
+	AddModule(cavedungeon);
 	//AddModule(menu);
 	AddModule(font);
 	AddModule(pathfinding);

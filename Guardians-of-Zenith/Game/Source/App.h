@@ -19,6 +19,11 @@ class Scene;
 class EntityManager;
 class Map;
 class Tavern;
+class Blacksmith;
+class House;
+class LakeDungeon;
+class ForestDungeon;
+class CaveDungeon;
 class Intro;
 class Menu;
 class ModuleFonts;
@@ -98,6 +103,11 @@ public:
 	EntityManager* entityManager;
 	Map* map;
 	Tavern* tavern;
+	Blacksmith* blacksmith;
+	House* house;
+	LakeDungeon* lakedungeon;
+	ForestDungeon* forestdungeon;
+	CaveDungeon* cavedungeon;
 	Intro* intro;
 	Menu* menu;
 	ModuleFonts* font;
@@ -107,10 +117,8 @@ public:
 	PathFinding* pathfinding; 
 	Combat* combat;
 
-	//int FPS = 60;
-	//int frameDelay = 1000 / FPS;
 
-	//This int determines which instance is loaded, 0 = town, 1 = tavern
+	//This int determines which instance is loaded, 0 = Town, 1 = Tavern, 2 = Blacksmith, 3 = House, 4 = Lake Dungeon, 5 = Forest Dungeon, 6 = Cave Dungeon
 	int Instance = 0;
 
 private:

@@ -95,13 +95,18 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Blacksmith.cpp" />
+    <ClCompile Include="Source\CaveDungeon.cpp" />
     <ClCompile Include="Source\Combat.cpp" />
     <ClCompile Include="Source\DeathMenu.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Enemy2.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
+    <ClCompile Include="Source\ForestDungeon.cpp" />
+    <ClCompile Include="Source\House.cpp" />
     <ClCompile Include="Source\Intro.cpp" />
     <ClCompile Include="Source\Item.cpp" />
+    <ClCompile Include="Source\LakeDungeon.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Audio.cpp" />
@@ -122,12 +127,17 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClInclude Include="Source\Animation.h" />
+    <ClInclude Include="Source\Blacksmith.h" />
+    <ClInclude Include="Source\CaveDungeon.h" />
     <ClInclude Include="Source\Combat.h" />
     <ClInclude Include="Source\DeathMenu.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\Enemy2.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
+    <ClInclude Include="Source\ForestDungeon.h" />
+    <ClInclude Include="Source\House.h" />
+    <ClInclude Include="Source\LakeDungeon.h" />
     <ClInclude Include="Source\Tavern.h" />
     <ClInclude Include="Source\Teleport.h" />
     <ClInclude Include="Source\Intro.h" />

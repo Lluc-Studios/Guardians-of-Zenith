@@ -164,6 +164,7 @@ bool Player::Update()
 	position.x = METERS_TO_PIXELS((pbody->body->GetTransform().p.x) - width / 2);
 	position.y = METERS_TO_PIXELS((pbody->body->GetTransform().p.y) - height / 2);
 
+	//Tp
 	if (tp1) {
 		position.x = 185;
 		position.y = -175;
@@ -176,6 +177,67 @@ bool Player::Update()
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp2 = false;
 	}
+	if (tp3) {
+		position.x = 185;
+		position.y = -175;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp3 = false;
+	}
+	if (tp4) {
+		position.x = 1015;
+		position.y = 190;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp4 = false;
+	}
+	if (tp5) {
+		position.x = 185;
+		position.y = -175;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp5 = false;
+	}
+	if (tp6) {
+		position.x = 1015;
+		position.y = 190;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp6 = false;
+	}
+	if (tp7) {
+		position.x = 185;
+		position.y = -175;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp7 = false;
+	}
+	if (tp8) {
+		position.x = 1015;
+		position.y = 190;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp8 = false;
+	}
+	if (tp9) {
+		position.x = 185;
+		position.y = -175;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp9 = false;
+	}
+	if (tp10) {
+		position.x = 1015;
+		position.y = 190;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp10 = false;
+	}
+	if (tp11) {
+		position.x = 185;
+		position.y = -175;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp11 = false;
+	}
+	if (tp12) {
+		position.x = 1015;
+		position.y = 190;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp12 = false;
+	}
+
 
 	app->render->camera.x = ((-1 * (position.x * app->win->GetScale() - app->render->camera.w / 2))-60)-70;
 	app->render->camera.y = -1 * (position.y * app->win->GetScale() - app->render->camera.h / 2);
@@ -262,19 +324,95 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TAVERN:
 		LOG("Collision Tavern");
 		if (auxBool == false) {
-			//app->Instance = 1;
-			//tp1 = true;
 			app->scene->selected = 1;
 			app->scene->fade = true;
 			auxBool = true;
 		}
 
-	case ColliderType::TOWN:
+	case ColliderType::TOWNTAVERN:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			//app->Instance = 0;
-			//tp2 = true;
 			app->scene->selected = 2;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::BLACKSMITH:
+		LOG("Collision Blacksmith");
+		if (auxBool == false) {
+			app->scene->selected = 3;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::TOWNBLACKSMITH:
+		LOG("Collision Town");
+		if (auxBool == false) {
+			app->scene->selected = 4;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::HOUSE:
+		LOG("Collision House");
+		if (auxBool == false) {
+			app->scene->selected = 5;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::TOWNHOUSE:
+		LOG("Collision Town");
+		if (auxBool == false) {
+			app->scene->selected = 6;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::LAKEDUNGEON:
+		LOG("Collision Lake Dungeon");
+		if (auxBool == false) {
+			app->scene->selected = 7;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::TOWNLAKEDUNGEON:
+		LOG("Collision Town");
+		if (auxBool == false) {
+			app->scene->selected = 8;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::FORESTDUNGEON:
+		LOG("Collision Forest Dungeon");
+		if (auxBool == false) {
+			app->scene->selected = 9;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::TOWNFORESTDUNGEON:
+		LOG("Collision Town");
+		if (auxBool == false) {
+			app->scene->selected = 10;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::CAVEDUNGEON:
+		LOG("Collision Cave Dungeon");
+		if (auxBool == false) {
+			app->scene->selected = 11;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+
+	case ColliderType::TOWNCAVEDUNGEON:
+		LOG("Collision Town");
+		if (auxBool == false) {
+			app->scene->selected = 12;
 			app->scene->fade = true;
 			auxBool = true;
 		}
