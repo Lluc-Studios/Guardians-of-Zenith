@@ -14,6 +14,7 @@
 #include "EntityManager.h"
 #include "Map.h"
 #include "Tavern.h"
+#include "Combat.h"
 
 Player::Player() : Entity(EntityType::PLAYER)
 {
@@ -328,6 +329,9 @@ void Player::Move() {
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
+	}
+	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
+		app->combat->StartCombat();
 	}
 
 	//Fx

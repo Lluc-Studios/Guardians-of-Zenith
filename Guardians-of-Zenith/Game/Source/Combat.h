@@ -10,6 +10,13 @@ class Combat : public Module
 {
 public:
 
+	enum class COMBATMENU {
+		ATTACK = 1,
+		DEFEND,
+		INVENTORY,
+		ESCAPE
+	};
+
 	Combat();
 
 	// Destructor
@@ -33,14 +40,16 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	void StartCombat(int CurrentInstance);
+	void StartCombat();
 
 	void ExitCombat();
 
 public:
+	COMBATMENU option = COMBATMENU::ATTACK;
 
 private:
-	int SaveInstance;
+	int SaveInstance = 0, WF, GF;
+	bool InCombat = false;
 };
 
 #endif // __COMBAT_H__
