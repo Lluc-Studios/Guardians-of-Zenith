@@ -54,6 +54,8 @@
     <ClCompile Include="Source\CaveDungeon.cpp">
       <Filter>Maps</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Timer.cpp" />
+    <ClCompile Include="Source\PerfTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -140,6 +142,8 @@
     <ClInclude Include="Source\CaveDungeon.h">
       <Filter>Maps</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Timer.h" />
+    <ClInclude Include="Source\PerfTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

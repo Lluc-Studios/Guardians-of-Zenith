@@ -552,6 +552,11 @@ void Player::debugKeys() {
 		alive = false;
 	}
 
+	if (app->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN)
+	{
+		limitFPS = !limitFPS;
+	}
+
 }
 
 void Player::Death() {

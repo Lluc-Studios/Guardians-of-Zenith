@@ -119,12 +119,17 @@ bool App::Awake()
 {
 	bool ret = false;
 
+	timer = Timer();
+
 	// L01: DONE 3: Load config from XML
 	ret = LoadConfig();
 
 	if (ret == true)
 	{
 		title = configNode.child("app").child("title").child_value(); // L01: DONE 4: Read the title from the config file
+		
+		maxFrameDuration = configNode.child("app").child("frcap").attribute("value").as_int();
+		
 		//Scaling
 		int Aux = 0;
 		Aux = configNode.child("window").child("resolution").attribute("scale").as_int();
@@ -153,6 +158,10 @@ bool App::Awake()
 // Called before the first frame
 bool App::Start()
 {
+	timer.Start();
+	startupTime.Start();
+	lastSecFrameTime.Start(); 
+	
 	bool ret = true;
 	ListItem<Module*>* item;
 	item = modules.start;
@@ -211,6 +220,8 @@ bool App::LoadConfig()
 // ---------------------------------------------
 void App::PrepareUpdate()
 {
+	if (app->scene->player->limitFPS == true)
+		frameTime.Start();
 }
 
 // ---------------------------------------------
@@ -219,6 +230,42 @@ void App::FinishUpdate()
 	// L03: DONE 1: This is a good place to call Load / Save methods
 	if (loadGameRequested == true) LoadFromFile();
 	if (saveGameRequested == true) SaveToFile();
+
+	// Amount of frames since startup
+	frameCount++;
+	// Amount of time since game start (use a low resolution timer)
+	secondsSinceStartup = startupTime.ReadSec();
+	// Amount of ms took the last update
+	dt = frameTime.ReadMSec();
+	// Amount of frames during the last second
+	lastSecFrameCount++;
+
+	if (lastSecFrameTime.ReadMSec() > 1000) {
+		lastSecFrameTime.Start();
+		framesPerSecond = lastSecFrameCount;
+		lastSecFrameCount = 0;
+		// Average FPS for the whole game life
+		averageFps = (averageFps + framesPerSecond) / 2;
+	}
+
+	float delay = float(maxFrameDuration) - dt;
+
+	PerfTimer delayTimer = PerfTimer();
+	delayTimer.Start();
+	if (maxFrameDuration > 0 && delay > 0) {
+		SDL_Delay(delay);
+		LOG("We waited for %f milliseconds and the real delay is % f", delay, delayTimer.ReadMs());
+		dt = maxFrameDuration;
+	}
+	else {
+		//LOG("No wait");
+	}
+
+	static char title[256];
+	sprintf_s(title, 256, "Av.FPS: %.2f Last sec frames: %i Last dt: %.3f Time since startup: %.3f Frame Count: %I64u ",
+		averageFps, framesPerSecond, dt, secondsSinceStartup, frameCount);
+
+	app->win->SetTitle(title);
 }
 
 // Call modules before each loop iteration

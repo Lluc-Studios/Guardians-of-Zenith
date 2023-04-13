@@ -53,6 +53,9 @@ public:
 
 public:
 
+	int timer = 0;
+	bool limitFPS = true;
+
 	bool DeathAnimationFinished = false;
 
 	PhysBody* pbody;
