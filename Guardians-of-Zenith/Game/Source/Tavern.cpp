@@ -90,7 +90,7 @@ void Tavern::Draw()
 
                     app->render->DrawTexture(tileset->texture,
                         pos.x,
-                        pos.y-250,
+                        pos.y-400,
                         &r);
                 }
             }
@@ -534,13 +534,13 @@ void Tavern::CreateColliders(ColDataT c) {
     PhysBody* collider1;
 
     if (c.type == ColTypesT::FLOORT) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-400, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)- 400, c.width, c.height, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)- 400, c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {
