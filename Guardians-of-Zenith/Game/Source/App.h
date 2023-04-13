@@ -120,6 +120,9 @@ public:
 
 	//This int determines which instance is loaded, 0 = Town, 1 = Tavern, 2 = Blacksmith, 3 = House, 4 = Lake Dungeon, 5 = Forest Dungeon, 6 = Cave Dungeon
 	int Instance = 0;
+	//In case scale is changed, this number shall be modified to match it
+	int ScalingMultiplier = 2;
+	
 
 private:
 

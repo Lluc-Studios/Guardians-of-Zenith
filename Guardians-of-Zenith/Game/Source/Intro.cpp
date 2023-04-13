@@ -57,7 +57,7 @@ bool Intro::Update(float dt)
 	}
 
 	app->render->DrawTexture(logo,app->render->camera.w / 2 / app->win->GetScale() - 64, app->render->camera.h / 2 / app->win->GetScale() - 56);
-	app->render->DrawRectangle({ 0,0,1100,800 }, 0, 0, 0, fading);
+	app->render->DrawRectangle({ 0,0,5000,5000 }, 0, 0, 0, fading);
 	counter++;
 	//Fade out
 	if (counter >= 400) {

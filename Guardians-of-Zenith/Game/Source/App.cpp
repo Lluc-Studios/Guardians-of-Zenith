@@ -125,6 +125,12 @@ bool App::Awake()
 	if (ret == true)
 	{
 		title = configNode.child("app").child("title").child_value(); // L01: DONE 4: Read the title from the config file
+		//Scaling
+		int Aux = 0;
+		Aux = configNode.child("window").child("resolution").attribute("scale").as_int();
+		if (Aux == 4) ScalingMultiplier = 1;
+		if (Aux == 2) ScalingMultiplier = 2;
+		if (Aux == 1) ScalingMultiplier = 4;
 
 		ListItem<Module*>* item;
 		item = modules.start;
