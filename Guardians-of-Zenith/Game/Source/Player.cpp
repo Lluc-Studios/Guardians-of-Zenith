@@ -447,7 +447,7 @@ bool Player::SaveState(pugi::xml_node& data) {
 
 void Player::Move() {
 
-	float speed = 3;
+	float speed = 5;
 	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(0, 0);
