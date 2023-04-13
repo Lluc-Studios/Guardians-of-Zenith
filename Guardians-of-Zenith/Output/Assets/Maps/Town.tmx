@@ -12634,7 +12634,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="5" name="Collisions">
+ <objectgroup id="5" name="Collisions" visible="0">
   <object id="1" x="2.70454" y="2.70454" width="415.03" height="1440.97"/>
   <object id="2" x="370.667" y="2.66667" width="81.3333" height="282.667"/>
   <object id="3" x="450" y="1.33317" width="600" height="188"/>
@@ -12666,13 +12666,13 @@
   <object id="29" x="1186.33" y="417.167" width="129.333" height="61.667"/>
   <object id="31" x="640" y="763.667" width="32.3333" height="36"/>
  </objectgroup>
- <objectgroup id="7" name="Tavern_Entry">
+ <objectgroup id="7" name="Tavern_Entry" visible="0">
   <properties>
    <property name="Type" type="int" value="8"/>
   </properties>
   <object id="32" x="673.333" y="735" width="30.3333" height="45.6667"/>
  </objectgroup>
- <objectgroup id="6" name="SmithingShop_Entry">
+ <objectgroup id="6" name="SmithingShop_Entry" visible="0">
   <properties>
    <property name="Type" type="int" value="10"/>
   </properties>
