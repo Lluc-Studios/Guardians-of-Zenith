@@ -7,6 +7,9 @@
   <image source="Main Tilesets/Tileset_Town.png" width="512" height="384"/>
  </tileset>
  <layer id="2" name="Grass" width="70" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile gid="927"/>
    <tile gid="928"/>
@@ -3161,6 +3164,9 @@
   </data>
  </layer>
  <layer id="3" name="Buildings" width="70" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -6315,6 +6321,9 @@
   </data>
  </layer>
  <layer id="1" name="Floor" width="70" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -9469,6 +9478,9 @@
   </data>
  </layer>
  <layer id="4" name="Trees" width="70" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>

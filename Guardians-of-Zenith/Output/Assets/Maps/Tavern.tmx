@@ -4,6 +4,9 @@
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="480"/>
  </tileset>
  <layer id="1" name="Fondo" width="16" height="12">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile gid="20"/>
    <tile gid="20"/>
@@ -200,6 +203,9 @@
   </data>
  </layer>
  <layer id="2" name="Floor" width="16" height="12">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -396,6 +402,9 @@
   </data>
  </layer>
  <layer id="3" name="Walls" width="16" height="12">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile gid="1"/>
    <tile gid="2"/>
@@ -592,6 +601,9 @@
   </data>
  </layer>
  <layer id="4" name="Objects" width="16" height="12">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -788,6 +800,9 @@
   </data>
  </layer>
  <layer id="5" name="Windows" width="16" height="12">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
