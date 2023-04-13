@@ -30,7 +30,7 @@ bool Map::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Poblat proves.tmx";
+    mapFileName = "Assets/Maps/Town.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path
