@@ -103,9 +103,9 @@ bool Scene::Start()
 	app->win->SetTitle(title.GetString());
 
 	//Initialize trophy texture
-	coinTex = app->tex->Load("Assets/Textures/goldCoin.png");
-	trophyTex = app->tex->Load("Assets/Textures/trophy.png");
-	BGtexture = app->tex->Load("Assets/Maps/parallax1.png");
+	//coinTex = app->tex->Load("Assets/Textures/goldCoin.png");
+	//trophyTex = app->tex->Load("Assets/Textures/trophy.png");
+	//BGtexture = app->tex->Load("Assets/Maps/parallax1.png");
 
 	// L12 Create walkability map
 	if (retLoad) {

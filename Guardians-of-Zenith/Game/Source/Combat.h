@@ -47,9 +47,13 @@ public:
 public:
 	COMBATMENU option = COMBATMENU::ATTACK;
 
+	SDL_Texture* BG;
+
 private:
 	int SaveInstance = 0, WF, GF;
 	bool InCombat = false;
+
+	int CurrentCharacters = 1;
 };
 
 #endif // __COMBAT_H__

@@ -94,8 +94,8 @@ private:
 	int width;
 	int height;
 
-	int attackCD = 0;
-	int attackFrames = 10; 
+	//int attackCD = 0;
+	//int attackFrames = 10; 
 
 	State playerState; 
 

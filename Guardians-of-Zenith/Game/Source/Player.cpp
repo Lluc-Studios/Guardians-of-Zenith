@@ -133,20 +133,20 @@ bool Player::Update()
 	if (playerState != State::ATTACKING)
 		Move();
 
-	//TotalTime = SDL_GetTicks();
+	////TotalTime = SDL_GetTicks();
 
-	if ((app->input->GetMouseButtonDown(1) && attackCD <= 0) || (attackFrames > 0 && playerState == State::ATTACKING)) {
-		playerState = State::ATTACKING;
-		app->audio->PlayFxWithVolume(Swing, 0, 25);
-		Attack(attackFrames);
-		
-		attackFrames--;
-	}
-	else {
-		playerState = State::IDLE;
-		attackFrames = 10;
-	}
-	attackCD--;
+	//if ((app->input->GetMouseButtonDown(1) && attackCD <= 0) || (attackFrames > 0 && playerState == State::ATTACKING)) {
+	//	playerState = State::ATTACKING;
+	//	app->audio->PlayFxWithVolume(Swing, 0, 25);
+	//	Attack(attackFrames);
+	//	
+	//	attackFrames--;
+	//}
+	//else {
+	//	playerState = State::IDLE;
+	//	attackFrames = 10;
+	//}
+	//attackCD--;
 	
 
 	//Death
@@ -239,7 +239,7 @@ bool Player::Update()
 	}
 
 
-	app->render->camera.x = ((-1 * (position.x * app->win->GetScale() - app->render->camera.w / 2))-60)-70;
+	app->render->camera.x = ((-1 * (position.x * app->win->GetScale() - app->render->camera.w / 2))-60);
 	app->render->camera.y = -1 * (position.y * app->win->GetScale() - app->render->camera.h / 2);
 
 	//Player draw
@@ -502,33 +502,33 @@ void Player::Move() {
 	pbody->body->SetLinearVelocity(vel);
 }
 
-void Player::Attack(int frames) {
-
-	
-
-	if (frames > 1) {
-		
-		if (facing == DIRECTION::RIGHT) {
-			attackHitbox->body->SetTransform({ PIXEL_TO_METERS((position.x+50)),  PIXEL_TO_METERS((position.y+8)) }, 0);
-			//app->render->DrawRectangle({ position.x+21, position.y, 50, 20 }, 255, 0, 0, 200);
-			//currentAnim = &playerAttackR;
-		}
-		if (facing == DIRECTION::LEFT) {
-			attackHitbox->body->SetTransform({ PIXEL_TO_METERS((position.x +15)), PIXEL_TO_METERS((position.y+8)) }, 0);
-			//app->render->DrawRectangle({ position.x-39, position.y, 50, 20 }, 255, 0, 0, 200);
-			//currentAnim = &playerAttackL;
-		}
-	}
-	else {
-
-		attackHitbox->body->SetTransform({0, 0}, 0);
-		attackCD = 40;
-	}
-	
-	
-
-	
-}
+//void Player::Attack(int frames) {
+//
+//	
+//
+//	if (frames > 1) {
+//		
+//		if (facing == DIRECTION::RIGHT) {
+//			attackHitbox->body->SetTransform({ PIXEL_TO_METERS((position.x+50)),  PIXEL_TO_METERS((position.y+8)) }, 0);
+//			//app->render->DrawRectangle({ position.x+21, position.y, 50, 20 }, 255, 0, 0, 200);
+//			//currentAnim = &playerAttackR;
+//		}
+//		if (facing == DIRECTION::LEFT) {
+//			attackHitbox->body->SetTransform({ PIXEL_TO_METERS((position.x +15)), PIXEL_TO_METERS((position.y+8)) }, 0);
+//			//app->render->DrawRectangle({ position.x-39, position.y, 50, 20 }, 255, 0, 0, 200);
+//			//currentAnim = &playerAttackL;
+//		}
+//	}
+//	else {
+//
+//		attackHitbox->body->SetTransform({0, 0}, 0);
+//		attackCD = 40;
+//	}
+//	
+//	
+//
+//	
+//}
 
 
 void Player::debugKeys() {

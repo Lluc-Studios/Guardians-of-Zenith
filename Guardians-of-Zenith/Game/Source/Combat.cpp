@@ -39,6 +39,7 @@ bool Combat::Start()
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
 	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
+	BG = app->tex->Load("Assets/Textures/Temporary.png");
 
 	return true;
 }
@@ -54,29 +55,31 @@ bool Combat::Update(float dt)
 {
 	//Render text
 	if (InCombat == true) {
+		app->render->DrawTexture(BG, -app->render->camera.x-178, app->render->camera.y);
+		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
 		if (option == COMBATMENU::ATTACK) {
-			app->font->BlitText(10, 100, WF, "attack");
-			app->font->BlitText(10, 120, GF, "defend");
-			app->font->BlitText(10, 140, GF, "inventory");
-			app->font->BlitText(10, 160, GF, "escape");
+			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
+			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
+			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
+			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
 		}
 		if (option == COMBATMENU::DEFEND) {
-			app->font->BlitText(10, 100, GF, "attack");
-			app->font->BlitText(10, 120, WF, "defend");
-			app->font->BlitText(10, 140, GF, "inventory");
-			app->font->BlitText(10, 160, GF, "escape");
+			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
+			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "defend");
+			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
+			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
 		}
 		if (option == COMBATMENU::INVENTORY) {
-			app->font->BlitText(10, 100, GF, "attack");
-			app->font->BlitText(10, 120, GF, "defend");
-			app->font->BlitText(10, 140, WF, "inventory");
-			app->font->BlitText(10, 160, GF, "escape");
+			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
+			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
+			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "inventory");
+			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
 		}
 		if (option == COMBATMENU::ESCAPE) {
-			app->font->BlitText(10, 100, GF, "attack");
-			app->font->BlitText(10, 120, GF, "defend");
-			app->font->BlitText(10, 140, GF, "inventory");
-			app->font->BlitText(10, 160, WF, "escape");
+			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
+			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
+			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
+			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "escape");
 		}
 	}
 
