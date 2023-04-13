@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="70" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="33">
  <tileset firstgid="1" name="Tileset_House" tilewidth="32" tileheight="32" tilecount="920" columns="40">
-  <image source="../../../../../../../Desktop/Tileset_House.png" width="1280" height="736"/>
+  <image source="Main Tilesets/Tileset_House.png" width="1280" height="736"/>
  </tileset>
  <tileset firstgid="921" name="Tileset_Town" tilewidth="32" tileheight="32" tilecount="192" columns="16">
-  <image source="../../../../../../../Desktop/Tileset_Town.png" width="512" height="384"/>
+  <image source="Main Tilesets/Tileset_Town.png" width="512" height="384"/>
  </tileset>
  <layer id="2" name="Grass" width="70" height="45">
   <data encoding="csv">
@@ -235,9 +235,15 @@
   <object id="31" x="640" y="763.667" width="32.3333" height="36"/>
  </objectgroup>
  <objectgroup id="7" name="Tavern_Entry">
+  <properties>
+   <property name="Type" type="int" value="8"/>
+  </properties>
   <object id="32" x="673.333" y="735" width="30.3333" height="45.6667"/>
  </objectgroup>
  <objectgroup id="6" name="SmithingShop_Entry">
+  <properties>
+   <property name="Type" type="int" value="10"/>
+  </properties>
   <object id="30" x="1728.67" y="736.667" width="30.6667" height="44.3333"/>
  </objectgroup>
 </map>
