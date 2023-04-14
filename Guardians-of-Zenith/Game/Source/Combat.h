@@ -49,9 +49,9 @@ public:
 
 	void TurnOrder();
 
-	void LoadLaurea(Laurea laurea);
-	void LoadLapis(Lapis lapis);
-	void LoadLucca(Lucca lucca);
+	void LoadLaurea(Laurea::stats laurea);
+	void LoadLapis(Lapis::stats lapis);
+	void LoadLucca(Lucca::stats lucca);
 	void LoadEnemy(CombatEnemy::stats enemy);
 
 public:

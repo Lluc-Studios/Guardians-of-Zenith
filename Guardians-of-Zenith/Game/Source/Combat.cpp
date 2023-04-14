@@ -343,7 +343,7 @@ void Combat::TurnOrder()
 	}
 }
 
-void Combat::LoadLaurea(Laurea laurea)
+void Combat::LoadLaurea(Laurea::stats laurea)
 {
 	C1speed = laurea.spe;
 	CurrentCharacters++;
@@ -358,7 +358,7 @@ void Combat::LoadLaurea(Laurea laurea)
 
 }
 
-void Combat::LoadLapis(Lapis lapis)
+void Combat::LoadLapis(Lapis::stats lapis)
 {
 	C2speed = lapis.spe;
 	CurrentCharacters++;
@@ -372,7 +372,7 @@ void Combat::LoadLapis(Lapis lapis)
 	LIMIT2 = lapis.limit;
 }
 
-void Combat::LoadLucca(Lucca lucca)
+void Combat::LoadLucca(Lucca::stats lucca)
 {
 	C3speed = lucca.spe;
 	CurrentCharacters++;
