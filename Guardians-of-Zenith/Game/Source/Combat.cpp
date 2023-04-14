@@ -96,7 +96,7 @@ bool Combat::Update(float dt)
 		}
 
 		//Draw allies and their stats
-		if (CurrentCharacters == 1) {
+		if (CurrentCharacters >= 1) {
 			//Draw player
 			app->render->DrawTexture(Character1, app->scene->player->position.x - 100 , app->scene->player->position.y-60);
 			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character1");
@@ -120,8 +120,58 @@ bool Combat::Update(float dt)
 			//Calculate mp bar length
 			int MpBarLengthC1 = (C1CMP * 98) / C1MMP;
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 156,MpBarLengthC1,8 }, 0, 0, 200);
-		}
+			if (CurrentCharacters >= 2) {
+				//Draw player
+				app->render->DrawTexture(Character1, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character2");
+				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
+				//Int to string convert
+				char Aux[10];
+				sprintf_s(Aux, "%d", C2MHP);
+				app->font->BlitText(215 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+				sprintf_s(Aux, "%d", C2CHP);
+				app->font->BlitText(200 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
+				//Calculate hp bar length 
+				int HpBarLengthC2 = (C2CHP * 98) / C2MHP;
+				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 116,HpBarLengthC2,8 }, 0, 200, 0);
+				app->font->BlitText(180 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
+				sprintf_s(Aux, "%d", C2MMP);
+				app->font->BlitText(215 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+				sprintf_s(Aux, "%d", C2CMP);
+				app->font->BlitText(200 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
+				//Calculate mp bar length
+				int MpBarLengthC2 = (C2CMP * 98) / C2MMP;
+				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 156,MpBarLengthC2,8 }, 0, 0, 200);
+				if (CurrentCharacters == 3) {
+					//Draw player
+					app->render->DrawTexture(Character1, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character3");
+					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
+					//Int to string convert
+					char Aux[10];
+					sprintf_s(Aux, "%d", C3MHP);
+					app->font->BlitText(295 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+					sprintf_s(Aux, "%d", C3CHP);
+					app->font->BlitText(280 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
+					//Calculate hp bar length 
+					int HpBarLengthC3 = (C3CHP * 98) / C3MHP;
+					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 116,HpBarLengthC3,8 }, 0, 200, 0);
+					app->font->BlitText(260 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
+					sprintf_s(Aux, "%d", C3MMP);
+					app->font->BlitText(295 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+					sprintf_s(Aux, "%d", C3CMP);
+					app->font->BlitText(280 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
+					//Calculate mp bar length
+					int MpBarLengthC3 = (C3CMP * 98) / C3MMP;
+					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 156,MpBarLengthC3,8 }, 0, 0, 200);
+				}
+			}
 
+		}
 	}
 
 	//Inputs

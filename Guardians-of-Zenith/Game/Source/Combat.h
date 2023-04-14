@@ -61,13 +61,23 @@ private:
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
 
-	int C1MHP = 1000, C1CHP = 100;
+	//Character1
+	int C1MHP = 1000, C1CHP = 900;
 	int C1MMP = 250, C1CMP = 200;
+
+	//Character2
+	int C2MHP = 1000, C2CHP = 320;
+	int C2MMP = 250, C2CMP = 100;
+
+	//Character3
+	int C3MHP = 1000, C3CHP = 500;
+	int C3MMP = 250, C3CMP = 250;
+
 
 	int SaveInstance = 0, WF, GF;
 	bool InCombat = false;
 
-	int CurrentCharacters = 1;
+	int CurrentCharacters = 3, CurrentEnemies = 3;
 
 	// 1-3 = ally, 4-6 = enemy
 	int Turn[6] = { 1, 4, 5, 2, 6, 3 };
