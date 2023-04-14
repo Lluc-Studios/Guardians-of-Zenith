@@ -40,6 +40,7 @@ bool Combat::Start()
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
 	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
+	Character1 = app->tex->Load("Assets/Entities/Characters/Character1.png");
 
 	return true;
 }
@@ -55,7 +56,7 @@ bool Combat::Update(float dt)
 {
 	//Render text
 	if (InCombat == true) {
-		app->render->DrawTexture(BG, app->scene->player->position.x-290, app->scene->player->position.y-180);
+		app->render->DrawTexture(BG, app->scene->player->position.x-290, app->scene->player->position.y-250);
 		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
 		if (option == COMBATMENU::ATTACK) {
 			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
@@ -93,6 +94,32 @@ bool Combat::Update(float dt)
 				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
 			}
 		}
+
+		//Draw allies and their stats
+		if (CurrentCharacters == 1) {
+			app->render->DrawTexture(Character1, app->scene->player->position.x - 100 , app->scene->player->position.y-60);
+			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character1");
+			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
+			char Aux[10];
+			sprintf_s(Aux, "%d", C1MHP);
+			app->font->BlitText(135 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+			sprintf_s(Aux, "%d", C1CHP);
+			app->font->BlitText(120 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+			app->render->DrawRectangle({ app->scene->player->position.x-90,app->scene->player->position.y+115,100,10 }, 0, 0, 0);
+			//Calculate hp bar length
+			int HpBarLengthC1 = (C1CHP * 98) / C1MHP;
+			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 116,HpBarLengthC1,8 }, 0, 200, 0);
+			app->font->BlitText(100 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
+			sprintf_s(Aux, "%d", C1MMP);
+			app->font->BlitText(135 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+			sprintf_s(Aux, "%d", C1CMP);
+			app->font->BlitText(120 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+			app->render->DrawRectangle({ app->scene->player->position.x-90,app->scene->player->position.y+155,100,10 }, 0, 0, 0);
+			//Calculate mp bar length
+			int MpBarLengthC1 = (C1CMP * 98) / C1MMP;
+			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 156,MpBarLengthC1,8 }, 0, 0, 200);
+		}
+
 	}
 
 	//Inputs
