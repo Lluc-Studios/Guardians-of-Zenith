@@ -55,7 +55,7 @@ bool Combat::Update(float dt)
 {
 	//Render text
 	if (InCombat == true) {
-		app->render->DrawTexture(BG, -app->render->camera.x-178, app->render->camera.y);
+		app->render->DrawTexture(BG, app->scene->player->position.x-290, app->scene->player->position.y-180);
 		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
 		if (option == COMBATMENU::ATTACK) {
 			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
@@ -80,6 +80,18 @@ bool Combat::Update(float dt)
 			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
 			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
 			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "escape");
+		}
+
+		//Draw turns
+		for (int i = 0; i < 6; i++) {
+			if (Turn[i] <= 3) {
+				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 0, 200, 0);
+			}
+			else if (Turn[i] >= 4) {
+				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
+			}
 		}
 	}
 
@@ -121,6 +133,9 @@ bool Combat::Update(float dt)
 		}
 
 	}
+	if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
+		FinishTurn();
+	}
 
 	return true;
 }
@@ -156,5 +171,19 @@ void Combat::ExitCombat()
 	app->Instance = SaveInstance;
 	app->scene->player->active = true;
 	InCombat = false;
+}
+
+void Combat::FinishTurn()
+{
+	int Aux = Turn[0];
+	for (int i = 0; i < 6; i++) {
+		if (i <= 4) {
+			Turn[i] = Turn[i + 1];
+		}
+		else {
+			Turn[i] = Aux;
+		}
+	};
+
 }
 

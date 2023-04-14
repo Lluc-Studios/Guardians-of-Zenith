@@ -44,6 +44,8 @@ public:
 
 	void ExitCombat();
 
+	void FinishTurn();
+
 public:
 	COMBATMENU option = COMBATMENU::ATTACK;
 
@@ -54,6 +56,9 @@ private:
 	bool InCombat = false;
 
 	int CurrentCharacters = 1;
+
+	// 1-3 = ally, 4-6 = enemy
+	int Turn[6] = { 1, 4, 5, 2, 6, 3 };
 };
 
 #endif // __COMBAT_H__
