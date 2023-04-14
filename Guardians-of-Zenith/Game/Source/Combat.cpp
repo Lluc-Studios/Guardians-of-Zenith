@@ -285,7 +285,7 @@ void Combat::StartCombat()
 	LoadEnemy(app->entityManager->slimeFrog1);
 	LoadEnemy(app->entityManager->slimeFrog2);
 	LoadEnemy(app->entityManager->slimeFrog3);
-	TurnOrder();
+	//TurnOrder();
 }
 
 void Combat::ExitCombat()
