@@ -97,9 +97,11 @@ bool Combat::Update(float dt)
 
 		//Draw allies and their stats
 		if (CurrentCharacters == 1) {
+			//Draw player
 			app->render->DrawTexture(Character1, app->scene->player->position.x - 100 , app->scene->player->position.y-60);
 			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character1");
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
+			//Int to string convert
 			char Aux[10];
 			sprintf_s(Aux, "%d", C1MHP);
 			app->font->BlitText(135 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);

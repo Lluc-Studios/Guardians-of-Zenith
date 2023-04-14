@@ -61,8 +61,8 @@ private:
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
 
-	int C1MHP = 1000, C1CHP = 900;
-	int C1MMP = 250, C1CMP = 120;
+	int C1MHP = 1000, C1CHP = 100;
+	int C1MMP = 250, C1CMP = 200;
 
 	int SaveInstance = 0, WF, GF;
 	bool InCombat = false;
