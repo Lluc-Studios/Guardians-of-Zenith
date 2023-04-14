@@ -11,6 +11,7 @@
 #include "Scene.h"
 #include "Physics.h"
 #include "ModuleFonts.h"
+#include "Player.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -278,6 +279,13 @@ void Combat::StartCombat()
 	app->Instance = -1;
 	app->scene->player->active = false;
 	InCombat = true;
+	//LoadLaurea(app->scene->player->laurea);
+	//LoadLapis(app->scene->player->lapis);
+	//LoadLucca(app->scene->player->lucca);
+	//LoadEnemy(app->entityManager->slimeFrog1);
+	//LoadEnemy(app->entityManager->slimeFrog2);
+	//LoadEnemy(app->entityManager->slimeFrog3);
+	//TurnOrder();
 }
 
 void Combat::ExitCombat()
@@ -286,6 +294,8 @@ void Combat::ExitCombat()
 	app->Instance = SaveInstance;
 	app->scene->player->active = true;
 	InCombat = false;
+	CurrentCharacters = 0;
+	CurrentEnemies = 0;
 }
 
 void Combat::FinishTurn()
@@ -301,4 +311,117 @@ void Combat::FinishTurn()
 	};
 
 }
+
+void Combat::TurnOrder()
+{
+	bool ordered = false;
+	Turn[0] = C1speed;
+	Turn[1] = C2speed;
+	Turn[2] = C3speed;
+	Turn[3] = E1speed;
+	Turn[4] = E2speed;
+	Turn[5] = E3speed;
+	
+	while (ordered == false) {
+		int a = 0;
+		for (int i = 0; i < 4; i++) {
+
+			if (Turn[i] < Turn[i + 1]) {
+				a++;
+			}
+
+			if (a == 0) ordered = true;
+		}
+		for (int i = 0; i < 4; i++) {
+			int b;
+			if (Turn[i] < Turn[i + 1]) {
+				b = Turn[i];
+				Turn[i] = Turn[i + 1];
+				Turn[i + 1] = b;
+			}
+		}
+	}
+}
+
+void Combat::LoadLaurea(Laurea laurea)
+{
+	C1speed = laurea.spe;
+	CurrentCharacters++;
+	
+	C1MHP = laurea.hp;
+	C1CHP = laurea.chp;
+	C1MMP = laurea.mp;
+	C1CMP = laurea.cmp;
+	C1ATK = laurea.atk;
+	C1DEF = laurea.def;
+	LIMIT1 = laurea.limit;
+
+}
+
+void Combat::LoadLapis(Lapis lapis)
+{
+	C2speed = lapis.spe;
+	CurrentCharacters++;
+
+	C2MHP = lapis.hp;
+	C2CHP = lapis.chp;
+	C2MMP = lapis.mp;
+	C2CMP = lapis.cmp;
+	C2ATK = lapis.atk;
+	C2DEF = lapis.def;
+	LIMIT2 = lapis.limit;
+}
+
+void Combat::LoadLucca(Lucca lucca)
+{
+	C3speed = lucca.spe;
+	CurrentCharacters++;
+
+	C3MHP = lucca.hp;
+	C3CHP = lucca.chp;
+	C3MMP = lucca.mp;
+	C3CMP = lucca.cmp;
+	C3ATK = lucca.atk;
+	C3DEF = lucca.def;
+	LIMIT3 = lucca.limit;
+}
+
+void Combat::LoadEnemy(CombatEnemy::stats enemy)
+{
+	//Loading speed
+	if (CurrentEnemies == 2) {
+		E3speed = enemy.spe;
+		CurrentEnemies++;
+
+		E3MHP = enemy.hp;
+		E3CHP = enemy.chp;
+		E3ATK = enemy.atk;
+		E3DEF = enemy.def;
+		E3Weak = enemy.weakness;
+		E3Res = enemy.resistance;
+	}
+	if (CurrentEnemies == 1) {
+		E2speed = enemy.spe;
+		CurrentEnemies++;
+
+		E2MHP = enemy.hp;
+		E2CHP = enemy.chp;
+		E2ATK = enemy.atk;
+		E2DEF = enemy.def;
+		E2Weak = enemy.weakness;
+		E2Res = enemy.resistance;
+	}
+	if (CurrentEnemies == 0) {
+		E1speed = enemy.spe;
+		CurrentEnemies++;
+
+		E1MHP = enemy.hp;
+		E1CHP = enemy.chp;
+		E1ATK = enemy.atk;
+		E1DEF = enemy.def;
+		E1Weak = enemy.weakness;
+		E1Res = enemy.resistance;
+	}
+}
+
 

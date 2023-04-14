@@ -34,9 +34,9 @@ bool Player::Awake() {
 	height = parameters.attribute("height").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
 
-	Laurea::stats laurea{ 35,10,20,25,10,2,1,4,3,2,3 };
-	Lapis::stats lapis{ 25,20,25,18,12,4,1,3,4,3,2 };
-	Lucca::stats lucca{ 20,23,30,12,15,3,1,3,3,3,2 };
+	Laurea* laurea = new Laurea{ 35,35,10,10,20,25,10,2,1,4,3,2,3 };
+	Lapis* lapis = new Lapis{ 25,25,20,20,25,18,12,4,1,3,4,3,2 };
+	Lucca* lucca = new Lucca{ 20,20,23,23,30,12,15,3,1,3,3,3,2 };
 
 	//LOG("stats Laurea: %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d", laurea.hp, laurea.mp, laurea.atk, laurea.def, laurea.spe, laurea.limit, laurea.lvl, laurea.hpGrowth, laurea.mpGrowth, laurea.atkGrowth, laurea.defGrowth);
 
@@ -55,7 +55,7 @@ bool Player::Start() {
 	pbody->ctype = ColliderType::PLAYER;
 
 	alive = true; 
-
+	
 
 	attackHitbox = app->physics->CreateRectangleSensor(0, 0, 25, 15, bodyType::STATIC);
 	attackHitbox->ctype = ColliderType::PLAYER_ATTACK;

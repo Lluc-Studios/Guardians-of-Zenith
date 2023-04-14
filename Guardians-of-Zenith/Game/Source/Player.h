@@ -86,6 +86,10 @@ public:
 	int auxCounter = 0;
 	bool auxBool = false;
 
+	//Laurea::stats laurea{ 35,35,10,10,20,25,10,2,1,4,3,2,3 };
+	//Lapis::stats lapis{ 25,25,20,20,25,18,12,4,1,3,4,3,2 };
+	//Lucca::stats lucca{ 20,20,23,23,30,12,15,3,1,3,3,3,2 };
+
 private:
 
 	SDL_Texture* texture;
@@ -123,41 +127,61 @@ private:
 	SDL_Texture* LFE;
 
 };
-
-class Laurea : public Player
+struct Laurea
 {
-public:
-
-	// stats
-	struct stats
-	{
-		int hp, mp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-	};
+	int hp, chp, mp, cmp, atk, def, spe, limit;
+	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+};
+struct Lapis
+{
+	int hp, chp, mp, cmp, atk, def, spe, limit;
+	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+};
+struct Lucca
+{
+	int hp, chp, mp, cmp, atk, def, spe, limit;
+	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
 };
 
-class Lapis : public Player
-{
-public:
+//Laurea laurea{ 35,35,10,10,20,25,10,2,1,4,3,2,3 };
+//Lapis lapis{ 25,25,20,20,25,18,12,4,1,3,4,3,2 };
+//Lucca lucca{ 20,20,23,23,30,12,15,3,1,3,3,3,2 };
 
-	// stats
-	struct stats
-	{
-		int hp, mp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-	};
-};
+//class Laurea : public Player
+//{
+//public:
+//
+//	// stats
+//	struct stats
+//	{
+//		int hp, chp, mp,cmp, atk, def, spe, limit;
+//		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//	};
+//};
 
-class Lucca : public Player
-{
-public:
+//class Lapis : public Player
+//{
+//public:
+//
+//	// stats
+//	struct stats
+//	{
+//		int hp, chp, mp, cmp, atk, def, spe, limit;
+//		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//	};
+//};
 
-	// stats
-	struct stats
-	{
-		int hp, mp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-	};
-};
+//class Lucca : public Player
+//{
+//public:
+//
+//	// stats
+//	struct stats
+//	{
+//		int hp, chp, mp, cmp, atk, def, spe, limit;
+//		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//	};
+//};
+
 
 #endif // __PLAYER_H__
