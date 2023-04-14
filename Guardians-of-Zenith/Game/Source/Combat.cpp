@@ -105,7 +105,7 @@ bool Combat::Update(float dt)
 		if (CurrentCharacters >= 1) {
 			//Draw player
 			app->render->DrawTexture(Character1, app->scene->player->position.x - 100 , app->scene->player->position.y-60);
-			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character1");
+			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME);
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 			//Int to string convert
 			char Aux[10];
@@ -129,7 +129,7 @@ bool Combat::Update(float dt)
 			if (CurrentCharacters >= 2) {
 				//Draw player
 				app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
-				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character2");
+				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME);
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 				//Int to string convert
 				char Aux[10];
@@ -153,7 +153,7 @@ bool Combat::Update(float dt)
 				if (CurrentCharacters == 3) {
 					//Draw player
 					app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
-					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character3");
+					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME);
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 					//Int to string convert
 					char Aux[10];
@@ -279,13 +279,13 @@ void Combat::StartCombat()
 	app->Instance = -1;
 	app->scene->player->active = false;
 	InCombat = true;
-	//LoadLaurea(app->scene->player->laurea);
-	//LoadLapis(app->scene->player->lapis);
-	//LoadLucca(app->scene->player->lucca);
-	//LoadEnemy(app->entityManager->slimeFrog1);
-	//LoadEnemy(app->entityManager->slimeFrog2);
-	//LoadEnemy(app->entityManager->slimeFrog3);
-	//TurnOrder();
+	LoadLaurea(app->scene->player->laurea);
+	LoadLapis(app->scene->player->lapis);
+	LoadLucca(app->scene->player->lucca);
+	LoadEnemy(app->entityManager->slimeFrog1);
+	LoadEnemy(app->entityManager->slimeFrog2);
+	LoadEnemy(app->entityManager->slimeFrog3);
+	TurnOrder();
 }
 
 void Combat::ExitCombat()
@@ -343,7 +343,7 @@ void Combat::TurnOrder()
 	}
 }
 
-void Combat::LoadLaurea(Laurea::stats laurea)
+void Combat::LoadLaurea(Player::Laurea laurea)
 {
 	C1speed = laurea.spe;
 	CurrentCharacters++;
@@ -355,10 +355,10 @@ void Combat::LoadLaurea(Laurea::stats laurea)
 	C1ATK = laurea.atk;
 	C1DEF = laurea.def;
 	LIMIT1 = laurea.limit;
-
+	C1NAME = laurea.name;
 }
 
-void Combat::LoadLapis(Lapis::stats lapis)
+void Combat::LoadLapis(Player::Lapis lapis)
 {
 	C2speed = lapis.spe;
 	CurrentCharacters++;
@@ -370,9 +370,10 @@ void Combat::LoadLapis(Lapis::stats lapis)
 	C2ATK = lapis.atk;
 	C2DEF = lapis.def;
 	LIMIT2 = lapis.limit;
+	C2NAME = lapis.name;
 }
 
-void Combat::LoadLucca(Lucca::stats lucca)
+void Combat::LoadLucca(Player::Lucca lucca)
 {
 	C3speed = lucca.spe;
 	CurrentCharacters++;
@@ -384,9 +385,10 @@ void Combat::LoadLucca(Lucca::stats lucca)
 	C3ATK = lucca.atk;
 	C3DEF = lucca.def;
 	LIMIT3 = lucca.limit;
+	C3NAME = lucca.name;
 }
 
-void Combat::LoadEnemy(CombatEnemy::stats enemy)
+void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 {
 	//Loading speed
 	if (CurrentEnemies == 2) {

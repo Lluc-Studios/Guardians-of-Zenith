@@ -36,12 +36,21 @@ public:
 
 	bool SaveState(pugi::xml_node& data);
 
-	////Slime frog
-	//CombatEnemy::stats slimeFrog1{ 600,600,100,50,9,35, "Lapis","Lucca" };
-	//CombatEnemy::stats slimeFrog2{ 600,600,100,50,9,35, "Lapis","Lucca" };
-	//CombatEnemy::stats slimeFrog3{ 600,600,100,50,9,35, "Lapis","Lucca" };
 
 public:
+
+	// stats
+	struct CombatEnemy
+	{
+		int hp, chp, atk, def, spe, exp;
+		const char* weakness;
+		const char* resistance;
+	};
+	//Slime frog
+	CombatEnemy slimeFrog1{ 600,600,100,50,9,35, "Lapis","Lucca"};
+	CombatEnemy slimeFrog2{ 600,600,100,50,9,35, "Lapis","Lucca" };
+	CombatEnemy slimeFrog3{ 600,600,100,50,9,35, "Lapis","Lucca" };
+
 
 	List<Entity*> entities;
 

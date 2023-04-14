@@ -4,7 +4,7 @@
 #include "Module.h"
 #include "Player.h"
 #include "Item.h"
-#include "Enemy.h"
+#include"EntityManager.h"
 
 
 class Combat : public Module
@@ -49,10 +49,10 @@ public:
 
 	void TurnOrder();
 
-	void LoadLaurea(Laurea::stats laurea);
-	void LoadLapis(Lapis::stats lapis);
-	void LoadLucca(Lucca::stats lucca);
-	void LoadEnemy(CombatEnemy::stats enemy);
+	void LoadLaurea(Player::Laurea laurea);
+	void LoadLapis(Player::Lapis lapis);
+	void LoadLucca(Player::Lucca lucca);
+	void LoadEnemy(EntityManager::CombatEnemy enemy);
 
 public:
 
@@ -74,18 +74,21 @@ private:
 	int C1MMP = 250, C1CMP = 200;
 	int C1ATK, C1DEF,LIMIT1;
 	int C1speed;
+	const char* C1NAME;
 
 	//Character2
 	int C2MHP = 1000, C2CHP = 320;
 	int C2MMP = 250, C2CMP = 100;
 	int C2ATK, C2DEF, LIMIT2;
 	int C2speed;
+	const char* C2NAME;
 
 	//Character3
 	int C3MHP = 1000, C3CHP = 500;
 	int C3MMP = 250, C3CMP = 250;
 	int C3ATK, C3DEF, LIMIT3;
 	int C3speed;
+	const char* C3NAME;
 
 	//Enemy1
 	int E1MHP = 1000, E1CHP = 800;

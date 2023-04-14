@@ -89,18 +89,4 @@ private:
 
 };
 
-class CombatEnemy
-{
-public:
-
-	// stats
-	struct stats
-	{
-		int hp, chp, atk, def, spe, exp;
-		const char* weakness;
-		const char* resistance;
-	};
-};
-
-
 #endif // __ENEMY_H__

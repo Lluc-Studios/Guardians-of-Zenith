@@ -52,6 +52,30 @@ public:
 	void Death(); 
 
 public:
+	// stats
+	struct Laurea
+	{
+		int hp, chp, mp, cmp, atk, def, spe, limit;
+		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+		const char* name = "laurea";
+	};
+	struct Lapis
+	{
+		int hp, chp, mp, cmp, atk, def, spe, limit;
+		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+		const char* name = "lapis";
+	};
+	struct Lucca
+	{
+		int hp, chp, mp, cmp, atk, def, spe, limit;
+		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+		const char* name = "lucca";
+	};
+
+	Laurea laurea{ 35,35,10,10,20,25,10,2,1,4,3,2,3 };
+	Lapis lapis{ 25,25,20,20,25,18,12,4,3,4,3,2 };
+	Lucca lucca{ 20,20,23,23,30,12,15,3,3,3,3,2 };
+
 
 	int timer = 0;
 	bool limitFPS = true;
@@ -142,6 +166,9 @@ public:
 		int hp, chp, mp,cmp, atk, def, spe, limit;
 		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
 	};
+	int hp, chp, mp, cmp, atk, def, spe, limit;
+	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+
 };
 
 class Lapis : public Player
@@ -154,6 +181,9 @@ public:
 		int hp, chp, mp, cmp, atk, def, spe, limit;
 		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
 	};
+	int hp, chp, mp, cmp, atk, def, spe, limit;
+	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+
 };
 
 class Lucca : public Player
@@ -166,6 +196,8 @@ public:
 		int hp, chp, mp, cmp, atk, def, spe, limit;
 		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
 	};
+	int hp, chp, mp, cmp, atk, def, spe, limit;
+	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
 };
 
 
