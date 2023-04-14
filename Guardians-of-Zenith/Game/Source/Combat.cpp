@@ -41,6 +41,11 @@ bool Combat::Start()
 	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Character1.png");
+	Character2 = app->tex->Load("Assets/Entities/Characters/Character1.png");
+	Character3 = app->tex->Load("Assets/Entities/Characters/Character1.png");
+	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	Enemy2 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	Enemy3 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 
 	return true;
 }
@@ -122,7 +127,7 @@ bool Combat::Update(float dt)
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 156,MpBarLengthC1,8 }, 0, 0, 200);
 			if (CurrentCharacters >= 2) {
 				//Draw player
-				app->render->DrawTexture(Character1, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+				app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
 				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character2");
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 				//Int to string convert
@@ -146,7 +151,7 @@ bool Combat::Update(float dt)
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 156,MpBarLengthC2,8 }, 0, 0, 200);
 				if (CurrentCharacters == 3) {
 					//Draw player
-					app->render->DrawTexture(Character1, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+					app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
 					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "character3");
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 					//Int to string convert
@@ -170,7 +175,38 @@ bool Combat::Update(float dt)
 					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 156,MpBarLengthC3,8 }, 0, 0, 200);
 				}
 			}
+		}
 
+		//Draw enemies and their hp
+		if (CurrentEnemies >= 1) {
+			//Draw enemy
+			app->render->DrawTexture(Enemy1, app->scene->player->position.x + 120, app->scene->player->position.y - 75);
+			//Int to string convert
+			char Aux[10];
+			sprintf_s(Aux, "%d", E1MHP);
+			app->render->DrawRectangle({ app->scene->player->position.x + 120,app->scene->player->position.y - 5,64,10 }, 0, 0, 0);
+			int HpBarLengthE1 = (E1CHP * 62) / E1MHP;
+			app->render->DrawRectangle({ app->scene->player->position.x + 121,app->scene->player->position.y - 4,HpBarLengthE1,8 }, 0, 200, 0);
+			if (CurrentEnemies >= 2) {
+				//Draw enemy
+				app->render->DrawTexture(Enemy2, app->scene->player->position.x + 200, app->scene->player->position.y - 130);
+				//Int to string convert
+				char Aux[10];
+				sprintf_s(Aux, "%d", E2MHP);
+				app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
+				int HpBarLengthE2 = (E2CHP * 62) / E2MHP;
+				app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
+				if (CurrentEnemies == 3) {
+					//Draw enemy
+					app->render->DrawTexture(Enemy3, app->scene->player->position.x + 200, app->scene->player->position.y - 10);
+					//Int to string convert
+					char Aux[10];
+					sprintf_s(Aux, "%d", E3MHP);
+					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
+					int HpBarLengthE3 = (E3CHP * 62) / E3MHP;
+					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
+				}
+			}
 		}
 	}
 

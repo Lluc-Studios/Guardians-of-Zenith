@@ -73,6 +73,14 @@ private:
 	int C3MHP = 1000, C3CHP = 500;
 	int C3MMP = 250, C3CMP = 250;
 
+	//Enemy1
+	int E1MHP = 1000, E1CHP = 800;
+
+	//Enemy1
+	int E2MHP = 1000, E2CHP = 1000;
+
+	//Enemy1
+	int E3MHP = 1000, E3CHP = 150;
 
 	int SaveInstance = 0, WF, GF;
 	bool InCombat = false;
