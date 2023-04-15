@@ -60,34 +60,93 @@ bool Combat::PreUpdate()
 // Called each loop iteration
 bool Combat::Update(float dt)
 {
-	//Render text
+	//button cd
+	if (cd != 0) {
+		cd++;
+		if (cd >= 50) {
+			cd = 0;
+		}
+	}
+	//White fading
 	if (InCombat == true) {
+
+		if (WhiteFading < 200 && Fading == false) {
+			WhiteFading += 5;
+			if (WhiteFading >= 200) {
+				WhiteFading = 200;
+				Fading = true;
+			}
+		}
+		if (Fading == true) {
+			WhiteFading -= 5;
+			if (WhiteFading <= 40) {
+				WhiteFading = 40;
+				Fading = false;
+			}
+		}
+		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x-290, app->scene->player->position.y-250);
+		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,100,160 }, 0, 0, 255, 150);
 		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
-		if (option == COMBATMENU::ATTACK && AttackMenu == false) {
-			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
-			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
-			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
-			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
+		if (TeamTurn == 1) {
+			if (option == COMBATMENU::ATTACK && AttackMenu == false) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
+				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
+				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::DEFEND && AttackMenu == false) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "defend");
+				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
+				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::INVENTORY && AttackMenu == false) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
+				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "inventory");
+				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ESCAPE && AttackMenu == false) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
+				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
+				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "escape");
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 135,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ATTACK1 && AttackMenu == true && EnemySelect == false) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, Attack1);
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, Attack2);
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ATTACK2 && AttackMenu == true && EnemySelect == false) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, Attack1);
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, Attack2);
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ENEMY1 && EnemySelect == true) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name);
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
+				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, E2name);
+				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ENEMY3 && EnemySelect == true) {
+				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
+				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
+				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, E3name);
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,100,20 }, 255, 255, 255, WhiteFading);
+			}
 		}
-		if (option == COMBATMENU::DEFEND && AttackMenu == false) {
-			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
-			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "defend");
-			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
-			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
-		}
-		if (option == COMBATMENU::INVENTORY && AttackMenu == false) {
-			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
-			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
-			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "inventory");
-			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
-		}
-		if (option == COMBATMENU::ESCAPE && AttackMenu == false) {
-			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
-			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
-			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
-			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "escape");
-		}
+		
 
 		//Draw turns
 		for (int i = 0; i < 6; i++) {
@@ -209,55 +268,231 @@ bool Combat::Update(float dt)
 				}
 			}
 		}
-		CurrentTurn();
 	}
+
+	//Load the characters attacks
+	if (AttackMenu == true && TeamTurn == 1) {
+		if (Turn[0] == 1) {
+			Attack1 = C1A1name;
+			Attack2 = C1A2name;
+			//Attack3 = C1A3name;
+			//Attack4 = C1A4name;
+			//Attack5 = C1A5name;
+			//Attack6 = C1A6name;
+		}
+		if (Turn[0] == 2) {
+			Attack1 = C2A1name;
+			Attack2 = C2A2name;
+			//Attack3 = C2A3name;
+			//Attack4 = C2A4name;
+			//Attack5 = C2A5name;
+			//Attack6 = C2A6name;
+		}
+		if (Turn[0] == 3) {
+			Attack1 = C3A1name;
+			Attack2 = C3A2name;
+			//Attack3 = C3A3name;
+			//Attack4 = C3A4name;
+			//Attack5 = C3A5name;
+			//Attack6 = C3A6name;
+		}
+	}
+
 
 	//Inputs
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN && TeamTurn == 1) {
-		if (option == COMBATMENU::DEFEND) {
-			option = COMBATMENU::ATTACK;
+	if (TeamTurn == 1) {
+		if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN && TeamTurn == 1) {
+			if (AttackMenu == false) {
+				if (option == COMBATMENU::DEFEND) {
+					option = COMBATMENU::ATTACK;
+				}
+				if (option == COMBATMENU::INVENTORY) {
+					option = COMBATMENU::DEFEND;
+				}
+				if (option == COMBATMENU::ESCAPE) {
+					option = COMBATMENU::INVENTORY;
+				}
+			}
+			if (AttackMenu == true && EnemySelect == false) {
+				if (option == COMBATMENU::ATTACK2) {
+					option = COMBATMENU::ATTACK1;
+				}
+			}
+			if (EnemySelect == true) {
+				if (option == COMBATMENU::ENEMY2) {
+					option = COMBATMENU::ENEMY1;
+				}
+				if (option == COMBATMENU::ENEMY3) {
+					option = COMBATMENU::ENEMY2;
+				}
+			}
 		}
-		if (option == COMBATMENU::INVENTORY) {
-			option = COMBATMENU::DEFEND;
+		if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN && TeamTurn == 1) {
+			if (AttackMenu == false) {
+				if (option == COMBATMENU::INVENTORY) {
+					option = COMBATMENU::ESCAPE;
+				}
+				if (option == COMBATMENU::DEFEND) {
+					option = COMBATMENU::INVENTORY;
+				}
+				if (option == COMBATMENU::ATTACK) {
+					option = COMBATMENU::DEFEND;
+				}
+			}
+			if (AttackMenu == true && EnemySelect == false) {
+				if (option == COMBATMENU::ATTACK1) {
+					option = COMBATMENU::ATTACK2;
+				}
+			}
+			if (EnemySelect == true) {
+				if (option == COMBATMENU::ENEMY2) {
+					option = COMBATMENU::ENEMY3;
+				}
+				if (option == COMBATMENU::ENEMY1) {
+					option = COMBATMENU::ENEMY2;
+				}
+			}
 		}
-		if (option == COMBATMENU::ESCAPE) {
-			option = COMBATMENU::INVENTORY;
+		if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN && TeamTurn == 1) {
+			FinishTurn();
+		}
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && TeamTurn == 1) {
+			if (AttackMenu == false) {
+				if (option == COMBATMENU::ATTACK) {
+					AttackMenu = true;
+					option = COMBATMENU::ATTACK1;
+					cd = 1;
+				}
+				if (option == COMBATMENU::DEFEND) {
+
+				}
+				if (option == COMBATMENU::INVENTORY) {
+
+				}
+				if (option == COMBATMENU::ESCAPE) {
+					ExitCombat();
+				}
+			}
+			if (AttackMenu == true && cd == 0 && EnemySelect == false) {
+				if (option == COMBATMENU::ATTACK1) {
+					EnemySelect = true;
+					AttackSelected = 1;
+					option = COMBATMENU::ENEMY1;
+					cd = 1;
+				}
+				if (option == COMBATMENU::ATTACK2) {
+					EnemySelect = true;
+					AttackSelected = 2;
+					option = COMBATMENU::ENEMY1;
+					cd = 1;
+				}
+			}
+			//Perform the attack
+			if (EnemySelect == true && cd == 0) {
+				if (option == COMBATMENU::ENEMY1) {
+					if (Turn[0] == 1) {
+						if (AttackSelected == 1) {
+							E1CHP = E1CHP - C1A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E1CHP = E1CHP - C1A2dmg;
+							FinishTurn();
+						}
+					}
+					if (Turn[0] == 2) {
+						if (AttackSelected == 1) {
+							E1CHP = E1CHP - C2A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E1CHP = E1CHP - C2A2dmg;
+							FinishTurn();
+						}
+					}
+					if (Turn[0] == 3) {
+						if (AttackSelected == 1) {
+							E1CHP = E1CHP - C3A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E1CHP = E1CHP - C3A2dmg;
+							FinishTurn();
+						}
+					}
+				}
+				if (option == COMBATMENU::ENEMY2) {
+					if (Turn[0] == 1) {
+						if (AttackSelected == 1) {
+							E2CHP = E2CHP - C1A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E2CHP = E2CHP - C1A2dmg;
+							FinishTurn();
+						}
+					}
+					if (Turn[0] == 2) {
+						if (AttackSelected == 1) {
+							E2CHP = E2CHP - C2A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E2CHP = E2CHP - C2A2dmg;
+							FinishTurn();
+						}
+					}
+					if (Turn[0] == 3) {
+						if (AttackSelected == 1) {
+							E2CHP = E2CHP - C3A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E2CHP = E2CHP - C3A2dmg;
+							FinishTurn();
+						}
+					}
+				}
+				if (option == COMBATMENU::ENEMY3) {
+					if (Turn[0] == 1) {
+						if (AttackSelected == 1) {
+							E3CHP = E3CHP - C1A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E3CHP = E3CHP - C1A2dmg;
+							FinishTurn();
+						}
+					}
+					if (Turn[0] == 2) {
+						if (AttackSelected == 1) {
+							E3CHP = E3CHP - C2A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E3CHP = E3CHP - C2A2dmg;
+							FinishTurn();
+						}
+					}
+					if (Turn[0] == 3) {
+						if (AttackSelected == 1) {
+							E3CHP = E3CHP - C2A1dmg;
+							FinishTurn();
+						}
+						if (AttackSelected == 2) {
+							E3CHP = E3CHP - C3A2dmg;
+							FinishTurn();
+						}
+					}
+				}
+			}
+
 		}
 	}
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN && TeamTurn == 1) {
-		if (option == COMBATMENU::INVENTORY) {
-			option = COMBATMENU::ESCAPE;
-		}
-		if (option == COMBATMENU::DEFEND) {
-			option = COMBATMENU::INVENTORY;
-		}
-		if (option == COMBATMENU::ATTACK) {
-			option = COMBATMENU::DEFEND;
-		}
-	}
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && TeamTurn == 1) {
-		if (AttackMenu == false) {
-			if (option == COMBATMENU::ATTACK) {
-				AttackMenu = true;
-			}
-			if (option == COMBATMENU::DEFEND) {
-
-			}
-			if (option == COMBATMENU::INVENTORY) {
-
-			}
-			if (option == COMBATMENU::ESCAPE) {
-				ExitCombat();
-			}
-		}
-		if (AttackMenu == true) {
-		
-		}
+	if (TeamTurn == 2) {
 
 	}
-	//if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
-	//	FinishTurn();
-	//}
+
 
 	return true;
 }
@@ -292,6 +527,7 @@ void Combat::StartCombat()
 	LoadEnemy(app->entityManager->slimeFrog2);
 	LoadEnemy(app->entityManager->slimeFrog3);
 	TurnOrder();
+	CurrentTurn();
 }
 
 void Combat::ExitCombat()
@@ -317,6 +553,8 @@ void Combat::FinishTurn()
 		}
 	};
 	AttackMenu = false;
+	EnemySelect = false;
+	option = COMBATMENU::ATTACK;
 
 }
 
@@ -507,6 +745,11 @@ void Combat::CurrentTurn()
 	else {
 		TeamTurn = 2;
 	}
+}
+
+void Combat::PerformAction() 
+{
+
 }
 
 

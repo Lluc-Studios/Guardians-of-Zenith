@@ -15,7 +15,16 @@ public:
 		ATTACK = 1,
 		DEFEND,
 		INVENTORY,
-		ESCAPE
+		ESCAPE,
+		ATTACK1,
+		ATTACK2,
+		ATTACK3,
+		ATTACK4,
+		ATTACK5,
+		ATTACK6,
+		ENEMY1,
+		ENEMY2,
+		ENEMY3
 	};
 
 	//Target: 0 = single, 1 = multiple, 2 = owner, 3 = ally, 4 = party
@@ -53,6 +62,8 @@ public:
 
 	void CurrentTurn();
 
+	void PerformAction();
+
 	void LoadLaurea(Player::Laurea laurea);
 	void LoadLapis(Player::Lapis lapis);
 	void LoadLucca(Player::Lucca lucca);
@@ -62,14 +73,28 @@ public:
 
 	COMBATMENU option = COMBATMENU::ATTACK;
 
+	int AttackSelected = 0;
+	int cd = 0;
+
 	SDL_Texture* BG;
 
 	//Decides whose turn is it, 0 = none, 1 = ally, 2 = enemy
 	bool TeamTurn = 0;
 
 	bool AttackMenu = false;
+	bool EnemySelect = false;
+
+	const char* Attack1;
+	const char* Attack2;
+	const char* Attack3;
+	const char* Attack4;
+	const char* Attack5;
+	const char* Attack6;
 
 private:
+
+	int WhiteFading = 1;
+	bool Fading = false;
 
 	SDL_Texture* Character1;
 	SDL_Texture* Character2;
@@ -89,6 +114,9 @@ private:
 	int C1A1lvl = 1, C1A1target = 0, C1A1dmg = 20, C1A1mp = 0;
 	const char* C1A1name = "swordattack";
 
+	int C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
+	const char* C1A2name = "thrust";
+
 	//Character2
 	int C2MHP = 1000, C2CHP = 320;
 	int C2MMP = 250, C2CMP = 100;
@@ -100,6 +128,9 @@ private:
 	int C2A1lvl = 1, C2A1target = 0, C2A1dmg = 20, C2A1mp = 0;
 	const char* C2A1name = "staffattack";
 
+	int C2A2lvl = 1, C2A2target = 1, C2A2dmg = 30, C2A2mp = 25;
+	const char* C2A2name = "tidalwave";
+
 	//Character3
 	int C3MHP = 1000, C3CHP = 500;
 	int C3MMP = 250, C3CMP = 250;
@@ -110,6 +141,10 @@ private:
 
 	int C3A1lvl = 1, C3A1target = 0, C3A1dmg = 20, C3A1mp = 0;
 	const char* C3A1name = "arrowshot";
+
+	int C3A2lvl = 1, C3A2target = 1, C3A2dmg = 35, C3A2mp = 20;
+	const char* C3A2name = "multishot";
+
 
 	//Enemy1
 	int E1MHP = 1000, E1CHP = 800;
