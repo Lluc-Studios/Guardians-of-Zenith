@@ -285,7 +285,7 @@ void Combat::StartCombat()
 	LoadEnemy(app->entityManager->slimeFrog1);
 	LoadEnemy(app->entityManager->slimeFrog2);
 	LoadEnemy(app->entityManager->slimeFrog3);
-	//TurnOrder();
+	TurnOrder();
 }
 
 void Combat::ExitCombat()
@@ -334,11 +334,32 @@ void Combat::TurnOrder()
 		}
 		for (int i = 0; i < 4; i++) {
 			int b;
-			if (Turn[i] < Turn[i + 1]) {
+			if (Turn[i] <= Turn[i + 1]) {
 				b = Turn[i];
 				Turn[i] = Turn[i + 1];
 				Turn[i + 1] = b;
 			}
+		}
+	}
+
+	for (int i = 0; i < 6; i++) {
+		if (Turn[i] == C1speed) {
+			Turn[i] = 1;
+		}
+		else if (Turn[i] == C2speed) {
+			Turn[i] = 2;
+		}
+		else if (Turn[i] == C3speed) {
+			Turn[i] = 3;
+		}
+		else if (Turn[i] == E1speed) {
+			Turn[i] = 4;
+		}
+		else if (Turn[i] == E2speed) {
+			Turn[i] = 5;
+		}
+		else if (Turn[i] == E3speed) {
+			Turn[i] = 6;
 		}
 	}
 }
