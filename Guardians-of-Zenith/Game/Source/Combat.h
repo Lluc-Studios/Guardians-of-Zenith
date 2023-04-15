@@ -18,6 +18,8 @@ public:
 		ESCAPE
 	};
 
+	//Target: 0 = single, 1 = multiple, 2 = owner, 3 = ally, 4 = party
+
 	Combat();
 
 	// Destructor
@@ -49,6 +51,8 @@ public:
 
 	void TurnOrder();
 
+	void CurrentTurn();
+
 	void LoadLaurea(Player::Laurea laurea);
 	void LoadLapis(Player::Lapis lapis);
 	void LoadLucca(Player::Lucca lucca);
@@ -59,6 +63,11 @@ public:
 	COMBATMENU option = COMBATMENU::ATTACK;
 
 	SDL_Texture* BG;
+
+	//Decides whose turn is it, 0 = none, 1 = ally, 2 = enemy
+	bool TeamTurn = 0;
+
+	bool AttackMenu = false;
 
 private:
 
@@ -75,6 +84,10 @@ private:
 	int C1ATK, C1DEF,LIMIT1;
 	int C1speed;
 	const char* C1NAME;
+	int C1lvl;
+
+	int C1A1lvl = 1, C1A1target = 0, C1A1dmg = 20, C1A1mp = 0;
+	const char* C1A1name = "swordattack";
 
 	//Character2
 	int C2MHP = 1000, C2CHP = 320;
@@ -82,6 +95,10 @@ private:
 	int C2ATK, C2DEF, LIMIT2;
 	int C2speed;
 	const char* C2NAME;
+	int C2lvl;
+
+	int C2A1lvl = 1, C2A1target = 0, C2A1dmg = 20, C2A1mp = 0;
+	const char* C2A1name = "staffattack";
 
 	//Character3
 	int C3MHP = 1000, C3CHP = 500;
@@ -89,6 +106,10 @@ private:
 	int C3ATK, C3DEF, LIMIT3;
 	int C3speed;
 	const char* C3NAME;
+	int C3lvl;
+
+	int C3A1lvl = 1, C3A1target = 0, C3A1dmg = 20, C3A1mp = 0;
+	const char* C3A1name = "arrowshot";
 
 	//Enemy1
 	int E1MHP = 1000, E1CHP = 800;
@@ -96,20 +117,59 @@ private:
 	int E1speed;
 	const char* E1Weak;
 	const char* E1Res;
+	const char* E1name;
+	const char* E1A1name;
+	int E1A1dmg, E1A1target;
 
-	//Enemy1
+	const char* E1A2name;
+	int E1A2dmg, E1A2target;
+
+	const char* E1A3name;
+	int E1A3dmg, E1A3target;
+
+	const char* E1A4name;
+	int E1A4dmg, E1A4target;
+
+
+	//Enemy2
 	int E2MHP = 1000, E2CHP = 1000;
 	int E2ATK, E2DEF, E2EXP;
 	int E2speed;
 	const char* E2Weak;
 	const char* E2Res;
+	const char* E2name;
+	const char* E2A1name;
+	int E2A1dmg, E2A1target;
 
-	//Enemy1
+	const char* E2A2name;
+	int E2A2dmg, E2A2target;
+
+	const char* E2A3name;
+	int E2A3dmg, E2A3target;
+
+	const char* E2A4name;
+	int E2A4dmg, E2A4target;
+
+	//Enemy3
 	int E3MHP = 1000, E3CHP = 150;
 	int E3ATK, E3DEF, E3EXP;
 	int E3speed;
 	const char* E3Weak;
 	const char* E3Res;
+	const char* E3name;
+	const char* E3A1name;
+	int E3A1dmg, E3A1target;
+
+	const char* E3A2name;
+	int E3A2dmg, E3A2target;
+
+	const char* E3A3name;
+	int E3A3dmg, E3A3target;
+
+	const char* E3A4name;
+	int E3A4dmg, E3A4target;
+
+
 
 	int idCount = 3;
 
@@ -117,6 +177,7 @@ private:
 	bool InCombat = false;
 
 	int CurrentCharacters = 0, CurrentEnemies = 0;
+
 
 	// 1-3 = ally, 4-6 = enemy
 	int Turn[6] = { 1, 4, 5, 2, 6, 3 };

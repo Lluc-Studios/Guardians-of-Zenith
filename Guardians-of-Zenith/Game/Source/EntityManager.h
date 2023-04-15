@@ -43,13 +43,30 @@ public:
 	struct CombatEnemy
 	{
 		int hp, chp, atk, def, spe, exp;
+		const char* name;
 		const char* weakness;
 		const char* resistance;
+
+		const char* A1name;
+		int A1dmg, A1target;
+
+		const char* A2name;
+		int A2dmg, A2target;
+
+		const char* A3name;
+		int A3dmg, A3target;
+
+		const char* A4name;
+		int A4dmg, A4target;
+
 	};
 	//Slime frog
-	CombatEnemy slimeFrog1{ 600,600,100,50,9,35, "Lapis","Lucca"};
-	CombatEnemy slimeFrog2{ 600,600,100,50,9,35, "Lapis","Lucca" };
-	CombatEnemy slimeFrog3{ 600,600,100,50,9,35, "Lapis","Lucca" };
+	//CombatEnemy slimeFrog1{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
+	//CombatEnemy slimeFrog2{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
+	//CombatEnemy slimeFrog3{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
+	CombatEnemy slimeFrog1{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 0, 50, "bubbleburst", 0, 60 };
+	CombatEnemy slimeFrog2{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 0, 50, "bubbleburst", 0, 60 };
+	CombatEnemy slimeFrog3{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 0, 50, "bubbleburst", 0, 60 };
 
 
 	List<Entity*> entities;

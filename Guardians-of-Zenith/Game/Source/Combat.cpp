@@ -64,25 +64,25 @@ bool Combat::Update(float dt)
 	if (InCombat == true) {
 		app->render->DrawTexture(BG, app->scene->player->position.x-290, app->scene->player->position.y-250);
 		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
-		if (option == COMBATMENU::ATTACK) {
+		if (option == COMBATMENU::ATTACK && AttackMenu == false) {
 			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
 			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
 			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
 			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
 		}
-		if (option == COMBATMENU::DEFEND) {
+		if (option == COMBATMENU::DEFEND && AttackMenu == false) {
 			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
 			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "defend");
 			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
 			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
 		}
-		if (option == COMBATMENU::INVENTORY) {
+		if (option == COMBATMENU::INVENTORY && AttackMenu == false) {
 			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
 			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
 			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "inventory");
 			app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
 		}
-		if (option == COMBATMENU::ESCAPE) {
+		if (option == COMBATMENU::ESCAPE && AttackMenu == false) {
 			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
 			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
 			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
@@ -209,10 +209,11 @@ bool Combat::Update(float dt)
 				}
 			}
 		}
+		CurrentTurn();
 	}
 
 	//Inputs
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN && TeamTurn == 1) {
 		if (option == COMBATMENU::DEFEND) {
 			option = COMBATMENU::ATTACK;
 		}
@@ -223,7 +224,7 @@ bool Combat::Update(float dt)
 			option = COMBATMENU::INVENTORY;
 		}
 	}
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN && TeamTurn == 1) {
 		if (option == COMBATMENU::INVENTORY) {
 			option = COMBATMENU::ESCAPE;
 		}
@@ -234,24 +235,29 @@ bool Combat::Update(float dt)
 			option = COMBATMENU::DEFEND;
 		}
 	}
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-		if (option == COMBATMENU::ATTACK) {
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && TeamTurn == 1) {
+		if (AttackMenu == false) {
+			if (option == COMBATMENU::ATTACK) {
+				AttackMenu = true;
+			}
+			if (option == COMBATMENU::DEFEND) {
 
-		}
-		if (option == COMBATMENU::DEFEND) {
+			}
+			if (option == COMBATMENU::INVENTORY) {
 
+			}
+			if (option == COMBATMENU::ESCAPE) {
+				ExitCombat();
+			}
 		}
-		if (option == COMBATMENU::INVENTORY) {
-
-		}
-		if (option == COMBATMENU::ESCAPE) {
-			ExitCombat();
+		if (AttackMenu == true) {
+		
 		}
 
 	}
-	if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
-		FinishTurn();
-	}
+	//if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
+	//	FinishTurn();
+	//}
 
 	return true;
 }
@@ -296,6 +302,7 @@ void Combat::ExitCombat()
 	InCombat = false;
 	CurrentCharacters = 0;
 	CurrentEnemies = 0;
+	TeamTurn = 0;
 }
 
 void Combat::FinishTurn()
@@ -309,6 +316,7 @@ void Combat::FinishTurn()
 			Turn[i] = Aux;
 		}
 	};
+	AttackMenu = false;
 
 }
 
@@ -322,6 +330,7 @@ void Combat::TurnOrder()
 	Turn[4] = E2speed;
 	Turn[5] = E3speed;
 	
+	// Ordering by speed
 	while (ordered == false) {
 		int a = 0;
 		for (int i = 0; i < 4; i++) {
@@ -342,6 +351,7 @@ void Combat::TurnOrder()
 		}
 	}
 
+	//Assigning each entity their position
 	for (int i = 0; i < 6; i++) {
 		if (Turn[i] == C1speed) {
 			Turn[i] = 1;
@@ -377,6 +387,7 @@ void Combat::LoadLaurea(Player::Laurea laurea)
 	C1DEF = laurea.def;
 	LIMIT1 = laurea.limit;
 	C1NAME = laurea.name;
+	C1lvl = laurea.lvl;
 }
 
 void Combat::LoadLapis(Player::Lapis lapis)
@@ -392,6 +403,7 @@ void Combat::LoadLapis(Player::Lapis lapis)
 	C2DEF = lapis.def;
 	LIMIT2 = lapis.limit;
 	C2NAME = lapis.name;
+	C2lvl = lapis.lvl;
 }
 
 void Combat::LoadLucca(Player::Lucca lucca)
@@ -407,6 +419,7 @@ void Combat::LoadLucca(Player::Lucca lucca)
 	C3DEF = lucca.def;
 	LIMIT3 = lucca.limit;
 	C3NAME = lucca.name;
+	C3lvl = lucca.lvl;
 }
 
 void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
@@ -422,6 +435,19 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E3DEF = enemy.def;
 		E3Weak = enemy.weakness;
 		E3Res = enemy.resistance;
+		E3name = enemy.name;
+		E3A1dmg = enemy.A1dmg;
+		E3A1name = enemy.A1name;
+		E3A1target = enemy.A1target;
+		E3A2dmg = enemy.A2dmg;
+		E3A2name = enemy.A2name;
+		E3A2target = enemy.A2target;
+		E3A3dmg = enemy.A3dmg;
+		E3A3name = enemy.A3name;
+		E3A3target = enemy.A3target;
+		E3A4dmg = enemy.A4dmg;
+		E3A4name = enemy.A4name;
+		E3A4target = enemy.A4target;
 	}
 	if (CurrentEnemies == 1) {
 		E2speed = enemy.spe;
@@ -433,6 +459,19 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E2DEF = enemy.def;
 		E2Weak = enemy.weakness;
 		E2Res = enemy.resistance;
+		E2name = enemy.name;
+		E2A1dmg = enemy.A1dmg;
+		E2A1name = enemy.A1name;
+		E2A1target = enemy.A1target;
+		E2A2dmg = enemy.A2dmg;
+		E2A2name = enemy.A2name;
+		E2A2target = enemy.A2target;
+		E2A3dmg = enemy.A3dmg;
+		E2A3name = enemy.A3name;
+		E2A3target = enemy.A3target;
+		E2A4dmg = enemy.A4dmg;
+		E2A4name = enemy.A4name;
+		E2A4target = enemy.A4target;
 	}
 	if (CurrentEnemies == 0) {
 		E1speed = enemy.spe;
@@ -444,6 +483,29 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E1DEF = enemy.def;
 		E1Weak = enemy.weakness;
 		E1Res = enemy.resistance;
+		E1name = enemy.name;
+		E1A1dmg = enemy.A1dmg;
+		E1A1name = enemy.A1name;
+		E1A1target = enemy.A1target;
+		E1A2dmg = enemy.A2dmg;
+		E1A2name = enemy.A2name;
+		E1A2target = enemy.A2target;
+		E1A3dmg = enemy.A3dmg;
+		E1A3name = enemy.A3name;
+		E1A3target = enemy.A3target;
+		E1A4dmg = enemy.A4dmg;
+		E1A4name = enemy.A4name;
+		E1A4target = enemy.A4target;
+	}
+}
+
+void Combat::CurrentTurn()
+{
+	if (Turn[0] < 4) {
+		TeamTurn = 1;
+	}
+	else {
+		TeamTurn = 2;
 	}
 }
 
