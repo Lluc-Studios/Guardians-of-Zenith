@@ -70,7 +70,7 @@ public:
 
 public:
 	//Temporal variable
-	int count = 0;
+	//int count = 0;
 
 	COMBATMENU option = COMBATMENU::ATTACK;
 

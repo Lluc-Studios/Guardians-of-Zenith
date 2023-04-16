@@ -617,17 +617,115 @@ bool Combat::Update(float dt)
 
 		}
 	}
-	if (TeamTurn == 2) {
-		//Enemy action
+	//Enemy action
+	if (option == COMBATMENU::NONE) {
+		int EnemyAttackTarget = rand() % CurrentCharacters + 1;
+		int EnemyAttackNum = rand() % 2 + 1;
+		if (Turn[0] == 6) {
+			if (EnemyAttackTarget == 1) {
+				if (EnemyAttackNum == 1) {
+					C1CHP = C1CHP - (E3A1dmg * (E3ATK / C1DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C1CHP = C1CHP - (E3A2dmg * (E3ATK / C1DEF));
+					FinishTurn();
+				}
+			}
+			if (EnemyAttackTarget == 2) {
+				if (EnemyAttackNum == 1) {
+					C2CHP = C2CHP - (E3A1dmg * (E3ATK / C2DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C2CHP = C2CHP - (E3A2dmg * (E3ATK / C2DEF));
+					FinishTurn();
+				}
+			}
+			if (EnemyAttackTarget == 3) {
+				if (EnemyAttackNum == 1) {
+					C3CHP = C3CHP - (E3A1dmg * (E3ATK / C3DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C3CHP = C3CHP - (E3A2dmg * (E3ATK / C3DEF));
+					FinishTurn();
+				}
+			}
+		}
+		else if (Turn[0] == 5) {
+			if (EnemyAttackTarget == 1) {
+				if (EnemyAttackNum == 1) {
+					C1CHP = C1CHP - (E2A1dmg * (E2ATK / C1DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C1CHP = C1CHP - (E2A2dmg * (E2ATK / C1DEF));
+					FinishTurn();
+				}
+			}
+			if (EnemyAttackTarget == 2) {
+				if (EnemyAttackNum == 1) {
+					C2CHP = C2CHP - (E2A1dmg * (E2ATK / C2DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C2CHP = C2CHP - (E2A2dmg * (E2ATK / C2DEF));
+					FinishTurn();
+				}
+			}
+			if (EnemyAttackTarget == 3) {
+				if (EnemyAttackNum == 1) {
+					C3CHP = C3CHP - (E2A1dmg * (E2ATK / C3DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C3CHP = C3CHP - (E2A2dmg * (E2ATK / C3DEF));
+					FinishTurn();
+				}
+			}
+		}
+		else if (Turn[0] == 4) {
+			if (EnemyAttackTarget == 1) {
+				if (EnemyAttackNum == 1) {
+					C1CHP = C1CHP - (E1A1dmg*(E1ATK/C1DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C1CHP = C1CHP - (E1A2dmg * (E1ATK / C1DEF));
+					FinishTurn();
+				}
+			}
+			if (EnemyAttackTarget == 2) {
+				if (EnemyAttackNum == 1) {
+					C2CHP = C2CHP - (E1A1dmg * (E1ATK / C2DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C2CHP = C2CHP - (E1A2dmg * (E1ATK / C2DEF));
+					FinishTurn();
+				}
+			}
+			if (EnemyAttackTarget == 3) {
+				if (EnemyAttackNum == 1) {
+					C3CHP = C3CHP - (E1A1dmg * (E1ATK / C3DEF));
+					FinishTurn();
+				}
+				if (EnemyAttackNum == 2) {
+					C3CHP = C3CHP - (E1A2dmg * (E1ATK / C3DEF));
+					FinishTurn();
+				}
+			}
+		}
 	}
 	if (Turn[0] >= 4) {
 		option = COMBATMENU::NONE;
-		//Temporal action
-		count++;
-		if (count >= 40) {
-			count = 0;
-			FinishTurn();
-		}
+		////Temporal action
+		//count++;
+		//if (count >= 40) {
+		//	count = 0;
+		//	FinishTurn();
+		//}
 	}
 
 
