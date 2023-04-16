@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="70" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="33">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="70" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="60">
  <tileset firstgid="1" name="Tileset_House" tilewidth="32" tileheight="32" tilecount="920" columns="40">
   <image source="Main Tilesets/Tileset_House.png" width="1280" height="736"/>
  </tileset>
@@ -12634,37 +12634,58 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="5" name="Collisions" visible="0">
+ <objectgroup id="5" name="Collisions">
   <object id="1" x="2.70454" y="2.70454" width="415.03" height="1440.97"/>
-  <object id="2" x="370.667" y="2.66667" width="81.3333" height="282.667"/>
+  <object id="2" x="370.667" y="2.66667" width="81.3333" height="180.667"/>
   <object id="3" x="450" y="1.33317" width="600" height="188"/>
-  <object id="4" x="771.333" y="162.666" width="280" height="282.667"/>
-  <object id="5" x="1186" y="-1.3335" width="349.333" height="346.667"/>
+  <object id="5" x="1186" y="-1.3335" width="349.333" height="128.667"/>
   <object id="6" x="1535.33" y="130.666" width="705.333" height="188"/>
-  <object id="7" x="1890" y="314.666" width="356" height="993.334"/>
-  <object id="8" x="416.667" y="256" width="285.333" height="188"/>
-  <object id="9" x="419.333" y="514.666" width="505.333" height="252"/>
+  <object id="7" x="1890" y="314.666" width="350.667" height="993.334"/>
+  <object id="8" x="416.667" y="285" width="161.333" height="159"/>
+  <object id="9" x="419.333" y="514.666" width="383.333" height="252"/>
   <object id="10" x="996.667" y="540" width="81.3333" height="101.334"/>
   <object id="11" x="1161.33" y="706.666" width="81.3333" height="89.667"/>
   <object id="12" x="1023.33" y="738.666" width="28.3333" height="29.667"/>
   <object id="13" x="1184.83" y="608.167" width="28.3333" height="29.667"/>
-  <object id="14" x="417.833" y="764.167" width="223.333" height="413.667"/>
-  <object id="15" x="638.333" y="867.167" width="415.333" height="311.667"/>
-  <object id="16" x="763.333" y="766.167" width="162.333" height="32.667"/>
-  <object id="17" x="419.333" y="1253.17" width="633.333" height="185.667"/>
-  <object id="18" x="416.333" y="1171.17" width="61.333" height="90.667"/>
+  <object id="14" x="417.833" y="1021.17" width="223.333" height="156.667"/>
+  <object id="15" x="638.333" y="1017.17" width="356.333" height="161.667"/>
+  <object id="17" x="419.333" y="1247.17" width="633.333" height="191.667"/>
   <object id="19" x="1187.33" y="1186.17" width="315.333" height="254.667"/>
-  <object id="20" x="1503.33" y="1378.17" width="737.333" height="65.667"/>
-  <object id="21" x="1949.33" y="1307.17" width="291.333" height="78.667"/>
+  <object id="20" x="1503.33" y="1404.84" width="737.333" height="39.0003"/>
+  <object id="21" x="1989.33" y="1307.17" width="251.333" height="104"/>
   <object id="22" x="1568.33" y="1187.17" width="349.333" height="121.667"/>
   <object id="23" x="1695.33" y="870.167" width="193.333" height="319.667"/>
-  <object id="24" x="1186.33" y="868.167" width="515.333" height="246.667"/>
-  <object id="25" x="1827.33" y="418.167" width="63.333" height="454.667"/>
-  <object id="26" x="1314.33" y="421.167" width="574.333" height="185.667"/>
-  <object id="27" x="1312.33" y="675.167" width="414.333" height="119.667"/>
+  <object id="24" x="1211.33" y="956.167" width="490.333" height="158.667"/>
+  <object id="26" x="1373.33" y="421.167" width="515.333" height="185.667"/>
+  <object id="27" x="1603.32" y="676.917" width="93.333" height="119.667"/>
   <object id="28" x="1604.33" y="606.167" width="341.333" height="159.667"/>
-  <object id="29" x="1186.33" y="417.167" width="129.333" height="61.667"/>
-  <object id="31" x="640" y="763.667" width="32.3333" height="36"/>
+  <object id="33" x="935.333" y="318.333" width="81.3333" height="101.334"/>
+  <object id="34" x="839.333" y="252.333" width="81.3333" height="101.334"/>
+  <object id="35" x="935.333" y="155.333" width="81.3333" height="101.334"/>
+  <object id="36" x="1192.33" y="121.333" width="81.3333" height="101.334"/>
+  <object id="37" x="1285.33" y="154.333" width="81.3333" height="101.334"/>
+  <object id="38" x="1223.33" y="246.333" width="81.3333" height="101.334"/>
+  <object id="39" x="1415.33" y="218.333" width="81.3333" height="101.334"/>
+  <object id="40" x="1448.33" y="127.333" width="81.3333" height="101.334"/>
+  <object id="41" x="484.333" y="860.333" width="81.3333" height="101.334"/>
+  <object id="42" x="357.333" y="922.333" width="81.3333" height="101.334"/>
+  <object id="43" x="1510.33" y="668.333" width="81.3333" height="101.334"/>
+  <object id="44" x="1349.33" y="695.333" width="81.3333" height="101.334"/>
+  <object id="45" x="807.333" y="539.333" width="81.3333" height="101.334"/>
+  <object id="46" x="894.833" y="673.167" width="28.3333" height="29.667"/>
+  <object id="47" x="863.833" y="736.167" width="28.3333" height="29.667"/>
+  <object id="48" x="669.833" y="899.167" width="28.3333" height="29.667"/>
+  <object id="49" x="800.833" y="963.167" width="28.3333" height="29.667"/>
+  <object id="50" x="992.833" y="960.167" width="28.3333" height="29.667"/>
+  <object id="51" x="1215.83" y="898.167" width="28.3333" height="29.667"/>
+  <object id="52" x="1438.83" y="736.167" width="28.3333" height="29.667"/>
+  <object id="53" x="1344.83" y="288.167" width="28.3333" height="29.667"/>
+  <object id="54" x="1279.83" y="132.167" width="28.3333" height="29.667"/>
+  <object id="55" x="800.833" y="385.167" width="28.3333" height="29.667"/>
+  <object id="56" x="799.833" y="226.167" width="28.3333" height="29.667"/>
+  <object id="57" x="637.833" y="386.167" width="28.3333" height="29.667"/>
+  <object id="58" x="1503.83" y="897.833" width="28.3333" height="29.667"/>
+  <object id="59" x="1663.17" y="898.5" width="28.3333" height="29.667"/>
  </objectgroup>
  <objectgroup id="7" name="Tavern_Entry" visible="0">
   <properties>
