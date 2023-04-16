@@ -287,6 +287,16 @@ bool Combat::Update(float dt)
 				}
 			}
 		}
+		//Make sure player hp does not go below 0
+		if (C1CHP < 0) {
+			C1CHP = 0;
+		}
+		if (C2CHP < 0) {
+			C2CHP = 0;
+		}
+		if (C3CHP < 0) {
+			C3CHP = 0;
+		}
 	}
 
 	//Load the characters attacks
