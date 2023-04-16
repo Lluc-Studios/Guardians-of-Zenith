@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="1">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="17">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
- <layer id="1" name="background" width="16" height="12">
+ <layer id="1" name="Background" width="16" height="12">
   <data encoding="csv">
 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
@@ -19,7 +19,7 @@
 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20
 </data>
  </layer>
- <layer id="2" name="walls" width="16" height="12">
+ <layer id="2" name="Walls" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,6,9,9,9,9,9,10,0,0,0,0,0,
 0,0,0,0,26,27,28,29,28,27,30,0,0,0,0,0,
@@ -35,23 +35,23 @@
 0,0,0,0,0,86,87,0,87,90,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="3" name="floor" width="16" height="12">
+ <layer id="3" name="Floor" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,68,68,68,68,68,0,0,0,0,0,0,
-0,0,0,49,0,68,68,68,68,68,0,0,0,0,0,0,
+0,0,0,0,0,68,68,68,68,68,0,0,0,0,0,0,
 0,0,0,68,68,68,68,68,68,68,68,68,68,0,0,0,
 0,0,68,68,68,68,68,68,68,68,68,68,68,0,0,0,
-0,0,68,68,68,68,68,68,68,68,68,68,68,67,67,0,
-0,0,68,68,68,68,68,68,68,68,68,68,67,67,67,0,
-0,0,68,68,68,68,68,68,68,68,68,68,67,67,0,0,
-0,0,0,0,0,0,68,68,69,0,0,0,0,0,0,0,
+0,0,68,68,68,68,68,68,68,68,68,68,68,68,68,0,
+0,0,68,68,68,68,68,68,68,68,68,68,68,68,68,0,
+0,0,68,68,68,68,68,68,68,68,68,68,68,68,0,0,
+0,0,0,0,0,0,68,68,68,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="4" name="windows" width="16" height="12">
+ <layer id="4" name="Windows" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,109,0,109,0,0,0,0,0,0,0,
@@ -67,7 +67,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="5" name="assets" width="16" height="12">
+ <layer id="5" name="Furnitures" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,127,0,0,0,0,0,0,0,0,
@@ -83,4 +83,28 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="6" name="Collisions">
+  <object id="1" x="87.1349" y="87.0393" width="72.6179" height="71.9948"/>
+  <object id="2" x="320.129" y="86.9609" width="104.987" height="71.9948"/>
+  <object id="3" x="159.524" y="128.169" width="160.993" height="25.6198"/>
+  <object id="4" x="54.9964" y="119.025" width="41.1989" height="71.7221"/>
+  <object id="5" x="416.055" y="150.912" width="73.0069" height="73.0857"/>
+  <object id="6" x="55.0066" y="190.503" width="9.01708" height="138.503"/>
+  <object id="7" x="480.023" y="223.873" width="9.01708" height="73.1197"/>
+  <object id="8" x="448.023" y="288.01" width="32.0483" height="8.98306"/>
+  <object id="9" x="448.021" y="296.769" width="9.0517" height="32.2222"/>
+  <object id="10" x="288.009" y="320.035" width="160.194" height="8.9722"/>
+  <object id="11" x="63.9196" y="320.014" width="128.067" height="8.9722"/>
+  <object id="12" x="288.018" y="328.875" width="8.97256" height="32.1075"/>
+  <object id="13" x="183.011" y="328.91" width="8.97256" height="32.1075"/>
+  <object id="14" x="255.987" y="352.016" width="32.0309" height="8.97556"/>
+  <object id="15" x="191.953" y="352.039" width="32.0309" height="8.97556"/>
+ </objectgroup>
+ <objectgroup id="7" name="ExitForge">
+  <object id="16" x="223.985" y="354.668" width="32.0309" height="3.69431">
+   <properties>
+    <property name="Type" type="int" value="11"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
