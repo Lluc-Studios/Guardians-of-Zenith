@@ -24,7 +24,8 @@ public:
 		ATTACK6,
 		ENEMY1,
 		ENEMY2,
-		ENEMY3
+		ENEMY3,
+		NONE
 	};
 
 	//Target: 0 = single, 1 = multiple, 2 = owner, 3 = ally, 4 = party
@@ -60,8 +61,6 @@ public:
 
 	void TurnOrder();
 
-	void CurrentTurn();
-
 	void PerformAction();
 
 	void LoadLaurea(Player::Laurea laurea);
@@ -70,6 +69,8 @@ public:
 	void LoadEnemy(EntityManager::CombatEnemy enemy);
 
 public:
+	//Temporal variable
+	int count = 0;
 
 	COMBATMENU option = COMBATMENU::ATTACK;
 
@@ -79,7 +80,7 @@ public:
 	SDL_Texture* BG;
 
 	//Decides whose turn is it, 0 = none, 1 = ally, 2 = enemy
-	bool TeamTurn = 0;
+	bool TeamTurn = 1;
 
 	bool AttackMenu = false;
 	bool EnemySelect = false;

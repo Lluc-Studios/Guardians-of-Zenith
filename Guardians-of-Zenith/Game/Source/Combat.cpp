@@ -67,9 +67,10 @@ bool Combat::Update(float dt)
 			cd = 0;
 		}
 	}
-	//White fading
+
 	if (InCombat == true) {
 
+		//White fading
 		if (WhiteFading < 200 && Fading == false) {
 			WhiteFading += 5;
 			if (WhiteFading >= 200) {
@@ -88,7 +89,7 @@ bool Combat::Update(float dt)
 		app->render->DrawTexture(BG, app->scene->player->position.x-290, app->scene->player->position.y-250);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,100,160 }, 0, 0, 255, 150);
 		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
-		if (TeamTurn == 1) {
+		if (option != COMBATMENU::NONE) {
 			if (option == COMBATMENU::ATTACK && AttackMenu == false) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
@@ -492,6 +493,15 @@ bool Combat::Update(float dt)
 	if (TeamTurn == 2) {
 
 	}
+	if (Turn[0] >= 4) {
+		option = COMBATMENU::NONE;
+		//Temporal action
+		count++;
+		if (count >= 40) {
+			count = 0;
+			FinishTurn();
+		}
+	}
 
 
 	return true;
@@ -527,7 +537,7 @@ void Combat::StartCombat()
 	LoadEnemy(app->entityManager->slimeFrog2);
 	LoadEnemy(app->entityManager->slimeFrog3);
 	TurnOrder();
-	CurrentTurn();
+	//CurrentTurn();
 }
 
 void Combat::ExitCombat()
@@ -737,15 +747,15 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 	}
 }
 
-void Combat::CurrentTurn()
-{
-	if (Turn[0] < 4) {
-		TeamTurn = 1;
-	}
-	else {
-		TeamTurn = 2;
-	}
-}
+//void Combat::CurrentTurn()
+//{
+//	if (Turn[0] < 4) {
+//		TeamTurn = 1;
+//	}
+//	else {
+//		TeamTurn = 2;
+//	}
+//}
 
 void Combat::PerformAction() 
 {
