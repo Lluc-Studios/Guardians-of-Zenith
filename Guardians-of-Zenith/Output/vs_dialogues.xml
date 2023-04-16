@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+
+<!-- eventReturn index
+0 - no choice
+1 - choice(s)
+2 - input
+3 - save choice
+4 - conditional
+-->
+
+<!--
+  IMPORTANT. Some special characters may crash the game
+  Ex. % -> use %% (it will only show 1 %)
+  https://stackoverflow.com/questions/45328047/how-can-i-avoiding-crashing-at-vsprintf-s-while-printing-character-similar-to
+-->
+
+<!--
+  IMPORTANT 2. IDs must be in order.
+-->
+
+<dialogues>
+	
+  <!--Lapis-->
+  <dialogueTree ID="0">
+    <node id="0" text="First of all good morning, my name is Lapis. And I am a water spirit.">
+        <choice id="0" option="Glad to meet you, I’m Laurea. Why are you here, aren’t you supposed to be in the water zone?" nextNode="1" eventReturn="1"/>
+		<choice id="1" option="That's a good fact you know, but I don't remember asking." nextNode="2" eventReturn="1"/>
+	</node>
+
+    <node id="1" text="Yes I should, but the dungeon is still in WIP because we are in the Vertical Slice.">
+        <choice id="0" option="Well, that explains why I’m unanimated…" nextNode="3"  eventReturn="1"/>
+    </node>
+
+    <node id="2" text="I’m sorry, sometimes I speak too much XD.">
+        <choice id="0" option="Thanks for the information. Anything else?" nextNode="3" eventReturn="1"/>
+    </node>
+    
+    <node id="3" text="You look strong, do you want us to work toghether? It is compulsory to have at least 2 playable characters… And if you refuse me you might get bad qualifications.">
+      <choice id="0" option="Fine, we can unite our forces." nextNode="-1" eventReturn="1"/>
+      <choice id="1" option="Don’t care, I still can go to revaluation." nextNode="-2" eventReturn="1"/>
+    </node>
+
+    <node id="-1" text ="Let’s go! We will be so good friends from now."></node>
+	  
+	<node id="-2" text ="Oh, okay. See you on september I guess."></node>
+  </dialogueTree>
+
+  <!--Bill (Tabernero)-->
+  <dialogueTree ID="1">
+    <node id="0" text="Hello friend, ¿what do I serve you?">
+        <choice id="0" option="Good morning, I would like to drink a bottle of water from Bon Area." nextNode="1" eventReturn="1"/>
+        <choice id="1" option="A gin tonic, with lemon, ice and the little umbrella." nextNode="2" eventReturn="1"/>
+    </node>
+
+    <node id="1" text="Here you have it. I’ts 100 bucks, ¿cash or card?">
+        <choice id="0" option="No way I’m paying that, I’m leaving." nextNode="-1" eventReturn="1"/>
+		<choice id="0" option="Charge it on my friend Lluc account." nextNode="-1" eventReturn="1"/>
+    </node>
+
+    <node id="2" text="It will be 50 bucks, ¿cash or card?">
+        <choice id="0" option="Wow, I didn’t know the little umbrellas prize got raised again, cash." nextNode="-1"  eventReturn="1"/>
+    </node>
+   
+    <node id="-1" text ="Good. ¡Have a good day!"></node>
+  </dialogueTree>
+  
+  <!--Sera (Herreria)-->
+  <dialogueTree ID="2">
+	<node id="0" text="Welcome to the village smithing shop. ¿Need anything?">
+		<choice id="0" option="Yes, one Glock with 40 calibear rounds and some magazines, please." nextNode="1" eventReturn="1"/>
+		<choice id="1" option="I would like to buy some armor." nextNode="-2" eventReturn="1"/>
+	</node>
+
+	<node id="1" text="All of it costs 9.99 bucks. ¿Can I ask you what use are you going to give it?">
+		<choice id="0" option="I gotta visit some friend that owes me money." nextNode="-1" eventReturn="1"/>
+		<choice id="1" option="I’m pretending to turn this game into an FPS, I don’t really like RPG games." nextNode="-1" eventReturn="1"/>
+	</node>
+
+	<node id="-1" text ="Alright then. ¡Come back soon!"></node>
+
+	<node id="-2" text="I’m sorry, but now we are out of stock. Maybe you can come again when alpha is released. ¡Come back soon!"></node>
+	</dialogueTree>
+
+  <!--Timmy (Ninio)-->
+  <dialogueTree ID="3">
+	<node id="0" text="Hi, I lost my soccer ball and I don’t know where is it. Would you help me finding it?">
+		<choice id="0" option="¿Where did you see it the last time?" nextNode="1" eventReturn="1"/>
+		<choice id="1" option="Sorry kid, I must go to home. The Barça-Madrid is about to start on TV." nextNode="-2" eventReturn="1"/>
+	</node>
+
+	<node id="1" text="I was playing near tho the woods and suddenly it disapeared. If you find it I will give you something I found wandering there.">
+		<choice id="0" option="Deal, when the developers decide to start working on sidequests I’ll go and search for it." nextNode="-1" eventReturn="1"/>
+		<choice id="1" option="I have changed my mind. Try to get another guy to help you." nextNode="-2" eventReturn="1"/>
+	</node>
+
+	<node id="-1" text ="I don’t know what this developer thing means, but thank you."></node>
+
+	<node id="-2" text="Oh, it’s okay. I will keep looking for it myself."></node>
+  </dialogueTree>
+	
+</dialogues>
+
