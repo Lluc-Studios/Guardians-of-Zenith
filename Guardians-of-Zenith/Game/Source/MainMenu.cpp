@@ -37,6 +37,7 @@ bool MainMenu::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool MainMenu::Start()
 {
+	//mainmenu = app->tex->Load("Assets/Textures/main_menu.png");
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
 	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
