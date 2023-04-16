@@ -121,6 +121,8 @@ private:
 	float C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
 	const char* C1A2name = "thrust";
 
+	bool C1Block = false;
+
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
 	float C2MMP = 250, C2CMP = 100;
@@ -134,6 +136,8 @@ private:
 
 	float C2A2lvl = 1, C2A2target = 1, C2A2dmg = 30, C2A2mp = 25;
 	const char* C2A2name = "tidalwave";
+
+	bool C2Block = false;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
@@ -149,6 +153,7 @@ private:
 	float C3A2lvl = 1, C3A2target = 1, C3A2dmg = 35, C3A2mp = 20;
 	const char* C3A2name = "multishot";
 
+	bool C3Block = false;
 
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800;

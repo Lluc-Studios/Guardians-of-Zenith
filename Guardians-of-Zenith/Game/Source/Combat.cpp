@@ -15,6 +15,7 @@
 
 #include "Defs.h"
 #include "Log.h"
+#include "time.h"
 
 Combat::Combat() : Module()
 {
@@ -48,6 +49,8 @@ bool Combat::Start()
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	//Random number generation
+	srand((unsigned int)time(NULL));
 
 	return true;
 }
@@ -407,7 +410,18 @@ bool Combat::Update(float dt)
 					cd = 1;
 				}
 				if (option == COMBATMENU::DEFEND) {
-
+					if (Turn[0] == 1) {
+						C1Block = true;
+						FinishTurn();
+					}
+					else if (Turn[0] == 2) {
+						C2Block = true;
+						FinishTurn();
+					}
+					else if (Turn[0] == 3) {
+						C3Block = true;
+						FinishTurn();
+					}
 				}
 				if (option == COMBATMENU::INVENTORY) {
 
@@ -639,13 +653,17 @@ bool Combat::Update(float dt)
 			if (Turn[0] == 6) {
 				if (EnemyAttackTarget == 1) {
 					if (EnemyAttackNum == 1) {
-						C1CHP = C1CHP - (E3A1dmg * (E3ATK / C1DEF));
+						int block = 1;
+						if (C1Block == true) block = 3;
+						C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF)) / block);
 						Cname = C1NAME;
 						Ename = E3name;
 						Aname = E3A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C1CHP = C1CHP - (E3A2dmg * (E3ATK / C1DEF));
+						int block = 1;
+						if (C1Block == true) block = 3;
+						C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF)) / block);
 						Cname = C1NAME;
 						Ename = E3name;
 						Aname = E3A2name;
@@ -653,13 +671,17 @@ bool Combat::Update(float dt)
 				}
 				if (EnemyAttackTarget == 2) {
 					if (EnemyAttackNum == 1) {
-						C2CHP = C2CHP - (E3A1dmg * (E3ATK / C2DEF));
+						int block = 1;
+						if (C2Block == true) block = 3;
+						C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF)) / block);
 						Cname = C2NAME;
 						Ename = E3name;
 						Aname = E3A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C2CHP = C2CHP - (E3A2dmg * (E3ATK / C2DEF));
+						int block = 1;
+						if (C2Block == true) block = 3;
+						C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF)) / block);
 						Cname = C2NAME;
 						Ename = E3name;
 						Aname = E3A2name;
@@ -667,13 +689,17 @@ bool Combat::Update(float dt)
 				}
 				if (EnemyAttackTarget == 3) {
 					if (EnemyAttackNum == 1) {
-						C3CHP = C3CHP - (E3A1dmg * (E3ATK / C3DEF));
+						int block = 1;
+						if (C3Block == true) block = 3;
+						C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF)) / block);
 						Cname = C3NAME;
 						Ename = E3name;
 						Aname = E3A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C3CHP = C3CHP - (E3A2dmg * (E3ATK / C3DEF));
+						int block = 1;
+						if (C3Block == true) block = 3;
+						C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF)) / block);
 						Cname = C3NAME;
 						Ename = E3name;
 						Aname = E3A2name;
@@ -683,13 +709,17 @@ bool Combat::Update(float dt)
 			else if (Turn[0] == 5) {
 				if (EnemyAttackTarget == 1) {
 					if (EnemyAttackNum == 1) {
-						C1CHP = C1CHP - (E2A1dmg * (E2ATK / C1DEF));
+						int block = 1;
+						if (C1Block == true) block = 3;
+						C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF)) / block);
 						Cname = C1NAME;
 						Ename = E2name;
 						Aname = E2A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C1CHP = C1CHP - (E2A2dmg * (E2ATK / C1DEF));
+						int block = 1;
+						if (C1Block == true) block = 3;
+						C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF)) / block);
 						Cname = C1NAME;
 						Ename = E2name;
 						Aname = E2A2name;
@@ -697,13 +727,17 @@ bool Combat::Update(float dt)
 				}
 				if (EnemyAttackTarget == 2) {
 					if (EnemyAttackNum == 1) {
-						C2CHP = C2CHP - (E2A1dmg * (E2ATK / C2DEF));
+						int block = 1;
+						if (C2Block == true) block = 3;
+						C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF)) / block);
 						Cname = C2NAME;
 						Ename = E2name;
 						Aname = E2A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C2CHP = C2CHP - (E2A2dmg * (E2ATK / C2DEF));
+						int block = 1;
+						if (C2Block == true) block = 3;
+						C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF)) / block);
 						Cname = C2NAME;
 						Ename = E2name;
 						Aname = E2A2name;
@@ -711,13 +745,17 @@ bool Combat::Update(float dt)
 				}
 				if (EnemyAttackTarget == 3) {
 					if (EnemyAttackNum == 1) {
-						C3CHP = C3CHP - (E2A1dmg * (E2ATK / C3DEF));
+						int block = 1;
+						if (C3Block == true) block = 3;
+						C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF)) / block);
 						Cname = C3NAME;
 						Ename = E2name;
 						Aname = E2A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C3CHP = C3CHP - (E2A2dmg * (E2ATK / C3DEF));
+						int block = 1;
+						if (C3Block == true) block = 3;
+						C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF)) / block);
 						Cname = C3NAME;
 						Ename = E2name;
 						Aname = E2A2name;
@@ -727,13 +765,17 @@ bool Combat::Update(float dt)
 			else if (Turn[0] == 4) {
 				if (EnemyAttackTarget == 1) {
 					if (EnemyAttackNum == 1) {
-						C1CHP = C1CHP - (E1A1dmg * (E1ATK / C1DEF));
+						int block = 1;
+						if (C1Block == true) block = 3;
+						C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF)) / block);
 						Cname = C1NAME;
 						Ename = E1name;
 						Aname = E1A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C1CHP = C1CHP - (E1A2dmg * (E1ATK / C1DEF));
+						int block = 1;
+						if (C1Block == true) block = 3;
+						C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF)) / block);
 						Cname = C1NAME;
 						Ename = E1name;
 						Aname = E1A2name;
@@ -741,13 +783,17 @@ bool Combat::Update(float dt)
 				}
 				if (EnemyAttackTarget == 2) {
 					if (EnemyAttackNum == 1) {
-						C2CHP = C2CHP - (E1A1dmg * (E1ATK / C2DEF));
+						int block = 1;
+						if (C2Block == true) block = 3;
+						C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF)) / block);
 						Cname = C2NAME;
 						Ename = E1name;
 						Aname = E1A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C2CHP = C2CHP - (E1A2dmg * (E1ATK / C2DEF));
+						int block = 1;
+						if (C2Block == true) block = 3;
+						C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF)) / block);
 						Cname = C2NAME;
 						Ename = E1name;
 						Aname = E1A2name;
@@ -755,13 +801,17 @@ bool Combat::Update(float dt)
 				}
 				if (EnemyAttackTarget == 3) {
 					if (EnemyAttackNum == 1) {
-						C3CHP = C3CHP - (E1A1dmg * (E1ATK / C3DEF));
+						int block = 1;
+						if (C3Block == true) block = 3;
+						C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF)) / block);
 						Cname = C3NAME;
 						Ename = E1name;
 						Aname = E1A1name;
 					}
 					if (EnemyAttackNum == 2) {
-						C3CHP = C3CHP - (E1A2dmg * (E1ATK / C3DEF));
+						int block = 1;
+						if (C3Block == true) block = 3;
+						C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF)) / block);
 						Cname = C3NAME;
 						Ename = E1name;
 						Aname = E1A2name;
@@ -847,6 +897,15 @@ void Combat::FinishTurn()
 			Turn[i] = Aux;
 		}
 	};
+	if (Turn[0] == 1) {
+		C1Block = false;
+	}
+	if (Turn[0] == 2) {
+		C2Block = false;
+	}
+	if (Turn[0] == 3) {
+		C3Block = false;
+	}
 	AttackMenu = false;
 	EnemySelect = false;
 	option = COMBATMENU::ATTACK;
