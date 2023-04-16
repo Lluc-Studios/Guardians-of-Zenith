@@ -61,6 +61,8 @@ public:
 
 	void TurnOrder();
 
+	void RemoveEntityFromList(int id);
+
 	void LoadLaurea(Player::Laurea laurea);
 	void LoadLapis(Player::Lapis lapis);
 	void LoadLucca(Player::Lucca lucca);
@@ -121,7 +123,7 @@ private:
 	float C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
 	const char* C1A2name = "thrust";
 
-	bool C1Block = false;
+	bool C1Block = false, C1dead = false;
 
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
@@ -137,7 +139,7 @@ private:
 	float C2A2lvl = 1, C2A2target = 1, C2A2dmg = 30, C2A2mp = 25;
 	const char* C2A2name = "tidalwave";
 
-	bool C2Block = false;
+	bool C2Block = false, C2dead = false;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
@@ -153,7 +155,7 @@ private:
 	float C3A2lvl = 1, C3A2target = 1, C3A2dmg = 35, C3A2mp = 20;
 	const char* C3A2name = "multishot";
 
-	bool C3Block = false;
+	bool C3Block = false, C3dead = false;
 
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800;
@@ -174,6 +176,7 @@ private:
 	const char* E1A4name;
 	float E1A4dmg, E1A4target;
 
+	bool E1dead = false;
 
 	//Enemy2
 	float E2MHP = 1000, E2CHP = 1000;
@@ -194,6 +197,8 @@ private:
 	const char* E2A4name;
 	float E2A4dmg, E2A4target;
 
+	bool E2dead = false;
+
 	//Enemy3
 	float E3MHP = 1000, E3CHP = 150;
 	float E3ATK, E3DEF, E3EXP;
@@ -213,7 +218,9 @@ private:
 	const char* E3A4name;
 	float E3A4dmg, E3A4target;
 
+	bool E3dead = false;
 
+	//Other variables
 
 	int idCount = 3;
 
@@ -221,7 +228,6 @@ private:
 	bool InCombat = false;
 
 	int CurrentCharacters = 0, CurrentEnemies = 0;
-
 
 	// 1-3 = ally, 4-6 = enemy
 	int Turn[6] = { 1, 4, 5, 2, 6, 3 };

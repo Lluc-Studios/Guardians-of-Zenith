@@ -158,13 +158,17 @@ bool Combat::Update(float dt)
 
 		//Draw turns
 		for (int i = 0; i < 6; i++) {
-			if (Turn[i] <= 3) {
+			if (Turn[i] >= 1 && Turn[i] <= 3) {
 				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
 				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 0, 200, 0);
 			}
 			else if (Turn[i] >= 4) {
 				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
 				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
+			}
+			else if (Turn[i] == 0) {
+				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 50, 50, 50);
 			}
 		}
 
@@ -295,15 +299,69 @@ bool Combat::Update(float dt)
 			}
 		}
 		//Make sure player hp does not go below 0
-		if (C1CHP < 0) {
+		if (C1CHP <= 0) {
 			C1CHP = 0;
 		}
-		if (C2CHP < 0) {
+		if (C2CHP <= 0) {
 			C2CHP = 0;
 		}
-		if (C3CHP < 0) {
+		if (C3CHP <= 0) {
 			C3CHP = 0;
 		}
+		if (E1CHP <= 0) {
+			E1CHP = 0;
+		}
+		if (E2CHP <= 0) {
+			E2CHP = 0;
+		}
+		if (E3CHP <= 0) {
+			E3CHP = 0;
+		}
+
+		if (C1CHP <= 0 && C1dead == false) {
+			C1dead = true;
+			RemoveEntityFromList(1);
+		}
+		if (C2CHP <= 0 && C2dead == false) {
+			C2dead = true;
+			RemoveEntityFromList(2);
+		}
+		if (C3CHP <= 0 && C3dead == false) {
+			C3dead = true;
+			RemoveEntityFromList(3);
+		}
+		if (E1CHP <= 0 && E1dead == false) {
+			E1dead = true;
+			RemoveEntityFromList(4);
+		}
+		if (E2CHP <= 0 && E2dead == false) {
+			E2dead = true;
+			RemoveEntityFromList(5);
+		}
+		if (E3CHP <= 0 && E3dead == false) {
+			E3dead = true;
+			RemoveEntityFromList(6);
+		}
+
+		//if (Turn[0] == 1) {
+
+		//}
+		//if (Turn[0] == 2) {
+
+		//}
+		//if (Turn[0] == 3) {
+
+		//}
+		//if (Turn[0] == 4) {
+
+		//}
+		//if (Turn[0] == 5) {
+
+		//}
+		//if (Turn[0] == 6) {
+
+		//}
+
 	}
 
 	//Load the characters attacks
@@ -829,16 +887,7 @@ bool Combat::Update(float dt)
 			FinishTurn();
 		}
 	}
-	if (Turn[0] >= 4) {
-		option = COMBATMENU::NONE;
-		////Temporal action
-		//count++;
-		//if (count >= 40) {
-		//	count = 0;
-		//	FinishTurn();
-		//}
-	}
-
+	if (Turn[0] >= 4) option = COMBATMENU::NONE;
 
 	return true;
 }
@@ -884,6 +933,12 @@ void Combat::ExitCombat()
 	CurrentCharacters = 0;
 	CurrentEnemies = 0;
 	TeamTurn = 0;
+	C1dead = false;
+	C2dead = false;
+	C3dead = false;
+	E1dead = false;
+	E2dead = false;
+	E3dead = false;
 }
 
 void Combat::FinishTurn()
@@ -1099,4 +1154,10 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 	}
 }
 
-
+void Combat::RemoveEntityFromList(int id) {
+	for (int i = 0; i < 6; i++) {
+		if (Turn[i] == id) {
+			Turn[i] = 0;
+		}
+	}
+}
