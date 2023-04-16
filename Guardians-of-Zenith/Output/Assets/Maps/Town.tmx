@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="70" height="53" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="175">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="70" height="53" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="182">
  <tileset firstgid="1" name="Tileset_House" tilewidth="32" tileheight="32" tilecount="920" columns="40">
   <image source="Main Tilesets/Tileset_House.png" width="1280" height="736"/>
  </tileset>
@@ -1748,7 +1748,7 @@
    <tile gid="927"/>
    <tile gid="928"/>
    <tile gid="927"/>
-   <tile gid="928"/>
+   <tile gid="993"/>
    <tile gid="978"/>
    <tile gid="979"/>
    <tile gid="927"/>
@@ -1818,7 +1818,7 @@
    <tile gid="943"/>
    <tile gid="944"/>
    <tile gid="943"/>
-   <tile gid="944"/>
+   <tile gid="993"/>
    <tile gid="993"/>
    <tile gid="995"/>
    <tile gid="943"/>
@@ -14881,7 +14881,7 @@
   <object id="6" x="1535.33" y="4.12055" width="705.333" height="442.545"/>
   <object id="7" x="1918" y="442.666" width="322.667" height="993.334"/>
   <object id="8" x="416.667" y="413" width="161.333" height="159"/>
-  <object id="9" x="626.333" y="696.666" width="154.333" height="198"/>
+  <object id="9" x="628.333" y="696.666" width="150.878" height="116.182"/>
   <object id="12" x="1023.33" y="866.666" width="28.3333" height="29.667"/>
   <object id="13" x="1184.83" y="736.167" width="28.3333" height="29.667"/>
   <object id="14" x="479.166" y="1149.17" width="162" height="156.667"/>
@@ -14894,7 +14894,7 @@
   <object id="24" x="1211.33" y="1084.17" width="164.666" height="158.667"/>
   <object id="26" x="1373.33" y="574.167" width="161.333" height="160.667"/>
   <object id="27" x="1665.32" y="894.917" width="31.333" height="29.667"/>
-  <object id="28" x="1695" y="712.167" width="161.333" height="181.667"/>
+  <object id="28" x="1696.5" y="712.167" width="159.333" height="126.417"/>
   <object id="46" x="894.833" y="801.167" width="28.3333" height="29.667"/>
   <object id="47" x="863.833" y="864.167" width="28.3333" height="29.667"/>
   <object id="48" x="669.833" y="1027.17" width="28.3333" height="29.667"/>
@@ -15089,17 +15089,24 @@
   <object id="172" x="1413.2" y="1420.08" width="23.606" height="17.8488"/>
   <object id="173" x="1284.2" y="1417.08" width="23.606" height="17.8488"/>
   <object id="174" x="1217.2" y="1416.08" width="23.606" height="17.8488"/>
+  <object id="175" x="640.379" y="812.818" width="127.423" height="36.3638"/>
+  <object id="176" x="645.016" y="849.091" width="29.0366" height="46.85"/>
+  <object id="177" x="702.169" y="849.273" width="60.7478" height="46.676"/>
+  <object id="178" x="673.84" y="848.7" width="29.0366" height="15.2818"/>
+  <object id="179" x="1700.09" y="836.61" width="151.759" height="30.2352"/>
+  <object id="180" x="1700.09" y="865.666" width="31.9939" height="30.3289"/>
+  <object id="181" x="1758.5" y="865.757" width="93.3333" height="30.2039"/>
  </objectgroup>
- <objectgroup id="7" name="Tavern_Entry" visible="0">
+ <objectgroup id="7" name="Tavern_Entry">
   <properties>
    <property name="Type" type="int" value="8"/>
   </properties>
-  <object id="32" x="673.333" y="863" width="30.3333" height="45.6667"/>
+  <object id="32" x="673.901" y="863" width="28.2651" height="30.3485"/>
  </objectgroup>
- <objectgroup id="6" name="SmithingShop_Entry" visible="0">
+ <objectgroup id="6" name="SmithingShop_Entry">
   <properties>
    <property name="Type" type="int" value="10"/>
   </properties>
-  <object id="30" x="1728.67" y="864.667" width="30.6667" height="44.3333"/>
+  <object id="30" x="1728.67" y="864.667" width="30.6667" height="30.5833"/>
  </objectgroup>
 </map>
