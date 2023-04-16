@@ -686,8 +686,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="141"/>
+   <tile gid="142"/>
    <tile gid="142"/>
    <tile gid="143"/>
    <tile gid="42"/>
