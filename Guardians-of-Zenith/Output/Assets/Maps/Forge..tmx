@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="1">
- <tileset firstgid="1" source="Tileset_Interiors.tsx"/>
+ <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
+  <image source="D:/UNIVERSIDAD/Proyecto 2/Guardians-of-Zenith/Guardians-of-Zenith/Output/Assets/Maps/Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
+ </tileset>
  <layer id="1" name="background" width="16" height="12">
   <data encoding="csv">
 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
@@ -70,7 +72,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,127,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,126,128,0,0,19,0,0,0,0,0,0,0,0,
+0,0,0,126,128,0,0,0,0,0,0,0,0,0,0,0,
 0,0,126,0,0,166,167,167,167,168,0,0,0,0,0,0,
 0,0,0,302,0,0,0,0,0,0,0,0,342,126,128,0,
 0,0,0,0,0,0,0,0,0,0,0,0,362,0,0,0,
