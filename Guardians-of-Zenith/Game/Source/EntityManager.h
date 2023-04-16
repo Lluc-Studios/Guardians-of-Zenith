@@ -64,9 +64,9 @@ public:
 	//CombatEnemy slimeFrog1{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
 	//CombatEnemy slimeFrog2{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
 	//CombatEnemy slimeFrog3{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
-	CombatEnemy slimeFrog1{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 0, 50, "bubbleburst", 0, 60 };
-	CombatEnemy slimeFrog2{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 0, 50, "bubbleburst", 0, 60 };
-	CombatEnemy slimeFrog3{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 0, 50, "bubbleburst", 0, 60 };
+	CombatEnemy slimeFrog1{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 50, 0, "bubbleburst", 60, 0 };
+	CombatEnemy slimeFrog2{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 50, 0, "bubbleburst", 60, 0 };
+	CombatEnemy slimeFrog3{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 50, 0, "bubbleburst", 60, 0 };
 
 
 	List<Entity*> entities;
