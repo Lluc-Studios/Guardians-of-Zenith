@@ -40,6 +40,7 @@ bool Combat::Start()
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
 	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
+	YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Character1.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Character1.png");
@@ -133,18 +134,21 @@ bool Combat::Update(float dt)
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
+				app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
 			}
 			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
+				app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 			}
 			if (option == COMBATMENU::ENEMY3 && EnemySelect == true) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,100,20 }, 255, 255, 255, WhiteFading);
+				app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 			}
 		}
 		
@@ -629,103 +633,150 @@ bool Combat::Update(float dt)
 	}
 	//Enemy action
 	if (option == COMBATMENU::NONE) {
-		int EnemyAttackTarget = rand() % CurrentCharacters + 1;
-		int EnemyAttackNum = rand() % 2 + 1;
-		if (Turn[0] == 6) {
-			if (EnemyAttackTarget == 1) {
-				if (EnemyAttackNum == 1) {
-					C1CHP = C1CHP - (E3A1dmg * (E3ATK / C1DEF));
-					FinishTurn();
+		if (EnemyAdone == false) {
+			int EnemyAttackTarget = rand() % CurrentCharacters + 1;
+			int EnemyAttackNum = rand() % 2 + 1;
+			if (Turn[0] == 6) {
+				if (EnemyAttackTarget == 1) {
+					if (EnemyAttackNum == 1) {
+						C1CHP = C1CHP - (E3A1dmg * (E3ATK / C1DEF));
+						Cname = C1NAME;
+						Ename = E3name;
+						Aname = E3A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C1CHP = C1CHP - (E3A2dmg * (E3ATK / C1DEF));
+						Cname = C1NAME;
+						Ename = E3name;
+						Aname = E3A2name;
+					}
 				}
-				if (EnemyAttackNum == 2) {
-					C1CHP = C1CHP - (E3A2dmg * (E3ATK / C1DEF));
-					FinishTurn();
+				if (EnemyAttackTarget == 2) {
+					if (EnemyAttackNum == 1) {
+						C2CHP = C2CHP - (E3A1dmg * (E3ATK / C2DEF));
+						Cname = C2NAME;
+						Ename = E3name;
+						Aname = E3A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C2CHP = C2CHP - (E3A2dmg * (E3ATK / C2DEF));
+						Cname = C2NAME;
+						Ename = E3name;
+						Aname = E3A2name;
+					}
+				}
+				if (EnemyAttackTarget == 3) {
+					if (EnemyAttackNum == 1) {
+						C3CHP = C3CHP - (E3A1dmg * (E3ATK / C3DEF));
+						Cname = C3NAME;
+						Ename = E3name;
+						Aname = E3A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C3CHP = C3CHP - (E3A2dmg * (E3ATK / C3DEF));
+						Cname = C3NAME;
+						Ename = E3name;
+						Aname = E3A2name;
+					}
 				}
 			}
-			if (EnemyAttackTarget == 2) {
-				if (EnemyAttackNum == 1) {
-					C2CHP = C2CHP - (E3A1dmg * (E3ATK / C2DEF));
-					FinishTurn();
+			else if (Turn[0] == 5) {
+				if (EnemyAttackTarget == 1) {
+					if (EnemyAttackNum == 1) {
+						C1CHP = C1CHP - (E2A1dmg * (E2ATK / C1DEF));
+						Cname = C1NAME;
+						Ename = E2name;
+						Aname = E2A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C1CHP = C1CHP - (E2A2dmg * (E2ATK / C1DEF));
+						Cname = C1NAME;
+						Ename = E2name;
+						Aname = E2A2name;
+					}
 				}
-				if (EnemyAttackNum == 2) {
-					C2CHP = C2CHP - (E3A2dmg * (E3ATK / C2DEF));
-					FinishTurn();
+				if (EnemyAttackTarget == 2) {
+					if (EnemyAttackNum == 1) {
+						C2CHP = C2CHP - (E2A1dmg * (E2ATK / C2DEF));
+						Cname = C2NAME;
+						Ename = E2name;
+						Aname = E2A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C2CHP = C2CHP - (E2A2dmg * (E2ATK / C2DEF));
+						Cname = C2NAME;
+						Ename = E2name;
+						Aname = E2A2name;
+					}
+				}
+				if (EnemyAttackTarget == 3) {
+					if (EnemyAttackNum == 1) {
+						C3CHP = C3CHP - (E2A1dmg * (E2ATK / C3DEF));
+						Cname = C3NAME;
+						Ename = E2name;
+						Aname = E2A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C3CHP = C3CHP - (E2A2dmg * (E2ATK / C3DEF));
+						Cname = C3NAME;
+						Ename = E2name;
+						Aname = E2A2name;
+					}
 				}
 			}
-			if (EnemyAttackTarget == 3) {
-				if (EnemyAttackNum == 1) {
-					C3CHP = C3CHP - (E3A1dmg * (E3ATK / C3DEF));
-					FinishTurn();
+			else if (Turn[0] == 4) {
+				if (EnemyAttackTarget == 1) {
+					if (EnemyAttackNum == 1) {
+						C1CHP = C1CHP - (E1A1dmg * (E1ATK / C1DEF));
+						Cname = C1NAME;
+						Ename = E1name;
+						Aname = E1A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C1CHP = C1CHP - (E1A2dmg * (E1ATK / C1DEF));
+						Cname = C1NAME;
+						Ename = E1name;
+						Aname = E1A2name;
+					}
 				}
-				if (EnemyAttackNum == 2) {
-					C3CHP = C3CHP - (E3A2dmg * (E3ATK / C3DEF));
-					FinishTurn();
+				if (EnemyAttackTarget == 2) {
+					if (EnemyAttackNum == 1) {
+						C2CHP = C2CHP - (E1A1dmg * (E1ATK / C2DEF));
+						Cname = C2NAME;
+						Ename = E1name;
+						Aname = E1A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C2CHP = C2CHP - (E1A2dmg * (E1ATK / C2DEF));
+						Cname = C2NAME;
+						Ename = E1name;
+						Aname = E1A2name;
+					}
+				}
+				if (EnemyAttackTarget == 3) {
+					if (EnemyAttackNum == 1) {
+						C3CHP = C3CHP - (E1A1dmg * (E1ATK / C3DEF));
+						Cname = C3NAME;
+						Ename = E1name;
+						Aname = E1A1name;
+					}
+					if (EnemyAttackNum == 2) {
+						C3CHP = C3CHP - (E1A2dmg * (E1ATK / C3DEF));
+						Cname = C3NAME;
+						Ename = E1name;
+						Aname = E1A2name;
+					}
 				}
 			}
+			EnemyAdone = true;
 		}
-		else if (Turn[0] == 5) {
-			if (EnemyAttackTarget == 1) {
-				if (EnemyAttackNum == 1) {
-					C1CHP = C1CHP - (E2A1dmg * (E2ATK / C1DEF));
-					FinishTurn();
-				}
-				if (EnemyAttackNum == 2) {
-					C1CHP = C1CHP - (E2A2dmg * (E2ATK / C1DEF));
-					FinishTurn();
-				}
-			}
-			if (EnemyAttackTarget == 2) {
-				if (EnemyAttackNum == 1) {
-					C2CHP = C2CHP - (E2A1dmg * (E2ATK / C2DEF));
-					FinishTurn();
-				}
-				if (EnemyAttackNum == 2) {
-					C2CHP = C2CHP - (E2A2dmg * (E2ATK / C2DEF));
-					FinishTurn();
-				}
-			}
-			if (EnemyAttackTarget == 3) {
-				if (EnemyAttackNum == 1) {
-					C3CHP = C3CHP - (E2A1dmg * (E2ATK / C3DEF));
-					FinishTurn();
-				}
-				if (EnemyAttackNum == 2) {
-					C3CHP = C3CHP - (E2A2dmg * (E2ATK / C3DEF));
-					FinishTurn();
-				}
-			}
-		}
-		else if (Turn[0] == 4) {
-			if (EnemyAttackTarget == 1) {
-				if (EnemyAttackNum == 1) {
-					C1CHP = C1CHP - (E1A1dmg*(E1ATK/C1DEF));
-					FinishTurn();
-				}
-				if (EnemyAttackNum == 2) {
-					C1CHP = C1CHP - (E1A2dmg * (E1ATK / C1DEF));
-					FinishTurn();
-				}
-			}
-			if (EnemyAttackTarget == 2) {
-				if (EnemyAttackNum == 1) {
-					C2CHP = C2CHP - (E1A1dmg * (E1ATK / C2DEF));
-					FinishTurn();
-				}
-				if (EnemyAttackNum == 2) {
-					C2CHP = C2CHP - (E1A2dmg * (E1ATK / C2DEF));
-					FinishTurn();
-				}
-			}
-			if (EnemyAttackTarget == 3) {
-				if (EnemyAttackNum == 1) {
-					C3CHP = C3CHP - (E1A1dmg * (E1ATK / C3DEF));
-					FinishTurn();
-				}
-				if (EnemyAttackNum == 2) {
-					C3CHP = C3CHP - (E1A2dmg * (E1ATK / C3DEF));
-					FinishTurn();
-				}
-			}
+		app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, Ename);
+		app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, WF, "used");
+		app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aname);
+		app->font->BlitText(10 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "against");
+		app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, YF, Cname);
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+			FinishTurn();
 		}
 	}
 	if (Turn[0] >= 4) {
@@ -772,7 +823,6 @@ void Combat::StartCombat()
 	LoadEnemy(app->entityManager->slimeFrog2);
 	LoadEnemy(app->entityManager->slimeFrog3);
 	TurnOrder();
-	//CurrentTurn();
 }
 
 void Combat::ExitCombat()
@@ -800,6 +850,7 @@ void Combat::FinishTurn()
 	AttackMenu = false;
 	EnemySelect = false;
 	option = COMBATMENU::ATTACK;
+	EnemyAdone = false;
 
 }
 
@@ -987,21 +1038,6 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E1A4name = enemy.A4name;
 		E1A4target = enemy.A4target;
 	}
-}
-
-//void Combat::CurrentTurn()
-//{
-//	if (Turn[0] < 4) {
-//		TeamTurn = 1;
-//	}
-//	else {
-//		TeamTurn = 2;
-//	}
-//}
-
-void Combat::PerformAction() 
-{
-
 }
 
 

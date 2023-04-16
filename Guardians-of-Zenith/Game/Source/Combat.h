@@ -61,16 +61,12 @@ public:
 
 	void TurnOrder();
 
-	void PerformAction();
-
 	void LoadLaurea(Player::Laurea laurea);
 	void LoadLapis(Player::Lapis lapis);
 	void LoadLucca(Player::Lucca lucca);
 	void LoadEnemy(EntityManager::CombatEnemy enemy);
 
 public:
-	//Temporal variable
-	//int count = 0;
 
 	COMBATMENU option = COMBATMENU::ATTACK;
 
@@ -85,12 +81,19 @@ public:
 	bool AttackMenu = false;
 	bool EnemySelect = false;
 
+	bool EnemyAdone = false;
+
 	const char* Attack1;
 	const char* Attack2;
 	const char* Attack3;
 	const char* Attack4;
 	const char* Attack5;
 	const char* Attack6;
+
+	//Print enemy attack
+	const char* Cname = "a";
+	const char* Ename = "a";
+	const char* Aname = "a";
 
 private:
 
@@ -209,7 +212,7 @@ private:
 
 	int idCount = 3;
 
-	int SaveInstance = 0, WF, GF;
+	int SaveInstance = 0, WF, GF, YF;
 	bool InCombat = false;
 
 	int CurrentCharacters = 0, CurrentEnemies = 0;
