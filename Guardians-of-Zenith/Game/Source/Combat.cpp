@@ -172,18 +172,18 @@ bool Combat::Update(float dt)
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 			//Int to string convert
 			char Aux[10];
-			sprintf_s(Aux, "%d", C1MHP);
+			sprintf_s(Aux, "%.0f", C1MHP);
 			app->font->BlitText(135 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
-			sprintf_s(Aux, "%d", C1CHP);
+			sprintf_s(Aux, "%.0f", C1CHP);
 			app->font->BlitText(120 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 			app->render->DrawRectangle({ app->scene->player->position.x-90,app->scene->player->position.y+115,100,10 }, 0, 0, 0);
 			//Calculate hp bar length
 			int HpBarLengthC1 = (C1CHP * 98) / C1MHP;
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 116,HpBarLengthC1,8 }, 0, 200, 0);
 			app->font->BlitText(100 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
-			sprintf_s(Aux, "%d", C1MMP);
+			sprintf_s(Aux, "%.0f", C1MMP);
 			app->font->BlitText(135 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
-			sprintf_s(Aux, "%d", C1CMP);
+			sprintf_s(Aux, "%.0f", C1CMP);
 			app->font->BlitText(120 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 			app->render->DrawRectangle({ app->scene->player->position.x-90,app->scene->player->position.y+155,100,10 }, 0, 0, 0);
 			//Calculate mp bar length
@@ -199,18 +199,18 @@ bool Combat::Update(float dt)
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 				//Int to string convert
 				char Aux[10];
-				sprintf_s(Aux, "%d", C2MHP);
+				sprintf_s(Aux, "%.0f", C2MHP);
 				app->font->BlitText(215 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
-				sprintf_s(Aux, "%d", C2CHP);
+				sprintf_s(Aux, "%.0f", C2CHP);
 				app->font->BlitText(200 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 				//Calculate hp bar length 
 				int HpBarLengthC2 = (C2CHP * 98) / C2MHP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 116,HpBarLengthC2,8 }, 0, 200, 0);
 				app->font->BlitText(180 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
-				sprintf_s(Aux, "%d", C2MMP);
+				sprintf_s(Aux, "%.0f", C2MMP);
 				app->font->BlitText(215 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
-				sprintf_s(Aux, "%d", C2CMP);
+				sprintf_s(Aux, "%.0f", C2CMP);
 				app->font->BlitText(200 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 				//Calculate mp bar length
@@ -226,18 +226,18 @@ bool Combat::Update(float dt)
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 					//Int to string convert
 					char Aux[10];
-					sprintf_s(Aux, "%d", C3MHP);
+					sprintf_s(Aux, "%.0f", C3MHP);
 					app->font->BlitText(295 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
-					sprintf_s(Aux, "%d", C3CHP);
+					sprintf_s(Aux, "%.0f", C3CHP);
 					app->font->BlitText(280 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 					//Calculate hp bar length 
 					int HpBarLengthC3 = (C3CHP * 98) / C3MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 116,HpBarLengthC3,8 }, 0, 200, 0);
 					app->font->BlitText(260 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
-					sprintf_s(Aux, "%d", C3MMP);
+					sprintf_s(Aux, "%.0f", C3MMP);
 					app->font->BlitText(295 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
-					sprintf_s(Aux, "%d", C3CMP);
+					sprintf_s(Aux, "%.0f", C3CMP);
 					app->font->BlitText(280 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 					//Calculate mp bar length
@@ -256,7 +256,7 @@ bool Combat::Update(float dt)
 			app->render->DrawTexture(Enemy1, app->scene->player->position.x + 120, app->scene->player->position.y - 75);
 			//Int to string convert
 			char Aux[10];
-			sprintf_s(Aux, "%d", E1MHP);
+			sprintf_s(Aux, "%.0f", E1MHP);
 			app->render->DrawRectangle({ app->scene->player->position.x + 120,app->scene->player->position.y - 5,64,10 }, 0, 0, 0);
 			int HpBarLengthE1 = (E1CHP * 62) / E1MHP;
 			app->render->DrawRectangle({ app->scene->player->position.x + 121,app->scene->player->position.y - 4,HpBarLengthE1,8 }, 0, 200, 0);
@@ -268,7 +268,7 @@ bool Combat::Update(float dt)
 				app->render->DrawTexture(Enemy2, app->scene->player->position.x + 200, app->scene->player->position.y - 130);
 				//Int to string convert
 				char Aux[10];
-				sprintf_s(Aux, "%d", E2MHP);
+				sprintf_s(Aux, "%.0f", E2MHP);
 				app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
 				int HpBarLengthE2 = (E2CHP * 62) / E2MHP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
@@ -280,7 +280,7 @@ bool Combat::Update(float dt)
 					app->render->DrawTexture(Enemy3, app->scene->player->position.x + 200, app->scene->player->position.y - 10);
 					//Int to string convert
 					char Aux[10];
-					sprintf_s(Aux, "%d", E3MHP);
+					sprintf_s(Aux, "%.0f", E3MHP);
 					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
 					int HpBarLengthE3 = (E3CHP * 62) / E3MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
