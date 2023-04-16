@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="17">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -389,7 +389,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="20"/>
    <tile/>
    <tile/>
    <tile/>
@@ -588,7 +588,7 @@
    <tile gid="83"/>
    <tile gid="83"/>
    <tile gid="83"/>
-   <tile gid="83"/>
+   <tile gid="20"/>
    <tile gid="83"/>
    <tile gid="83"/>
    <tile gid="83"/>
@@ -642,9 +642,10 @@
    <tile/>
    <tile gid="142"/>
    <tile gid="143"/>
+   <tile gid="42"/>
+   <tile/>
    <tile gid="165"/>
    <tile/>
-   <tile gid="101"/>
    <tile/>
    <tile/>
    <tile/>
@@ -657,26 +658,25 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile gid="185"/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="63"/>
    <tile/>
    <tile gid="185"/>
    <tile/>
    <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="63"/>
+   <tile/>
+   <tile gid="185"/>
    <tile/>
    <tile/>
    <tile/>
@@ -690,9 +690,9 @@
    <tile gid="162"/>
    <tile gid="162"/>
    <tile gid="162"/>
+   <tile gid="162"/>
+   <tile gid="162"/>
    <tile gid="205"/>
-   <tile/>
-   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -787,7 +787,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="20"/>
    <tile/>
    <tile/>
    <tile/>
@@ -986,7 +986,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="20"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1038,7 +1038,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="341"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1054,9 +1054,9 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="361"/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="225"/>
    <tile gid="302"/>
    <tile/>
    <tile/>
@@ -1071,8 +1071,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="304"/>
+   <tile gid="225"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1085,6 +1085,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="345"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1093,8 +1094,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="325"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1174,6 +1174,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="305"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1181,8 +1182,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="20"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1194,7 +1194,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="6" name="Collisions">
+ <objectgroup id="6" name="Collisions" visible="0">
   <object id="1" x="320.727" y="89.303" width="166.167" height="62.6667"/>
   <object id="3" x="25.2726" y="24.8674" width="6.57609" height="326.542"/>
   <object id="4" x="25.0453" y="350.833" width="424.576" height="8.292">
@@ -1213,10 +1213,10 @@
   <object id="14" x="31.0415" y="159.604" width="131.917" height="21.5417"/>
   <object id="16" x="288.916" y="86.5417" width="32.167" height="40.2917"/>
  </objectgroup>
- <objectgroup id="7" name="ExitTavern" visible="0">
+ <objectgroup id="7" name="ExitTavern">
   <properties>
    <property name="Type" type="int" value="9"/>
   </properties>
-  <object id="15" x="229.667" y="67.6667" width="20.3333" height="27.6667"/>
+  <object id="15" x="193.019" y="341.991" width="30.0344" height="31.9783"/>
  </objectgroup>
 </map>
