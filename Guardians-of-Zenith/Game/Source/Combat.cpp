@@ -343,24 +343,9 @@ bool Combat::Update(float dt)
 			RemoveEntityFromList(6);
 		}
 
-		//if (Turn[0] == 1) {
-
-		//}
-		//if (Turn[0] == 2) {
-
-		//}
-		//if (Turn[0] == 3) {
-
-		//}
-		//if (Turn[0] == 4) {
-
-		//}
-		//if (Turn[0] == 5) {
-
-		//}
-		//if (Turn[0] == 6) {
-
-		//}
+		if (Turn[0] == 0) {
+			FinishTurn();
+		}
 
 	}
 
