@@ -164,6 +164,9 @@ bool Combat::Update(float dt)
 		//Draw allies and their stats
 		if (CurrentCharacters >= 1) {
 			//Draw player
+			if (Turn[0] == 1) {
+				app->render->DrawRectangle({ app->scene->player->position.x - 101 , app->scene->player->position.y - 61,64,66 }, 255, 255, 255, 120);
+			}
 			app->render->DrawTexture(Character1, app->scene->player->position.x - 100 , app->scene->player->position.y-60);
 			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME);
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
@@ -188,6 +191,9 @@ bool Combat::Update(float dt)
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 156,MpBarLengthC1,8 }, 0, 0, 200);
 			if (CurrentCharacters >= 2) {
 				//Draw player
+				if (Turn[0] == 2) {
+					app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y + 9,64,66 }, 255, 255, 255, 120);
+				}
 				app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
 				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME);
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
@@ -212,6 +218,9 @@ bool Combat::Update(float dt)
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 156,MpBarLengthC2,8 }, 0, 0, 200);
 				if (CurrentCharacters == 3) {
 					//Draw player
+					if (Turn[0] == 3) {
+						app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 121,64,66 }, 255, 255, 255, 120);
+					}
 					app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
 					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME);
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
@@ -241,6 +250,9 @@ bool Combat::Update(float dt)
 		//Draw enemies and their hp
 		if (CurrentEnemies >= 1) {
 			//Draw enemy
+			if (Turn[0] == 4) {
+				app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
+			}
 			app->render->DrawTexture(Enemy1, app->scene->player->position.x + 120, app->scene->player->position.y - 75);
 			//Int to string convert
 			char Aux[10];
@@ -250,6 +262,9 @@ bool Combat::Update(float dt)
 			app->render->DrawRectangle({ app->scene->player->position.x + 121,app->scene->player->position.y - 4,HpBarLengthE1,8 }, 0, 200, 0);
 			if (CurrentEnemies >= 2) {
 				//Draw enemy
+				if (Turn[0] == 5) {
+					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
+				}
 				app->render->DrawTexture(Enemy2, app->scene->player->position.x + 200, app->scene->player->position.y - 130);
 				//Int to string convert
 				char Aux[10];
@@ -259,6 +274,9 @@ bool Combat::Update(float dt)
 				app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
 				if (CurrentEnemies == 3) {
 					//Draw enemy
+					if (Turn[0] == 6) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+					}
 					app->render->DrawTexture(Enemy3, app->scene->player->position.x + 200, app->scene->player->position.y - 10);
 					//Int to string convert
 					char Aux[10];
@@ -357,6 +375,16 @@ bool Combat::Update(float dt)
 		if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN && TeamTurn == 1) {
 			FinishTurn();
 		}
+		if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && TeamTurn == 1) {
+			if (AttackMenu == true && EnemySelect == false) {
+				AttackMenu = false;
+				option = COMBATMENU::ATTACK;
+			}
+			else if (AttackMenu == true && EnemySelect == true) {
+				EnemySelect = false;
+				option = COMBATMENU::ATTACK1;
+			}
+		}
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && TeamTurn == 1) {
 			if (AttackMenu == false) {
 				if (option == COMBATMENU::ATTACK) {
@@ -393,31 +421,64 @@ bool Combat::Update(float dt)
 				if (option == COMBATMENU::ENEMY1) {
 					if (Turn[0] == 1) {
 						if (AttackSelected == 1) {
-							E1CHP = E1CHP - C1A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "laurea") multiplier = 2;
+							if (E1Res == "laurea") multiplier2 = 2;
+							E1CHP = E1CHP - (((C1A1dmg*(C1ATK/E1DEF))*multiplier)/multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E1CHP = E1CHP - C1A2dmg;
+						if (AttackSelected == 2 && C1CMP >= C1A2mp) {
+							C1CMP -= C1A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "laurea") multiplier = 2;
+							if (E1Res == "laurea") multiplier2 = 2;
+							E1CHP = E1CHP - (((C1A2dmg * (C1ATK / E1DEF))*multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
 					if (Turn[0] == 2) {
 						if (AttackSelected == 1) {
-							E1CHP = E1CHP - C2A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lapis") multiplier = 2;
+							if (E1Res == "lapis") multiplier2 = 2;
+							E1CHP = E1CHP - (((C2A1dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E1CHP = E1CHP - C2A2dmg;
+						if (AttackSelected == 2 && C2CMP >= C2A2mp) {
+							C2CMP -= C2A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lapis") multiplier = 2;
+							if (E1Res == "lapis") multiplier2 = 2;
+							E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+							if (E2Weak == "lapis") multiplier = 2;
+							if (E2Res == "lapis") multiplier2 = 2;
+							E2CHP = E2CHP - (((C2A2dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
+							if (E3Weak == "lapis") multiplier = 2;
+							if (E3Res == "lapis") multiplier2 = 2;
+							E3CHP = E3CHP - (((C2A2dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
 					if (Turn[0] == 3) {
 						if (AttackSelected == 1) {
-							E1CHP = E1CHP - C3A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lucca") multiplier = 2;
+							if (E1Res == "lucca") multiplier2 = 2;
+							E1CHP = E1CHP - (((C3A1dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E1CHP = E1CHP - C3A2dmg;
+						if (AttackSelected == 2 && C3CMP >= C3A2mp) {
+							C3CMP -= C3A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lucca") multiplier = 2;
+							if (E1Res == "lucca") multiplier2 = 2;
+							E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+							if (E2Weak == "lucca") multiplier = 2;
+							if (E2Res == "lucca") multiplier2 = 2;
+							E2CHP = E2CHP - (((C3A2dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+							if (E3Weak == "lucca") multiplier = 2;
+							if (E3Res == "lucca") multiplier2 = 2;
+							E3CHP = E3CHP - (((C3A2dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
@@ -425,31 +486,64 @@ bool Combat::Update(float dt)
 				if (option == COMBATMENU::ENEMY2) {
 					if (Turn[0] == 1) {
 						if (AttackSelected == 1) {
-							E2CHP = E2CHP - C1A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E2Weak == "laurea") multiplier = 2;
+							if (E2Res == "laurea") multiplier2 = 2;
+							E2CHP = E2CHP - (((C1A1dmg * (C1ATK / E2DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E2CHP = E2CHP - C1A2dmg;
+						if (AttackSelected == 2 && C1CMP >= C1A2mp) {
+							C1CMP -= C1A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E2Weak == "laurea") multiplier = 2;
+							if (E2Res == "laurea") multiplier2 = 2;
+							E2CHP = E2CHP - (((C1A2dmg * (C1ATK / E2DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
 					if (Turn[0] == 2) {
 						if (AttackSelected == 1) {
-							E2CHP = E2CHP - C2A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E2Weak == "lapis") multiplier = 2;
+							if (E2Res == "lapis") multiplier2 = 2;
+							E2CHP = E2CHP - (((C2A1dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E2CHP = E2CHP - C2A2dmg;
+						if (AttackSelected == 2 && C2CMP >= C2A2mp) {
+							C2CMP -= C2A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lapis") multiplier = 2;
+							if (E1Res == "lapis") multiplier2 = 2;
+							E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+							if (E2Weak == "lapis") multiplier = 2;
+							if (E2Res == "lapis") multiplier2 = 2;
+							E2CHP = E2CHP - (((C2A2dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
+							if (E3Weak == "lapis") multiplier = 2;
+							if (E3Res == "lapis") multiplier2 = 2;
+							E3CHP = E3CHP - (((C2A2dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
 					if (Turn[0] == 3) {
 						if (AttackSelected == 1) {
-							E2CHP = E2CHP - C3A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E2Weak == "lucca") multiplier = 2;
+							if (E2Res == "lucca") multiplier2 = 2;
+							E2CHP = E2CHP - (((C3A1dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E2CHP = E2CHP - C3A2dmg;
+						if (AttackSelected == 2 && C3CMP >= C3A2mp) {
+							C3CMP -= C3A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lucca") multiplier = 2;
+							if (E1Res == "lucca") multiplier2 = 2;
+							E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+							if (E2Weak == "lucca") multiplier = 2;
+							if (E2Res == "lucca") multiplier2 = 2;
+							E2CHP = E2CHP - (((C3A2dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+							if (E3Weak == "lucca") multiplier = 2;
+							if (E3Res == "lucca") multiplier2 = 2;
+							E3CHP = E3CHP - (((C3A2dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
@@ -457,31 +551,64 @@ bool Combat::Update(float dt)
 				if (option == COMBATMENU::ENEMY3) {
 					if (Turn[0] == 1) {
 						if (AttackSelected == 1) {
-							E3CHP = E3CHP - C1A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E3Weak == "laurea") multiplier = 2;
+							if (E3Res == "laurea") multiplier2 = 2;
+							E3CHP = E3CHP - (((C1A1dmg * (C1ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E3CHP = E3CHP - C1A2dmg;
+						if (AttackSelected == 2 && C1CMP >= C1A2mp) {
+							C1CMP -= C1A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E3Weak == "laurea") multiplier = 2;
+							if (E3Res == "laurea") multiplier2 = 2;
+							E3CHP = E3CHP - (((C1A2dmg * (C1ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
 					if (Turn[0] == 2) {
 						if (AttackSelected == 1) {
-							E3CHP = E3CHP - C2A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E3Weak == "lapis") multiplier = 2;
+							if (E3Res == "lapis") multiplier2 = 2;
+							E3CHP = E3CHP - (((C2A1dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E3CHP = E3CHP - C2A2dmg;
+						if (AttackSelected == 2 && C2CMP >= C2A2mp) {
+							C2CMP -= C2A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lapis") multiplier = 2;
+							if (E1Res == "lapis") multiplier2 = 2;
+							E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+							if (E2Weak == "lapis") multiplier = 2;
+							if (E2Res == "lapis") multiplier2 = 2;
+							E2CHP = E2CHP - (((C2A2dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
+							if (E3Weak == "lapis") multiplier = 2;
+							if (E3Res == "lapis") multiplier2 = 2;
+							E3CHP = E3CHP - (((C2A2dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
 					if (Turn[0] == 3) {
 						if (AttackSelected == 1) {
-							E3CHP = E3CHP - C2A1dmg;
+							int multiplier = 1, multiplier2 = 1;
+							if (E3Weak == "lucca") multiplier = 2;
+							if (E3Res == "lucca") multiplier2 = 2;
+							E3CHP = E3CHP - (((C3A1dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
-						if (AttackSelected == 2) {
-							E3CHP = E3CHP - C3A2dmg;
+						if (AttackSelected == 2 && C3CMP >= C3A2mp) {
+							C3CMP -= C3A2mp;
+							int multiplier = 1, multiplier2 = 1;
+							if (E1Weak == "lucca") multiplier = 2;
+							if (E1Res == "lucca") multiplier2 = 2;
+							E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+							if (E2Weak == "lucca") multiplier = 2;
+							if (E2Res == "lucca") multiplier2 = 2;
+							E2CHP = E2CHP - (((C3A2dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+							if (E3Weak == "lucca") multiplier = 2;
+							if (E3Res == "lucca") multiplier2 = 2;
+							E3CHP = E3CHP - (((C3A2dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
 							FinishTurn();
 						}
 					}
@@ -491,7 +618,7 @@ bool Combat::Update(float dt)
 		}
 	}
 	if (TeamTurn == 2) {
-
+		//Enemy action
 	}
 	if (Turn[0] >= 4) {
 		option = COMBATMENU::NONE;
@@ -600,24 +727,31 @@ void Combat::TurnOrder()
 	}
 
 	//Assigning each entity their position
+	bool C1 = false, C2 = false, C3 = false, E1 = false, E2 = false, E3 = false;
 	for (int i = 0; i < 6; i++) {
-		if (Turn[i] == C1speed) {
+		if (Turn[i] == C1speed && C1 == false) {
 			Turn[i] = 1;
+			C1 = true;
 		}
-		else if (Turn[i] == C2speed) {
+		else if (Turn[i] == C2speed && C2 == false) {
 			Turn[i] = 2;
+			C2 = true;
 		}
-		else if (Turn[i] == C3speed) {
+		else if (Turn[i] == C3speed && C3 == false) {
 			Turn[i] = 3;
+			C3 = true;
 		}
-		else if (Turn[i] == E1speed) {
+		else if (Turn[i] == E1speed && E1 == false) {
 			Turn[i] = 4;
+			E1 = true;
 		}
-		else if (Turn[i] == E2speed) {
+		else if (Turn[i] == E2speed && E2 == false) {
 			Turn[i] = 5;
+			E2 = true;
 		}
-		else if (Turn[i] == E3speed) {
+		else if (Turn[i] == E3speed && E3 == false) {
 			Turn[i] = 6;
+			E3 = true;
 		}
 	}
 }
