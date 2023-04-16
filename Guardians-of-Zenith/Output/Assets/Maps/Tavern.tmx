@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="22">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
- <layer id="1" name="Fondo" width="16" height="12">
+ <layer id="1" name="Fondo" width="16" height="13">
   <properties>
    <property name="Draw" type="bool" value="true"/>
   </properties>
@@ -200,9 +200,25 @@
    <tile gid="20"/>
    <tile gid="20"/>
    <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
+   <tile gid="20"/>
   </data>
  </layer>
- <layer id="2" name="Floor" width="16" height="12">
+ <layer id="2" name="Floor" width="16" height="13">
   <properties>
    <property name="Draw" type="bool" value="true"/>
   </properties>
@@ -388,8 +404,24 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="62"/>
+   <tile gid="62"/>
+   <tile gid="62"/>
    <tile/>
-   <tile gid="20"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -401,7 +433,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="3" name="Walls" width="16" height="12">
+ <layer id="3" name="Walls" width="16" height="13">
   <properties>
    <property name="Draw" type="bool" value="true"/>
   </properties>
@@ -586,11 +618,11 @@
    <tile gid="83"/>
    <tile gid="83"/>
    <tile gid="83"/>
-   <tile gid="83"/>
-   <tile gid="83"/>
-   <tile gid="20"/>
-   <tile gid="83"/>
-   <tile gid="83"/>
+   <tile gid="41"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="45"/>
    <tile gid="83"/>
    <tile gid="83"/>
    <tile gid="83"/>
@@ -598,9 +630,25 @@
    <tile gid="83"/>
    <tile gid="83"/>
    <tile gid="85"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="81"/>
+   <tile gid="82"/>
+   <tile/>
+   <tile gid="84"/>
+   <tile gid="85"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
   </data>
  </layer>
- <layer id="4" name="Furnitures" width="16" height="12">
+ <layer id="4" name="Furnitures" width="16" height="13">
   <properties>
    <property name="Draw" type="bool" value="true"/>
   </properties>
@@ -706,16 +754,17 @@
    <tile gid="265"/>
    <tile gid="265"/>
    <tile gid="265"/>
-   <tile/>
+   <tile gid="265"/>
+   <tile gid="265"/>
    <tile/>
    <tile gid="245"/>
    <tile gid="222"/>
    <tile gid="224"/>
    <tile gid="225"/>
    <tile/>
-   <tile/>
    <tile gid="245"/>
    <tile gid="241"/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -729,10 +778,8 @@
    <tile gid="264"/>
    <tile gid="225"/>
    <tile/>
-   <tile/>
    <tile gid="245"/>
    <tile gid="241"/>
-   <tile/>
    <tile/>
    <tile/>
    <tile gid="245"/>
@@ -746,15 +793,16 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile/>
    <tile gid="245"/>
    <tile gid="241"/>
-   <tile/>
    <tile/>
    <tile/>
    <tile gid="245"/>
    <tile gid="262"/>
    <tile gid="264"/>
    <tile gid="225"/>
+   <tile/>
    <tile/>
    <tile/>
    <tile gid="245"/>
@@ -787,7 +835,23 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="20"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -799,7 +863,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="5" name="Windows" width="16" height="12">
+ <layer id="5" name="Windows" width="16" height="13">
   <properties>
    <property name="Draw" type="bool" value="true"/>
   </properties>
@@ -986,7 +1050,23 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="20"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -998,7 +1078,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="8" name="Objects" width="16" height="12">
+ <layer id="8" name="Objects" width="16" height="13">
   <data>
    <tile/>
    <tile/>
@@ -1056,7 +1136,7 @@
    <tile/>
    <tile gid="361"/>
    <tile/>
-   <tile gid="225"/>
+   <tile/>
    <tile gid="302"/>
    <tile/>
    <tile/>
@@ -1071,8 +1151,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="304"/>
-   <tile gid="225"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -1095,6 +1175,7 @@
    <tile/>
    <tile/>
    <tile gid="325"/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -1125,13 +1206,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
    <tile gid="304"/>
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
    <tile gid="325"/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -1182,7 +1262,23 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="20"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -1194,29 +1290,52 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="6" name="Collisions" visible="0">
+ <objectgroup id="6" name="Collisions">
   <object id="1" x="320.727" y="89.303" width="166.167" height="62.6667"/>
   <object id="3" x="25.2726" y="24.8674" width="6.57609" height="326.542"/>
-  <object id="4" x="25.0453" y="350.833" width="424.576" height="8.292">
+  <object id="4" x="25.0453" y="352.083" width="134.872" height="7.042">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="5" x="160.541" y="86.6667" width="18.417" height="94.4792"/>
+  <object id="5" x="224.676" y="79.1214" width="18.417" height="94.4792"/>
   <object id="6" x="289.163" y="288.278" width="61.917" height="58.2917"/>
-  <object id="7" x="97.2233" y="255.945" width="61.917" height="58.2917"/>
+  <object id="7" x="64.3475" y="255.945" width="61.917" height="58.2917"/>
   <object id="8" x="448.962" y="151.792" width="37.9511" height="207.042"/>
-  <object id="10" x="251.167" y="25" width="76.3337" height="63.6667"/>
-  <object id="11" x="31.6665" y="25" width="196.667" height="63.6667"/>
-  <object id="12" x="228.458" y="25.1667" width="23.417" height="42"/>
-  <object id="13" x="256.996" y="191.96" width="61.917" height="58.2917"/>
-  <object id="14" x="31.0415" y="159.604" width="131.917" height="21.5417"/>
-  <object id="16" x="288.916" y="86.5417" width="32.167" height="40.2917"/>
+  <object id="11" x="31.6665" y="25" width="294.216" height="63.6667"/>
+  <object id="13" x="288.255" y="192.499" width="61.917" height="58.2917"/>
+  <object id="14" x="31.0415" y="159.604" width="212.22" height="22.6196"/>
+  <object id="16" x="287.838" y="87.0806" width="32.167" height="40.2917"/>
+  <object id="17" x="256.159" y="352.083" width="192.188" height="7.2295">
+   <properties>
+    <property name="Type" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="18" x="224.071" y="383.896" width="39.4166" height="7.07041">
+   <properties>
+    <property name="Type" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="19" x="153.118" y="384.068" width="38.6894" height="7.042">
+   <properties>
+    <property name="Type" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="20" x="153.118" y="358.324" width="6.74295" height="25.5383">
+   <properties>
+    <property name="Type" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="21" x="256.114" y="358.027" width="7.37363" height="25.7883">
+   <properties>
+    <property name="Type" type="int" value="9"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="7" name="ExitTavern">
   <properties>
    <property name="Type" type="int" value="9"/>
   </properties>
-  <object id="15" x="193.019" y="341.991" width="30.0344" height="31.9783"/>
+  <object id="15" x="191.941" y="389.957" width="31.6512" height="14.193"/>
  </objectgroup>
 </map>
