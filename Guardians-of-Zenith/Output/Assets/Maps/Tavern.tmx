@@ -1298,13 +1298,13 @@
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="5" x="224.676" y="79.1214" width="18.417" height="94.4792"/>
+  <object id="5" x="224.676" y="79.1214" width="18.3059" height="94.5014"/>
   <object id="6" x="289.163" y="288.278" width="61.917" height="58.2917"/>
   <object id="7" x="64.3475" y="255.945" width="61.917" height="58.2917"/>
   <object id="8" x="448.962" y="151.792" width="37.9511" height="207.042"/>
   <object id="11" x="31.6665" y="25" width="294.216" height="63.6667"/>
   <object id="13" x="288.255" y="192.499" width="61.917" height="58.2917"/>
-  <object id="14" x="31.0415" y="159.604" width="212.22" height="22.6196"/>
+  <object id="14" x="31.0415" y="159.604" width="211.97" height="22.6196"/>
   <object id="16" x="287.838" y="87.0806" width="32.167" height="40.2917"/>
   <object id="17" x="256.159" y="352.083" width="192.188" height="7.2295">
    <properties>

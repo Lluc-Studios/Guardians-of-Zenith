@@ -167,8 +167,8 @@ bool Player::Update()
 
 	//Tp
 	if (tp1) {
-		position.x = 240;
-		position.y = -290;
+		position.x = 210;
+		position.y = -40;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp1 = false; 
 	}
