@@ -25,6 +25,8 @@ public:
 		ENEMY1,
 		ENEMY2,
 		ENEMY3,
+		WIN,
+		LOSE,
 		NONE
 	};
 
