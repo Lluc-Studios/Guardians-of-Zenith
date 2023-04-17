@@ -92,7 +92,7 @@ bool Combat::Update(float dt)
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,100,160 }, 0, 0, 255, 150);
-		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
+		app->font->BlitText(160 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
 		if (option != COMBATMENU::NONE) {
 			if (option == COMBATMENU::ATTACK && AttackMenu == false) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
@@ -163,18 +163,43 @@ bool Combat::Update(float dt)
 
 
 		//Draw turns
+		int TurnPos = 0, auxiliarPos = 0;
 		for (int i = 0; i < 6; i++) {
-			if (Turn[i] >= 1 && Turn[i] <= 3) {
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 0, 200, 0);
+			if (Turn[i] == 0) {
+				if (C1Check == false && C1dead == true) {
+				offset++;
+				C1Check = true;
+				}
+				if (C2Check == false && C2dead == true) {
+				offset++;
+				C2Check = true;
+				}
+				if (C3Check == false && C3dead == true) {
+				offset++;
+				C3Check = true;
+				}
+				if (E1Check == false && E1dead == true) {
+				offset++;
+				E1Check = true;
+				}
+				if (E2Check == false && E2dead == true) {
+				offset++;
+				E2Check = true;
+				}
+				if (E3Check == false && E3dead == true) {
+				offset++;
+				E3Check = true;
+				}
+			}
+			else if (Turn[i] >= 1 && Turn[i] <= 3) {
+				TurnPos++;
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10),app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 39) + offset * 10),app->scene->player->position.y - 164,18,18 }, 0, 200, 0);
 			}
 			else if (Turn[i] >= 4) {
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
-			}
-			else if (Turn[i] == 0) {
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 50, 50, 50);
+				TurnPos++;
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10),app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 39) + offset * 10),app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
 			}
 		}
 
@@ -979,6 +1004,12 @@ void Combat::ExitCombat()
 	E1dead = false;
 	E2dead = false;
 	E3dead = false;
+	C1Check = false;
+	C2Check = false;
+	C3Check = false;
+	E1Check = false;
+	E2Check = false;
+	E3Check = false;
 }
 
 void Combat::FinishTurn()
