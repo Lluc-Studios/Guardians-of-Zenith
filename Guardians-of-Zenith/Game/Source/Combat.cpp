@@ -1067,9 +1067,10 @@ void Combat::StartCombat()
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
 	LoadLucca(app->scene->player->lucca);
+	//LoadEnemy(app->entityManager->waterlilyfish);
+	//LoadEnemy(app->entityManager->waterlilyfish);
+	//LoadEnemy(app->entityManager->waterlilyfish);
 	LoadEnemy(app->entityManager->slimeFrog);
-	//LoadEnemy(app->entityManager->waterlilyfish);
-	//LoadEnemy(app->entityManager->waterlilyfish);
 	LoadEnemy(app->entityManager->slimeFrog);
 	LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
@@ -1146,7 +1147,7 @@ void Combat::TurnOrder()
 	// Ordering by speed
 	while (ordered == false) {
 		int a = 0;
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			//LOG("%d %d %d %d %d %d", Turn[0], Turn[1], Turn[2], Turn[3], Turn[4], Turn[5]);
 			if (Turn[i] < Turn[i + 1]) {
 				a++;
@@ -1154,7 +1155,7 @@ void Combat::TurnOrder()
 
 			if (a == 0) ordered = true;
 		}
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			int b;
 			if (Turn[i] <= Turn[i + 1]) {
 				b = Turn[i];
