@@ -137,21 +137,27 @@ bool Combat::Update(float dt)
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
-				app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
+				if (E1dead == false) {
+					app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
+				}
 			}
 			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
-				app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
+				if (E2dead == false) {
+					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
+				}
 			}
 			if (option == COMBATMENU::ENEMY3 && EnemySelect == true) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,100,20 }, 255, 255, 255, WhiteFading);
-				app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+				if (E3dead == false) {
+					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+				}
 			}
 		}
 		
@@ -261,40 +267,46 @@ bool Combat::Update(float dt)
 		//Draw enemies and their hp
 		if (CurrentEnemies >= 1) {
 			//Draw enemy
-			if (Turn[0] == 4) {
-				app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
-			}
-			app->render->DrawTexture(Enemy1, app->scene->player->position.x + 120, app->scene->player->position.y - 75);
-			//Int to string convert
-			char Aux[10];
-			sprintf_s(Aux, "%.0f", E1MHP);
-			app->render->DrawRectangle({ app->scene->player->position.x + 120,app->scene->player->position.y - 5,64,10 }, 0, 0, 0);
-			int HpBarLengthE1 = (E1CHP * 62) / E1MHP;
-			app->render->DrawRectangle({ app->scene->player->position.x + 121,app->scene->player->position.y - 4,HpBarLengthE1,8 }, 0, 200, 0);
-			if (CurrentEnemies >= 2) {
-				//Draw enemy
-				if (Turn[0] == 5) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
+			if (E1dead == false) {
+				if (Turn[0] == 4) {
+					app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
 				}
-				app->render->DrawTexture(Enemy2, app->scene->player->position.x + 200, app->scene->player->position.y - 130);
+				app->render->DrawTexture(Enemy1, app->scene->player->position.x + 120, app->scene->player->position.y - 75);
 				//Int to string convert
 				char Aux[10];
-				sprintf_s(Aux, "%.0f", E2MHP);
-				app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
-				int HpBarLengthE2 = (E2CHP * 62) / E2MHP;
-				app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
-				if (CurrentEnemies == 3) {
-					//Draw enemy
-					if (Turn[0] == 6) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+				sprintf_s(Aux, "%.0f", E1MHP);
+				app->render->DrawRectangle({ app->scene->player->position.x + 120,app->scene->player->position.y - 5,64,10 }, 0, 0, 0);
+				int HpBarLengthE1 = (E1CHP * 62) / E1MHP;
+				app->render->DrawRectangle({ app->scene->player->position.x + 121,app->scene->player->position.y - 4,HpBarLengthE1,8 }, 0, 200, 0);
+			}
+			if (CurrentEnemies >= 2) {
+				//Draw enemy
+				if (E2dead == false) {
+					if (Turn[0] == 5) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 					}
-					app->render->DrawTexture(Enemy3, app->scene->player->position.x + 200, app->scene->player->position.y - 10);
+					app->render->DrawTexture(Enemy2, app->scene->player->position.x + 200, app->scene->player->position.y - 130);
 					//Int to string convert
 					char Aux[10];
-					sprintf_s(Aux, "%.0f", E3MHP);
-					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
-					int HpBarLengthE3 = (E3CHP * 62) / E3MHP;
-					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
+					sprintf_s(Aux, "%.0f", E2MHP);
+					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
+					int HpBarLengthE2 = (E2CHP * 62) / E2MHP;
+					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
+				}
+				if (CurrentEnemies == 3) {
+					//Draw enemy
+					if (E3dead == false) {
+						if (Turn[0] == 6) {
+							app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+						}
+						app->render->DrawTexture(Enemy3, app->scene->player->position.x + 200, app->scene->player->position.y - 10);
+						//Int to string convert
+						char Aux[10];
+						sprintf_s(Aux, "%.0f", E3MHP);
+						app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
+						int HpBarLengthE3 = (E3CHP * 62) / E3MHP;
+						app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
+					}
 				}
 			}
 		}
@@ -489,7 +501,7 @@ bool Combat::Update(float dt)
 			}
 			//Perform the attack
 			if (EnemySelect == true && cd == 0) {
-				if (option == COMBATMENU::ENEMY1) {
+				if (option == COMBATMENU::ENEMY1 && E1dead == false) {
 					if (Turn[0] == 1) {
 						if (AttackSelected == 1) {
 							int multiplier = 1, multiplier2 = 1;
@@ -554,7 +566,7 @@ bool Combat::Update(float dt)
 						}
 					}
 				}
-				if (option == COMBATMENU::ENEMY2) {
+				if (option == COMBATMENU::ENEMY2 && E2dead == false) {
 					if (Turn[0] == 1) {
 						if (AttackSelected == 1) {
 							int multiplier = 1, multiplier2 = 1;
@@ -619,7 +631,7 @@ bool Combat::Update(float dt)
 						}
 					}
 				}
-				if (option == COMBATMENU::ENEMY3) {
+				if (option == COMBATMENU::ENEMY3 && E3dead == false) {
 					if (Turn[0] == 1) {
 						if (AttackSelected == 1) {
 							int multiplier = 1, multiplier2 = 1;
@@ -693,6 +705,15 @@ bool Combat::Update(float dt)
 		if (EnemyAdone == false) {
 			int EnemyAttackTarget = rand() % CurrentCharacters + 1;
 			int EnemyAttackNum = rand() % 2 + 1;
+			if (EnemyAttackTarget == 1 && C1dead == true) {
+				EnemyAttackTarget = 2;
+			}
+			if (EnemyAttackTarget == 2 && C2dead == true) {
+				EnemyAttackTarget = 3;
+			}
+			if (EnemyAttackTarget == 3 && C3dead == true) {
+				EnemyAttackTarget = 1;
+			}
 			if (Turn[0] == 6) {
 				if (EnemyAttackTarget == 1) {
 					if (EnemyAttackNum == 1) {
