@@ -336,13 +336,13 @@ bool Combat::Update(float dt)
 				if (E2dead == false) {
 					//Draw enemy class
 					SDL_Texture* E2 = app->tex->Load("Assets/Textures/YELLOW.png");
-					if (E1class == 1) {
+					if (E2class == 1) {
 						E2 = ClassTank;
 					}
-					if (E1class == 2) {
+					if (E2class == 2) {
 						E2 = ClassMage;
 					}
-					if (E1class == 3) {
+					if (E2class == 3) {
 						E2 = ClassArcher;
 					}
 					app->render->DrawTexture(E2, app->scene->player->position.x + 180, app->scene->player->position.y - 63);
@@ -361,14 +361,14 @@ bool Combat::Update(float dt)
 					//Draw enemy
 					if (E3dead == false) {
 						//Draw enemy class
-						SDL_Texture* E3 = app->tex->Load("Assets/Textures/BLUE.png");
-						if (E1class == 1) {
+						SDL_Texture* E3 = app->tex->Load("Assets/Textures/YELLOW.png");
+						if (E3class == 1) {
 							E3 = ClassTank;
 						}
-						if (E1class == 2) {
+						if (E3class == 2) {
 							E3 = ClassMage;
 						}
-						if (E1class == 3) {
+						if (E3class == 3) {
 							E3 = ClassArcher;
 						}
 						app->render->DrawTexture(E3, app->scene->player->position.x + 180, app->scene->player->position.y + 57);
@@ -1068,10 +1068,10 @@ void Combat::StartCombat()
 	LoadLapis(app->scene->player->lapis);
 	LoadLucca(app->scene->player->lucca);
 	LoadEnemy(app->entityManager->slimeFrog);
-	LoadEnemy(app->entityManager->waterlilyfish);
-	LoadEnemy(app->entityManager->waterlilyfish);
-	//LoadEnemy(app->entityManager->slimeFrog);
-	//LoadEnemy(app->entityManager->slimeFrog);
+	//LoadEnemy(app->entityManager->waterlilyfish);
+	//LoadEnemy(app->entityManager->waterlilyfish);
+	LoadEnemy(app->entityManager->slimeFrog);
+	LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
 }
 
