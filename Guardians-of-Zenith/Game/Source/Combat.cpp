@@ -44,7 +44,7 @@ bool Combat::Start()
 	YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Character1.png");
-	Character2 = app->tex->Load("Assets/Entities/Characters/Character1.png");
+	Character2 = app->tex->Load("Assets/Entities/Characters/Character2.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Character1.png");
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
