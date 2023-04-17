@@ -174,19 +174,19 @@ bool Player::Update()
 	}
 	if (tp2) {
 		position.x = 690;
-		position.y = 800;
+		position.y = 900;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp2 = false;
 	}
 	if (tp3) {
-		position.x = 185;
-		position.y = -175;
+		position.x = 240;
+		position.y = -460;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp3 = false;
 	}
 	if (tp4) {
-		position.x = 1015;
-		position.y = 190;
+		position.x = 1745;
+		position.y = 910;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp4 = false;
 	}
@@ -449,6 +449,9 @@ bool Player::SaveState(pugi::xml_node& data) {
 void Player::Move() {
 
 	float speed = 5;
+	if (app->Instance == 0) {
+		speed = 10;
+	}
 	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(0, 0);

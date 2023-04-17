@@ -91,6 +91,7 @@ bool Scene::Start()
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
 	app->tavern->Load();
+	app->blacksmith->Load();
 	// L04: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
 		app->map->mapData.width,
@@ -168,9 +169,9 @@ bool Scene::Update(float dt)
 		app->tavern->Draw();
 	}
 	//DO NOT TOUCH!!!
-	//if (app->Instance == 2) {
-	//	app->blacksmith->Draw();
-	//}
+	if (app->Instance == 2) {
+		app->blacksmith->Draw();
+	}
 	//if (app->Instance == 3) {
 	//	app->house->Draw();
 	//}
