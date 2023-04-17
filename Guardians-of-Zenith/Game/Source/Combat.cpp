@@ -52,6 +52,8 @@ bool Combat::Start()
 	ClassTank = app->tex->Load("Assets/Textures/YELLOW.png");
 	ClassMage = app->tex->Load("Assets/Textures/BLUE.png");
 	ClassArcher = app->tex->Load("Assets/Textures/GREEN.png");
+	ClassChart = app->tex->Load("Assets/Textures/ClassChart.png");
+
 	//Random number generation
 	srand((unsigned int)time(NULL));
 
@@ -94,6 +96,7 @@ bool Combat::Update(float dt)
 		}
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
+		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,100,160 }, 0, 0, 255, 150);
 		app->font->BlitText(160 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
 		if (option != COMBATMENU::NONE) {

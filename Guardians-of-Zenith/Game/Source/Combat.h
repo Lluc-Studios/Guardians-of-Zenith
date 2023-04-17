@@ -114,6 +114,7 @@ private:
 	SDL_Texture* ClassTank;
 	SDL_Texture* ClassMage;
 	SDL_Texture* ClassArcher;
+	SDL_Texture* ClassChart;
 
 	//Character1
 	float C1MHP = 1000, C1CHP = 900;
