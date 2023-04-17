@@ -79,6 +79,7 @@ public:
 
 	SDL_Texture* BG;
 
+	//Class types: 1 = Tank, 2 = Mage, 3 = Archer
 	//Decides whose turn is it, 0 = none, 1 = ally, 2 = enemy
 	bool TeamTurn = 1;
 
@@ -110,6 +111,9 @@ private:
 	SDL_Texture* Enemy1;
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
+	SDL_Texture* ClassTank;
+	SDL_Texture* ClassMage;
+	SDL_Texture* ClassArcher;
 
 	//Character1
 	float C1MHP = 1000, C1CHP = 900;
@@ -118,6 +122,7 @@ private:
 	float C1speed = 0;
 	const char* C1NAME;
 	float C1lvl;
+	int C1class = 1;
 
 	float C1A1lvl = 1, C1A1target = 0, C1A1dmg = 20, C1A1mp = 0;
 	const char* C1A1name = "swordattack";
@@ -134,6 +139,7 @@ private:
 	float C2speed = 0;
 	const char* C2NAME;
 	float C2lvl;
+	int C2class = 2;
 
 	float C2A1lvl = 1, C2A1target = 0, C2A1dmg = 20, C2A1mp = 0;
 	const char* C2A1name = "staffattack";
@@ -150,6 +156,7 @@ private:
 	float C3speed = 0;
 	const char* C3NAME;
 	float C3lvl;
+	int C3class = 3;
 
 	float C3A1lvl = 1, C3A1target = 0, C3A1dmg = 20, C3A1mp = 0;
 	const char* C3A1name = "arrowshot";
@@ -163,6 +170,7 @@ private:
 	float E1MHP = 1000, E1CHP = 800;
 	float E1ATK, E1DEF, E1EXP;
 	float E1speed = 0;
+	int E1class = 1;
 	const char* E1Weak;
 	const char* E1Res;
 	const char* E1name;
@@ -184,6 +192,7 @@ private:
 	float E2MHP = 1000, E2CHP = 1000;
 	float E2ATK, E2DEF, E2EXP;
 	float E2speed = 0;
+	int E2class = 1;
 	const char* E2Weak;
 	const char* E2Res;
 	const char* E2name;
@@ -205,6 +214,7 @@ private:
 	float E3MHP = 1000, E3CHP = 150;
 	float E3ATK, E3DEF, E3EXP;
 	float E3speed = 0;
+	int E3class = 1;
 	const char* E3Weak;
 	const char* E3Res;
 	const char* E3name;

@@ -49,6 +49,9 @@ bool Combat::Start()
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	ClassTank = app->tex->Load("Assets/Textures/YELLOW.png");
+	ClassMage = app->tex->Load("Assets/Textures/BLUE.png");
+	ClassArcher = app->tex->Load("Assets/Textures/GREEN.png");
 	//Random number generation
 	srand((unsigned int)time(NULL));
 
@@ -213,6 +216,7 @@ bool Combat::Update(float dt)
 				app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
 			}
 			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME);
+			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 			//Int to string convert
 			char Aux[10];
@@ -242,6 +246,7 @@ bool Combat::Update(float dt)
 					app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
 				}
 				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME);
+				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 				//Int to string convert
 				char Aux[10];
@@ -271,6 +276,7 @@ bool Combat::Update(float dt)
 						app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
 					}
 					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME);
+					app->render->DrawTexture(ClassArcher, app->scene->player->position.x + 210, app->scene->player->position.y + 77);
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 					//Int to string convert
 					char Aux[10];
@@ -299,20 +305,44 @@ bool Combat::Update(float dt)
 		if (CurrentEnemies >= 1) {
 			//Draw enemy
 			if (E1dead == false) {
-				if (Turn[0] == 4) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
+				//Draw enemy class
+				SDL_Texture* E1 = app->tex->Load("Assets/Textures/YELLOW.png");
+				if (E1class == 1) {
+					E1 = ClassTank;
 				}
-				app->render->DrawTexture(Enemy1, app->scene->player->position.x + 120, app->scene->player->position.y - 75);
+				if (E1class == 2) {
+					E1 = ClassMage;
+				}
+				if (E1class == 3) {
+					E1 = ClassArcher;
+				}
+				app->render->DrawTexture(E1, app->scene->player->position.x + 95, app->scene->player->position.y - 3);
+				if (Turn[0] == 4) {
+					app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+				}
+				app->render->DrawTexture(Enemy1, app->scene->player->position.x + 115, app->scene->player->position.y - 70);
 				//Int to string convert
 				char Aux[10];
 				sprintf_s(Aux, "%.0f", E1MHP);
-				app->render->DrawRectangle({ app->scene->player->position.x + 120,app->scene->player->position.y - 5,64,10 }, 0, 0, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y,64,10 }, 0, 0, 0);
 				int HpBarLengthE1 = (E1CHP * 62) / E1MHP;
-				app->render->DrawRectangle({ app->scene->player->position.x + 121,app->scene->player->position.y - 4,HpBarLengthE1,8 }, 0, 200, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1,HpBarLengthE1,8 }, 0, 200, 0);
 			}
 			if (CurrentEnemies >= 2) {
 				//Draw enemy
 				if (E2dead == false) {
+					//Draw enemy class
+					SDL_Texture* E2 = app->tex->Load("Assets/Textures/YELLOW.png");
+					if (E1class == 1) {
+						E2 = ClassTank;
+					}
+					if (E1class == 2) {
+						E2 = ClassMage;
+					}
+					if (E1class == 3) {
+						E2 = ClassArcher;
+					}
+					app->render->DrawTexture(E2, app->scene->player->position.x + 180, app->scene->player->position.y - 63);
 					if (Turn[0] == 5) {
 						app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 					}
@@ -327,6 +357,18 @@ bool Combat::Update(float dt)
 				if (CurrentEnemies == 3) {
 					//Draw enemy
 					if (E3dead == false) {
+						//Draw enemy class
+						SDL_Texture* E3 = app->tex->Load("Assets/Textures/YELLOW.png");
+						if (E1class == 1) {
+							E3 = ClassTank;
+						}
+						if (E1class == 2) {
+							E3 = ClassMage;
+						}
+						if (E1class == 3) {
+							E3 = ClassArcher;
+						}
+						app->render->DrawTexture(E3, app->scene->player->position.x + 180, app->scene->player->position.y + 57);
 						if (Turn[0] == 6) {
 							app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 						}
@@ -1212,6 +1254,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E3A4dmg = enemy.A4dmg;
 		E3A4name = enemy.A4name;
 		E3A4target = enemy.A4target;
+		E3class = enemy.Eclass;
 	}
 	if (CurrentEnemies == 1) {
 		E2speed = enemy.spe;
@@ -1236,6 +1279,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E2A4dmg = enemy.A4dmg;
 		E2A4name = enemy.A4name;
 		E2A4target = enemy.A4target;
+		E2class = enemy.Eclass;
 	}
 	if (CurrentEnemies == 0) {
 		E1speed = enemy.spe;
@@ -1260,6 +1304,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E1A4dmg = enemy.A4dmg;
 		E1A4name = enemy.A4name;
 		E1A4target = enemy.A4target;
+		E1class = enemy.Eclass;
 	}
 }
 
