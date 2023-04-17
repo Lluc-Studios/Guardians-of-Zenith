@@ -209,7 +209,9 @@ bool Combat::Update(float dt)
 			if (Turn[0] == 1) {
 				app->render->DrawRectangle({ app->scene->player->position.x - 101 , app->scene->player->position.y - 61,64,66 }, 255, 255, 255, 120);
 			}
-			app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+			if (C1dead == false) {
+				app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+			}
 			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME);
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 			//Int to string convert
@@ -236,7 +238,9 @@ bool Combat::Update(float dt)
 				if (Turn[0] == 2) {
 					app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y + 9,64,66 }, 255, 255, 255, 120);
 				}
-				app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+				if (C2dead == false) {
+					app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+				}
 				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME);
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 				//Int to string convert
@@ -263,7 +267,9 @@ bool Combat::Update(float dt)
 					if (Turn[0] == 3) {
 						app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 121,64,66 }, 255, 255, 255, 120);
 					}
-					app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+					if (C3dead == false) {
+						app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+					}
 					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME);
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 					//Int to string convert
@@ -1042,6 +1048,7 @@ void Combat::FinishTurn()
 void Combat::TurnOrder()
 {
 	bool ordered = false;
+
 	Turn[0] = C1speed;
 	Turn[1] = C2speed;
 	Turn[2] = C3speed;
@@ -1076,28 +1083,59 @@ void Combat::TurnOrder()
 		if (Turn[i] == C1speed && C1 == false) {
 			Turn[i] = 1;
 			C1 = true;
+			if (C1speed == 0) {
+				Turn[i] = 0;
+				C1dead = true;
+			}
 		}
 		else if (Turn[i] == C2speed && C2 == false) {
 			Turn[i] = 2;
 			C2 = true;
+			if (C2speed == 0) {
+				Turn[i] = 0;
+				C2dead = true;
+			}
 		}
 		else if (Turn[i] == C3speed && C3 == false) {
 			Turn[i] = 3;
 			C3 = true;
+			if (C3speed == 0) {
+				Turn[i] = 0;
+				C3dead = true;
+			}
 		}
 		else if (Turn[i] == E1speed && E1 == false) {
 			Turn[i] = 4;
 			E1 = true;
+			if (E1speed == 0) {
+				Turn[i] = 0;
+				E1dead = true;
+			}
 		}
 		else if (Turn[i] == E2speed && E2 == false) {
 			Turn[i] = 5;
 			E2 = true;
+			if (E2speed == 0) {
+				Turn[i] = 0;
+				E2dead = true;
+			}
 		}
 		else if (Turn[i] == E3speed && E3 == false) {
 			Turn[i] = 6;
 			E3 = true;
+			if (E3speed == 0) {
+				Turn[i] = 0;
+				E3dead = true;
+			}
 		}
 	}
+
+	//Deleting empty spots
+	//for (int i = 0; i < 6; i++) {
+	//	if (Turn[i] == 0) {
+
+	//	}
+	//}
 }
 
 void Combat::LoadLaurea(Player::Laurea laurea)

@@ -115,7 +115,7 @@ private:
 	float C1MHP = 1000, C1CHP = 900;
 	float C1MMP = 250, C1CMP = 200;
 	float C1ATK, C1DEF,LIMIT1;
-	float C1speed;
+	float C1speed = 0;
 	const char* C1NAME;
 	float C1lvl;
 
@@ -131,7 +131,7 @@ private:
 	float C2MHP = 1000, C2CHP = 320;
 	float C2MMP = 250, C2CMP = 100;
 	float C2ATK, C2DEF, LIMIT2;
-	float C2speed;
+	float C2speed = 0;
 	const char* C2NAME;
 	float C2lvl;
 
@@ -147,7 +147,7 @@ private:
 	float C3MHP = 1000, C3CHP = 500;
 	float C3MMP = 250, C3CMP = 250;
 	float C3ATK, C3DEF, LIMIT3;
-	float C3speed;
+	float C3speed = 0;
 	const char* C3NAME;
 	float C3lvl;
 
@@ -162,7 +162,7 @@ private:
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800;
 	float E1ATK, E1DEF, E1EXP;
-	float E1speed;
+	float E1speed = 0;
 	const char* E1Weak;
 	const char* E1Res;
 	const char* E1name;
@@ -183,7 +183,7 @@ private:
 	//Enemy2
 	float E2MHP = 1000, E2CHP = 1000;
 	float E2ATK, E2DEF, E2EXP;
-	float E2speed;
+	float E2speed = 0;
 	const char* E2Weak;
 	const char* E2Res;
 	const char* E2name;
@@ -204,7 +204,7 @@ private:
 	//Enemy3
 	float E3MHP = 1000, E3CHP = 150;
 	float E3ATK, E3DEF, E3EXP;
-	float E3speed;
+	float E3speed = 0;
 	const char* E3Weak;
 	const char* E3Res;
 	const char* E3name;
