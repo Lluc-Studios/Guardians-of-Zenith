@@ -1024,6 +1024,7 @@ void Combat::StartCombat()
 	app->Instance = -1;
 	app->scene->player->active = false;
 	InCombat = true;
+	TeamTurn = 1;
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
 	LoadLucca(app->scene->player->lucca);
@@ -1085,6 +1086,9 @@ void Combat::FinishTurn()
 	option = COMBATMENU::ATTACK;
 	EnemyAdone = false;
 
+	if (Turn[0] >= 1 && Turn[0] <= 3) {
+		TeamTurn = 1;
+	}
 }
 
 void Combat::TurnOrder()
@@ -1171,13 +1175,6 @@ void Combat::TurnOrder()
 			}
 		}
 	}
-
-	//Deleting empty spots
-	//for (int i = 0; i < 6; i++) {
-	//	if (Turn[i] == 0) {
-
-	//	}
-	//}
 }
 
 void Combat::LoadLaurea(Player::Laurea laurea)
