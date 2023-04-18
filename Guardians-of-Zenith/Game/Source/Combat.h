@@ -256,7 +256,7 @@ private:
 
 	//To prevent memory leaks (This may cause problems so it must be checked in case something does not work right)
 
-	char Aux[10];
+	char Aux[10], Aux1[10];
 
 	int HpBarLengthC1 = 0;
 	int MpBarLengthC1 = 0;
@@ -274,6 +274,9 @@ private:
 	SDL_Texture* E3;
 
 	int TurnPos = 0, auxiliarPos = 0;
+
+	const char* M1 = "0";
+	const char* M2 = "0";
 };
 
 #endif // __COMBAT_H__

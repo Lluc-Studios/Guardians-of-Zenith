@@ -140,14 +140,19 @@ bool Combat::Update(float dt)
 			if (option == COMBATMENU::ATTACK1 && AttackMenu == true && EnemySelect == false) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, Attack1);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, Attack2);
+				app->font->BlitText(10 * app->ScalingMultiplier+78, 100 * app->ScalingMultiplier, WF, M1);
+				app->font->BlitText(10 * app->ScalingMultiplier+78, 120 * app->ScalingMultiplier, GF, M2);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ATTACK2 && AttackMenu == true && EnemySelect == false) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, Attack1);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, Attack2);
+				app->font->BlitText(10 * app->ScalingMultiplier+78, 100 * app->ScalingMultiplier, GF, M1);
+				app->font->BlitText(10 * app->ScalingMultiplier+78, 120 * app->ScalingMultiplier, WF, M2);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ENEMY1 && EnemySelect == true) {
+				if (E1dead == true) option = COMBATMENU::ENEMY2;
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
@@ -157,6 +162,7 @@ bool Combat::Update(float dt)
 				}
 			}
 			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
+				if (E2dead == true) option = COMBATMENU::ENEMY3;
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
@@ -166,6 +172,7 @@ bool Combat::Update(float dt)
 				}
 			}
 			if (option == COMBATMENU::ENEMY3 && EnemySelect == true) {
+				if (E3dead == true) option = COMBATMENU::ENEMY1;
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, E3name);
@@ -443,6 +450,8 @@ bool Combat::Update(float dt)
 			if (Turn[0] == 1) {
 				Attack1 = C1A1name;
 				Attack2 = C1A2name;
+				sprintf_s(Aux1, "%.0f", C1A2mp);
+				M2 = Aux1;
 				//Attack3 = C1A3name;
 				//Attack4 = C1A4name;
 				//Attack5 = C1A5name;
@@ -451,6 +460,8 @@ bool Combat::Update(float dt)
 			if (Turn[0] == 2) {
 				Attack1 = C2A1name;
 				Attack2 = C2A2name;
+				sprintf_s(Aux1, "%.0f", C2A2mp);
+				M2 = Aux1;
 				//Attack3 = C2A3name;
 				//Attack4 = C2A4name;
 				//Attack5 = C2A5name;
@@ -459,6 +470,8 @@ bool Combat::Update(float dt)
 			if (Turn[0] == 3) {
 				Attack1 = C3A1name;
 				Attack2 = C3A2name;
+				sprintf_s(Aux1, "%.0f", C3A2mp);
+				M2 = Aux1;
 				//Attack3 = C3A3name;
 				//Attack4 = C3A4name;
 				//Attack5 = C3A5name;
@@ -1547,7 +1560,9 @@ void Combat::ExitCombat()
 	CurrentCharacters = 0;
 	CurrentEnemies = 0;
 	TeamTurn = 0;
-	charactersLoaded = 0;
+	M1 = 0;
+	M2 = 0;
+
 	C1dead = false;
 	C2dead = false;
 	C3dead = false;
@@ -1582,6 +1597,7 @@ void Combat::ExitCombat()
 		app->scene->player->lapis.exp += EXPwon;
 		app->scene->player->lucca.exp += EXPwon;
 	}
+	charactersLoaded = 0;
 	EXPwon = 0;
 }
 
