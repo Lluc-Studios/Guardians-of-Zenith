@@ -44,11 +44,25 @@ bool Combat::Start()
 	YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Character1.png");
-	Character2 = app->tex->Load("Assets/Entities/Characters/Character1.png");
+	Character2 = app->tex->Load("Assets/Entities/Characters/Character2.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Character1.png");
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
-	Enemy2 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
-	Enemy3 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish.png");
+	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess.png");
+	E1asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	E2asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	E3asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	ClassTank = app->tex->Load("Assets/Textures/YELLOW.png");
+	ClassMage = app->tex->Load("Assets/Textures/BLUE.png");
+	ClassArcher = app->tex->Load("Assets/Textures/GREEN.png");
+	ClassChart = app->tex->Load("Assets/Textures/ClassChart.png");
+
+	//Prevent memory leaks
+	E1 = app->tex->Load("Assets/Textures/YELLOW.png");
+	E2 = app->tex->Load("Assets/Textures/YELLOW.png");
+	E3 = app->tex->Load("Assets/Textures/YELLOW.png");
+
+
 	//Random number generation
 	srand((unsigned int)time(NULL));
 
@@ -91,8 +105,9 @@ bool Combat::Update(float dt)
 		}
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
+		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,100,160 }, 0, 0, 255, 150);
-		app->font->BlitText(150 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
+		app->font->BlitText(160 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
 		if (option != COMBATMENU::NONE) {
 			if (option == COMBATMENU::ATTACK && AttackMenu == false) {
 				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
@@ -138,7 +153,7 @@ bool Combat::Update(float dt)
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
 				if (E1dead == false) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
+					app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
 				}
 			}
 			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
@@ -163,18 +178,44 @@ bool Combat::Update(float dt)
 
 
 		//Draw turns
+		TurnPos = 0;
+		auxiliarPos = 0;
 		for (int i = 0; i < 6; i++) {
-			if (Turn[i] >= 1 && Turn[i] <= 3) {
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 0, 200, 0);
+			if (Turn[i] == 0) {
+				if (C1Check == false && C1dead == true) {
+				offset++;
+				C1Check = true;
+				}
+				if (C2Check == false && C2dead == true) {
+				offset++;
+				C2Check = true;
+				}
+				if (C3Check == false && C3dead == true) {
+				offset++;
+				C3Check = true;
+				}
+				if (E1Check == false && E1dead == true) {
+				offset++;
+				E1Check = true;
+				}
+				if (E2Check == false && E2dead == true) {
+				offset++;
+				E2Check = true;
+				}
+				if (E3Check == false && E3dead == true) {
+				offset++;
+				E3Check = true;
+				}
+			}
+			else if (Turn[i] >= 1 && Turn[i] <= 3) {
+				TurnPos++;
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10),app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 39) + offset * 10),app->scene->player->position.y - 164,18,18 }, 0, 200, 0);
 			}
 			else if (Turn[i] >= 4) {
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
-			}
-			else if (Turn[i] == 0) {
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 40,app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ app->scene->player->position.x + (i * 21) - 39,app->scene->player->position.y - 164,18,18 }, 50, 50, 50);
+				TurnPos++;
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10),app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
+				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 39) + offset * 10),app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
 			}
 		}
 
@@ -184,18 +225,20 @@ bool Combat::Update(float dt)
 			if (Turn[0] == 1) {
 				app->render->DrawRectangle({ app->scene->player->position.x - 101 , app->scene->player->position.y - 61,64,66 }, 255, 255, 255, 120);
 			}
-			app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+			if (C1dead == false) {
+				app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+			}
 			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME);
+			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 			//Int to string convert
-			char Aux[10];
 			sprintf_s(Aux, "%.0f", C1MHP);
 			app->font->BlitText(135 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 			sprintf_s(Aux, "%.0f", C1CHP);
 			app->font->BlitText(120 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 			app->render->DrawRectangle({ app->scene->player->position.x - 90,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 			//Calculate hp bar length
-			int HpBarLengthC1 = (C1CHP * 98) / C1MHP;
+			HpBarLengthC1 = (C1CHP * 98) / C1MHP;
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 116,HpBarLengthC1,8 }, 0, 200, 0);
 			app->font->BlitText(100 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
 			sprintf_s(Aux, "%.0f", C1MMP);
@@ -204,25 +247,27 @@ bool Combat::Update(float dt)
 			app->font->BlitText(120 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 			app->render->DrawRectangle({ app->scene->player->position.x - 90,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 			//Calculate mp bar length
-			int MpBarLengthC1 = (C1CMP * 98) / C1MMP;
+			MpBarLengthC1 = (C1CMP * 98) / C1MMP;
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 156,MpBarLengthC1,8 }, 0, 0, 200);
 			if (CurrentCharacters >= 2) {
 				//Draw player
 				if (Turn[0] == 2) {
 					app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y + 9,64,66 }, 255, 255, 255, 120);
 				}
-				app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+				if (C2dead == false) {
+					app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+				}
 				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME);
+				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 				//Int to string convert
-				char Aux[10];
 				sprintf_s(Aux, "%.0f", C2MHP);
 				app->font->BlitText(215 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 				sprintf_s(Aux, "%.0f", C2CHP);
 				app->font->BlitText(200 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 				//Calculate hp bar length 
-				int HpBarLengthC2 = (C2CHP * 98) / C2MHP;
+				HpBarLengthC2 = (C2CHP * 98) / C2MHP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 116,HpBarLengthC2,8 }, 0, 200, 0);
 				app->font->BlitText(180 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
 				sprintf_s(Aux, "%.0f", C2MMP);
@@ -231,25 +276,27 @@ bool Combat::Update(float dt)
 				app->font->BlitText(200 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 				//Calculate mp bar length
-				int MpBarLengthC2 = (C2CMP * 98) / C2MMP;
+				MpBarLengthC2 = (C2CMP * 98) / C2MMP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 156,MpBarLengthC2,8 }, 0, 0, 200);
 				if (CurrentCharacters == 3) {
 					//Draw player
 					if (Turn[0] == 3) {
 						app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 121,64,66 }, 255, 255, 255, 120);
 					}
-					app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+					if (C3dead == false) {
+						app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+					}
 					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME);
+					app->render->DrawTexture(ClassArcher, app->scene->player->position.x + 210, app->scene->player->position.y + 77);
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 					//Int to string convert
-					char Aux[10];
 					sprintf_s(Aux, "%.0f", C3MHP);
 					app->font->BlitText(295 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 					sprintf_s(Aux, "%.0f", C3CHP);
 					app->font->BlitText(280 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 					//Calculate hp bar length 
-					int HpBarLengthC3 = (C3CHP * 98) / C3MHP;
+					HpBarLengthC3 = (C3CHP * 98) / C3MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 116,HpBarLengthC3,8 }, 0, 200, 0);
 					app->font->BlitText(260 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
 					sprintf_s(Aux, "%.0f", C3MMP);
@@ -258,7 +305,7 @@ bool Combat::Update(float dt)
 					app->font->BlitText(280 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 					//Calculate mp bar length
-					int MpBarLengthC3 = (C3CMP * 98) / C3MMP;
+					MpBarLengthC3 = (C3CMP * 98) / C3MMP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 156,MpBarLengthC3,8 }, 0, 0, 200);
 				}
 			}
@@ -268,43 +315,73 @@ bool Combat::Update(float dt)
 		if (CurrentEnemies >= 1) {
 			//Draw enemy
 			if (E1dead == false) {
-				if (Turn[0] == 4) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 119 , app->scene->player->position.y - 76,66,66 }, 255, 255, 255, 120);
+				//Draw enemy class
+				if (E1class == 1) {
+					E1 = ClassTank;
 				}
-				app->render->DrawTexture(Enemy1, app->scene->player->position.x + 120, app->scene->player->position.y - 75);
+				if (E1class == 2) {
+					E1 = ClassMage;
+				}
+				if (E1class == 3) {
+					E1 = ClassArcher;
+				}
+				app->render->DrawTexture(E1, app->scene->player->position.x + 95, app->scene->player->position.y - 3);
+				if (Turn[0] == 4) {
+					app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+				}
+				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
 				//Int to string convert
-				char Aux[10];
 				sprintf_s(Aux, "%.0f", E1MHP);
-				app->render->DrawRectangle({ app->scene->player->position.x + 120,app->scene->player->position.y - 5,64,10 }, 0, 0, 0);
-				int HpBarLengthE1 = (E1CHP * 62) / E1MHP;
-				app->render->DrawRectangle({ app->scene->player->position.x + 121,app->scene->player->position.y - 4,HpBarLengthE1,8 }, 0, 200, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y,64,10 }, 0, 0, 0);
+				HpBarLengthE1 = (E1CHP * 62) / E1MHP;
+				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1,HpBarLengthE1,8 }, 0, 200, 0);
 			}
 			if (CurrentEnemies >= 2) {
 				//Draw enemy
 				if (E2dead == false) {
+					//Draw enemy class
+					if (E2class == 1) {
+						E2 = ClassTank;
+					}
+					if (E2class == 2) {
+						E2 = ClassMage;
+					}
+					if (E2class == 3) {
+						E2 = ClassArcher;
+					}
+					app->render->DrawTexture(E2, app->scene->player->position.x + 180, app->scene->player->position.y - 63);
 					if (Turn[0] == 5) {
 						app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 					}
-					app->render->DrawTexture(Enemy2, app->scene->player->position.x + 200, app->scene->player->position.y - 130);
+					app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 - E2BOSS, app->scene->player->position.y - 130 - E2BOSS);
 					//Int to string convert
-					char Aux[10];
 					sprintf_s(Aux, "%.0f", E2MHP);
 					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
-					int HpBarLengthE2 = (E2CHP * 62) / E2MHP;
+					HpBarLengthE2 = (E2CHP * 62) / E2MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
 				}
 				if (CurrentEnemies == 3) {
 					//Draw enemy
 					if (E3dead == false) {
+						//Draw enemy class
+						if (E3class == 1) {
+							E3 = ClassTank;
+						}
+						if (E3class == 2) {
+							E3 = ClassMage;
+						}
+						if (E3class == 3) {
+							E3 = ClassArcher;
+						}
+						app->render->DrawTexture(E3, app->scene->player->position.x + 180, app->scene->player->position.y + 57);
 						if (Turn[0] == 6) {
 							app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 						}
-						app->render->DrawTexture(Enemy3, app->scene->player->position.x + 200, app->scene->player->position.y - 10);
+						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 - E3BOSS, app->scene->player->position.y - 10 - E3BOSS);
 						//Int to string convert
-						char Aux[10];
 						sprintf_s(Aux, "%.0f", E3MHP);
 						app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
-						int HpBarLengthE3 = (E3CHP * 62) / E3MHP;
+						HpBarLengthE3 = (E3CHP * 62) / E3MHP;
 						app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
 					}
 				}
@@ -722,168 +799,654 @@ bool Combat::Update(float dt)
 				if (Turn[0] == 6) {
 					if (EnemyAttackTarget == 1) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF)) / block);
-							Cname = C1NAME;
-							Ename = E3name;
-							Aname = E3A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E3A1target == 0) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E3name;
+								Aname = E3A1name;
+							}
+							if (E3A1target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF)) / block);
-							Cname = C1NAME;
-							Ename = E3name;
-							Aname = E3A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E3A2target == 0) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E3name;
+								Aname = E3A2name;
+							}
+							if (E3A2target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A2name;
+							}
 						}
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C2Block == true) block = 3;
-							C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF)) / block);
-							Cname = C2NAME;
-							Ename = E3name;
-							Aname = E3A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E3A1target == 0) {
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								Cname = C2NAME;
+								Ename = E3name;
+								Aname = E3A1name;
+							}
+							if (E3A1target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C2Block == true) block = 3;
-							C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF)) / block);
-							Cname = C2NAME;
-							Ename = E3name;
-							Aname = E3A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E3A2target == 0) {
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								Cname = C2NAME;
+								Ename = E3name;
+								Aname = E3A2name;
+							}
+							if (E3A2target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A2name;
+							}
 						}
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C3Block == true) block = 3;
-							C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF)) / block);
-							Cname = C3NAME;
-							Ename = E3name;
-							Aname = E3A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E3A1target == 0) {
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = C3NAME;
+								Ename = E3name;
+								Aname = E3A1name;
+							}
+							if (E3A1target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C3Block == true) block = 3;
-							C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF)) / block);
-							Cname = C3NAME;
-							Ename = E3name;
-							Aname = E3A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E3A2target == 0) {
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = C3NAME;
+								Ename = E3name;
+								Aname = E3A2name;
+							}
+							if (E3A2target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A2name;
+							}
 						}
 					}
 				}
 				else if (Turn[0] == 5) {
 					if (EnemyAttackTarget == 1) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF)) / block);
-							Cname = C1NAME;
-							Ename = E2name;
-							Aname = E2A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E2A1target == 0) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E2name;
+								Aname = E2A1name;
+							}
+							if (E2A1target == 1) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E2name;
+								Aname = E2A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF)) / block);
-							Cname = C1NAME;
-							Ename = E2name;
-							Aname = E2A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E2A2target == 0) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E2name;
+								Aname = E2A2name;
+							}
+							if (E2A2target == 1) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E2name;
+								Aname = E2A2name;
+							}
 						}
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C2Block == true) block = 3;
-							C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF)) / block);
-							Cname = C2NAME;
-							Ename = E2name;
-							Aname = E2A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E2A1target == 0) {
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								Cname = C2NAME;
+								Ename = E2name;
+								Aname = E2A1name;
+							}
+							if (E2A1target == 1) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E2name;
+								Aname = E2A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C2Block == true) block = 3;
-							C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF)) / block);
-							Cname = C2NAME;
-							Ename = E2name;
-							Aname = E2A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E2A2target == 0) {
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								Cname = C2NAME;
+								Ename = E2name;
+								Aname = E2A2name;
+							}
+							if (E2A2target == 1) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E2name;
+								Aname = E2A2name;
+							}
 						}
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C3Block == true) block = 3;
-							C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF)) / block);
-							Cname = C3NAME;
-							Ename = E2name;
-							Aname = E2A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E2A1target == 0) {
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = C3NAME;
+								Ename = E2name;
+								Aname = E2A1name;
+							}
+							if (E2A1target == 1) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E2name;
+								Aname = E2A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C3Block == true) block = 3;
-							C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF)) / block);
-							Cname = C3NAME;
-							Ename = E2name;
-							Aname = E2A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E2A2target == 0) {
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = C3NAME;
+								Ename = E2name;
+								Aname = E2A2name;
+							}
+							if (E2A2target == 1) {
+								if (E2class == 2) multiplier1 = 2;
+								if (E2class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 3) multiplier1 = 2;
+								if (E2class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E2name;
+								Aname = E2A2name;
+							}
 						}
 					}
 				}
 				else if (Turn[0] == 4) {
 					if (EnemyAttackTarget == 1) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF)) / block);
-							Cname = C1NAME;
-							Ename = E1name;
-							Aname = E1A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E1A1target == 0) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E1name;
+								Aname = E1A1name;
+							}
+							if (E1A1target == 1) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E1name;
+								Aname = E1A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF)) / block);
-							Cname = C1NAME;
-							Ename = E1name;
-							Aname = E1A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E1A2target == 0) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E1name;
+								Aname = E1A2name;
+							}
+							if (E1A2target == 1) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E1name;
+								Aname = E1A2name;
+							}
 						}
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C2Block == true) block = 3;
-							C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF)) / block);
-							Cname = C2NAME;
-							Ename = E1name;
-							Aname = E1A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E1A1target == 0) {
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								Cname = C2NAME;
+								Ename = E1name;
+								Aname = E1A1name;
+							}
+							if (E1A1target == 1) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E1name;
+								Aname = E1A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C2Block == true) block = 3;
-							C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF)) / block);
-							Cname = C2NAME;
-							Ename = E1name;
-							Aname = E1A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E1A2target == 0) {
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								Cname = C2NAME;
+								Ename = E1name;
+								Aname = E1A2name;
+							}
+							if (E1A2target == 1) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E1name;
+								Aname = E1A2name;
+							}
 						}
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
-							int block = 1;
-							if (C3Block == true) block = 3;
-							C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF)) / block);
-							Cname = C3NAME;
-							Ename = E1name;
-							Aname = E1A1name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E1A1target == 0) {
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = C3NAME;
+								Ename = E1name;
+								Aname = E1A1name;
+							}
+							if (E1A1target == 1) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E1name;
+								Aname = E1A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1;
-							if (C3Block == true) block = 3;
-							C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF)) / block);
-							Cname = C3NAME;
-							Ename = E1name;
-							Aname = E1A2name;
+							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							if (E1A2target == 0) {
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = C3NAME;
+								Ename = E1name;
+								Aname = E1A2name;
+							}
+							if (E1A2target == 1) {
+								if (E1class == 2) multiplier1 = 2;
+								if (E1class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 3) multiplier1 = 2;
+								if (E1class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								multiplier1 = 1;
+								multiplier2 = 1;
+								if (E1class == 1) multiplier1 = 2;
+								if (E1class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E1name;
+								Aname = E1A2name;
+							}
 						}
 					}
 				}
@@ -919,7 +1482,12 @@ bool Combat::PostUpdate()
 
 	if (option == COMBATMENU::WIN) {
 		app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "you");
-		app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "won");
+		app->font->BlitText(10 * app->ScalingMultiplier + 24, 100 * app->ScalingMultiplier, YF, "won");
+		app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "and");
+		app->font->BlitText(10 * app->ScalingMultiplier + 24, 110 * app->ScalingMultiplier, YF, "got");
+		sprintf_s(Aux, "%d", EXPwon);
+		app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux);
+		app->font->BlitText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp");
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			ExitCombat();
 		}
@@ -951,13 +1519,19 @@ void Combat::StartCombat()
 	app->Instance = -1;
 	app->scene->player->active = false;
 	InCombat = true;
+	TeamTurn = 1;
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
 	LoadLucca(app->scene->player->lucca);
-	LoadEnemy(app->entityManager->slimeFrog1);
-	LoadEnemy(app->entityManager->slimeFrog2);
-	LoadEnemy(app->entityManager->slimeFrog3);
+	//LoadEnemy(app->entityManager->waterlilyfish);
+	//LoadEnemy(app->entityManager->waterlilyfish);
+	//LoadEnemy(app->entityManager->naiadongoddess);
+	//LoadEnemy(app->entityManager->waterlilyfish);
+	LoadEnemy(app->entityManager->slimeFrog);
+	LoadEnemy(app->entityManager->slimeFrog);
+	LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
+	EXPwon = E1EXP + E2EXP + E3EXP;
 }
 
 void Combat::ExitCombat()
@@ -973,12 +1547,42 @@ void Combat::ExitCombat()
 	CurrentCharacters = 0;
 	CurrentEnemies = 0;
 	TeamTurn = 0;
+	charactersLoaded = 0;
 	C1dead = false;
 	C2dead = false;
 	C3dead = false;
 	E1dead = false;
 	E2dead = false;
 	E3dead = false;
+	C1Check = false;
+	C2Check = false;
+	C3Check = false;
+	E1Check = false;
+	E2Check = false;
+	E3Check = false;
+	
+	//Save stats to characters
+	app->scene->player->laurea.chp = C1CHP;
+	app->scene->player->laurea.cmp = C1CMP;
+	app->scene->player->lapis.chp = C2CHP;
+	app->scene->player->lapis.cmp = C2CMP;
+	app->scene->player->lucca.chp = C3CHP;
+	app->scene->player->lucca.cmp = C3CMP;
+
+	//Add exp to characters
+	if (charactersLoaded == 1) {
+		app->scene->player->laurea.exp += EXPwon;
+	}
+	if (charactersLoaded == 2) {
+		app->scene->player->laurea.exp += EXPwon;
+		app->scene->player->lapis.exp += EXPwon;
+	}
+	if (charactersLoaded == 3) {
+		app->scene->player->laurea.exp += EXPwon;
+		app->scene->player->lapis.exp += EXPwon;
+		app->scene->player->lucca.exp += EXPwon;
+	}
+	EXPwon = 0;
 }
 
 void Combat::FinishTurn()
@@ -1006,11 +1610,15 @@ void Combat::FinishTurn()
 	option = COMBATMENU::ATTACK;
 	EnemyAdone = false;
 
+	if (Turn[0] >= 1 && Turn[0] <= 3) {
+		TeamTurn = 1;
+	}
 }
 
 void Combat::TurnOrder()
 {
 	bool ordered = false;
+
 	Turn[0] = C1speed;
 	Turn[1] = C2speed;
 	Turn[2] = C3speed;
@@ -1021,15 +1629,15 @@ void Combat::TurnOrder()
 	// Ordering by speed
 	while (ordered == false) {
 		int a = 0;
-		for (int i = 0; i < 4; i++) {
-
+		for (int i = 0; i < 5; i++) {
+			//LOG("%d %d %d %d %d %d", Turn[0], Turn[1], Turn[2], Turn[3], Turn[4], Turn[5]);
 			if (Turn[i] < Turn[i + 1]) {
 				a++;
 			}
 
 			if (a == 0) ordered = true;
 		}
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			int b;
 			if (Turn[i] <= Turn[i + 1]) {
 				b = Turn[i];
@@ -1045,26 +1653,50 @@ void Combat::TurnOrder()
 		if (Turn[i] == C1speed && C1 == false) {
 			Turn[i] = 1;
 			C1 = true;
+			if (C1speed == 0) {
+				Turn[i] = 0;
+				C1dead = true;
+			}
 		}
 		else if (Turn[i] == C2speed && C2 == false) {
 			Turn[i] = 2;
 			C2 = true;
+			if (C2speed == 0) {
+				Turn[i] = 0;
+				C2dead = true;
+			}
 		}
 		else if (Turn[i] == C3speed && C3 == false) {
 			Turn[i] = 3;
 			C3 = true;
+			if (C3speed == 0) {
+				Turn[i] = 0;
+				C3dead = true;
+			}
 		}
 		else if (Turn[i] == E1speed && E1 == false) {
 			Turn[i] = 4;
 			E1 = true;
+			if (E1speed == 0) {
+				Turn[i] = 0;
+				E1dead = true;
+			}
 		}
 		else if (Turn[i] == E2speed && E2 == false) {
 			Turn[i] = 5;
 			E2 = true;
+			if (E2speed == 0) {
+				Turn[i] = 0;
+				E2dead = true;
+			}
 		}
 		else if (Turn[i] == E3speed && E3 == false) {
 			Turn[i] = 6;
 			E3 = true;
+			if (E3speed == 0) {
+				Turn[i] = 0;
+				E3dead = true;
+			}
 		}
 	}
 }
@@ -1083,6 +1715,7 @@ void Combat::LoadLaurea(Player::Laurea laurea)
 	LIMIT1 = laurea.limit;
 	C1NAME = laurea.name;
 	C1lvl = laurea.lvl;
+	charactersLoaded++;
 }
 
 void Combat::LoadLapis(Player::Lapis lapis)
@@ -1099,6 +1732,7 @@ void Combat::LoadLapis(Player::Lapis lapis)
 	LIMIT2 = lapis.limit;
 	C2NAME = lapis.name;
 	C2lvl = lapis.lvl;
+	charactersLoaded++;
 }
 
 void Combat::LoadLucca(Player::Lucca lucca)
@@ -1115,6 +1749,7 @@ void Combat::LoadLucca(Player::Lucca lucca)
 	LIMIT3 = lucca.limit;
 	C3NAME = lucca.name;
 	C3lvl = lucca.lvl;
+	charactersLoaded++;
 }
 
 void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
@@ -1124,6 +1759,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E3speed = enemy.spe;
 		CurrentEnemies++;
 
+		E3EXP = enemy.exp;
 		E3MHP = enemy.hp;
 		E3CHP = enemy.chp;
 		E3ATK = enemy.atk;
@@ -1143,11 +1779,29 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E3A4dmg = enemy.A4dmg;
 		E3A4name = enemy.A4name;
 		E3A4target = enemy.A4target;
+		E3class = enemy.Eclass;
+		if (enemy.boss == 2) {
+			E3BOSS = 64;
+		}
+		if (enemy.boss == 1) {
+			E3BOSS = 0;
+		}
+		//Selecting enemy asset
+		if (enemy.asset == 1) {
+			E3asset = Enemy1;
+		}
+		if (enemy.asset == 2) {
+			E3asset = Enemy2;
+		}
+		if (enemy.asset == 3) {
+			E3asset = Enemy3;
+		}
 	}
 	if (CurrentEnemies == 1) {
 		E2speed = enemy.spe;
 		CurrentEnemies++;
 
+		E2EXP = enemy.exp;
 		E2MHP = enemy.hp;
 		E2CHP = enemy.chp;
 		E2ATK = enemy.atk;
@@ -1167,11 +1821,29 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E2A4dmg = enemy.A4dmg;
 		E2A4name = enemy.A4name;
 		E2A4target = enemy.A4target;
+		E2class = enemy.Eclass;
+		if (enemy.boss == 2) {
+			E2BOSS = 64;
+		}
+		if (enemy.boss == 1) {
+			E2BOSS = 0;
+		}
+		//Selecting enemy asset
+		if (enemy.asset == 1) {
+			E2asset = Enemy1;
+		}
+		if (enemy.asset == 2) {
+			E2asset = Enemy2;
+		}
+		if (enemy.asset == 3) {
+			E2asset = Enemy3;
+		}
 	}
 	if (CurrentEnemies == 0) {
 		E1speed = enemy.spe;
 		CurrentEnemies++;
 
+		E1EXP = enemy.exp;
 		E1MHP = enemy.hp;
 		E1CHP = enemy.chp;
 		E1ATK = enemy.atk;
@@ -1191,6 +1863,23 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E1A4dmg = enemy.A4dmg;
 		E1A4name = enemy.A4name;
 		E1A4target = enemy.A4target;
+		E1class = enemy.Eclass;
+		if (enemy.boss == 2) {
+			E1BOSS = 64;
+		}
+		if (enemy.boss == 1) {
+			E1BOSS = 0;
+		}
+		//Selecting enemy asset
+		if (enemy.asset == 1) {
+			E1asset = Enemy1;
+		}
+		if (enemy.asset == 2) {
+			E1asset = Enemy2;
+		}
+		if (enemy.asset == 3) {
+			E1asset = Enemy3;
+		}
 	}
 }
 

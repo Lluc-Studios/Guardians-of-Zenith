@@ -55,26 +55,41 @@ public:
 	// stats
 	struct Laurea
 	{
-		int hp, chp, mp, cmp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+		float hp, chp, mp, cmp, atk, def, spe, limit;
+		float lvl, exp;
 		const char* name = "laurea";
+
+		//Leveling variables
+		float HPG = 4, MPG = 3, ATKG = 2, DEFG = 3;
+		int HPC = 10, MPC = 5, ATKC = 5, DEFC = 5;
+		float EXPneeded = 100;
 	};
 	struct Lapis
 	{
-		int hp, chp, mp, cmp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+		float hp, chp, mp, cmp, atk, def, spe, limit;
+		float lvl, exp;
 		const char* name = "lapis";
+
+		//Leveling variables
+		float HPG = 3.5, MPG = 4, ATKG = 2.2, DEFG = 2;
+		int HPC = 10, MPC = 5, ATKC = 5, DEFC = 5;
+		float EXPneeded = 100;
 	};
 	struct Lucca
 	{
-		int hp, chp, mp, cmp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+		float hp, chp, mp, cmp, atk, def, spe, limit;
+		float lvl, exp;
 		const char* name = "lucca";
+
+		//Leveling variables
+		float HPG = 3, MPG = 3, ATKG = 3, DEFG = 2;
+		int HPC = 10, MPC = 5, ATKC = 5, DEFC = 5;
+		float EXPneeded = 100;
 	};
 
-	Laurea laurea{ 350,350,50,50,100,125,10,2,1,4,3,2,3 };
-	Lapis lapis{ 250,250,100,100,125,90,12,4,3,4,3,2 };
-	Lucca lucca{ 200,200,115,115,150,60,15,3,3,3,3,2 };
+	Laurea laurea{ 350,350,50,50,100,125,10,2,1,0 };
+	Lapis lapis{ 250,250,100,100,125,90,12,4,1,0 };
+	Lucca lucca{ 200,200,115,115,150,60,15,3,1,0 };
 
 
 	int timer = 0;

@@ -118,8 +118,42 @@ bool Player::Start() {
 
 bool Player::Update()
 {
-	
-	//LOG("Attack Cooldown: %i",attackCD);
+	//Characters level up
+	if (laurea.exp >= laurea.EXPneeded) {
+		laurea.lvl++;
+		laurea.EXPneeded += (laurea.EXPneeded * 0.1);
+		laurea.exp = 0;
+		laurea.hp += (laurea.HPG * laurea.HPC);
+		laurea.chp += (laurea.HPG * laurea.HPC);
+		laurea.mp += (laurea.MPG * laurea.MPC);
+		laurea.cmp += (laurea.MPG * laurea.MPC);
+		laurea.atk += (laurea.ATKG * laurea.ATKC);
+		laurea.def += (laurea.DEFG * laurea.DEFC);
+	}
+	if (lapis.exp >= lapis.EXPneeded) {
+		lapis.lvl++;
+		lapis.EXPneeded += (lapis.EXPneeded * 0.1);
+		lapis.exp = 0;
+		lapis.hp += (lapis.HPG * lapis.HPC);
+		lapis.chp += (lapis.HPG * lapis.HPC);
+		lapis.mp += (lapis.MPG * lapis.MPC);
+		lapis.cmp += (lapis.MPG * lapis.MPC);
+		lapis.atk += (lapis.ATKG * lapis.ATKC);
+		lapis.def += (lapis.DEFG * lapis.DEFC);
+	}
+	if (lucca.exp >= lucca.EXPneeded) {
+		lucca.lvl++;
+		lucca.EXPneeded += (lucca.EXPneeded * 0.1);
+		lucca.exp = 0;
+		lucca.hp += (lucca.HPG * lucca.HPC);
+		lucca.chp += (lucca.HPG * lucca.HPC);
+		lucca.mp += (lucca.MPG * lucca.MPC);
+		lucca.cmp += (lucca.MPG * lucca.MPC);
+		lucca.atk += (lucca.ATKG * lucca.ATKC);
+		lucca.def += (lucca.DEFG * lucca.DEFC);
+	}
+
+	//Characters level up
 
 	if (auxBool == true) {
 		auxCounter++;
@@ -174,19 +208,19 @@ bool Player::Update()
 	}
 	if (tp2) {
 		position.x = 690;
-		position.y = 800;
+		position.y = 900;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp2 = false;
 	}
 	if (tp3) {
-		position.x = 185;
-		position.y = -175;
+		position.x = 240;
+		position.y = -460;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp3 = false;
 	}
 	if (tp4) {
-		position.x = 1015;
-		position.y = 190;
+		position.x = 1745;
+		position.y = 910;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp4 = false;
 	}
@@ -449,6 +483,9 @@ bool Player::SaveState(pugi::xml_node& data) {
 void Player::Move() {
 
 	float speed = 5;
+	if (app->Instance == 0) {
+		speed = 10;
+	}
 	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true) {
 		vel = b2Vec2(0, 0);

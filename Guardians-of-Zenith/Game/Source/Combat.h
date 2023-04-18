@@ -79,6 +79,7 @@ public:
 
 	SDL_Texture* BG;
 
+	//Class types: 1 = Tank, 2 = Mage, 3 = Archer
 	//Decides whose turn is it, 0 = none, 1 = ally, 2 = enemy
 	bool TeamTurn = 1;
 
@@ -110,14 +111,19 @@ private:
 	SDL_Texture* Enemy1;
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
+	SDL_Texture* ClassTank;
+	SDL_Texture* ClassMage;
+	SDL_Texture* ClassArcher;
+	SDL_Texture* ClassChart;
 
 	//Character1
 	float C1MHP = 1000, C1CHP = 900;
 	float C1MMP = 250, C1CMP = 200;
 	float C1ATK, C1DEF,LIMIT1;
-	float C1speed;
+	float C1speed = 0;
 	const char* C1NAME;
 	float C1lvl;
+	int C1class = 1;
 
 	float C1A1lvl = 1, C1A1target = 0, C1A1dmg = 20, C1A1mp = 0;
 	const char* C1A1name = "swordattack";
@@ -125,15 +131,16 @@ private:
 	float C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
 	const char* C1A2name = "thrust";
 
-	bool C1Block = false, C1dead = false;
+	bool C1Block = false, C1dead = false, C1Check = false;
 
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
 	float C2MMP = 250, C2CMP = 100;
 	float C2ATK, C2DEF, LIMIT2;
-	float C2speed;
+	float C2speed = 0;
 	const char* C2NAME;
 	float C2lvl;
+	int C2class = 2;
 
 	float C2A1lvl = 1, C2A1target = 0, C2A1dmg = 20, C2A1mp = 0;
 	const char* C2A1name = "staffattack";
@@ -141,15 +148,16 @@ private:
 	float C2A2lvl = 1, C2A2target = 1, C2A2dmg = 30, C2A2mp = 25;
 	const char* C2A2name = "tidalwave";
 
-	bool C2Block = false, C2dead = false;
+	bool C2Block = false, C2dead = false, C2Check = false;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
 	float C3MMP = 250, C3CMP = 250;
 	float C3ATK, C3DEF, LIMIT3;
-	float C3speed;
+	float C3speed = 0;
 	const char* C3NAME;
 	float C3lvl;
+	int C3class = 3;
 
 	float C3A1lvl = 1, C3A1target = 0, C3A1dmg = 20, C3A1mp = 0;
 	const char* C3A1name = "arrowshot";
@@ -157,17 +165,20 @@ private:
 	float C3A2lvl = 1, C3A2target = 1, C3A2dmg = 35, C3A2mp = 20;
 	const char* C3A2name = "multishot";
 
-	bool C3Block = false, C3dead = false;
+	bool C3Block = false, C3dead = false, C3Check = false;
 
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800;
 	float E1ATK, E1DEF, E1EXP;
-	float E1speed;
+	float E1speed = 0;
+	int E1class = 1, E1BOSS = 0;
 	const char* E1Weak;
 	const char* E1Res;
 	const char* E1name;
 	const char* E1A1name;
 	float E1A1dmg, E1A1target;
+
+	SDL_Texture* E1asset;
 
 	const char* E1A2name;
 	float E1A2dmg, E1A2target;
@@ -178,17 +189,20 @@ private:
 	const char* E1A4name;
 	float E1A4dmg, E1A4target;
 
-	bool E1dead = false;
+	bool E1dead = false, E1Check = false;
 
 	//Enemy2
 	float E2MHP = 1000, E2CHP = 1000;
 	float E2ATK, E2DEF, E2EXP;
-	float E2speed;
+	float E2speed = 0;
+	int E2class = 1, E2BOSS = 0;
 	const char* E2Weak;
 	const char* E2Res;
 	const char* E2name;
 	const char* E2A1name;
 	float E2A1dmg, E2A1target;
+
+	SDL_Texture* E2asset;
 
 	const char* E2A2name;
 	float E2A2dmg, E2A2target;
@@ -199,17 +213,20 @@ private:
 	const char* E2A4name;
 	float E2A4dmg, E2A4target;
 
-	bool E2dead = false;
+	bool E2dead = false, E2Check = false;
 
 	//Enemy3
 	float E3MHP = 1000, E3CHP = 150;
 	float E3ATK, E3DEF, E3EXP;
-	float E3speed;
+	float E3speed = 0;
+	int E3class = 1, E3BOSS = 0;
 	const char* E3Weak;
 	const char* E3Res;
 	const char* E3name;
 	const char* E3A1name;
 	float E3A1dmg, E3A1target;
+
+	SDL_Texture* E3asset;
 
 	const char* E3A2name;
 	float E3A2dmg, E3A2target;
@@ -220,19 +237,43 @@ private:
 	const char* E3A4name;
 	float E3A4dmg, E3A4target;
 
-	bool E3dead = false;
+	bool E3dead = false, E3Check = false;
 
 	//Other variables
 
-	int idCount = 3;
+	int idCount = 3, offset = 0;
 
 	int SaveInstance = 0, WF, GF, YF;
 	bool InCombat = false;
 
 	int CurrentCharacters = 0, CurrentEnemies = 0;
 
+	int EXPwon = 0;
+
+	int charactersLoaded = 0;
 	// 1-3 = ally, 4-6 = enemy
 	int Turn[6] = { 1, 4, 5, 2, 6, 3 };
+
+	//To prevent memory leaks (This may cause problems so it must be checked in case something does not work right)
+
+	char Aux[10];
+
+	int HpBarLengthC1 = 0;
+	int MpBarLengthC1 = 0;
+	int HpBarLengthC2 = 0;
+	int MpBarLengthC2 = 0;
+	int HpBarLengthC3 = 0;
+	int MpBarLengthC3 = 0;
+
+	int HpBarLengthE1 = 0;
+	int HpBarLengthE2 = 0;
+	int HpBarLengthE3 = 0;
+
+	SDL_Texture* E1;
+	SDL_Texture* E2;
+	SDL_Texture* E3;
+
+	int TurnPos = 0, auxiliarPos = 0;
 };
 
 #endif // __COMBAT_H__

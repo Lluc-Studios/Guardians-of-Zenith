@@ -42,33 +42,28 @@ public:
 	// stats
 	struct CombatEnemy
 	{
-		int hp, chp, atk, def, spe, exp;
+		float hp, chp, atk, def, spe, Eclass, exp, boss, asset;
 		const char* name;
 		const char* weakness;
 		const char* resistance;
 
 		const char* A1name;
-		int A1dmg, A1target;
+		float A1dmg, A1target;
 
 		const char* A2name;
-		int A2dmg, A2target;
+		float A2dmg, A2target;
 
 		const char* A3name;
-		int A3dmg, A3target;
+		float A3dmg, A3target;
 
 		const char* A4name;
-		int A4dmg, A4target;
+		float A4dmg, A4target;
 
 	};
 	//Slime frog
-	//CombatEnemy slimeFrog1{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
-	//CombatEnemy slimeFrog2{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
-	//CombatEnemy slimeFrog3{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca"};
-	CombatEnemy slimeFrog1{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 50, 0, "bubbleburst", 60, 0 };
-	CombatEnemy slimeFrog2{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 50, 0, "bubbleburst", 60, 0 };
-	CombatEnemy slimeFrog3{ 600,600,100,50,9,35,"slimefrog", "lapis","lucca", "tongueattack", 50, 0, "bubbleburst", 60, 0 };
-
-
+	CombatEnemy slimeFrog{ 600,600,60,50,9,1,35, 1, 1,"slimefrog", "lapis","lucca", "tongueattack", 50, 0, "bubbleburst", 60, 0 };
+	CombatEnemy waterlilyfish{ 400,400,120,30,11,3,30, 1, 2,"waterlilyfish", "laurea","lapis", "bite", 50, 0, "tailwhipping", 45, 0 };
+	CombatEnemy naiadongoddess{ 2000,2000,400,20,11,1,300, 2, 3,"naiadongoddess", "lapis","lucca", "tridentstrike", 70, 0, "tidalwave", 30, 1 };
 	List<Entity*> entities;
 
 	bool debug = false; 
