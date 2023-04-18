@@ -1482,7 +1482,12 @@ bool Combat::PostUpdate()
 
 	if (option == COMBATMENU::WIN) {
 		app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "you");
-		app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "won");
+		app->font->BlitText(10 * app->ScalingMultiplier + 24, 100 * app->ScalingMultiplier, YF, "won");
+		app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "and");
+		app->font->BlitText(10 * app->ScalingMultiplier + 24, 110 * app->ScalingMultiplier, YF, "got");
+		sprintf_s(Aux, "%d", EXPwon);
+		app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux);
+		app->font->BlitText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp");
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			ExitCombat();
 		}
@@ -1526,6 +1531,7 @@ void Combat::StartCombat()
 	//LoadEnemy(app->entityManager->slimeFrog);
 	//LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
+	EXPwon = E1EXP + E2EXP + E3EXP;
 }
 
 void Combat::ExitCombat()
@@ -1541,6 +1547,7 @@ void Combat::ExitCombat()
 	CurrentCharacters = 0;
 	CurrentEnemies = 0;
 	TeamTurn = 0;
+	EXPwon = 0;
 	C1dead = false;
 	C2dead = false;
 	C3dead = false;
@@ -1726,6 +1733,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E3speed = enemy.spe;
 		CurrentEnemies++;
 
+		E3EXP = enemy.exp;
 		E3MHP = enemy.hp;
 		E3CHP = enemy.chp;
 		E3ATK = enemy.atk;
@@ -1767,6 +1775,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E2speed = enemy.spe;
 		CurrentEnemies++;
 
+		E2EXP = enemy.exp;
 		E2MHP = enemy.hp;
 		E2CHP = enemy.chp;
 		E2ATK = enemy.atk;
@@ -1808,6 +1817,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E1speed = enemy.spe;
 		CurrentEnemies++;
 
+		E1EXP = enemy.exp;
 		E1MHP = enemy.hp;
 		E1CHP = enemy.chp;
 		E1ATK = enemy.atk;
