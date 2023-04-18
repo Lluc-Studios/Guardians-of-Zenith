@@ -8,22 +8,21 @@
 	<:anonymous />
 	<scene />
 	<entitymanager>
-		<player_stats position_x="468" position_y="224" jumpCounter="0" state="6" />
-		<enemy_stats position_x="1270" position_y="194" state="0" />
-		<enemy_stats position_x="2220" position_y="403" state="0" />
-		<enemy_stats position_x="2900" position_y="387" state="0" />
-		<enemy_stats position_x="3050" position_y="387" state="0" />
-		<flyingEnemy_stats />
-		<flyingEnemy_stats />
-		<flyingEnemy_stats />
+		<player_stats position_x="1087" position_y="1268" state="0" />
 	</entitymanager>
-	<map />
+	<Map />
+	<Tavern />
+	<Blacksmith />
+	<House />
+	<Lake Dungeon />
+	<Lake Dungeon />
+	<Cave Dungeon />
 	<:anonymous />
 	<pathfinding />
 	<menu />
 	<mainmenu />
-	<guiManager />
+	<Combat Module />
 	<renderer>
-		<camera x="-1292" y="-536" />
+		<camera x="-1594" y="-2176" />
 	</renderer>
 </save_state>
