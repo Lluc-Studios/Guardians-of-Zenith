@@ -42,22 +42,22 @@ public:
 	// stats
 	struct CombatEnemy
 	{
-		int hp, chp, atk, def, spe, Eclass, exp, boss, asset;
+		float hp, chp, atk, def, spe, Eclass, exp, boss, asset;
 		const char* name;
 		const char* weakness;
 		const char* resistance;
 
 		const char* A1name;
-		int A1dmg, A1target;
+		float A1dmg, A1target;
 
 		const char* A2name;
-		int A2dmg, A2target;
+		float A2dmg, A2target;
 
 		const char* A3name;
-		int A3dmg, A3target;
+		float A3dmg, A3target;
 
 		const char* A4name;
-		int A4dmg, A4target;
+		float A4dmg, A4target;
 
 	};
 	//Slime frog

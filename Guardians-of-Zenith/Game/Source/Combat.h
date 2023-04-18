@@ -250,6 +250,7 @@ private:
 
 	int EXPwon = 0;
 
+	int charactersLoaded = 0;
 	// 1-3 = ally, 4-6 = enemy
 	int Turn[6] = { 1, 4, 5, 2, 6, 3 };
 

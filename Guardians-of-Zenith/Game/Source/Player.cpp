@@ -118,8 +118,42 @@ bool Player::Start() {
 
 bool Player::Update()
 {
-	
-	//LOG("Attack Cooldown: %i",attackCD);
+	//Characters level up
+	if (laurea.exp >= laurea.EXPneeded) {
+		laurea.lvl++;
+		laurea.EXPneeded += (laurea.EXPneeded * 0.1);
+		laurea.exp = 0;
+		laurea.hp += (laurea.HPG * laurea.HPC);
+		laurea.chp += (laurea.HPG * laurea.HPC);
+		laurea.mp += (laurea.MPG * laurea.MPC);
+		laurea.cmp += (laurea.MPG * laurea.MPC);
+		laurea.atk += (laurea.ATKG * laurea.ATKC);
+		laurea.def += (laurea.DEFG * laurea.DEFC);
+	}
+	if (lapis.exp >= lapis.EXPneeded) {
+		lapis.lvl++;
+		lapis.EXPneeded += (lapis.EXPneeded * 0.1);
+		lapis.exp = 0;
+		lapis.hp += (lapis.HPG * lapis.HPC);
+		lapis.chp += (lapis.HPG * lapis.HPC);
+		lapis.mp += (lapis.MPG * lapis.MPC);
+		lapis.cmp += (lapis.MPG * lapis.MPC);
+		lapis.atk += (lapis.ATKG * lapis.ATKC);
+		lapis.def += (lapis.DEFG * lapis.DEFC);
+	}
+	if (lucca.exp >= lucca.EXPneeded) {
+		lucca.lvl++;
+		lucca.EXPneeded += (lucca.EXPneeded * 0.1);
+		lucca.exp = 0;
+		lucca.hp += (lucca.HPG * lucca.HPC);
+		lucca.chp += (lucca.HPG * lucca.HPC);
+		lucca.mp += (lucca.MPG * lucca.MPC);
+		lucca.cmp += (lucca.MPG * lucca.MPC);
+		lucca.atk += (lucca.ATKG * lucca.ATKC);
+		lucca.def += (lucca.DEFG * lucca.DEFC);
+	}
+
+	//Characters level up
 
 	if (auxBool == true) {
 		auxCounter++;

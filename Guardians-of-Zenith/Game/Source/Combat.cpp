@@ -1547,7 +1547,7 @@ void Combat::ExitCombat()
 	CurrentCharacters = 0;
 	CurrentEnemies = 0;
 	TeamTurn = 0;
-	EXPwon = 0;
+	charactersLoaded = 0;
 	C1dead = false;
 	C2dead = false;
 	C3dead = false;
@@ -1569,6 +1569,20 @@ void Combat::ExitCombat()
 	app->scene->player->lucca.chp = C3CHP;
 	app->scene->player->lucca.cmp = C3CMP;
 
+	//Add exp to characters
+	if (charactersLoaded == 1) {
+		app->scene->player->laurea.exp += EXPwon;
+	}
+	if (charactersLoaded == 2) {
+		app->scene->player->laurea.exp += EXPwon;
+		app->scene->player->lapis.exp += EXPwon;
+	}
+	if (charactersLoaded == 3) {
+		app->scene->player->laurea.exp += EXPwon;
+		app->scene->player->lapis.exp += EXPwon;
+		app->scene->player->lucca.exp += EXPwon;
+	}
+	EXPwon = 0;
 }
 
 void Combat::FinishTurn()
@@ -1701,6 +1715,7 @@ void Combat::LoadLaurea(Player::Laurea laurea)
 	LIMIT1 = laurea.limit;
 	C1NAME = laurea.name;
 	C1lvl = laurea.lvl;
+	charactersLoaded++;
 }
 
 void Combat::LoadLapis(Player::Lapis lapis)
@@ -1717,6 +1732,7 @@ void Combat::LoadLapis(Player::Lapis lapis)
 	LIMIT2 = lapis.limit;
 	C2NAME = lapis.name;
 	C2lvl = lapis.lvl;
+	charactersLoaded++;
 }
 
 void Combat::LoadLucca(Player::Lucca lucca)
@@ -1733,6 +1749,7 @@ void Combat::LoadLucca(Player::Lucca lucca)
 	LIMIT3 = lucca.limit;
 	C3NAME = lucca.name;
 	C3lvl = lucca.lvl;
+	charactersLoaded++;
 }
 
 void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
