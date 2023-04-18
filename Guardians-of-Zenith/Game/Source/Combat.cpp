@@ -57,6 +57,12 @@ bool Combat::Start()
 	ClassArcher = app->tex->Load("Assets/Textures/GREEN.png");
 	ClassChart = app->tex->Load("Assets/Textures/ClassChart.png");
 
+	//Prevent memory leaks
+	E1 = app->tex->Load("Assets/Textures/YELLOW.png");
+	E2 = app->tex->Load("Assets/Textures/YELLOW.png");
+	E3 = app->tex->Load("Assets/Textures/YELLOW.png");
+
+
 	//Random number generation
 	srand((unsigned int)time(NULL));
 
@@ -172,7 +178,8 @@ bool Combat::Update(float dt)
 
 
 		//Draw turns
-		int TurnPos = 0, auxiliarPos = 0;
+		TurnPos = 0;
+		auxiliarPos = 0;
 		for (int i = 0; i < 6; i++) {
 			if (Turn[i] == 0) {
 				if (C1Check == false && C1dead == true) {
@@ -225,14 +232,13 @@ bool Combat::Update(float dt)
 			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
 			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 			//Int to string convert
-			char Aux[10];
 			sprintf_s(Aux, "%.0f", C1MHP);
 			app->font->BlitText(135 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 			sprintf_s(Aux, "%.0f", C1CHP);
 			app->font->BlitText(120 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 			app->render->DrawRectangle({ app->scene->player->position.x - 90,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 			//Calculate hp bar length
-			int HpBarLengthC1 = (C1CHP * 98) / C1MHP;
+			HpBarLengthC1 = (C1CHP * 98) / C1MHP;
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 116,HpBarLengthC1,8 }, 0, 200, 0);
 			app->font->BlitText(100 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
 			sprintf_s(Aux, "%.0f", C1MMP);
@@ -241,7 +247,7 @@ bool Combat::Update(float dt)
 			app->font->BlitText(120 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 			app->render->DrawRectangle({ app->scene->player->position.x - 90,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 			//Calculate mp bar length
-			int MpBarLengthC1 = (C1CMP * 98) / C1MMP;
+			MpBarLengthC1 = (C1CMP * 98) / C1MMP;
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 156,MpBarLengthC1,8 }, 0, 0, 200);
 			if (CurrentCharacters >= 2) {
 				//Draw player
@@ -255,14 +261,13 @@ bool Combat::Update(float dt)
 				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
 				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 				//Int to string convert
-				char Aux[10];
 				sprintf_s(Aux, "%.0f", C2MHP);
 				app->font->BlitText(215 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 				sprintf_s(Aux, "%.0f", C2CHP);
 				app->font->BlitText(200 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 				//Calculate hp bar length 
-				int HpBarLengthC2 = (C2CHP * 98) / C2MHP;
+				HpBarLengthC2 = (C2CHP * 98) / C2MHP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 116,HpBarLengthC2,8 }, 0, 200, 0);
 				app->font->BlitText(180 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
 				sprintf_s(Aux, "%.0f", C2MMP);
@@ -271,7 +276,7 @@ bool Combat::Update(float dt)
 				app->font->BlitText(200 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 				//Calculate mp bar length
-				int MpBarLengthC2 = (C2CMP * 98) / C2MMP;
+				MpBarLengthC2 = (C2CMP * 98) / C2MMP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 156,MpBarLengthC2,8 }, 0, 0, 200);
 				if (CurrentCharacters == 3) {
 					//Draw player
@@ -285,14 +290,13 @@ bool Combat::Update(float dt)
 					app->render->DrawTexture(ClassArcher, app->scene->player->position.x + 210, app->scene->player->position.y + 77);
 					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
 					//Int to string convert
-					char Aux[10];
 					sprintf_s(Aux, "%.0f", C3MHP);
 					app->font->BlitText(295 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 					sprintf_s(Aux, "%.0f", C3CHP);
 					app->font->BlitText(280 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 					//Calculate hp bar length 
-					int HpBarLengthC3 = (C3CHP * 98) / C3MHP;
+					HpBarLengthC3 = (C3CHP * 98) / C3MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 116,HpBarLengthC3,8 }, 0, 200, 0);
 					app->font->BlitText(260 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
 					sprintf_s(Aux, "%.0f", C3MMP);
@@ -301,7 +305,7 @@ bool Combat::Update(float dt)
 					app->font->BlitText(280 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 					//Calculate mp bar length
-					int MpBarLengthC3 = (C3CMP * 98) / C3MMP;
+					MpBarLengthC3 = (C3CMP * 98) / C3MMP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 156,MpBarLengthC3,8 }, 0, 0, 200);
 				}
 			}
@@ -312,7 +316,6 @@ bool Combat::Update(float dt)
 			//Draw enemy
 			if (E1dead == false) {
 				//Draw enemy class
-				SDL_Texture* E1 = app->tex->Load("Assets/Textures/YELLOW.png");
 				if (E1class == 1) {
 					E1 = ClassTank;
 				}
@@ -328,17 +331,15 @@ bool Combat::Update(float dt)
 				}
 				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
 				//Int to string convert
-				char Aux[10];
 				sprintf_s(Aux, "%.0f", E1MHP);
 				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y,64,10 }, 0, 0, 0);
-				int HpBarLengthE1 = (E1CHP * 62) / E1MHP;
+				HpBarLengthE1 = (E1CHP * 62) / E1MHP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1,HpBarLengthE1,8 }, 0, 200, 0);
 			}
 			if (CurrentEnemies >= 2) {
 				//Draw enemy
 				if (E2dead == false) {
 					//Draw enemy class
-					SDL_Texture* E2 = app->tex->Load("Assets/Textures/YELLOW.png");
 					if (E2class == 1) {
 						E2 = ClassTank;
 					}
@@ -354,17 +355,15 @@ bool Combat::Update(float dt)
 					}
 					app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 - E2BOSS, app->scene->player->position.y - 130 - E2BOSS);
 					//Int to string convert
-					char Aux[10];
 					sprintf_s(Aux, "%.0f", E2MHP);
 					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
-					int HpBarLengthE2 = (E2CHP * 62) / E2MHP;
+					HpBarLengthE2 = (E2CHP * 62) / E2MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
 				}
 				if (CurrentEnemies == 3) {
 					//Draw enemy
 					if (E3dead == false) {
 						//Draw enemy class
-						SDL_Texture* E3 = app->tex->Load("Assets/Textures/YELLOW.png");
 						if (E3class == 1) {
 							E3 = ClassTank;
 						}
@@ -380,10 +379,9 @@ bool Combat::Update(float dt)
 						}
 						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 - E3BOSS, app->scene->player->position.y - 10 - E3BOSS);
 						//Int to string convert
-						char Aux[10];
 						sprintf_s(Aux, "%.0f", E3MHP);
 						app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
-						int HpBarLengthE3 = (E3CHP * 62) / E3MHP;
+						HpBarLengthE3 = (E3CHP * 62) / E3MHP;
 						app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
 					}
 				}

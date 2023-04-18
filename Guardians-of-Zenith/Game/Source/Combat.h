@@ -250,6 +250,27 @@ private:
 
 	// 1-3 = ally, 4-6 = enemy
 	int Turn[6] = { 1, 4, 5, 2, 6, 3 };
+
+	//To prevent memory leaks (This may cause problems so it must be checked in case something does not work right)
+
+	char Aux[10];
+
+	int HpBarLengthC1 = 0;
+	int MpBarLengthC1 = 0;
+	int HpBarLengthC2 = 0;
+	int MpBarLengthC2 = 0;
+	int HpBarLengthC3 = 0;
+	int MpBarLengthC3 = 0;
+
+	int HpBarLengthE1 = 0;
+	int HpBarLengthE2 = 0;
+	int HpBarLengthE3 = 0;
+
+	SDL_Texture* E1;
+	SDL_Texture* E2;
+	SDL_Texture* E3;
+
+	int TurnPos = 0, auxiliarPos = 0;
 };
 
 #endif // __COMBAT_H__
