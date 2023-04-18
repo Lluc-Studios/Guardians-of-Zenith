@@ -24,7 +24,7 @@
 
   <scene>
 	 <!-- player Starting pos, x: 500 y: 220-->
-    <player x="500" y="220" width="64" height="16" texturepath="Assets/Textures/personatge_direccions_prototip.png"/>
+    <player x="500" y="310" width="64" height="16" texturepath="Assets/Textures/personatge_direccions_prototip.png"/>
 
 	  <!--enemy x="1270" y="190" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
 	<enemy x="2220" y="400" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
@@ -77,7 +77,7 @@
 	<!--THIS IS NOT FUNCTIONAL-->
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile path="Assets/Maps/Poblat proves.tmx" path1="Assets/Maps/Tavern.tmx" path2="Assets/Maps/Forge.tmx"/>
+    <mapfile path="Assets/Maps/Poblat proves.tmx" path1="Assets/Maps/Tavern.tmx" path2="Assets/Maps/Forge.tmx" path3="Assets/Maps/House.tmx"/>
   </map>
 	
   

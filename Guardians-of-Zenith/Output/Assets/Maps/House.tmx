@@ -116,17 +116,17 @@
 </data>
  </layer>
  <objectgroup id="11" name="Collisions">
-  <object id="2" x="30.5" y="26" width="103.5" height="64"/>
-  <object id="3" x="218.75" y="26.5" width="107" height="69"/>
-  <object id="5" x="129.25" y="63" width="94" height="64"/>
+  <object id="2" x="30.5" y="26" width="99.25" height="64"/>
+  <object id="3" x="222.75" y="26.5" width="98.375" height="69"/>
+  <object id="5" x="128.25" y="63" width="95" height="64"/>
   <object id="6" x="320.5" y="63" width="95.5" height="64"/>
-  <object id="7" x="416.167" y="39" width="166.333" height="84.1667"/>
-  <object id="8" x="575.955" y="112.333" width="7.15118" height="143.394"/>
-  <object id="9" x="407.758" y="192.091" width="8.333" height="64.4603"/>
-  <object id="10" x="407.75" y="256.5" width="175.25" height="6"/>
+  <object id="7" x="416.167" y="39" width="162.458" height="80.9584"/>
+  <object id="8" x="575.955" y="112.333" width="7.15118" height="144.269"/>
+  <object id="9" x="408.849" y="198.273" width="7.24209" height="58.2785"/>
+  <object id="10" x="408.841" y="256.5" width="174.159" height="6"/>
   <object id="11" x="320.375" y="191.917" width="95.5833" height="6.75"/>
   <object id="12" x="320.292" y="198.812" width="6.54133" height="56.8353"/>
-  <object id="13" x="326.833" y="249.625" width="32.0833" height="6"/>
+  <object id="13" x="326.833" y="249.625" width="31.4583" height="6"/>
   <object id="14" x="351.911" y="255.707" width="6.54133" height="71.3467"/>
   <object id="15" x="320.042" y="320.083" width="31.7708" height="6.875"/>
   <object id="16" x="320.013" y="326.979" width="7.04133" height="25.0811"/>
@@ -139,23 +139,23 @@
   <object id="23" x="217.189" y="327.243" width="7.04133" height="25.0811"/>
   <object id="24" x="217.183" y="352.319" width="39.0317" height="6.875"/>
   <object id="25" x="128.295" y="198.991" width="6.54133" height="25.1989"/>
-  <object id="26" x="24.6744" y="72.178" width="7.15118" height="151.644"/>
+  <object id="26" x="24.6744" y="89.4507" width="7.15118" height="134.371"/>
   <object id="27" x="25.2841" y="224.03" width="109.371" height="6.54545"/>
-  <object id="28" x="339.773" y="255.864" width="11.9091" height="31.9545"/>
-  <object id="29" x="192.773" y="256.205" width="11.9091" height="31.9545"/>
-  <object id="30" x="160.023" y="191.591" width="11.9091" height="31.9545" rotation="270"/>
-  <object id="31" x="352.273" y="192.023" width="11.9091" height="31.9545" rotation="270"/>
-  <object id="32" x="32.5454" y="108.773" width="18.6591" height="31.9545" rotation="270"/>
-  <object id="33" x="96.6705" y="109.023" width="18.6591" height="31.9545" rotation="270"/>
-  <object id="35" x="63.4205" y="128.523" width="38.1591" height="33.4545" rotation="270"/>
-  <object id="36" x="63.5454" y="223.523" width="11.9091" height="31.9545" rotation="270"/>
-  <object id="38" x="256.67" y="109.023" width="18.6591" height="31.9545" rotation="270"/>
-  <object id="39" x="445.045" y="224.523" width="33.9091" height="101.204" rotation="270"/>
+  <object id="28" x="342.023" y="255.864" width="9.6591" height="31.9545"/>
+  <object id="29" x="192.773" y="256.205" width="9.2841" height="31.9545"/>
+  <object id="30" x="160.023" y="191.591" width="9.5341" height="31.9545" rotation="270"/>
+  <object id="31" x="352.273" y="192.023" width="10.2841" height="31.9545" rotation="270"/>
+  <object id="32" x="31.7954" y="104.773" width="14.6591" height="31.9545" rotation="270"/>
+  <object id="33" x="96.6705" y="104.898" width="14.5341" height="31.9545" rotation="270"/>
+  <object id="35" x="63.4205" y="124.398" width="34.0341" height="33.4545" rotation="270"/>
+  <object id="36" x="63.5454" y="223.523" width="9.6591" height="31.9545" rotation="270"/>
+  <object id="38" x="256.67" y="105.023" width="14.6591" height="31.9545" rotation="270"/>
+  <object id="39" x="448.17" y="217.773" width="25.5341" height="95.704" rotation="270"/>
  </objectgroup>
  <objectgroup id="12" name="ExitTavern">
   <properties>
-   <property name="9" type="int" value="9"/>
+   <property name="Type" type="int" value="13"/>
   </properties>
-  <object id="40" x="256.25" y="358" width="31.65" height="14.19"/>
+  <object id="40" x="256.229" y="354.545" width="31.792" height="5.19"/>
  </objectgroup>
 </map>
