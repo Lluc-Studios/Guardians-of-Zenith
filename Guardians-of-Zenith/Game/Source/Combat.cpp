@@ -1163,8 +1163,8 @@ bool Combat::Update(float dt)
 						if (EnemyAttackNum == 1) {
 							int block = 1, multiplier1 = 1, multiplier2 = 1;
 							if (E2A1target == 0) {
-								if (E2class == 2) multiplier1 = 2;
-								if (E2class == 3) multiplier2 = 2;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
 								Cname = C3NAME;
@@ -1198,8 +1198,8 @@ bool Combat::Update(float dt)
 						if (EnemyAttackNum == 2) {
 							int block = 1, multiplier1 = 1, multiplier2 = 1;
 							if (E2A2target == 0) {
-								if (E2class == 2) multiplier1 = 2;
-								if (E2class == 3) multiplier2 = 2;
+								if (E2class == 1) multiplier1 = 2;
+								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
 								Cname = C3NAME;
@@ -1525,11 +1525,11 @@ void Combat::StartCombat()
 	LoadLucca(app->scene->player->lucca);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	//LoadEnemy(app->entityManager->waterlilyfish);
-	LoadEnemy(app->entityManager->naiadongoddess);
-	LoadEnemy(app->entityManager->waterlilyfish);
+	//LoadEnemy(app->entityManager->naiadongoddess);
+	//LoadEnemy(app->entityManager->waterlilyfish);
 	LoadEnemy(app->entityManager->slimeFrog);
-	//LoadEnemy(app->entityManager->slimeFrog);
-	//LoadEnemy(app->entityManager->slimeFrog);
+	LoadEnemy(app->entityManager->slimeFrog);
+	LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
 }
@@ -1560,6 +1560,15 @@ void Combat::ExitCombat()
 	E1Check = false;
 	E2Check = false;
 	E3Check = false;
+	
+	//Save stats to characters
+	app->scene->player->laurea.chp = C1CHP;
+	app->scene->player->laurea.cmp = C1CMP;
+	app->scene->player->lapis.chp = C2CHP;
+	app->scene->player->lapis.cmp = C2CMP;
+	app->scene->player->lucca.chp = C3CHP;
+	app->scene->player->lucca.cmp = C3CMP;
+
 }
 
 void Combat::FinishTurn()
