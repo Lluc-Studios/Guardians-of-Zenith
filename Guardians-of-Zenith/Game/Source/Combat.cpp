@@ -47,8 +47,11 @@ bool Combat::Start()
 	Character2 = app->tex->Load("Assets/Entities/Characters/Character2.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Character1.png");
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
-	Enemy2 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
-	Enemy3 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish.png");
+	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess.png");
+	E1asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	E2asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
+	E3asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	ClassTank = app->tex->Load("Assets/Textures/YELLOW.png");
 	ClassMage = app->tex->Load("Assets/Textures/BLUE.png");
 	ClassArcher = app->tex->Load("Assets/Textures/GREEN.png");
@@ -323,7 +326,7 @@ bool Combat::Update(float dt)
 				if (Turn[0] == 4) {
 					app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
 				}
-				app->render->DrawTexture(Enemy1, app->scene->player->position.x + 115, app->scene->player->position.y - 70);
+				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
 				//Int to string convert
 				char Aux[10];
 				sprintf_s(Aux, "%.0f", E1MHP);
@@ -349,7 +352,7 @@ bool Combat::Update(float dt)
 					if (Turn[0] == 5) {
 						app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 					}
-					app->render->DrawTexture(Enemy2, app->scene->player->position.x + 200, app->scene->player->position.y - 130);
+					app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 - E2BOSS, app->scene->player->position.y - 130 - E2BOSS);
 					//Int to string convert
 					char Aux[10];
 					sprintf_s(Aux, "%.0f", E2MHP);
@@ -375,7 +378,7 @@ bool Combat::Update(float dt)
 						if (Turn[0] == 6) {
 							app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 						}
-						app->render->DrawTexture(Enemy3, app->scene->player->position.x + 200, app->scene->player->position.y - 10);
+						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 - E3BOSS, app->scene->player->position.y - 10 - E3BOSS);
 						//Int to string convert
 						char Aux[10];
 						sprintf_s(Aux, "%.0f", E3MHP);
@@ -1069,10 +1072,11 @@ void Combat::StartCombat()
 	LoadLucca(app->scene->player->lucca);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	//LoadEnemy(app->entityManager->waterlilyfish);
-	//LoadEnemy(app->entityManager->waterlilyfish);
+	LoadEnemy(app->entityManager->naiadongoddess);
+	LoadEnemy(app->entityManager->waterlilyfish);
 	LoadEnemy(app->entityManager->slimeFrog);
-	LoadEnemy(app->entityManager->slimeFrog);
-	LoadEnemy(app->entityManager->slimeFrog);
+	//LoadEnemy(app->entityManager->slimeFrog);
+	//LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
 }
 
@@ -1294,6 +1298,22 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E3A4name = enemy.A4name;
 		E3A4target = enemy.A4target;
 		E3class = enemy.Eclass;
+		if (enemy.boss == 2) {
+			E3BOSS = 64;
+		}
+		if (enemy.boss == 1) {
+			E3BOSS = 0;
+		}
+		//Selecting enemy asset
+		if (enemy.asset == 1) {
+			E3asset = Enemy1;
+		}
+		if (enemy.asset == 2) {
+			E3asset = Enemy2;
+		}
+		if (enemy.asset == 3) {
+			E3asset = Enemy3;
+		}
 	}
 	if (CurrentEnemies == 1) {
 		E2speed = enemy.spe;
@@ -1319,6 +1339,22 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E2A4name = enemy.A4name;
 		E2A4target = enemy.A4target;
 		E2class = enemy.Eclass;
+		if (enemy.boss == 2) {
+			E2BOSS = 64;
+		}
+		if (enemy.boss == 1) {
+			E2BOSS = 0;
+		}
+		//Selecting enemy asset
+		if (enemy.asset == 1) {
+			E2asset = Enemy1;
+		}
+		if (enemy.asset == 2) {
+			E2asset = Enemy2;
+		}
+		if (enemy.asset == 3) {
+			E2asset = Enemy3;
+		}
 	}
 	if (CurrentEnemies == 0) {
 		E1speed = enemy.spe;
@@ -1344,6 +1380,22 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E1A4name = enemy.A4name;
 		E1A4target = enemy.A4target;
 		E1class = enemy.Eclass;
+		if (enemy.boss == 2) {
+			E1BOSS = 64;
+		}
+		if (enemy.boss == 1) {
+			E1BOSS = 0;
+		}
+		//Selecting enemy asset
+		if (enemy.asset == 1) {
+			E1asset = Enemy1;
+		}
+		if (enemy.asset == 2) {
+			E1asset = Enemy2;
+		}
+		if (enemy.asset == 3) {
+			E1asset = Enemy3;
+		}
 	}
 }
 

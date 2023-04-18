@@ -171,12 +171,14 @@ private:
 	float E1MHP = 1000, E1CHP = 800;
 	float E1ATK, E1DEF, E1EXP;
 	float E1speed = 0;
-	int E1class = 1;
+	int E1class = 1, E1BOSS = 0;
 	const char* E1Weak;
 	const char* E1Res;
 	const char* E1name;
 	const char* E1A1name;
 	float E1A1dmg, E1A1target;
+
+	SDL_Texture* E1asset;
 
 	const char* E1A2name;
 	float E1A2dmg, E1A2target;
@@ -193,12 +195,14 @@ private:
 	float E2MHP = 1000, E2CHP = 1000;
 	float E2ATK, E2DEF, E2EXP;
 	float E2speed = 0;
-	int E2class = 1;
+	int E2class = 1, E2BOSS = 0;
 	const char* E2Weak;
 	const char* E2Res;
 	const char* E2name;
 	const char* E2A1name;
 	float E2A1dmg, E2A1target;
+
+	SDL_Texture* E2asset;
 
 	const char* E2A2name;
 	float E2A2dmg, E2A2target;
@@ -215,12 +219,14 @@ private:
 	float E3MHP = 1000, E3CHP = 150;
 	float E3ATK, E3DEF, E3EXP;
 	float E3speed = 0;
-	int E3class = 1;
+	int E3class = 1, E3BOSS = 0;
 	const char* E3Weak;
 	const char* E3Res;
 	const char* E3name;
 	const char* E3A1name;
 	float E3A1dmg, E3A1target;
+
+	SDL_Texture* E3asset;
 
 	const char* E3A2name;
 	float E3A2dmg, E3A2target;
