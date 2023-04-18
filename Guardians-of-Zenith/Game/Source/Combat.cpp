@@ -500,10 +500,10 @@ bool Combat::Update(float dt)
 					}
 				}
 				if (EnemySelect == true) {
-					if (option == COMBATMENU::ENEMY2) {
+					if (option == COMBATMENU::ENEMY2 && E1dead == false) {
 						option = COMBATMENU::ENEMY1;
 					}
-					if (option == COMBATMENU::ENEMY3) {
+					if (option == COMBATMENU::ENEMY3 && E2dead == false) {
 						option = COMBATMENU::ENEMY2;
 					}
 				}
@@ -526,10 +526,10 @@ bool Combat::Update(float dt)
 					}
 				}
 				if (EnemySelect == true) {
-					if (option == COMBATMENU::ENEMY2) {
+					if (option == COMBATMENU::ENEMY2 && E3dead == false) {
 						option = COMBATMENU::ENEMY3;
 					}
-					if (option == COMBATMENU::ENEMY1) {
+					if (option == COMBATMENU::ENEMY1 && E2dead == false) {
 						option = COMBATMENU::ENEMY2;
 					}
 				}
