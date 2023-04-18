@@ -802,23 +802,65 @@ bool Combat::Update(float dt)
 					if (EnemyAttackTarget == 1) {
 						if (EnemyAttackNum == 1) {
 							int block = 1, multiplier1 = 1, multiplier2 = 1;
-							if (E3class == 2) multiplier1 = 2;
-							if (E3class == 3) multiplier2 = 2;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
-							Cname = C1NAME;
-							Ename = E3name;
-							Aname = E3A1name;
+							if (E3A1target == 0) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E3name;
+								Aname = E3A1name;
+							}
+							if (E3A1target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A1name;
+							}
 						}
 						if (EnemyAttackNum == 2) {
 							int block = 1, multiplier1 = 1, multiplier2 = 1;
-							if (E3class == 2) multiplier1 = 2;
-							if (E3class == 3) multiplier2 = 2;
-							if (C1Block == true) block = 3;
-							C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
-							Cname = C1NAME;
-							Ename = E3name;
-							Aname = E3A2name;
+							if (E3A2target == 0) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								Cname = C1NAME;
+								Ename = E3name;
+								Aname = E3A2name;
+							}
+							if (E3A2target == 1) {
+								if (E3class == 2) multiplier1 = 2;
+								if (E3class == 3) multiplier2 = 2;
+								if (C1Block == true) block = 3;
+								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								if (E3class == 3) multiplier1 = 2;
+								if (E3class == 1) multiplier2 = 2;
+								if (C2Block == true) block = 3;
+								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								block = 1;
+								if (E3class == 1) multiplier1 = 2;
+								if (E3class == 2) multiplier2 = 2;
+								if (C3Block == true) block = 3;
+								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								Cname = "everyone";
+								Ename = E3name;
+								Aname = E3A2name;
+							}
 						}
 					}
 					if (EnemyAttackTarget == 2) {
