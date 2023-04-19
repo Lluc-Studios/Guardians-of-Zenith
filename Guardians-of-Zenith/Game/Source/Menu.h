@@ -45,8 +45,10 @@ private:
 	int fading = 255, fontFading = 0, change, select, x, y, tempX;
 	bool fadeIn = true, Play = false, PlaySelected = false;
 	SDL_Texture* MENUD;
-	int WF, GF;
 
+	SDL_Color WF = { 255, 255, 255 };
+	SDL_Color GF = { 200, 200, 200 };
+	SDL_Color YF = { 255, 255, 80 };
 };
 
 #endif // __MENU_H__

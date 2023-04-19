@@ -39,9 +39,9 @@ bool Combat::Awake(pugi::xml_node& config)
 bool Combat::Start()
 {
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
-	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
-	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
-	YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
+	//WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
+	//GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
+	//YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Character1.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Character2.png");
@@ -107,55 +107,55 @@ bool Combat::Update(float dt)
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,100,160 }, 0, 0, 255, 150);
-		app->font->BlitText(160 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn");
+		app->render->DrawText(160 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "turn", 16);
 		if (option != COMBATMENU::NONE) {
 			if (option == COMBATMENU::ATTACK && AttackMenu == false) {
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "attack");
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
-				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
-				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "Attack", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "Defend", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "Inventory", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "Escape", 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::DEFEND && AttackMenu == false) {
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "defend");
-				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
-				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "Attack", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "Defend", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "Escape", 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::INVENTORY && AttackMenu == false) {
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
-				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "inventory");
-				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "escape");
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "Attack", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "Defend", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "Inventory", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, GF, "Escape", 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ESCAPE && AttackMenu == false) {
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "attack");
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "defend");
-				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "inventory");
-				app->font->BlitText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "escape");
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, "Attack", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "Defend", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, "Inventory", 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "Escape", 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 135,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ATTACK1 && AttackMenu == true && EnemySelect == false) {
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, Attack1);
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, Attack2);
-				app->font->BlitText(10 * app->ScalingMultiplier+78, 100 * app->ScalingMultiplier, WF, M1);
-				app->font->BlitText(10 * app->ScalingMultiplier+78, 120 * app->ScalingMultiplier, GF, M2);
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, Attack1, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, Attack2, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier+78, 100 * app->ScalingMultiplier, WF, M1, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier+78, 120 * app->ScalingMultiplier, GF, M2, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ATTACK2 && AttackMenu == true && EnemySelect == false) {
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, Attack1);
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, Attack2);
-				app->font->BlitText(10 * app->ScalingMultiplier+78, 100 * app->ScalingMultiplier, GF, M1);
-				app->font->BlitText(10 * app->ScalingMultiplier+78, 120 * app->ScalingMultiplier, WF, M2);
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, Attack1, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, Attack2, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier+78, 100 * app->ScalingMultiplier, GF, M1, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier+78, 120 * app->ScalingMultiplier, WF, M2, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ENEMY1 && EnemySelect == true) {
 				if (E1dead == true) option = COMBATMENU::ENEMY2;
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name);
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
-				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
 				if (E1dead == false) {
 					if (E1BOSS == 0) {
@@ -168,9 +168,9 @@ bool Combat::Update(float dt)
 			}
 			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
 				if (E2dead == true) option = COMBATMENU::ENEMY3;
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, E2name);
-				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, E2name, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,100,20 }, 255, 255, 255, WhiteFading);
 				if (E2dead == false) {
 					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
@@ -178,9 +178,9 @@ bool Combat::Update(float dt)
 			}
 			if (option == COMBATMENU::ENEMY3 && EnemySelect == true) {
 				if (E3dead == true) option = COMBATMENU::ENEMY1;
-				app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name);
-				app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name);
-				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, E3name);
+				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, E3name, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,100,20 }, 255, 255, 255, WhiteFading);
 				if (E3dead == false) {
 					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
@@ -240,23 +240,23 @@ bool Combat::Update(float dt)
 			if (C1dead == false) {
 				app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
 			}
-			app->font->BlitText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME);
+			app->render->DrawText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME, 16);
 			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
-			app->font->BlitText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
+			app->render->DrawText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp", 16);
 			//Int to string convert
 			sprintf_s(Aux, "%.0f", C1MHP);
-			app->font->BlitText(135 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+			app->render->DrawText(135 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 			sprintf_s(Aux, "%.0f", C1CHP);
-			app->font->BlitText(120 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+			app->render->DrawText(120 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 			app->render->DrawRectangle({ app->scene->player->position.x - 90,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 			//Calculate hp bar length
 			HpBarLengthC1 = (C1CHP * 98) / C1MHP;
 			app->render->DrawRectangle({ app->scene->player->position.x - 89,app->scene->player->position.y + 116,HpBarLengthC1,8 }, 0, 200, 0);
-			app->font->BlitText(100 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
+			app->render->DrawText(100 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp", 16);
 			sprintf_s(Aux, "%.0f", C1MMP);
-			app->font->BlitText(135 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+			app->render->DrawText(135 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
 			sprintf_s(Aux, "%.0f", C1CMP);
-			app->font->BlitText(120 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+			app->render->DrawText(120 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
 			app->render->DrawRectangle({ app->scene->player->position.x - 90,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 			//Calculate mp bar length
 			MpBarLengthC1 = (C1CMP * 98) / C1MMP;
@@ -269,23 +269,23 @@ bool Combat::Update(float dt)
 				if (C2dead == false) {
 					app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
 				}
-				app->font->BlitText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME);
+				app->render->DrawText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME, 16);
 				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
-				app->font->BlitText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
+				app->render->DrawText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp", 16);
 				//Int to string convert
 				sprintf_s(Aux, "%.0f", C2MHP);
-				app->font->BlitText(215 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+				app->render->DrawText(215 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 				sprintf_s(Aux, "%.0f", C2CHP);
-				app->font->BlitText(200 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+				app->render->DrawText(200 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 				//Calculate hp bar length 
 				HpBarLengthC2 = (C2CHP * 98) / C2MHP;
 				app->render->DrawRectangle({ app->scene->player->position.x + 71,app->scene->player->position.y + 116,HpBarLengthC2,8 }, 0, 200, 0);
-				app->font->BlitText(180 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
+				app->render->DrawText(180 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp", 16);
 				sprintf_s(Aux, "%.0f", C2MMP);
-				app->font->BlitText(215 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+				app->render->DrawText(215 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
 				sprintf_s(Aux, "%.0f", C2CMP);
-				app->font->BlitText(200 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+				app->render->DrawText(200 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 				//Calculate mp bar length
 				MpBarLengthC2 = (C2CMP * 98) / C2MMP;
@@ -298,23 +298,23 @@ bool Combat::Update(float dt)
 					if (C3dead == false) {
 						app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
 					}
-					app->font->BlitText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME);
+					app->render->DrawText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME, 16);
 					app->render->DrawTexture(ClassArcher, app->scene->player->position.x + 210, app->scene->player->position.y + 77);
-					app->font->BlitText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp");
+					app->render->DrawText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "hp", 16);
 					//Int to string convert
 					sprintf_s(Aux, "%.0f", C3MHP);
-					app->font->BlitText(295 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+					app->render->DrawText(295 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 					sprintf_s(Aux, "%.0f", C3CHP);
-					app->font->BlitText(280 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux);
+					app->render->DrawText(280 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 					//Calculate hp bar length 
 					HpBarLengthC3 = (C3CHP * 98) / C3MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 231,app->scene->player->position.y + 116,HpBarLengthC3,8 }, 0, 200, 0);
-					app->font->BlitText(260 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp");
+					app->render->DrawText(260 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, "mp", 16);
 					sprintf_s(Aux, "%.0f", C3MMP);
-					app->font->BlitText(295 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+					app->render->DrawText(295 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
 					sprintf_s(Aux, "%.0f", C3CMP);
-					app->font->BlitText(280 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux);
+					app->render->DrawText(280 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
 					app->render->DrawRectangle({ app->scene->player->position.x + 230,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 					//Calculate mp bar length
 					MpBarLengthC3 = (C3CMP * 98) / C3MMP;
@@ -616,8 +616,8 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 1) {
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E1Weak == "laurea") multiplier = 2;
-								if (E1Res == "laurea") multiplier2 = 2;
+								if (E1Weak == "Laurea") multiplier = 2;
+								if (E1Res == "Laurea") multiplier2 = 2;
 								E1CHP = E1CHP - (((C1A1dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -625,8 +625,8 @@ bool Combat::Update(float dt)
 								C1CMP -= C1A2mp;
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E1Weak == "laurea") multiplier = 2;
-								if (E1Res == "laurea") multiplier2 = 2;
+								if (E1Weak == "Laurea") multiplier = 2;
+								if (E1Res == "Laurea") multiplier2 = 2;
 								E1CHP = E1CHP - (((C1A2dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -635,8 +635,8 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 1) {
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E1Weak == "lapis") multiplier = 2;
-								if (E1Res == "lapis") multiplier2 = 2;
+								if (E1Weak == "Lapis") multiplier = 2;
+								if (E1Res == "Lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A1dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -644,14 +644,14 @@ bool Combat::Update(float dt)
 								C2CMP -= C2A2mp;
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E1Weak == "lapis") multiplier = 2;
-								if (E1Res == "lapis") multiplier2 = 2;
+								if (E1Weak == "Lapis") multiplier = 2;
+								if (E1Res == "Lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
-								if (E2Weak == "lapis") multiplier = 2;
-								if (E2Res == "lapis") multiplier2 = 2;
+								if (E2Weak == "Lapis") multiplier = 2;
+								if (E2Res == "Lapis") multiplier2 = 2;
 								E2CHP = E2CHP - (((C2A2dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
-								if (E3Weak == "lapis") multiplier = 2;
-								if (E3Res == "lapis") multiplier2 = 2;
+								if (E3Weak == "Lapis") multiplier = 2;
+								if (E3Res == "Lapis") multiplier2 = 2;
 								E3CHP = E3CHP - (((C2A2dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -687,8 +687,8 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 1) {
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E2Weak == "laurea") multiplier = 2;
-								if (E2Res == "laurea") multiplier2 = 2;
+								if (E2Weak == "Laurea") multiplier = 2;
+								if (E2Res == "Laurea") multiplier2 = 2;
 								E2CHP = E2CHP - (((C1A1dmg * (C1ATK / E2DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -696,8 +696,8 @@ bool Combat::Update(float dt)
 								C1CMP -= C1A2mp;
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E2Weak == "laurea") multiplier = 2;
-								if (E2Res == "laurea") multiplier2 = 2;
+								if (E2Weak == "Laurea") multiplier = 2;
+								if (E2Res == "Laurea") multiplier2 = 2;
 								E2CHP = E2CHP - (((C1A2dmg * (C1ATK / E2DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -706,8 +706,8 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 1) {
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E2Weak == "lapis") multiplier = 2;
-								if (E2Res == "lapis") multiplier2 = 2;
+								if (E2Weak == "Lapis") multiplier = 2;
+								if (E2Res == "Lapis") multiplier2 = 2;
 								E2CHP = E2CHP - (((C2A1dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -715,14 +715,14 @@ bool Combat::Update(float dt)
 								C2CMP -= C2A2mp;
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E1Weak == "lapis") multiplier = 2;
-								if (E1Res == "lapis") multiplier2 = 2;
+								if (E1Weak == "Lapis") multiplier = 2;
+								if (E1Res == "Lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
-								if (E2Weak == "lapis") multiplier = 2;
-								if (E2Res == "lapis") multiplier2 = 2;
+								if (E2Weak == "Lapis") multiplier = 2;
+								if (E2Res == "Lapis") multiplier2 = 2;
 								E2CHP = E2CHP - (((C2A2dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
-								if (E3Weak == "lapis") multiplier = 2;
-								if (E3Res == "lapis") multiplier2 = 2;
+								if (E3Weak == "Lapis") multiplier = 2;
+								if (E3Res == "Lapis") multiplier2 = 2;
 								E3CHP = E3CHP - (((C2A2dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -758,8 +758,8 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 1) {
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E3Weak == "laurea") multiplier = 2;
-								if (E3Res == "laurea") multiplier2 = 2;
+								if (E3Weak == "Laurea") multiplier = 2;
+								if (E3Res == "Laurea") multiplier2 = 2;
 								E3CHP = E3CHP - (((C1A1dmg * (C1ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -767,8 +767,8 @@ bool Combat::Update(float dt)
 								C1CMP -= C1A2mp;
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E3Weak == "laurea") multiplier = 2;
-								if (E3Res == "laurea") multiplier2 = 2;
+								if (E3Weak == "Laurea") multiplier = 2;
+								if (E3Res == "Laurea") multiplier2 = 2;
 								E3CHP = E3CHP - (((C1A2dmg * (C1ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -777,8 +777,8 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 1) {
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E3Weak == "lapis") multiplier = 2;
-								if (E3Res == "lapis") multiplier2 = 2;
+								if (E3Weak == "Lapis") multiplier = 2;
+								if (E3Res == "Lapis") multiplier2 = 2;
 								E3CHP = E3CHP - (((C2A1dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -786,14 +786,14 @@ bool Combat::Update(float dt)
 								C2CMP -= C2A2mp;
 								multiplier = 1;
 								multiplier2 = 1;
-								if (E1Weak == "lapis") multiplier = 2;
-								if (E1Res == "lapis") multiplier2 = 2;
+								if (E1Weak == "Lapis") multiplier = 2;
+								if (E1Res == "Lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
-								if (E2Weak == "lapis") multiplier = 2;
-								if (E2Res == "lapis") multiplier2 = 2;
+								if (E2Weak == "Lapis") multiplier = 2;
+								if (E2Res == "Lapis") multiplier2 = 2;
 								E2CHP = E2CHP - (((C2A2dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
-								if (E3Weak == "lapis") multiplier = 2;
-								if (E3Res == "lapis") multiplier2 = 2;
+								if (E3Weak == "Lapis") multiplier = 2;
+								if (E3Res == "Lapis") multiplier2 = 2;
 								E3CHP = E3CHP - (((C2A2dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
@@ -1539,11 +1539,11 @@ bool Combat::Update(float dt)
 				}
 				EnemyAdone = true;
 			}
-			app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, Ename);
-			app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, WF, "used");
-			app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aname);
-			app->font->BlitText(10 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "against");
-			app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, YF, Cname);
+			app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, Ename, 16);
+			app->render->DrawText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, WF, "used", 16);
+			app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aname, 16);
+			app->render->DrawText(10 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "against", 16);
+			app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, YF, Cname, 16);
 			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 				FinishTurn();
 			}
@@ -1568,20 +1568,20 @@ bool Combat::PostUpdate()
 	bool ret = true;
 
 	if (option == COMBATMENU::WIN) {
-		app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "you");
-		app->font->BlitText(10 * app->ScalingMultiplier + 24, 100 * app->ScalingMultiplier, YF, "won");
-		app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "and");
-		app->font->BlitText(10 * app->ScalingMultiplier + 24, 110 * app->ScalingMultiplier, YF, "got");
+		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "you", 16);
+		app->render->DrawText(10 * app->ScalingMultiplier + 24, 100 * app->ScalingMultiplier, YF, "won", 16);
+		app->render->DrawText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "and", 16);
+		app->render->DrawText(10 * app->ScalingMultiplier + 24, 110 * app->ScalingMultiplier, YF, "got", 16);
 		sprintf_s(Aux, "%d", EXPwon);
-		app->font->BlitText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux);
-		app->font->BlitText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp");
+		app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux, 16);
+		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			ExitCombat();
 		}
 	}
 	if (option == COMBATMENU::LOSE) {
-		app->font->BlitText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "you");
-		app->font->BlitText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "lost");
+		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "you", 16);
+		app->render->DrawText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "lost", 16);
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			ExitCombat();
 		}

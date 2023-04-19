@@ -36,9 +36,9 @@ bool DeathMenu::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool DeathMenu::Start()
 {
-	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
-	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
-	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
+	//char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
+	//WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
+	//GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
 	change = app->audio->LoadFx("Assets/Sounds/ChangeSelection.wav");
 	select = app->audio->LoadFx("Assets/Sounds/Select.wav");
 	//MENUD = app->tex->Load("Assets/Textures/Menu_Gradient.png");
@@ -67,12 +67,12 @@ bool DeathMenu::Update(float dt)
 	}
 	if (fading == 100) {
 		if (continue1 == true) {
-			app->font->BlitText(x + 140, y + 50, WF, "continue");
-			app->font->BlitText(x + 150, y + 90, GF, "exit");
+			app->render->DrawText(x + 140, y + 50, WF, "continue", 16);
+			app->render->DrawText(x + 150, y + 90, GF, "exit", 16);
 		}
 		if (continue1 == false) {
-			app->font->BlitText(x + 140, y + 50, GF, "continue");
-			app->font->BlitText(x + 150, y + 90, WF, "exit");
+			app->render->DrawText(x + 140, y + 50, GF, "continue", 16);
+			app->render->DrawText(x + 150, y + 90, WF, "exit", 16);
 		}
 	}
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
@@ -127,8 +127,6 @@ bool DeathMenu::PostUpdate()
 bool DeathMenu::CleanUp()
 {
 	LOG("Freeing menu");
-	app->font->UnLoad(WF);
-	app->font->UnLoad(GF);
 
 	return true;
 }

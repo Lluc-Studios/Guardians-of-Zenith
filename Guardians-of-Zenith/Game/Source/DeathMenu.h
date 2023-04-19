@@ -40,8 +40,12 @@ private:
 	bool continue1 = true;
 	int fading = 0, change, select, x, y;
 	SDL_Texture* MENUD;
-	int WF, GF;
 
+public:
+
+	SDL_Color WF = { 255, 255, 255 };
+	SDL_Color GF = { 200, 200, 200 };
+	SDL_Color YF = { 255, 255, 80 };
 };
 
 #endif // __DEATHMENU_H__

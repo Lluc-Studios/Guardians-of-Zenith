@@ -246,7 +246,12 @@ private:
 
 	int idCount = 3, offset = 0;
 
-	int SaveInstance = 0, WF, GF, YF;
+	int SaveInstance = 0;
+	
+	SDL_Color WF = { 255, 255, 255 };
+	SDL_Color GF = { 200, 200, 200 };
+	SDL_Color YF = { 255, 255, 80 };
+
 	bool InCombat = false;
 
 	int CurrentCharacters = 0, CurrentEnemies = 0;

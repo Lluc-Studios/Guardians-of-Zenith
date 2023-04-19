@@ -39,9 +39,6 @@ bool Menu::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Menu::Start()
 {
-	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
-	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
-	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
 	change = app->audio->LoadFx("Assets/Sounds/ChangeSelection.wav");
 	select = app->audio->LoadFx("Assets/Sounds/Select.wav");
 	fading = 255;
@@ -96,19 +93,19 @@ bool Menu::Update(float dt)
 	tempX = -1*x;
 	app->render->DrawTexture(MENUD, tempX - 120, (-1 * y));
 	if (option == SELECTED::FIRST && fontFading != 255) {
-		app->font->BlitText(x + 65, y + 40, WF, "empty");
-		app->font->BlitText(x + 65, y + 80, GF, "empty");
-		app->font->BlitText(x + 65, y + 120, GF, "empty");
+		app->render->DrawText(x + 65, y + 40, WF, "empty", 16);
+		app->render->DrawText(x + 65, y + 80, GF, "empty", 16);
+		app->render->DrawText(x + 65, y + 120, GF, "empty", 16);
 	}
 	if (option == SELECTED::SECOND && fontFading != 255) {
-		app->font->BlitText(x + 65, y + 40, GF, "empty");
-		app->font->BlitText(x + 65, y + 80, WF, "empty");
-		app->font->BlitText(x + 65, y + 120, GF, "empty");
+		app->render->DrawText(x + 65, y + 40, GF, "empty", 16);
+		app->render->DrawText(x + 65, y + 80, WF, "empty", 16);
+		app->render->DrawText(x + 65, y + 120, GF, "empty", 16);
 	}
 	if (option == SELECTED::THIRD && fontFading != 255) {
-		app->font->BlitText(x + 65, y + 40, GF, "empty");
-		app->font->BlitText(x + 65, y + 80, GF, "empty");
-		app->font->BlitText(x + 65, y + 120, WF, "empty");
+		app->render->DrawText(x + 65, y + 40, GF, "empty", 16);
+		app->render->DrawText(x + 65, y + 80, GF, "empty", 16);
+		app->render->DrawText(x + 65, y + 120, WF, "empty", 16);
 	}
 	if (PlaySelected == true) {
 		if (fontFading <= 254) {
@@ -141,8 +138,6 @@ bool Menu::PostUpdate()
 bool Menu::CleanUp()
 {
 	LOG("Freeing menu");
-	app->font->UnLoad(WF);
-	app->font->UnLoad(GF);
 
 	return true;
 }

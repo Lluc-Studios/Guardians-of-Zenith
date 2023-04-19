@@ -38,10 +38,7 @@ bool MainMenu::Awake(pugi::xml_node& config)
 bool MainMenu::Start()
 {
 	//mainmenu = app->tex->Load("Assets/Textures/main_menu.png");
-	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
-	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
-	GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
-	YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
+
 	change = app->audio->LoadFx("Assets/Sounds/ChangeSelection.wav");
 	select = app->audio->LoadFx("Assets/Sounds/Select.wav");
 	MX = 125 + app->audio->volume;
@@ -96,7 +93,7 @@ bool MainMenu::Update(float dt)
 
 	}
 	//Nombre del juego (el original)
-	//app->font->BlitText(134, 10, YF, "obsolete");
+	//app->font->DrawText(134, 10, YF, "obsolete");
 	//Funcion para detectar el raton en la parte principal del menu
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
 		if (option == SELECTED::PLAY) {
@@ -116,11 +113,11 @@ bool MainMenu::Update(float dt)
 		int x, y;
 		x = app->input->GetMousePositionX();
 		y = app->input->GetMousePositionY();
-		app->font->BlitText(142 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "music");
-		app->font->BlitText(151 * app->ScalingMultiplier, 65 * app->ScalingMultiplier, WF, "fx");
-		app->font->BlitText(127 * app->ScalingMultiplier, 95 * app->ScalingMultiplier, WF, "fullscreen");
-		app->font->BlitText(142 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "vsync");
-		app->font->BlitText(145 * app->ScalingMultiplier, 145 * app->ScalingMultiplier, GF, "back");
+		app->render->DrawText(142 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "music", 16);
+		app->render->DrawText(151 * app->ScalingMultiplier, 65 * app->ScalingMultiplier, WF, "fx", 16);
+		app->render->DrawText(127 * app->ScalingMultiplier, 95 * app->ScalingMultiplier, WF, "fullscreen", 16);
+		app->render->DrawText(142 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "vsync", 16);
+		app->render->DrawText(145 * app->ScalingMultiplier, 145 * app->ScalingMultiplier, GF, "back", 16);
 		app->render->DrawRectangle({ 125 * app->ScalingMultiplier,58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
 		app->render->DrawRectangle({ MX * app->ScalingMultiplier,56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
 		app->render->DrawRectangle({ 125 * app->ScalingMultiplier,83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
@@ -199,7 +196,7 @@ bool MainMenu::Update(float dt)
 
 		}
 		else if (x >= 145 * app->ScalingMultiplier && x <= 169 * app->ScalingMultiplier && y >= 145 * app->ScalingMultiplier && y <= 157 * app->ScalingMultiplier) {
-			app->font->BlitText(145 * app->ScalingMultiplier, 145 * app->ScalingMultiplier, WF, "back");
+			app->render->DrawText(145 * app->ScalingMultiplier, 145 * app->ScalingMultiplier, WF, "back", 16);
 			if (option == SELECTED::NONE) {
 				option = SELECTED::BACK;
 				app->audio->PlayFxWithVolume(change, 0, 70);
@@ -220,36 +217,36 @@ bool MainMenu::Update(float dt)
 		x = app->input->GetMousePositionX();
 		y = app->input->GetMousePositionY();
 		if (x >= 145 * app->ScalingMultiplier && x <= 169 * app->ScalingMultiplier && y >= 40 * app->ScalingMultiplier && y <= 52 * app->ScalingMultiplier) {
-			app->font->BlitText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "play");
-			app->font->BlitText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options");
-			app->font->BlitText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit");
+			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "play", 16);
+			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
+			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
 			if (option == SELECTED::NONE) {
 				option = SELECTED::PLAY;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
 		}
 		else if (x >= 137 * app->ScalingMultiplier && x <= 179 * app->ScalingMultiplier && y >= 80 * app->ScalingMultiplier && y <= 92 * app->ScalingMultiplier) {
-			app->font->BlitText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play");
-			app->font->BlitText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, WF, "options");
-			app->font->BlitText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit");
+			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
+			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, WF, "options", 16);
+			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
 			if (option == SELECTED::NONE) {
 				option = SELECTED::OPTIONS;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
 		}
 		else if (x >= 145 * app->ScalingMultiplier && x <= 169 * app->ScalingMultiplier && y >= 120 * app->ScalingMultiplier && y <= 132 * app->ScalingMultiplier) {
-			app->font->BlitText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play");
-			app->font->BlitText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options");
-			app->font->BlitText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "exit");
+			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
+			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
+			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "exit", 16);
 			if (option == SELECTED::NONE) {
 				option = SELECTED::EXIT;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
 		}
 		else {
-			app->font->BlitText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play");
-			app->font->BlitText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options");
-			app->font->BlitText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit");
+			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
+			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
+			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
 			option = SELECTED::NONE;
 		}
 	}
@@ -271,8 +268,6 @@ bool MainMenu::PostUpdate()
 bool MainMenu::CleanUp()
 {
 	LOG("Freeing main menu");
-	app->font->UnLoad(WF);
-	app->font->UnLoad(GF);
 
 	return true;
 }

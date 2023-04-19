@@ -49,9 +49,12 @@ public:
 
 	SELECTED option = SELECTED::NONE;
 
-	int WF, GF, YF, change, select, fading = 255, fading2 = 0, MX,FX, RGB = 150, RGB1 = 150;
+	int change, select, fading = 255, fading2 = 0, MX,FX, RGB = 150, RGB1 = 150;
 	bool fadeIn = true, fadeOut = false, options = false, FS = false, VS = false;
 
+	SDL_Color WF = { 255, 255, 255 };
+	SDL_Color GF = { 200, 200, 200 };
+	SDL_Color YF = { 255, 255, 80 };
 
 private:
 	SDL_Texture* BG;

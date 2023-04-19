@@ -235,11 +235,11 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 	return ret;
 }
 
-bool Render::DrawText(const char* text, int x, int y,int size, SDL_Color color) 
+bool Render::DrawText(int x, int y, SDL_Color color, const char* text, int size) 
 {
 	bool ret = true;
 
-	ttf_font = TTF_OpenFont("Assets/Fonts/InkbitThree.ttf", 25);
+	ttf_font = TTF_OpenFont("Assets/Fonts/Pixellari.ttf", 25);
 
 	if (!ttf_font)
 	{
