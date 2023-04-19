@@ -591,7 +591,9 @@ void Tavern::CreateColliders(ColDataT c) {
     else if (c.type == 19) {
         collider1->ctype = ColliderType::TOWNCAVEDUNGEON;
     }
-
+    else if (c.type == 22) {
+        collider1->ctype = ColliderType::NPC1;
+    }
 }
 
 //TEMPORARY PATHFINDING -----------------------------------------------------------------------------------------------------------------

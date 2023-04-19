@@ -448,6 +448,18 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		lucca.chp = lucca.hp;
 		lucca.cmp = lucca.mp;
 		break;
+	case ColliderType::NPC1:
+		//Collision in tabern
+
+		break;
+	case ColliderType::NPC2:
+		//Collision in blacksmith
+
+		break;
+	case ColliderType::NPC3:
+		//Collision in town
+
+		break;
 	}
 		
 }

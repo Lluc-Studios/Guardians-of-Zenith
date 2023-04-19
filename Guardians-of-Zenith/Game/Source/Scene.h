@@ -70,8 +70,14 @@ private:
 	SDL_Texture* trophyTex;
 	SDL_Texture* BGtexture;
 	SDL_Texture* EnemyT;
+	SDL_Texture* NPC1;
+	SDL_Texture* NPC2;
+	SDL_Texture* NPC3;
 
 	SDL_Rect ET = { 16,17,32,32 };
+	SDL_Rect N1T = { 0,0,32,32 };
+	SDL_Rect N2T = { 0,0,32,32 };
+	SDL_Rect N3T = { 0,0,32,32 };
 };
 
 #endif // __SCENE_H__

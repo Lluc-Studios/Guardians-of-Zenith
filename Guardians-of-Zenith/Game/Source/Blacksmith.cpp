@@ -591,7 +591,9 @@ void Blacksmith::CreateColliders(ColDataB c) {
     else if (c.type == 19) {
         collider1->ctype = ColliderType::TOWNCAVEDUNGEON;
     }
-
+    else if (c.type == 23) {
+        collider1->ctype = ColliderType::NPC2;
+    }
 }
 
 //TEMPORARY PATHFINDING -----------------------------------------------------------------------------------------------------------------

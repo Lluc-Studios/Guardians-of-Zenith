@@ -597,6 +597,9 @@ void Map::CreateColliders(ColData c) {
     else if (c.type == 21) {
         collider1->ctype = ColliderType::ENEMY;
     }
+    else if (c.type == 24) {
+        collider1->ctype = ColliderType::NPC3;
+    }
 }
 
 //TEMPORARY PATHFINDING -----------------------------------------------------------------------------------------------------------------

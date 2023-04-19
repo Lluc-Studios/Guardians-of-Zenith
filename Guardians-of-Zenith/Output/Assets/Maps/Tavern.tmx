@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="22">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="23">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1340,5 +1340,11 @@
    <property name="Type" type="int" value="9"/>
   </properties>
   <object id="15" x="191.941" y="389.957" width="31.6512" height="5.193"/>
+ </objectgroup>
+ <objectgroup id="9" name="NPC1">
+  <properties>
+   <property name="Type" type="int" value="22"/>
+  </properties>
+  <object id="22" x="127" y="167" width="65" height="16.3333"/>
  </objectgroup>
 </map>
