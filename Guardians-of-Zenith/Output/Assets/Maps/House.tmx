@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="44">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="72">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -708,6 +708,241 @@
    <tile/>
   </data>
  </layer>
+ <layer id="15" name="Walls2" width="19" height="12">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
+  <data>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="53"/>
+   <tile gid="53"/>
+   <tile gid="53"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="53"/>
+   <tile gid="53"/>
+   <tile gid="53"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+  </data>
+ </layer>
  <layer id="3" name="Walls" width="19" height="12">
   <properties>
    <property name="Draw" type="bool" value="true"/>
@@ -850,15 +1085,15 @@
    <tile gid="92"/>
    <tile gid="93"/>
    <tile gid="93"/>
-   <tile gid="95"/>
-   <tile gid="11"/>
+   <tile gid="75"/>
+   <tile gid="13"/>
    <tile gid="71"/>
    <tile/>
    <tile/>
    <tile/>
    <tile gid="75"/>
-   <tile gid="15"/>
-   <tile gid="31"/>
+   <tile gid="13"/>
+   <tile gid="71"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1648,42 +1883,33 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="11" name="Collisions" visible="0">
-  <object id="2" x="30.5" y="26" width="99.25" height="64"/>
-  <object id="3" x="222.75" y="26.5" width="98.375" height="69"/>
-  <object id="5" x="128.25" y="63" width="95" height="64"/>
-  <object id="6" x="320.5" y="63" width="95.5" height="64"/>
-  <object id="7" x="416.167" y="39" width="162.458" height="80.9584"/>
-  <object id="8" x="575.955" y="112.333" width="7.15118" height="144.269"/>
-  <object id="9" x="408.849" y="198.273" width="7.24209" height="58.2785"/>
-  <object id="10" x="408.841" y="256.5" width="174.159" height="6"/>
-  <object id="11" x="320.375" y="191.917" width="95.5833" height="6.75"/>
-  <object id="12" x="320.292" y="198.812" width="6.54133" height="56.8353"/>
-  <object id="13" x="326.833" y="249.625" width="31.4583" height="6"/>
-  <object id="14" x="351.911" y="255.707" width="6.54133" height="71.3467"/>
-  <object id="15" x="320.042" y="320.083" width="31.7708" height="6.875"/>
-  <object id="16" x="320.013" y="326.979" width="7.04133" height="25.0811"/>
-  <object id="17" x="288.028" y="352.055" width="39.0317" height="6.875"/>
-  <object id="18" x="128.285" y="191.681" width="95.5833" height="7.25"/>
-  <object id="19" x="217.41" y="199.076" width="6.54133" height="56.8353"/>
-  <object id="20" x="185.327" y="249.889" width="32.0833" height="6"/>
-  <object id="21" x="185.791" y="255.971" width="6.54133" height="71.3467"/>
-  <object id="22" x="192.43" y="320.347" width="31.7708" height="6.875"/>
-  <object id="23" x="217.189" y="327.243" width="7.04133" height="25.0811"/>
-  <object id="24" x="217.183" y="352.319" width="39.0317" height="6.875"/>
-  <object id="25" x="128.295" y="198.991" width="6.54133" height="25.1989"/>
-  <object id="26" x="24.6744" y="89.4507" width="7.15118" height="134.371"/>
-  <object id="27" x="25.2841" y="224.03" width="109.371" height="6.54545"/>
-  <object id="28" x="342.023" y="255.864" width="9.6591" height="31.9545"/>
-  <object id="29" x="192.773" y="256.205" width="9.2841" height="31.9545"/>
-  <object id="30" x="160.023" y="183.375" width="32.6873" height="9.54815" rotation="270"/>
-  <object id="31" x="352.273" y="182.314" width="34.9311" height="11.0419" rotation="270"/>
-  <object id="32" x="33.2892" y="92.0761" width="28.8498" height="15.5232" rotation="270"/>
-  <object id="33" x="96.6705" y="90.7073" width="30.2185" height="15.5232" rotation="270"/>
-  <object id="35" x="64.1674" y="90.0416" width="34.0341" height="33.4545" rotation="270"/>
-  <object id="36" x="65.786" y="215.307" width="32.8123" height="10.295" rotation="270"/>
-  <object id="38" x="256.67" y="91.5792" width="34.0779" height="15.5232" rotation="270"/>
-  <object id="39" x="450.411" y="192.379" width="97.9813" height="25.4974" rotation="270"/>
+ <objectgroup id="14" name="Collisions" visible="0">
+  <object id="44" x="25.3333" y="25.4167" width="109.333" height="60.5833"/>
+  <object id="45" x="217.667" y="25.0417" width="109.333" height="70.25"/>
+  <object id="46" x="128" y="57.875" width="95.6663" height="68.9167"/>
+  <object id="47" x="320.106" y="57.88" width="95.6663" height="68.9167"/>
+  <object id="48" x="410.833" y="26.375" width="171.333" height="94.0833"/>
+  <object id="49" x="447.333" y="192.292" width="97.208" height="26.75"/>
+  <object id="50" x="25.0523" y="80.2083" width="6.84152" height="150.708"/>
+  <object id="51" x="31.7042" y="224.084" width="99.4665" height="6.833"/>
+  <object id="52" x="128.267" y="192.083" width="95.5915" height="64"/>
+  <object id="53" x="184.998" y="254.697" width="6.8037" height="66.4694"/>
+  <object id="54" x="185.193" y="320.265" width="38.6597" height="38.4694"/>
+  <object id="55" x="320.204" y="192.08" width="95.5915" height="63.8785"/>
+  <object id="56" x="320.108" y="320.27" width="38.6597" height="38.4694"/>
+  <object id="57" x="223.761" y="352" width="32.2174" height="6.92395"/>
+  <object id="58" x="408.934" y="256" width="174.053" height="6.99936"/>
+  <object id="59" x="288.083" y="351.871" width="32.5" height="6.92395"/>
+  <object id="60" x="576.182" y="116.5" width="6.928" height="140.363"/>
+  <object id="61" x="32" y="90.5" width="32" height="15"/>
+  <object id="62" x="96" y="90.5" width="32" height="15"/>
+  <object id="64" x="255.424" y="90.5" width="33.0909" height="15"/>
+  <object id="65" x="63.5455" y="214" width="32.9091" height="10"/>
+  <object id="66" x="159.5" y="182" width="33" height="10"/>
+  <object id="67" x="351.273" y="182" width="33.4545" height="10"/>
+  <object id="68" x="191.844" y="256" width="10.8835" height="32"/>
+  <object id="70" x="351.848" y="254.015" width="6.8037" height="66.9694"/>
+  <object id="71" x="341.28" y="256" width="10.6219" height="32"/>
  </objectgroup>
  <objectgroup id="12" name="ExitHouse" visible="0">
   <properties>
