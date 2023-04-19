@@ -48,8 +48,6 @@ bool Render::Awake(pugi::xml_node& config)
 		camera.x = 0;
 		camera.y = 0;
 	}
-	
-	TTF_Init();
 
 	return ret;
 }
@@ -85,12 +83,6 @@ bool Render::PostUpdate()
 // Called before quitting
 bool Render::CleanUp()
 {
-	// Free the font
-	//TTF_CloseFont(ttf_font);
-
-	//we clean up TTF library
-	TTF_Quit();
-
 	LOG("Destroying SDL render");
 	SDL_DestroyRenderer(renderer);
 	return true;
@@ -235,54 +227,24 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 	return ret;
 }
 
-bool Render::DrawText(const char* text, int x, int y,int size, SDL_Color color) 
-{
-	bool ret = true;
-
-	ttf_font = TTF_OpenFont("Assets/Fonts/InkbitThree.ttf", 25);
-
-	if (!ttf_font)
-	{
-		LOG("Cannot open font. TTF_OpenFont error: %s", TTF_GetError());
-		return false;
-	}
-
-	SDL_Color ttf_color;
-	ttf_color.r = color.r;
-	ttf_color.g = color.g;
-	ttf_color.b = color.b;
-	ttf_color.a = color.a;
-
-	SDL_Rect ttf_rect;
-	ttf_surface = TTF_RenderText_Solid(ttf_font, text, ttf_color);
-	ttf_texture = SDL_CreateTextureFromSurface(renderer, ttf_surface);
-
-	if (ttf_surface == nullptr)
-	{
-		LOG("Cannot open font. SDL_Surface* error: %s", SDL_GetError());
-		ret = false;
-	}
-	else
-	{
-		ttf_rect.x = x * app->win->GetScale();
-		ttf_rect.y = y * app->win->GetScale();
-		ttf_rect.w = ttf_surface->w * app->win->GetScale();
-		ttf_rect.h = ttf_surface->h * app->win->GetScale();
-
-		SDL_FreeSurface(ttf_surface);
-		if (SDL_RenderCopy(renderer, ttf_texture, NULL, &ttf_rect) != 0)
-		{
-			LOG("Cannot render text to screen. SDL_RenderCopy error: %s", SDL_GetError());
-			ret = false;
-		}
-
-		SDL_DestroyTexture(ttf_texture);
-		ttf_texture = nullptr;
-		TTF_CloseFont(ttf_font);
-	}
-
-	return ret;
-}
+//bool Render::DrawText(const char* text, int posx, int posy, int w, int h, SDL_Color color) {
+//
+//
+//	SDL_Surface* surface = TTF_RenderText_Solid(font, text, color);
+//	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+//
+//	int texW = 0;
+//	int texH = 0;
+//	SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+//	SDL_Rect dstrect = { posx, posy, w, h };
+//
+//	SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+//
+//	SDL_DestroyTexture(texture);
+//	SDL_FreeSurface(surface);
+//
+//	return true;
+//}
 
 // L03: DONE 6: Implement a method to load the state
 // for now load camera's x and y

@@ -139,8 +139,6 @@ bool Scene::PreUpdate()
 bool Scene::Update(float dt)
 {
 
-	app->render->DrawText("Space: start dialogue", 50, 25, 16, { 255, 255, 255 });
-
 	if (Music == false) {
 		//app->audio->PlayMusic("Assets/Sounds/candybattleLONG.wav");
 		Music = true;
