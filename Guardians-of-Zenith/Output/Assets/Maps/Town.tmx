@@ -15119,7 +15119,7 @@
  </objectgroup>
  <objectgroup id="10" name="EnemyTest">
   <properties>
-   <property name="Type" type="int" value="21"/>
+   <property name="Type" type="int" value="100"/>
   </properties>
   <object id="187" x="1106" y="224" width="31" height="33"/>
  </objectgroup>
