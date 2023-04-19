@@ -123,8 +123,7 @@ public:
 	//Uint32 TotalTime, Time = 0;
 
 	int auxCounter = 0;
-	bool auxBool = false, test = true;
-	float speed = 5;
+	bool auxBool = false;
 
 private:
 
