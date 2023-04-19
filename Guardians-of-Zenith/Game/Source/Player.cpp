@@ -342,6 +342,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::ENEMY:
 		//LOG("Collision Enemy");
 		app->combat->StartCombat();
+		break;
 	case ColliderType::TAVERN:
 		LOG("Collision Tavern");
 		if (auxBool == false) {
@@ -349,7 +350,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::TOWNTAVERN:
 		LOG("Collision Town");
 		if (auxBool == false) {
@@ -357,7 +358,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::BLACKSMITH:
 		LOG("Collision Blacksmith");
 		if (auxBool == false) {
@@ -365,7 +366,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::TOWNBLACKSMITH:
 		LOG("Collision Town");
 		if (auxBool == false) {
@@ -373,7 +374,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::HOUSE:
 		LOG("Collision House");
 		if (auxBool == false) {
@@ -381,7 +382,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::TOWNHOUSE:
 		LOG("Collision Town");
 		if (auxBool == false) {
@@ -389,7 +390,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::LAKEDUNGEON:
 		LOG("Collision Lake Dungeon");
 		if (auxBool == false) {
@@ -397,7 +398,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::TOWNLAKEDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
@@ -405,7 +406,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::FORESTDUNGEON:
 		LOG("Collision Forest Dungeon");
 		if (auxBool == false) {
@@ -413,7 +414,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::TOWNFORESTDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
@@ -421,7 +422,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::CAVEDUNGEON:
 		LOG("Collision Cave Dungeon");
 		if (auxBool == false) {
@@ -429,7 +430,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
-
+		break;
 	case ColliderType::TOWNCAVEDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
@@ -437,6 +438,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
+		break;
 	case ColliderType::BED:
 		LOG("Collision Bed");
 		laurea.chp = laurea.hp;
@@ -445,7 +447,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		lapis.cmp = lapis.mp;
 		lucca.chp = lucca.hp;
 		lucca.cmp = lucca.mp;
-
+		break;
 	}
 		
 }
