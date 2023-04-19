@@ -55,6 +55,8 @@ public:
 	SDL_Color WF = { 255, 255, 255 };
 	SDL_Color GF = { 200, 200, 200 };
 	SDL_Color YF = { 255, 255, 80 };
+	SDL_Color RF = { 255, 90, 60 };
+	SDL_Color BF = { 0, 0, 0 };
 
 private:
 	SDL_Texture* BG;

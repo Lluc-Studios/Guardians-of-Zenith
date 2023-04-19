@@ -239,7 +239,7 @@ bool Render::DrawText(int x, int y, SDL_Color color, const char* text, int size)
 {
 	bool ret = true;
 
-	ttf_font = TTF_OpenFont("Assets/Fonts/Pixellari.ttf", 25);
+	ttf_font = TTF_OpenFont("Assets/Fonts/Pixellari.ttf", size);
 
 	if (!ttf_font)
 	{
