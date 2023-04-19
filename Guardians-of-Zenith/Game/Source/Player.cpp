@@ -191,10 +191,6 @@ bool Player::Update()
 	
 	//SDL_Rect rect = currentAnim->GetCurrentFrame();
 	//currentAnim->Update();
-	SDL_Rect rectDown = { 8,2,19,28 };
-	SDL_Rect rectUp = { 39,2,18,28 };
-	SDL_Rect rectLeft = { 72,2,21,29 };
-	SDL_Rect rectRight = { 100,2,21,29 };
 
 	position.x = METERS_TO_PIXELS((pbody->body->GetTransform().p.x) - width / 2);
 	position.y = METERS_TO_PIXELS((pbody->body->GetTransform().p.y) - height / 2);

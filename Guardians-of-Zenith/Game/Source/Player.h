@@ -161,6 +161,11 @@ private:
 	SDL_Texture* LFL;
 	SDL_Texture* LFE;
 
+	SDL_Rect rectDown = { 8,2,19,28 };
+	SDL_Rect rectUp = { 39,2,18,28 };
+	SDL_Rect rectLeft = { 72,2,21,29 };
+	SDL_Rect rectRight = { 100,2,21,29 };
+
 };
 //struct Laurea
 //{
@@ -171,49 +176,49 @@ private:
 //	}
 //};
 
-class Laurea : public Player
-{
-public:
-
-	// stats
-	struct stats
-	{
-		int hp, chp, mp,cmp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-	};
-	int hp, chp, mp, cmp, atk, def, spe, limit;
-	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-
-};
-
-class Lapis : public Player
-{
-public:
-
-	// stats
-	struct stats
-	{
-		int hp, chp, mp, cmp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-	};
-	int hp, chp, mp, cmp, atk, def, spe, limit;
-	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-
-};
-
-class Lucca : public Player
-{
-public:
-
-	// stats
-	struct stats
-	{
-		int hp, chp, mp, cmp, atk, def, spe, limit;
-		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-	};
-	int hp, chp, mp, cmp, atk, def, spe, limit;
-	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
-};
+//class Laurea : public Player
+//{
+//public:
+//
+//	// stats
+//	struct stats
+//	{
+//		int hp, chp, mp,cmp, atk, def, spe, limit;
+//		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//	};
+//	int hp, chp, mp, cmp, atk, def, spe, limit;
+//	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//
+//};
+//
+//class Lapis : public Player
+//{
+//public:
+//
+//	// stats
+//	struct stats
+//	{
+//		int hp, chp, mp, cmp, atk, def, spe, limit;
+//		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//	};
+//	int hp, chp, mp, cmp, atk, def, spe, limit;
+//	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//
+//};
+//
+//class Lucca : public Player
+//{
+//public:
+//
+//	// stats
+//	struct stats
+//	{
+//		int hp, chp, mp, cmp, atk, def, spe, limit;
+//		int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//	};
+//	int hp, chp, mp, cmp, atk, def, spe, limit;
+//	int lvl, hpGrowth, mpGrowth, atkGrowth, defGrowth;
+//};
 
 
 #endif // __PLAYER_H__
