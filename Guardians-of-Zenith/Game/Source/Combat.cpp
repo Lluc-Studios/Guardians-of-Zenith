@@ -1655,6 +1655,11 @@ void Combat::StartCombat()
 		LoadEnemy(app->entityManager->waterlilyfish);
 		LoadEnemy(app->entityManager->slimeFrog);
 	}
+	if (Preset == 10) {
+		LoadEnemy(app->entityManager->naiadongoddess);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->slimeFrog);
+	}
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
 }

@@ -354,6 +354,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetChance >= 86 && PresetChance <= 90) app->combat->Preset = 7;
 		if (PresetChance >= 91 && PresetChance <= 95) app->combat->Preset = 8;
 		if (PresetChance >= 96 && PresetChance <= 100) app->combat->Preset = 9;
+		if (boss == true) app->combat->Preset = 10;
 		app->combat->StartCombat();
 		break;
 	case ColliderType::TAVERN:
@@ -528,7 +529,7 @@ void Player::Move() {
 		facing = DIRECTION::DOWN;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
-		app->combat->StartCombat();
+		boss = !boss;
 	}
 
 	//Fx

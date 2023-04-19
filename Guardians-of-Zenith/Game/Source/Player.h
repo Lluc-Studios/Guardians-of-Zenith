@@ -96,6 +96,9 @@ public:
 	bool limitFPS = true;
 	int PresetChance = 0;
 
+	//for debugging
+	bool boss = false;
+
 	bool DeathAnimationFinished = false;
 
 	PhysBody* pbody;
