@@ -158,7 +158,12 @@ bool Combat::Update(float dt)
 				app->font->BlitText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,100,20 }, 255, 255, 255, WhiteFading);
 				if (E1dead == false) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+					if (E1BOSS == 0) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+					}
+					if (E1BOSS == 64) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,66 + E1BOSS,66 + E1BOSS }, 255, 255, 255, 120);
+					}
 				}
 			}
 			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
@@ -334,7 +339,12 @@ bool Combat::Update(float dt)
 				}
 				app->render->DrawTexture(E1, app->scene->player->position.x + 95, app->scene->player->position.y - 3);
 				if (Turn[0] == 4) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+					if (E1BOSS == 0) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+					}
+					if (E1BOSS == 64) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,66 + E1BOSS,66 + E1BOSS }, 255, 255, 255, 120);
+					}
 				}
 				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
 				//Int to string convert
@@ -503,8 +513,13 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::ENEMY2 && E1dead == false) {
 						option = COMBATMENU::ENEMY1;
 					}
-					if (option == COMBATMENU::ENEMY3 && E2dead == false) {
-						option = COMBATMENU::ENEMY2;
+					if (option == COMBATMENU::ENEMY3) {
+						if (E2dead == false) {
+							option = COMBATMENU::ENEMY2;
+						}
+						if (E2dead == true && E1dead == false) {
+							option = COMBATMENU::ENEMY1;
+						}
 					}
 				}
 			}
@@ -529,8 +544,13 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::ENEMY2 && E3dead == false) {
 						option = COMBATMENU::ENEMY3;
 					}
-					if (option == COMBATMENU::ENEMY1 && E2dead == false) {
-						option = COMBATMENU::ENEMY2;
+					if (option == COMBATMENU::ENEMY1) {
+						if (E2dead == false) {
+							option = COMBATMENU::ENEMY2;
+						}
+						if (E2dead == true && E3dead == false) {
+							option = COMBATMENU::ENEMY3;
+						}
 					}
 				}
 			}
@@ -1538,11 +1558,11 @@ void Combat::StartCombat()
 	LoadLucca(app->scene->player->lucca);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	//LoadEnemy(app->entityManager->waterlilyfish);
-	//LoadEnemy(app->entityManager->naiadongoddess);
+	LoadEnemy(app->entityManager->naiadongoddess);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	LoadEnemy(app->entityManager->slimeFrog);
 	LoadEnemy(app->entityManager->slimeFrog);
-	LoadEnemy(app->entityManager->slimeFrog);
+	//LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
 }
