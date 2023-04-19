@@ -52,15 +52,15 @@ bool Combat::Start()
 	E1asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	E2asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	E3asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
-	ClassTank = app->tex->Load("Assets/Textures/YELLOW.png");
-	ClassMage = app->tex->Load("Assets/Textures/BLUE.png");
-	ClassArcher = app->tex->Load("Assets/Textures/GREEN.png");
-	ClassChart = app->tex->Load("Assets/Textures/ClassChart.png");
+	ClassTank = app->tex->Load("Assets/Textures/Type_Orange.png");
+	ClassMage = app->tex->Load("Assets/Textures/Type_Purple.png");
+	ClassArcher = app->tex->Load("Assets/Textures/Type_Green.png");
+	ClassChart = app->tex->Load("Assets/Textures/Types.png");
 
 	//Prevent memory leaks
-	E1 = app->tex->Load("Assets/Textures/YELLOW.png");
-	E2 = app->tex->Load("Assets/Textures/YELLOW.png");
-	E3 = app->tex->Load("Assets/Textures/YELLOW.png");
+	E1 = app->tex->Load("Assets/Textures/Type_Orange.png");
+	E2 = app->tex->Load("Assets/Textures/Type_Orange.png");
+	E3 = app->tex->Load("Assets/Textures/Type_Orange.png");
 
 
 	//Random number generation
