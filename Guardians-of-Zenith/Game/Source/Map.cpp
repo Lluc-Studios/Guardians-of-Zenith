@@ -595,7 +595,7 @@ void Map::CreateColliders(ColData c) {
         collider1->ctype = ColliderType::BED;
     }
     else if (c.type == 21) {
-        collider1->ctype = ColliderType::ENEMY;
+        collider1->ctype = ColliderType::ENEMYT;
     }
 }
 

@@ -339,9 +339,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
-	case ColliderType::ENEMY:
-		//LOG("Collision Enemy");
-		app->combat->StartCombat();
 	case ColliderType::TAVERN:
 		LOG("Collision Tavern");
 		if (auxBool == false) {
@@ -445,7 +442,9 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		lapis.cmp = lapis.mp;
 		lucca.chp = lucca.hp;
 		lucca.cmp = lucca.mp;
-
+		
+	case ColliderType::ENEMYT:
+		app->combat->StartCombat();
 	}
 		
 }
@@ -476,7 +475,6 @@ bool Player::SaveState(pugi::xml_node& data) {
 
 void Player::Move() {
 
-	float speed = 5;
 	//if (app->Instance == 0) {
 	//	speed = 10;
 	//}

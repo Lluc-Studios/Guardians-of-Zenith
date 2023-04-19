@@ -49,6 +49,7 @@ enum class ColliderType {
 	FORESTDUNGEON,
 	CAVEDUNGEON,
 	BED,
+	ENEMYT,
 	UNKNOWN
 };
 
