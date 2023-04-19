@@ -121,6 +121,8 @@ bool Scene::Start()
 
 	}
 
+	EnemyT = app->tex->Load("Assets/Entities/Enemies/Lake_SlimeFrog.png");
+
 	return true;
 }
 
@@ -133,6 +135,7 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
+
 	if (Music == false) {
 		//app->audio->PlayMusic("Assets/Sounds/candybattleLONG.wav");
 		Music = true;
@@ -288,6 +291,9 @@ bool Scene::Update(float dt)
 		}
 	}
 	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
+
+	//Enemy test
+	app->render->DrawTexture(EnemyT, 1105, 224, &ET);
 
 	return true;
 }

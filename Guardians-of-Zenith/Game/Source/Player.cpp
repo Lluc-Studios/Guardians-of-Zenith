@@ -340,18 +340,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision UNKNOWN");
 		break;
 	case ColliderType::ENEMY:
-		LOG("Collision Enemy");
-		if (invincible == false) {
-			if (life != 1 && lifeAux == 0) {
-				app->audio->PlayFxWithVolume(DamageFx, 0, 50);
-				life--;
-				lifeAux++;
-			}
-			else if (life == 1 && lifeAux == 0) {
-				life = 0;
-				alive = false;
-			}
-		}
+		//LOG("Collision Enemy");
+		app->combat->StartCombat();
 	case ColliderType::TAVERN:
 		LOG("Collision Tavern");
 		if (auxBool == false) {

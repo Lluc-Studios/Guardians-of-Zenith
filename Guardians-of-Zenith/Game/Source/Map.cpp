@@ -591,7 +591,12 @@ void Map::CreateColliders(ColData c) {
     else if (c.type == 19) {
         collider1->ctype = ColliderType::TOWNCAVEDUNGEON;
     }
-
+    else if (c.type == 20) {
+        collider1->ctype = ColliderType::BED;
+    }
+    else if (c.type == 21) {
+        collider1->ctype = ColliderType::ENEMY;
+    }
 }
 
 //TEMPORARY PATHFINDING -----------------------------------------------------------------------------------------------------------------

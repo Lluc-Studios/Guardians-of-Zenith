@@ -69,7 +69,9 @@ private:
 	SDL_Texture* coinTex;
 	SDL_Texture* trophyTex;
 	SDL_Texture* BGtexture;
+	SDL_Texture* EnemyT;
 
+	SDL_Rect ET = { 16,17,32,32 };
 };
 
 #endif // __SCENE_H__
