@@ -1558,11 +1558,11 @@ void Combat::StartCombat()
 	LoadLucca(app->scene->player->lucca);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	//LoadEnemy(app->entityManager->waterlilyfish);
-	LoadEnemy(app->entityManager->naiadongoddess);
+	//LoadEnemy(app->entityManager->naiadongoddess);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	LoadEnemy(app->entityManager->slimeFrog);
 	LoadEnemy(app->entityManager->slimeFrog);
-	//LoadEnemy(app->entityManager->slimeFrog);
+	LoadEnemy(app->entityManager->slimeFrog);
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
 }

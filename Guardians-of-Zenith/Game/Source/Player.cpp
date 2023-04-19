@@ -49,7 +49,7 @@ bool Player::Start() {
 	//initilize textures
 	texture = app->tex->Load(texturePath);
 	//pbody = app->physics->CreateRectangle(position.x + width/2, position.y + height/2, width-55, height-2, bodyType::DYNAMIC);
-	pbody = app->physics->CreateRectangle(position.x, position.y, 18, 29, bodyType::DYNAMIC);
+	pbody = app->physics->CreateRectangle(position.x, position.y, 18, 10, bodyType::DYNAMIC);
 	//pbody = app->physics->CreateCircle(position.x + width / 2, position.y + height / 2,14/2, bodyType::DYNAMIC);
 	pbody->body->SetFixedRotation(true);
 	pbody->listener = this;
@@ -279,16 +279,16 @@ bool Player::Update()
 
 	//Player draw
 	if (facing == DIRECTION::RIGHT) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectRight);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectRight);
 	}
 	if (facing == DIRECTION::LEFT) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectLeft);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectLeft);
 	}
 	if (facing == DIRECTION::DOWN) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectDown);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectDown);
 	}
 	if (facing == DIRECTION::UP) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 7, &rectUp);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectUp);
 	}
 
 	return true;
@@ -451,6 +451,14 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->scene->fade = true;
 			auxBool = true;
 		}
+	case ColliderType::BED:
+		LOG("Collision Bed");
+		laurea.chp = laurea.hp;
+		laurea.cmp = laurea.mp;
+		lapis.chp = lapis.hp;
+		lapis.cmp = lapis.mp;
+		lucca.chp = lucca.hp;
+		lucca.cmp = lucca.mp;
 
 	}
 		

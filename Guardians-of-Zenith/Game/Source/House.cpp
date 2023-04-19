@@ -591,6 +591,9 @@ void House::CreateColliders(ColDataH c) {
     else if (c.type == 19) {
         collider1->ctype = ColliderType::TOWNCAVEDUNGEON;
     }
+    else if (c.type == 20) {
+        collider1->ctype = ColliderType::BED;
+    }
 
 }
 

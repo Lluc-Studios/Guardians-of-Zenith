@@ -46,6 +46,7 @@ bool MainMenu::Start()
 	select = app->audio->LoadFx("Assets/Sounds/Select.wav");
 	MX = 125 + app->audio->volume;
 	FX = 125 + app->audio->fxvolume/2;
+	BG = app->tex->Load("Assets/Textures/mainmenu_final_scale2.png");
 
 	return true;
 }
@@ -64,6 +65,7 @@ bool MainMenu::Update(float dt)
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
 
+	app->render->DrawTexture(BG,0,0);
 	//Funcion llamada desde el menu de muerte para volver al menu principal (Se desactiva a si misma)
 	if (app->deathmenu->finished == true) {
 		fading = 255;

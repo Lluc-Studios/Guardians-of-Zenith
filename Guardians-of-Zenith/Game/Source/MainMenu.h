@@ -54,7 +54,7 @@ public:
 
 
 private:
-	//SDL_Texture* mainmenu;
+	SDL_Texture* BG;
 };
 
 #endif // __MAINMENU_H__

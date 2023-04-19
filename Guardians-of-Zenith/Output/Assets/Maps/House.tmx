@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="42">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="44">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1648,7 +1648,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="11" name="Collisions">
+ <objectgroup id="11" name="Collisions" visible="0">
   <object id="2" x="30.5" y="26" width="99.25" height="64"/>
   <object id="3" x="222.75" y="26.5" width="98.375" height="69"/>
   <object id="5" x="128.25" y="63" width="95" height="64"/>
@@ -1685,10 +1685,16 @@
   <object id="38" x="256.67" y="91.5792" width="34.0779" height="15.5232" rotation="270"/>
   <object id="39" x="450.411" y="192.379" width="97.9813" height="25.4974" rotation="270"/>
  </objectgroup>
- <objectgroup id="12" name="ExitHouse">
+ <objectgroup id="12" name="ExitHouse" visible="0">
   <properties>
    <property name="Type" type="int" value="13"/>
   </properties>
   <object id="40" x="256.229" y="354.545" width="31.792" height="5.19"/>
+ </objectgroup>
+ <objectgroup id="13" name="Bed">
+  <properties>
+   <property name="Type" type="int" value="20"/>
+  </properties>
+  <object id="43" x="63.4847" y="93.3598" width="32.1158" height="34.3564"/>
  </objectgroup>
 </map>
