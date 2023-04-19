@@ -99,6 +99,9 @@ public:
 	//for debugging
 	bool boss = false;
 
+	//dialogue
+	bool isDialogue = false;
+
 	bool DeathAnimationFinished = false;
 
 	PhysBody* pbody;
@@ -164,6 +167,7 @@ private:
 	SDL_Texture* LFH;
 	SDL_Texture* LFL;
 	SDL_Texture* LFE;
+	SDL_Texture* Dialogue;
 
 	SDL_Rect rectDown = { 8,2,19,28 };
 	SDL_Rect rectUp = { 39,2,18,28 };

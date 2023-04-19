@@ -79,11 +79,12 @@ bool Player::Start() {
 	//LFH = app->tex->Load("Assets/Textures/HALF.png");
 	//LFL = app->tex->Load("Assets/Textures/LOW.png");
 	//LFE = app->tex->Load("Assets/Textures/EMPTY.png");
+	Dialogue = app->tex->Load("Assets/Textures/globotexto2.png");
 
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
 	YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
-
+	
 
 
 	////Animations
@@ -290,6 +291,16 @@ bool Player::Update()
 		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectUp);
 	}
 
+	if (isDialogue)
+	{
+		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			isDialogue = false;
+		}
+	}
+
+
 	return true;
 }
 
@@ -472,7 +483,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::NPC3:
 		//Collision in town
-
+		LOG("A");
+		isDialogue = true;
 		break;
 	}
 		
@@ -509,22 +521,22 @@ void Player::Move() {
 	//	speed = 10;
 	//}
 	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true) {
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(0, 0);
 	}
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true) {
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
 	}
