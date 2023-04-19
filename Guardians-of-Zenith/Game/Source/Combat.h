@@ -277,6 +277,10 @@ private:
 
 	const char* M1 = "0";
 	const char* M2 = "0";
+
+	int block = 1,multiplier = 1, multiplier1 = 1, multiplier2 = 1;
+
+	int EnemyAttackTarget = 0, EnemyAttackNum = 0;
 };
 
 #endif // __COMBAT_H__

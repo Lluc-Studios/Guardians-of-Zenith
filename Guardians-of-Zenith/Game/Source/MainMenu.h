@@ -55,6 +55,9 @@ public:
 
 private:
 	SDL_Texture* BG;
+	SDL_Texture* Buttons;
+
+	SDL_Rect B1 = { 0,0,106,38 };
 };
 
 #endif // __MAINMENU_H__

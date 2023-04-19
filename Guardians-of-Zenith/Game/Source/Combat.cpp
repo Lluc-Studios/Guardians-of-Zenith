@@ -614,7 +614,8 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::ENEMY1 && E1dead == false) {
 						if (Turn[0] == 1) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "laurea") multiplier = 2;
 								if (E1Res == "laurea") multiplier2 = 2;
 								E1CHP = E1CHP - (((C1A1dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
@@ -622,7 +623,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C1CMP >= C1A2mp) {
 								C1CMP -= C1A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "laurea") multiplier = 2;
 								if (E1Res == "laurea") multiplier2 = 2;
 								E1CHP = E1CHP - (((C1A2dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
@@ -631,7 +633,8 @@ bool Combat::Update(float dt)
 						}
 						if (Turn[0] == 2) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lapis") multiplier = 2;
 								if (E1Res == "lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A1dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
@@ -639,7 +642,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C2CMP >= C2A2mp) {
 								C2CMP -= C2A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lapis") multiplier = 2;
 								if (E1Res == "lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
@@ -654,7 +658,8 @@ bool Combat::Update(float dt)
 						}
 						if (Turn[0] == 3) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lucca") multiplier = 2;
 								if (E1Res == "lucca") multiplier2 = 2;
 								E1CHP = E1CHP - (((C3A1dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
@@ -662,7 +667,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C3CMP >= C3A2mp) {
 								C3CMP -= C3A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lucca") multiplier = 2;
 								if (E1Res == "lucca") multiplier2 = 2;
 								E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
@@ -679,7 +685,8 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::ENEMY2 && E2dead == false) {
 						if (Turn[0] == 1) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E2Weak == "laurea") multiplier = 2;
 								if (E2Res == "laurea") multiplier2 = 2;
 								E2CHP = E2CHP - (((C1A1dmg * (C1ATK / E2DEF)) * multiplier) / multiplier2);
@@ -687,7 +694,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C1CMP >= C1A2mp) {
 								C1CMP -= C1A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E2Weak == "laurea") multiplier = 2;
 								if (E2Res == "laurea") multiplier2 = 2;
 								E2CHP = E2CHP - (((C1A2dmg * (C1ATK / E2DEF)) * multiplier) / multiplier2);
@@ -696,7 +704,8 @@ bool Combat::Update(float dt)
 						}
 						if (Turn[0] == 2) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E2Weak == "lapis") multiplier = 2;
 								if (E2Res == "lapis") multiplier2 = 2;
 								E2CHP = E2CHP - (((C2A1dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
@@ -704,7 +713,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C2CMP >= C2A2mp) {
 								C2CMP -= C2A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lapis") multiplier = 2;
 								if (E1Res == "lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
@@ -719,7 +729,8 @@ bool Combat::Update(float dt)
 						}
 						if (Turn[0] == 3) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E2Weak == "lucca") multiplier = 2;
 								if (E2Res == "lucca") multiplier2 = 2;
 								E2CHP = E2CHP - (((C3A1dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
@@ -727,7 +738,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C3CMP >= C3A2mp) {
 								C3CMP -= C3A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lucca") multiplier = 2;
 								if (E1Res == "lucca") multiplier2 = 2;
 								E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
@@ -744,7 +756,8 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::ENEMY3 && E3dead == false) {
 						if (Turn[0] == 1) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E3Weak == "laurea") multiplier = 2;
 								if (E3Res == "laurea") multiplier2 = 2;
 								E3CHP = E3CHP - (((C1A1dmg * (C1ATK / E3DEF)) * multiplier) / multiplier2);
@@ -752,7 +765,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C1CMP >= C1A2mp) {
 								C1CMP -= C1A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E3Weak == "laurea") multiplier = 2;
 								if (E3Res == "laurea") multiplier2 = 2;
 								E3CHP = E3CHP - (((C1A2dmg * (C1ATK / E3DEF)) * multiplier) / multiplier2);
@@ -761,7 +775,8 @@ bool Combat::Update(float dt)
 						}
 						if (Turn[0] == 2) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E3Weak == "lapis") multiplier = 2;
 								if (E3Res == "lapis") multiplier2 = 2;
 								E3CHP = E3CHP - (((C2A1dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
@@ -769,7 +784,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C2CMP >= C2A2mp) {
 								C2CMP -= C2A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lapis") multiplier = 2;
 								if (E1Res == "lapis") multiplier2 = 2;
 								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
@@ -784,7 +800,8 @@ bool Combat::Update(float dt)
 						}
 						if (Turn[0] == 3) {
 							if (AttackSelected == 1) {
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E3Weak == "lucca") multiplier = 2;
 								if (E3Res == "lucca") multiplier2 = 2;
 								E3CHP = E3CHP - (((C3A1dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
@@ -792,7 +809,8 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C3CMP >= C3A2mp) {
 								C3CMP -= C3A2mp;
-								int multiplier = 1, multiplier2 = 1;
+								multiplier = 1;
+								multiplier2 = 1;
 								if (E1Weak == "lucca") multiplier = 2;
 								if (E1Res == "lucca") multiplier2 = 2;
 								E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
@@ -813,8 +831,8 @@ bool Combat::Update(float dt)
 		//Enemy action
 		if (option == COMBATMENU::NONE) {
 			if (EnemyAdone == false) {
-				int EnemyAttackTarget = rand() % CurrentCharacters + 1;
-				int EnemyAttackNum = rand() % 2 + 1;
+				EnemyAttackTarget = rand() % CurrentCharacters + 1;
+				EnemyAttackNum = rand() % 2 + 1;
 				if (EnemyAttackTarget == 1 && C1dead == true) {
 					EnemyAttackTarget = 2;
 				}
@@ -832,7 +850,9 @@ bool Combat::Update(float dt)
 				if (Turn[0] == 6) {
 					if (EnemyAttackTarget == 1) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E3A1target == 0) {
 								if (E3class == 2) multiplier1 = 2;
 								if (E3class == 3) multiplier2 = 2;
@@ -867,7 +887,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E3A2target == 0) {
 								if (E3class == 2) multiplier1 = 2;
 								if (E3class == 3) multiplier2 = 2;
@@ -904,7 +926,9 @@ bool Combat::Update(float dt)
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E3A1target == 0) {
 								if (E3class == 3) multiplier1 = 2;
 								if (E3class == 1) multiplier2 = 2;
@@ -939,7 +963,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E3A2target == 0) {
 								if (E3class == 3) multiplier1 = 2;
 								if (E3class == 1) multiplier2 = 2;
@@ -976,7 +1002,9 @@ bool Combat::Update(float dt)
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E3A1target == 0) {
 								if (E3class == 1) multiplier1 = 2;
 								if (E3class == 2) multiplier2 = 2;
@@ -1011,7 +1039,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E3A2target == 0) {
 								if (E3class == 1) multiplier1 = 2;
 								if (E3class == 2) multiplier2 = 2;
@@ -1050,7 +1080,9 @@ bool Combat::Update(float dt)
 				else if (Turn[0] == 5) {
 					if (EnemyAttackTarget == 1) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E2A1target == 0) {
 								if (E2class == 2) multiplier1 = 2;
 								if (E2class == 3) multiplier2 = 2;
@@ -1085,7 +1117,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E2A2target == 0) {
 								if (E2class == 2) multiplier1 = 2;
 								if (E2class == 3) multiplier2 = 2;
@@ -1122,7 +1156,9 @@ bool Combat::Update(float dt)
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E2A1target == 0) {
 								if (E2class == 3) multiplier1 = 2;
 								if (E2class == 1) multiplier2 = 2;
@@ -1157,7 +1193,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E2A2target == 0) {
 								if (E2class == 3) multiplier1 = 2;
 								if (E2class == 1) multiplier2 = 2;
@@ -1194,7 +1232,9 @@ bool Combat::Update(float dt)
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E2A1target == 0) {
 								if (E2class == 1) multiplier1 = 2;
 								if (E2class == 2) multiplier2 = 2;
@@ -1229,7 +1269,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E2A2target == 0) {
 								if (E2class == 1) multiplier1 = 2;
 								if (E2class == 2) multiplier2 = 2;
@@ -1268,7 +1310,9 @@ bool Combat::Update(float dt)
 				else if (Turn[0] == 4) {
 					if (EnemyAttackTarget == 1) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E1A1target == 0) {
 								if (E1class == 2) multiplier1 = 2;
 								if (E1class == 3) multiplier2 = 2;
@@ -1303,7 +1347,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E1A2target == 0) {
 								if (E1class == 2) multiplier1 = 2;
 								if (E1class == 3) multiplier2 = 2;
@@ -1340,7 +1386,9 @@ bool Combat::Update(float dt)
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E1A1target == 0) {
 								if (E1class == 3) multiplier1 = 2;
 								if (E1class == 1) multiplier2 = 2;
@@ -1375,7 +1423,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E1A2target == 0) {
 								if (E1class == 3) multiplier1 = 2;
 								if (E1class == 1) multiplier2 = 2;
@@ -1412,7 +1462,9 @@ bool Combat::Update(float dt)
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E1A1target == 0) {
 								if (E1class == 1) multiplier1 = 2;
 								if (E1class == 2) multiplier2 = 2;
@@ -1447,7 +1499,9 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (EnemyAttackNum == 2) {
-							int block = 1, multiplier1 = 1, multiplier2 = 1;
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
 							if (E1A2target == 0) {
 								if (E1class == 1) multiplier1 = 2;
 								if (E1class == 2) multiplier2 = 2;

@@ -47,6 +47,7 @@ bool MainMenu::Start()
 	MX = 125 + app->audio->volume;
 	FX = 125 + app->audio->fxvolume/2;
 	BG = app->tex->Load("Assets/Textures/mainmenu_final_scale2.png");
+	Buttons = app->tex->Load("Assets/Textures/Buttons_scale4.png");
 
 	return true;
 }
@@ -61,11 +62,11 @@ bool MainMenu::PreUpdate()
 bool MainMenu::Update(float dt)
 {
 	bool ret = true;
-
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
 
 	app->render->DrawTexture(BG,0,0);
+	app->render->DrawTexture(Buttons, 220, 200, &B1);
 	//Funcion llamada desde el menu de muerte para volver al menu principal (Se desactiva a si misma)
 	if (app->deathmenu->finished == true) {
 		fading = 255;
