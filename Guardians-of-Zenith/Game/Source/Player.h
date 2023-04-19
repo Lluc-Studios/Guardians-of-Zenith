@@ -94,6 +94,7 @@ public:
 
 	int timer = 0;
 	bool limitFPS = true;
+	int PresetChance = 0;
 
 	bool DeathAnimationFinished = false;
 

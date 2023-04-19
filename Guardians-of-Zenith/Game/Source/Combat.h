@@ -79,6 +79,9 @@ public:
 
 	SDL_Texture* BG;
 
+	//Preset for enemy teams
+	int Preset = 0;
+
 	//Class types: 1 = Tank, 2 = Mage, 3 = Archer
 	//Decides whose turn is it, 0 = none, 1 = ally, 2 = enemy
 	bool TeamTurn = 1;

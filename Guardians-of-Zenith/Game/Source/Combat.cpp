@@ -1609,14 +1609,52 @@ void Combat::StartCombat()
 	TeamTurn = 1;
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
-	LoadLucca(app->scene->player->lucca);
+	//LoadLucca(app->scene->player->lucca);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	//LoadEnemy(app->entityManager->waterlilyfish);
 	//LoadEnemy(app->entityManager->naiadongoddess);
 	//LoadEnemy(app->entityManager->waterlilyfish);
-	LoadEnemy(app->entityManager->slimeFrog);
-	LoadEnemy(app->entityManager->slimeFrog);
-	LoadEnemy(app->entityManager->slimeFrog);
+	//LoadEnemy(app->entityManager->slimeFrog);
+	//LoadEnemy(app->entityManager->slimeFrog);
+	//LoadEnemy(app->entityManager->slimeFrog);
+	if (Preset == 1) {
+		LoadEnemy(app->entityManager->slimeFrog);
+	}
+	if (Preset == 2) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 3) {
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+	}
+	if (Preset == 4) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 5) {
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 6) {
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+	}
+	if (Preset == 7) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 8) {
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 9) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->slimeFrog);
+	}
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
 }
@@ -1634,6 +1672,7 @@ void Combat::ExitCombat()
 	CurrentCharacters = 0;
 	CurrentEnemies = 0;
 	TeamTurn = 0;
+	offset = 0;
 	M1 = 0;
 	M2 = 0;
 
