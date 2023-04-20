@@ -16,6 +16,7 @@
 #include "Tavern.h"
 #include "Combat.h"
 #include "time.h"
+#include "External/SDL/include/SDL_gamecontroller.h"
 
 
 #include "GuiManager.h"
@@ -583,6 +584,31 @@ void Player::Move() {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_V) == KEY_DOWN) {
 		HardMode = !HardMode;
+	}
+
+	if (app->input->controllers.j1_x > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	{
+		vel = b2Vec2(speed, 0);
+		facing = DIRECTION::RIGHT;
+	}
+	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	{
+		vel = b2Vec2(-speed, 0);
+		facing = DIRECTION::LEFT;
+	}
+	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	{
+		vel = b2Vec2(0, speed);
+		facing = DIRECTION::DOWN;
+	}
+	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	{
+		vel = b2Vec2(0, -speed);
+		facing = DIRECTION::UP;
+	}
+	if (app->input->controllers.A != 0)
+	{
+		
 	}
 
 	//Fx

@@ -37,6 +37,9 @@ bool Input::Awake(pugi::xml_node& config)
 		ret = false;
 	}
 
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
+	sdl_controller = SDL_GameControllerOpen(0);
+
 	return ret;
 }
 
@@ -129,6 +132,15 @@ bool Input::PreUpdate()
 			break;
 		}
 	}
+
+	SDL_GameControllerUpdate();
+
+	controllers.j1_x = SDL_GameControllerGetAxis(sdl_controller, SDL_CONTROLLER_AXIS_LEFTX);
+	controllers.j1_y = SDL_GameControllerGetAxis(sdl_controller, SDL_CONTROLLER_AXIS_LEFTY);
+	controllers.A = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_A);
+	controllers.B = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_B);
+	controllers.X = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_X);
+	controllers.Y = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_Y);
 
 	return true;
 }

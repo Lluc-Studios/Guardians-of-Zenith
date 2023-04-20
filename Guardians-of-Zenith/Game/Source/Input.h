@@ -2,6 +2,7 @@
 #define __INPUT_H__
 
 #include "Module.h"
+#include "External/SDL/include/SDL_gamecontroller.h"
 
 //#define NUM_KEYS 352
 #define NUM_MOUSE_BUTTONS 5
@@ -27,6 +28,10 @@ enum KeyState
 	KEY_DOWN,
 	KEY_REPEAT,
 	KEY_UP
+};
+
+struct GameController {
+	float j1_x, j1_y, j2_x, j2_y, LT, RT, A, B, X, Y;
 };
 
 class Input : public Module
@@ -74,6 +79,9 @@ public:
 	string playerName;
 	bool nameEntered = false;
 	bool getInput = false;
+
+	SDL_GameController* sdl_controller;
+	GameController controllers;
 
 private:
 	bool windowEvents[WE_COUNT];
