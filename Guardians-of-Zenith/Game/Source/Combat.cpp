@@ -377,6 +377,13 @@ bool Combat::Update(float dt)
 			}
 			app->render->DrawText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME, 16);
 			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
+			sprintf_s(Aux, "%.0f", limitCount1);
+			if (limitCount1 != LIMIT1) {
+				app->render->DrawText(182, 280, WF, Aux, 16);
+			}
+			if (limitCount1 == LIMIT1) {
+				app->render->DrawText(182, 280, YF, Aux, 16);
+			}
 			app->render->DrawText(100 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "HP", 12);
 			//Int to string convert
 			sprintf_s(Aux, "/ %.0f", C1MHP);
@@ -416,6 +423,13 @@ bool Combat::Update(float dt)
 				}
 				app->render->DrawText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME, 16);
 				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
+				sprintf_s(Aux, "%.0f", limitCount2);
+				if (limitCount2 == LIMIT2) {
+					app->render->DrawText(342, 280, YF, Aux, 16);
+				}
+				if (limitCount2 != LIMIT2) {
+					app->render->DrawText(342, 280, WF, Aux, 16);
+				}
 				app->render->DrawText(180 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "HP", 12);
 				//Int to string convert
 				sprintf_s(Aux, "/ %.0f", C2MHP);
