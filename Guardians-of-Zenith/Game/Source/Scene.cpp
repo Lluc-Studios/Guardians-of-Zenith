@@ -153,6 +153,19 @@ bool Scene::Update(float dt)
 		app->physics->debug = !app->physics->debug;
 		app->entityManager->debug = !app->entityManager->debug; 
 	}
+	//Only debug purpose, as it meses up the character stats and may buff or nerf them
+	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
+		int god = 100000;
+		if (app->scene->player->laurea.def == 100000) {
+			god = 100;
+		}
+		app->scene->player->laurea.def = god;
+		app->scene->player->lapis.def = god;
+		app->scene->player->lucca.def = god;
+		app->scene->player->laurea.atk = god;
+		app->scene->player->lapis.atk = god;
+		app->scene->player->lucca.atk = god;
+	}
 	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN) {
 		PF = !PF;
 		app->map->DrawPathing = !app->map->DrawPathing;

@@ -103,6 +103,20 @@ bool Combat::Update(float dt)
 				Fading = false;
 			}
 		}
+		//Freezing
+		if (Turn[0] == 1 && C1FROZEN == true) {
+			C1FROZEN = false;
+			FinishTurn();
+		}
+		if (Turn[0] == 2 && C2FROZEN == true) {
+			C2FROZEN = false;
+			FinishTurn();
+		}
+		if (Turn[0] == 3 && C3FROZEN == true) {
+			C3FROZEN = false;
+			FinishTurn();
+		}
+		
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
@@ -833,6 +847,9 @@ bool Combat::Update(float dt)
 			if (EnemyAdone == false) {
 				EnemyAttackTarget = rand() % CurrentCharacters + 1;
 				EnemyAttackNum = rand() % 2 + 1;
+				if (Turn[0] == 4 && E1BOSS == 64) {
+					EnemyAttackNum = rand() % 3 + 1;
+				}
 				if (EnemyAttackTarget == 1 && C1dead == true) {
 					EnemyAttackTarget = 2;
 				}
@@ -1383,6 +1400,21 @@ bool Combat::Update(float dt)
 								Aname = E1A2name;
 							}
 						}
+						if (EnemyAttackNum == 3) {
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
+							if (E1class == 2) multiplier1 = 2;
+							if (E1class == 3) multiplier2 = 2;
+							if (C1Block == true) block = 3;
+							C1CHP = C1CHP - ((E1A3dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+							if (E1A3effect == 1) {
+								C1FROZEN = true;
+							}
+							Cname = C1NAME;
+							Ename = E1name;
+							Aname = E1A3name;
+						}
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
@@ -1459,6 +1491,21 @@ bool Combat::Update(float dt)
 								Aname = E1A2name;
 							}
 						}
+						if (EnemyAttackNum == 3) {
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
+							if (E1class == 3) multiplier1 = 2;
+							if (E1class == 1) multiplier2 = 2;
+							if (C2Block == true) block = 3;
+							C2CHP = C2CHP - ((E1A3dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+							if (E1A3effect == 1) {
+								C2FROZEN = true;
+							}
+							Cname = C2NAME;
+							Ename = E1name;
+							Aname = E1A3name;
+						}
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
@@ -1534,6 +1581,21 @@ bool Combat::Update(float dt)
 								Ename = E1name;
 								Aname = E1A2name;
 							}
+						}
+						if (EnemyAttackNum == 3) {
+							block = 1;
+							multiplier1 = 1;
+							multiplier2 = 1;
+							if (E1class == 1) multiplier1 = 2;
+							if (E1class == 2) multiplier2 = 2;
+							if (C3Block == true) block = 3;
+							C3CHP = C3CHP - ((E1A3dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+							if (E1A3effect == 1) {
+								C3FROZEN = true;
+							}
+							Cname = C3NAME;
+							Ename = E1name;
+							Aname = E1A3name;
 						}
 					}
 				}
@@ -1907,15 +1969,19 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E3A1dmg = enemy.A1dmg;
 		E3A1name = enemy.A1name;
 		E3A1target = enemy.A1target;
+		E3A1effect = enemy.A1effect;
 		E3A2dmg = enemy.A2dmg;
 		E3A2name = enemy.A2name;
 		E3A2target = enemy.A2target;
+		E3A2effect = enemy.A2effect;
 		E3A3dmg = enemy.A3dmg;
 		E3A3name = enemy.A3name;
 		E3A3target = enemy.A3target;
+		E3A3effect = enemy.A3effect;
 		E3A4dmg = enemy.A4dmg;
 		E3A4name = enemy.A4name;
 		E3A4target = enemy.A4target;
+		E3A4effect = enemy.A4effect;
 		E3class = enemy.Eclass;
 		if (enemy.boss == 2) {
 			E3BOSS = 64;
@@ -1949,15 +2015,19 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E2A1dmg = enemy.A1dmg;
 		E2A1name = enemy.A1name;
 		E2A1target = enemy.A1target;
+		E2A1effect = enemy.A1effect;
 		E2A2dmg = enemy.A2dmg;
 		E2A2name = enemy.A2name;
 		E2A2target = enemy.A2target;
+		E2A2effect = enemy.A2effect;
 		E2A3dmg = enemy.A3dmg;
 		E2A3name = enemy.A3name;
 		E2A3target = enemy.A3target;
+		E2A3effect = enemy.A3effect;
 		E2A4dmg = enemy.A4dmg;
 		E2A4name = enemy.A4name;
 		E2A4target = enemy.A4target;
+		E2A4effect = enemy.A4effect;
 		E2class = enemy.Eclass;
 		if (enemy.boss == 2) {
 			E2BOSS = 64;
@@ -1991,15 +2061,19 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E1A1dmg = enemy.A1dmg;
 		E1A1name = enemy.A1name;
 		E1A1target = enemy.A1target;
+		E1A1effect = enemy.A1effect;
 		E1A2dmg = enemy.A2dmg;
 		E1A2name = enemy.A2name;
 		E1A2target = enemy.A2target;
+		E1A2effect = enemy.A2effect;
 		E1A3dmg = enemy.A3dmg;
 		E1A3name = enemy.A3name;
 		E1A3target = enemy.A3target;
+		E1A3effect = enemy.A3effect;
 		E1A4dmg = enemy.A4dmg;
 		E1A4name = enemy.A4name;
 		E1A4target = enemy.A4target;
+		E1A4effect = enemy.A4effect;
 		E1class = enemy.Eclass;
 		if (enemy.boss == 2) {
 			E1BOSS = 64;

@@ -134,7 +134,7 @@ private:
 	float C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
 	const char* C1A2name = "Thrust";
 
-	bool C1Block = false, C1dead = false, C1Check = false;
+	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;
 
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
@@ -151,7 +151,7 @@ private:
 	float C2A2lvl = 1, C2A2target = 1, C2A2dmg = 30, C2A2mp = 25;
 	const char* C2A2name = "Tidalwave";
 
-	bool C2Block = false, C2dead = false, C2Check = false;
+	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
@@ -168,7 +168,7 @@ private:
 	float C3A2lvl = 1, C3A2target = 1, C3A2dmg = 35, C3A2mp = 20;
 	const char* C3A2name = "Multishot";
 
-	bool C3Block = false, C3dead = false, C3Check = false;
+	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
 
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800;
@@ -179,18 +179,18 @@ private:
 	const char* E1Res;
 	const char* E1name;
 	const char* E1A1name;
-	float E1A1dmg, E1A1target;
+	float E1A1dmg, E1A1target, E1A1effect;
 
 	SDL_Texture* E1asset;
 
 	const char* E1A2name;
-	float E1A2dmg, E1A2target;
+	float E1A2dmg, E1A2target, E1A2effect;
 
 	const char* E1A3name;
-	float E1A3dmg, E1A3target;
+	float E1A3dmg, E1A3target, E1A3effect;
 
 	const char* E1A4name;
-	float E1A4dmg, E1A4target;
+	float E1A4dmg, E1A4target, E1A4effect;
 
 	bool E1dead = false, E1Check = false;
 
@@ -203,18 +203,18 @@ private:
 	const char* E2Res;
 	const char* E2name;
 	const char* E2A1name;
-	float E2A1dmg, E2A1target;
+	float E2A1dmg, E2A1target, E2A1effect;
 
 	SDL_Texture* E2asset;
 
 	const char* E2A2name;
-	float E2A2dmg, E2A2target;
+	float E2A2dmg, E2A2target, E2A2effect;
 
 	const char* E2A3name;
-	float E2A3dmg, E2A3target;
+	float E2A3dmg, E2A3target, E2A3effect;
 
 	const char* E2A4name;
-	float E2A4dmg, E2A4target;
+	float E2A4dmg, E2A4target, E2A4effect;
 
 	bool E2dead = false, E2Check = false;
 
@@ -227,18 +227,18 @@ private:
 	const char* E3Res;
 	const char* E3name;
 	const char* E3A1name;
-	float E3A1dmg, E3A1target;
+	float E3A1dmg, E3A1target, E3A1effect;
 
 	SDL_Texture* E3asset;
 
 	const char* E3A2name;
-	float E3A2dmg, E3A2target;
+	float E3A2dmg, E3A2target, E3A2effect;
 
 	const char* E3A3name;
-	float E3A3dmg, E3A3target;
+	float E3A3dmg, E3A3target, E3A3effect;
 
 	const char* E3A4name;
-	float E3A4dmg, E3A4target;
+	float E3A4dmg, E3A4target, E3A4effect;
 
 	bool E3dead = false, E3Check = false;
 
