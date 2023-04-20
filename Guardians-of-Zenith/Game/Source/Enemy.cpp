@@ -40,7 +40,7 @@ bool Enemy::Start() {
 	//initilize textures
 	dedFx = app->audio->LoadFx("Assets/Sounds/Enemy/Dead2.wav");
 	texture = app->tex->Load(texturePath);
-	pbody = app->physics->CreateRectangle(position.x + width/2, position.y + height/2, width-4, height-4, bodyType::DYNAMIC);
+	pbody = app->physics->CreateRectangle(position.x + width/4, position.y + height/4, width, height, bodyType::DYNAMIC);
 	pbody->body->SetFixedRotation(true);
 	pbody->listener = this;
 	pbody->ctype = ColliderType::ENEMY;
@@ -85,8 +85,8 @@ bool Enemy::Update()
 {
 	float speed = 2; 
 
-	position.x = METERS_TO_PIXELS((pbody->body->GetTransform().p.x) - width / 2);
-	position.y = METERS_TO_PIXELS((pbody->body->GetTransform().p.y) - height / 2);
+	position.x = METERS_TO_PIXELS((pbody->body->GetTransform().p.x) - width / 4);
+	position.y = METERS_TO_PIXELS((pbody->body->GetTransform().p.y) - height / 4);
 
 	if (alive) {
 		if (state != EnemyState::IDLE) {
@@ -110,6 +110,7 @@ bool Enemy::Update()
 	currentAnim->Update();
 
 	app->render->DrawTexture(texture, position.x, position.y, &rect);
+
 	if (app->map->DrawPathing == true) {
 		app->render->DrawCircle(position.x * app->win->GetScale(), position.y * app->win->GetScale(), 16 * 10 * app->win->GetScale(), 255, 255, 0, 100);
 	}

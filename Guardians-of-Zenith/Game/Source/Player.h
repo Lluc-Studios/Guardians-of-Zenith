@@ -171,10 +171,10 @@ private:
 	SDL_Texture* LFE;
 	SDL_Texture* Dialogue;
 
-	SDL_Rect rectDown = { 8,2,19,28 };
-	SDL_Rect rectUp = { 39,2,18,28 };
-	SDL_Rect rectLeft = { 72,2,21,29 };
-	SDL_Rect rectRight = { 100,2,21,29 };
+	SDL_Rect rectDown = { 0,0,32,32 };
+	SDL_Rect rectUp = { 32,0,32,32 };
+	SDL_Rect rectLeft = { 32*2,0,32,32 };
+	SDL_Rect rectRight = { 32*3,0,32,32 };
 
 	SDL_Color WF2 = { 255, 0, 0 };
 
