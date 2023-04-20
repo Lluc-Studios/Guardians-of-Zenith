@@ -127,6 +127,22 @@ bool Combat::Update(float dt)
 			C3FROZEN = false;
 			FinishTurn();
 		}
+		// Posion
+		if (C1POISON != 0 && FinishedTurn1 == false && Turn[0] != 0) {
+			C1POISON--;
+			C1CHP -= C1MHP * 0.05;
+			FinishedTurn1 = true;
+		}
+		if (C2POISON != 0 && FinishedTurn2 == false && Turn[0] != 0) {
+			C2POISON--;
+			C2CHP -= C2MHP * 0.05;
+			FinishedTurn2 = true;
+		}
+		if (C3POISON != 0 && FinishedTurn3 == false && Turn[0] != 0) {
+			C3POISON--;
+			C3CHP -= C3MHP * 0.05;
+			FinishedTurn3 = true;
+		}
 		
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
@@ -323,6 +339,9 @@ bool Combat::Update(float dt)
 					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
 					app->render->DrawTexture(Frozen, app->scene->player->position.x - 40, app->scene->player->position.y + 77);
 				}
+				if (C1POISON != 0) {
+					app->render->DrawTexture(Poison, app->scene->player->position.x - 20, app->scene->player->position.y + 77);
+				}
 			}
 			app->render->DrawText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME, 16);
 			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
@@ -356,6 +375,9 @@ bool Combat::Update(float dt)
 						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
 						app->render->DrawTexture(Frozen, app->scene->player->position.x + 110, app->scene->player->position.y + 77);
 					}
+					if (C2POISON != 0) {
+						app->render->DrawTexture(Poison, app->scene->player->position.x + 130, app->scene->player->position.y + 77);
+					}
 				}
 				app->render->DrawText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME, 16);
 				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
@@ -388,6 +410,9 @@ bool Combat::Update(float dt)
 						if (C3FROZEN == true) {
 							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
 							app->render->DrawTexture(Frozen, app->scene->player->position.x + 270, app->scene->player->position.y + 77);
+						}
+						if (C3POISON != 0) {
+							app->render->DrawTexture(Poison, app->scene->player->position.x + 290, app->scene->player->position.y + 77);
 						}
 					}
 					app->render->DrawText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME, 16);
@@ -1246,6 +1271,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C1POISON = 5;
 								Cname = C1NAME;
 								Ename = E3name;
 								Aname = E3A1name;
@@ -1255,6 +1281,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1262,6 +1289,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1269,6 +1297,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E3name;
 								Aname = E3A1name;
@@ -1283,6 +1312,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C1POISON = 5;
 								Cname = C1NAME;
 								Ename = E3name;
 								Aname = E3A2name;
@@ -1292,6 +1322,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1299,6 +1330,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1306,6 +1338,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E3name;
 								Aname = E3A2name;
@@ -1322,6 +1355,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C2POISON = 5;
 								Cname = C2NAME;
 								Ename = E3name;
 								Aname = E3A1name;
@@ -1331,6 +1365,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1338,6 +1373,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1345,6 +1381,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E3name;
 								Aname = E3A1name;
@@ -1359,6 +1396,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C2POISON = 5;
 								Cname = C2NAME;
 								Ename = E3name;
 								Aname = E3A2name;
@@ -1368,6 +1406,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1375,6 +1414,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1382,6 +1422,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E3name;
 								Aname = E3A2name;
@@ -1398,6 +1439,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C3POISON = 5;
 								Cname = C3NAME;
 								Ename = E3name;
 								Aname = E3A1name;
@@ -1407,6 +1449,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1414,6 +1457,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1421,6 +1465,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E3name;
 								Aname = E3A1name;
@@ -1435,6 +1480,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C3POISON = 5;
 								Cname = C3NAME;
 								Ename = E3name;
 								Aname = E3A2name;
@@ -1444,6 +1490,7 @@ bool Combat::Update(float dt)
 								if (E3class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1451,6 +1498,7 @@ bool Combat::Update(float dt)
 								if (E3class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1458,6 +1506,7 @@ bool Combat::Update(float dt)
 								if (E3class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E3A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E3name;
 								Aname = E3A2name;
@@ -1476,6 +1525,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C1POISON = 5;
 								Cname = C1NAME;
 								Ename = E2name;
 								Aname = E2A1name;
@@ -1485,6 +1535,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1492,6 +1543,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1499,6 +1551,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E2name;
 								Aname = E2A1name;
@@ -1513,6 +1566,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C1POISON = 5;
 								Cname = C1NAME;
 								Ename = E2name;
 								Aname = E2A2name;
@@ -1522,6 +1576,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1529,6 +1584,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1536,6 +1592,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E2name;
 								Aname = E2A2name;
@@ -1552,6 +1609,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C2POISON = 5;
 								Cname = C2NAME;
 								Ename = E2name;
 								Aname = E2A1name;
@@ -1561,6 +1619,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1568,6 +1627,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1575,6 +1635,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E2name;
 								Aname = E2A1name;
@@ -1589,6 +1650,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C2POISON = 5;
 								Cname = C2NAME;
 								Ename = E2name;
 								Aname = E2A2name;
@@ -1598,6 +1660,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1605,6 +1668,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1612,6 +1676,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E2name;
 								Aname = E2A2name;
@@ -1628,6 +1693,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C3POISON = 5;
 								Cname = C3NAME;
 								Ename = E2name;
 								Aname = E2A1name;
@@ -1637,6 +1703,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1644,6 +1711,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1651,6 +1719,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E2name;
 								Aname = E2A1name;
@@ -1665,6 +1734,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C3POISON = 5;
 								Cname = C3NAME;
 								Ename = E2name;
 								Aname = E2A2name;
@@ -1674,6 +1744,7 @@ bool Combat::Update(float dt)
 								if (E2class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1681,6 +1752,7 @@ bool Combat::Update(float dt)
 								if (E2class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1688,6 +1760,7 @@ bool Combat::Update(float dt)
 								if (E2class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E2A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E2name;
 								Aname = E2A2name;
@@ -1706,6 +1779,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C1POISON = 5;
 								Cname = C1NAME;
 								Ename = E1name;
 								Aname = E1A1name;
@@ -1715,6 +1789,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1722,6 +1797,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1729,6 +1805,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E1name;
 								Aname = E1A1name;
@@ -1743,6 +1820,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C1POISON = 5;
 								Cname = C1NAME;
 								Ename = E1name;
 								Aname = E1A2name;
@@ -1752,6 +1830,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1759,6 +1838,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1766,6 +1846,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E1name;
 								Aname = E1A2name;
@@ -1782,6 +1863,7 @@ bool Combat::Update(float dt)
 							if (E1A3effect == 1) {
 								C1FROZEN = true;
 							}
+							if (E1A3effect == 2) C1POISON = 5;
 							Cname = C1NAME;
 							Ename = E1name;
 							Aname = E1A3name;
@@ -1804,6 +1886,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C2POISON = 5;
 								Cname = C2NAME;
 								Ename = E1name;
 								Aname = E1A1name;
@@ -1813,6 +1896,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1820,6 +1904,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1827,6 +1912,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E1name;
 								Aname = E1A1name;
@@ -1841,6 +1927,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C2POISON = 5;
 								Cname = C2NAME;
 								Ename = E1name;
 								Aname = E1A2name;
@@ -1850,6 +1937,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1857,6 +1945,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1864,6 +1953,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E1name;
 								Aname = E1A2name;
@@ -1880,6 +1970,7 @@ bool Combat::Update(float dt)
 							if (E1A3effect == 1) {
 								C2FROZEN = true;
 							}
+							if (E1A3effect == 2) C2POISON = 5;
 							Cname = C2NAME;
 							Ename = E1name;
 							Aname = E1A3name;
@@ -1902,6 +1993,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C3POISON = 5;
 								Cname = C3NAME;
 								Ename = E1name;
 								Aname = E1A1name;
@@ -1911,6 +2003,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1918,6 +2011,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1925,6 +2019,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A1effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E1name;
 								Aname = E1A1name;
@@ -1939,6 +2034,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C3POISON = 5;
 								Cname = C3NAME;
 								Ename = E1name;
 								Aname = E1A2name;
@@ -1948,6 +2044,7 @@ bool Combat::Update(float dt)
 								if (E1class == 3) multiplier2 = 2;
 								if (C1Block == true) block = 3;
 								C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C1POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1955,6 +2052,7 @@ bool Combat::Update(float dt)
 								if (E1class == 1) multiplier2 = 2;
 								if (C2Block == true) block = 3;
 								C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C2POISON = 5;
 								block = 1;
 								multiplier1 = 1;
 								multiplier2 = 1;
@@ -1962,6 +2060,7 @@ bool Combat::Update(float dt)
 								if (E1class == 2) multiplier2 = 2;
 								if (C3Block == true) block = 3;
 								C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block);
+								if (E1A2effect == 2) C3POISON = 5;
 								Cname = "everyone";
 								Ename = E1name;
 								Aname = E1A2name;
@@ -1978,6 +2077,7 @@ bool Combat::Update(float dt)
 							if (E1A3effect == 1) {
 								C3FROZEN = true;
 							}
+							if (E1A3effect == 2) C3POISON = 5;
 							Cname = C3NAME;
 							Ename = E1name;
 							Aname = E1A3name;
@@ -2175,6 +2275,13 @@ void Combat::ExitCombat()
 	}
 	charactersLoaded = 0;
 	EXPwon = 0;
+
+	C1FROZEN = false;
+	C2FROZEN = false;
+	C3FROZEN = false;
+	C1POISON = 0;
+	C2POISON = 0;
+	C3POISON = 0;
 }
 
 void Combat::FinishTurn()
@@ -2220,6 +2327,9 @@ void Combat::FinishTurn()
 	if (Turn[0] >= 1 && Turn[0] <= 3) {
 		TeamTurn = 1;
 	}
+	FinishedTurn1 = false;
+	FinishedTurn2 = false;
+	FinishedTurn3 = false;
 }
 
 void Combat::TurnOrder()

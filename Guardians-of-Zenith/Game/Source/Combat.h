@@ -149,6 +149,7 @@ private:
 	const char* C1A3name = "Calibur";
 
 	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;
+	int C1POISON = 0;
 
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
@@ -169,6 +170,7 @@ private:
 	const char* C2A3name = "Aqua burst";
 
 	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false;
+	int C2POISON = 0;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
@@ -186,6 +188,7 @@ private:
 	const char* C3A2name = "Multishot";
 
 	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
+	int C3POISON = 0;
 
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800, E1MES = 0, E1CES = 0;
@@ -308,6 +311,10 @@ private:
 	int block = 1,multiplier = 1, multiplier1 = 1, multiplier2 = 1;
 
 	int EnemyAttackTarget = 0, EnemyAttackNum = 0;
+
+	bool FinishedTurn1 = false;
+	bool FinishedTurn2 = false;
+	bool FinishedTurn3 = false;
 };
 
 #endif // __COMBAT_H__
