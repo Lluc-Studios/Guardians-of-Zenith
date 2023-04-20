@@ -64,6 +64,7 @@ bool Intro::Update(float dt)
 	app->render->DrawTexture(logo,app->render->camera.w / 2 / app->win->GetScale() - 64, app->render->camera.h / 2 / app->win->GetScale() - 56);
 	app->render->DrawRectangle({ 0,0,5000,5000 }, 0, 0, 0, fading);
 	counter++;
+
 	//Fade out
 	if (counter >= 200) {
 		fadeIn = false;
@@ -77,7 +78,7 @@ bool Intro::Update(float dt)
 		app->mainmenu->active = true;
 		app->intro->active = false;
 
-		//app->audio->PlayFxWithVolume(menuMusic);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Rocky_Tundra_OST_Version.ogg");
 
 	}
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
@@ -110,6 +111,7 @@ bool Intro::CleanUp()
 	LOG("Freeing intro");
 
 	app->tex->UnLoad(logo);
-	app->audio->PlayFxWithVolume(silence);
+	app->audio->PlayMusic("Assets/Soundtrack/silence.ogg");
+
 	return true;
 }

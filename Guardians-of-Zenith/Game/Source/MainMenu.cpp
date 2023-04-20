@@ -39,8 +39,9 @@ bool MainMenu::Start()
 {
 	//mainmenu = app->tex->Load("Assets/Textures/main_menu.png");
 
-	change = app->audio->LoadFx("Assets/Sounds/ChangeSelection.wav");
-	select = app->audio->LoadFx("Assets/Sounds/Select.wav");
+	change = app->audio->LoadFx("Assets/Soundtrack/Fx/ChangeSelection.wav");
+	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Select.wav");
+
 	MX = 125 + app->audio->volume;
 	FX = 125 + app->audio->fxvolume/2;
 	BG = app->tex->Load("Assets/Textures/mainmenu_final_scale2.png");
