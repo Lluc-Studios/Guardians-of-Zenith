@@ -77,6 +77,8 @@ bool Scene::Awake(pugi::xml_node& config)
 		tp->parameters = tpNode;
 	}
 
+	villageMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Guidance Island OST Version.ogg");
+
 	return ret;
 }
 
@@ -141,7 +143,7 @@ bool Scene::Update(float dt)
 {
 
 	if (Music == false) {
-		//app->audio->PlayMusic("Assets/Sounds/candybattleLONG.wav");
+		app->audio->PlayFx(villageMusic);
 		Music = true;
 	}
 
