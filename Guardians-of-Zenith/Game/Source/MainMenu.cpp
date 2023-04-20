@@ -59,6 +59,7 @@ bool MainMenu::PreUpdate()
 bool MainMenu::Update(float dt)
 {
 	bool ret = true;
+
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
 
@@ -95,8 +96,7 @@ bool MainMenu::Update(float dt)
 		app->mainmenu->active = false;
 
 	}
-	//Nombre del juego (el original)
-	//app->font->DrawText(134, 10, YF, "obsolete");
+
 	//Funcion para detectar el raton en la parte principal del menu
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
 		if (option == SELECTED::PLAY) {

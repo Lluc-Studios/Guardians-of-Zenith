@@ -1677,10 +1677,8 @@ bool Combat::PostUpdate()
 	bool ret = true;
 
 	if (option == COMBATMENU::WIN) {
-		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You", 16);
-		app->render->DrawText(10 * app->ScalingMultiplier + 24, 100 * app->ScalingMultiplier, YF, "won", 16);
-		app->render->DrawText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "and", 16);
-		app->render->DrawText(10 * app->ScalingMultiplier + 24, 110 * app->ScalingMultiplier, YF, "got", 16);
+		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You won!", 16);
+		app->render->DrawText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "and got:", 16);
 		sprintf_s(Aux, "%d", EXPwon);
 		app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux, 16);
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
@@ -1689,8 +1687,8 @@ bool Combat::PostUpdate()
 		}
 	}
 	if (option == COMBATMENU::LOSE) {
-		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You", 16);
-		app->render->DrawText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, YF, "lost", 16);
+		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
+
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			EXPwon = 0;
 			SaveInstance = 3;

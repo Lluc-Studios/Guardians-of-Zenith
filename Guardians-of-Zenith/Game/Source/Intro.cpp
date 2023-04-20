@@ -80,6 +80,11 @@ bool Intro::Update(float dt)
 		//app->audio->PlayFxWithVolume(menuMusic);
 
 	}
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+		fadeIn = false;
+		counter = 750;
+	}
+
 	//Debug
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) {
 		app->scene->active = true;
