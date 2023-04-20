@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="23">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="24">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1293,7 +1293,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="6" name="Collisions" visible="0">
+ <objectgroup id="6" name="Collisions">
   <object id="1" x="320.727" y="89.303" width="166.167" height="62.6667"/>
   <object id="3" x="25.2726" y="24.8674" width="6.57609" height="326.542"/>
   <object id="4" x="25.0453" y="352.083" width="134.872" height="7.042">
@@ -1314,12 +1314,12 @@
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="18" x="224.071" y="383.896" width="39.4166" height="7.07041">
+  <object id="18" x="224.071" y="383.896" width="39.4166" height="31.95">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="19" x="153.118" y="384.068" width="38.6894" height="7.042">
+  <object id="19" x="153.118" y="384.068" width="38.6894" height="31.9511">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
@@ -1334,12 +1334,17 @@
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
+  <object id="23" x="191.564" y="409.115" width="32.8712" height="6.31474">
+   <properties>
+    <property name="Type" type="int" value="9"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="7" name="ExitTavern" visible="0">
+ <objectgroup id="7" name="ExitTavern">
   <properties>
    <property name="Type" type="int" value="9"/>
   </properties>
-  <object id="15" x="191.941" y="389.957" width="31.6512" height="5.193"/>
+  <object id="15" x="191.941" y="399.96" width="31.6512" height="5.193"/>
  </objectgroup>
  <objectgroup id="9" name="NPC1" visible="0">
   <properties>

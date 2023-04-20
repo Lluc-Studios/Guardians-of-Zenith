@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="72">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="73">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1897,9 +1897,9 @@
   <object id="54" x="185.193" y="320.265" width="38.6597" height="38.4694"/>
   <object id="55" x="320.204" y="192.08" width="95.5915" height="63.8785"/>
   <object id="56" x="320.108" y="320.27" width="38.6597" height="38.4694"/>
-  <object id="57" x="223.761" y="352" width="32.2174" height="6.92395"/>
+  <object id="57" x="223.761" y="352" width="32.2174" height="31.833"/>
   <object id="58" x="408.934" y="256" width="174.053" height="6.99936"/>
-  <object id="59" x="288.083" y="351.871" width="32.5" height="6.92395"/>
+  <object id="59" x="288.083" y="351.871" width="32.5" height="31.833"/>
   <object id="60" x="576.182" y="116.5" width="6.928" height="140.363"/>
   <object id="61" x="32" y="90.5" width="32" height="15"/>
   <object id="62" x="96" y="90.5" width="32" height="15"/>
@@ -1910,14 +1910,15 @@
   <object id="68" x="191.844" y="256" width="10.8835" height="32"/>
   <object id="70" x="351.848" y="254.015" width="6.8037" height="66.9694"/>
   <object id="71" x="341.28" y="256" width="10.6219" height="32"/>
+  <object id="72" x="255.891" y="377.174" width="32.2174" height="6.56027"/>
  </objectgroup>
  <objectgroup id="12" name="ExitHouse">
   <properties>
    <property name="Type" type="int" value="13"/>
   </properties>
-  <object id="40" x="256.229" y="354.545" width="31.792" height="5.19"/>
+  <object id="40" x="256.229" y="367.55" width="31.792" height="5.19"/>
  </objectgroup>
- <objectgroup id="13" name="Bed">
+ <objectgroup id="13" name="Bed" visible="0">
   <properties>
    <property name="Type" type="int" value="20"/>
   </properties>
