@@ -176,6 +176,8 @@ private:
 	SDL_Rect rectLeft = { 72,2,21,29 };
 	SDL_Rect rectRight = { 100,2,21,29 };
 
+	SDL_Color WF2 = { 255, 0, 0 };
+
 };
 //struct Laurea
 //{
