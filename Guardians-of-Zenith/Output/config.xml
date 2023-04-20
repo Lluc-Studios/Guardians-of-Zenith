@@ -26,14 +26,14 @@
 	 <!-- player Starting pos, x: 500 y: 220-->
     <player x="560" y="340" width="64" height="16" texturepath="Assets/Entities/Characters/Laurea_Directions.png"/>
 
-	  <!--enemy x="1270" y="190" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
-	<enemy x="2220" y="400" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
-	<enemy x="2900" y="380" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
-	<enemy x="3050" y="380" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
+	  <!--enemy x="1270" y="190" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
+	<enemy x="2220" y="400" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
+	<enemy x="2900" y="380" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
+	<enemy x="3050" y="380" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
 
-	<enemy2 x="1550" y="150" width="16" height="16" texturepath="Assets/Textures/flying_enemy.png"/>
-	<enemy2 x="2040" y="315" width="16" height="16" texturepath="Assets/Textures/flying_enemy.png"/>
-	<enemy2 x="2687" y="348" width="16" height="16" texturepath="Assets/Textures/flying_enemy.png"/>
+	<enemy2 x="1550" y="150" width="64" height="64" texturepath="Assets/Textures/flying_enemy.png"/>
+	<enemy2 x="2040" y="315" width="64" height="64" texturepath="Assets/Textures/flying_enemy.png"/>
+	<enemy2 x="2687" y="348" width="64" height="64" texturepath="Assets/Textures/flying_enemy.png"/>
 	
 	<trophy x="2088" y="56" width="16" height="16" texturepath="Assets/Textures/trophy.png"/>
 
