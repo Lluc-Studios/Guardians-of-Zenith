@@ -313,6 +313,7 @@ bool Player::Update()
 		// TODO 2: Load and activate dialogue 
 		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 0);
 	}
+	
 
 	if (isDialogue)
 	{
@@ -606,10 +607,7 @@ void Player::Move() {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
 	}
-	if (app->input->controllers.A != 0)
-	{
-		
-	}
+	
 
 	//Fx
 	//if (vel.x != 0 && vel.y == 0) {

@@ -99,6 +99,31 @@ bool DeathMenu::Update(float dt)
 			app->deathmenu->active = false;
 		}
 	}
+	if (app->input->controllers.A != 0)
+	{
+		app->audio->PlayFxWithVolume(select, 0, 70);
+		if (continue1 == true) {
+			app->scene->player->active = true;
+			app->scene->player->alive = true;
+			app->scene->player->life = 3;
+			app->scene->player->pbody->body->SetActive(true);
+			app->scene->player->pbody->body->SetTransform({ PIXEL_TO_METERS(500), PIXEL_TO_METERS(220) }, 0);
+			app->deathmenu->active = false;
+		}
+		if (continue1 == false) {
+			app->scene->player->alive = true;
+			app->scene->player->life = 3;
+			app->scene->player->pbody->body->SetActive(true);
+			app->scene->player->pbody->body->SetTransform({ PIXEL_TO_METERS(500), PIXEL_TO_METERS(220) }, 0);
+			app->entityManager->active = false;
+			app->physics->active = false;
+			app->scene->active = false;
+			app->scene->CanPlayerMove = false;
+			finished = true;
+			app->mainmenu->active = true;
+			app->deathmenu->active = false;
+		}
+	}
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 		if (continue1 == false) {
 			continue1 = true;

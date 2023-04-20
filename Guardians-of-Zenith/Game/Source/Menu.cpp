@@ -69,6 +69,11 @@ bool Menu::Update(float dt)
 		PlaySelected = true;
 
 	}
+	if (app->input->controllers.A != 0)
+	{
+		app->audio->PlayFxWithVolume(select, 0, 70);
+		PlaySelected = true;
+	}
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 		if (option == SELECTED::SECOND) {
 			option = SELECTED::FIRST;

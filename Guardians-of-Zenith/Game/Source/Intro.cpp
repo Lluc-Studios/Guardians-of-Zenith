@@ -85,7 +85,11 @@ bool Intro::Update(float dt)
 		fadeIn = false;
 		counter = 750;
 	}
-
+	if (app->input->controllers.A != 0)
+	{
+		fadeIn = false;
+		counter = 750;
+	}
 	//Debug
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) {
 		app->scene->active = true;
