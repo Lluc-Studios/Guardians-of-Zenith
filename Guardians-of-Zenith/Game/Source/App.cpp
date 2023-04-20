@@ -22,6 +22,9 @@
 #include "Pathfinding.h"
 #include "Combat.h"
 
+#include "DialogueSystem.h"
+#include "GuiManager.h"
+
 #include "Defs.h"
 #include "Log.h"
 
@@ -55,6 +58,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	mainmenu = new MainMenu();
 	font = new ModuleFonts();
 	combat = new Combat();
+	dialogueSystem = new DialogueSystem();
+	guiManager = new GuiManager();
 
 
 	// Ordered for awake / Start / Update
@@ -81,6 +86,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(deathmenu);
 	AddModule(mainmenu);
 	AddModule(combat);
+	AddModule(dialogueSystem);
+	AddModule(guiManager);
 	//tavern->active = false;
 	deathmenu->active = false;
 	mainmenu->active = false;

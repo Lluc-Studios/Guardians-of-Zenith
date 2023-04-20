@@ -7,6 +7,10 @@
 #define NUM_MOUSE_BUTTONS 5
 //#define LAST_KEYS_PRESSED_BUFFER 50
 
+#define MAX_CHARS 10
+
+using namespace std;
+
 struct SDL_Rect;
 
 enum EventWindow
@@ -66,6 +70,10 @@ public:
 	int GetMousePositionX();
 	int GetMousePositionY();
 	void GetMouseMotion(int& x, int& y);
+
+	string playerName;
+	bool nameEntered = false;
+	bool getInput = false;
 
 private:
 	bool windowEvents[WE_COUNT];
