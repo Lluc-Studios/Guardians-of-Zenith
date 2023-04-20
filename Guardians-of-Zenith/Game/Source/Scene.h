@@ -89,15 +89,10 @@ private:
 
 public:
 	enum class SELECTED {
-		BACK2GAME,
-		CONTINUE,
+		SAVEGAME,
 		OPTIONS,
+		MAINMENU,
 		EXIT,
-		MUSIC,
-		FX,
-		FS,
-		VS,
-		BACK,
 		NONE
 	};
 
