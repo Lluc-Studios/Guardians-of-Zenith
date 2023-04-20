@@ -335,6 +335,8 @@ bool Scene::PostUpdate()
 	
 	if(isPaused)
 		Pause();
+	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
+		ret = false;
 
 	return ret;
 }
