@@ -304,7 +304,7 @@ bool Player::Update()
 	{
 		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 0);
 	}
-	if (!isDialogue && !isBill)
+	if (!isDialogue && !isBill && !NPC2 && !NPC)
 	{
 		app->dialogueSystem->CleanUp();
 	}
@@ -323,7 +323,7 @@ bool Player::Update()
 		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 1);
 	}
 
-	if (!isBill && !isDialogue)
+	if (!isBill && !isDialogue && !NPC2 && !NPC)
 	{
 		app->dialogueSystem->CleanUp();
 	}
@@ -335,6 +335,48 @@ bool Player::Update()
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 		{
 			isBill = false;
+		}
+	}
+
+	//NPC2
+	if (NPC2 && app->dialogueSystem->activeTree == nullptr)
+	{
+		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 2);
+	}
+
+	if (!isBill && !isDialogue && !NPC2 && !NPC)
+	{
+		app->dialogueSystem->CleanUp();
+	}
+
+	if (NPC2)
+	{
+		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
+
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			NPC2 = false;
+		}
+	}
+
+	//NPC
+	if (NPC && app->dialogueSystem->activeTree == nullptr)
+	{
+		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 3);
+	}
+
+	if (!isBill && !isDialogue && !NPC2 && !NPC)
+	{
+		app->dialogueSystem->CleanUp();
+	}
+
+	if (NPC)
+	{
+		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
+
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			NPC = false;
 		}
 	}
 
@@ -527,11 +569,11 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::NPC1:
 		//Collision in tabern
-		
+		NPC = true;
 		break;
 	case ColliderType::NPC2:
 		//Collision in blacksmith
-
+		NPC2 = true;
 		break;
 	case ColliderType::NPC3:
 		//Collision in town
@@ -593,19 +635,19 @@ void Player::Move() {
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(0, 0);
 	}
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
 	}
