@@ -122,9 +122,9 @@ bool Scene::Start()
 	}
 
 	EnemyT = app->tex->Load("Assets/Entities/Enemies/Lake_SlimeFrog.png");
-	NPC1 = app->tex->Load("Assets/Entities/Characters/nnpc1.png");
-	NPC2 = app->tex->Load("Assets/Entities/Characters/nnpc2.png");
-	NPC3 = app->tex->Load("Assets/Entities/Characters/nnpc3.png");
+	NPC1 = app->tex->Load("Assets/Entities/NPC/npc_1.png");
+	NPC2 = app->tex->Load("Assets/Entities/NPC/npc_2.png");
+	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 
 	return true;
 }
