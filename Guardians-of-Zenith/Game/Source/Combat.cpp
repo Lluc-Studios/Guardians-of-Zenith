@@ -870,7 +870,10 @@ bool Combat::Update(float dt)
 			if (EnemyAdone == false) {
 				EnemyAttackTarget = rand() % CurrentCharacters + 1;
 				EnemyAttackNum = rand() % 2 + 1;
-				if (Turn[0] == 4 && E1BOSS == 64) {
+				if (Turn[0] == 4 && E1BOSS == 64 && E1CHP < E1MHP) {
+					EnemyAttackNum = rand() % 4 + 1;
+				}
+				if (Turn[0] == 4 && E1BOSS == 64 && E1CHP == E1MHP) {
 					EnemyAttackNum = rand() % 3 + 1;
 				}
 				if (EnemyAttackTarget == 1 && C1dead == true) {
@@ -1438,6 +1441,13 @@ bool Combat::Update(float dt)
 							Ename = E1name;
 							Aname = E1A3name;
 						}
+						if (EnemyAttackNum == 4) {
+							E1CHP += E1MHP * 0.15;
+							if (E1CHP > E1MHP) E1CHP = E1MHP;
+							Cname = E1name;
+							Ename = E1name;
+							Aname = E1A4name;
+						}
 					}
 					if (EnemyAttackTarget == 2) {
 						if (EnemyAttackNum == 1) {
@@ -1529,6 +1539,13 @@ bool Combat::Update(float dt)
 							Ename = E1name;
 							Aname = E1A3name;
 						}
+						if (EnemyAttackNum == 4) {
+							E1CHP += E1MHP * 0.15;
+							if (E1CHP > E1MHP) E1CHP = E1MHP;
+							Cname = E1name;
+							Ename = E1name;
+							Aname = E1A4name;
+						}
 					}
 					if (EnemyAttackTarget == 3) {
 						if (EnemyAttackNum == 1) {
@@ -1619,6 +1636,13 @@ bool Combat::Update(float dt)
 							Cname = C3NAME;
 							Ename = E1name;
 							Aname = E1A3name;
+						}
+						if (EnemyAttackNum == 4) {
+							E1CHP += E1MHP * 0.15;
+							if (E1CHP > E1MHP) E1CHP = E1MHP;
+							Cname = E1name;
+							Ename = E1name;
+							Aname = E1A4name;
 						}
 					}
 				}
