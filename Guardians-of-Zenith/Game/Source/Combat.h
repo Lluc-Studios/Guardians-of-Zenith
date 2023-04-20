@@ -323,9 +323,6 @@ private:
 
 	//Mando
 	bool A_pressed = false;
-	const int JOYSTICK_MIN = -32768; 
-	const int JOYSTICK_MAX = 32767;
-	const int JOYSTICK_THRESHOLD = (JOYSTICK_MAX - JOYSTICK_MIN) / 10;
 
 };
 

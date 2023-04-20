@@ -141,6 +141,7 @@ bool Input::PreUpdate()
 	controllers.B = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_B);
 	controllers.X = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_X);
 	controllers.Y = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_Y);
+	controllers.Start = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_START);
 
 	return true;
 }
