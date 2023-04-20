@@ -34,6 +34,9 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	// Options
+	void Options();
+
 public:
 	enum class SELECTED {
 		PLAY = 1,
