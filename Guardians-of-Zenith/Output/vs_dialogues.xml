@@ -85,17 +85,17 @@
   <dialogueTree ID="3">
 	<node id="0" text="Hi, I lost my soccer ball and I don’t know where is it. Would you help me finding it?">
 		<choice id="0" option="¿Where did you see it the last time?" nextNode="1" eventReturn="1"/>
-		<choice id="1" option="Sorry kid, I must go to home. The Barça-Madrid is about to start on TV." nextNode="-2" eventReturn="1"/>
+		<choice id="1" option="Sorry kid, I must go to home. The Barça-Madrid is about to start on TV." nextNode="2" eventReturn="1"/>
 	</node>
 
 	<node id="1" text="I was playing near tho the woods and suddenly it disapeared. If you find it I will give you something I found wandering there.">
 		<choice id="0" option="Deal, when the developers decide to start working on sidequests I’ll go and search for it." nextNode="-1" eventReturn="1"/>
-		<choice id="1" option="I have changed my mind. Try to get another guy to help you." nextNode="-2" eventReturn="1"/>
+		<choice id="1" option="I have changed my mind. Try to get another guy to help you." nextNode="2" eventReturn="1"/>
 	</node>
 
 	<node id="-1" text ="I don’t know what this developer thing means, but thank you."></node>
 
-	<node id="-2" text="Oh, it’s okay. I will keep looking for it myself."></node>
+	<node id="2" text="Oh, it’s okay. I will keep looking for it myself."></node>
   </dialogueTree>
 	
 </dialogues>

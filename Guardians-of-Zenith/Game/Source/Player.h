@@ -110,6 +110,8 @@ public:
 	//dialogue
 	bool isDialogue = false;
 	bool isBill = false;
+	bool NPC2 = false;
+	bool NPC = false;
 
 	bool DeathAnimationFinished = false;
 
