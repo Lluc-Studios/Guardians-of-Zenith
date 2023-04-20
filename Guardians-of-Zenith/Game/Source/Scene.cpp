@@ -148,7 +148,6 @@ bool Scene::Update(float dt)
 	// L03: DONE 3: Request App to Load / Save when pressing the keys F5 (save) / F6 (load)
 	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 		app->SaveGameRequest();
-
 	if (app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		app->LoadGameRequest();
 	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) {
@@ -335,6 +334,11 @@ bool Scene::Update(float dt)
 			options = true;
 			break;
 		case Scene::SELECTED::MAINMENU:
+			isPaused = false;
+			app->mainmenu->fading = 255;
+			app->mainmenu->fading2 = 0;
+			app->mainmenu->fadeIn = true;
+			app->mainmenu->fadeOut = false;
 			app->scene->player->active = false;
 			app->entityManager->active = false;
 			app->physics->active = false;
@@ -418,7 +422,7 @@ bool Scene::Pause()
 
 	if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 45 * 2 && y <= 26 + 55 * 2) {
 		app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
-		option = SELECTED::EXIT;
+		option = SELECTED::SAVEGAME;
 	}
 	else if (x >= 640 / 2 - 24 && x <= 664 && y >= 26 + 65 * 2 && y <= 26 + 75 * 2) {
 		app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);

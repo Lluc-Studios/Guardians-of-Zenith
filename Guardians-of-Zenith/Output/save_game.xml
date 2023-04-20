@@ -8,7 +8,7 @@
 	<:anonymous />
 	<scene />
 	<entitymanager>
-		<player_stats position_x="1087" position_y="1268" state="0" />
+		<player_stats position_x="997" position_y="630" state="0" />
 	</entitymanager>
 	<Map />
 	<Tavern />
@@ -22,7 +22,9 @@
 	<menu />
 	<mainmenu />
 	<Combat Module />
+	<dialogue />
+	<guiManager />
 	<renderer>
-		<camera x="-1594" y="-2176" />
+		<camera x="-1414" y="-900" />
 	</renderer>
 </save_state>

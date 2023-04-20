@@ -45,6 +45,8 @@ public:
 	bool LoadState(pugi::xml_node& data);
 
 	bool SaveState(pugi::xml_node& data);
+
+	void InitializePlayers();
 	
 	void Move(); 
 
@@ -90,10 +92,13 @@ public:
 		float EXPneeded = 100;
 	};
 
-	Laurea laurea{ 350,350,500,500,100,125,10,2,1,0 };
-	Lapis lapis{ 250,250,1000,1000,125,90,12,4,1,0 };
-	Lucca lucca{ 200,200,115,115,150,60,15,3,1,0 };
+	//Laurea laurea{ 350,350,50,50,100,125,10,2,1,0 };
+	//Lapis lapis{ 250,250,100,100,125,90,12,4,1,0 };
+	//Lucca lucca{ 200,200,115,115,150,60,15,3,1,0 };
 
+	Laurea laurea;
+	Lapis lapis;
+	Lucca lucca;
 
 	int timer = 0;
 	bool limitFPS = true;

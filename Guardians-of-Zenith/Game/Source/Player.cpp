@@ -33,16 +33,7 @@ Player::~Player() {
 
 bool Player::Awake() {
 
-	position.x = parameters.attribute("x").as_int();
-	position.y = parameters.attribute("y").as_int();
-	width = parameters.attribute("width").as_int();
-	height = parameters.attribute("height").as_int();
-	texturePath = parameters.attribute("texturepath").as_string();
-
-	//Laurea laurea{ 35,35,10,10,20,25,10,2,1,4,3,2,3 };
-	//Lapis lapis{ 25,25,20,20,25,18,12,4,3,4,3,2 };
-	//Lucca lucca{ 20,20,23,23,30,12,15,3,3,3,3,2 };
-
+	InitializePlayers();
 
 	//LOG("stats Laurea: %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d", laurea.hp, laurea.mp, laurea.atk, laurea.def, laurea.spe, laurea.limit, laurea.lvl, laurea.hpGrowth, laurea.mpGrowth, laurea.atkGrowth, laurea.defGrowth);
 
@@ -556,6 +547,19 @@ bool Player::SaveState(pugi::xml_node& data) {
 	data.child("player_stats").append_attribute("state") =	(int)playerState;
 
 	return true; 
+}
+
+void Player::InitializePlayers()
+{
+	position.x = parameters.attribute("x").as_int();
+	position.y = parameters.attribute("y").as_int();
+	width = parameters.attribute("width").as_int();
+	height = parameters.attribute("height").as_int();
+	texturePath = parameters.attribute("texturepath").as_string();
+
+	laurea = { 350,350,50,50,100,125,10,2,1,0 };
+	lapis = { 250,250,100,100,125,90,12,4,1,0 };
+	lucca = { 200,200,115,115,150,60,15,3,1,0 };
 }
 
 void Player::Move() {

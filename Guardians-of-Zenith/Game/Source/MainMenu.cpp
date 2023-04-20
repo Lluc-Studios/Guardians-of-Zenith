@@ -105,13 +105,15 @@ bool MainMenu::Update(float dt)
 
 	//Funcion para detectar el raton en la parte principal del menu
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
-		if (option == SELECTED::PLAY) {
+		if (option == SELECTED::START) {
+			app->scene->player->InitializePlayers();
 			app->audio->PlayFxWithVolume(select, 0, 70);
 			fadeOut = true;
 		}
 		if (option == SELECTED::CONTINUE) {
 			app->audio->PlayFxWithVolume(select, 0, 70);
 			fadeOut = true;
+			app->LoadGameRequest();
 		}
 		if (option == SELECTED::OPTIONS) {
 			app->audio->PlayFxWithVolume(select, 0, 70);
@@ -139,7 +141,7 @@ bool MainMenu::Update(float dt)
 			app->render->DrawTexture(Buttons, 450, 240, &B3);
 			app->render->DrawTexture(Buttons, 450, 300, &B4);
 			if (option == SELECTED::NONE) {
-				option = SELECTED::PLAY;
+				option = SELECTED::START;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
 		}
