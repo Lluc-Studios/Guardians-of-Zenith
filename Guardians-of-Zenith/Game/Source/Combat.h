@@ -118,6 +118,7 @@ private:
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
 	SDL_Texture* Enemy4;
+	SDL_Texture* Enemy5;
 	SDL_Texture* ClassTank;
 	SDL_Texture* ClassMage;
 	SDL_Texture* ClassArcher;
@@ -150,7 +151,7 @@ private:
 	const char* C1A3name = "Calibur";
 
 	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;
-	int C1POISON = 0;
+	int C1POISON = 0, C1BURN= 0;
 
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
@@ -171,7 +172,7 @@ private:
 	const char* C2A3name = "Aqua burst";
 
 	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false;
-	int C2POISON = 0;
+	int C2POISON = 0, C2BURN = 0;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
@@ -189,7 +190,7 @@ private:
 	const char* C3A2name = "Multishot";
 
 	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
-	int C3POISON = 0;
+	int C3POISON = 0, C3BURN = 0;
 
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800, E1MES = 0, E1CES = 0;
@@ -316,6 +317,9 @@ private:
 	bool FinishedTurn1 = false;
 	bool FinishedTurn2 = false;
 	bool FinishedTurn3 = false;
+	bool FinishedTurnB1 = false;
+	bool FinishedTurnB2 = false;
+	bool FinishedTurnB3 = false;
 };
 
 #endif // __COMBAT_H__

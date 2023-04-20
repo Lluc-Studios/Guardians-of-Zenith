@@ -62,7 +62,8 @@ public:
 	};
 	//Slime frog
 	CombatEnemy slimeFrog{ 600,600,0,0,100,40,9,1,35, 1, 1,"Slime frog", "Lapis","Lucca", "Tongue attack", 50, 0,0, "Bubble burst", 60, 0,0 };
-	CombatEnemy poisonSlimeFrog{ 600,600,0,0,100,40,9,1,35, 1, 4,"Slime frog", "Lapis","Lucca", "Tongue attack", 50, 0,0, "Poison bubble", 60, 0,2 };
+	CombatEnemy poisonSlimeFrog{ 600,600,0,0,100,40,9,1,35, 1, 4,"Poison frog", "Lapis","Lucca", "Tongue attack", 50, 0,0, "Poison bubble", 60, 0,2 };
+	CombatEnemy infernalSlimeFrog{ 600,600,0,0,100,40,9,1,35, 1, 5,"Infernal frog", "Lapis","Lucca", "Tongue attack", 50, 0,0, "Magma bubble", 60, 0,3 };
 	CombatEnemy waterlilyfish{ 400,400,0,0,120,30,11,3,30, 1, 2,"Lilyfish", "Laurea","Lapis", "Bite", 50, 0,0, "Tail whipping", 45, 0,0 };
 	CombatEnemy naiadongoddess{ 2000,2000,400,400,400,20,11,1,300, 2, 3,"Naiadon", "Lapis","Lucca", "Trident strike", 70, 0,0, "Tidalwave", 30, 1,0, "Ice blast", 50, 0,1, "Mystic water", 0, 2,0};
 	List<Entity*> entities;
