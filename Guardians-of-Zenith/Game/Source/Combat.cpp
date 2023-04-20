@@ -675,7 +675,7 @@ bool Combat::Update(float dt)
 					}
 				}
 			}
-			if (app->input->controllers.j1_y =!0 && TeamTurn == 1)
+			if (app->input->controllers.j1_y <= -32767 && TeamTurn == 1)
 			{
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::DEFEND) {
@@ -744,7 +744,7 @@ bool Combat::Update(float dt)
 					}
 				}
 			}
-			if (app->input->controllers.j1_y =!0 && TeamTurn == 1)
+			if (app->input->controllers.j1_y >= 32767 && TeamTurn == 1)
 			{
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::INVENTORY) {
@@ -2827,6 +2827,13 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
 
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+			EXPwon = 0;
+			SaveInstance = 3;
+			app->scene->player->tpHouse = true;
+			ExitCombat();
+		}
+		if (app->input->controllers.A != 0)
+		{
 			EXPwon = 0;
 			SaveInstance = 3;
 			app->scene->player->tpHouse = true;
