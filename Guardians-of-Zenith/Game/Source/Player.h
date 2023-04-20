@@ -109,6 +109,7 @@ public:
 
 	//dialogue
 	bool isDialogue = false;
+	bool isBill = false;
 
 	bool DeathAnimationFinished = false;
 

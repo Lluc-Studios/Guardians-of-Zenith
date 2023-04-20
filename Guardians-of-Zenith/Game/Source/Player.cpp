@@ -299,22 +299,42 @@ bool Player::Update()
 		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
 	}
 
-	
+	//Lapis
 	if (isDialogue && app->dialogueSystem->activeTree == nullptr)
 	{
 		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 0);
 	}
-	if (!isDialogue)
+	if (!isDialogue && !isBill)
 	{
 		app->dialogueSystem->CleanUp();
 	}
-	if (isDialogue)
+	if (isDialogue )
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 		{
 			isDialogue = false;
+		}
+	}
+	//Bill
+	if (isBill && app->dialogueSystem->activeTree == nullptr)
+	{
+		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 1);
+	}
+
+	if (!isBill && !isDialogue)
+	{
+		app->dialogueSystem->CleanUp();
+	}
+
+	if (isBill)
+	{
+		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
+
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			isBill = false;
 		}
 	}
 
@@ -507,7 +527,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::NPC1:
 		//Collision in tabern
-
+		
 		break;
 	case ColliderType::NPC2:
 		//Collision in blacksmith
@@ -515,11 +535,12 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::NPC3:
 		//Collision in town
-		LOG("A");
-		isDialogue = true;
+		isBill = true;
 		break;
 	case ColliderType::LAPIS:
 		//Collision in town
+		LOG("A");
+		isDialogue = true;
 		break;
 	}
 		
