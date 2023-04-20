@@ -111,6 +111,9 @@ private:
 	SDL_Texture* Character1;
 	SDL_Texture* Character2;
 	SDL_Texture* Character3;
+	SDL_Texture* Character1Frozen;
+	SDL_Texture* Character2Frozen;
+	SDL_Texture* Character3Frozen;
 	SDL_Texture* Enemy1;
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
@@ -118,6 +121,14 @@ private:
 	SDL_Texture* ClassMage;
 	SDL_Texture* ClassArcher;
 	SDL_Texture* ClassChart;
+
+	//Entities status effects
+	SDL_Texture* Frozen;
+	SDL_Texture* Burn;
+	SDL_Texture* BurnBlue;
+	SDL_Texture* Poison;
+	SDL_Texture* Bleed;
+	SDL_Texture* Electrified;
 
 	//Character1
 	float C1MHP = 1000, C1CHP = 900;

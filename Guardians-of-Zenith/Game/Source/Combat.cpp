@@ -46,6 +46,9 @@ bool Combat::Start()
 	Character1 = app->tex->Load("Assets/Entities/Characters/Character1.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Character2.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Character1.png");
+	Character1Frozen = app->tex->Load("Assets/Entities/Characters/Character1Frozen.png");
+	Character2Frozen = app->tex->Load("Assets/Entities/Characters/Character2Frozen.png");
+	Character3Frozen = app->tex->Load("Assets/Entities/Characters/Character1Frozen.png");
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish.png");
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess.png");
@@ -56,6 +59,14 @@ bool Combat::Start()
 	ClassMage = app->tex->Load("Assets/Textures/Type_Purple.png");
 	ClassArcher = app->tex->Load("Assets/Textures/Type_Green.png");
 	ClassChart = app->tex->Load("Assets/Textures/Types.png");
+
+	//Entities status effects loading
+	Frozen = app->tex->Load("Assets/Textures/Effects/SnowFlakeBlue.png");
+	Burn = app->tex->Load("Assets/Textures/Effects/Fire.png");
+	BurnBlue = app->tex->Load("Assets/Textures/Effects/FireBlue.png");
+	Poison = app->tex->Load("Assets/Textures/Effects/Poison.png");
+	Bleed = app->tex->Load("Assets/Textures/Effects/BloodDrop.png");
+	Electrified = app->tex->Load("Assets/Textures/Effects/Thunder.png");
 
 	//Prevent memory leaks
 	E1 = app->tex->Load("Assets/Textures/Type_Orange.png");
@@ -253,6 +264,10 @@ bool Combat::Update(float dt)
 			}
 			if (C1dead == false) {
 				app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+				if (C1FROZEN == true) {
+					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+					app->render->DrawTexture(Frozen, app->scene->player->position.x - 40, app->scene->player->position.y + 77);
+				}
 			}
 			app->render->DrawText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME, 16);
 			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
@@ -282,6 +297,10 @@ bool Combat::Update(float dt)
 				}
 				if (C2dead == false) {
 					app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+					if (C2FROZEN == true) {
+						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+						app->render->DrawTexture(Frozen, app->scene->player->position.x + 110, app->scene->player->position.y + 77);
+					}
 				}
 				app->render->DrawText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME, 16);
 				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
@@ -311,6 +330,10 @@ bool Combat::Update(float dt)
 					}
 					if (C3dead == false) {
 						app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+						if (C3FROZEN == true) {
+							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+							app->render->DrawTexture(Frozen, app->scene->player->position.x + 270, app->scene->player->position.y + 77);
+						}
 					}
 					app->render->DrawText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME, 16);
 					app->render->DrawTexture(ClassArcher, app->scene->player->position.x + 210, app->scene->player->position.y + 77);
