@@ -78,7 +78,7 @@ bool Intro::Update(float dt)
 		app->mainmenu->active = true;
 		app->intro->active = false;
 
-		app->audio->PlayMusic("Assets/Soundtrack/Music/Rocky_Tundra_OST_Version.ogg");
+		//app->audio->PlayFxWithVolume(menuMusic);
 
 	}
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {

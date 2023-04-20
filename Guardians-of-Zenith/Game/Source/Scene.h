@@ -91,6 +91,8 @@ private:
 	SDL_Color GF = { 200, 200, 200 };
 	SDL_Color YF = { 255, 255, 80 };
 
+	char  villageMusic;
+
 	//Mando 
 	bool Start_pressed = false;
 
