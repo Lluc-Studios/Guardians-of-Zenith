@@ -36,6 +36,11 @@ bool Intro::Awake(pugi::xml_node& config)
 bool Intro::Start()
 {
 	logo = app->tex->Load("Assets/Textures/LlucStudios_logo.png");
+	introFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Intro_Emanem.wav");
+	menuMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Rocky Tundra OST Version.ogg");
+
+	app->audio->PlayFxWithVolume(introFx);
+
 	return true;
 }
 
@@ -60,17 +65,20 @@ bool Intro::Update(float dt)
 	app->render->DrawRectangle({ 0,0,5000,5000 }, 0, 0, 0, fading);
 	counter++;
 	//Fade out
-	if (counter >= 400) {
+	if (counter >= 200) {
 		fadeIn = false;
 	}
 	//Scene transition to menu
-	if (fadeIn == false && fading == 255 && counter > 750) {
+	if (fadeIn == false && fading == 255 && counter > 400) {
 		//app->scene->active = true;
 		//app->menu->active = true;
 		//app->entityManager->active = true;
 		//app->physics->active = true;
 		app->mainmenu->active = true;
 		app->intro->active = false;
+
+		//app->audio->PlayFxWithVolume(menuMusic);
+
 	}
 	//Debug
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) {
@@ -97,6 +105,5 @@ bool Intro::CleanUp()
 	LOG("Freeing intro");
 
 	app->tex->UnLoad(logo);
-
 	return true;
 }
