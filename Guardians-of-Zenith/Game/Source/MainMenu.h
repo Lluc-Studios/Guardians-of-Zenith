@@ -39,7 +39,7 @@ public:
 
 public:
 	enum class SELECTED {
-		PLAY = 1,
+		START = 1,
 		CONTINUE,
 		OPTIONS,
 		EXIT,
