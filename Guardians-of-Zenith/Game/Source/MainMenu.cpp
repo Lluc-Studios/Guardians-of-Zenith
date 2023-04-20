@@ -63,7 +63,10 @@ bool MainMenu::Update(float dt)
 	app->render->camera.y = 0;
 
 	app->render->DrawTexture(BG,0,0);
-	app->render->DrawTexture(Buttons, 220, 200, &B1);
+	//app->render->DrawTexture(Buttons, 450, 120, &B5);
+	//app->render->DrawTexture(Buttons, 450, 180, &B6);
+	//app->render->DrawTexture(Buttons, 450, 240, &B7);
+	//app->render->DrawTexture(Buttons, 450, 300, &B8);
 	//Funcion llamada desde el menu de muerte para volver al menu principal (Se desactiva a si misma)
 	if (app->deathmenu->finished == true) {
 		fading = 255;
@@ -97,6 +100,10 @@ bool MainMenu::Update(float dt)
 	//Funcion para detectar el raton en la parte principal del menu
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
 		if (option == SELECTED::PLAY) {
+			app->audio->PlayFxWithVolume(select, 0, 70);
+			fadeOut = true;
+		}
+		if (option == SELECTED::CONTINUE) {
 			app->audio->PlayFxWithVolume(select, 0, 70);
 			fadeOut = true;
 		}
@@ -216,37 +223,66 @@ bool MainMenu::Update(float dt)
 		int x, y;
 		x = app->input->GetMousePositionX();
 		y = app->input->GetMousePositionY();
-		if (x >= 145 * app->ScalingMultiplier && x <= 169 * app->ScalingMultiplier && y >= 40 * app->ScalingMultiplier && y <= 52 * app->ScalingMultiplier) {
-			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "play", 16);
-			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
-			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
+		if (x >= 450 && x <= 556 && y >= 120 && y <= 158 ) {
+			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "play", 16);
+			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
+			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
+			app->render->DrawTexture(Buttons, 450, 120, &B5);
+			app->render->DrawTexture(Buttons, 450, 180, &B2);
+			app->render->DrawTexture(Buttons, 450, 240, &B3);
+			app->render->DrawTexture(Buttons, 450, 300, &B4);
 			if (option == SELECTED::NONE) {
 				option = SELECTED::PLAY;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
 		}
-		else if (x >= 137 * app->ScalingMultiplier && x <= 179 * app->ScalingMultiplier && y >= 80 * app->ScalingMultiplier && y <= 92 * app->ScalingMultiplier) {
-			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
-			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, WF, "options", 16);
-			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
+		else if (x >= 450 && x <= 556 && y >= 180 && y <= 216) {
+			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "play", 16);
+			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
+			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
+			app->render->DrawTexture(Buttons, 450, 120, &B1);
+			app->render->DrawTexture(Buttons, 450, 180, &B6);
+			app->render->DrawTexture(Buttons, 450, 240, &B3);
+			app->render->DrawTexture(Buttons, 450, 300, &B4);
+			if (option == SELECTED::NONE) {
+				option = SELECTED::CONTINUE;
+				app->audio->PlayFxWithVolume(change, 0, 70);
+			}
+		}
+		else if (x >= 450 && x <= 556  && y >= 240 && y <= 278) {
+			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
+			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, WF, "options", 16);
+			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
+			app->render->DrawTexture(Buttons, 450, 120, &B1);
+			app->render->DrawTexture(Buttons, 450, 180, &B2);
+			app->render->DrawTexture(Buttons, 450, 240, &B7);
+			app->render->DrawTexture(Buttons, 450, 300, &B4);
 			if (option == SELECTED::NONE) {
 				option = SELECTED::OPTIONS;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
 		}
-		else if (x >= 145 * app->ScalingMultiplier && x <= 169 * app->ScalingMultiplier && y >= 120 * app->ScalingMultiplier && y <= 132 * app->ScalingMultiplier) {
-			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
-			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
-			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "exit", 16);
+		else if (x >= 450 && x <= 556 && y >= 300 && y <= 338 ) {
+			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
+			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
+			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "exit", 16);
+			app->render->DrawTexture(Buttons, 450, 120, &B1);
+			app->render->DrawTexture(Buttons, 450, 180, &B2);
+			app->render->DrawTexture(Buttons, 450, 240, &B3);
+			app->render->DrawTexture(Buttons, 450, 300, &B8);
 			if (option == SELECTED::NONE) {
 				option = SELECTED::EXIT;
 				app->audio->PlayFxWithVolume(change, 0, 70);
 			}
 		}
 		else {
-			app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
-			app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
-			app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
+			app->render->DrawTexture(Buttons, 450, 120, &B1);
+			app->render->DrawTexture(Buttons, 450, 180, &B2);
+			app->render->DrawTexture(Buttons, 450, 240, &B3);
+			app->render->DrawTexture(Buttons, 450, 300, &B4);
+			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
+			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
+			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
 			option = SELECTED::NONE;
 		}
 	}

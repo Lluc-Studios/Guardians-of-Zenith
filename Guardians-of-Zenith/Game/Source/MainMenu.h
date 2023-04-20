@@ -37,6 +37,7 @@ public:
 public:
 	enum class SELECTED {
 		PLAY = 1,
+		CONTINUE,
 		OPTIONS,
 		EXIT,
 		MUSIC,
@@ -63,6 +64,14 @@ private:
 	SDL_Texture* Buttons;
 
 	SDL_Rect B1 = { 0,0,106,38 };
+	SDL_Rect B2 = { 0,37,106,38 };
+	SDL_Rect B3 = { 0,74,106,38 };
+	SDL_Rect B4 = { 0,111,106,38 };
+	SDL_Rect B5 = { 106,0,106,38 };
+	SDL_Rect B6 = { 106,37,106,38 };
+	SDL_Rect B7 = { 106,74,106,38 };
+	SDL_Rect B8 = { 106,111,106,38 };
+
 };
 
 #endif // __MAINMENU_H__
