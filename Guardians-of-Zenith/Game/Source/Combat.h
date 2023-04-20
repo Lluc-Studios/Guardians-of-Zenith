@@ -30,7 +30,7 @@ public:
 		NONE
 	};
 
-	//Target: 0 = single, 1 = multiple, 2 = owner, 3 = ally, 4 = party
+	//Target: 0 = single, 1 = multiple, 2 = owner, 3 = ally, 4 = party, 5 = all
 
 	Combat();
 
@@ -133,7 +133,7 @@ private:
 	//Character1
 	float C1MHP = 1000, C1CHP = 900;
 	float C1MMP = 250, C1CMP = 200;
-	float C1ATK, C1DEF,LIMIT1;
+	float C1ATK, C1DEF,LIMIT1, limitCount1;
 	float C1speed = 0;
 	const char* C1NAME;
 	float C1lvl;
@@ -145,12 +145,15 @@ private:
 	float C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
 	const char* C1A2name = "Thrust";
 
+	float C1A3lvl = 1, C1A3target = 0, C1A3dmg = 40, C1A3mp = 50;
+	const char* C1A3name = "Calibur";
+
 	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;
 
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
 	float C2MMP = 250, C2CMP = 100;
-	float C2ATK, C2DEF, LIMIT2;
+	float C2ATK, C2DEF, LIMIT2, limitCount2;
 	float C2speed = 0;
 	const char* C2NAME;
 	float C2lvl;
@@ -162,12 +165,15 @@ private:
 	float C2A2lvl = 1, C2A2target = 1, C2A2dmg = 30, C2A2mp = 25;
 	const char* C2A2name = "Tidalwave";
 
+	float C2A3lvl = 1, C2A3target = 5, C2A3dmg = 40, C2A3mp = 100;
+	const char* C2A3name = "Aqua burst";
+
 	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
 	float C3MMP = 250, C3CMP = 250;
-	float C3ATK, C3DEF, LIMIT3;
+	float C3ATK, C3DEF, LIMIT3, limitCount3;
 	float C3speed = 0;
 	const char* C3NAME;
 	float C3lvl;
@@ -275,7 +281,7 @@ private:
 
 	//To prevent memory leaks (This may cause problems so it must be checked in case something does not work right)
 
-	char Aux[10], Aux1[10];
+	char Aux[10], Aux1[10], Aux2[10];
 
 	int HpBarLengthC1 = 0;
 	int MpBarLengthC1 = 0;
@@ -296,6 +302,7 @@ private:
 
 	const char* M1 = "0";
 	const char* M2 = "0";
+	const char* M3 = "0";
 
 	int block = 1,multiplier = 1, multiplier1 = 1, multiplier2 = 1;
 
