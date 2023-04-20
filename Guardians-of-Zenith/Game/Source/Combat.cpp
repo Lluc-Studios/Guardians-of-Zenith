@@ -215,9 +215,15 @@ bool Combat::Update(float dt)
 			}
 			if (option == COMBATMENU::ENEMY1 && EnemySelect == true) {
 				if (E1dead == true) option = COMBATMENU::ENEMY2;
-				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name, 16);
+				if (E1dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name, 16);
+				}
+				if (E2dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name, 16);
+				}
+				if (E3dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name, 16);
+				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
 				if (E1dead == false) {
 					if (E1BOSS == 0) {
@@ -230,9 +236,15 @@ bool Combat::Update(float dt)
 			}
 			if (option == COMBATMENU::ENEMY2 && EnemySelect == true) {
 				if (E2dead == true) option = COMBATMENU::ENEMY3;
-				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, E2name, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name, 16);
+				if (E1dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name, 16);
+				}
+				if (E2dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name, 16);
+				}
+				if (E3dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name, 16);
+				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,115,20 }, 255, 255, 255, WhiteFading);
 				if (E2dead == false) {
 					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
@@ -240,9 +252,15 @@ bool Combat::Update(float dt)
 			}
 			if (option == COMBATMENU::ENEMY3 && EnemySelect == true) {
 				if (E3dead == true) option = COMBATMENU::ENEMY1;
-				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, E1name, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, E3name, 16);
+				if (E1dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, E1name, 16);
+				}
+				if (E2dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, E2name, 16);
+				}
+				if (E3dead == false) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, E3name, 16);
+				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
 				if (E3dead == false) {
 					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
@@ -2046,31 +2064,30 @@ void Combat::StartCombat()
 	TeamTurn = 1;
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
-	//LoadLucca(app->scene->player->lucca);
-	//LoadEnemy(app->entityManager->waterlilyfish);
-	//LoadEnemy(app->entityManager->waterlilyfish);
-	//LoadEnemy(app->entityManager->naiadongoddess);
-	//LoadEnemy(app->entityManager->waterlilyfish);
-	//LoadEnemy(app->entityManager->slimeFrog);
-	//LoadEnemy(app->entityManager->slimeFrog);
-	//LoadEnemy(app->entityManager->slimeFrog);
 	if (Preset == 1) {
 		LoadEnemy(app->entityManager->slimeFrog);
+		E2dead = true;
+		E3dead = true;
 	}
 	if (Preset == 2) {
 		LoadEnemy(app->entityManager->waterlilyfish);
+		E2dead = true;
+		E3dead = true;
 	}
 	if (Preset == 3) {
 		LoadEnemy(app->entityManager->slimeFrog);
 		LoadEnemy(app->entityManager->slimeFrog);
+		E3dead = true;
 	}
 	if (Preset == 4) {
 		LoadEnemy(app->entityManager->waterlilyfish);
 		LoadEnemy(app->entityManager->waterlilyfish);
+		E3dead = true;
 	}
 	if (Preset == 5) {
 		LoadEnemy(app->entityManager->slimeFrog);
 		LoadEnemy(app->entityManager->waterlilyfish);
+		E3dead = true;
 	}
 	if (Preset == 6) {
 		LoadEnemy(app->entityManager->slimeFrog);
