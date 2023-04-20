@@ -55,7 +55,7 @@ bool Player::Start() {
 	//initilize textures
 	texture = app->tex->Load(texturePath);
 	//pbody = app->physics->CreateRectangle(position.x + width/2, position.y + height/2, width-55, height-2, bodyType::DYNAMIC);
-	pbody = app->physics->CreateRectangle(position.x, position.y, 16, 10, bodyType::DYNAMIC);
+	pbody = app->physics->CreateRectangle(position.x, position.y, 18, 10, bodyType::DYNAMIC);
 	//pbody = app->physics->CreateCircle(position.x + width / 2, position.y + height / 2,14/2, bodyType::DYNAMIC);
 	pbody->body->SetFixedRotation(true);
 	pbody->listener = this;
@@ -295,16 +295,16 @@ bool Player::Update()
 
 	//Player draw
 	if (facing == DIRECTION::RIGHT) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectRight);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectRight);
 	}
 	if (facing == DIRECTION::LEFT) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectLeft);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectLeft);
 	}
 	if (facing == DIRECTION::DOWN) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectDown);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectDown);
 	}
 	if (facing == DIRECTION::UP) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
+		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectUp);
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && app->dialogueSystem->activeTree == nullptr)
