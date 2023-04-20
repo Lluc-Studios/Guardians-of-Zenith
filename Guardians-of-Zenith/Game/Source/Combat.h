@@ -320,6 +320,13 @@ private:
 	bool FinishedTurnB1 = false;
 	bool FinishedTurnB2 = false;
 	bool FinishedTurnB3 = false;
+
+	//Mando
+	bool A_pressed = false;
+	const int JOYSTICK_MIN = -32768; 
+	const int JOYSTICK_MAX = 32767;
+	const int JOYSTICK_THRESHOLD = (JOYSTICK_MAX - JOYSTICK_MIN) / 10;
+
 };
 
 #endif // __COMBAT_H__
