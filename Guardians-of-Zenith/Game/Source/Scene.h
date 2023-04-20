@@ -82,6 +82,26 @@ private:
 	SDL_Rect N1T = { 0,0,32,32 };
 	SDL_Rect N2T = { 0,0,32,32 };
 	SDL_Rect N3T = { 0,0,32,32 };
+
+	SDL_Color WF = { 255, 255, 255 };
+	SDL_Color GF = { 200, 200, 200 };
+	SDL_Color YF = { 255, 255, 80 };
+
+public:
+	enum class SELECTED {
+		BACK2GAME,
+		CONTINUE,
+		OPTIONS,
+		EXIT,
+		MUSIC,
+		FX,
+		FS,
+		VS,
+		BACK,
+		NONE
+	};
+
+	SELECTED option = SELECTED::NONE;
 };
 
 #endif // __SCENE_H__
