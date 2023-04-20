@@ -272,6 +272,13 @@ bool Player::Update()
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp12 = false;
 	}
+	//Tp when you lose a combat
+	if (tpHouse) {
+		position.x = -520;
+		position.y = 150;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tpHouse = false;
+	}
 
 
 	app->render->camera.x = ((-1 * (position.x * app->win->GetScale() - app->render->camera.w / 2))-60);

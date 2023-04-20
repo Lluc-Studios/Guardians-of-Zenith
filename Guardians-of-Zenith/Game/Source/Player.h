@@ -126,6 +126,8 @@ public:
 	bool tp11 = false;
 	bool tp12 = false;
 
+	bool tpHouse = false;
+
 
 	//Uint32 TotalTime, Time = 0;
 

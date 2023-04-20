@@ -129,10 +129,10 @@ private:
 	int C1class = 1;
 
 	float C1A1lvl = 1, C1A1target = 0, C1A1dmg = 20, C1A1mp = 0;
-	const char* C1A1name = "swordattack";
+	const char* C1A1name = "Sword attack";
 
 	float C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
-	const char* C1A2name = "thrust";
+	const char* C1A2name = "Thrust";
 
 	bool C1Block = false, C1dead = false, C1Check = false;
 
@@ -146,10 +146,10 @@ private:
 	int C2class = 2;
 
 	float C2A1lvl = 1, C2A1target = 0, C2A1dmg = 20, C2A1mp = 0;
-	const char* C2A1name = "staffattack";
+	const char* C2A1name = "Staff attack";
 
 	float C2A2lvl = 1, C2A2target = 1, C2A2dmg = 30, C2A2mp = 25;
-	const char* C2A2name = "tidalwave";
+	const char* C2A2name = "Tidalwave";
 
 	bool C2Block = false, C2dead = false, C2Check = false;
 
@@ -163,10 +163,10 @@ private:
 	int C3class = 3;
 
 	float C3A1lvl = 1, C3A1target = 0, C3A1dmg = 20, C3A1mp = 0;
-	const char* C3A1name = "arrowshot";
+	const char* C3A1name = "Arrow shot";
 
 	float C3A2lvl = 1, C3A2target = 1, C3A2dmg = 35, C3A2mp = 20;
-	const char* C3A2name = "multishot";
+	const char* C3A2name = "Multishot";
 
 	bool C3Block = false, C3dead = false, C3Check = false;
 
