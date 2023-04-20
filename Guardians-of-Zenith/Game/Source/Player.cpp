@@ -296,16 +296,16 @@ bool Player::Update()
 
 	//Player draw
 	if (facing == DIRECTION::RIGHT) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectRight);
+		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectRight);
 	}
 	if (facing == DIRECTION::LEFT) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectLeft);
+		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectLeft);
 	}
 	if (facing == DIRECTION::DOWN) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectDown);
+		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectDown);
 	}
 	if (facing == DIRECTION::UP) {
-		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectUp);
+		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && app->dialogueSystem->activeTree == nullptr)
