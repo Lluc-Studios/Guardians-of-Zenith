@@ -52,6 +52,7 @@ bool Combat::Start()
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish.png");
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess.png");
+	Enemy4 = app->tex->Load("Assets/Entities/Enemies/PoisonFrog.png");
 	E1asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	E2asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
 	E3asset = app->tex->Load("Assets/Entities/Enemies/Frog.png");
@@ -148,7 +149,6 @@ bool Combat::Update(float dt)
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,115,160 }, 0, 0, 255, 150);
-		app->render->DrawText(160 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "Turn", 16);
 		if (option != COMBATMENU::NONE) {
 			if (option == COMBATMENU::ATTACK && AttackMenu == false) {
 				app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, "Attack", 16);
@@ -395,7 +395,7 @@ bool Combat::Update(float dt)
 				sprintf_s(Aux, "/ %.0f", C2MMP);
 				app->render->DrawText(210 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
 				sprintf_s(Aux, "%.0f", C2CMP);
-				app->render->DrawText(200 * app->ScalingMultiplier, 160 * app->ScalingMultiplier, WF, Aux, 16);
+				app->render->DrawText(200 * app->ScalingMultiplier-10, 160 * app->ScalingMultiplier, WF, Aux, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x + 70,app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 				//Calculate mp bar length
 				MpBarLengthC2 = (C2CMP * 98) / C2MMP;
@@ -571,7 +571,7 @@ bool Combat::Update(float dt)
 		if (Turn[0] == 0) {
 			FinishTurn();
 		}
-
+		app->render->DrawText(160 * app->ScalingMultiplier-5, 20 * app->ScalingMultiplier, WF, "Turn", 16);
 
 
 		//Load the characters attacks
@@ -2192,7 +2192,7 @@ void Combat::StartCombat()
 		LoadEnemy(app->entityManager->waterlilyfish);
 		LoadEnemy(app->entityManager->waterlilyfish);
 	}
-	if (Preset == 16) {
+	if (Preset == 8) {
 		LoadEnemy(app->entityManager->slimeFrog);
 		LoadEnemy(app->entityManager->slimeFrog);
 		LoadEnemy(app->entityManager->waterlilyfish);
@@ -2206,6 +2206,56 @@ void Combat::StartCombat()
 		LoadEnemy(app->entityManager->naiadongoddess);
 		LoadEnemy(app->entityManager->waterlilyfish);
 		LoadEnemy(app->entityManager->slimeFrog);
+	}
+	if (Preset == 11) {
+		LoadEnemy(app->entityManager->poisonSlimeFrog);
+		E2dead = true;
+		E3dead = true;
+	}
+	if (Preset == 12) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+		E2dead = true;
+		E3dead = true;
+	}
+	if (Preset == 13) {
+		LoadEnemy(app->entityManager->poisonSlimeFrog);
+		LoadEnemy(app->entityManager->poisonSlimeFrog);
+		E3dead = true;
+	}
+	if (Preset == 14) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		E3dead = true;
+	}
+	if (Preset == 15) {
+		LoadEnemy(app->entityManager->poisonSlimeFrog);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		E3dead = true;
+	}
+	if (Preset == 16) {
+		LoadEnemy(app->entityManager->poisonSlimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+	}
+	if (Preset == 17) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 18) {
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 19) {
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->slimeFrog);
+	}
+	if (Preset == 20) {
+		LoadEnemy(app->entityManager->naiadongoddess);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->poisonSlimeFrog);
 	}
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
@@ -2521,6 +2571,9 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 3) {
 			E3asset = Enemy3;
 		}
+		if (enemy.asset == 4) {
+			E3asset = Enemy4;
+		}
 	}
 	if (CurrentEnemies == 1) {
 		E2speed = enemy.spe;
@@ -2569,6 +2622,9 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 3) {
 			E2asset = Enemy3;
 		}
+		if (enemy.asset == 4) {
+			E2asset = Enemy4;
+		}
 	}
 	if (CurrentEnemies == 0) {
 		E1speed = enemy.spe;
@@ -2616,6 +2672,9 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		}
 		if (enemy.asset == 3) {
 			E1asset = Enemy3;
+		}
+		if (enemy.asset == 4) {
+			E1asset = Enemy4;
 		}
 	}
 }

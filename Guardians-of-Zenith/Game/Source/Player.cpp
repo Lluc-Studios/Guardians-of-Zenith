@@ -280,6 +280,12 @@ bool Player::Update()
 		position.x = -520;
 		position.y = 150;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		laurea.chp = laurea.hp;
+		laurea.cmp = laurea.mp;
+		lapis.chp = lapis.hp;
+		lapis.cmp = lapis.mp;
+		lucca.chp = lucca.hp;
+		lucca.cmp = lucca.mp;
 		tpHouse = false;
 	}
 
@@ -374,16 +380,30 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::ENEMY:
 		LOG("Collision Enemy");
 		PresetChance = rand() % 100 + 1;
-		if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 1;
-		if (PresetChance >= 21 && PresetChance <= 35) app->combat->Preset = 2;
-		if (PresetChance >= 36 && PresetChance <= 50) app->combat->Preset = 3;
-		if (PresetChance >= 51 && PresetChance <= 65) app->combat->Preset = 4;
-		if (PresetChance >= 66 && PresetChance <= 80) app->combat->Preset = 5;
-		if (PresetChance >= 81 && PresetChance <= 85) app->combat->Preset = 6;
-		if (PresetChance >= 86 && PresetChance <= 90) app->combat->Preset = 7;
-		if (PresetChance >= 91 && PresetChance <= 95) app->combat->Preset = 8;
-		if (PresetChance >= 96 && PresetChance <= 100) app->combat->Preset = 9;
-		if (boss == true) app->combat->Preset = 10;
+		if (HardMode == false) {
+			if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 1;
+			if (PresetChance >= 21 && PresetChance <= 35) app->combat->Preset = 2;
+			if (PresetChance >= 36 && PresetChance <= 50) app->combat->Preset = 3;
+			if (PresetChance >= 51 && PresetChance <= 65) app->combat->Preset = 4;
+			if (PresetChance >= 66 && PresetChance <= 80) app->combat->Preset = 5;
+			if (PresetChance >= 81 && PresetChance <= 85) app->combat->Preset = 6;
+			if (PresetChance >= 86 && PresetChance <= 90) app->combat->Preset = 7;
+			if (PresetChance >= 91 && PresetChance <= 95) app->combat->Preset = 8;
+			if (PresetChance >= 96 && PresetChance <= 100) app->combat->Preset = 9;
+		}
+		if (HardMode == true) {
+			if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 11;
+			if (PresetChance >= 21 && PresetChance <= 35) app->combat->Preset = 12;
+			if (PresetChance >= 36 && PresetChance <= 50) app->combat->Preset = 13;
+			if (PresetChance >= 51 && PresetChance <= 65) app->combat->Preset = 14;
+			if (PresetChance >= 66 && PresetChance <= 80) app->combat->Preset = 15;
+			if (PresetChance >= 81 && PresetChance <= 85) app->combat->Preset = 16;
+			if (PresetChance >= 86 && PresetChance <= 90) app->combat->Preset = 17;
+			if (PresetChance >= 91 && PresetChance <= 95) app->combat->Preset = 18;
+			if (PresetChance >= 96 && PresetChance <= 100) app->combat->Preset = 19;
+		}
+		if (boss == true && HardMode == false) app->combat->Preset = 10;
+		if (boss == true && HardMode == true) app->combat->Preset = 20;
 		app->combat->StartCombat();
 		break;
 	case ColliderType::TAVERN:
@@ -560,6 +580,9 @@ void Player::Move() {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
 		boss = !boss;
+	}
+	if (app->input->GetKey(SDL_SCANCODE_V) == KEY_DOWN) {
+		HardMode = !HardMode;
 	}
 
 	//Fx
