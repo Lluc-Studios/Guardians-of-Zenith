@@ -52,6 +52,7 @@ enum class ColliderType {
 	NPC1,
 	NPC2,
 	NPC3,
+	LAPIS,
 	UNKNOWN
 };
 

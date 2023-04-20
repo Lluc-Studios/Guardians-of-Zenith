@@ -2999,9 +2999,9 @@ void Combat::StartCombat()
 	}
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
-	limitCount1 = LIMIT1;
-	limitCount2 = LIMIT2;
-	limitCount3 = LIMIT3;
+	limitCount1 = 0;
+	limitCount2 = 0;
+	limitCount3 = 0;
 }
 
 void Combat::ExitCombat()

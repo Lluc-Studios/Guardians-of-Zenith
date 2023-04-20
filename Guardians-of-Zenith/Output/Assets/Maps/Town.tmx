@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="70" height="53" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="189">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="70" height="53" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="192">
  <tileset firstgid="1" name="Tileset_House" tilewidth="32" tileheight="32" tilecount="920" columns="40">
   <image source="Main Tilesets/Tileset_House.png" width="1280" height="736"/>
  </tileset>
@@ -15128,5 +15128,11 @@
    <property name="Type" type="int" value="24"/>
   </properties>
   <object id="188" x="491" y="544" width="17" height="31"/>
+ </objectgroup>
+ <objectgroup id="12" name="Lapis">
+  <properties>
+   <property name="Type" type="int" value="25"/>
+  </properties>
+  <object id="191" x="1114.67" y="791.333" width="20.6667" height="34.6667"/>
  </objectgroup>
 </map>

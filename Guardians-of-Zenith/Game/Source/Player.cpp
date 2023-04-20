@@ -526,6 +526,9 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("A");
 		isDialogue = true;
 		break;
+	case ColliderType::LAPIS:
+		//Collision in town
+		break;
 	}
 		
 }

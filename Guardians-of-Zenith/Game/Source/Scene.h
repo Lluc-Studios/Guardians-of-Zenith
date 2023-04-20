@@ -79,11 +79,13 @@ private:
 	SDL_Texture* NPC1;
 	SDL_Texture* NPC2;
 	SDL_Texture* NPC3;
+	SDL_Texture* LAPIS;
 
 	SDL_Rect ET = { 0,0,64,64 };
 	SDL_Rect N1T = { 0,0,32,32 };
 	SDL_Rect N2T = { 0,0,32,32 };
 	SDL_Rect N3T = { 0,0,32,32 };
+	SDL_Rect LAPIS1 = { 0,0,32,32 };
 
 	SDL_Color WF = { 255, 255, 255 };
 	SDL_Color GF = { 200, 200, 200 };

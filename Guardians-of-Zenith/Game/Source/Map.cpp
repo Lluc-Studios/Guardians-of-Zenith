@@ -600,6 +600,9 @@ void Map::CreateColliders(ColData c) {
     else if (c.type == 24) {
         collider1->ctype = ColliderType::NPC3;
     }
+    else if (c.type == 25) {
+        collider1->ctype = ColliderType::LAPIS;
+    }
 }
 
 //TEMPORARY PATHFINDING -----------------------------------------------------------------------------------------------------------------
