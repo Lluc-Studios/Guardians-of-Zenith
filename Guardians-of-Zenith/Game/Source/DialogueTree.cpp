@@ -43,8 +43,8 @@ DialogueTree::DialogueTree(bool a)
 
 bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 {
-	fontSize = 24;
-	max_chars_line = fontSize * 3;
+	fontSize = 12;
+	max_chars_line = fontSize * 6;
 
 	// TODO 6: Substitute player's name in text and choices if needed
 	if (!app->input->playerName.empty())
@@ -62,7 +62,7 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 	for (size_t i = 0; i < lines; i++)
 	{
 		//app->render->TextDraw(activeNode->texts[i].GetString(), pos.x + 100, pos.y + 20 + 50 * i, fontSize, { 255, 255, 255 });
-		app->render->DrawText(pos.x + 100, pos.y + 20 + 50 * i, { 255, 255, 255 }, activeNode->texts[i].GetString(), fontSize);
+		app->render->DrawText(100, 200, { 255, 255, 255 }, activeNode->texts[i].GetString(), fontSize);
 	}
 
 	EventReturn(mod, pos);
