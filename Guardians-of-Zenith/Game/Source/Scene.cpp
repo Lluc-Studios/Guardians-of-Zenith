@@ -317,7 +317,7 @@ bool Scene::Update(float dt)
 	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
 
 	//Enemy and npc draw
-	app->render->DrawTexture(EnemyT, 1105, 224, &ET);
+	app->render->DrawTexture(EnemyT, 1089, 208, &ET);
 	app->render->DrawTexture(NPC1, 148, -280, &N1T);
 	app->render->DrawTexture(NPC2, 224, -710, &N2T);
 	app->render->DrawTexture(NPC3, 483, 545, &N3T);
