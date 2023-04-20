@@ -132,17 +132,17 @@ bool Combat::Update(float dt)
 		// Posion
 		if (C1POISON != 0 && FinishedTurn1 == false && Turn[0] != 0) {
 			C1POISON--;
-			C1CHP -= C1MHP * 0.05;
+			C1CHP -= C1MHP * 0.03;
 			FinishedTurn1 = true;
 		}
 		if (C2POISON != 0 && FinishedTurn2 == false && Turn[0] != 0) {
 			C2POISON--;
-			C2CHP -= C2MHP * 0.05;
+			C2CHP -= C2MHP * 0.03;
 			FinishedTurn2 = true;
 		}
 		if (C3POISON != 0 && FinishedTurn3 == false && Turn[0] != 0) {
 			C3POISON--;
-			C3CHP -= C3MHP * 0.05;
+			C3CHP -= C3MHP * 0.03;
 			FinishedTurn3 = true;
 		}
 		//Burning
