@@ -569,7 +569,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::NPC1:
 		//Collision in tabern
-		NPC = true;
+		isBill = true;		
 		break;
 	case ColliderType::NPC2:
 		//Collision in blacksmith
@@ -577,7 +577,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::NPC3:
 		//Collision in town
-		isBill = true;
+		NPC = true;
 		break;
 	case ColliderType::LAPIS:
 		//Collision in town
