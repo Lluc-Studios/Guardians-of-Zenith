@@ -320,6 +320,10 @@ private:
 	bool FinishedTurnB1 = false;
 	bool FinishedTurnB2 = false;
 	bool FinishedTurnB3 = false;
+
+	//Mando
+	bool A_pressed = false;
+
 };
 
 #endif // __COMBAT_H__

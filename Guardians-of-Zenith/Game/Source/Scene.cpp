@@ -360,7 +360,16 @@ bool Scene::PostUpdate()
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		isPaused = !isPaused;
-	
+	if (app->input->controllers.Start != 0 && !Start_pressed)
+	{
+		isPaused = !isPaused;
+		Start_pressed = true;
+	}
+	else if (app->input->controllers.Start == 0)
+	{
+		Start_pressed = false;
+	}
+
 	if(isPaused)
 		Pause();
 	//if (options)

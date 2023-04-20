@@ -1356,7 +1356,7 @@ bool Combat::Update(float dt)
 				}
 
 			}
-			if (app->input->controllers.A != 0)
+			if (app->input->controllers.A != 0 && !A_pressed)
 			{
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::ATTACK) {
@@ -1893,6 +1893,11 @@ bool Combat::Update(float dt)
 						}
 					}
 				}
+				A_pressed = true;
+			}
+			else if (app->input->controllers.A == 0)
+			{
+				A_pressed = false;
 			}
 		}
 		//Enemy action
@@ -2813,8 +2818,9 @@ bool Combat::Update(float dt)
 			}
 			if (app->input->controllers.A != 0)
 			{
-				FinishTurn();
+				FinishTurn(); 
 			}
+			
 		}
 
 		if (Turn[0] >= 4) option = COMBATMENU::NONE;
@@ -2844,9 +2850,14 @@ bool Combat::PostUpdate()
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			ExitCombat();
 		}
-		if (app->input->controllers.A != 0)
+		if (app->input->controllers.A != 0 && !A_pressed)
 		{
 			ExitCombat();
+			A_pressed = true;
+		}
+		else if (app->input->controllers.A == 0)
+		{
+			A_pressed = false;
 		}
 	}
 	if (option == COMBATMENU::LOSE) {
@@ -2858,13 +2869,19 @@ bool Combat::PostUpdate()
 			app->scene->player->tpHouse = true;
 			ExitCombat();
 		}
-		if (app->input->controllers.A != 0)
+		if (app->input->controllers.A != 0 && !A_pressed)
 		{
 			EXPwon = 0;
 			SaveInstance = 3;
 			app->scene->player->tpHouse = true;
 			ExitCombat();
+			A_pressed = true;
 		}
+		else if (app->input->controllers.A == 0)
+		{
+			A_pressed = false;
+		}
+	
 	}
 
 	return ret;
