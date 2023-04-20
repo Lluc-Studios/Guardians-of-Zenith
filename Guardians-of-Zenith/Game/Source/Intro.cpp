@@ -105,5 +105,6 @@ bool Intro::CleanUp()
 	LOG("Freeing intro");
 
 	app->tex->UnLoad(logo);
+	app->audio->PlayFxWithVolume(silence);
 	return true;
 }
