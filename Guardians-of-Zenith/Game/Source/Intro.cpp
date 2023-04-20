@@ -66,11 +66,11 @@ bool Intro::Update(float dt)
 	counter++;
 
 	//Fade out
-	if (counter >= 200) {
+	if (counter >= 300) {
 		fadeIn = false;
 	}
 	//Scene transition to menu
-	if (fadeIn == false && fading == 255 && counter > 400) {
+	if (fadeIn == false && fading == 255 && counter > 300) {
 		//app->scene->active = true;
 		//app->menu->active = true;
 		//app->entityManager->active = true;
