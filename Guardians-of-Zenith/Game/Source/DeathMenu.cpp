@@ -39,8 +39,8 @@ bool DeathMenu::Start()
 	//char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	//WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
 	//GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
-	change = app->audio->LoadFx("Assets/Sounds/ChangeSelection.wav");
-	select = app->audio->LoadFx("Assets/Sounds/Select.wav");
+	change = app->audio->LoadFx("Assets/Soundtrack/Fx/ChangeSelection.wav");
+	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Select.wav");
 	//MENUD = app->tex->Load("Assets/Textures/Menu_Gradient.png");
 	x = app->render->camera.x;
 	y = app->render->camera.y;

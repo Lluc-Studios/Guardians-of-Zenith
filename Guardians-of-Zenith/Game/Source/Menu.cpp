@@ -39,8 +39,8 @@ bool Menu::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Menu::Start()
 {
-	change = app->audio->LoadFx("Assets/Sounds/ChangeSelection.wav");
-	select = app->audio->LoadFx("Assets/Sounds/Select.wav");
+	change = app->audio->LoadFx("Assets/Soundtrack/Fx/ChangeSelection.wav");
+	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Select.wav");
 	fading = 255;
 	fontFading = 0;
 	fadeIn = true;
