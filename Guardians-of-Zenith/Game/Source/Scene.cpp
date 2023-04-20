@@ -143,6 +143,7 @@ bool Scene::Update(float dt)
 		//app->audio->PlayMusic("Assets/Sounds/candybattleLONG.wav");
 		Music = true;
 	}
+
 	// L03: DONE 3: Request App to Load / Save when pressing the keys F5 (save) / F6 (load)
 	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 		app->SaveGameRequest();
@@ -329,8 +330,11 @@ bool Scene::PostUpdate()
 {
 	bool ret = true;
 
-	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		ret = false;
+	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		isPaused = !isPaused;
+	
+	if(isPaused)
+		Pause();
 
 	return ret;
 }
@@ -350,4 +354,13 @@ bool Scene::LoadState(pugi::xml_node& data) {
 
 bool Scene::SaveState(pugi::xml_node& data) {
 	return true; 
+}
+
+void Scene::Pause()
+{
+	// Oscurecer todo el fondo
+	app->render->DrawRectangle({ player->position.x + (-640 * app->ScalingMultiplier), player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 80);
+	//
+	app->render->DrawRectangle({player->position.x + (-16 * app->ScalingMultiplier), player->position.y + (-48 * app->ScalingMultiplier),64 * app->ScalingMultiplier,96 * app->ScalingMultiplier }, 0, 0, 0, 180);
+
 }
