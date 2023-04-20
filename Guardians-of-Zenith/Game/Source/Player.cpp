@@ -308,17 +308,18 @@ bool Player::Update()
 		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && app->dialogueSystem->activeTree == nullptr)
+	
+	if (isDialogue && app->dialogueSystem->activeTree == nullptr)
 	{
-		// TODO 2: Load and activate dialogue 
 		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 0);
 	}
-	
-
+	if (!isDialogue)
+	{
+		app->dialogueSystem->CleanUp();
+	}
 	if (isDialogue)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
-		app->render->DrawText(PIXEL_TO_METERS(position.x + 80), PIXEL_TO_METERS(position.y + 250), WF2, "Hey there, traveler.Who are you and what brings you here?", 16);
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 		{

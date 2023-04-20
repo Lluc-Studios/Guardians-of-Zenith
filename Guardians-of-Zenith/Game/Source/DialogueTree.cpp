@@ -62,7 +62,7 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 	for (size_t i = 0; i < lines; i++)
 	{
 		//app->render->TextDraw(activeNode->texts[i].GetString(), pos.x + 100, pos.y + 20 + 50 * i, fontSize, { 255, 255, 255 });
-		app->render->DrawText(100, 200, { 255, 255, 255 }, activeNode->texts[i].GetString(), fontSize);
+		app->render->DrawText(100, 260, { 255, 0, 0 }, activeNode->texts[i].GetString(), fontSize);
 	}
 
 	EventReturn(mod, pos);
@@ -88,7 +88,8 @@ bool DialogueTree::UpdateChoices(Module* mod, iPoint pos, int fontSize)
 
 		uint width, height;
 		app->win->GetWindowSize(width, height);
-		SDL_Rect bounds = { width - w, pos.y - (h + fontSize) * (i + 1), w, h};
+		//SDL_Rect bounds = { width - w, pos.y - (h + fontSize) * (i + 1), w, h};
+		SDL_Rect bounds = { 25,   (h + fontSize) * (i + 1) + 270, w, h };
 
 		button = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, i, ch_option, bounds, fontSize, mod);
 		button->state = GuiControlState::NORMAL;

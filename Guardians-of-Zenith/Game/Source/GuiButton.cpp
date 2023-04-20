@@ -59,25 +59,25 @@ bool GuiButton::Draw(Render* render)
 
 	case GuiControlState::DISABLED:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 200, 200, 200, 255, true, false);
+		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 200, 200, 200, 0, true, false);
 
 	} break;
 
 	case GuiControlState::NORMAL:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 0, 128, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 0, 128, 255, 0, true, false);
 
 	}	break;
 
 	case GuiControlState::FOCUSED:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 255, 0, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 255, 0, 255, 0, true, false);
 
 	} break;
 
 	case GuiControlState::PRESSED:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y, bounds.w, bounds.h }, 0, 255, 0, 255, true, false);
+		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 0, 255, 0, 0, true, false);
 
 	} break;
 
@@ -85,11 +85,11 @@ bool GuiButton::Draw(Render* render)
 		break;
 	}
 
-	int size = fontSize;
+	int size = fontSize	;
 	int x = bounds.w / size * 0.5;
 	int y = bounds.h - size / 4;
 
-	app->render->DrawText(bounds.x + x, bounds.y, { 255, 255, 255 }, text.GetString(), size);
+	app->render->DrawText(bounds.x + x, bounds.y, { 0, 0, 0 }, text.GetString(), size);
 
 	return false;
 }

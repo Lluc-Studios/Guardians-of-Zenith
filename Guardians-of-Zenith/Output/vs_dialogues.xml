@@ -37,12 +37,12 @@
     
     <node id="3" text="You look strong, do you want us to work toghether? It is compulsory to have at least 2 playable characters… And if you refuse me you might get bad qualifications.">
       <choice id="0" option="Fine, we can unite our forces." nextNode="-1" eventReturn="1"/>
-      <choice id="1" option="Don’t care, I still can go to revaluation." nextNode="-2" eventReturn="1"/>
+      <choice id="1" option="Don’t care, I still can go to revaluation." nextNode="4" eventReturn="1"/>
     </node>
 
     <node id="-1" text ="Let’s go! We will be so good friends from now."></node>
 	  
-	<node id="-2" text ="Oh, okay. See you on september I guess."></node>
+	<node id="4" text ="Oh, okay. See you on september I guess."></node>
   </dialogueTree>
 
   <!--Bill (Tabernero)-->
