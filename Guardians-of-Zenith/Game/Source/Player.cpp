@@ -600,6 +600,21 @@ bool Player::LoadState(pugi::xml_node& data) {
 	playerState = (State)data.child("player_stats").attribute("state").as_int();
 	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 
+	laurea.chp = data.child("laurea_stats").append_attribute("laurea_CHP").as_float();
+	laurea.cmp = data.child("laurea_stats").append_attribute("laurea_CMP").as_float();
+	laurea.lvl = data.child("laurea_stats").append_attribute("laurea_LVL").as_float();
+	laurea.exp = data.child("laurea_stats").append_attribute("laurea_EXP").as_float();
+
+	lapis.chp = data.child("lapis_stats").append_attribute("lapis_CHP").as_float();
+	lapis.cmp = data.child("lapis_stats").append_attribute("lapis_CMP").as_float();
+	lapis.lvl = data.child("lapis_stats").append_attribute("lapis_LVL").as_float();
+	lapis.exp = data.child("lapis_stats").append_attribute("lapis_EXP").as_float();
+
+	lucca.chp = data.child("lucca_stats").append_attribute("lucca_CHP").as_float();
+	lucca.cmp = data.child("lucca_stats").append_attribute("lucca_CMP").as_float();
+	lucca.lvl = data.child("lucca_stats").append_attribute("lucca_LVL").as_float();
+	lucca.exp = data.child("lucca_stats").append_attribute("lucca_EXP").as_float();
+
 	return true;
 }
 
@@ -608,6 +623,21 @@ bool Player::SaveState(pugi::xml_node& data) {
 	data.child("player_stats").append_attribute("position_x") = position.x;
 	data.child("player_stats").append_attribute("position_y") = position.y;
 	data.child("player_stats").append_attribute("state") =	(int)playerState;
+	pugi::xml_node laurea_stats = data.append_child("laurea_stats");
+	data.child("laurea_stats").append_attribute("laurea_CHP") = laurea.chp;
+	data.child("laurea_stats").append_attribute("laurea_CMP") = laurea.cmp;
+	data.child("laurea_stats").append_attribute("laurea_LVL") = laurea.lvl;
+	data.child("laurea_stats").append_attribute("laurea_EXP") = laurea.exp;
+	pugi::xml_node lapis_stats = data.append_child("lapis_stats");
+	data.child("lapis_stats").append_attribute("lapis_CHP") = lapis.chp;
+	data.child("lapis_stats").append_attribute("lapis_CMP") = lapis.cmp;
+	data.child("lapis_stats").append_attribute("lapis_LVL") = lapis.lvl;
+	data.child("lapis_stats").append_attribute("lapis_EXP") = lapis.exp;
+	pugi::xml_node lucca_stats = data.append_child("lucca_stats");
+	data.child("lucca_stats").append_attribute("lucca_CHP") = lucca.chp;
+	data.child("lucca_stats").append_attribute("lucca_CMP") = lucca.cmp;
+	data.child("lucca_stats").append_attribute("lucca_LVL") = lucca.lvl;
+	data.child("lucca_stats").append_attribute("lucca_EXP") = lucca.exp;
 
 	return true; 
 }
