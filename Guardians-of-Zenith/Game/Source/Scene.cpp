@@ -322,6 +322,34 @@ bool Scene::Update(float dt)
 	app->render->DrawTexture(NPC2, 224, -710, &N2T);
 	app->render->DrawTexture(NPC3, 483, 545, &N3T);
 
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+	{
+		switch (option)
+		{
+		case Scene::SELECTED::SAVEGAME:
+			app->SaveGameRequest();
+			break;
+		case Scene::SELECTED::OPTIONS:
+			options = true;
+			break;
+		case Scene::SELECTED::MAINMENU:
+			app->scene->player->active = false;
+			app->entityManager->active = false;
+			app->physics->active = false;
+			app->scene->CanPlayerMove = false;
+			app->mainmenu->active = true;
+			app->scene->active = false;
+			break;
+		case Scene::SELECTED::EXIT:
+			return false;
+			break;
+		case Scene::SELECTED::NONE:
+			break;
+		default:
+			break;
+		}
+	}
+
 	return true;
 }
 
@@ -335,6 +363,8 @@ bool Scene::PostUpdate()
 	
 	if(isPaused)
 		Pause();
+	//if (options)
+	//	app->mainmenu->Options();
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		ret = false;
 
@@ -358,7 +388,7 @@ bool Scene::SaveState(pugi::xml_node& data) {
 	return true; 
 }
 
-void Scene::Pause()
+bool Scene::Pause()
 {
 	// Oscurecer todo el fondo
 	app->render->DrawRectangle({ player->position.x + (-640 * app->ScalingMultiplier), player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 80);
@@ -374,16 +404,22 @@ void Scene::Pause()
 	int x, y;
 	x = app->input->GetMousePositionX();
 	y = app->input->GetMousePositionY();
+
 	if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 45 * 2 && y <= 26 + 55 * 2) {
 		app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
+		option = SELECTED::EXIT;
 	}
 	else if (x >= 640 / 2 - 24 && x <= 664 && y >= 26 + 65 * 2 && y <= 26 + 75 * 2) {
 		app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
+		option = SELECTED::OPTIONS;
 	}
 	else if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 85 * 2 && y <= 26 + 95 * 2) {
 		app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
+		option = SELECTED::MAINMENU;
 	}
 	else if (x >= 640 / 2 - 16 && x <= 664 && y >= 26 + 105 * 2 && y <= 26 + 115 * 2) {
 		app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
+		option = SELECTED::EXIT;
 	}
+	return true;
 }

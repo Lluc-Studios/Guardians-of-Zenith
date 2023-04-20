@@ -42,7 +42,7 @@ public:
 
 	bool SaveState(pugi::xml_node& data);
 
-	void Pause();
+	bool Pause();
 
 public:
 
@@ -64,6 +64,8 @@ public:
 	iPoint AuxPlayer, AuxEnemy, Checker, Checker2;
 
 	bool isPaused = false;
+
+	bool options = false;
 
 private:
 	bool Music = false, PF = false;

@@ -47,6 +47,11 @@ bool MainMenu::Start()
 	BG = app->tex->Load("Assets/Textures/new_mainmenu.png");
 	Buttons = app->tex->Load("Assets/Textures/Buttons_scale4.png");
 
+	fading = 255;
+	fading2 = 0;
+	fadeIn = true;
+	fadeOut = false;
+
 	return true;
 }
 
@@ -118,110 +123,7 @@ bool MainMenu::Update(float dt)
 	}
 	//Condicional para dibujar los ajustes cuando se seleccionan las 'opciones'
 	if (options == true) {
-		// UI opciones fondo
-		app->render->DrawRectangle({ 640 / 2 - 96, 360 / 2 - 112, 96 * 2, 128 * 2 }, 0, 0, 0, 180);
-
-		// posición ratón
-		int x, y;
-		x = app->input->GetMousePositionX();
-		y = app->input->GetMousePositionY();
-		app->render->DrawText(640 / 2 - 20, 40 * 2, WF, "music", 16);
-		app->render->DrawText(640 / 2 - 8, 65 * 2, WF, "fx", 16);
-		app->render->DrawText(640 / 2 - 32, 95 * 2, WF, "fullscreen", 16);
-		app->render->DrawText(640 / 2 - 24, 120 * 2, WF, "vsync", 16);
-		app->render->DrawText(640 / 2 - 16, 145 * 2, GF, "back", 16);
-		app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
-		app->render->DrawRectangle({ 6 + MX * app->ScalingMultiplier,56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
-		app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
-		app->render->DrawRectangle({ 6 + FX * app->ScalingMultiplier,81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
-		app->render->DrawRectangle({ 6 + 152 * app->ScalingMultiplier,108 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB, RGB, RGB);
-		app->render->DrawRectangle({ 6 + 152 * app->ScalingMultiplier,134 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB1, RGB1, RGB1);
-		app->render->DrawRectangle({ 6 + 153 * app->ScalingMultiplier,109 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
-		app->render->DrawRectangle({ 6 + 153 * app->ScalingMultiplier,135 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
-		app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,110 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
-		app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,136 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
-		//Cuadrados rojos
-		if (FS == false) {
-			app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,110 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
-		}
-		if (VS == false) {
-			app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,136 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
-		}
-		//Funciones para detectar el ratón
-		if (x >= MX * app->ScalingMultiplier && x <= (MX * app->ScalingMultiplier +6) && y >= 56 * app->ScalingMultiplier && y <= 62 * app->ScalingMultiplier) {
-			app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
-			app->render->DrawRectangle({ 6 + MX * app->ScalingMultiplier,56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
-			if (option == SELECTED::NONE) {
-				option = SELECTED::MUSIC;
-				app->audio->PlayFxWithVolume(change, 0, 70);
-			}
-			//Funcion para arrastrar el boton
-			if (option == SELECTED::MUSIC && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
-				MX = (x - 2) / app->ScalingMultiplier;
-				if (x < 125 * app->ScalingMultiplier) MX = 125;
-				if (x > 189 * app->ScalingMultiplier) MX = 189;
-				if (MX > 189 * app->ScalingMultiplier) MX = 189;
-				app->audio->volume = (MX - 125);
-				if (MX <= 130 ) app->audio->volume = 1;
-				if (MX >= 180 ) app->audio->volume = 100;
-			}
-		}
-		else if (x >= FX * app->ScalingMultiplier && x <= (FX * app->ScalingMultiplier + 6) && y >= 81 * app->ScalingMultiplier && y <= 87 * app->ScalingMultiplier) {
-			app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
-			app->render->DrawRectangle({ 6 + FX * app->ScalingMultiplier,81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
-			if (option == SELECTED::NONE) {
-				option = SELECTED::FX;
-				app->audio->PlayFxWithVolume(change, 0, 70);
-			}
-			//Funcion para arrastrar el boton
-			if (option == SELECTED::FX && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
-				FX = (x - 2) / app->ScalingMultiplier;
-				if (x < 125 * app->ScalingMultiplier) FX = 125;
-				if (x > 189 * app->ScalingMultiplier) FX = 189;
-				app->audio->fxvolume = (FX - 95);
-				if (FX <= 130) app->audio->fxvolume = 1;
-				if (FX >= 180) app->audio->fxvolume = 100;
-			}
-		}
-		else if (x >= 152 * app->ScalingMultiplier && x <= 162 * app->ScalingMultiplier && y >= 108 * app->ScalingMultiplier && y <= 118 * app->ScalingMultiplier) {
-			RGB = 255;
-			if (option == SELECTED::NONE) {
-				option = SELECTED::FS;
-				app->audio->PlayFxWithVolume(change, 0, 70);
-			}
-			if (option == SELECTED::FS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
-				FS = !FS;
-				app->audio->PlayFxWithVolume(select, 0, 70);
-			}
-
-		}
-		else if (x >= 152 * app->ScalingMultiplier && x <= 162 * app->ScalingMultiplier && y >= 134 * app->ScalingMultiplier && y <= 144 * app->ScalingMultiplier) {
-			RGB1 = 255;
-			if (option == SELECTED::NONE) {
-				option = SELECTED::VS;
-				app->audio->PlayFxWithVolume(change, 0, 70);
-			}
-			if (option == SELECTED::VS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
-				VS = !VS;
-				app->audio->PlayFxWithVolume(select, 0, 70);
-			}
-
-		}
-		else if (x >= 145 * app->ScalingMultiplier && x <= 169 * app->ScalingMultiplier && y >= 145 * app->ScalingMultiplier && y <= 157 * app->ScalingMultiplier) {
-			app->render->DrawText(640 / 2 - 16, 145 * 2, WF, "back", 16);
-			if (option == SELECTED::NONE) {
-				option = SELECTED::BACK;
-				app->audio->PlayFxWithVolume(change, 0, 70);
-			}
-			if (option == SELECTED::BACK && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
-				options = false;
-			}
-		}
-		else {
-			RGB = 150;
-			RGB1 = 150;
-			option = SELECTED::NONE;
-		}
+		Options();
 	}
 	//Funcion para detectar sobre que boton esta el ratón
 	if (options == false) {
@@ -311,4 +213,112 @@ bool MainMenu::CleanUp()
 	LOG("Freeing main menu");
 
 	return true;
+}
+
+void MainMenu::Options()
+{
+	// UI opciones fondo
+	app->render->DrawRectangle({ 640 / 2 - 96, 360 / 2 - 112, 96 * 2, 128 * 2 }, 0, 0, 0, 180);
+
+	// posición ratón
+	int x, y;
+	x = app->input->GetMousePositionX();
+	y = app->input->GetMousePositionY();
+	app->render->DrawText(640 / 2 - 20, 40 * 2, WF, "music", 16);
+	app->render->DrawText(640 / 2 - 8, 65 * 2, WF, "fx", 16);
+	app->render->DrawText(640 / 2 - 32, 95 * 2, WF, "fullscreen", 16);
+	app->render->DrawText(640 / 2 - 24, 120 * 2, WF, "vsync", 16);
+	app->render->DrawText(640 / 2 - 16, 145 * 2, GF, "back", 16);
+	app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ 6 + MX * app->ScalingMultiplier,56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ 6 + FX * app->ScalingMultiplier,81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ 6 + 152 * app->ScalingMultiplier,108 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB, RGB, RGB);
+	app->render->DrawRectangle({ 6 + 152 * app->ScalingMultiplier,134 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB1, RGB1, RGB1);
+	app->render->DrawRectangle({ 6 + 153 * app->ScalingMultiplier,109 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
+	app->render->DrawRectangle({ 6 + 153 * app->ScalingMultiplier,135 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
+	app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,110 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
+	app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,136 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
+	//Cuadrados rojos
+	if (FS == false) {
+		app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,110 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
+	}
+	if (VS == false) {
+		app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,136 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
+	}
+	//Funciones para detectar el ratón
+	if (x >= MX * app->ScalingMultiplier && x <= (MX * app->ScalingMultiplier + 6) && y >= 56 * app->ScalingMultiplier && y <= 62 * app->ScalingMultiplier) {
+		app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
+		app->render->DrawRectangle({ 6 + MX * app->ScalingMultiplier,56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
+		if (option == SELECTED::NONE) {
+			option = SELECTED::MUSIC;
+			app->audio->PlayFxWithVolume(change, 0, 70);
+		}
+		//Funcion para arrastrar el boton
+		if (option == SELECTED::MUSIC && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
+			MX = (x - 2) / app->ScalingMultiplier;
+			if (x < 125 * app->ScalingMultiplier) MX = 125;
+			if (x > 189 * app->ScalingMultiplier) MX = 189;
+			if (MX > 189 * app->ScalingMultiplier) MX = 189;
+			app->audio->volume = (MX - 125);
+			if (MX <= 130) app->audio->volume = 1;
+			if (MX >= 180) app->audio->volume = 100;
+		}
+	}
+	else if (x >= FX * app->ScalingMultiplier && x <= (FX * app->ScalingMultiplier + 6) && y >= 81 * app->ScalingMultiplier && y <= 87 * app->ScalingMultiplier) {
+		app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
+		app->render->DrawRectangle({ 6 + FX * app->ScalingMultiplier,81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
+		if (option == SELECTED::NONE) {
+			option = SELECTED::FX;
+			app->audio->PlayFxWithVolume(change, 0, 70);
+		}
+		//Funcion para arrastrar el boton
+		if (option == SELECTED::FX && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
+			FX = (x - 2) / app->ScalingMultiplier;
+			if (x < 125 * app->ScalingMultiplier) FX = 125;
+			if (x > 189 * app->ScalingMultiplier) FX = 189;
+			app->audio->fxvolume = (FX - 95);
+			if (FX <= 130) app->audio->fxvolume = 1;
+			if (FX >= 180) app->audio->fxvolume = 100;
+		}
+	}
+	else if (x >= 152 * app->ScalingMultiplier && x <= 162 * app->ScalingMultiplier && y >= 108 * app->ScalingMultiplier && y <= 118 * app->ScalingMultiplier) {
+		RGB = 255;
+		if (option == SELECTED::NONE) {
+			option = SELECTED::FS;
+			app->audio->PlayFxWithVolume(change, 0, 70);
+		}
+		if (option == SELECTED::FS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
+			FS = !FS;
+			app->audio->PlayFxWithVolume(select, 0, 70);
+		}
+
+	}
+	else if (x >= 152 * app->ScalingMultiplier && x <= 162 * app->ScalingMultiplier && y >= 134 * app->ScalingMultiplier && y <= 144 * app->ScalingMultiplier) {
+		RGB1 = 255;
+		if (option == SELECTED::NONE) {
+			option = SELECTED::VS;
+			app->audio->PlayFxWithVolume(change, 0, 70);
+		}
+		if (option == SELECTED::VS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
+			VS = !VS;
+			app->audio->PlayFxWithVolume(select, 0, 70);
+		}
+
+	}
+	else if (x >= 145 * app->ScalingMultiplier && x <= 169 * app->ScalingMultiplier && y >= 145 * app->ScalingMultiplier && y <= 157 * app->ScalingMultiplier) {
+		app->render->DrawText(640 / 2 - 16, 145 * 2, WF, "back", 16);
+		if (option == SELECTED::NONE) {
+			option = SELECTED::BACK;
+			app->audio->PlayFxWithVolume(change, 0, 70);
+		}
+		if (option == SELECTED::BACK && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
+			options = false;
+		}
+	}
+	else {
+		RGB = 150;
+		RGB1 = 150;
+		option = SELECTED::NONE;
+	}
 }
