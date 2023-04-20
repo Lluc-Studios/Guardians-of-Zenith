@@ -44,7 +44,7 @@ bool MainMenu::Start()
 
 	MX = 125 + app->audio->volume;
 	FX = 125 + app->audio->fxvolume/2;
-	BG = app->tex->Load("Assets/Textures/mainmenu_final_scale2.png");
+	BG = app->tex->Load("Assets/Textures/new_mainmenu.png");
 	Buttons = app->tex->Load("Assets/Textures/Buttons_scale4.png");
 
 	return true;
