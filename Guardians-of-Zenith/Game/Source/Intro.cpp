@@ -35,7 +35,7 @@ bool Intro::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Intro::Start()
 {
-	logo = app->tex->Load("Assets/Textures/logoantic.png");
+	logo = app->tex->Load("Assets/Textures/Logo_resized.png");
 	introFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Intro_Emanem.wav");
 	menuMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Rocky Tundra OST Version.ogg");
 
@@ -61,7 +61,7 @@ bool Intro::Update(float dt)
 		if (fading <= 254) { fading++; };
 	}
 
-	app->render->DrawTexture(logo,app->render->camera.w / 2 / app->win->GetScale() - 64, app->render->camera.h / 2 / app->win->GetScale() - 56);
+	app->render->DrawTexture(logo,0,0);
 	app->render->DrawRectangle({ 0,0,5000,5000 }, 0, 0, 0, fading);
 	counter++;
 
