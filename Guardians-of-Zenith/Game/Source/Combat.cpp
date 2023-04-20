@@ -149,17 +149,29 @@ bool Combat::Update(float dt)
 		if (C1BURN != 0 && FinishedTurnB1 == false && Turn[0] != 0) {
 			C1BURN--;
 			C1CHP -= 20;
+			C1ATK = app->scene->player->laurea.atk * 0.7;
 			FinishedTurnB1 = true;
 		}
 		if (C2BURN != 0 && FinishedTurnB2 == false && Turn[0] != 0) {
 			C2BURN--;
 			C2CHP -= 20;
+			C2ATK = app->scene->player->lapis.atk * 0.7;
 			FinishedTurnB2 = true;
 		}
 		if (C3BURN != 0 && FinishedTurnB3 == false && Turn[0] != 0) {
 			C3BURN--;
 			C3CHP -= 20;
+			C3ATK = app->scene->player->lucca.atk * 0.7;
 			FinishedTurnB3 = true;
+		}
+		if (C1BURN == 0) {
+			C1ATK = app->scene->player->laurea.atk;
+		}
+		if (C2BURN == 0) {
+			C2ATK = app->scene->player->lapis.atk;
+		}
+		if (C3BURN == 0) {
+			C3ATK = app->scene->player->lucca.atk;
 		}
 
 		//Render text
