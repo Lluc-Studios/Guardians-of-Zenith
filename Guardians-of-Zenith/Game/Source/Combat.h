@@ -117,6 +117,7 @@ private:
 	SDL_Texture* Enemy1;
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
+	SDL_Texture* Enemy4;
 	SDL_Texture* ClassTank;
 	SDL_Texture* ClassMage;
 	SDL_Texture* ClassArcher;

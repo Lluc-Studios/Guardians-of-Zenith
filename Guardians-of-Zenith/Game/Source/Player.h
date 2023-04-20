@@ -139,6 +139,8 @@ private:
 	SDL_Texture* texture;
 	const char* texturePath;
 
+	bool HardMode = false;
+
 	//Fx
 	int Step1, Step2, StepMetalic1, StepMetalic2, DeathSound, Swing, DamageFx, aux, tpFX = -1;
 
