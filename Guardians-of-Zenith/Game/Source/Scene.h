@@ -42,6 +42,8 @@ public:
 
 	bool SaveState(pugi::xml_node& data);
 
+	void Pause();
+
 public:
 
 	//fading
@@ -60,6 +62,8 @@ public:
 	iPoint destination;
 	bool originSelected = false, checked = false, pathActive = false;;
 	iPoint AuxPlayer, AuxEnemy, Checker, Checker2;
+
+	bool isPaused = false;
 
 private:
 	bool Music = false, PF = false;

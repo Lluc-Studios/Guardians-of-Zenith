@@ -24,7 +24,7 @@
 
   <scene>
 	 <!-- player Starting pos, x: 500 y: 220-->
-    <player x="560" y="340" width="64" height="16" texturepath="Assets/Textures/personatge_direccions_prototip.png"/>
+    <player x="560" y="340" width="64" height="16" texturepath="Assets/Entities/Characters/Laurea_Directions.png"/>
 
 	  <!--enemy x="1270" y="190" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>
 	<enemy x="2220" y="400" width="16" height="14" texturepath="Assets/Textures/grounded_enemy.png"/>

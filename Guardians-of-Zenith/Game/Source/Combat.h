@@ -145,7 +145,7 @@ private:
 	float C1A2lvl = 1, C1A2target = 0, C1A2dmg = 40, C1A2mp = 15;
 	const char* C1A2name = "Thrust";
 
-	float C1A3lvl = 1, C1A3target = 0, C1A3dmg = 40, C1A3mp = 50;
+	float C1A3lvl = 1, C1A3target = 0, C1A3dmg = 100, C1A3mp = 50;
 	const char* C1A3name = "Calibur";
 
 	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;

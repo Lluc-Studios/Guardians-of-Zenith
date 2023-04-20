@@ -298,9 +298,13 @@ bool Player::Update()
 		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectUp);
 	}
 
+	
+
 	if (isDialogue)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
+		app->render->DrawText(PIXEL_TO_METERS(position.x + 80), PIXEL_TO_METERS(position.y + 250), WF2, "Hey there, traveler.Who are you and what brings you here?", 16);
+
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 		{
 			isDialogue = false;
@@ -531,19 +535,19 @@ void Player::Move() {
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(0, 0);
 	}
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue) {
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
 	}
