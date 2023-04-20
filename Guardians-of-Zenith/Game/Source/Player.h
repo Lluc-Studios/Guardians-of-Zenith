@@ -8,6 +8,9 @@
 #include "Path.h"
 #include "Physics.h"
 
+#include "GuiButton.h"
+#include "DialogueSystem.h"
+
 struct SDL_Texture;
 
 enum class State {
@@ -146,6 +149,8 @@ private:
 
 	int width;
 	int height;
+
+	int dialogueID;
 
 	//int attackCD = 0;
 	//int attackFrames = 10; 

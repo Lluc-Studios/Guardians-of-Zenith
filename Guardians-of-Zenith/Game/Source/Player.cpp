@@ -17,6 +17,9 @@
 #include "Combat.h"
 #include "time.h"
 
+
+#include "GuiManager.h"
+
 Player::Player() : Entity(EntityType::PLAYER)
 {
 	name.Create("Player");
@@ -304,7 +307,11 @@ bool Player::Update()
 		app->render->DrawTexture(texture, position.x + 21, position.y - 17, &rectUp);
 	}
 
-	
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && app->dialogueSystem->activeTree == nullptr)
+	{
+		// TODO 2: Load and activate dialogue 
+		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 0);
+	}
 
 	if (isDialogue)
 	{
