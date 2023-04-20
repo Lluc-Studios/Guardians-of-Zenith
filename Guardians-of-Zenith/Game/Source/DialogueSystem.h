@@ -10,6 +10,7 @@
 #include "GuiButton.h"
 
 
+
 class DialogueSystem : public Module
 {
 public:
@@ -27,7 +28,6 @@ public:
 	int LoadDialogue(const char* file, int dialogueID);
 	DialogueNode* LoadNodes(pugi::xml_node& xml_trees, DialogueTree* tree);
 	void LoadChoices(pugi::xml_node& xml_node, DialogueNode* node);
-
 	bool LoadDialogueState();
 	bool SaveDialogueState();
 
@@ -35,8 +35,8 @@ public:
 
 public:
 
-	DialogueChoice* playerInput;
-	DialogueTree* activeTree;
+	DialogueChoice* playerInput = nullptr;
+	DialogueTree* activeTree = nullptr;
 
 	SDL_Texture* textBox_tex;
 	const char* textBox_path;
