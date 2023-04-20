@@ -677,6 +677,12 @@ void Player::debugKeys() {
 		else if (invincible == true) {
 			invincible = false;
 		}
+		if (pbody->body->GetType() == b2_dynamicBody) {
+			pbody->body->SetType(b2_kinematicBody);
+		}
+		else if (pbody->body->GetType() == b2_kinematicBody) {
+			pbody->body->SetType(b2_dynamicBody);
+		}
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN) {
@@ -706,4 +712,3 @@ void Player::Death() {
 		app->deathmenu->active = true;
 	}
 }
-
