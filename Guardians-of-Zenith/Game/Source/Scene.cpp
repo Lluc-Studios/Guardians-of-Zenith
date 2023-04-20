@@ -143,7 +143,7 @@ bool Scene::Update(float dt)
 {
 
 	if (Music == false) {
-		app->audio->PlayFx(villageMusic);
+		app->audio->PlayFx(villageMusic, 10);
 		Music = true;
 	}
 
@@ -187,20 +187,20 @@ bool Scene::Update(float dt)
 	// Draw map
 	if (app->Instance == 0) {
 		app->map->Draw();
-		app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance_Island_OST_Version.ogg");
+		//app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance_Island_OST_Version.ogg");
 	}
 	if (app->Instance == 1) {
 		app->tavern->Draw();
-		app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
+		//app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
 	}
 	//DO NOT TOUCH!!!
 	if (app->Instance == 2) {
 		app->blacksmith->Draw();
-		app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
+		//app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
 	}
 	if (app->Instance == 3) {
 		app->house->Draw();
-		app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil_Days.ogg");
+		//app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil_Days.ogg");
 	}
 	//if (app->Instance == 4) {
 	//	app->lakedungeon->Draw();
