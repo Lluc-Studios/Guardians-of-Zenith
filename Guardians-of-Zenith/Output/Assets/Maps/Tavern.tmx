@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="23">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="23">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -635,9 +635,9 @@
    <tile/>
    <tile/>
    <tile gid="81"/>
-   <tile gid="82"/>
-   <tile/>
-   <tile gid="84"/>
+   <tile gid="102"/>
+   <tile gid="103"/>
+   <tile gid="104"/>
    <tile gid="85"/>
    <tile/>
    <tile/>
@@ -676,7 +676,7 @@
    <tile gid="123"/>
    <tile/>
    <tile/>
-   <tile gid="102"/>
+   <tile gid="105"/>
    <tile/>
    <tile/>
    <tile/>
@@ -692,7 +692,7 @@
    <tile gid="143"/>
    <tile gid="42"/>
    <tile/>
-   <tile gid="165"/>
+   <tile gid="184"/>
    <tile/>
    <tile/>
    <tile/>
@@ -708,7 +708,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="185"/>
+   <tile gid="204"/>
    <tile/>
    <tile/>
    <tile/>
@@ -724,7 +724,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="185"/>
+   <tile gid="204"/>
    <tile/>
    <tile/>
    <tile/>
@@ -740,7 +740,7 @@
    <tile gid="162"/>
    <tile gid="162"/>
    <tile gid="162"/>
-   <tile gid="205"/>
+   <tile gid="202"/>
    <tile/>
    <tile/>
    <tile/>
@@ -889,22 +889,6 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="104"/>
-   <tile gid="105"/>
-   <tile/>
-   <tile gid="104"/>
-   <tile gid="105"/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
    <tile gid="124"/>
    <tile gid="125"/>
    <tile/>
@@ -926,11 +910,6 @@
    <tile/>
    <tile gid="144"/>
    <tile gid="145"/>
-   <tile gid="104"/>
-   <tile gid="105"/>
-   <tile/>
-   <tile gid="104"/>
-   <tile gid="105"/>
    <tile/>
    <tile/>
    <tile/>
@@ -942,6 +921,11 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="164"/>
+   <tile gid="165"/>
+   <tile/>
+   <tile gid="164"/>
+   <tile gid="165"/>
    <tile gid="124"/>
    <tile gid="125"/>
    <tile/>
@@ -963,6 +947,22 @@
    <tile/>
    <tile gid="144"/>
    <tile gid="145"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="164"/>
+   <tile gid="165"/>
+   <tile/>
+   <tile gid="164"/>
+   <tile gid="165"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1293,7 +1293,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="6" name="Collisions">
+ <objectgroup id="6" name="Collisions" visible="0">
   <object id="1" x="320.727" y="89.303" width="166.167" height="62.6667"/>
   <object id="3" x="25.2726" y="24.8674" width="6.57609" height="326.542"/>
   <object id="4" x="25.0453" y="352.083" width="134.872" height="7.042">
@@ -1335,13 +1335,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="7" name="ExitTavern">
+ <objectgroup id="7" name="ExitTavern" visible="0">
   <properties>
    <property name="Type" type="int" value="9"/>
   </properties>
   <object id="15" x="191.941" y="389.957" width="31.6512" height="5.193"/>
  </objectgroup>
- <objectgroup id="9" name="NPC1">
+ <objectgroup id="9" name="NPC1" visible="0">
   <properties>
    <property name="Type" type="int" value="22"/>
   </properties>

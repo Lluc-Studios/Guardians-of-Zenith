@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="72">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="72">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1164,9 +1164,9 @@
    <tile/>
    <tile/>
    <tile gid="91"/>
-   <tile gid="92"/>
-   <tile/>
-   <tile gid="92"/>
+   <tile gid="112"/>
+   <tile gid="113"/>
+   <tile gid="114"/>
    <tile gid="95"/>
    <tile/>
    <tile/>
@@ -1228,28 +1228,28 @@
    <tile gid="152"/>
    <tile gid="152"/>
    <tile gid="152"/>
-   <tile/>
+   <tile gid="314"/>
    <tile gid="312"/>
-   <tile/>
+   <tile gid="314"/>
    <tile gid="152"/>
    <tile gid="152"/>
    <tile gid="152"/>
-   <tile gid="211"/>
-   <tile gid="212"/>
-   <tile gid="212"/>
-   <tile gid="212"/>
-   <tile gid="213"/>
+   <tile gid="374"/>
+   <tile gid="375"/>
+   <tile gid="375"/>
+   <tile gid="375"/>
+   <tile gid="376"/>
    <tile/>
    <tile/>
    <tile gid="332"/>
    <tile gid="331"/>
    <tile gid="332"/>
+   <tile gid="313"/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="334"/>
    <tile gid="332"/>
-   <tile/>
+   <tile gid="334"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1263,6 +1263,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="333"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1278,8 +1279,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="373"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1438,36 +1438,17 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="115"/>
+   <tile gid="135"/>
    <tile/>
-   <tile gid="115"/>
+   <tile gid="135"/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile gid="115"/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile gid="115"/>
-   <tile/>
-   <tile gid="115"/>
    <tile/>
    <tile/>
    <tile/>
    <tile gid="135"/>
    <tile/>
-   <tile gid="135"/>
-   <tile/>
-   <tile gid="114"/>
    <tile/>
    <tile/>
-   <tile gid="135"/>
-   <tile/>
-   <tile/>
-   <tile gid="114"/>
    <tile/>
    <tile/>
    <tile gid="135"/>
@@ -1495,17 +1476,36 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="175"/>
+   <tile/>
+   <tile gid="175"/>
+   <tile/>
+   <tile gid="154"/>
    <tile/>
    <tile/>
+   <tile gid="175"/>
    <tile/>
    <tile/>
    <tile gid="154"/>
    <tile/>
    <tile/>
+   <tile gid="175"/>
+   <tile/>
+   <tile gid="175"/>
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="154"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="174"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="174"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1883,7 +1883,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="14" name="Collisions" visible="0">
+ <objectgroup id="14" name="Collisions">
   <object id="44" x="25.3333" y="25.4167" width="109.333" height="60.5833"/>
   <object id="45" x="217.667" y="25.0417" width="109.333" height="70.25"/>
   <object id="46" x="128" y="57.875" width="95.6663" height="68.9167"/>
@@ -1911,13 +1911,13 @@
   <object id="70" x="351.848" y="254.015" width="6.8037" height="66.9694"/>
   <object id="71" x="341.28" y="256" width="10.6219" height="32"/>
  </objectgroup>
- <objectgroup id="12" name="ExitHouse" visible="0">
+ <objectgroup id="12" name="ExitHouse">
   <properties>
    <property name="Type" type="int" value="13"/>
   </properties>
   <object id="40" x="256.229" y="354.545" width="31.792" height="5.19"/>
  </objectgroup>
- <objectgroup id="13" name="Bed" visible="0">
+ <objectgroup id="13" name="Bed">
   <properties>
    <property name="Type" type="int" value="20"/>
   </properties>
