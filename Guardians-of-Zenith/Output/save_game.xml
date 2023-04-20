@@ -22,6 +22,8 @@
 	<menu />
 	<mainmenu />
 	<Combat Module />
+	<dialogue />
+	<guiManager />
 	<renderer>
 		<camera x="-1594" y="-2176" />
 	</renderer>
