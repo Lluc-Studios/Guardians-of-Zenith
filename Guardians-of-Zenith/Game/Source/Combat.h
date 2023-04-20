@@ -188,7 +188,7 @@ private:
 	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
 
 	//Enemy1
-	float E1MHP = 1000, E1CHP = 800;
+	float E1MHP = 1000, E1CHP = 800, E1MES = 0, E1CES = 0;
 	float E1ATK, E1DEF, E1EXP;
 	float E1speed = 0;
 	int E1class = 1, E1BOSS = 0;
@@ -212,7 +212,7 @@ private:
 	bool E1dead = false, E1Check = false;
 
 	//Enemy2
-	float E2MHP = 1000, E2CHP = 1000;
+	float E2MHP = 1000, E2CHP = 1000, E2MES = 0, E2CES = 0;
 	float E2ATK, E2DEF, E2EXP;
 	float E2speed = 0;
 	int E2class = 1, E2BOSS = 0;
@@ -236,7 +236,7 @@ private:
 	bool E2dead = false, E2Check = false;
 
 	//Enemy3
-	float E3MHP = 1000, E3CHP = 150;
+	float E3MHP = 1000, E3CHP = 150, E3MES = 0, E3CES = 0;
 	float E3ATK, E3DEF, E3EXP;
 	float E3speed = 0;
 	int E3class = 1, E3BOSS = 0;
@@ -291,6 +291,7 @@ private:
 	int MpBarLengthC3 = 0;
 
 	int HpBarLengthE1 = 0;
+	int EsBarLengthE1 = 0;
 	int HpBarLengthE2 = 0;
 	int HpBarLengthE3 = 0;
 
