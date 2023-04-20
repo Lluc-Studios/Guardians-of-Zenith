@@ -365,4 +365,25 @@ void Scene::Pause()
 	//
 	app->render->DrawRectangle({player->position.x + (-16 * app->ScalingMultiplier), player->position.y + (-48 * app->ScalingMultiplier),64 * app->ScalingMultiplier,96 * app->ScalingMultiplier }, 0, 0, 0, 180);
 
+	app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, GF, "Save game", 16);
+	app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, GF, "Options", 16);
+	app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, GF, "Main menu", 16);
+	app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, GF, "Exit", 16);
+
+	// Marcar cuando el raton esta encima
+	int x, y;
+	x = app->input->GetMousePositionX();
+	y = app->input->GetMousePositionY();
+	if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 45 * 2 && y <= 26 + 55 * 2) {
+		app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
+	}
+	else if (x >= 640 / 2 - 24 && x <= 664 && y >= 26 + 65 * 2 && y <= 26 + 75 * 2) {
+		app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
+	}
+	else if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 85 * 2 && y <= 26 + 95 * 2) {
+		app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
+	}
+	else if (x >= 640 / 2 - 16 && x <= 664 && y >= 26 + 105 * 2 && y <= 26 + 115 * 2) {
+		app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
+	}
 }
