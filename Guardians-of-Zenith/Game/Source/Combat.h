@@ -72,6 +72,8 @@ public:
 
 public:
 
+	bool GodMode = false;
+
 	COMBATMENU option = COMBATMENU::ATTACK;
 
 	int AttackSelected = 0;
