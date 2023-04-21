@@ -8,13 +8,24 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 ### Keyboard & mouse
 **In map:**
 - WASD: Move
+- Enter: Finish dialogue
 
 **Combat UI:**
 - W/S: Up/Down
 - Space: Select
+
+**Menus UI:**
+- ESC (ingame): Pause menu
+- Mouse to move in menus
+
 ### Gamepad
 
 ## Debug
+- F1: Skip intro and main menu
+- F2: Show collisions
+- C: Next combat will appear the boss
+- V: Next combat enemies can poison and burn you
+- F10: God mode
 
 ## Developers
 
