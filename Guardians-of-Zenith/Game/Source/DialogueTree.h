@@ -85,6 +85,7 @@ public:
 	bool updateOptions;
 	int fontSize;
 	int max_chars_line;
+	float i2 = 0;
 };
 
 #endif //__DIALOGTREE_H__

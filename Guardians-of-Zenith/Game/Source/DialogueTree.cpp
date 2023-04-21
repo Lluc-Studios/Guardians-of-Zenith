@@ -59,10 +59,14 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 
 	// TODO 6: Render dialogue in text box
 	size_t lines = activeNode->texts.size();
+	i2 = 0;
+	int positionx = 260;
 	for (size_t i = 0; i < lines; i++)
 	{
 		//app->render->TextDraw(activeNode->texts[i].GetString(), pos.x + 100, pos.y + 20 + 50 * i, fontSize, { 255, 255, 255 });
-		app->render->DrawText(100, 260, { 255, 0, 0 }, activeNode->texts[i].GetString(), fontSize);
+		app->render->DrawText(100, positionx + 400 * i2, { 255, 0, 0 }, activeNode->texts[i].GetString(), fontSize);
+		i2 += 0.05;
+		//positionx += positionx;
 	}
 
 	EventReturn(mod, pos);
