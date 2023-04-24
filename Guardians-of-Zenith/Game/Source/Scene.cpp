@@ -123,7 +123,7 @@ bool Scene::Start()
 
 	}
 
-	EnemyT = app->tex->Load("Assets/Entities/Enemies/Lake_SlimeFrog.png");
+	EnemyT = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Movment.png");
 	NPC1 = app->tex->Load("Assets/Entities/NPC/npc_1.png");
 	NPC2 = app->tex->Load("Assets/Entities/NPC/npc_2.png");
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
