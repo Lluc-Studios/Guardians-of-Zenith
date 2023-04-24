@@ -167,29 +167,29 @@ bool Combat::Update(float dt)
 		if (C1BURN != 0 && FinishedTurnB1 == false && Turn[0] != 0) {
 			C1BURN--;
 			C1CHP -= 20;
-			C1ATK = app->scene->player->laurea.atk * 0.7;
+			C1DEF = app->scene->player->laurea.def * 0.7;
 			FinishedTurnB1 = true;
 		}
 		if (C2BURN != 0 && FinishedTurnB2 == false && Turn[0] != 0) {
 			C2BURN--;
 			C2CHP -= 20;
-			C2ATK = app->scene->player->lapis.atk * 0.7;
+			C2DEF = app->scene->player->lapis.def * 0.7;
 			FinishedTurnB2 = true;
 		}
 		if (C3BURN != 0 && FinishedTurnB3 == false && Turn[0] != 0) {
 			C3BURN--;
 			C3CHP -= 20;
-			C3ATK = app->scene->player->lucca.atk * 0.7;
+			C3DEF = app->scene->player->lucca.def * 0.7;
 			FinishedTurnB3 = true;
 		}
 		if (C1BURN == 0) {
-			C1ATK = app->scene->player->laurea.atk;
+			C1DEF = app->scene->player->laurea.def;
 		}
 		if (C2BURN == 0) {
-			C2ATK = app->scene->player->lapis.atk;
+			C2DEF = app->scene->player->lapis.def;
 		}
 		if (C3BURN == 0) {
-			C3ATK = app->scene->player->lucca.atk;
+			C3DEF = app->scene->player->lucca.def;
 		}
 
 		//Render text
@@ -232,13 +232,13 @@ bool Combat::Update(float dt)
 				app->render->DrawText(10 * app->ScalingMultiplier+95, 100 * app->ScalingMultiplier, WF, M1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier+87, 120 * app->ScalingMultiplier, GF, M2, 16);
 				if (Turn[0] == 1) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
 				}
 				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, GF, M3, 16);
 				}
 				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
 				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
 			}
@@ -249,13 +249,13 @@ bool Combat::Update(float dt)
 				app->render->DrawText(10 * app->ScalingMultiplier+95, 100 * app->ScalingMultiplier, GF, M1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier+87, 120 * app->ScalingMultiplier, WF, M2, 16);
 				if (Turn[0] == 1) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
 				}
 				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, GF, M3, 16);
 				}
 				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
 				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,115,20 }, 255, 255, 255, WhiteFading);
 			}
@@ -272,7 +272,7 @@ bool Combat::Update(float dt)
 					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
 				}
 				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
 				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
 			}
@@ -487,6 +487,13 @@ bool Combat::Update(float dt)
 					}
 					app->render->DrawText(260 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C3NAME, 16);
 					app->render->DrawTexture(ClassArcher, app->scene->player->position.x + 210, app->scene->player->position.y + 77);
+					sprintf_s(Aux, "%.0f", limitCount3);
+					if (limitCount3 != LIMIT3) {
+						app->render->DrawText(502, 280, WF, Aux, 16);
+					}
+					if (limitCount3 == LIMIT3) {
+						app->render->DrawText(502, 280, YF, Aux, 16);
+					}
 					app->render->DrawText(260 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "HP", 12);
 					//Int to string convert
 					sprintf_s(Aux, "/ %.0f", C3MHP);
@@ -675,7 +682,9 @@ bool Combat::Update(float dt)
 				Attack2 = C3A2name;
 				sprintf_s(Aux1, "%.0f", C3A2mp);
 				M2 = Aux1;
-				//Attack3 = C3A3name;
+				Attack3 = C3A3name;
+				sprintf_s(Aux2, "%.0f", C3A3mp);
+				M3 = Aux2;
 				//Attack4 = C3A4name;
 				//Attack5 = C3A5name;
 				//Attack6 = C3A6name;
@@ -1119,6 +1128,30 @@ bool Combat::Update(float dt)
 								E3CHP = E3CHP - (((C3A2dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
+							if (AttackSelected == 3 && C3CMP >= C3A3mp && limitCount3 == LIMIT3) {
+								limitCount3 = 0;
+								C3CMP -= C3A3mp;
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CHP = E1CHP - (((C3A3dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+									FinishTurn();
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CES = E1CES - (((((C3A3dmg*1.5) * (C3ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+									FinishTurn();
+								}
+							}
 						}
 					}
 					if (option == COMBATMENU::ENEMY2 && E2dead == false) {
@@ -1244,6 +1277,30 @@ bool Combat::Update(float dt)
 								E3CHP = E3CHP - (((C3A2dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
+							if (AttackSelected == 3 && C3CMP >= C3A3mp && limitCount3 == LIMIT3) {
+								limitCount3 = 0;
+								C3CMP -= C3A3mp;
+								if (E2CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E2Weak == "Lucca") multiplier = 2;
+									if (E2Res == "Lucca") multiplier2 = 2;
+									E2CHP = E2CHP - (((C3A3dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+									FinishTurn();
+								}
+								if (E2CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E2Weak == "Lucca") multiplier = 2;
+									if (E2Res == "Lucca") multiplier2 = 2;
+									E2CES = E2CES - (((((C3A3dmg * 1.5) * (C3ATK / E2DEF)) * multiplier) / multiplier2) / 3);
+									if (E2CES < 0) {
+										E2CHP += E2CES;
+										E2CES = 0;
+									}
+									FinishTurn();
+								}
+							}
 						}
 					}
 					if (option == COMBATMENU::ENEMY3 && E3dead == false) {
@@ -1368,6 +1425,30 @@ bool Combat::Update(float dt)
 								if (E3Res == "Lucca") multiplier2 = 2;
 								E3CHP = E3CHP - (((C3A2dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
 								FinishTurn();
+							}
+							if (AttackSelected == 3 && C3CMP >= C3A3mp && limitCount3 == LIMIT3) {
+								limitCount3 = 0;
+								C3CMP -= C3A3mp;
+								if (E3CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E3Weak == "Lucca") multiplier = 2;
+									if (E3Res == "Lucca") multiplier2 = 2;
+									E3CHP = E3CHP - (((C3A3dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
+									FinishTurn();
+								}
+								if (E3CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E3Weak == "Lucca") multiplier = 2;
+									if (E3Res == "Lucca") multiplier2 = 2;
+									E3CES = E3CES - (((((C3A3dmg * 1.5) * (C3ATK / E3DEF)) * multiplier) / multiplier2) / 3);
+									if (E3CES < 0) {
+										E3CHP += E3CES;
+										E3CES = 0;
+									}
+									FinishTurn();
+								}
 							}
 						}
 					}
@@ -2915,6 +2996,7 @@ void Combat::StartCombat()
 	TeamTurn = 1;
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
+	//LoadLucca(app->scene->player->lucca);
 	if (Preset == 1) {
 		LoadEnemy(app->entityManager->slimeFrog);
 		E2dead = true;

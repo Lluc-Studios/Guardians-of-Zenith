@@ -191,6 +191,9 @@ private:
 	float C3A2lvl = 1, C3A2target = 1, C3A2dmg = 35, C3A2mp = 20;
 	const char* C3A2name = "Multishot";
 
+	float C3A3lvl = 1, C3A3target = 0, C3A3dmg = 80, C3A3mp = 75;
+	const char* C3A3name = "Piercing shot";
+
 	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
 	int C3POISON = 0, C3BURN = 0;
 
@@ -274,7 +277,7 @@ private:
 	
 	SDL_Color WF = { 255, 255, 255 };
 	SDL_Color GF = { 200, 200, 200 };
-	SDL_Color YF = { 255, 255, 80 };
+	SDL_Color YF = { 255, 255, 0};
 
 	bool InCombat = false;
 
