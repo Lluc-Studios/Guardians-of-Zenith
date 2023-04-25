@@ -38,10 +38,6 @@ bool Combat::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Combat::Start()
 {
-	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
-	//WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
-	//GF = app->font->Load("Assets/Fonts/FontGreyDef.png", lookupTable, 1);
-	//YF = app->font->Load("Assets/Fonts/FontYellowDef.png", lookupTable, 1);
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");

@@ -152,6 +152,15 @@ private:
 	float C1A3lvl = 1, C1A3target = 0, C1A3dmg = 100, C1A3mp = 50;
 	const char* C1A3name = "Calibur";
 
+	float C1A4lvl = 7, C1A4target = 2, C1A4dmg = 0, C1A4mp = 20;
+	const char* C1A4name = "Taunt";
+
+	float C1A5lvl = 12, C1A5target = 1, C1A5dmg = 60, C1A5mp = 30;
+	const char* C1A5name = "Whirlwind";
+
+	float C1A6lvl = 16, C1A6target = 4, C1A6dmg = 0, C1A6mp = 40;
+	const char* C1A6name = "Shield wall";
+
 	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;
 	int C1POISON = 0, C1BURN= 0;
 
@@ -173,6 +182,15 @@ private:
 	float C2A3lvl = 1, C2A3target = 5, C2A3dmg = 40, C2A3mp = 100;
 	const char* C2A3name = "Aqua burst";
 
+	float C2A4lvl = 7, C2A4target = 3, C2A4dmg = 0, C2A4mp = 40;
+	const char* C2A4name = "Healing water";
+
+	float C2A5lvl = 12, C2A5target = 0, C2A5dmg = 75, C2A5mp = 60;
+	const char* C2A5name = "Water jet";
+
+	float C2A6lvl = 16, C2A6target = 3, C2A6dmg = 0, C2A6mp = 80;
+	const char* C2A6name = "Drop of life";
+
 	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false;
 	int C2POISON = 0, C2BURN = 0;
 
@@ -193,6 +211,15 @@ private:
 
 	float C3A3lvl = 1, C3A3target = 0, C3A3dmg = 80, C3A3mp = 75;
 	const char* C3A3name = "Piercing shot";
+
+	float C3A4lvl = 7, C3A4target = 2, C3A4dmg = 0, C3A4mp = 50;
+	const char* C3A4name = "Attack up";
+
+	float C3A5lvl = 12, C3A5target = 0, C3A5dmg = 40, C3A5mp = 60;
+	const char* C3A5name = "Poison arrow";
+
+	float C3A6lvl = 16, C3A6target = 1, C3A6dmg = 55, C3A6mp = 100;
+	const char* C3A6name = "Explosive hit";
 
 	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
 	int C3POISON = 0, C3BURN = 0;
