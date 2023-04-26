@@ -314,6 +314,7 @@ private:
 	SDL_Color WF = { 255, 255, 255 };
 	SDL_Color GF = { 200, 200, 200 };
 	SDL_Color YF = { 255, 255, 0};
+	SDL_Color RF = { 255, 0, 0 };
 
 	bool InCombat = false;
 
