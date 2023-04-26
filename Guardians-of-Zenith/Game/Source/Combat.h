@@ -227,6 +227,9 @@ private:
 	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
 	int C3POISON = 0, C3BURN = 0;
 
+	int AttackBuff = 0;
+	bool AttackBuffCheck = false;
+
 	//Enemy1
 	float E1MHP = 1000, E1CHP = 800, E1MES = 0, E1CES = 0;
 	float E1ATK, E1DEF, E1EXP;

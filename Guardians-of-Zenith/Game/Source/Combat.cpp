@@ -187,7 +187,11 @@ bool Combat::Update(float dt)
 		if (C3BURN == 0) {
 			C3DEF = app->scene->player->lucca.def;
 		}
-
+		//Attack buff for Lucca
+		if (Turn[0] == 3 && AttackBuff != 0 && AttackBuffCheck == false) {
+			C3ATK += C3ATK * 0.1;
+			AttackBuffCheck = true;
+		}
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
@@ -2965,6 +2969,9 @@ void Combat::ExitCombat()
 	Turn[4] = 0;
 	Turn[5] = 0;
 
+	AttackBuff = 0;
+	AttackBuffCheck = false;
+
 	CleanUp();
 }
 
@@ -3018,6 +3025,10 @@ void Combat::FinishTurn()
 	FinishedTurnB1 = false;
 	FinishedTurnB2 = false;
 	FinishedTurnB3 = false;
+
+	AttackBuffCheck = false;
+
+	C3ATK = app->scene->player->lucca.atk;
 }
 
 void Combat::TurnOrder()
