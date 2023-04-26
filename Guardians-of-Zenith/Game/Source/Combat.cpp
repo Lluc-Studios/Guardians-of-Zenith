@@ -367,6 +367,50 @@ bool Combat::Update(float dt)
 					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 				}
 			}
+			if (option == COMBATMENU::ALLY1 && EnemySelect == true) {
+				if (C1dead == true) option = COMBATMENU::ALLY2;
+				if (Turn[0] == 2 && AttackSelected == 6) option = COMBATMENU::ALLY1;
+				if (C1dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, WF, C1NAME, 16);
+				}
+				if (C2dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, C2NAME, 16);
+				}
+				if (C3dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, C3NAME, 16);
+				}
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
+				app->render->DrawRectangle({ app->scene->player->position.x - 101 , app->scene->player->position.y - 61,64,66 }, 255, 255, 255, 120);
+			}
+			if (option == COMBATMENU::ALLY2 && EnemySelect == true) {
+				if (C2dead == true) option = COMBATMENU::ALLY3;
+				if (Turn[0] == 2 && AttackSelected == 6) option = COMBATMENU::ALLY2;
+				if (C1dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, C1NAME, 16);
+				}
+				if (C2dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, C2NAME, 16);
+				}
+				if (C3dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, GF, C3NAME, 16);
+				}
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,115,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ALLY3 && EnemySelect == true) {
+				if (C3dead == true) option = COMBATMENU::ALLY1;
+				if (Turn[0] == 2 && AttackSelected == 6) option = COMBATMENU::ALLY3;
+				if (C1dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, GF, C1NAME, 16);
+				}
+				if (C2dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, C2NAME, 16);
+				}
+				if (C3dead == false || (Turn[0] == 2 && AttackSelected == 6)) {
+					app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, C3NAME, 16);
+				}
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
+				app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 121,64,66 }, 255, 255, 255, 120);
+			}
 		}
 
 
@@ -791,6 +835,12 @@ bool Combat::Update(float dt)
 							option = COMBATMENU::ENEMY1;
 						}
 					}
+					if (option == COMBATMENU::ALLY2) {
+						option = COMBATMENU::ALLY1;
+					}
+					if (option == COMBATMENU::ALLY3) {
+						option = COMBATMENU::ALLY2;
+					}
 				}
 			}
 			if ((app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN && TeamTurn == 1) || (app->input->controllers.j1_y >= 32767 && TeamTurn == 1)) {
@@ -833,6 +883,12 @@ bool Combat::Update(float dt)
 						if (E2dead == true && E3dead == false) {
 							option = COMBATMENU::ENEMY3;
 						}
+					}
+					if (option == COMBATMENU::ALLY2) {
+						option = COMBATMENU::ALLY3;
+					}
+					if (option == COMBATMENU::ALLY1) {
+						option = COMBATMENU::ALLY2;
 					}
 				}
 			}
@@ -898,10 +954,18 @@ bool Combat::Update(float dt)
 						cd = 1;
 					}
 					if (option == COMBATMENU::ATTACK4) {
-						EnemySelect = true;
-						AttackSelected = 4;
-						option = COMBATMENU::ENEMY1;
-						cd = 1;
+						if (Turn[0] != 2) {
+							EnemySelect = true;
+							AttackSelected = 4;
+							option = COMBATMENU::ENEMY1;
+							cd = 1;
+						}
+						if (Turn[0] == 2) {
+							EnemySelect = true;
+							AttackSelected = 4;
+							option = COMBATMENU::ALLY1;
+							cd = 1;
+						}
 					}
 					if (option == COMBATMENU::ATTACK5) {
 						EnemySelect = true;
@@ -910,10 +974,18 @@ bool Combat::Update(float dt)
 						cd = 1;
 					}
 					if (option == COMBATMENU::ATTACK6) {
-						EnemySelect = true;
-						AttackSelected = 6;
-						option = COMBATMENU::ENEMY1;
-						cd = 1;
+						if (Turn[0] != 2) {
+							EnemySelect = true;
+							AttackSelected = 6;
+							option = COMBATMENU::ENEMY1;
+							cd = 1;
+						}
+						if (Turn[0] == 2) {
+							EnemySelect = true;
+							AttackSelected = 6;
+							option = COMBATMENU::ALLY1;
+							cd = 1;
+						}
 					}
 				}
 				//Perform the attack
@@ -996,11 +1068,24 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 5 && C1CMP >= C1A5mp && C1lvl >= 12) {
 								C1CMP -= C1A5mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Laurea") multiplier = 2;
-								if (E1Res == "Laurea") multiplier2 = 2;
-								E1CHP = E1CHP - (((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Laurea") multiplier = 2;
+									if (E1Res == "Laurea") multiplier2 = 2;
+									E1CHP = E1CHP - (((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Laurea") multiplier = 2;
+									if (E1Res == "Laurea") multiplier2 = 2;
+									E1CES = E1CES - ((((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Laurea") multiplier = 2;
@@ -1123,6 +1208,29 @@ bool Combat::Update(float dt)
 								}
 								FinishTurn();
 							}
+							if (AttackSelected == 5 && C2CMP >= C2A5mp && C2lvl >= 12) {
+								C2CMP -= C2A5mp;
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CHP = E1CHP - (((C2A5dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+									FinishTurn();
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CES = E1CES - ((((C2A5dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+									FinishTurn();
+								}
+							}
 						}
 						if (Turn[0] == 3) {
 							if (AttackSelected == 1) {
@@ -1241,11 +1349,24 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 5 && C1CMP >= C1A5mp && C1lvl >= 12) {
 								C1CMP -= C1A5mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Laurea") multiplier = 2;
-								if (E1Res == "Laurea") multiplier2 = 2;
-								E1CHP = E1CHP - (((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Laurea") multiplier = 2;
+									if (E1Res == "Laurea") multiplier2 = 2;
+									E1CHP = E1CHP - (((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Laurea") multiplier = 2;
+									if (E1Res == "Laurea") multiplier2 = 2;
+									E1CES = E1CES - ((((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Laurea") multiplier = 2;
@@ -1326,6 +1447,15 @@ bool Combat::Update(float dt)
 								if (C3CHP > C3MHP) {
 									C3CHP = C3MHP;
 								}
+								FinishTurn();
+							}
+							if (AttackSelected == 5 && C2CMP >= C2A5mp && C2lvl >= 12) {
+								C2CMP -= C2A5mp;
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E2Weak == "Lapis") multiplier = 2;
+								if (E2Res == "Lapis") multiplier2 = 2;
+								E2CHP = E2CHP - (((C2A5dmg * (C2ATK / E2DEF)) * multiplier) / multiplier2);
 								FinishTurn();
 							}
 						}
@@ -1419,11 +1549,24 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 5 && C1CMP >= C1A5mp && C1lvl >= 12) {
 								C1CMP -= C1A5mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Laurea") multiplier = 2;
-								if (E1Res == "Laurea") multiplier2 = 2;
-								E1CHP = E1CHP - (((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Laurea") multiplier = 2;
+									if (E1Res == "Laurea") multiplier2 = 2;
+									E1CHP = E1CHP - (((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Laurea") multiplier = 2;
+									if (E1Res == "Laurea") multiplier2 = 2;
+									E1CES = E1CES - ((((C1A5dmg * (C1ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Laurea") multiplier = 2;
@@ -1506,6 +1649,15 @@ bool Combat::Update(float dt)
 								}
 								FinishTurn();
 							}
+							if (AttackSelected == 5 && C2CMP >= C2A5mp && C2lvl >= 12) {
+								C2CMP -= C2A5mp;
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E3Weak == "Lapis") multiplier = 2;
+								if (E3Res == "Lapis") multiplier2 = 2;
+								E3CHP = E3CHP - (((C2A5dmg * (C2ATK / E3DEF)) * multiplier) / multiplier2);
+								FinishTurn();
+							}
 						}
 						if (Turn[0] == 3) {
 							if (AttackSelected == 1) {
@@ -1558,6 +1710,64 @@ bool Combat::Update(float dt)
 									}
 									FinishTurn();
 								}
+							}
+						}
+					}
+					if (option == COMBATMENU::ALLY1) {
+						if (Turn[0] == 2) {
+							if (AttackSelected == 4 && C2CMP >= C2A4mp && C2lvl >= 7 && C1dead == false) {
+								C2CMP -= C2A4mp;
+								C1CHP += C1MHP * 0.25;
+								if (C1CHP > C1MHP) C1CHP = C1MHP;
+								FinishTurn();
+							}
+							if (AttackSelected == 6 && C2CMP >= C2A6mp && C2lvl >= 16 && C1dead == true) {
+								C2CMP -= C2A6mp;
+								C1CHP += C1MHP * 0.2;
+								C1dead = false;
+								offset--;
+								C1Check = false;
+								for (int i = 0; i < 6; i++) {
+									if (Turn[i] == 0) {
+										Turn[i] = 1;
+										i = 6;
+									}
+								}
+								FinishTurn();
+							}
+						}
+					}
+					if (option == COMBATMENU::ALLY2 && C2dead == false) {
+						if (Turn[0] == 2) {
+							if (AttackSelected == 4 && C2CMP >= C2A4mp && C2lvl >= 7) {
+								C2CMP -= C2A4mp;
+								C2CHP += C2MHP * 0.25;
+								if (C2CHP > C2MHP) C2CHP = C2MHP;
+								FinishTurn();
+							}
+						}
+					}
+					if (option == COMBATMENU::ALLY3 ) {
+						if (Turn[0] == 2) {
+							if (AttackSelected == 4 && C2CMP >= C2A4mp && C2lvl >= 7 && C3dead == false) {
+								C2CMP -= C2A4mp;
+								C3CHP += C3MHP * 0.25;
+								if (C3CHP > C3MHP) C3CHP = C3MHP;
+								FinishTurn();
+							}
+							if (AttackSelected == 6 && C2CMP >= C2A6mp && C2lvl >= 16 && C3dead == true) {
+								C2CMP -= C2A6mp;
+								C3CHP += C3MHP * 0.2;
+								C3dead = false;
+								offset--;
+								C3Check = false;
+								for (int i = 0; i < 6; i++) {
+									if (Turn[i] == 0) {
+										Turn[i] = 3;
+										i = 6;
+									}
+								}
+								FinishTurn();
 							}
 						}
 					}
@@ -2508,6 +2718,7 @@ bool Combat::Update(float dt)
 			option = COMBATMENU::LOSE;
 		}
 	}
+	
 	return true;
 }
 

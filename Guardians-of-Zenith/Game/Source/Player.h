@@ -86,7 +86,7 @@ public:
 	{
 		float hp, chp, mp, cmp, atk, def, spe, limit;
 		float lvl, exp;
-		const char* name = "lucca";
+		const char* name = "Lucca";
 
 		//Leveling variables
 		float HPG = 3, MPG = 3, ATKG = 3, DEFG = 2;

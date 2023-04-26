@@ -25,6 +25,9 @@ public:
 		ENEMY1,
 		ENEMY2,
 		ENEMY3,
+		ALLY1,
+		ALLY2,
+		ALLY3,
 		WIN,
 		LOSE,
 		NONE
