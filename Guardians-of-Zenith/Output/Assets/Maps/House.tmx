@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="73">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="76">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1911,8 +1911,11 @@
   <object id="70" x="351.848" y="254.015" width="6.8037" height="66.9694"/>
   <object id="71" x="341.28" y="256" width="10.6219" height="32"/>
   <object id="72" x="255.891" y="377.174" width="32.2174" height="6.56027"/>
+  <object id="73" x="457.396" y="164.958" width="78.208" height="11.4167"/>
+  <object id="74" x="457.563" y="231.625" width="78.208" height="11.4167"/>
+  <object id="75" x="31.5582" y="160" width="8.1335" height="32"/>
  </objectgroup>
- <objectgroup id="12" name="ExitHouse">
+ <objectgroup id="12" name="ExitHouse" visible="0">
   <properties>
    <property name="Type" type="int" value="13"/>
   </properties>
