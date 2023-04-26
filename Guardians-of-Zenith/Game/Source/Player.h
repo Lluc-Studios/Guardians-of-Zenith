@@ -78,7 +78,7 @@ public:
 		const char* name = "Lapis";
 
 		//Leveling variables
-		float HPG = 3.5, MPG = 4, ATKG = 2.2, DEFG = 2;
+		float HPG = 3.5, MPG = 4, ATKG = 2.5, DEFG = 2;
 		int HPC = 10, MPC = 5, ATKC = 5, DEFC = 5;
 		float EXPneeded = 100;
 	};
@@ -89,7 +89,7 @@ public:
 		const char* name = "Lucca";
 
 		//Leveling variables
-		float HPG = 3, MPG = 3, ATKG = 3, DEFG = 2;
+		float HPG = 3, MPG = 3, ATKG = 4, DEFG = 2;
 		int HPC = 10, MPC = 5, ATKC = 5, DEFC = 5;
 		float EXPneeded = 100;
 	};

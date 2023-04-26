@@ -159,6 +159,22 @@ bool Combat::Update(float dt)
 			C3CHP -= C3MHP * 0.03;
 			FinishedTurn3 = true;
 		}
+		//Enemy poison
+		if (E1POISON != 0 && FinishedTurnE1 == false && Turn[0] != 0) {
+			E1POISON--;
+			E1CHP -= E1MHP * 0.03;
+			FinishedTurnE1 = true;
+		}
+		if (E2POISON != 0 && FinishedTurnE2 == false && Turn[0] != 0) {
+			E2POISON--;
+			E2CHP -= E2MHP * 0.03;
+			FinishedTurnE2 = true;
+		}
+		if (E3POISON != 0 && FinishedTurnE3 == false && Turn[0] != 0) {
+			E3POISON--;
+			E3CHP -= E3MHP * 0.03;
+			FinishedTurnE3 = true;
+		}
 		//Burning
 		if (C1BURN != 0 && FinishedTurnB1 == false && Turn[0] != 0) {
 			C1BURN--;
@@ -189,7 +205,7 @@ bool Combat::Update(float dt)
 		}
 		//Attack buff for Lucca
 		if (Turn[0] == 3 && AttackBuff != 0 && AttackBuffCheck == false) {
-			C3ATK += C3ATK * 0.1;
+			C3ATK += C3ATK * 0.2;
 			AttackBuffCheck = true;
 		}
 		//Render text
@@ -1315,6 +1331,68 @@ bool Combat::Update(float dt)
 									FinishTurn();
 								}
 							}
+							if (AttackSelected == 4 && C3CMP >= C3A4mp && C3lvl >= 7) {
+								C3CMP -= C3A4mp;
+								AttackBuff = 3;
+								FinishTurn();
+							}
+							if (AttackSelected == 5 && C3CMP >= C3A5mp && C3lvl >= 12) {
+								C3CMP -= C3A5mp;
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CHP = E1CHP - (((C3A5dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+									E1POISON = 5;
+									FinishTurn();
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CES = E1CES - (((((C3A5dmg) * (C3ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									E1POISON = 5;
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+									FinishTurn();
+								}
+							}
+							if (AttackSelected == 6 && C3CMP >= C3A6mp && C3lvl >= 16) {
+								C3CMP -= C3A6mp;
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CHP = E1CHP - (((C3A6dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CES = E1CES - ((((C3A6dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E2Weak == "Lucca") multiplier = 2;
+								if (E2Res == "Lucca") multiplier2 = 2;
+								E2CHP = E2CHP - (((C3A6dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E3Weak == "Lucca") multiplier = 2;
+								if (E3Res == "Lucca") multiplier2 = 2;
+								E3CHP = E3CHP - (((C3A6dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
+								FinishTurn();
+							}
 						}
 					}
 					if (option == COMBATMENU::ENEMY2 && E2dead == false) {
@@ -1400,11 +1478,24 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C2CMP >= C2A2mp) {
 								C2CMP -= C2A2mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Lapis") multiplier = 2;
-								if (E1Res == "Lapis") multiplier2 = 2;
-								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CES = E1CES - ((((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Lapis") multiplier = 2;
@@ -1420,11 +1511,24 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 3 && C2CMP >= C2A3mp && limitCount2 == LIMIT2) {
 								limitCount2 = 0;
 								C2CMP -= C2A3mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Lapis") multiplier = 2;
-								if (E1Res == "Lapis") multiplier2 = 2;
-								E1CHP = E1CHP - (((C2A3dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CHP = E1CHP - (((C2A3dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CES = E1CES - ((((C2A3dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Lapis") multiplier = 2;
@@ -1474,11 +1578,24 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C3CMP >= C3A2mp) {
 								C3CMP -= C3A2mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Lucca") multiplier = 2;
-								if (E1Res == "Lucca") multiplier2 = 2;
-								E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CES = E1CES - ((((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Lucca") multiplier = 2;
@@ -1514,6 +1631,53 @@ bool Combat::Update(float dt)
 									}
 									FinishTurn();
 								}
+							}
+							if (AttackSelected == 4 && C3CMP >= C3A4mp && C3lvl >= 7) {
+								C3CMP -= C3A4mp;
+								AttackBuff = 3;
+								FinishTurn();
+							}
+							if (AttackSelected == 5 && C3CMP >= C3A5mp && C3lvl >= 12) {
+								C3CMP -= C3A5mp;
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E2Weak == "Lucca") multiplier = 2;
+								if (E2Res == "Lucca") multiplier2 = 2;
+								E2CHP = E2CHP - (((C3A5dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+								E2POISON = 5;
+								FinishTurn();
+							}
+							if (AttackSelected == 6 && C3CMP >= C3A6mp && C3lvl >= 16) {
+								C3CMP -= C3A6mp;
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CHP = E1CHP - (((C3A6dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CES = E1CES - ((((C3A6dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E2Weak == "Lucca") multiplier = 2;
+								if (E2Res == "Lucca") multiplier2 = 2;
+								E2CHP = E2CHP - (((C3A6dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E3Weak == "Lucca") multiplier = 2;
+								if (E3Res == "Lucca") multiplier2 = 2;
+								E3CHP = E3CHP - (((C3A6dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
+								FinishTurn();
 							}
 						}
 					}
@@ -1600,11 +1764,24 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C2CMP >= C2A2mp) {
 								C2CMP -= C2A2mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Lapis") multiplier = 2;
-								if (E1Res == "Lapis") multiplier2 = 2;
-								E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CHP = E1CHP - (((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CES = E1CES - ((((C2A2dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Lapis") multiplier = 2;
@@ -1620,11 +1797,24 @@ bool Combat::Update(float dt)
 							if (AttackSelected == 3 && C2CMP >= C2A3mp && limitCount2 == LIMIT2) {
 								limitCount2 = 0;
 								C2CMP -= C2A3mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Lapis") multiplier = 2;
-								if (E1Res == "Lapis") multiplier2 = 2;
-								E1CHP = E1CHP - (((C2A3dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CHP = E1CHP - (((C2A3dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lapis") multiplier = 2;
+									if (E1Res == "Lapis") multiplier2 = 2;
+									E1CES = E1CES - ((((C2A3dmg * (C2ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Lapis") multiplier = 2;
@@ -1674,11 +1864,24 @@ bool Combat::Update(float dt)
 							}
 							if (AttackSelected == 2 && C3CMP >= C3A2mp) {
 								C3CMP -= C3A2mp;
-								multiplier = 1;
-								multiplier2 = 1;
-								if (E1Weak == "Lucca") multiplier = 2;
-								if (E1Res == "Lucca") multiplier2 = 2;
-								E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CHP = E1CHP - (((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CES = E1CES - ((((C3A2dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
 								multiplier = 1;
 								multiplier2 = 1;
 								if (E2Weak == "Lucca") multiplier = 2;
@@ -1714,6 +1917,53 @@ bool Combat::Update(float dt)
 									}
 									FinishTurn();
 								}
+							}
+							if (AttackSelected == 4 && C3CMP >= C3A4mp && C3lvl >= 7) {
+								C3CMP -= C3A4mp;
+								AttackBuff = 3;
+								FinishTurn();
+							}
+							if (AttackSelected == 5 && C3CMP >= C3A5mp && C3lvl >= 12) {
+								C3CMP -= C3A5mp;
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E3Weak == "Lucca") multiplier = 2;
+								if (E3Res == "Lucca") multiplier2 = 2;
+								E3CHP = E3CHP - (((C3A5dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
+								E3POISON = 5;
+								FinishTurn();
+							}
+							if (AttackSelected == 6 && C3CMP >= C3A6mp && C3lvl >= 16) {
+								C3CMP -= C3A6mp;
+								if (E1CES == 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CHP = E1CHP - (((C3A6dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2);
+								}
+								if (E1CES > 0) {
+									multiplier = 1;
+									multiplier2 = 1;
+									if (E1Weak == "Lucca") multiplier = 2;
+									if (E1Res == "Lucca") multiplier2 = 2;
+									E1CES = E1CES - ((((C3A6dmg * (C3ATK / E1DEF)) * multiplier) / multiplier2) / 3);
+									if (E1CES < 0) {
+										E1CHP += E1CES;
+										E1CES = 0;
+									}
+								}
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E2Weak == "Lucca") multiplier = 2;
+								if (E2Res == "Lucca") multiplier2 = 2;
+								E2CHP = E2CHP - (((C3A6dmg * (C3ATK / E2DEF)) * multiplier) / multiplier2);
+								multiplier = 1;
+								multiplier2 = 1;
+								if (E3Weak == "Lucca") multiplier = 2;
+								if (E3Res == "Lucca") multiplier2 = 2;
+								E3CHP = E3CHP - (((C3A6dmg * (C3ATK / E3DEF)) * multiplier) / multiplier2);
+								FinishTurn();
 							}
 						}
 					}
@@ -2955,6 +3205,9 @@ void Combat::ExitCombat()
 	C1FROZEN = false;
 	C2FROZEN = false;
 	C3FROZEN = false;
+	E1POISON = 0;
+	E2POISON = 0;
+	E3POISON = 0;
 	C1POISON = 0;
 	C2POISON = 0;
 	C3POISON = 0;
@@ -3022,6 +3275,9 @@ void Combat::FinishTurn()
 	FinishedTurn1 = false;
 	FinishedTurn2 = false;
 	FinishedTurn3 = false;
+	FinishedTurnE1 = false;
+	FinishedTurnE2 = false;
+	FinishedTurnE3 = false;
 	FinishedTurnB1 = false;
 	FinishedTurnB2 = false;
 	FinishedTurnB3 = false;

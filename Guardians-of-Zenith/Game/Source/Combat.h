@@ -253,6 +253,7 @@ private:
 	float E1A4dmg, E1A4target, E1A4effect;
 
 	bool E1dead = false, E1Check = false;
+	int E1POISON = 0;
 
 	//Enemy2
 	float E2MHP = 1000, E2CHP = 1000, E2MES = 0, E2CES = 0;
@@ -277,6 +278,7 @@ private:
 	float E2A4dmg, E2A4target, E2A4effect;
 
 	bool E2dead = false, E2Check = false;
+	int E2POISON = 0;
 
 	//Enemy3
 	float E3MHP = 1000, E3CHP = 150, E3MES = 0, E3CES = 0;
@@ -301,6 +303,7 @@ private:
 	float E3A4dmg, E3A4target, E3A4effect;
 
 	bool E3dead = false, E3Check = false;
+	int E3POISON = 0;
 
 	//Other variables
 
@@ -361,6 +364,9 @@ private:
 	bool FinishedTurn1 = false;
 	bool FinishedTurn2 = false;
 	bool FinishedTurn3 = false;
+	bool FinishedTurnE1 = false;
+	bool FinishedTurnE2 = false;
+	bool FinishedTurnE3 = false;
 	bool FinishedTurnB1 = false;
 	bool FinishedTurnB2 = false;
 	bool FinishedTurnB3 = false;
