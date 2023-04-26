@@ -242,106 +242,309 @@ bool Combat::Update(float dt)
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 135,115,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ATTACK1 && AttackMenu == true && EnemySelect == false) {
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, Attack1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack2, 16);
-				if (C1lvl < 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M2, 16);
+				if (Turn[0] == 1 && C1CMP < C1A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
 				}
+				if (Turn[0] == 2 && C2CMP < C2A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				if (Turn[0] == 3 && C3CMP < C3A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
 				if (C1lvl >= 7) {
 					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, Attack4, 16);
 					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M4, 16);
+				}
+				if (C1lvl < 7) {
+					if (Turn[0] == 1 && C1CMP < C1A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
 				}
 				app->render->DrawText(10 * app->ScalingMultiplier+95, 100 * app->ScalingMultiplier, WF, M1, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier+87, 120 * app->ScalingMultiplier, GF, M2, 16);
-				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ATTACK2 && AttackMenu == true && EnemySelect == false) {
-				app->render->DrawText(10 * app->ScalingMultiplier-10, 100 * app->ScalingMultiplier, GF, Attack1, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, Attack2, 16);
-				if (C1lvl < 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
-				}
-				if (C1lvl >= 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M4, 16);
-				}
-				app->render->DrawText(10 * app->ScalingMultiplier+95, 100 * app->ScalingMultiplier, GF, M1, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier+87, 120 * app->ScalingMultiplier, WF, M2, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,115,20 }, 255, 255, 255, WhiteFading);
-			}
-			if (option == COMBATMENU::ATTACK4 && AttackMenu == true && EnemySelect == false) {
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack1, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack2, 16);
-				if (C1lvl < 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, Attack2, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, WF, M2, 16);
+				if (Turn[0] == 1 && C1CMP < C1A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
 				}
+				if (Turn[0] == 2 && C2CMP < C2A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				if (Turn[0] == 3 && C3CMP < C3A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
 				if (C1lvl >= 7) {
 					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, Attack4, 16);
 					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M4, 16);
+				}
+				if (C1lvl < 7) {
+					if (Turn[0] == 1 && C1CMP < C1A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
 				}
 				app->render->DrawText(10 * app->ScalingMultiplier + 95, 100 * app->ScalingMultiplier, GF, M1, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M2, 16);
+			}
+			if (option == COMBATMENU::ATTACK4 && AttackMenu == true && EnemySelect == false) {
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack1, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack2, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M2, 16);
+				if (Turn[0] == 1 && C1CMP < C1A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				if (Turn[0] == 2 && C2CMP < C2A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				if (Turn[0] == 3 && C3CMP < C3A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+				if (C1lvl >= 7) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack4, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M4, 16);
+				}
+				if (C1lvl < 7) {
+					if (Turn[0] == 1 && C1CMP < C1A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M4, 16);
+					}
+				}
+				app->render->DrawText(10 * app->ScalingMultiplier + 95, 100 * app->ScalingMultiplier, GF, M1, 16);
 			}
 			if (option == COMBATMENU::ATTACK5 && AttackMenu == true && EnemySelect == false) {
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack2, 16);
-				if (C1lvl < 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M4, 16);
-				}
-				if (C1lvl >= 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M4, 16);
-				}
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack5, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M2, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M5, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack2, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M2, 16);
+				if (Turn[0] == 1 && C1CMP < C1A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				if (Turn[0] == 2 && C2CMP < C2A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				if (Turn[0] == 3 && C3CMP < C3A2mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack2, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M2, 16);
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack4, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M4, 16);
+				if (C1lvl >= 7) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, Attack4, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, WF, M4, 16);
+				}
+				if (C1lvl < 7) {
+					if (Turn[0] == 1 && C1CMP < C1A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M4, 16);
+					}
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack5, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M5, 16);
+				if (C1lvl >= 12) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack5, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M5, 16);
+				}
+				if (C1lvl < 12) {
+					if (Turn[0] == 1 && C1CMP < C1A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M5, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M5, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M5, 16);
+					}
+				}
 			}
 			if (option == COMBATMENU::ATTACK6 && AttackMenu == true && EnemySelect == false) {
-				if (C1lvl < 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M4, 16);
-				}
-				if (C1lvl >= 7) {
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack4, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M4, 16);
-				}
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack5, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack6, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M5, 16);
-				if (Turn[0] == 1) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M6, 16);
-				}
-				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M6, 16);
-				}
-				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 78, 140 * app->ScalingMultiplier, WF, M6, 16);
-				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack4, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M4, 16);
+				if (C1lvl >= 7) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, Attack4, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, WF, M4, 16);
+				}
+				if (C1lvl < 7) {
+					if (Turn[0] == 1 && C1CMP < C1A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M4, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A4mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack4, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M4, 16);
+					}
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack5, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M5, 16);
+				if (C1lvl >= 12) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, Attack5, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, WF, M5, 16);
+				}
+				if (C1lvl < 12) {
+					if (Turn[0] == 1 && C1CMP < C1A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M5, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M5, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M5, 16);
+					}
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack6, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M6, 16);
+				if (C1lvl >= 16) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack6, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M6, 16);
+				}
+				if (C1lvl < 16) {
+					if (Turn[0] == 1 && C1CMP < C1A6mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack6, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M6, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A6mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack6, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M6, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A6mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack6, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M6, 16);
+					}
+				}
 			}
 			if (option == COMBATMENU::ATTACK3 && AttackMenu == true && EnemySelect == false) {
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack5, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack6, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack3, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M5, 16);
-				if (Turn[0] == 1) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M6, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
-				}
-				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M6, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
-				}
-				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 78, 120 * app->ScalingMultiplier, GF, M6, 16);
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
-				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack5, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M5, 16);
+				if (C1lvl >= 12) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, Attack5, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, WF, M5, 16);
+				}
+				if (C1lvl < 12) {
+					if (Turn[0] == 1 && C1CMP < C1A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M5, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M5, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A5mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, RF, Attack5, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, RF, M5, 16);
+					}
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack6, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M6, 16);
+				if (C1lvl >= 16) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, Attack6, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, WF, M6, 16);
+				}
+				if (C1lvl < 16) {
+					if (Turn[0] == 1 && C1CMP < C1A6mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack6, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M6, 16);
+					}
+					if (Turn[0] == 2 && C2CMP < C2A6mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack6, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M6, 16);
+					}
+					if (Turn[0] == 3 && C3CMP < C3A6mp) {
+						app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, RF, Attack6, 16);
+						app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, RF, M6, 16);
+					}
+				}
+				//To make sure it draws
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack3, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
+				if (Turn[0] == 1 && limitCount1 != LIMIT1 && C1CMP < C1A3mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M3, 16);
+				}
+				if (Turn[0] == 2 && limitCount2 != LIMIT2 && C2CMP < C2A3mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M3, 16);
+				}
+				if (Turn[0] == 3 && limitCount3 != LIMIT3 && C3CMP < C3A3mp) {
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, RF, Attack3, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, RF, M3, 16);
+				}
 			}
 			if (option == COMBATMENU::ENEMY1 && EnemySelect == true) {
 				if (E1dead == true) option = COMBATMENU::ENEMY2;
