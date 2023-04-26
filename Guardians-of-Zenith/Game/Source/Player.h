@@ -56,6 +56,8 @@ public:
 
 	void Death(); 
 
+	void LevelToMax();
+
 public:
 	// stats
 	struct Laurea

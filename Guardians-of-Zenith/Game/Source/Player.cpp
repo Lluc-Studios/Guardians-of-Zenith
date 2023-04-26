@@ -655,6 +655,12 @@ void Player::InitializePlayers()
 	lucca = { 200,200,115,115,150,60,15,3,1,0 };
 }
 
+void Player::LevelToMax() {
+	laurea.exp = laurea.EXPneeded;
+	lapis.exp = lapis.EXPneeded;
+	lucca.exp = lucca.EXPneeded;
+}
+
 void Player::Move() {
 
 	float speed = 5;
@@ -686,6 +692,9 @@ void Player::Move() {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_V) == KEY_DOWN) {
 		HardMode = !HardMode;
+	}
+	if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) {
+		LevelToMax();
 	}
 
 	if (app->input->controllers.j1_x > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)

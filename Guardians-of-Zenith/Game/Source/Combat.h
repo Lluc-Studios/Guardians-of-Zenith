@@ -312,13 +312,16 @@ private:
 
 	int EXPwon = 0;
 
+	int taunt = 0, shield = 0;
+	float shielded = 1;
+
 	int charactersLoaded = 0;
 	// 1-3 = ally, 4-6 = enemy
 	int Turn[6] = { 1, 4, 5, 2, 6, 3 };
 
 	//To prevent memory leaks (This may cause problems so it must be checked in case something does not work right)
 
-	char Aux[10], Aux1[10], Aux2[10];
+	char Aux[10], Aux1[10], Aux2[10], Aux3[10], Aux4[10], Aux5[10];
 
 	int HpBarLengthC1 = 0;
 	int MpBarLengthC1 = 0;
@@ -341,6 +344,9 @@ private:
 	const char* M1 = "0";
 	const char* M2 = "0";
 	const char* M3 = "0";
+	const char* M4 = "0";
+	const char* M5 = "0";
+	const char* M6 = "0";
 
 	int block = 1,multiplier = 1, multiplier1 = 1, multiplier2 = 1;
 
