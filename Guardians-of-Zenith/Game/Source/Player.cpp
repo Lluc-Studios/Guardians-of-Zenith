@@ -118,7 +118,7 @@ bool Player::Start() {
 bool Player::Update()
 {
 	//Characters level up
-	if (laurea.exp >= laurea.EXPneeded) {
+	if (laurea.exp >= laurea.EXPneeded && laurea.lvl <= 20) {
 		laurea.lvl++;
 		laurea.EXPneeded += (laurea.EXPneeded * 0.1);
 		laurea.exp = 0;
@@ -129,7 +129,7 @@ bool Player::Update()
 		laurea.atk += (laurea.ATKG * laurea.ATKC);
 		laurea.def += (laurea.DEFG * laurea.DEFC);
 	}
-	if (lapis.exp >= lapis.EXPneeded) {
+	if (lapis.exp >= lapis.EXPneeded && lapis.lvl <= 20) {
 		lapis.lvl++;
 		lapis.EXPneeded += (lapis.EXPneeded * 0.1);
 		lapis.exp = 0;
@@ -140,7 +140,7 @@ bool Player::Update()
 		lapis.atk += (lapis.ATKG * lapis.ATKC);
 		lapis.def += (lapis.DEFG * lapis.DEFC);
 	}
-	if (lucca.exp >= lucca.EXPneeded) {
+	if (lucca.exp >= lucca.EXPneeded && lucca.lvl <= 20) {
 		lucca.lvl++;
 		lucca.EXPneeded += (lucca.EXPneeded * 0.1);
 		lucca.exp = 0;

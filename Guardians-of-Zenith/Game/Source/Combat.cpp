@@ -244,78 +244,35 @@ bool Combat::Update(float dt)
 			if (option == COMBATMENU::ATTACK1 && AttackMenu == true && EnemySelect == false) {
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, Attack1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack2, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, Attack3, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, Attack4, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier+95, 100 * app->ScalingMultiplier, WF, M1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier+87, 120 * app->ScalingMultiplier, GF, M2, 16);
-				if (Turn[0] == 1) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
-				}
-				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, GF, M3, 16);
-				}
-				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
-				}
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M4, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ATTACK2 && AttackMenu == true && EnemySelect == false) {
 				app->render->DrawText(10 * app->ScalingMultiplier-10, 100 * app->ScalingMultiplier, GF, Attack1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, Attack2, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, Attack3, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, Attack4, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier+95, 100 * app->ScalingMultiplier, GF, M1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier+87, 120 * app->ScalingMultiplier, WF, M2, 16);
-				if (Turn[0] == 1) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
-				}
-				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, GF, M3, 16);
-				}
-				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M3, 16);
-				}
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, GF, M4, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,115,20 }, 255, 255, 255, WhiteFading);
 			}
-			if (option == COMBATMENU::ATTACK3 && AttackMenu == true && EnemySelect == false) {
+			if (option == COMBATMENU::ATTACK4 && AttackMenu == true && EnemySelect == false) {
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack2, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack3, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack4, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier + 95, 100 * app->ScalingMultiplier, GF, M1, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M2, 16);
-				if (Turn[0] == 1) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
-				}
-				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
-				}
-				if (Turn[0] == 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
-				}
-				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
-			}
-			if (option == COMBATMENU::ATTACK4 && AttackMenu == true && EnemySelect == false) {
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack2, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack3, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack4, 16);
-				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M2, 16);
-				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 120 * app->ScalingMultiplier, GF, M3, 16);
-				}
-				if (Turn[0] != 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M3, 16);
-				}
 				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M4, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
 			}
 			if (option == COMBATMENU::ATTACK5 && AttackMenu == true && EnemySelect == false) {
-				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack3, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack2, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack4, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack5, 16);
-				if (Turn[0] == 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 76, 100 * app->ScalingMultiplier, GF, M3, 16);
-				}
-				if (Turn[0] != 2) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M3, 16);
-				}
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M2, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M4, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M5, 16);
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
@@ -326,11 +283,33 @@ bool Combat::Update(float dt)
 				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack6, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M4, 16);
 				app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M5, 16);
+				if (Turn[0] == 1) {
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M6, 16);
+				}
+				if (Turn[0] == 2) {
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M6, 16);
+				}
 				if (Turn[0] == 3) {
 					app->render->DrawText(10 * app->ScalingMultiplier + 78, 140 * app->ScalingMultiplier, WF, M6, 16);
 				}
-				if (Turn[0] != 3) {
-					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M6, 16);
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
+			}
+			if (option == COMBATMENU::ATTACK3 && AttackMenu == true && EnemySelect == false) {
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, Attack5, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, Attack6, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, Attack3, 16);
+				app->render->DrawText(10 * app->ScalingMultiplier + 87, 100 * app->ScalingMultiplier, GF, M5, 16);
+				if (Turn[0] == 1) {
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M6, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
+				}
+				if (Turn[0] == 2) {
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 120 * app->ScalingMultiplier, GF, M6, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 76, 140 * app->ScalingMultiplier, WF, M3, 16);
+				}
+				if (Turn[0] == 3) {
+					app->render->DrawText(10 * app->ScalingMultiplier + 78, 120 * app->ScalingMultiplier, GF, M6, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier + 87, 140 * app->ScalingMultiplier, WF, M3, 16);
 				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
 			}
@@ -830,17 +809,17 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::ATTACK2) {
 						option = COMBATMENU::ATTACK1;
 					}
-					if (option == COMBATMENU::ATTACK3) {
-						option = COMBATMENU::ATTACK2;
-					}
 					if (option == COMBATMENU::ATTACK4) {
-						option = COMBATMENU::ATTACK3;
+						option = COMBATMENU::ATTACK2;
 					}
 					if (option == COMBATMENU::ATTACK5) {
 						option = COMBATMENU::ATTACK4;
 					}
 					if (option == COMBATMENU::ATTACK6) {
 						option = COMBATMENU::ATTACK5;
+					}
+					if (option == COMBATMENU::ATTACK3) {
+						option = COMBATMENU::ATTACK6;
 					}
 				}
 				if (EnemySelect == true) {
@@ -876,17 +855,17 @@ bool Combat::Update(float dt)
 					}
 				}
 				if (AttackMenu == true && EnemySelect == false) {
+					if (option == COMBATMENU::ATTACK6) {
+						option = COMBATMENU::ATTACK3;
+					}
 					if (option == COMBATMENU::ATTACK5) {
 						option = COMBATMENU::ATTACK6;
 					}
 					if (option == COMBATMENU::ATTACK4) {
 						option = COMBATMENU::ATTACK5;
 					}
-					if (option == COMBATMENU::ATTACK3) {
-						option = COMBATMENU::ATTACK4;
-					}
 					if (option == COMBATMENU::ATTACK2) {
-						option = COMBATMENU::ATTACK3;
+						option = COMBATMENU::ATTACK4;
 					}
 					if (option == COMBATMENU::ATTACK1) {
 						option = COMBATMENU::ATTACK2;
