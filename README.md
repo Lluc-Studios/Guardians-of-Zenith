@@ -5,6 +5,8 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 ![Town](https://user-images.githubusercontent.com/99950357/233486706-97faa5a2-f088-4c95-8cc4-85acd46a7afd.PNG)
 ## Controls
 
+## Features
+
 ### Keyboard & mouse
 **In map:**
 - WASD: Move
@@ -28,9 +30,6 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - F10: God mode
 
 ## Developers
-
-## Team Members
-
 **Sergio Corona Gómez**
 - Team Lead, Management
 - Github account: [Seregero00](https://github.com/seregero00)
@@ -75,7 +74,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 [Home](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki)
 
-[1. GDD (Game Design Document)](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki)
+[1. GDD (Game Design Document)](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki/GDD-(Game-Design-Document))
 
 [2. TDD (Tech Design Document)](https://github.com/Lluc-Studios/Guardians-of-Zenith/wiki/TDD-(Tech-Design-Document))
 
