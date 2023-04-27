@@ -210,6 +210,15 @@ bool Combat::Update(float dt)
 		}
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
+		if (E1POISON != 0 && E1dead == false) {
+			app->render->DrawTexture(Poison, app->scene->player->position.x + 95, app->scene->player->position.y - 23);
+		}
+		if (E2POISON != 0 && E2dead == false) {
+			app->render->DrawTexture(Poison, app->scene->player->position.x + 180, app->scene->player->position.y - 83);
+		}
+		if (E3POISON != 0 && E3dead == false) {
+			app->render->DrawTexture(Poison, app->scene->player->position.x + 180, app->scene->player->position.y + 37);
+		}
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,115,160 }, 0, 0, 255, 150);
 		if (option != COMBATMENU::NONE) {
