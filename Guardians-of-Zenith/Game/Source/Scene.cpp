@@ -186,7 +186,7 @@ bool Scene::Update(float dt)
 
 	// Draw map
 	if (app->Instance == 0) {
-		app->map->Draw();
+		//app->map->Draw();
 		//app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance_Island_OST_Version.ogg");
 	}
 	if (app->Instance == 1) {
