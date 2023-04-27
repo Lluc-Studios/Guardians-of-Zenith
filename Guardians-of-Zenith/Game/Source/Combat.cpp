@@ -3430,7 +3430,7 @@ bool Combat::PostUpdate()
 		}
 		if (Turn[0] == 3) {
 			app->render->DrawText(155, 200, WF, "Shot a enhanced arrow that's very effective against shields but", 16);
-			app->render->DrawText(155, 220, WF, "also high damage to enemies without a shield", 16);
+			app->render->DrawText(155, 220, WF, "also deals high damage to enemies without a shield", 16);
 		}
 	}
 
