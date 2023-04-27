@@ -3262,6 +3262,178 @@ bool Combat::PostUpdate()
 	
 	}
 
+	//Skills information
+	Mx = app->input->GetMousePositionX();
+	My = app->input->GetMousePositionY();
+	//Attak1
+	if (Mx >= 10 && Mx <= 125 && My >= 195 && My <= 215 && (option == COMBATMENU::ATTACK1 || option == COMBATMENU::ATTACK2 || option == COMBATMENU::ATTACK4)) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Attack an enemy with your sword", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Attack an enemy with your staff", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot an arrow to an enemy", 16);
+		}
+	}
+	//Attack2 
+	if (Mx >= 10 && Mx <= 125 && My >= 235 && My <= 255 && (option == COMBATMENU::ATTACK1 || option == COMBATMENU::ATTACK2 || option == COMBATMENU::ATTACK4)) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Swing your sword swifty against an enemy", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Summon a huge wave that damages all enemies on the field", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot one arrow to each enemy at the same time", 16);
+		}
+	}
+	//Attack3
+	if (Mx >= 10 && Mx <= 125 && My >= 275 && My <= 290 && (option == COMBATMENU::ATTACK1 || option == COMBATMENU::ATTACK2 || option == COMBATMENU::ATTACK4)) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Force the enemies to attack you", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Use your magical waters to heal an ally for 25% of their", 16);
+			app->render->DrawText(155, 220, WF, "maximum health", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Enhance your bow and gain 20% more damage for 3 turns", 16);
+		}
+	}
+	//Attack2
+	if (Mx >= 10 && Mx <= 125 && My >= 195 && My <= 215 && option == COMBATMENU::ATTACK5) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Swing your sword swifty against an enemy", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Summon a huge wave that damages all enemies on the field", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot one arrow to each enemy at the same time", 16);
+		}
+	}
+	//Attack3
+	if (Mx >= 10 && Mx <= 125 && My >= 235 && My <= 255 && option == COMBATMENU::ATTACK5 ) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Force the enemies to attack you", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Use your magical waters to heal an ally for 25% of their", 16);
+			app->render->DrawText(155, 220, WF, "maximum health", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Enhance your bow and gain 20% more damage for 3 turns", 16);
+		}
+	}
+	//Attack4
+	if (Mx >= 10 && Mx <= 125 && My >= 275 && My <= 290 && option == COMBATMENU::ATTACK5 ) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Spin with your sword to damage all of the enemies", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Powerful attack that deals huge damage to a single enemy", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot a poisonous arrow that damages an enemy and poisons", 16);
+			app->render->DrawText(155, 220, WF, "an enemy (poison does 3% of target's maximum health each turn)", 16);
+		}
+	}
+	//Attack3
+	if (Mx >= 10 && Mx <= 125 && My >= 195 && My <= 215 && option == COMBATMENU::ATTACK6) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Force the enemies to attack you", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Use your magical waters to heal an ally for 25% of their", 16);
+			app->render->DrawText(155, 220, WF, "maximum health", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Enhance your bow and gain 20% more damage for 3 turns", 16);
+		}
+	}
+	//Attack4
+	if (Mx >= 10 && Mx <= 125 && My >= 235 && My <= 255 && option == COMBATMENU::ATTACK6) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Spin with your sword to damage all of the enemies", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Powerful attack that deals huge damage to a single enemy", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot a poisonous arrow that damages an enemy and poisons", 16);
+			app->render->DrawText(155, 220, WF, "an enemy (poison does 3% of target's maximum health each turn)", 16);
+		}
+	}
+	//Attack5
+	if (Mx >= 10 && Mx <= 125 && My >= 275 && My <= 290 && option == COMBATMENU::ATTACK6) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Create a strong barrier for your party that mitigates 25% of", 16);
+			app->render->DrawText(155, 220, WF, "the incoming damage for 1 turn", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Revive an ally and heal them for 20% of their maximum health", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot explosive arrows and deal great damage to all enemies", 16);
+		}
+	}
+	//Attack4
+	if (Mx >= 10 && Mx <= 125 && My >= 195 && My <= 215 && option == COMBATMENU::ATTACK3) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Spin with your sword to damage all of the enemies", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Powerful attack that deals huge damage to a single enemy", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot a poisonous arrow that damages an enemy and poisons", 16);
+			app->render->DrawText(155, 220, WF, "an enemy (poison does 3% of target's maximum health each turn)", 16);
+		}
+	}
+	//Attack5
+	if (Mx >= 10 && Mx <= 125 && My >= 235 && My <= 255 && option == COMBATMENU::ATTACK3) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Create a strong barrier for your party that mitigates 25% of", 16);
+			app->render->DrawText(155, 220, WF, "the incoming damage for 1 turn", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Revive an ally and heal them for 20% of their maximum health", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shoot explosive arrows and deal great damage to all enemies", 16);
+		}
+	}
+	//Attack6
+	if (Mx >= 10 && Mx <= 125 && My >= 275 && My <= 290 && option == COMBATMENU::ATTACK3) {
+		app->render->DrawRectangle({ app->scene->player->position.x - 140,app->scene->player->position.y,465,160 }, 0, 0, 0, 200);
+		if (Turn[0] == 1) {
+			app->render->DrawText(155, 200, WF, "Transform your sword into a light sword and hit an enemy for", 16);
+			app->render->DrawText(155, 220, WF, "massive damage", 16);
+		}
+		if (Turn[0] == 2) {
+			app->render->DrawText(155, 200, WF, "Channel a great portion of your magic to heal all your party", 16);
+			app->render->DrawText(155, 220, WF, "for 50% of their maximum health and also deal decent damage to", 16);
+			app->render->DrawText(155, 240, WF, "all of the enemies on the field", 16);
+		}
+		if (Turn[0] == 3) {
+			app->render->DrawText(155, 200, WF, "Shot a enhanced arrow that's very effective against shields but", 16);
+			app->render->DrawText(155, 220, WF, "also high damage to enemies without a shield", 16);
+		}
+	}
+
 	return ret;
 }
 

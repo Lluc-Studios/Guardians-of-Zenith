@@ -333,6 +333,8 @@ private:
 
 	char Aux[10], Aux1[10], Aux2[10], Aux3[10], Aux4[10], Aux5[10];
 
+	int Mx, My;
+
 	int HpBarLengthC1 = 0;
 	int MpBarLengthC1 = 0;
 	int HpBarLengthC2 = 0;
