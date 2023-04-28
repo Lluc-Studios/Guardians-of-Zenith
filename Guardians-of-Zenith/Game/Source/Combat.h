@@ -167,7 +167,7 @@ private:
 	const char* C1A6name = "Shield wall";
 
 	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;
-	int C1POISON = 0, C1BURN= 0;
+	int C1POISON = 0, C1BURN= 0, C1ELEC = 0;
 
 	//Character2
 	float C2MHP = 1000, C2CHP = 320;
@@ -197,7 +197,7 @@ private:
 	const char* C2A6name = "Drop of life";
 
 	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false;
-	int C2POISON = 0, C2BURN = 0;
+	int C2POISON = 0, C2BURN = 0, C2ELEC = 0;
 
 	//Character3
 	float C3MHP = 1000, C3CHP = 500;
@@ -227,7 +227,7 @@ private:
 	const char* C3A6name = "Explosive hit";
 
 	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
-	int C3POISON = 0, C3BURN = 0;
+	int C3POISON = 0, C3BURN = 0, C3ELEC = 0;
 
 	int AttackBuff = 0;
 	bool AttackBuffCheck = false;
@@ -380,6 +380,9 @@ private:
 	bool FinishedTurnB1 = false;
 	bool FinishedTurnB2 = false;
 	bool FinishedTurnB3 = false;
+	bool FinishedTurnA1 = false;
+	bool FinishedTurnA2 = false;
+	bool FinishedTurnA3 = false;
 
 	//Mando
 	bool A_pressed = false;
