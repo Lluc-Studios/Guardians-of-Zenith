@@ -124,6 +124,8 @@ private:
 	SDL_Texture* Enemy3;
 	SDL_Texture* Enemy4;
 	SDL_Texture* Enemy5;
+	SDL_Texture* EnemyUnknown;
+	SDL_Texture* EnemyBossUnknown;
 	SDL_Texture* ClassTank;
 	SDL_Texture* ClassMage;
 	SDL_Texture* ClassArcher;
@@ -254,6 +256,9 @@ private:
 
 	bool E1dead = false, E1Check = false;
 	int E1POISON = 0;
+
+	int E1AttackBuff = 0;
+	bool E1AttackBuffCheck = false;
 
 	//Enemy2
 	float E2MHP = 1000, E2CHP = 1000, E2MES = 0, E2CES = 0;

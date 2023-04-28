@@ -50,6 +50,8 @@ bool Combat::Start()
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess_Combat.png");
 	Enemy4 = app->tex->Load("Assets/Entities/Enemies/PoisonFrog_Combat.png");
 	Enemy5 = app->tex->Load("Assets/Entities/Enemies/FireFrog_Combat.png");
+	EnemyUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownEnemy.png");
+	EnemyBossUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownBoss.png");
 	E1asset = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
 	E2asset = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
 	E3asset = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
@@ -207,6 +209,11 @@ bool Combat::Update(float dt)
 		if (Turn[0] == 3 && AttackBuff != 0 && AttackBuffCheck == false) {
 			C3ATK += C3ATK * 0.2;
 			AttackBuffCheck = true;
+		}
+		//Attack buff for Dryadon
+		if (Turn[0] == 4 && E1AttackBuff != 0 && E1AttackBuffCheck == false) {
+			E1ATK += E1ATK * 0.5;
+			E1AttackBuffCheck = true;
 		}
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
@@ -2283,11 +2290,14 @@ bool Combat::Update(float dt)
 				if ((E1dead == false && Turn[0] == 4) || (E2dead == false && Turn[0] == 5) || (E3dead == false && Turn[0] == 6)) {
 					EnemyAttackTarget = rand() % CurrentCharacters + 1;
 					EnemyAttackNum = rand() % 2 + 1;
-					if (Turn[0] == 4 && E1BOSS == 64 && E1CHP < E1MHP) {
+					if (Turn[0] == 4 && E1BOSS == 64 && E1CHP < E1MHP && E1name == "Naiadon") {
 						EnemyAttackNum = rand() % 4 + 1;
 					}
-					if (Turn[0] == 4 && E1BOSS == 64 && E1CHP == E1MHP) {
+					if (Turn[0] == 4 && E1BOSS == 64 && E1CHP == E1MHP && E1name == "Naiadon") {
 						EnemyAttackNum = rand() % 3 + 1;
+					}
+					if (Turn[0] == 4 && E1BOSS == 64 && E1name == "Dryadon") {
+						EnemyAttackNum = rand() % 4 + 1;
 					}
 					if (EnemyAttackTarget == 1 && C1dead == true) {
 						EnemyAttackTarget = 2;
@@ -2969,11 +2979,19 @@ bool Combat::Update(float dt)
 								Aname = E1A3name;
 							}
 							if (EnemyAttackNum == 4) {
-								E1CHP += E1MHP * 0.15;
-								if (E1CHP > E1MHP) E1CHP = E1MHP;
-								Cname = E1name;
-								Ename = E1name;
-								Aname = E1A4name;
+								if (E1name == "Naiadon") {
+									E1CHP += E1MHP * 0.15;
+									if (E1CHP > E1MHP) E1CHP = E1MHP;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
+								if (E1name == "Dryadon") {
+									E1AttackBuff = 1;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
 							}
 						}
 						if (EnemyAttackTarget == 2) {
@@ -3076,11 +3094,19 @@ bool Combat::Update(float dt)
 								Aname = E1A3name;
 							}
 							if (EnemyAttackNum == 4) {
-								E1CHP += E1MHP * 0.15;
-								if (E1CHP > E1MHP) E1CHP = E1MHP;
-								Cname = E1name;
-								Ename = E1name;
-								Aname = E1A4name;
+								if (E1name == "Naiadon") {
+									E1CHP += E1MHP * 0.15;
+									if (E1CHP > E1MHP) E1CHP = E1MHP;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
+								if (E1name == "Dryadon") {
+									E1AttackBuff = 1;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
 							}
 						}
 						if (EnemyAttackTarget == 3) {
@@ -3183,11 +3209,19 @@ bool Combat::Update(float dt)
 								Aname = E1A3name;
 							}
 							if (EnemyAttackNum == 4) {
-								E1CHP += E1MHP * 0.15;
-								if (E1CHP > E1MHP) E1CHP = E1MHP;
-								Cname = E1name;
-								Ename = E1name;
-								Aname = E1A4name;
+								if (E1name == "Naiadon") {
+									E1CHP += E1MHP * 0.15;
+									if (E1CHP > E1MHP) E1CHP = E1MHP;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
+								if (E1name == "Dryadon") {
+									E1AttackBuff = 1;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
 							}
 						}
 					}
@@ -3556,6 +3590,9 @@ void Combat::StartCombat()
 		LoadEnemy(app->entityManager->naiadongoddess);
 		LoadEnemy(app->entityManager->waterlilyfish);
 		LoadEnemy(app->entityManager->poisonSlimeFrog);
+		//LoadEnemy(app->entityManager->dryadon);
+		//LoadEnemy(app->entityManager->deadLifeMantis);
+		//LoadEnemy(app->entityManager->mutantPlant);
 	}
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;
@@ -3643,6 +3680,8 @@ void Combat::ExitCombat()
 
 	AttackBuff = 0;
 	AttackBuffCheck = false;
+	E1AttackBuff = 0;
+	E1AttackBuffCheck = false;
 
 	CleanUp();
 }
@@ -3702,8 +3741,17 @@ void Combat::FinishTurn()
 	FinishedTurnB3 = false;
 
 	AttackBuffCheck = false;
+	AttackBuff--;
+	E1AttackBuffCheck = false;
+	E1AttackBuff--;
 
 	C3ATK = app->scene->player->lucca.atk;
+	if (E1name == "Naiadon") {
+		E1ATK = app->entityManager->naiadongoddess.atk;
+	}
+	if (E1name == "Dryadon") {
+		E1ATK = app->entityManager->dryadon.atk;
+	}
 }
 
 void Combat::TurnOrder()
@@ -3884,6 +3932,12 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 			E3BOSS = 0;
 		}
 		//Selecting enemy asset
+		if (enemy.asset == -1) {
+			E3asset = EnemyBossUnknown;
+		}
+		if (enemy.asset == 0) {
+			E3asset = EnemyUnknown;
+		}
 		if (enemy.asset == 1) {
 			E3asset = Enemy1;
 		}
@@ -3938,6 +3992,12 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 			E2BOSS = 0;
 		}
 		//Selecting enemy asset
+		if (enemy.asset == -1) {
+			E2asset = EnemyBossUnknown;
+		}
+		if (enemy.asset == 0) {
+			E2asset = EnemyUnknown;
+		}
 		if (enemy.asset == 1) {
 			E2asset = Enemy1;
 		}
@@ -3992,6 +4052,12 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 			E1BOSS = 0;
 		}
 		//Selecting enemy asset
+		if (enemy.asset == -1) {
+			E1asset = EnemyBossUnknown;
+		}
+		if (enemy.asset == 0) {
+			E1asset = EnemyUnknown;
+		}
 		if (enemy.asset == 1) {
 			E1asset = Enemy1;
 		}
