@@ -2329,6 +2329,15 @@ bool Combat::Update(float dt)
 						shielded = 0.75;
 					}
 					if (shield == 0) shielded = 1;
+					if (Turn[0] == 4 && E1name == "Pixie") {
+						E1A2effect = rand() % 3 + 1;
+					}
+					if (Turn[0] == 5 && E2name == "Pixie") {
+						E2A2effect = rand() % 3 + 1;
+					}
+					if (Turn[0] == 6 && E3name == "Pixie") {
+						E3A2effect = rand() % 3 + 1;
+					}
 					if (Turn[0] == 6) {
 						if (EnemyAttackTarget == 1) {
 							if (EnemyAttackNum == 1) {
@@ -2342,6 +2351,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block)*shielded;
 									if (E3A1effect == 2) C1POISON = 5;
 									if (E3A1effect == 3) C1BURN = 3;
+									if (E3A1effect == 1) C1FROZEN = true;
 									Cname = C1NAME;
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2353,6 +2363,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C1POISON = 5;
 									if (E3A1effect == 3) C1BURN = 3;
+									if (E3A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2362,6 +2373,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C2POISON = 5;
 									if (E3A1effect == 3) C2BURN = 3;
+									if (E3A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2371,6 +2383,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C3POISON = 5;
 									if (E3A1effect == 3) C3BURN = 3;
+									if (E3A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2387,6 +2400,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C1POISON = 5;
 									if (E3A2effect == 3) C1BURN = 3;
+									if (E3A2effect == 1) C1FROZEN = true;
 									Cname = C1NAME;
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2398,6 +2412,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C1POISON = 5;
 									if (E3A2effect == 3) C1BURN = 3;
+									if (E3A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2407,6 +2422,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C2POISON = 5;
 									if (E3A2effect == 3) C2BURN = 3;
+									if (E3A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2416,6 +2432,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C3POISON = 5;
 									if (E3A2effect == 3) C3BURN = 3;
+									if (E3A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2434,6 +2451,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C2POISON = 5;
 									if (E3A1effect == 3) C2BURN = 3;
+									if (E3A1effect == 1) C2FROZEN = true;
 									Cname = C2NAME;
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2445,6 +2463,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C1POISON = 5;
 									if (E3A1effect == 3) C1BURN = 3;
+									if (E3A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2454,6 +2473,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C2POISON = 5;
 									if (E3A1effect == 3) C2BURN = 3;
+									if (E3A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2463,6 +2483,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C3POISON = 5;
 									if (E3A1effect == 3) C3BURN = 3;
+									if (E3A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2479,6 +2500,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C2POISON = 5;
 									if (E3A2effect == 3) C2BURN = 3;
+									if (E3A2effect == 1) C2FROZEN = true;
 									Cname = C2NAME;
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2490,6 +2512,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C1POISON = 5;
 									if (E3A2effect == 3) C1BURN = 3;
+									if (E3A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2499,6 +2522,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C2POISON = 5;
 									if (E3A2effect == 3) C2BURN = 3;
+									if (E3A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2508,6 +2532,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C3POISON = 5;
 									if (E3A2effect == 3) C3BURN = 3;
+									if (E3A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2526,6 +2551,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C3POISON = 5;
 									if (E3A1effect == 3) C3BURN = 3;
+									if (E3A1effect == 1) C3FROZEN = true;
 									Cname = C3NAME;
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2537,6 +2563,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A1dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C1POISON = 5;
 									if (E3A1effect == 3) C1BURN = 3;
+									if (E3A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2546,6 +2573,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A1dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C2POISON = 5;
 									if (E3A1effect == 3) C2BURN = 3;
+									if (E3A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2555,6 +2583,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A1dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A1effect == 2) C3POISON = 5;
 									if (E3A1effect == 3) C3BURN = 3;
+									if (E3A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2571,6 +2600,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C3POISON = 5;
 									if (E3A2effect == 3) C3BURN = 3;
+									if (E3A2effect == 1) C3FROZEN = true;
 									Cname = C3NAME;
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2582,6 +2612,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E3A2dmg * (E3ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C1POISON = 5;
 									if (E3A2effect == 3) C1BURN = 3;
+									if (E3A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2591,6 +2622,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E3A2dmg * (E3ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C2POISON = 5;
 									if (E3A2effect == 3) C2BURN = 3;
+									if (E3A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2600,6 +2632,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E3A2dmg * (E3ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E3A2effect == 2) C3POISON = 5;
 									if (E3A2effect == 3) C3BURN = 3;
+									if (E3A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2620,6 +2653,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C1POISON = 5;
 									if (E2A1effect == 3) C1BURN = 3;
+									if (E2A1effect == 1) C1FROZEN = true;
 									Cname = C1NAME;
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2631,6 +2665,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C1POISON = 5;
 									if (E2A1effect == 3) C1BURN = 3;
+									if (E2A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2640,6 +2675,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C2POISON = 5;
 									if (E2A1effect == 3) C2BURN = 3;
+									if (E2A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2649,6 +2685,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C3POISON = 5;
 									if (E2A1effect == 3) C3BURN = 3;
+									if (E2A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2665,6 +2702,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C1POISON = 5;
 									if (E2A2effect == 3) C1BURN = 3;
+									if (E2A2effect == 1) C1FROZEN = true;
 									Cname = C1NAME;
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2676,6 +2714,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C1POISON = 5;
 									if (E2A2effect == 3) C1BURN = 3;
+									if (E2A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2685,6 +2724,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C2POISON = 5;
 									if (E2A2effect == 3) C2BURN = 3;
+									if (E2A2effect == 1) C3FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2694,6 +2734,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C3POISON = 5;
 									if (E2A2effect == 3) C3BURN = 3;
+									if (E2A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2712,6 +2753,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C2POISON = 5;
 									if (E2A1effect == 3) C2BURN = 3;
+									if (E2A1effect == 1) C2FROZEN = true;
 									Cname = C2NAME;
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2723,6 +2765,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C1POISON = 5;
 									if (E2A1effect == 3) C1BURN = 3;
+									if (E2A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2732,6 +2775,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C2POISON = 5;
 									if (E2A1effect == 3) C2BURN = 3;
+									if (E2A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2741,6 +2785,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C3POISON = 5;
 									if (E2A1effect == 3) C3BURN = 3;
+									if (E2A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2757,6 +2802,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C2POISON = 5;
 									if (E2A2effect == 3) C2BURN = 3;
+									if (E2A2effect == 1) C2FROZEN = true;
 									Cname = C2NAME;
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2768,6 +2814,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C1POISON = 5;
 									if (E2A2effect == 3) C1BURN = 3;
+									if (E2A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2777,6 +2824,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C2POISON = 5;
 									if (E2A2effect == 3) C2BURN = 3;
+									if (E2A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2786,6 +2834,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C3POISON = 5;
 									if (E2A2effect == 3) C3BURN = 3;
+									if (E2A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2804,6 +2853,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C3POISON = 5;
 									if (E2A1effect == 3) C3BURN = 3;
+									if (E2A1effect == 1) C3FROZEN = true;
 									Cname = C3NAME;
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2815,6 +2865,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A1dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C1POISON = 5;
 									if (E2A1effect == 3) C1BURN = 3;
+									if (E2A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2824,6 +2875,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A1dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C2POISON = 5;
 									if (E2A1effect == 3) C2BURN = 3;
+									if (E2A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2833,6 +2885,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A1dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A1effect == 2) C3POISON = 5;
 									if (E2A1effect == 3) C3BURN = 3;
+									if (E2A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2849,6 +2902,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C3POISON = 5;
 									if (E2A2effect == 3) C3BURN = 3;
+									if (E2A2effect == 1) C3FROZEN = true;
 									Cname = C3NAME;
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2860,6 +2914,7 @@ bool Combat::Update(float dt)
 									C1CHP = C1CHP - ((E2A2dmg * (E2ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C1POISON = 5;
 									if (E2A2effect == 3) C1BURN = 3;
+									if (E2A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2869,6 +2924,7 @@ bool Combat::Update(float dt)
 									C2CHP = C2CHP - ((E2A2dmg * (E2ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C2POISON = 5;
 									if (E2A2effect == 3) C2BURN = 3;
+									if (E2A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2878,6 +2934,7 @@ bool Combat::Update(float dt)
 									C3CHP = C3CHP - ((E2A2dmg * (E2ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E2A2effect == 2) C3POISON = 5;
 									if (E2A2effect == 3) C3BURN = 3;
+									if (E2A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2897,6 +2954,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C1POISON = 5;
+									if (E1A1effect == 3) C1BURN = 3;
+									if (E1A1effect == 1) C1FROZEN = true;
 									Cname = C1NAME;
 									Ename = E1name;
 									Aname = E1A1name;
@@ -2907,6 +2966,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C1POISON = 5;
+									if (E1A1effect == 3) C1BURN = 3;
+									if (E1A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2915,6 +2976,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C2POISON = 5;
+									if (E1A1effect == 3) C2BURN = 3;
+									if (E1A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2923,6 +2986,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C3POISON = 5;
+									if (E1A1effect == 3) C3BURN = 3;
+									if (E1A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A1name;
@@ -2938,6 +3003,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C1POISON = 5;
+									if (E1A2effect == 3) C1BURN = 3;
+									if (E1A2effect == 1) C1FROZEN = true;
 									Cname = C1NAME;
 									Ename = E1name;
 									Aname = E1A2name;
@@ -2948,6 +3015,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C1POISON = 5;
+									if (E1A2effect == 3) C1BURN = 3;
+									if (E1A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2956,6 +3025,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C2POISON = 5;
+									if (E1A2effect == 3) C2BURN = 3;
+									if (E1A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2964,6 +3035,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C3POISON = 5;
+									if (E1A2effect == 3) C3BURN = 3;
+									if (E1A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A2name;
@@ -2981,6 +3054,7 @@ bool Combat::Update(float dt)
 									C1FROZEN = true;
 								}
 								if (E1A3effect == 2) C1POISON = 5;
+								if (E1A3effect == 3) C1BURN = 3;
 								Cname = C1NAME;
 								Ename = E1name;
 								Aname = E1A3name;
@@ -3018,6 +3092,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C2POISON = 5;
+									if (E1A1effect == 3) C2BURN = 3;
+									if (E1A1effect == 1) C2FROZEN = true;
 									Cname = C2NAME;
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3028,6 +3104,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C1POISON = 5;
+									if (E1A1effect == 3) C1BURN = 3;
+									if (E1A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3036,6 +3114,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C2POISON = 5;
+									if (E1A1effect == 3) C2BURN = 3;
+									if (E1A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3044,6 +3124,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C3POISON = 5;
+									if (E1A1effect == 3) C3BURN = 3;
+									if (E1A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3059,6 +3141,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C2POISON = 5;
+									if (E1A2effect == 3) C2BURN = 3;
+									if (E1A2effect == 1) C2FROZEN = true;
 									Cname = C2NAME;
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3069,6 +3153,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C1POISON = 5;
+									if (E1A2effect == 3) C1BURN = 3;
+									if (E1A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3077,6 +3163,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C2POISON = 5;
+									if (E1A2effect == 3) C2BURN = 3;
+									if (E1A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3085,6 +3173,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C3POISON = 5;
+									if (E1A2effect == 3) C3BURN = 3;
+									if (E1A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3102,6 +3192,7 @@ bool Combat::Update(float dt)
 									C2FROZEN = true;
 								}
 								if (E1A3effect == 2) C2POISON = 5;
+								if (E1A3effect == 3) C2BURN = 3;
 								Cname = C2NAME;
 								Ename = E1name;
 								Aname = E1A3name;
@@ -3139,6 +3230,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C3POISON = 5;
+									if (E1A1effect == 3) C3BURN = 3;
+									if (E1A1effect == 1) C3FROZEN = true;
 									Cname = C3NAME;
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3149,6 +3242,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A1dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C1POISON = 5;
+									if (E1A1effect == 3) C1BURN = 3;
+									if (E1A1effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3157,6 +3252,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A1dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C2POISON = 5;
+									if (E1A1effect == 3) C2BURN = 3;
+									if (E1A1effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3165,6 +3262,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A1dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A1effect == 2) C3POISON = 5;
+									if (E1A1effect == 3) C3BURN = 3;
+									if (E1A1effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3180,6 +3279,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C3POISON = 5;
+									if (E1A2effect == 3) C3BURN = 3;
+									if (E1A2effect == 1) C3FROZEN = true;
 									Cname = C3NAME;
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3190,6 +3291,8 @@ bool Combat::Update(float dt)
 									if (C1Block == true) block = 3;
 									C1CHP = C1CHP - ((E1A2dmg * (E1ATK / C1DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C1POISON = 5;
+									if (E1A2effect == 3) C1BURN = 3;
+									if (E1A2effect == 1) C1FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3198,6 +3301,8 @@ bool Combat::Update(float dt)
 									if (C2Block == true) block = 3;
 									C2CHP = C2CHP - ((E1A2dmg * (E1ATK / C2DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C2POISON = 5;
+									if (E1A2effect == 3) C2BURN = 3;
+									if (E1A2effect == 1) C2FROZEN = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3206,6 +3311,8 @@ bool Combat::Update(float dt)
 									if (C3Block == true) block = 3;
 									C3CHP = C3CHP - ((E1A2dmg * (E1ATK / C3DEF) * multiplier1 / multiplier2) / block) * shielded;
 									if (E1A2effect == 2) C3POISON = 5;
+									if (E1A2effect == 3) C3BURN = 3;
+									if (E1A2effect == 1) C3FROZEN = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3223,6 +3330,7 @@ bool Combat::Update(float dt)
 									C3FROZEN = true;
 								}
 								if (E1A3effect == 2) C3POISON = 5;
+								if (E1A3effect == 3) C3BURN = 3;
 								Cname = C3NAME;
 								Ename = E1name;
 								Aname = E1A3name;
@@ -3614,8 +3722,9 @@ void Combat::StartCombat()
 	if (Preset == 20) {
 		LoadEnemy(app->entityManager->naiadongoddess);
 		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->poisonSlimeFrog);
-		//LoadEnemy(app->entityManager->dryadon);
+		//LoadEnemy(app->entityManager->poisonSlimeFrog);
+		LoadEnemy(app->entityManager->pixie);
+		//LoadEnemy(app->entityManager->dryadon); 
 		//LoadEnemy(app->entityManager->deadLifeMantis);
 		//LoadEnemy(app->entityManager->mutantPlant);
 	}
