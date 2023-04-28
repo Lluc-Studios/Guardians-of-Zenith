@@ -208,12 +208,19 @@ bool Combat::Update(float dt)
 		//Attack buff for Lucca
 		if (Turn[0] == 3 && AttackBuff != 0 && AttackBuffCheck == false) {
 			C3ATK += C3ATK * 0.2;
+			AttackBuff--;
 			AttackBuffCheck = true;
 		}
 		//Attack buff for Dryadon
 		if (Turn[0] == 4 && E1AttackBuff != 0 && E1AttackBuffCheck == false) {
 			E1ATK += E1ATK * 0.5;
+			E1AttackBuff--;
 			E1AttackBuffCheck = true;
+		}
+		//Defense buff for Dryadon
+		if (Turn[0] == 4 && E1DefenseBuff != 0 && E1DefenseBuffCheck == false) {
+			E1DEF += E1DEF * 0.5;
+			E1DefenseBuffCheck = true;
 		}
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
@@ -2296,7 +2303,7 @@ bool Combat::Update(float dt)
 					if (Turn[0] == 4 && E1BOSS == 64 && E1CHP == E1MHP && E1name == "Naiadon") {
 						EnemyAttackNum = rand() % 3 + 1;
 					}
-					if (Turn[0] == 4 && E1BOSS == 64 && E1name == "Dryadon") {
+					if (Turn[0] == 4 && E1BOSS == 64 && E1name != "Naiadon") {
 						EnemyAttackNum = rand() % 4 + 1;
 					}
 					if (EnemyAttackTarget == 1 && C1dead == true) {
@@ -2992,6 +2999,12 @@ bool Combat::Update(float dt)
 									Ename = E1name;
 									Aname = E1A4name;
 								}
+								if (E1name == "Gashadokuro") {
+									E1DefenseBuff = 6;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
 							}
 						}
 						if (EnemyAttackTarget == 2) {
@@ -3107,6 +3120,12 @@ bool Combat::Update(float dt)
 									Ename = E1name;
 									Aname = E1A4name;
 								}
+								if (E1name == "Gashadokuro") {
+									E1DefenseBuff = 6;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
 							}
 						}
 						if (EnemyAttackTarget == 3) {
@@ -3218,6 +3237,12 @@ bool Combat::Update(float dt)
 								}
 								if (E1name == "Dryadon") {
 									E1AttackBuff = 1;
+									Cname = E1name;
+									Ename = E1name;
+									Aname = E1A4name;
+								}
+								if (E1name == "Gashadokuro") {
+									E1DefenseBuff = 6;
 									Cname = E1name;
 									Ename = E1name;
 									Aname = E1A4name;
@@ -3682,6 +3707,8 @@ void Combat::ExitCombat()
 	AttackBuffCheck = false;
 	E1AttackBuff = 0;
 	E1AttackBuffCheck = false;
+	E1DefenseBuff = 0;
+	E1DefenseBuffCheck = false;
 
 	CleanUp();
 }
@@ -3741,9 +3768,9 @@ void Combat::FinishTurn()
 	FinishedTurnB3 = false;
 
 	AttackBuffCheck = false;
-	AttackBuff--;
 	E1AttackBuffCheck = false;
-	E1AttackBuff--;
+	E1DefenseBuffCheck = false;
+	E1DefenseBuff--;
 
 	C3ATK = app->scene->player->lucca.atk;
 	if (E1name == "Naiadon") {
@@ -3751,6 +3778,9 @@ void Combat::FinishTurn()
 	}
 	if (E1name == "Dryadon") {
 		E1ATK = app->entityManager->dryadon.atk;
+	}
+	if (E1name == "Gashadokuro") {
+		E1DEF = app->entityManager->gashadokuro.def;
 	}
 }
 

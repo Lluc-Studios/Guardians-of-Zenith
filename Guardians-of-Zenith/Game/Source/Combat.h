@@ -259,6 +259,8 @@ private:
 
 	int E1AttackBuff = 0;
 	bool E1AttackBuffCheck = false;
+	int E1DefenseBuff = 0;
+	bool E1DefenseBuffCheck = false;
 
 	//Enemy2
 	float E2MHP = 1000, E2CHP = 1000, E2MES = 0, E2CES = 0;
