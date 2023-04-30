@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="42">
- <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="425" columns="25">
-  <image source="Main Tilesets/Tileset_Lake.png" width="800" height="544"/>
+ <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="510" columns="25">
+  <image source="Main Tilesets/Tileset_Lake.png" width="800" height="640"/>
  </tileset>
- <tileset firstgid="426" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="6">
+ <tileset firstgid="511" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="6">
   <image source="Main Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
  </tileset>
  <layer id="1" name="Water" width="30" height="20">
@@ -102,7 +102,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="6" name="Collisions">
+ <objectgroup id="6" name="Collisions" visible="0">
   <object id="2" x="368.667" y="519.833" width="221" height="8.16667"/>
   <object id="4" x="368.5" y="404.448" width="4.5" height="119.135"/>
   <object id="5" x="586.875" y="410.791" width="3.25" height="113.417"/>
@@ -146,7 +146,7 @@
   <object id="39" x="402.686" y="-0.231472" width="1.72999" height="36.131"/>
   <object id="40" x="554.875" y="-0.150524" width="1.72999" height="39.9571"/>
  </objectgroup>
- <objectgroup id="7" name="2room">
+ <objectgroup id="7" name="2room" visible="0">
   <object id="41" x="403.749" y="-1.33334" width="152.252" height="2.16667"/>
  </objectgroup>
 </map>
