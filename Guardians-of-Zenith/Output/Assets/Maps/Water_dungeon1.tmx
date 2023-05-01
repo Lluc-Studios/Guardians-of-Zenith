@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="42">
- <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="510" columns="25">
+ <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="500" columns="25">
   <image source="Main Tilesets/Tileset_Lake.png" width="800" height="640"/>
  </tileset>
- <tileset firstgid="511" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="6">
+ <tileset firstgid="501" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="6">
   <image source="Main Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
  </tileset>
  <layer id="1" name="Water" width="30" height="20">
@@ -80,10 +80,10 @@
  </layer>
  <layer id="4" name="Plants" width="30" height="20">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,301,302,303,0,0,0,0,0,
-0,0,0,0,0,301,302,303,0,0,0,0,0,0,0,0,0,0,0,0,0,0,326,327,328,0,0,0,0,0,
-0,0,0,0,0,326,327,328,0,0,0,0,0,0,0,0,0,0,0,0,0,0,351,352,353,0,0,0,0,0,
-0,0,0,0,0,351,352,353,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,257,258,259,0,0,0,0,0,
+0,0,0,0,0,257,258,259,0,0,0,0,0,0,0,0,0,0,0,0,0,0,282,283,284,0,0,0,0,0,
+0,0,0,0,0,282,283,284,0,0,0,0,0,0,0,0,0,0,0,0,0,0,307,308,309,0,0,0,0,0,
+0,0,0,0,0,307,308,309,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,256,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,0,0,
 0,0,0,0,0,306,306,0,0,0,0,0,0,0,0,0,0,0,0,0,0,306,305,305,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,256,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -102,7 +102,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="6" name="Collisions" visible="0">
+ <objectgroup id="6" name="Collisions">
   <object id="2" x="368.667" y="519.833" width="221" height="8.16667"/>
   <object id="4" x="368.5" y="404.448" width="4.5" height="119.135"/>
   <object id="5" x="586.875" y="410.791" width="3.25" height="113.417"/>
@@ -130,11 +130,11 @@
    <ellipse/>
   </object>
   <object id="29" x="744.228" y="361.37" width="15.0425" height="9.256"/>
-  <object id="30" x="712.563" y="0.1235" width="76.625" height="75.25">
+  <object id="30" x="710.563" y="0.1235" width="87.625" height="75.25">
    <ellipse/>
   </object>
   <object id="31" x="744.103" y="73.6205" width="15.0425" height="9.256"/>
-  <object id="32" x="168.563" y="31.9985" width="76.625" height="75.25">
+  <object id="32" x="164.563" y="31.9985" width="91.125" height="75.25">
    <ellipse/>
   </object>
   <object id="33" x="200.103" y="105.495" width="15.0425" height="9.256"/>
