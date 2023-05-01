@@ -150,7 +150,7 @@
   </object>
   <object id="43" x="360.478" y="202.62" width="15.0425" height="9.256"/>
  </objectgroup>
- <objectgroup id="7" name="2room" visible="0">
+ <objectgroup id="7" name="2room">
   <object id="41" x="403.749" y="-1.33334" width="152.252" height="2.16667"/>
  </objectgroup>
 </map>
