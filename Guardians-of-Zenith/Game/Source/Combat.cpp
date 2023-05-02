@@ -262,15 +262,6 @@ bool Combat::Update(float dt)
 		}
 		//Render text
 		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
-		if (E1POISON != 0 && E1dead == false) {
-			app->render->DrawTexture(Poison, app->scene->player->position.x + 95, app->scene->player->position.y - 23);
-		}
-		if (E2POISON != 0 && E2dead == false) {
-			app->render->DrawTexture(Poison, app->scene->player->position.x + 180, app->scene->player->position.y - 83);
-		}
-		if (E3POISON != 0 && E3dead == false) {
-			app->render->DrawTexture(Poison, app->scene->player->position.x + 180, app->scene->player->position.y + 37);
-		}
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,115,160 }, 0, 0, 255, 150);
 		if (option != COMBATMENU::NONE) {
@@ -667,7 +658,7 @@ bool Combat::Update(float dt)
 				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,115,20 }, 255, 255, 255, WhiteFading);
 				if (E2dead == false) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
+					app->render->DrawRectangle({ app->scene->player->position.x + 199 + (E1BOSS / 2), app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 				}
 			}
 			if (option == COMBATMENU::ENEMY3 && EnemySelect == true) {
@@ -683,7 +674,7 @@ bool Combat::Update(float dt)
 				}
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
 				if (E3dead == false) {
-					app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+					app->render->DrawRectangle({ app->scene->player->position.x + 199 + (E1BOSS / 2), app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 				}
 			}
 			if (option == COMBATMENU::ALLY1 && EnemySelect == true) {
@@ -1026,11 +1017,11 @@ bool Combat::Update(float dt)
 				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
 				//Int to string convert
 				sprintf_s(Aux, "%.0f", E1MHP);
-				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y,64,10 }, 0, 0, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y + (E1BOSS/10*9),64,10 }, 0, 0, 0);
 				HpBarLengthE1 = (E1CHP * 62) / E1MHP;
-				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1,HpBarLengthE1,8 }, 0, 200, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1 + (E1BOSS / 10 * 9),HpBarLengthE1,8 }, 0, 200, 0);
 				EsBarLengthE1 = (E1CES * 60) / E1MES;
-				app->render->DrawRectangle({ app->scene->player->position.x + 117,app->scene->player->position.y + 2,EsBarLengthE1,6 }, 0, 255, 255);
+				app->render->DrawRectangle({ app->scene->player->position.x + 117,app->scene->player->position.y + 2 + (E1BOSS / 10 * 9),EsBarLengthE1,6 }, 0, 255, 255);
 				//Draw enemy class
 				if (E1class == 1) {
 					E1 = ClassTank;
@@ -1041,31 +1032,20 @@ bool Combat::Update(float dt)
 				if (E1class == 3) {
 					E1 = ClassArcher;
 				}
-				app->render->DrawTexture(E1, app->scene->player->position.x + 95, app->scene->player->position.y - 3);
+				app->render->DrawTexture(E1, app->scene->player->position.x + 95, app->scene->player->position.y - 3 + (E1BOSS / 10 * 9));
 			}
 			if (CurrentEnemies >= 2) {
 				//Draw enemy
 				if (E2dead == false) {
-					//Draw enemy class
-					if (E2class == 1) {
-						E2 = ClassTank;
-					}
-					if (E2class == 2) {
-						E2 = ClassMage;
-					}
-					if (E2class == 3) {
-						E2 = ClassArcher;
-					}
-					app->render->DrawTexture(E2, app->scene->player->position.x + 180, app->scene->player->position.y - 63);
 					if (Turn[0] == 5) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x + 199 + (E1BOSS / 2), app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 					}
-					app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 - E2BOSS, app->scene->player->position.y - 130 - E2BOSS);
+					app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 + (E1BOSS/2), app->scene->player->position.y - 130);
 					//Int to string convert
 					sprintf_s(Aux, "%.0f", E2MHP);
-					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
+					app->render->DrawRectangle({ app->scene->player->position.x + 200 + (E1BOSS / 2),app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
 					HpBarLengthE2 = (E2CHP * 62) / E2MHP;
-					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
+					app->render->DrawRectangle({ app->scene->player->position.x + 201 + (E1BOSS / 2),app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
 					//Draw enemy class
 					if (E2class == 1) {
 						E2 = ClassTank;
@@ -1076,20 +1056,20 @@ bool Combat::Update(float dt)
 					if (E2class == 3) {
 						E2 = ClassArcher;
 					}
-					app->render->DrawTexture(E2, app->scene->player->position.x + 180, app->scene->player->position.y - 63);
+					app->render->DrawTexture(E2, app->scene->player->position.x + 180 + (E1BOSS / 2), app->scene->player->position.y - 63);
 				}
 				if (CurrentEnemies == 3) {
 					//Draw enemy
 					if (E3dead == false) {
 						if (Turn[0] == 6) {
-							app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+							app->render->DrawRectangle({ app->scene->player->position.x + 199 + (E1BOSS / 2), app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 						}
-						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 - E3BOSS, app->scene->player->position.y - 10 - E3BOSS);
+						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 + (E1BOSS / 2), app->scene->player->position.y - 10);
 						//Int to string convert
 						sprintf_s(Aux, "%.0f", E3MHP);
-						app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
+						app->render->DrawRectangle({ app->scene->player->position.x + 200 + (E1BOSS / 2),app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
 						HpBarLengthE3 = (E3CHP * 62) / E3MHP;
-						app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
+						app->render->DrawRectangle({ app->scene->player->position.x + 201 + (E1BOSS / 2),app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
 						//Draw enemy class
 						if (E3class == 1) {
 							E3 = ClassTank;
@@ -1100,7 +1080,7 @@ bool Combat::Update(float dt)
 						if (E3class == 3) {
 							E3 = ClassArcher;
 						}
-						app->render->DrawTexture(E3, app->scene->player->position.x + 180, app->scene->player->position.y + 57);
+						app->render->DrawTexture(E3, app->scene->player->position.x + 180 + (E1BOSS / 2), app->scene->player->position.y + 57);
 					}
 				}
 			}
@@ -1155,7 +1135,16 @@ bool Combat::Update(float dt)
 		}
 		app->render->DrawText(160 * app->ScalingMultiplier-5, 20 * app->ScalingMultiplier, WF, "Turn", 16);
 
-
+		//Print enemy poison
+		if (E1POISON != 0 && E1dead == false) {
+			app->render->DrawTexture(Poison, app->scene->player->position.x + 95, app->scene->player->position.y - 23 + (E1BOSS / 10 * 9));
+		}
+		if (E2POISON != 0 && E2dead == false) {
+			app->render->DrawTexture(Poison, app->scene->player->position.x + 180 + (E1BOSS / 2), app->scene->player->position.y - 83);
+		}
+		if (E3POISON != 0 && E3dead == false) {
+			app->render->DrawTexture(Poison, app->scene->player->position.x + 180 + (E1BOSS / 2), app->scene->player->position.y + 37);
+		}
 		//Load the characters attacks
 		if (AttackMenu == true && TeamTurn == 1) {
 			if (Turn[0] == 1) {
