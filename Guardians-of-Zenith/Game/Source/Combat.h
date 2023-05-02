@@ -166,7 +166,7 @@ private:
 	float C1A6lvl = 16, C1A6target = 4, C1A6dmg = 0, C1A6mp = 40;
 	const char* C1A6name = "Shield wall";
 
-	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false;
+	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false, C1BLEED = false;
 	int C1POISON = 0, C1BURN= 0, C1ELEC = 0;
 
 	//Character2
@@ -196,7 +196,7 @@ private:
 	float C2A6lvl = 16, C2A6target = 3, C2A6dmg = 0, C2A6mp = 80;
 	const char* C2A6name = "Drop of life";
 
-	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false;
+	bool C2Block = false, C2dead = false, C2Check = false, C2FROZEN = false, C2BLEED = false;
 	int C2POISON = 0, C2BURN = 0, C2ELEC = 0;
 
 	//Character3
@@ -226,7 +226,7 @@ private:
 	float C3A6lvl = 16, C3A6target = 1, C3A6dmg = 55, C3A6mp = 100;
 	const char* C3A6name = "Explosive hit";
 
-	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false;
+	bool C3Block = false, C3dead = false, C3Check = false, C3FROZEN = false, C3BLEED = false;
 	int C3POISON = 0, C3BURN = 0, C3ELEC = 0;
 
 	int AttackBuff = 0;
@@ -383,6 +383,9 @@ private:
 	bool FinishedTurnA1 = false;
 	bool FinishedTurnA2 = false;
 	bool FinishedTurnA3 = false;
+	bool FinishedTurnBL1 = false;
+	bool FinishedTurnBL2 = false;
+	bool FinishedTurnBL3 = false;
 
 	//Mando
 	bool A_pressed = false;

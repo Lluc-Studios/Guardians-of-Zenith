@@ -230,6 +230,19 @@ bool Combat::Update(float dt)
 		if (C3ELEC == 0) {
 			C3ATK = app->scene->player->lucca.atk;
 		}
+		//Bleeding
+		if (C1BLEED == true && FinishedTurnBL1 == false) {
+			FinishedTurnBL1 = true;
+			C1CHP -= C1MHP * 0.01;
+		}
+		if (C2BLEED == true && FinishedTurnBL2 == false) {
+			FinishedTurnBL2 = true;
+			C2CHP -= C2MHP * 0.01;
+		}
+		if (C3BLEED == true && FinishedTurnBL3 == false) {
+			FinishedTurnBL3 = true;
+			C3CHP -= C3MHP * 0.01;
+		}
 		//Attack buff for Lucca
 		if (Turn[0] == 3 && AttackBuff != 0 && AttackBuffCheck == false) {
 			C3ATK += C3ATK * 0.2;
@@ -794,6 +807,23 @@ bool Combat::Update(float dt)
 						app->render->DrawTexture(Electrified, app->scene->player->position.x + 20, app->scene->player->position.y + 77);
 					}
 				}
+				if (C1BLEED == true) {
+					if (C1FROZEN == false && C1ELEC == 0) {
+						app->render->DrawTexture(Bleed, app->scene->player->position.x - 40, app->scene->player->position.y + 77);
+					}
+					else if (C1POISON == 0 && C1ELEC == 0) {
+						app->render->DrawTexture(Bleed, app->scene->player->position.x - 20, app->scene->player->position.y + 77);
+					}
+					else if (C1BURN == 0 && C1ELEC == 0) {
+						app->render->DrawTexture(Bleed, app->scene->player->position.x, app->scene->player->position.y + 77);
+					}
+					else if (C1ELEC == 0){
+						app->render->DrawTexture(Bleed, app->scene->player->position.x + 20, app->scene->player->position.y + 77);
+					}
+					else {
+						app->render->DrawTexture(Bleed, app->scene->player->position.x + 40, app->scene->player->position.y + 77);
+					}
+				}
 			}
 			app->render->DrawText(100 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C1NAME, 16);
 			app->render->DrawTexture(ClassTank,app->scene->player->position.x-110, app->scene->player->position.y+77);
@@ -854,6 +884,23 @@ bool Combat::Update(float dt)
 							app->render->DrawTexture(Electrified, app->scene->player->position.x + 170, app->scene->player->position.y + 77);
 						}
 					}
+					if (C2BLEED == true) {
+						if (C2FROZEN == false && C2ELEC == 0) {
+							app->render->DrawTexture(Bleed, app->scene->player->position.x + 110, app->scene->player->position.y + 77);
+						}
+						else if (C2POISON == 0 && C2ELEC == 0) {
+							app->render->DrawTexture(Bleed, app->scene->player->position.x + 130, app->scene->player->position.y + 77);
+						}
+						else if (C2BURN == 0 && C2ELEC == 0) {
+							app->render->DrawTexture(Bleed, app->scene->player->position.x + 150, app->scene->player->position.y + 77);
+						}
+						else if (C2ELEC == 0) {
+							app->render->DrawTexture(Bleed, app->scene->player->position.x + 170, app->scene->player->position.y + 77);
+						}
+						else {
+							app->render->DrawTexture(Bleed, app->scene->player->position.x + 190, app->scene->player->position.y + 77);
+						}
+					}
 				}
 				app->render->DrawText(180 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, C2NAME, 16);
 				app->render->DrawTexture(ClassMage, app->scene->player->position.x + 50, app->scene->player->position.y + 77);
@@ -912,6 +959,23 @@ bool Combat::Update(float dt)
 							}
 							else {
 								app->render->DrawTexture(Electrified, app->scene->player->position.x + 330, app->scene->player->position.y + 77);
+							}
+						}
+						if (C3BLEED == true) {
+							if (C3FROZEN == false && C3ELEC == 0) {
+								app->render->DrawTexture(Bleed, app->scene->player->position.x + 270, app->scene->player->position.y + 77);
+							}
+							else if (C3POISON == 0 && C3ELEC == 0) {
+								app->render->DrawTexture(Bleed, app->scene->player->position.x + 290, app->scene->player->position.y + 77);
+							}
+							else if (C3BURN == 0 && C3ELEC == 0) {
+								app->render->DrawTexture(Bleed, app->scene->player->position.x + 310, app->scene->player->position.y + 77);
+							}
+							else if (C3ELEC == 0) {
+								app->render->DrawTexture(Bleed, app->scene->player->position.x + 330, app->scene->player->position.y + 77);
+							}
+							else {
+								app->render->DrawTexture(Bleed, app->scene->player->position.x + 350, app->scene->player->position.y + 77);
 							}
 						}
 					}
@@ -2397,13 +2461,13 @@ bool Combat::Update(float dt)
 					}
 					if (shield == 0) shielded = 1;
 					if (Turn[0] == 4 && E1name == "Pixie") {
-						E1A2effect = rand() % 4 + 1;
+						E1A2effect = rand() % 5 + 1;
 					}
 					if (Turn[0] == 5 && E2name == "Pixie") {
-						E2A2effect = rand() % 4 + 1;
+						E2A2effect = rand() % 5 + 1;
 					}
 					if (Turn[0] == 6 && E3name == "Pixie") {
-						E3A2effect = rand() % 4 + 1;
+						E3A2effect = rand() % 5 + 1;
 					}
 					if (Turn[0] == 6) {
 						if (EnemyAttackTarget == 1) {
@@ -2420,6 +2484,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C1BURN = 3;
 									if (E3A1effect == 1) C1FROZEN = true;
 									if (E3A1effect == 4) C1ELEC = 5;
+									if (E3A1effect == 5) C1BLEED = true;
 									Cname = C1NAME;
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2433,6 +2498,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C1BURN = 3;
 									if (E3A1effect == 1) C1FROZEN = true;
 									if (E3A1effect == 4) C1ELEC = 5;
+									if (E3A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2444,6 +2510,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C2BURN = 3;
 									if (E3A1effect == 1) C2FROZEN = true;
 									if (E3A1effect == 4) C2ELEC = 5;
+									if (E3A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2455,6 +2522,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C3BURN = 3;
 									if (E3A1effect == 1) C3FROZEN = true;
 									if (E3A1effect == 4) C3ELEC = 5;
+									if (E3A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2473,6 +2541,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C1BURN = 3;
 									if (E3A2effect == 1) C1FROZEN = true;
 									if (E3A2effect == 4) C1ELEC = 5;
+									if (E3A2effect == 5) C1BLEED = true;
 									Cname = C1NAME;
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2486,6 +2555,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C1BURN = 3;
 									if (E3A2effect == 1) C1FROZEN = true;
 									if (E3A2effect == 4) C1ELEC = 5;
+									if (E3A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2497,6 +2567,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C2BURN = 3;
 									if (E3A2effect == 1) C2FROZEN = true;
 									if (E3A2effect == 4) C2ELEC = 5;
+									if (E3A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2508,6 +2579,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C3BURN = 3;
 									if (E3A2effect == 1) C3FROZEN = true;
 									if (E3A2effect == 4) C3ELEC = 5;
+									if (E3A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2528,6 +2600,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C2BURN = 3;
 									if (E3A1effect == 1) C2FROZEN = true;
 									if (E3A1effect == 4) C2ELEC = 5;
+									if (E3A1effect == 5) C2BLEED = true;
 									Cname = C2NAME;
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2541,6 +2614,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C1BURN = 3;
 									if (E3A1effect == 1) C1FROZEN = true;
 									if (E3A1effect == 4) C1ELEC = 5;
+									if (E3A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2552,6 +2626,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C2BURN = 3;
 									if (E3A1effect == 1) C2FROZEN = true;
 									if (E3A1effect == 4) C2ELEC = 5;
+									if (E3A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2563,6 +2638,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C3BURN = 3;
 									if (E3A1effect == 1) C3FROZEN = true;
 									if (E3A1effect == 4) C3ELEC = 5;
+									if (E3A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2581,6 +2657,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C2BURN = 3;
 									if (E3A2effect == 1) C2FROZEN = true;
 									if (E3A2effect == 4) C2ELEC = 5;
+									if (E3A2effect == 5) C2BLEED = true;
 									Cname = C2NAME;
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2594,6 +2671,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C1BURN = 3;
 									if (E3A2effect == 1) C1FROZEN = true;
 									if (E3A2effect == 4) C1ELEC = 5;
+									if (E3A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2605,6 +2683,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C2BURN = 3;
 									if (E3A2effect == 1) C2FROZEN = true;
 									if (E3A2effect == 4) C2ELEC = 5;
+									if (E3A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2616,6 +2695,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C3BURN = 3;
 									if (E3A2effect == 1) C3FROZEN = true;
 									if (E3A2effect == 4) C3ELEC = 5;
+									if (E3A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2636,6 +2716,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C3BURN = 3;
 									if (E3A1effect == 1) C3FROZEN = true;
 									if (E3A1effect == 4) C3ELEC = 5;
+									if (E3A1effect == 5) C3BLEED = true;
 									Cname = C3NAME;
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2649,6 +2730,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C1BURN = 3;
 									if (E3A1effect == 1) C1FROZEN = true;
 									if (E3A1effect == 4) C1ELEC = 5;
+									if (E3A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2660,6 +2742,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C2BURN = 3;
 									if (E3A1effect == 1) C2FROZEN = true;
 									if (E3A1effect == 4) C2ELEC = 5;
+									if (E3A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2671,6 +2754,7 @@ bool Combat::Update(float dt)
 									if (E3A1effect == 3) C3BURN = 3;
 									if (E3A1effect == 1) C3FROZEN = true;
 									if (E3A1effect == 4) C3ELEC = 5;
+									if (E3A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A1name;
@@ -2689,6 +2773,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C3BURN = 3;
 									if (E3A2effect == 1) C3FROZEN = true;
 									if (E3A2effect == 4) C3ELEC = 5;
+									if (E3A2effect == 5) C3BLEED = true;
 									Cname = C3NAME;
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2702,6 +2787,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C1BURN = 3;
 									if (E3A2effect == 1) C1FROZEN = true;
 									if (E3A2effect == 4) C1ELEC = 5;
+									if (E3A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2713,6 +2799,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C2BURN = 3;
 									if (E3A2effect == 1) C2FROZEN = true;
 									if (E3A2effect == 4) C2ELEC = 5;
+									if (E3A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2724,6 +2811,7 @@ bool Combat::Update(float dt)
 									if (E3A2effect == 3) C3BURN = 3;
 									if (E3A2effect == 1) C3FROZEN = true;
 									if (E3A2effect == 4) C3ELEC = 5;
+									if (E3A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E3name;
 									Aname = E3A2name;
@@ -2746,6 +2834,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C1BURN = 3;
 									if (E2A1effect == 1) C1FROZEN = true;
 									if (E2A1effect == 4) C1ELEC = 5;
+									if (E2A1effect == 5) C1BLEED = true;
 									Cname = C1NAME;
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2759,6 +2848,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C1BURN = 3;
 									if (E2A1effect == 1) C1FROZEN = true;
 									if (E2A1effect == 4) C1ELEC = 5;
+									if (E2A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2770,6 +2860,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C2BURN = 3;
 									if (E2A1effect == 1) C2FROZEN = true;
 									if (E2A1effect == 4) C2ELEC = 5;
+									if (E2A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2781,6 +2872,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C3BURN = 3;
 									if (E2A1effect == 1) C3FROZEN = true;
 									if (E2A1effect == 4) C3ELEC = 5;
+									if (E2A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2799,6 +2891,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C1BURN = 3;
 									if (E2A2effect == 1) C1FROZEN = true;
 									if (E2A2effect == 4) C1ELEC = 5;
+									if (E2A2effect == 5) C1BLEED = true;
 									Cname = C1NAME;
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2812,6 +2905,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C1BURN = 3;
 									if (E2A2effect == 1) C1FROZEN = true;
 									if (E2A2effect == 4) C1ELEC = 5;
+									if (E2A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2823,6 +2917,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C2BURN = 3;
 									if (E2A2effect == 1) C2FROZEN = true;
 									if (E2A2effect == 4) C2ELEC = 5;
+									if (E2A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2834,6 +2929,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C3BURN = 3;
 									if (E2A2effect == 1) C3FROZEN = true;
 									if (E2A2effect == 4) C3ELEC = 5;
+									if (E2A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2854,6 +2950,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C2BURN = 3;
 									if (E2A1effect == 1) C2FROZEN = true;
 									if (E2A1effect == 4) C2ELEC = 5;
+									if (E2A1effect == 5) C2BLEED = true;
 									Cname = C2NAME;
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2867,6 +2964,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C1BURN = 3;
 									if (E2A1effect == 1) C1FROZEN = true;
 									if (E2A1effect == 4) C1ELEC = 5;
+									if (E2A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2878,6 +2976,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C2BURN = 3;
 									if (E2A1effect == 1) C2FROZEN = true;
 									if (E2A1effect == 4) C2ELEC = 5;
+									if (E2A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2889,6 +2988,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C3BURN = 3;
 									if (E2A1effect == 1) C3FROZEN = true;
 									if (E2A1effect == 4) C3ELEC = 5;
+									if (E2A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2907,6 +3007,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C2BURN = 3;
 									if (E2A2effect == 1) C2FROZEN = true;
 									if (E2A2effect == 4) C2ELEC = 5;
+									if (E2A2effect == 5) C2BLEED = true;
 									Cname = C2NAME;
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2920,6 +3021,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C1BURN = 3;
 									if (E2A2effect == 1) C1FROZEN = true;
 									if (E2A2effect == 4) C1ELEC = 5;
+									if (E2A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2931,6 +3033,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C2BURN = 3;
 									if (E2A2effect == 1) C2FROZEN = true;
 									if (E2A2effect == 4) C2ELEC = 5;
+									if (E2A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2942,6 +3045,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C3BURN = 3;
 									if (E2A2effect == 1) C3FROZEN = true;
 									if (E2A2effect == 4) C3ELEC = 5;
+									if (E2A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A2name;
@@ -2962,6 +3066,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C3BURN = 3;
 									if (E2A1effect == 1) C3FROZEN = true;
 									if (E2A1effect == 4) C3ELEC = 5;
+									if (E2A1effect == 5) C3BLEED = true;
 									Cname = C3NAME;
 									Ename = E2name;
 									Aname = E2A1name;
@@ -2975,6 +3080,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C1BURN = 3;
 									if (E2A1effect == 1) C1FROZEN = true;
 									if (E2A1effect == 4) C1ELEC = 5;
+									if (E2A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2986,6 +3092,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C2BURN = 3;
 									if (E2A1effect == 1) C2FROZEN = true;
 									if (E2A1effect == 4) C2ELEC = 5;
+									if (E2A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -2997,6 +3104,7 @@ bool Combat::Update(float dt)
 									if (E2A1effect == 3) C3BURN = 3;
 									if (E2A1effect == 1) C3FROZEN = true;
 									if (E2A1effect == 4) C3ELEC = 5;
+									if (E2A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A1name;
@@ -3015,6 +3123,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C3BURN = 3;
 									if (E2A2effect == 1) C3FROZEN = true;
 									if (E2A2effect == 4) C3ELEC = 5;
+									if (E2A2effect == 5) C3BLEED = true;
 									Cname = C3NAME;
 									Ename = E2name;
 									Aname = E2A2name;
@@ -3028,6 +3137,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C1BURN = 3;
 									if (E2A2effect == 1) C1FROZEN = true;
 									if (E2A2effect == 4) C1ELEC = 5;
+									if (E2A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3039,6 +3149,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C2BURN = 3;
 									if (E2A2effect == 1) C2FROZEN = true;
 									if (E2A2effect == 4) C2ELEC = 5;
+									if (E2A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3050,6 +3161,7 @@ bool Combat::Update(float dt)
 									if (E2A2effect == 3) C3BURN = 3;
 									if (E2A2effect == 1) C3FROZEN = true;
 									if (E2A2effect == 4) C3ELEC = 5;
+									if (E2A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E2name;
 									Aname = E2A2name;
@@ -3072,6 +3184,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C1BURN = 3;
 									if (E1A1effect == 1) C1FROZEN = true;
 									if (E1A1effect == 4) C1ELEC = 5;
+									if (E1A1effect == 5) C1BLEED = true;
 									Cname = C1NAME;
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3085,6 +3198,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C1BURN = 3;
 									if (E1A1effect == 1) C1FROZEN = true;
 									if (E1A1effect == 4) C1ELEC = 5;
+									if (E1A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3096,6 +3210,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C2BURN = 3;
 									if (E1A1effect == 1) C2FROZEN = true;
 									if (E1A1effect == 4) C2ELEC = 5;
+									if (E1A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3107,6 +3222,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C3BURN = 3;
 									if (E1A1effect == 1) C3FROZEN = true;
 									if (E1A1effect == 4) C3ELEC = 5;
+									if (E1A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3125,6 +3241,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C1BURN = 3;
 									if (E1A2effect == 1) C1FROZEN = true;
 									if (E1A2effect == 4) C1ELEC = 5;
+									if (E1A2effect == 5) C1BLEED = true;
 									Cname = C1NAME;
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3138,6 +3255,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C1BURN = 3;
 									if (E1A2effect == 1) C1FROZEN = true;
 									if (E1A2effect == 4) C1ELEC = 5;
+									if (E1A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3149,6 +3267,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C2BURN = 3;
 									if (E1A2effect == 1) C2FROZEN = true;
 									if (E1A2effect == 4) C2ELEC = 5;
+									if (E1A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3160,6 +3279,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C3BURN = 3;
 									if (E1A2effect == 1) C3FROZEN = true;
 									if (E1A2effect == 4) C3ELEC = 5;
+									if (E1A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3218,6 +3338,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C2BURN = 3;
 									if (E1A1effect == 1) C2FROZEN = true;
 									if (E1A1effect == 4) C2ELEC = 5;
+									if (E1A1effect == 5) C2BLEED = true;
 									Cname = C2NAME;
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3231,6 +3352,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C1BURN = 3;
 									if (E1A1effect == 1) C1FROZEN = true;
 									if (E1A1effect == 4) C1ELEC = 5;
+									if (E1A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3242,6 +3364,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C2BURN = 3;
 									if (E1A1effect == 1) C2FROZEN = true;
 									if (E1A1effect == 4) C2ELEC = 5;
+									if (E1A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3253,6 +3376,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C3BURN = 3;
 									if (E1A1effect == 1) C3FROZEN = true;
 									if (E1A1effect == 4) C3ELEC = 5;
+									if (E1A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3271,6 +3395,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C2BURN = 3;
 									if (E1A2effect == 1) C2FROZEN = true;
 									if (E1A2effect == 4) C2ELEC = 5;
+									if (E1A2effect == 5) C2BLEED = true;
 									Cname = C2NAME;
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3284,6 +3409,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C1BURN = 3;
 									if (E1A2effect == 1) C1FROZEN = true;
 									if (E1A2effect == 4) C1ELEC = 5;
+									if (E1A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3295,6 +3421,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C2BURN = 3;
 									if (E1A2effect == 1) C2FROZEN = true;
 									if (E1A2effect == 4) C2ELEC = 5;
+									if (E1A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3306,6 +3433,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C3BURN = 3;
 									if (E1A2effect == 1) C3FROZEN = true;
 									if (E1A2effect == 4) C3ELEC = 5;
+									if (E1A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3364,6 +3492,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C3BURN = 3;
 									if (E1A1effect == 1) C3FROZEN = true;
 									if (E1A1effect == 4) C3ELEC = 5;
+									if (E1A1effect == 5) C3BLEED = true;
 									Cname = C3NAME;
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3377,6 +3506,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C1BURN = 3;
 									if (E1A1effect == 1) C1FROZEN = true;
 									if (E1A1effect == 4) C1ELEC = 5;
+									if (E1A1effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3388,6 +3518,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C2BURN = 3;
 									if (E1A1effect == 1) C2FROZEN = true;
 									if (E1A1effect == 4) C2ELEC = 5;
+									if (E1A1effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3399,6 +3530,7 @@ bool Combat::Update(float dt)
 									if (E1A1effect == 3) C3BURN = 3;
 									if (E1A1effect == 1) C3FROZEN = true;
 									if (E1A1effect == 4) C3ELEC = 5;
+									if (E1A1effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A1name;
@@ -3417,6 +3549,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C3BURN = 3;
 									if (E1A2effect == 1) C3FROZEN = true;
 									if (E1A2effect == 4) C3ELEC = 5;
+									if (E1A2effect == 5) C3BLEED = true;
 									Cname = C3NAME;
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3430,6 +3563,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C1BURN = 3;
 									if (E1A2effect == 1) C1FROZEN = true;
 									if (E1A2effect == 4) C1ELEC = 5;
+									if (E1A2effect == 5) C1BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3441,6 +3575,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C2BURN = 3;
 									if (E1A2effect == 1) C2FROZEN = true;
 									if (E1A2effect == 4) C2ELEC = 5;
+									if (E1A2effect == 5) C2BLEED = true;
 									block = 1;
 									multiplier1 = 1;
 									multiplier2 = 1;
@@ -3452,6 +3587,7 @@ bool Combat::Update(float dt)
 									if (E1A2effect == 3) C3BURN = 3;
 									if (E1A2effect == 1) C3FROZEN = true;
 									if (E1A2effect == 4) C3ELEC = 5;
+									if (E1A2effect == 5) C3BLEED = true;
 									Cname = "everyone";
 									Ename = E1name;
 									Aname = E1A2name;
@@ -3957,6 +4093,9 @@ void Combat::ExitCombat()
 	E1AttackBuffCheck = false;
 	E1DefenseBuff = 0;
 	E1DefenseBuffCheck = false;
+	C1BLEED = false;
+	C2BLEED = false;
+	C3BLEED = false;
 
 	CleanUp();
 }
@@ -4017,6 +4156,9 @@ void Combat::FinishTurn()
 	FinishedTurnB1 = false;
 	FinishedTurnB2 = false;
 	FinishedTurnB3 = false;
+	FinishedTurnBL1 = false;
+	FinishedTurnBL2 = false;
+	FinishedTurnBL3 = false;
 
 	AttackBuffCheck = false;
 	E1AttackBuffCheck = false;
