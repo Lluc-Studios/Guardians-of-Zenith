@@ -22560,15 +22560,9 @@
   </object>
  </objectgroup>
  <objectgroup id="17" name="Elipse">
-  <object id="209" x="682" y="339.333" width="69.3333" height="71.3333">
-   <ellipse/>
-  </object>
-  <object id="210" x="732.667" y="492.667">
-   <properties>
-    <property name="Type" type="int" value="235"/>
-   </properties>
-   <ellipse/>
-  </object>
+  <properties>
+   <property name="Type" type="int" value="235"/>
+  </properties>
  </objectgroup>
  <objectgroup id="9" name="House_Entry">
   <properties>
