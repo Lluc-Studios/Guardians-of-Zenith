@@ -7,6 +7,9 @@
   <image source="Main Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
  </tileset>
  <layer id="1" name="Water" width="30" height="20">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data encoding="csv">
 68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,
 68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,
@@ -31,6 +34,9 @@
 </data>
  </layer>
  <layer id="2" name="Floor" width="30" height="20">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,276,279,279,252,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,279,279,276,279,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -55,6 +61,9 @@
 </data>
  </layer>
  <layer id="3" name="Edges" width="30" height="20">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,190,0,0,0,0,186,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,214,238,238,238,238,238,238,238,215,0,0,0,0,211,238,238,238,238,238,238,238,212,0,0,0,0,
@@ -79,6 +88,9 @@
 </data>
  </layer>
  <layer id="4" name="Plants" width="30" height="20">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,301,302,303,0,0,0,0,0,
 0,0,0,0,0,301,302,303,0,0,0,0,0,0,0,0,0,0,0,0,0,0,326,327,328,0,0,0,0,0,
@@ -150,12 +162,10 @@
   <object id="86" x="743.522" y="361.287" width="36.5455" height="6.63632"/>
   <object id="87" x="747.34" y="354.833" width="28.5455" height="6.63632"/>
  </objectgroup>
- <objectgroup id="8" name="ElipseCollisions">
-  <properties>
-   <property name="Type" type="int" value="235"/>
-  </properties>
- </objectgroup>
  <objectgroup id="7" name="2room">
+  <properties>
+   <property name="Type" type="int" value="0"/>
+  </properties>
   <object id="41" x="403.749" y="21.5417" width="152.252" height="2.16667"/>
  </objectgroup>
 </map>
