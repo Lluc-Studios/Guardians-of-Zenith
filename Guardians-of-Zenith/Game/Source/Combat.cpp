@@ -650,7 +650,7 @@ bool Combat::Update(float dt)
 						app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
 					}
 					if (E1BOSS == 64) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,66 + E1BOSS,66 + E1BOSS }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,120 + E1BOSS,120 + E1BOSS }, 255, 255, 255, 120);
 					}
 				}
 			}
@@ -1015,6 +1015,22 @@ bool Combat::Update(float dt)
 		if (CurrentEnemies >= 1) {
 			//Draw enemy
 			if (E1dead == false) {
+				if (Turn[0] == 4) {
+					if (E1BOSS == 0) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+					}
+					if (E1BOSS == 64) {
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,120 + E1BOSS,120 + E1BOSS }, 255, 255, 255, 120);
+					}
+				}
+				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
+				//Int to string convert
+				sprintf_s(Aux, "%.0f", E1MHP);
+				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y,64,10 }, 0, 0, 0);
+				HpBarLengthE1 = (E1CHP * 62) / E1MHP;
+				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1,HpBarLengthE1,8 }, 0, 200, 0);
+				EsBarLengthE1 = (E1CES * 60) / E1MES;
+				app->render->DrawRectangle({ app->scene->player->position.x + 117,app->scene->player->position.y + 2,EsBarLengthE1,6 }, 0, 255, 255);
 				//Draw enemy class
 				if (E1class == 1) {
 					E1 = ClassTank;
@@ -1026,22 +1042,6 @@ bool Combat::Update(float dt)
 					E1 = ClassArcher;
 				}
 				app->render->DrawTexture(E1, app->scene->player->position.x + 95, app->scene->player->position.y - 3);
-				if (Turn[0] == 4) {
-					if (E1BOSS == 0) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
-					}
-					if (E1BOSS == 64) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,66 + E1BOSS,66 + E1BOSS }, 255, 255, 255, 120);
-					}
-				}
-				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
-				//Int to string convert
-				sprintf_s(Aux, "%.0f", E1MHP);
-				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y,64,10 }, 0, 0, 0);
-				HpBarLengthE1 = (E1CHP * 62) / E1MHP;
-				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1,HpBarLengthE1,8 }, 0, 200, 0);
-				EsBarLengthE1 = (E1CES * 60) / E1MES;
-				app->render->DrawRectangle({ app->scene->player->position.x + 117,app->scene->player->position.y + 2,EsBarLengthE1,6 }, 0, 255, 255);
 			}
 			if (CurrentEnemies >= 2) {
 				//Draw enemy
@@ -1066,10 +1066,30 @@ bool Combat::Update(float dt)
 					app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
 					HpBarLengthE2 = (E2CHP * 62) / E2MHP;
 					app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y - 59,HpBarLengthE2,8 }, 0, 200, 0);
+					//Draw enemy class
+					if (E2class == 1) {
+						E2 = ClassTank;
+					}
+					if (E2class == 2) {
+						E2 = ClassMage;
+					}
+					if (E2class == 3) {
+						E2 = ClassArcher;
+					}
+					app->render->DrawTexture(E2, app->scene->player->position.x + 180, app->scene->player->position.y - 63);
 				}
 				if (CurrentEnemies == 3) {
 					//Draw enemy
 					if (E3dead == false) {
+						if (Turn[0] == 6) {
+							app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
+						}
+						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 - E3BOSS, app->scene->player->position.y - 10 - E3BOSS);
+						//Int to string convert
+						sprintf_s(Aux, "%.0f", E3MHP);
+						app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
+						HpBarLengthE3 = (E3CHP * 62) / E3MHP;
+						app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
 						//Draw enemy class
 						if (E3class == 1) {
 							E3 = ClassTank;
@@ -1081,15 +1101,6 @@ bool Combat::Update(float dt)
 							E3 = ClassArcher;
 						}
 						app->render->DrawTexture(E3, app->scene->player->position.x + 180, app->scene->player->position.y + 57);
-						if (Turn[0] == 6) {
-							app->render->DrawRectangle({ app->scene->player->position.x + 199 , app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
-						}
-						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 - E3BOSS, app->scene->player->position.y - 10 - E3BOSS);
-						//Int to string convert
-						sprintf_s(Aux, "%.0f", E3MHP);
-						app->render->DrawRectangle({ app->scene->player->position.x + 200,app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
-						HpBarLengthE3 = (E3CHP * 62) / E3MHP;
-						app->render->DrawRectangle({ app->scene->player->position.x + 201,app->scene->player->position.y + 61,HpBarLengthE3,8 }, 0, 200, 0);
 					}
 				}
 			}
