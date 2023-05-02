@@ -539,6 +539,9 @@ void House::CreateColliders(ColDataH c) {
     else if (c.type == 4) {
         collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)-600, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
     }
+    else if (c.type == 235) {
+        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2) - 800, c.width, bodyType::STATIC);
+    }
     else {
         collider1 = app->physics->CreateRectangle((c.x + c.width / 2)-600, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
     }

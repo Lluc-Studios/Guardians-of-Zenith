@@ -109,6 +109,7 @@ PhysBody* Physics::CreateCircle(int x, int y, int radious, bodyType type)
 	b2FixtureDef fixture;
 	fixture.shape = &circle;
 	fixture.density = 1.0f;
+	fixture.isSensor = true;
 	b->ResetMassData();
 
 	b->CreateFixture(&fixture);
