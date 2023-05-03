@@ -18,6 +18,8 @@ public:
 	bool Draw(Render* render);
 
 	int mouseX, mouseY;
+	int i = 0;
+	int j = 0;
 };
 
 #endif // __GUIBUTTON_H__

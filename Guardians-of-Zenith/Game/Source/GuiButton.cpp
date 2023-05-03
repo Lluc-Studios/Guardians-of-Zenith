@@ -59,25 +59,62 @@ bool GuiButton::Draw(Render* render)
 
 	case GuiControlState::DISABLED:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 200, 200, 200, 0, true, false);
+		if (id == 1)
+		{
+			i = 10;
+			j = 250;
+		}
+		if (id == 0)
+		{
+			i = -15;
+		}
+		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 200, 200, 200, 255, true, false);
 
 	} break;
 
 	case GuiControlState::NORMAL:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 0, 128, 255, 0, true, false);
+		if (id == 1)
+		{
+			i = 10;
+			j = bounds.w / 2;
+		}
+		if (id == 0)
+		{
+			i = -15;
+			j = bounds.w / 2;
+		}
+		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 128, 255, 255, true, false);
 
 	}	break;
 
 	case GuiControlState::FOCUSED:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 255, 0, 255, 0, true, false);
+		if (id == 1)
+		{
+			i = 10;
+			j = 250;
+		}
+		if (id == 0)
+		{
+			i = -15;
+		}
+		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 255, 0, 255, 255, true, false);
 
 	} break;
 
 	case GuiControlState::PRESSED:
 	{
-		render->DrawRectangle({ bounds.x, bounds.y + 125, bounds.w, bounds.h + 25 }, 0, 255, 0, 0, true, false);
+		if (id == 1)
+		{
+			i = 10;
+			j = 250;
+		}
+		if (id == 0)
+		{
+			i = -15;
+		}
+		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 255, 0, 255, true, false);
 
 	} break;
 
