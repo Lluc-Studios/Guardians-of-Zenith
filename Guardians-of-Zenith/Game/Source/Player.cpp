@@ -115,7 +115,7 @@ bool Player::Start() {
 
 
 
-bool Player::Update()
+bool Player::Update(float dt)
 {
 	//Characters level up
 	if (laurea.exp >= laurea.EXPneeded && laurea.lvl <= 20) {
