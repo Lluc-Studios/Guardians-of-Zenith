@@ -125,7 +125,7 @@ bool MainMenu::Update(float dt)
 	}
 	//Condicional para dibujar los ajustes cuando se seleccionan las 'opciones'
 	if (options == true) {
-		Options();
+		Options(0,0);
 	}
 	//Funcion para detectar sobre que boton esta el ratón
 	if (options == false) {
@@ -217,10 +217,13 @@ bool MainMenu::CleanUp()
 	return true;
 }
 
-void MainMenu::Options()
+void MainMenu::Options(int posx, int posy)
 {
+	// Oscurecer todo el fondo
+	app->render->DrawRectangle({ 0,0,1280,720 }, 0, 0, 0, 80);
+
 	// UI opciones fondo
-	app->render->DrawRectangle({ 640 / 2 - 96, 360 / 2 - 112, 96 * 2, 128 * 2 }, 0, 0, 0, 180);
+	app->render->DrawRectangle({ posx + 640 / 2 - 96, posy + 360 / 2 - 112, 96 * 2, 128 * 2 }, 0, 0, 0, 180);
 
 	// posición ratón
 	int x, y;
@@ -231,27 +234,31 @@ void MainMenu::Options()
 	app->render->DrawText(640 / 2 - 32, 95 * 2, WF, "Fullscreen", 16);
 	app->render->DrawText(640 / 2 - 24, 120 * 2, WF, "Vsync", 16);
 	app->render->DrawText(640 / 2 - 16, 148 * 2, GF, "Back", 16);
-	app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
-	app->render->DrawRectangle({ 6 + MX * app->ScalingMultiplier,56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
-	app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
-	app->render->DrawRectangle({ 6 + FX * app->ScalingMultiplier,81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
-	app->render->DrawRectangle({ 6 + 152 * app->ScalingMultiplier,104 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB, RGB, RGB);
-	app->render->DrawRectangle({ 6 + 152 * app->ScalingMultiplier,130 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB1, RGB1, RGB1);
-	app->render->DrawRectangle({ 6 + 153 * app->ScalingMultiplier,105 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
-	app->render->DrawRectangle({ 6 + 153 * app->ScalingMultiplier,131 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
-	app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,106 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
-	app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,132 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
+	app->render->DrawRectangle({ posx + 6 + 125 * app->ScalingMultiplier, posy + 58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ posx + 6 + MX * app->ScalingMultiplier, posy + 56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ posx + 6 + 125 * app->ScalingMultiplier, posy + 83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ posx + 6 + FX * app->ScalingMultiplier, posy + 81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 150, 150, 150);
+	app->render->DrawRectangle({ posx + 6 + 152 * app->ScalingMultiplier, posy + 104 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB, RGB, RGB);
+	app->render->DrawRectangle({ posx + 6 + 152 * app->ScalingMultiplier, posy + 130 * app->ScalingMultiplier,10 * app->ScalingMultiplier,10 * app->ScalingMultiplier }, RGB1, RGB1, RGB1);
+	app->render->DrawRectangle({ posx + 6 + 153 * app->ScalingMultiplier, posy + 105 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
+	app->render->DrawRectangle({ posx + 6 + 153 * app->ScalingMultiplier, posy + 131 * app->ScalingMultiplier,8 * app->ScalingMultiplier,8 * app->ScalingMultiplier }, 0, 0, 0);
+	app->render->DrawRectangle({ posx + 6 + 154 * app->ScalingMultiplier, posy + 106 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
+	app->render->DrawRectangle({ posx + 6 + 154 * app->ScalingMultiplier, posy + 132 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 0, 200, 0);
 	//Cuadrados rojos
 	if (FS == false) {
-		app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,106 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
+		app->render->DrawRectangle({ posx + 6 + 154 * app->ScalingMultiplier, posy + 106 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
 	}
 	if (VS == false) {
-		app->render->DrawRectangle({ 6 + 154 * app->ScalingMultiplier,132 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
+		app->scene->player->limitFPS = false;
+		app->render->DrawRectangle({ posx + 6 + 154 * app->ScalingMultiplier, posy + 132 * app->ScalingMultiplier,6 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 200, 0, 0);
 	}
+	else
+		app->scene->player->limitFPS = true;
+
 	//Funciones para detectar el ratón
 	if (x >= MX * app->ScalingMultiplier && x <= (MX * app->ScalingMultiplier + 6) && y >= 56 * app->ScalingMultiplier && y <= 62 * app->ScalingMultiplier) {
-		app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
-		app->render->DrawRectangle({ 6 + MX * app->ScalingMultiplier,56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
+		app->render->DrawRectangle({ posx + 6 + 125 * app->ScalingMultiplier, posy + 58 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
+		app->render->DrawRectangle({ posx + 6 + MX * app->ScalingMultiplier, posy + 56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
 		if (option == SELECTED::NONE) {
 			option = SELECTED::MUSIC;
 			app->audio->PlayFxWithVolume(change, 0, 70);
@@ -268,8 +275,8 @@ void MainMenu::Options()
 		}
 	}
 	else if (x >= FX * app->ScalingMultiplier && x <= (FX * app->ScalingMultiplier + 6) && y >= 81 * app->ScalingMultiplier && y <= 87 * app->ScalingMultiplier) {
-		app->render->DrawRectangle({ 6 + 125 * app->ScalingMultiplier,83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
-		app->render->DrawRectangle({ 6 + FX * app->ScalingMultiplier,81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
+		app->render->DrawRectangle({ posx + 6 + 125 * app->ScalingMultiplier, posy + 83 * app->ScalingMultiplier,64 * app->ScalingMultiplier,2 * app->ScalingMultiplier }, 255, 255, 255);
+		app->render->DrawRectangle({ posx + 6 + FX * app->ScalingMultiplier, posy + 81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
 		if (option == SELECTED::NONE) {
 			option = SELECTED::FX;
 			app->audio->PlayFxWithVolume(change, 0, 70);
@@ -318,6 +325,8 @@ void MainMenu::Options()
 		}
 		if (option == SELECTED::BACK && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
 			options = false;
+			app->scene->options = false;
+			app->scene->option = Scene::SELECTED::NONE;
 		}
 	}
 	else {

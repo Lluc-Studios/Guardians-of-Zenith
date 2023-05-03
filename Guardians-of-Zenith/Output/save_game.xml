@@ -8,10 +8,10 @@
 	<:anonymous />
 	<scene />
 	<entitymanager>
-		<player_stats position_x="1074" position_y="362" state="0" />
-		<laurea_stats laurea_CHP="302" laurea_CMP="50" laurea_LVL="1" laurea_EXP="35" />
-		<lapis_stats lapis_CHP="194.444458" lapis_CMP="75" lapis_LVL="1" lapis_EXP="35" />
-		<lucca_stats lucca_CHP="500" lucca_CMP="250" lucca_LVL="1" lucca_EXP="0" />
+		<player_stats position_x="528" position_y="332" state="0" />
+		<laurea_stats laurea_CHP="350" laurea_CMP="50" laurea_LVL="1" laurea_EXP="0" />
+		<lapis_stats lapis_CHP="250" lapis_CMP="100" lapis_LVL="1" lapis_EXP="0" />
+		<lucca_stats lucca_CHP="200" lucca_CMP="115" lucca_LVL="1" lucca_EXP="0" />
 	</entitymanager>
 	<Map />
 	<Tavern />
@@ -28,6 +28,6 @@
 	<dialogue />
 	<guiManager />
 	<renderer>
-		<camera x="-1568" y="-364" />
+		<camera x="-476" y="-304" />
 	</renderer>
 </save_state>

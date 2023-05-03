@@ -35,7 +35,7 @@ public:
 	bool CleanUp();
 
 	// Options
-	void Options();
+	void Options(int x, int y);
 
 public:
 	enum class SELECTED {
