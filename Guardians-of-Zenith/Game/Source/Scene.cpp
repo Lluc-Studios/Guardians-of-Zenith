@@ -11,6 +11,7 @@
 #include "MainMenu.h"
 #include "Intro.h"
 #include "Enemy.h"
+#include "Combat.h"
 #include "Pathfinding.h"
 #include "Tavern.h"
 #include "Blacksmith.h"
@@ -367,7 +368,9 @@ bool Scene::PostUpdate()
 	bool ret = true;
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		isPaused = !isPaused;
+		if(!app->combat->InCombat)
+			isPaused = !isPaused;
+
 	if (app->input->controllers.Start != 0 && !Start_pressed)
 	{
 		isPaused = !isPaused;

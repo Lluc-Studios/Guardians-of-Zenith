@@ -36,7 +36,7 @@ bool Window::Awake(pugi::xml_node& config)
 		// Create window
 		// L01: DONE 6: Load all required configurations from config.xml
 		// Tip: get the name of the child and the attribute value
-		Uint32 flags = SDL_WINDOW_SHOWN;
+
 		fullscreen = config.child("fullscreen").attribute("value").as_bool(); // get from config
 		borderless = config.child("bordeless").attribute("value").as_bool(); // get from config
 		resizable = config.child("resizable").attribute("value").as_bool(); // get from config
@@ -101,4 +101,12 @@ void Window::GetWindowSize(uint& width, uint& height) const
 uint Window::GetScale() const
 {
 	return scale;
+}
+
+bool Window::Fullscreen()
+{
+	(!fullscreen) ? flags = SDL_WINDOW_SHOWN : flags = SDL_WINDOW_FULLSCREEN;
+
+	SDL_SetWindowFullscreen(window, flags);
+	return fullscreen;
 }

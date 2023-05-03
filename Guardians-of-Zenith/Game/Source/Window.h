@@ -2,6 +2,7 @@
 #define __WINDOW_H__
 
 #include "Module.h"
+#include "SDL/include/SDL.h"
 
 struct SDL_Window;
 struct SDL_Surface;
@@ -30,6 +31,8 @@ public:
 	// Retrieve window scale
 	uint GetScale() const;
 
+	bool Fullscreen();
+
 public:
 	// The window we'll be rendering to
 	SDL_Window* window;
@@ -42,7 +45,10 @@ public:
 	bool resizable;
 	bool fullscreen_window;
 
+	Uint32 flags = SDL_WINDOW_SHOWN;
 private:
+
+
 	SString title;
 	uint width;
 	uint height;

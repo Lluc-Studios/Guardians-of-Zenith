@@ -98,6 +98,7 @@ bool Combat::Update(float dt)
 	}
 
 	if (InCombat == true) {
+
 		if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
 			GodMode = !GodMode;
 		}

@@ -77,6 +77,8 @@ public:
 
 	bool GodMode = false;
 
+	bool InCombat = false;
+
 	COMBATMENU option = COMBATMENU::ATTACK;
 
 	int AttackSelected = 0;
@@ -322,8 +324,6 @@ private:
 	SDL_Color GF = { 200, 200, 200 };
 	SDL_Color YF = { 255, 255, 0};
 	SDL_Color RF = { 255, 0, 0 };
-
-	bool InCombat = false;
 
 	int CurrentCharacters = 0, CurrentEnemies = 0;
 
