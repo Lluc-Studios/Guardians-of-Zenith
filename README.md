@@ -3,10 +3,8 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 ## Media
 ![Town](https://user-images.githubusercontent.com/99950357/233486706-97faa5a2-f088-4c95-8cc4-85acd46a7afd.PNG)
+
 ## Controls
-
-## Features
-
 ### Keyboard & mouse
 **In map:**
 - WASD: Move
@@ -22,6 +20,9 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 ### Gamepad
 
+## Features
+
+
 ## Debug
 - F1: Skip intro and main menu
 - F2: Show collisions
@@ -35,41 +36,41 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - Team Lead, Management
 - Github account: [Seregero00](https://github.com/seregero00)
 
+**Enric Arxer Cortés**
+- Art, UI
+- Github account: [Luxary-92](https://github.com/Luxary-92)
+
 **Iván Bermúdez Sagra**
 - Management, Design
 - Github account: [IvanBSupc](https://github.com/IvanBSupc)
-
-**Joan Giol Pozo**
-- Design, Code
-- Github account: [GHOSTVCL](https://github.com/GHOSTVCL)
-
-**Marc Escandell Alonso**
-- Design, Audio
-- Github account: [MrMonkey420](https://github.com/MrMonkey420)
-
-**Adrian Ramirez Perez**
-- Design, UI
-- Github account: [AdriRamirez](https://github.com/AdriRamirez)
 
 **Nixon Correa Albarracín**
 - Code, QA
 - Github account: [Nixonbit3](https://github.com/Nixonbit3)
 
+**Marc Escandell Alonso**
+- Design, Audio
+- Github account: [MrMonkey420](https://github.com/MrMonkey420)
+
 **Lluc Estruch Andreu**
 - Code, QA
 - Github account: [Llucaieaie](https://github.com/Llucaieaie)
 
-**Maksym Populan**
-- Code, UI
-- Github account: [Maksym203](https://github.com/Maksym203)
-
-**Enric Arxer Cortés**
-- Art, UI
-- Github account: [Luxary-92](https://github.com/Luxary-92)
+**Joan Giol Pozo**
+- Design, Code
+- Github account: [GHOSTVCL](https://github.com/GHOSTVCL)
 
 **Daniel Mañas Calvo**
 - Art, Audio
 - Github account: [Hacienda69](https://github.com/Hacienda69)
+
+**Maksym Polupan**
+- Code, UI
+- Github account: [Maksym203](https://github.com/Maksym203)
+
+**Adrian Ramirez Perez**
+- Design, UI
+- Github account: [AdriRamirez](https://github.com/AdriRamirez)
 
 ## Wiki Index sections
 
