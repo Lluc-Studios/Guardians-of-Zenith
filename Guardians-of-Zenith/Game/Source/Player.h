@@ -114,6 +114,14 @@ public:
 	bool isBill = false;
 	bool NPC2 = false;
 	bool NPC = false;
+	bool buttonE = false;
+
+	bool NPC_01 = false;
+	bool NPC_02 = false;
+	bool NPC_03 = false;
+	bool NPC_04 = false;
+	iPoint copypos;
+
 
 	bool DeathAnimationFinished = false;
 
@@ -187,6 +195,7 @@ private:
 	SDL_Texture* LFL;
 	SDL_Texture* LFE;
 	SDL_Texture* Dialogue;
+	SDL_Texture* PressE;
 
 	SDL_Rect rectDown = { 0,0,32,32 };
 	SDL_Rect rectUp = { 32,0,32,32 };

@@ -75,6 +75,7 @@ bool Player::Start() {
 	//LFL = app->tex->Load("Assets/Textures/LOW.png");
 	//LFE = app->tex->Load("Assets/Textures/EMPTY.png");
 	Dialogue = app->tex->Load("Assets/Textures/globotexto2.png");
+	PressE = app->tex->Load("Assets/Textures/Objects/Interact_Botton.png");
 
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
@@ -299,6 +300,47 @@ bool Player::Update(float dt)
 		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
 	}
 
+	//NPCs
+	if (NPC_01 && position == copypos)
+	{
+		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+
+		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+		{
+			isBill = true;
+		}
+	}
+	if (NPC_02 && position == copypos)
+	{
+		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+
+		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+		{
+			isBill = true;
+			NPC2 = true;
+		}
+	}
+	if (NPC_03 && position == copypos)
+	{
+		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+
+		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+		{
+			isBill = true;
+			NPC = true;
+		}
+	}
+	if (NPC_04 && position == copypos)
+	{
+		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+		
+		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+		{
+			isBill = true;
+			isDialogue = true;
+		}
+	}
+
 	//Lapis
 	if (isDialogue && app->dialogueSystem->activeTree == nullptr)
 	{
@@ -312,7 +354,7 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		{
 			isDialogue = false;
 		}
@@ -332,7 +374,7 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		{
 			isBill = false;
 		}
@@ -353,7 +395,7 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		{
 			NPC2 = false;
 		}
@@ -374,7 +416,7 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		{
 			NPC = false;
 		}
@@ -569,20 +611,31 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::NPC1:
 		//Collision in tabern
-		isBill = true;		
+		//Draw E
+		copypos = position;
+		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+
+		NPC_01 = true;
 		break;
 	case ColliderType::NPC2:
 		//Collision in blacksmith
-		NPC2 = true;
+		copypos = position;
+		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+
+		NPC_02 = true;
 		break;
 	case ColliderType::NPC3:
 		//Collision in town
-		NPC = true;
+		copypos = position;
+		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+
+		NPC_03 = true;
 		break;
 	case ColliderType::LAPIS:
 		//Collision in town
-		LOG("A");
-		isDialogue = true;
+		copypos = position;
+		
+		NPC_04 = true;
 		break;
 	}
 		
