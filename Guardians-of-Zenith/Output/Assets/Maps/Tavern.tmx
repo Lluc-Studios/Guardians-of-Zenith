@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="24">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="24">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1295,7 +1295,7 @@
  </layer>
  <objectgroup id="6" name="Collisions">
   <object id="1" x="320.727" y="89.303" width="166.167" height="62.6667"/>
-  <object id="3" x="25.2726" y="24.8674" width="6.57609" height="326.542"/>
+  <object id="3" x="25.2726" y="84.8674" width="6.57609" height="266.542"/>
   <object id="4" x="25.0453" y="352.083" width="134.872" height="7.042">
    <properties>
     <property name="Type" type="int" value="9"/>
@@ -1305,9 +1305,9 @@
   <object id="6" x="289.163" y="288.278" width="61.917" height="58.2917"/>
   <object id="7" x="64.3475" y="255.945" width="61.917" height="58.2917"/>
   <object id="8" x="448.962" y="151.792" width="37.9511" height="207.042"/>
-  <object id="11" x="31.6665" y="25" width="294.216" height="63.6667"/>
+  <object id="11" x="31.6665" y="85" width="294.216" height="3.6667"/>
   <object id="13" x="288.255" y="192.499" width="61.917" height="58.2917"/>
-  <object id="14" x="31.0415" y="159.604" width="211.97" height="22.6196"/>
+  <object id="14" x="31.0415" y="159.604" width="211.97" height="22.1196"/>
   <object id="16" x="287.838" y="87.0806" width="32.167" height="40.2917"/>
   <object id="17" x="256.159" y="352.083" width="192.188" height="7.2295">
    <properties>
@@ -1346,10 +1346,10 @@
   </properties>
   <object id="15" x="191.941" y="399.96" width="31.6512" height="5.193"/>
  </objectgroup>
- <objectgroup id="9" name="NPC1" visible="0">
+ <objectgroup id="9" name="NPC1">
   <properties>
    <property name="Type" type="int" value="22"/>
   </properties>
-  <object id="22" x="127" y="167" width="65" height="16.3333"/>
+  <object id="22" x="128" y="171.25" width="65" height="14.0833"/>
  </objectgroup>
 </map>

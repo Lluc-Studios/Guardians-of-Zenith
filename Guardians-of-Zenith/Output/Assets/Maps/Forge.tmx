@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="23">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="31">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -999,11 +999,11 @@
   </data>
  </layer>
  <objectgroup id="6" name="Collisions">
-  <object id="1" x="87.1349" y="87.0393" width="72.6179" height="71.9948"/>
-  <object id="2" x="320.129" y="86.9609" width="104.987" height="71.9948"/>
-  <object id="3" x="159.524" y="128.169" width="160.993" height="25.6198"/>
-  <object id="4" x="54.9964" y="119.025" width="41.1989" height="71.7221"/>
-  <object id="5" x="416.055" y="150.912" width="73.0069" height="73.0857"/>
+  <object id="1" x="96.6349" y="127.539" width="63.1179" height="32.8584"/>
+  <object id="2" x="320.129" y="127.711" width="104.987" height="31.2448"/>
+  <object id="3" x="159.524" y="128.169" width="160.993" height="21.2561"/>
+  <object id="4" x="54.9964" y="159.275" width="41.1989" height="31.4721"/>
+  <object id="5" x="416.055" y="158.912" width="73.0069" height="65.0857"/>
   <object id="6" x="55.0066" y="190.503" width="9.01708" height="138.503"/>
   <object id="7" x="480.023" y="223.873" width="9.01708" height="73.1197"/>
   <object id="8" x="448.023" y="288.01" width="32.0483" height="8.98306"/>
@@ -1014,8 +1014,16 @@
   <object id="13" x="183.011" y="328.91" width="8.97256" height="32.1075"/>
   <object id="14" x="255.987" y="352.016" width="32.0309" height="31.7028"/>
   <object id="15" x="191.953" y="352.039" width="32.0309" height="31.7028"/>
-  <object id="21" x="454.158" y="233.19" width="26.0171" height="31.0364"/>
+  <object id="21" x="454.158" y="233.19" width="19.7444" height="31.9455"/>
   <object id="22" x="223.985" y="375.421" width="32.0309" height="8.43007"/>
+  <object id="23" x="331.008" y="159.012" width="10.0277" height="9.89723"/>
+  <object id="24" x="394.986" y="159.415" width="10.0277" height="9.89723"/>
+  <object id="25" x="75.168" y="191.051" width="10.0277" height="9.89723"/>
+  <object id="26" x="96.6225" y="160.597" width="8.39134" height="8.71541"/>
+  <object id="27" x="118.713" y="160.688" width="8.39134" height="8.71545"/>
+  <object id="28" x="128.895" y="160.688" width="8.39134" height="8.71545"/>
+  <object id="29" x="150.713" y="160.506" width="8.39134" height="8.98817"/>
+  <object id="30" x="384" y="164.125" width="14.875" height="7.875"/>
  </objectgroup>
  <objectgroup id="7" name="ExitForge">
   <properties>

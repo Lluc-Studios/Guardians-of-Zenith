@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="76">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="19" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="80">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1884,12 +1884,10 @@
   </data>
  </layer>
  <objectgroup id="14" name="Collisions">
-  <object id="44" x="25.3333" y="25.4167" width="109.333" height="60.5833"/>
-  <object id="45" x="217.667" y="25.0417" width="109.333" height="70.25"/>
-  <object id="46" x="128" y="57.875" width="95.6663" height="68.9167"/>
-  <object id="47" x="320.106" y="57.88" width="95.6663" height="68.9167"/>
-  <object id="48" x="410.833" y="26.375" width="171.333" height="94.0833"/>
-  <object id="49" x="447.333" y="192.292" width="97.208" height="26.75"/>
+  <object id="46" x="128" y="90.9659" width="95.6663" height="35.8258"/>
+  <object id="47" x="320.106" y="90.2436" width="95.6663" height="36.5531"/>
+  <object id="48" x="415.56" y="90.9205" width="166.606" height="26.356"/>
+  <object id="49" x="447.333" y="192.292" width="97.083" height="25.875"/>
   <object id="50" x="25.0523" y="80.2083" width="6.84152" height="150.708"/>
   <object id="51" x="31.7042" y="224.084" width="99.4665" height="6.833"/>
   <object id="52" x="128.267" y="192.083" width="95.5915" height="64"/>
@@ -1900,10 +1898,10 @@
   <object id="57" x="223.761" y="352" width="32.2174" height="31.833"/>
   <object id="58" x="408.934" y="256" width="174.053" height="6.99936"/>
   <object id="59" x="288.083" y="351.871" width="32.5" height="31.833"/>
-  <object id="60" x="576.182" y="116.5" width="6.928" height="140.363"/>
-  <object id="61" x="32" y="90.5" width="32" height="15"/>
-  <object id="62" x="96" y="90.5" width="32" height="15"/>
-  <object id="64" x="255.424" y="90.5" width="33.0909" height="15"/>
+  <object id="60" x="576.182" y="113.955" width="6.928" height="142.908"/>
+  <object id="61" x="32" y="90.5" width="32" height="14.625"/>
+  <object id="62" x="96" y="90.5" width="32" height="14.375"/>
+  <object id="64" x="255.862" y="90.5" width="31.9659" height="14.4375"/>
   <object id="65" x="63.5455" y="214" width="32.9091" height="10"/>
   <object id="66" x="159.5" y="182" width="33" height="10"/>
   <object id="67" x="351.273" y="182" width="33.4545" height="10"/>
@@ -1912,8 +1910,11 @@
   <object id="71" x="341.28" y="256" width="10.6219" height="32"/>
   <object id="72" x="255.891" y="377.174" width="32.2174" height="6.56027"/>
   <object id="73" x="457.396" y="164.958" width="78.208" height="11.4167"/>
-  <object id="74" x="457.563" y="231.625" width="78.208" height="11.4167"/>
+  <object id="74" x="457.563" y="232.625" width="78.208" height="11.4167"/>
   <object id="75" x="31.5582" y="160" width="8.1335" height="32"/>
+  <object id="76" x="128" y="126.818" width="31.9091" height="3.72727"/>
+  <object id="77" x="223.625" y="90.5" width="32.125" height="9.0625"/>
+  <object id="79" x="288" y="90.375" width="32.3125" height="9.3125"/>
  </objectgroup>
  <objectgroup id="12" name="ExitHouse" visible="0">
   <properties>
@@ -1921,10 +1922,10 @@
   </properties>
   <object id="40" x="256.229" y="367.55" width="31.792" height="5.19"/>
  </objectgroup>
- <objectgroup id="13" name="Bed" visible="0">
+ <objectgroup id="13" name="Bed">
   <properties>
    <property name="Type" type="int" value="20"/>
   </properties>
-  <object id="43" x="63.4847" y="93.3598" width="32.1158" height="34.3564"/>
+  <object id="43" x="64.2347" y="93.3598" width="31.3658" height="34.3564"/>
  </objectgroup>
 </map>

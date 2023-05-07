@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="129">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="129">
  <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="500" columns="25">
   <image source="Main Tilesets/Tileset_Lake.png" width="800" height="640"/>
  </tileset>
@@ -286,8 +286,8 @@
 </data>
  </layer>
  <objectgroup id="7" name="Collisions">
-  <object id="1" x="0" y="0" width="576" height="62"/>
-  <object id="2" x="704.167" y="0" width="576" height="62"/>
+  <object id="1" x="0" y="51" width="576" height="11"/>
+  <object id="2" x="704.167" y="50" width="576" height="12"/>
   <object id="4" x="462.333" y="62.3333" width="99" height="129"/>
   <object id="5" x="717.792" y="62" width="100" height="129.5"/>
   <object id="6" x="602.667" y="232.312" width="79.6667" height="172.72"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="14">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="14">
  <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="500" columns="25">
   <image source="Main Tilesets/Tileset_Lake.png" width="800" height="640"/>
  </tileset>
@@ -112,7 +112,7 @@
 </data>
  </layer>
  <objectgroup id="5" name="Collisions">
-  <object id="1" x="0" y="508.333" width="227" height="133.333"/>
+  <object id="1" x="29.809" y="508.333" width="197.191" height="73.7149"/>
   <object id="2" x="27.3333" y="316.667" width="9" height="193.333"/>
   <object id="3" x="35.5" y="163.879" width="63.5" height="161.788"/>
   <object id="4" x="92.0909" y="98.788" width="71" height="65.3785"/>
@@ -121,7 +121,7 @@
   <object id="8" x="604.125" y="163.186" width="4.5" height="125.42"/>
   <object id="9" x="540.47" y="284.106" width="71" height="67.9992"/>
   <object id="10" x="572.25" y="352.561" width="6.25" height="170.628"/>
-  <object id="11" x="412.5" y="507.516" width="160" height="133.211"/>
+  <object id="11" x="412.5" y="507.516" width="160" height="75.0834"/>
  </objectgroup>
  <objectgroup id="6" name="2room">
   <properties>
