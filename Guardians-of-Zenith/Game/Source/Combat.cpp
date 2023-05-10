@@ -50,6 +50,8 @@ bool Combat::Start()
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess_Combat.png");
 	Enemy4 = app->tex->Load("Assets/Entities/Enemies/PoisonFrog_Combat.png");
 	Enemy5 = app->tex->Load("Assets/Entities/Enemies/FireFrog_Combat.png");
+	Enemy6 = app->tex->Load("Assets/Entities/Enemies/SlimeFrogElectric_Combat.png");
+	Enemy7 = app->tex->Load("Assets/Entities/Enemies/SlimeFrogDemonic_Combat.png");
 	EnemyUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownEnemy.png");
 	EnemyBossUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownBoss.png");
 	E1asset = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
@@ -3999,7 +4001,7 @@ void Combat::StartCombat()
 		LoadEnemy(app->entityManager->naiadongoddess);
 		LoadEnemy(app->entityManager->waterlilyfish);
 		//LoadEnemy(app->entityManager->poisonSlimeFrog);
-		LoadEnemy(app->entityManager->pixie);
+		LoadEnemy(app->entityManager->electricSlimeFrog);
 		//LoadEnemy(app->entityManager->dryadon); 
 		//LoadEnemy(app->entityManager->deadLifeMantis);
 		//LoadEnemy(app->entityManager->mutantPlant);
@@ -4377,6 +4379,12 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 5) {
 			E3asset = Enemy5;
 		}
+		if (enemy.asset == 6) {
+			E3asset = Enemy6;
+		}
+		if (enemy.asset == 7) {
+			E3asset = Enemy7;
+		}
 	}
 	if (CurrentEnemies == 1) {
 		E2speed = enemy.spe;
@@ -4437,6 +4445,12 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 5) {
 			E2asset = Enemy5;
 		}
+		if (enemy.asset == 6) {
+			E2asset = Enemy6;
+		}
+		if (enemy.asset == 7) {
+			E2asset = Enemy7;
+		}
 	}
 	if (CurrentEnemies == 0) {
 		E1speed = enemy.spe;
@@ -4496,6 +4510,12 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		}
 		if (enemy.asset == 5) {
 			E1asset = Enemy5;
+		}
+		if (enemy.asset == 6) {
+			E1asset = Enemy6;
+		}
+		if (enemy.asset == 7) {
+			E1asset = Enemy7;
 		}
 	}
 }
