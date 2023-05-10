@@ -146,6 +146,8 @@ public:
 	bool tp10 = false;
 	bool tp11 = false;
 	bool tp12 = false;
+	bool tp13 = false;
+	bool tp14 = false;
 
 	bool tpHouse = false;
 

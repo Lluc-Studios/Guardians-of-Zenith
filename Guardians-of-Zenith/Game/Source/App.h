@@ -26,6 +26,7 @@ class House;
 class LakeDungeon;
 class ForestDungeon;
 class CaveDungeon;
+class Monolith;
 class Intro;
 class Menu;
 class ModuleFonts;
@@ -112,6 +113,7 @@ public:
 	LakeDungeon* lakedungeon;
 	ForestDungeon* forestdungeon;
 	CaveDungeon* cavedungeon;
+	Monolith* monolith;
 	Intro* intro;
 	Menu* menu;
 	ModuleFonts* font;

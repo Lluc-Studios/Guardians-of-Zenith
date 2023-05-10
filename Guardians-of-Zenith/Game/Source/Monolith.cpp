@@ -2,7 +2,7 @@
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
-#include "Map.h"
+#include "Monolith.h"
 #include "Physics.h"
 #include "Window.h"
 #include "Pathfinding.h"
@@ -15,22 +15,22 @@
 #include "SDL_image/include/SDL_image.h"
 
 
-Map::Map() : Module(), mapLoaded(false)
+Monolith::Monolith() : Module(), mapLoaded(false)
 {
-    name.Create("Map");
+    name.Create("Monolith");
 }
 
 // Destructor
-Map::~Map()
+Monolith::~Monolith()
 {}
 
 // Called before render is available
-bool Map::Awake(pugi::xml_node& config)
+bool Monolith::Awake(pugi::xml_node& config)
 {
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Town.tmx";
+    mapFileName = "Assets/Maps/Zona Monolitos v2.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path
@@ -44,12 +44,12 @@ bool Map::Awake(pugi::xml_node& config)
     return ret;
 }
 
-void Map::Draw()
+void Monolith::Draw()
 {
     if(mapLoaded == false)
         return;
 
-    ListItem<ImageLayer*>* imageLayerItem;
+    ListItem<ImageLayerM*>* imageLayerItem;
     imageLayerItem = mapData.imagelayers.start;
 
     while (imageLayerItem != NULL) {
@@ -67,12 +67,12 @@ void Map::Draw()
 
 
 
-    ListItem<MapLayer*>* mapLayerItem;
+    ListItem<MapLayerM*>* mapLayerItem;
     mapLayerItem = mapData.maplayers.start;
 
     while (mapLayerItem != NULL) {
 
-        //L06: DONE 7: use GetProperty method to ask each layer if your “DrawEproperty is true.
+        //L06: DONE 7: use GetProperty method to ask each layer if your Draw property is true.
         if (mapLayerItem->data->properties.GetProperty("Draw") != NULL && mapLayerItem->data->properties.GetProperty("Draw")->value) {
 
             for (int x = 0; x < mapLayerItem->data->width; x++)
@@ -83,14 +83,14 @@ void Map::Draw()
                     int gid = mapLayerItem->data->Get(x, y);
 
                     //L06: DONE 3: Obtain the tile set using GetTilesetFromTileId
-                    TileSet* tileset = GetTilesetFromTileId(gid);
+                    TileSetM* tileset = GetTilesetFromTileId(gid);
 
                     SDL_Rect r = tileset->GetTileRect(gid);
                     iPoint pos = MapToWorld(x, y);
 
                     app->render->DrawTexture(tileset->texture,
                         pos.x,
-                        pos.y,
+                        pos.y-800,
                         &r);
                 }
             }
@@ -103,15 +103,15 @@ void Map::Draw()
 }
 
 // L12: Create walkability map for pathfinding
-bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
+bool Monolith::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 {
     bool ret = false;
-    ListItem<MapLayer*>* item;
+    ListItem<MapLayerM*>* item;
     item = mapData.maplayers.start;
 
     for (item = mapData.maplayers.start; item != NULL; item = item->next)
     {
-        MapLayer* layer = item->data;
+        MapLayerM* layer = item->data;
 
         LOG("Layer: %d", layer->id);
         
@@ -133,13 +133,13 @@ bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
                 /*LOG("i : %d", i);
                 LOG("id : %u",layer->data[i]);
                 */
-                TileSet* tileset = (tileId > -1) ? GetTilesetFromTileId(tileId) : NULL;
+                TileSetM* tileset = (tileId > -1) ? GetTilesetFromTileId(tileId) : NULL;
 
                 if (tileset != NULL)
                 {
                     //map[i] = (tileId - tileset->firstgid) > 0 ? 0 : 1;
-                    if (mapData.type == MapTypes::MAPTYPE_ISOMETRIC && tileId == 25) map[i] = 1;
-                    else if (mapData.type == MapTypes::MAPTYPE_ORTHOGONAL && tileId == 119) map[i] = 1;
+                    if (mapData.type == MapTypesM::MAPTYPEM_ISOMETRIC && tileId == 25) map[i] = 1;
+                    else if (mapData.type == MapTypesM::MAPTYPEM_ORTHOGONAL && tileId == 119) map[i] = 1;
                     else map[i] = 0;
                 }
                 else {
@@ -163,7 +163,7 @@ bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 
 
 // L05: DONE 8: Create a method that translates x,y coordinates from map positions to world positions
-iPoint Map::MapToWorld(int x, int y) const
+iPoint Monolith::MapToWorld(int x, int y) const
 {
     iPoint ret;
 
@@ -174,16 +174,16 @@ iPoint Map::MapToWorld(int x, int y) const
 }
 
 // L08: DONE 3: Add method WorldToMap to obtain  map coordinates from screen coordinates
-iPoint Map::WorldToMap(int x, int y)
+iPoint Monolith::WorldToMap(int x, int y)
 {
     iPoint ret(0, 0);
 
-    if (mapData.type == MAPTYPE_ORTHOGONAL)
+    if (mapData.type == MAPTYPEM_ORTHOGONAL)
     {
         ret.x = x / mapData.tileWidth;
         ret.y = y / mapData.tileHeight;
     }
-    else if (mapData.type == MAPTYPE_ISOMETRIC)
+    else if (mapData.type == MAPTYPEM_ISOMETRIC)
     {
         float halfWidth = mapData.tileWidth * 0.5f;
         float halfHeight = mapData.tileHeight * 0.5f;
@@ -201,7 +201,7 @@ iPoint Map::WorldToMap(int x, int y)
 
 
 // Get relative Tile rectangle
-SDL_Rect TileSet::GetTileRect(int gid) const
+SDL_Rect TileSetM::GetTileRect(int gid) const
 {
     SDL_Rect rect = { 0 };
     int relativeIndex = gid - firstgid;
@@ -217,10 +217,10 @@ SDL_Rect TileSet::GetTileRect(int gid) const
 
 
 // L06: DONE 2: Pick the right Tileset based on a tile id
-TileSet* Map::GetTilesetFromTileId(int gid) const
+TileSetM* Monolith::GetTilesetFromTileId(int gid) const
 {
-    ListItem<TileSet*>* item = mapData.tilesets.start;
-    TileSet* set = NULL;
+    ListItem<TileSetM*>* item = mapData.tilesets.start;
+    TileSetM* set = NULL;
 
     while (item)
     {
@@ -236,12 +236,12 @@ TileSet* Map::GetTilesetFromTileId(int gid) const
 }
 
 // Called before quitting
-bool Map::CleanUp()
+bool Monolith::CleanUp()
 {
     LOG("Unloading map");
 
     // L04: DONE 2: Make sure you clean up any memory allocated from tilesets/map
-	ListItem<TileSet*>* item;
+	ListItem<TileSetM*>* item;
 	item = mapData.tilesets.start;
 
 	while (item != NULL)
@@ -253,7 +253,7 @@ bool Map::CleanUp()
 
     // L05: DONE 2: clean up all layer data
     // Remove all layers
-    ListItem<MapLayer*>* layerItem;
+    ListItem<MapLayerM*>* layerItem;
     layerItem = mapData.maplayers.start;
 
     while (layerItem != NULL)
@@ -266,7 +266,7 @@ bool Map::CleanUp()
 }
 
 // Load new map
-bool Map::Load()
+bool Monolith::Load()
 {
     bool ret = true;
     tileX = app->tex->Load("Assets/Maps/path_square.png");
@@ -315,7 +315,7 @@ bool Map::Load()
         
         LOG("Tilesets----");
 
-        ListItem<TileSet*>* tileset;
+        ListItem<TileSetM*>* tileset;
         tileset = mapData.tilesets.start;
 
         while (tileset != NULL) {
@@ -326,7 +326,7 @@ bool Map::Load()
         }
 
         // L05: DONE 4: LOG the info for each loaded layer
-        ListItem<MapLayer*>* mapLayer;
+        ListItem<MapLayerM*>* mapLayer;
         mapLayer = mapData.maplayers.start;
 
         while (mapLayer != NULL) {
@@ -344,7 +344,7 @@ bool Map::Load()
 }
 
 // L04: DONE 3: Implement LoadMap to load the map properties
-bool Map::LoadMap(pugi::xml_node mapFile)
+bool Monolith::LoadMap(pugi::xml_node mapFile)
 {
     bool ret = true;
     pugi::xml_node map = mapFile.child("map");
@@ -367,14 +367,14 @@ bool Map::LoadMap(pugi::xml_node mapFile)
 }
 
 // L04: DONE 4: Implement the LoadTileSet function to load the tileset properties
-bool Map::LoadTileSet(pugi::xml_node mapFile){
+bool Monolith::LoadTileSet(pugi::xml_node mapFile){
 
     bool ret = true; 
 
     pugi::xml_node tileset;
     for (tileset = mapFile.child("map").child("tileset"); tileset && ret; tileset = tileset.next_sibling("tileset"))
     {
-        TileSet* set = new TileSet();
+        TileSetM* set = new TileSetM();
 
         // L04: DONE 4: Load Tileset attributes
         set->name = tileset.attribute("name").as_string();
@@ -398,7 +398,7 @@ bool Map::LoadTileSet(pugi::xml_node mapFile){
 
 
 // L05: DONE 3: Implement a function that loads a single layer layer
-bool Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
+bool Monolith::LoadLayer(pugi::xml_node& node, MapLayerM* layer)
 {
     bool ret = true;
 
@@ -432,12 +432,12 @@ bool Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 }
 
 // L05: DONE 4: Iterate all layers and load each of them
-bool Map::LoadAllLayers(pugi::xml_node mapNode) {
+bool Monolith::LoadAllLayers(pugi::xml_node mapNode) {
     bool ret = true;
 
     for (pugi::xml_node imageNode = mapNode.child("imagelayer"); imageNode && ret; imageNode = imageNode.next_sibling("imagelayer")) {
 
-        ImageLayer* imageLayer = new ImageLayer();
+        ImageLayerM* imageLayer = new ImageLayerM();
 
         imageLayer->name = imageNode.attribute("name").as_string();
         imageLayer->texturePath = (const char*)imageNode.child("image").attribute("source").as_string();
@@ -457,7 +457,7 @@ bool Map::LoadAllLayers(pugi::xml_node mapNode) {
     for (pugi::xml_node layerNode = mapNode.child("layer"); layerNode && ret; layerNode = layerNode.next_sibling("layer"))
     {
         //Load the layer
-        MapLayer* mapLayer = new MapLayer();
+        MapLayerM* mapLayer = new MapLayerM();
         ret = LoadLayer(layerNode, mapLayer);
 
         //add the layer to the map
@@ -468,13 +468,13 @@ bool Map::LoadAllLayers(pugi::xml_node mapNode) {
 }
 
 // L06: DONE 6: Load a group of properties from a node and fill a list with it
-bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
+bool Monolith::LoadProperties(pugi::xml_node& node, PropertiesM& properties)
 {
     bool ret = false;
 
     for (pugi::xml_node propertieNode = node.child("properties").child("property"); propertieNode; propertieNode = propertieNode.next_sibling("property"))
     {
-        Properties::Property* p = new Properties::Property();
+        PropertiesM::Property* p = new PropertiesM::Property();
         p->name = propertieNode.attribute("name").as_string();
         p->value = propertieNode.attribute("value").as_bool(); // (!!) I'm assuming that all values are bool !!
 
@@ -486,7 +486,7 @@ bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
 
 
 // L06: DONE 7: Ask for the value of a custom property
-Properties::Property* Properties::GetProperty(const char* name)
+PropertiesM::Property* PropertiesM::GetProperty(const char* name)
 {
     ListItem<Property*>* item = list.start;
     Property* p = NULL;
@@ -504,15 +504,15 @@ Properties::Property* Properties::GetProperty(const char* name)
 }
 
 
-bool Map::LoadColliders(pugi::xml_node& node) {
+bool Monolith::LoadColliders(pugi::xml_node& node) {
 
     bool ret = true;
     
     for (pugi::xml_node colLayerNode = node.child("objectgroup"); colLayerNode; colLayerNode = colLayerNode.next_sibling("objectgroup")) {
-        ColTypes ct = (ColTypes)colLayerNode.child("properties").child("property").attribute("value").as_int();
+        ColTypesM ct = (ColTypesM)colLayerNode.child("properties").child("property").attribute("value").as_int();
         for (pugi::xml_node colNode = colLayerNode.child("object"); colNode; colNode = colNode.next_sibling("object")) {
 
-            ColData col;
+            ColDataM col;
 
             col.x = colNode.attribute("x").as_int();
             col.y = colNode.attribute("y").as_int();
@@ -529,21 +529,21 @@ bool Map::LoadColliders(pugi::xml_node& node) {
     return ret;
 }
 
-void Map::CreateColliders(ColData c) {
+void Monolith::CreateColliders(ColDataM c) {
 
     PhysBody* collider1;
 
-    if (c.type == ColTypes::FLOOR) {
-        collider1 = app->physics->CreateRectangleSensor(c.x + c.width / 2, c.y + c.height / 2, c.width, c.height, bodyType::STATIC);
+    if (c.type == ColTypesM::FLOORM) {
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-800, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor(c.x + c.width / 2, c.y + c.height / 2, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-800, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 235) {
-        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2), c.width/2, bodyType::STATIC);
+        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2), c.width / 2, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle(c.x + c.width / 2, c.y + c.height / 2, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)-800, c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {
@@ -594,26 +594,18 @@ void Map::CreateColliders(ColData c) {
     else if (c.type == 19) {
         collider1->ctype = ColliderType::TOWNCAVEDUNGEON;
     }
-    else if (c.type == 20) {
-        collider1->ctype = ColliderType::BED;
+    else if (c.type == 23) {
+        collider1->ctype = ColliderType::NPC2;
     }
-    else if (c.type == 21) {
-        collider1->ctype = ColliderType::ENEMY;
+    else if (c.type == 26) {
+        collider1->ctype = ColliderType::TOWNMONOLITH;
     }
-    else if (c.type == 24) {
-        collider1->ctype = ColliderType::NPC3;
-    }
-    else if (c.type == 25) {
-        collider1->ctype = ColliderType::LAPIS;
-    }
-    else if (c.type == 27) {
-        collider1->ctype = ColliderType::MONOLITH;
-    }
+
 }
 
 //TEMPORARY PATHFINDING -----------------------------------------------------------------------------------------------------------------
 
-void Map::ResetPath()
+void Monolith::ResetPath()
 {
     frontier.Clear();
     visited.Clear();
@@ -631,18 +623,18 @@ void Map::ResetPath()
 }
 
 //Draw the visited nodes
-void Map::DrawPath()
+void Monolith::DrawPath()
 {
     iPoint point;
 
     // Draw visited
     ListItem<iPoint>* item = visited.start;
-    if (app->map->DrawPathing == true) {
+    if (app->monolith->DrawPathing == true) {
 
         while (item)
         {
             point = item->data;
-            TileSet* tileset = GetTilesetFromTileId(119);
+            TileSetM* tileset = GetTilesetFromTileId(119);
 
             SDL_Rect rec = tileset->GetTileRect(119);
             iPoint pos = MapToWorld(point.x, point.y);
@@ -656,7 +648,7 @@ void Map::DrawPath()
         for (uint i = 0; i < frontier.Count(); ++i)
         {
             point = *(frontier.Peek(i));
-            TileSet* tileset = GetTilesetFromTileId(118);
+            TileSetM* tileset = GetTilesetFromTileId(118);
 
             SDL_Rect rec = tileset->GetTileRect(118);
             iPoint pos = MapToWorld(point.x, point.y);
@@ -666,7 +658,7 @@ void Map::DrawPath()
 
         // L09 DONE 4: Draw destination point
         iPoint posDestination = MapToWorld(destination.x, destination.y);
-        TileSet* tileset = GetTilesetFromTileId(118);
+        TileSetM* tileset = GetTilesetFromTileId(118);
         SDL_Rect rec = tileset->GetTileRect(118);
         //app->render->DrawRectangle({ posDestination.x, posDestination.y, 16,16 }, 150, 150, 0, 200);
         app->render->DrawTexture(tileset->texture, posDestination.x, posDestination.y, &rec);
@@ -691,7 +683,7 @@ void Map::DrawPath()
 
 }
 
-int Map::MovementCost(int x, int y) const
+int Monolith::MovementCost(int x, int y) const
 {
     int ret = -1;
 
@@ -706,16 +698,16 @@ int Map::MovementCost(int x, int y) const
     return ret;
 }
 
-bool Map::IsWalkable(int x, int y) const
+bool Monolith::IsWalkable(int x, int y) const
 {
     bool isWalkable = false;
 
     // L09: DONE 3: return true only if x and y are within map limits
     // and the tile is walkable (tile id 0 in the navigation layer)
 
-    ListItem<MapLayer*>* mapLayerItem;
+    ListItem<MapLayerM*>* mapLayerItem;
     mapLayerItem = mapData.maplayers.start;
-    MapLayer* navigationLayer = mapLayerItem->data;
+    MapLayerM* navigationLayer = mapLayerItem->data;
 
     //Search the layer in the map that contains information for navigation
     while (mapLayerItem != NULL) {
@@ -735,7 +727,7 @@ bool Map::IsWalkable(int x, int y) const
     return isWalkable;
 }
 
-void Map::ComputePath(int x, int y)
+void Monolith::ComputePath(int x, int y)
 {
     path.Clear();
     iPoint goal = iPoint(x, y);
@@ -755,7 +747,7 @@ void Map::ComputePath(int x, int y)
 
 }
 
-void Map::PropagateDijkstra()
+void Monolith::PropagateDijkstra()
 {
     // L10: DONE 3: Taking BFS as a reference, implement the Dijkstra algorithm
     // use the 2 dimensional array "costSoFar" to track the accumulated costs

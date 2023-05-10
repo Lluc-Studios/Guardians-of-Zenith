@@ -268,6 +268,18 @@ bool Player::Update(float dt)
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp12 = false;
 	}
+	if (tp13) {
+		position.x = 1015;
+		position.y = 190;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp13 = false;
+	}
+	if (tp14) {
+		position.x = 1015;
+		position.y = 190;
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		tp14 = false;
+	}
 	//Tp when you lose a combat
 	if (tpHouse) {
 		position.x = -520;
@@ -596,6 +608,22 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision Town");
 		if (auxBool == false) {
 			app->scene->selected = 12;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+		break;
+	case ColliderType::TOWNMONOLITH:
+		LOG("Collision Town");
+		if (auxBool == false) {
+			app->scene->selected = 13;
+			app->scene->fade = true;
+			auxBool = true;
+		}
+		break;
+	case ColliderType::MONOLITH:
+		LOG("Collision Monolith");
+		if (auxBool == false) {
+			app->scene->selected = 14;
 			app->scene->fade = true;
 			auxBool = true;
 		}

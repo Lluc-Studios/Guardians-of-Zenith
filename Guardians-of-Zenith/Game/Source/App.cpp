@@ -13,6 +13,7 @@
 #include "LakeDungeon.h"
 #include "ForestDungeon.h"
 #include "CaveDungeon.h"
+#include "Monolith.h"
 #include "Physics.h"
 #include "Intro.h"
 #include "Menu.h"
@@ -52,6 +53,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	lakedungeon = new LakeDungeon();
 	forestdungeon = new ForestDungeon();
 	cavedungeon = new CaveDungeon();
+	monolith = new Monolith();
 	pathfinding = new PathFinding();
 	//menu = new Menu();
 	deathmenu = new DeathMenu();
@@ -80,6 +82,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(lakedungeon);
 	AddModule(forestdungeon);
 	AddModule(cavedungeon);
+	AddModule(monolith);
 	//AddModule(menu);
 	AddModule(font);
 	AddModule(pathfinding);
