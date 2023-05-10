@@ -67,6 +67,7 @@ public:
 	CombatEnemy electricSlimeFrog{ 600,600,0,0,100,40,9,1,35, 1, 6,"Electric frog", "Lapis","Lucca", "Tongue attack", 50, 0,0, "Electric bubble", 60, 0,4 };
 	CombatEnemy demonicSlimeFrog{ 1000,1000,0,0,120,50,9,1,150, 1, 7,"Demonic frog", "Lapis","Lucca", "Corrupt blood", 50, 0,5, "Demonic fire", 60, 1,3 };
 	CombatEnemy waterlilyfish{ 400,400,0,0,120,30,11,3,30, 1, 2,"Lilyfish", "Laurea","Lapis", "Bite", 50, 0,0, "Tail whipping", 45, 0,0 };
+	CombatEnemy droughtwaterlilyfish{ 500,500,0,0,150,40,11,3,60, 1, 8,"Drought Lilyfish", "Laurea","Lapis", "Putrid bite", 50, 0,2, "Boiling water", 70, 0,3 };
 	CombatEnemy naiadongoddess{ 2000,2000,400,400,400,20,11,1,300, 2, 3,"Naiadon", "Lapis","Lucca", "Trident strike", 70, 0,0, "Tidalwave", 30, 1,0, "Ice blast", 50, 0,1, "Mystic water", 0, 2,0};
 	CombatEnemy deadLifeMantis{ 500,500,0,0,140,50,25,2,60, 1, 0,"Dead mantis", "Laurea","Lapis", "Claw cut", 50, 0,0, "Poison bite", 60, 0,2 };
 	CombatEnemy mutantPlant{ 800,800,0,0,80,70,8,3,55, 1, 0,"Mutant plant", "Lucca","Laurea", "Spore", 50, 1,0, "Vine whip", 60, 0,0 };

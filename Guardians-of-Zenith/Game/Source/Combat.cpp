@@ -52,6 +52,7 @@ bool Combat::Start()
 	Enemy5 = app->tex->Load("Assets/Entities/Enemies/FireFrog_Combat.png");
 	Enemy6 = app->tex->Load("Assets/Entities/Enemies/SlimeFrogElectric_Combat.png");
 	Enemy7 = app->tex->Load("Assets/Entities/Enemies/SlimeFrogDemonic_Combat.png");
+	Enemy8 = app->tex->Load("Assets/Entities/Enemies/DroughtLilyFish_Combat.png");
 	EnemyUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownEnemy.png");
 	EnemyBossUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownBoss.png");
 	E1asset = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
@@ -3639,11 +3640,11 @@ bool Combat::Update(float dt)
 				}
 				EnemyAdone = true;
 			}
-			app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, Ename, 16);
-			app->render->DrawText(10 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, WF, "used", 16);
-			app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aname, 16);
-			app->render->DrawText(10 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "against", 16);
-			app->render->DrawText(10 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, YF, Cname, 16);
+			app->render->DrawText(11, 100 * app->ScalingMultiplier, YF, Ename, 16);
+			app->render->DrawText(11, 110 * app->ScalingMultiplier, WF, "used", 16);
+			app->render->DrawText(11, 120 * app->ScalingMultiplier, YF, Aname, 16);
+			app->render->DrawText(11, 130 * app->ScalingMultiplier, WF, "against", 16);
+			app->render->DrawText(11, 140 * app->ScalingMultiplier, YF, Cname, 16);
 			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 				FinishTurn();
 			}
@@ -4001,7 +4002,7 @@ void Combat::StartCombat()
 		LoadEnemy(app->entityManager->naiadongoddess);
 		LoadEnemy(app->entityManager->waterlilyfish);
 		//LoadEnemy(app->entityManager->poisonSlimeFrog);
-		LoadEnemy(app->entityManager->electricSlimeFrog);
+		LoadEnemy(app->entityManager->droughtwaterlilyfish);
 		//LoadEnemy(app->entityManager->dryadon); 
 		//LoadEnemy(app->entityManager->deadLifeMantis);
 		//LoadEnemy(app->entityManager->mutantPlant);
@@ -4385,6 +4386,9 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 7) {
 			E3asset = Enemy7;
 		}
+		if (enemy.asset == 8) {
+			E3asset = Enemy8;
+		}
 	}
 	if (CurrentEnemies == 1) {
 		E2speed = enemy.spe;
@@ -4451,6 +4455,9 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 7) {
 			E2asset = Enemy7;
 		}
+		if (enemy.asset == 8) {
+			E2asset = Enemy8;
+		}
 	}
 	if (CurrentEnemies == 0) {
 		E1speed = enemy.spe;
@@ -4516,6 +4523,9 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		}
 		if (enemy.asset == 7) {
 			E1asset = Enemy7;
+		}
+		if (enemy.asset == 8) {
+			E1asset = Enemy8;
 		}
 	}
 }

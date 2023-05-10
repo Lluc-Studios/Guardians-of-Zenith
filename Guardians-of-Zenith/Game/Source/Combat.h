@@ -128,6 +128,7 @@ private:
 	SDL_Texture* Enemy5;
 	SDL_Texture* Enemy6;
 	SDL_Texture* Enemy7;
+	SDL_Texture* Enemy8;
 	SDL_Texture* EnemyUnknown;
 	SDL_Texture* EnemyBossUnknown;
 	SDL_Texture* ClassTank;
