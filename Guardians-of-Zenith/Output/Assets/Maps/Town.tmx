@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="70" height="53" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="294">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="70" height="53" tilewidth="32" tileheight="32" infinite="0" nextlayerid="20" nextobjectid="295">
  <tileset firstgid="1" name="Tileset_Town" tilewidth="32" tileheight="32" tilecount="462" columns="22">
   <image source="Main Tilesets/Tileset_Town.png" width="704" height="672"/>
  </tileset>
@@ -22590,12 +22590,6 @@
   </properties>
   <object id="30" x="1732.92" y="892.834" width="22.145" height="3.85603"/>
  </objectgroup>
- <objectgroup id="10" name="EnemyTest">
-  <properties>
-   <property name="Type" type="int" value="21"/>
-  </properties>
-  <object id="187" x="1106" y="224" width="31" height="33"/>
- </objectgroup>
  <objectgroup id="11" name="NPC3">
   <properties>
    <property name="Type" type="int" value="24"/>
@@ -22607,5 +22601,12 @@
    <property name="Type" type="int" value="25"/>
   </properties>
   <object id="191" x="1114.67" y="791.333" width="20.6667" height="34.6667"/>
+ </objectgroup>
+ <objectgroup id="19" name="Monolith">
+  <object id="294" x="1052" y="163" width="136" height="40">
+   <properties>
+    <property name="Type" type="int" value="27"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

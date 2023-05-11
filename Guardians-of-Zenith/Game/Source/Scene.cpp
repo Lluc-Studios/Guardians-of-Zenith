@@ -19,6 +19,7 @@
 #include "LakeDungeon.h"
 #include "ForestDungeon.h"
 #include "CaveDungeon.h"
+#include "Monolith.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -96,6 +97,8 @@ bool Scene::Start()
 	app->tavern->Load();
 	app->blacksmith->Load();
 	app->house->Load();
+	//app->monolith->Load();
+	//app->lakedungeon->Load();
 	// L04: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
 		app->map->mapData.width,
@@ -215,6 +218,9 @@ bool Scene::Update(float dt)
 	//	app->cavedungeon->Draw();
 	//  app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined_World.ogg");
 	//}
+	if (app->Instance == 7) {
+		app->monolith->Draw();
+	}
 
 
 	//Pathfinding
@@ -308,7 +314,16 @@ bool Scene::Update(float dt)
 				app->scene->player->tp12 = true;
 				fade = false;
 			}
-
+			if (selected == 13) {
+				app->Instance = 7;
+				app->scene->player->tp13 = true;
+				fade = false;
+			}
+			if (selected == 14) {
+				app->Instance = 0;
+				app->scene->player->tp14 = true;
+				fade = false;
+			}
 		}
 	}
 	if (fading > 0 && fade == false) {

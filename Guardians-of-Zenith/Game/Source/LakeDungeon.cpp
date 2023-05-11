@@ -30,7 +30,7 @@ bool LakeDungeon::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Tavern.tmx";
+    mapFileName = "Assets/Maps/Water_Dungeon.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path

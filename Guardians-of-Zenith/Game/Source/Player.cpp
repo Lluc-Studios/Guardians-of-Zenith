@@ -612,16 +612,16 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			auxBool = true;
 		}
 		break;
-	case ColliderType::TOWNMONOLITH:
-		LOG("Collision Town");
+	case ColliderType::MONOLITH:
+		LOG("Collision Monolith");
 		if (auxBool == false) {
 			app->scene->selected = 13;
 			app->scene->fade = true;
 			auxBool = true;
 		}
 		break;
-	case ColliderType::MONOLITH:
-		LOG("Collision Monolith");
+	case ColliderType::TOWNMONOLITH:
+		LOG("Collision Town");
 		if (auxBool == false) {
 			app->scene->selected = 14;
 			app->scene->fade = true;

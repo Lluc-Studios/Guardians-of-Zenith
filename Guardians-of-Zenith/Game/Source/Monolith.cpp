@@ -30,7 +30,7 @@ bool Monolith::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Zona Monolitos v2.tmx";
+    mapFileName = "Assets/Maps/Zona Monolitos v1.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path
@@ -89,8 +89,8 @@ void Monolith::Draw()
                     iPoint pos = MapToWorld(x, y);
 
                     app->render->DrawTexture(tileset->texture,
-                        pos.x,
-                        pos.y-800,
+                        pos.x + 500,
+                        pos.y-1500,
                         &r);
                 }
             }
@@ -534,16 +534,16 @@ void Monolith::CreateColliders(ColDataM c) {
     PhysBody* collider1;
 
     if (c.type == ColTypesM::FLOORM) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-800, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+500, (c.y + c.height / 2)-1500, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-800, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2) + 500, (c.y + c.height / 2)-1500, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 235) {
-        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2), c.width / 2, bodyType::STATIC);
+        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 500, (c.y + c.height / 2)-1500, c.width / 2, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)-800, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2) + 500, (c.y + c.height / 2)-1500, c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {
