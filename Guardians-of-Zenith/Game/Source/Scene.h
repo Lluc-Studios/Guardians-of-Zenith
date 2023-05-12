@@ -75,7 +75,6 @@ private:
 	SDL_Texture* coinTex;
 	SDL_Texture* trophyTex;
 	SDL_Texture* BGtexture;
-	SDL_Texture* EnemyT;
 	SDL_Texture* NPC1;
 	SDL_Texture* NPC2;
 	SDL_Texture* NPC3;

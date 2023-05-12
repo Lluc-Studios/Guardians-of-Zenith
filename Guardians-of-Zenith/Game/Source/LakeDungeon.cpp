@@ -89,8 +89,8 @@ void LakeDungeon::Draw()
                     iPoint pos = MapToWorld(x, y);
 
                     app->render->DrawTexture(tileset->texture,
-                        pos.x,
-                        pos.y-250,
+                        pos.x+2500,
+                        pos.y-2500,
                         &r);
                 }
             }
@@ -534,16 +534,16 @@ void LakeDungeon::CreateColliders(ColDataL c) {
     PhysBody* collider1;
 
     if (c.type == ColTypesL::FLOORL) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2500, (c.y + c.height / 2)-2500, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2) + 2500, (c.y + c.height / 2) - 2500, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 235) {
-        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2), c.width / 2, bodyType::STATIC);
+        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2500, (c.y + c.height / 2) - 2500, c.width / 2, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2) + 2500, (c.y + c.height / 2) - 2500, c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {
