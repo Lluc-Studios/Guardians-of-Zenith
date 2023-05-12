@@ -132,8 +132,14 @@ bool Scene::Start()
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
 	Stone = app->tex->Load("Assets/Textures/Stone.png");
+	Tp = app->tex->Load("Assets/Textures/MonolitoTP.png");
+	Unpressed = app->tex->Load("Assets/Textures/Unpressed.png");
+	Pressed = app->tex->Load("Assets/Textures/Pressed.png");
 
 	//Lake puzzle
+
+	MonoTP = app->physics->CreateRectangle(3537, 448, 32, 64, STATIC);
+	MonoTP->ctype = ColliderType::TOWNMONOLITH;
 
 	colliderPuzzle1 = app->physics->CreateRectangle(3380, 430, 32, 32, DYNAMIC);
 	colliderPuzzle1->body->SetFixedRotation(true);
@@ -242,6 +248,13 @@ bool Scene::Update(float dt)
 	colliderPuzzle1->GetPosition(x1, y1);
 	colliderPuzzle2->GetPosition(x2, y2);
 	colliderPuzzle3->GetPosition(x3, y3);
+
+	//Draw textures
+	app->render->DrawTexture(Tp, 3520, 415);
+
+	app->render->DrawTexture(Unpressed, 3040, -449);
+	app->render->DrawTexture(Unpressed, 3008, -705);
+	app->render->DrawTexture(Unpressed, 4000, -1153);
 
 	//Draw stones order
 	if (stage == 0) {
@@ -454,7 +467,7 @@ bool Scene::Update(float dt)
 				fade = false;
 			}
 			if (selected == 14) {
-				app->Instance = 0;
+				app->Instance = 7;
 				app->scene->player->tp14 = true;
 				fade = false;
 			}

@@ -275,8 +275,8 @@ bool Player::Update(float dt)
 		tp13 = false;
 	}
 	if (tp14) {
-		position.x = 1120;
-		position.y = 230;
+		position.x = 1010;
+		position.y = -830;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp14 = false;
 	}

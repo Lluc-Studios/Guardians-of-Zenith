@@ -82,6 +82,9 @@ private:
 	SDL_Texture* NPC3;
 	SDL_Texture* LAPIS;
 	SDL_Texture* Stone;
+	SDL_Texture* Tp;
+	SDL_Texture* Unpressed;
+	SDL_Texture* Pressed;
 
 	SDL_Rect ET = { 0,0,64,64 };
 	SDL_Rect N1T = { 0,0,32,32 };
@@ -99,6 +102,9 @@ private:
 	bool Start_pressed = false;
 
 	//Lake puzzle
+
+	PhysBody* MonoTP;
+
 	PhysBody* colliderPuzzle1;
 	PhysBody* colliderPuzzle2;
 	PhysBody* colliderPuzzle3;
