@@ -135,6 +135,7 @@ bool Scene::Start()
 	Tp = app->tex->Load("Assets/Textures/MonolitoTP.png");
 	Unpressed = app->tex->Load("Assets/Textures/Unpressed.png");
 	Pressed = app->tex->Load("Assets/Textures/Pressed.png");
+	Puzzle2Wall = app->tex->Load("Assets/Textures/Water_dungeon_door.png");
 
 	//Lake puzzle
 
@@ -150,10 +151,21 @@ bool Scene::Start()
 	colliderPuzzle3 = app->physics->CreateRectangle(3600, 300, 32, 32, DYNAMIC);
 	colliderPuzzle3->body->SetFixedRotation(true);
 	colliderPuzzle3->body->SetLinearDamping(12);
+	colliderPuzzle4 = app->physics->CreateRectangle(3776, -289, 32, 32, DYNAMIC);
+	colliderPuzzle4->body->SetFixedRotation(true);
+	colliderPuzzle4->body->SetLinearDamping(12);
+	colliderPuzzle5 = app->physics->CreateRectangle(3936, -705, 32, 32, DYNAMIC);
+	colliderPuzzle5->body->SetFixedRotation(true);
+	colliderPuzzle5->body->SetLinearDamping(12);
+	colliderPuzzle6 = app->physics->CreateRectangle(2880, -1281, 32, 32, DYNAMIC);
+	colliderPuzzle6->body->SetFixedRotation(true);
+	colliderPuzzle6->body->SetLinearDamping(12);
 
 	colliderPuzzle1Block = app->physics->CreateRectangle(3440, 178, 32, 120, STATIC);
 	colliderPuzzle1Block->body->SetFixedRotation(true);
 	colliderPuzzle1Block->body->SetLinearDamping(50);
+
+	colliderPuzzle2Block = app->physics->CreateRectangle(3455, -1385, 128, 128, STATIC);
 
 	return true;
 }
@@ -248,15 +260,65 @@ bool Scene::Update(float dt)
 	colliderPuzzle1->GetPosition(x1, y1);
 	colliderPuzzle2->GetPosition(x2, y2);
 	colliderPuzzle3->GetPosition(x3, y3);
+	colliderPuzzle4->GetPosition(x4, y4);
+	colliderPuzzle5->GetPosition(x5, y5);
+	colliderPuzzle6->GetPosition(x6, y6);
 
 	//Draw textures
 	app->render->DrawTexture(Tp, 3520, 415);
 
-	app->render->DrawTexture(Unpressed, 3040, -449);
-	app->render->DrawTexture(Unpressed, 3008, -705);
-	app->render->DrawTexture(Unpressed, 4000, -1153);
+	if (Pressed1 == true && Pressed2 == true && Pressed3 == true) {
+		colliderPuzzle2Block->body->SetActive(false);
+	}
+	else {
+		app->render->DrawTexture(Puzzle2Wall, 3396, -1444);
+		colliderPuzzle2Block->body->SetActive(true);
+	}
+
+	if (Pressed1 == true) {
+		app->render->DrawTexture(Pressed, 3040, -449);
+	}
+	if (Pressed1 == false) {
+		app->render->DrawTexture(Unpressed, 3040, -449);
+	}
+	if (Pressed2 == true) {
+		app->render->DrawTexture(Pressed, 3008, -705);
+	}
+	if (Pressed2 == false) {
+		app->render->DrawTexture(Unpressed, 3008, -705);
+	}
+	if (Pressed3 == true) {
+		app->render->DrawTexture(Pressed, 4000, -1153);
+	}
+	if (Pressed3 == false) {
+		app->render->DrawTexture(Unpressed, 4000, -1153);
+	}
+
+	if ((x4 >=3009 && x4 <= 3071 && y4 >= -480 && y4 <=-433) || (x5 >= 3009 && x5 <= 3071 && y5 >= -480 && y5 <= -433) || (x6 >= 3009 && x6 <= 3071 && y6 >= -480 && y6 <= -433)) {
+		Pressed1 = true;
+	}
+	else {
+		Pressed1 = false;
+	}
+	if ((x4 >= 2978 && x4 <= 3039 && y4 >= -736 && y4 <= -689) || (x5 >= 2978 && x5 <= 3039 && y5 >= -736 && y5 <= -689) || (x6 >= 2978 && x6 <= 3039 && y6 >= -736 && y6 <= -689)) {
+		Pressed2 = true;
+	}
+	else {
+		Pressed2 = false;
+	}
+	if ((x4 >= 3969 && x4 <= 4031 && y4 >= -1184 && y4 <= -1137) || (x5 >= 3969 && x5 <= 4031 && y5 >= -1184 && y5 <= -1137) || (x6 >= 3969 && x6 <= 4031 && y6 >= -1184 && y6 <= -1137)) {
+		Pressed3 = true;
+	}
+	else {
+		Pressed3 = false;
+	}
 
 	//Draw stones order
+
+	app->render->DrawTexture(Stone, x4, y4);
+	app->render->DrawTexture(Stone, x5, y5);
+	app->render->DrawTexture(Stone, x6, y6);
+
 	if (stage == 0) {
 		app->render->DrawTexture(Stone, x1, y1);
 		app->render->DrawTexture(Stone, x2, y2);
