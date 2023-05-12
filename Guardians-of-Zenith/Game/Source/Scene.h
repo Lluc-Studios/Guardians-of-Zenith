@@ -95,6 +95,11 @@ private:
 	//Mando 
 	bool Start_pressed = false;
 
+	//Lake puzzle
+	PhysBody* colliderPuzzle1;
+	float32 speedx1 = 0, speedy1 = 0;
+
+
 public:
 	enum class SELECTED {
 		SAVEGAME,

@@ -133,7 +133,6 @@ bool Scene::Start()
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
 
 	//Lake puzzle
-	PhysBody* colliderPuzzle1;
 
 	colliderPuzzle1 = app->physics->CreateRectangle(3350, 350, 32, 32, DYNAMIC);
 	colliderPuzzle1->body->SetFixedRotation(true);
@@ -227,6 +226,8 @@ bool Scene::Update(float dt)
 		app->monolith->Draw();
 	}
 
+	//Lake puzzle
+	colliderPuzzle1->body->SetLinearVelocity({speedx1,speedy1});
 
 	//Pathfinding
 	destination = app->map->WorldToMap(app->scene->player->position.x, app->scene->player->position.y+4);
