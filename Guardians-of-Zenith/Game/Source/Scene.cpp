@@ -97,7 +97,7 @@ bool Scene::Start()
 	app->tavern->Load();
 	app->blacksmith->Load();
 	app->house->Load();
-	//app->monolith->Load();
+	app->monolith->Load();
 	//app->lakedungeon->Load();
 	// L04: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
