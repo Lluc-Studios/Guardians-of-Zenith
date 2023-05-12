@@ -150,10 +150,10 @@ bool Scene::PreUpdate()
 bool Scene::Update(float dt)
 {
 
-	if (Music == false) {
-		app->audio->PlayFx(villageMusic, 10);
-		Music = true;
-	}
+	//if (Music == false) {
+	//	app->audio->PlayFx(villageMusic, 10);
+	//	Music = true;
+	//}
 
 	// L03: DONE 3: Request App to Load / Save when pressing the keys F5 (save) / F6 (load)
 	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
@@ -195,20 +195,20 @@ bool Scene::Update(float dt)
 	// Draw map
 	if (app->Instance == 0) {
 		app->map->Draw();
-		//app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance_Island_OST_Version.ogg");
+		MUSIC::TOWN;
 	}
 	if (app->Instance == 1) {
 		app->tavern->Draw();
-		//app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
+		MUSIC::TAVERN;
 	}
 	//DO NOT TOUCH!!!
 	if (app->Instance == 2) {
 		app->blacksmith->Draw();
-		//app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
+		MUSIC::BLACKSMITH;
 	}
 	if (app->Instance == 3) {
 		app->house->Draw();
-		//app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil_Days.ogg");
+		MUSIC::HOME;
 	}
 	if (app->Instance == 4) {
 		app->lakedungeon->Draw();
@@ -468,4 +468,27 @@ bool Scene::Pause()
 		}
 	}
 	return true;
+}
+
+void Scene::PlayMusic()
+{
+	switch (playing)
+	{
+	case Scene::MUSIC::TOWN:
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
+		break;
+	case Scene::MUSIC::HOME:
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil_Days.ogg");
+		break;
+	case Scene::MUSIC::TAVERN:
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
+		break;
+	case Scene::MUSIC::BLACKSMITH:
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia_Millennial_Fair.ogg");
+		break;
+	case Scene::MUSIC::NONE:
+		break;
+	default:
+		break;
+	}
 }
