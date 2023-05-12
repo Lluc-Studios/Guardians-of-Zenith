@@ -61,14 +61,15 @@ bool GuiButton::Draw(Render* render)
 	{
 		if (id == 1)
 		{
-			i = 10;
-			j = 250;
+			i = 25;
+			j = bounds.w / 2;
 		}
 		if (id == 0)
 		{
-			i = -15;
+			i = -10;
+			j = bounds.w / 2;
 		}
-		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 200, 200, 200, 255, true, false);
+		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 200, 200, 200, 255, true, false);
 
 	} break;
 
@@ -76,15 +77,15 @@ bool GuiButton::Draw(Render* render)
 	{
 		if (id == 1)
 		{
-			i = 10;
+			i = 25;
 			j = bounds.w / 2;
 		}
 		if (id == 0)
 		{
-			i = -15;
+			i = -10;
 			j = bounds.w / 2;
 		}
-		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 128, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 128, 255, 255, true, false);
 
 	}	break;
 
@@ -92,14 +93,15 @@ bool GuiButton::Draw(Render* render)
 	{
 		if (id == 1)
 		{
-			i = 10;
-			j = 250;
+			i = 25;
+			j = bounds.w / 2;
 		}
 		if (id == 0)
 		{
-			i = -15;
+			i = -10;
+			j = bounds.w / 2;
 		}
-		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 255, 0, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 255, 0, 255, 255, true, false);
 
 	} break;
 
@@ -107,14 +109,15 @@ bool GuiButton::Draw(Render* render)
 	{
 		if (id == 1)
 		{
-			i = 10;
-			j = 250;
+			i = 25;
+			j = bounds.w / 2;
 		}
 		if (id == 0)
 		{
-			i = -15;
+			i = -10;
+			j = bounds.w / 2;
 		}
-		render->DrawRectangle({ bounds.x + 40, bounds.y + 125 + 180 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 255, 0, 255, true, false);
+		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 255, 0, 255, true, false);
 
 	} break;
 
@@ -122,7 +125,7 @@ bool GuiButton::Draw(Render* render)
 		break;
 	}
 
-	int size = fontSize	;
+	int size = fontSize - 2	;
 	int x = bounds.w / size * 0.5;
 	int y = bounds.h - size / 4;
 
