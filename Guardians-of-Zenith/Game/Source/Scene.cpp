@@ -131,6 +131,7 @@ bool Scene::Start()
 	NPC2 = app->tex->Load("Assets/Entities/NPC/npc_2.png");
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
+	Stone = app->tex->Load("Assets/Textures/Stone.png");
 
 	//Lake puzzle
 
@@ -232,6 +233,14 @@ bool Scene::Update(float dt)
 	if (app->Instance == 7) {
 		app->monolith->Draw();
 	}
+
+	//Lake dungeon
+	colliderPuzzle1->GetPosition(x1, y1);
+	colliderPuzzle2->GetPosition(x2, y2);
+	colliderPuzzle3->GetPosition(x3, y3);
+	app->render->DrawTexture(Stone, x1, y1);
+	app->render->DrawTexture(Stone, x2, y2);
+	app->render->DrawTexture(Stone, x3, y3);
 
 	//Pathfinding
 	destination = app->map->WorldToMap(app->scene->player->position.x, app->scene->player->position.y+4);
@@ -414,9 +423,6 @@ bool Scene::PostUpdate()
 
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		ret = false;
-
-	//Lake dungeon
-	
 
 	return ret;
 }

@@ -79,6 +79,7 @@ private:
 	SDL_Texture* NPC2;
 	SDL_Texture* NPC3;
 	SDL_Texture* LAPIS;
+	SDL_Texture* Stone;
 
 	SDL_Rect ET = { 0,0,64,64 };
 	SDL_Rect N1T = { 0,0,32,32 };
@@ -102,6 +103,8 @@ private:
 	PhysBody* colliderPuzzle4;
 	PhysBody* colliderPuzzle5;
 	PhysBody* colliderPuzzle6;
+
+	int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6;
 
 
 public:
