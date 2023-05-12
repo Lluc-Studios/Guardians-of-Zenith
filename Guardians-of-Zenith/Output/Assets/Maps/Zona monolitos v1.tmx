@@ -6230,7 +6230,7 @@
   <properties>
    <property name="Type" type="int" value="26"/>
   </properties>
-  <object id="53" x="851.667" y="1508.67" width="86" height="23"/>
+  <object id="53" x="859.167" y="1508.67" width="71" height="23"/>
  </objectgroup>
  <objectgroup id="57" name="Forest_Dungeon">
   <properties>
