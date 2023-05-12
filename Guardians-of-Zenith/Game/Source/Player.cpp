@@ -269,7 +269,7 @@ bool Player::Update(float dt)
 		tp12 = false;
 	}
 	if (tp13) {
-		position.x = 1240;
+		position.x = 1370;
 		position.y = -80;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp13 = false;
@@ -319,6 +319,9 @@ bool Player::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
+			NPC_02 = false;
+			NPC_03 = false;
+			NPC_04 = false;
 			isBill = true;
 		}
 	}
@@ -328,8 +331,13 @@ bool Player::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
-			isBill = true;
+			//isBill = true;
+			NPC_01 = false;
+			NPC_03 = false;
+			NPC_04 = false;
+			isDialogue = false;
 			NPC2 = true;
+			
 		}
 	}
 	if (NPC_03 && position == copypos)
@@ -338,7 +346,10 @@ bool Player::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
-			isBill = true;
+			//isBill = true;
+			NPC_01 = false;
+			NPC_02 = false;
+			NPC_04 = false;
 			NPC = true;
 		}
 	}
@@ -348,8 +359,12 @@ bool Player::Update(float dt)
 		
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
-			isBill = true;
+			//isBill = true;
+			NPC_01 = false;
+			NPC_03 = false;
+			NPC_02 = false;
 			isDialogue = true;
+		
 		}
 	}
 
@@ -642,27 +657,35 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		//Draw E
 		copypos = position;
 		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
-
+		NPC_02 = false;
+		NPC_03 = false;
+		NPC_04 = false;
 		NPC_01 = true;
 		break;
 	case ColliderType::NPC2:
 		//Collision in blacksmith
 		copypos = position;
 		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
-
+		NPC_01 = false;
+		NPC_03 = false;
+		NPC_04 = false;
 		NPC_02 = true;
 		break;
 	case ColliderType::NPC3:
 		//Collision in town
 		copypos = position;
 		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
-
+		NPC_01 = false;
+		NPC_02 = false;
+		NPC_04 = false;
 		NPC_03 = true;
 		break;
 	case ColliderType::LAPIS:
 		//Collision in town
 		copypos = position;
-		
+		NPC_01 = false;
+		NPC_03 = false;
+		NPC_02 = false;
 		NPC_04 = true;
 		break;
 	}
