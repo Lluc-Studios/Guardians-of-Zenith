@@ -43,8 +43,8 @@ DialogueTree::DialogueTree(bool a)
 
 bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 {
-	fontSize = 12;
-	max_chars_line = fontSize * 6;
+	fontSize = 18;
+	max_chars_line = fontSize * 4;
 
 	// TODO 6: Substitute player's name in text and choices if needed
 	if (!app->input->playerName.empty())
@@ -93,7 +93,7 @@ bool DialogueTree::UpdateChoices(Module* mod, iPoint pos, int fontSize)
 		uint width, height;
 		app->win->GetWindowSize(width, height);
 		//SDL_Rect bounds = { width - w, pos.y - (h + fontSize) * (i + 1), w, h};
-		SDL_Rect bounds = { 25,   (h + fontSize) * (i + 1) + 270, w, h };
+		SDL_Rect bounds = { 100,   (h + fontSize) * (i + 1) + 80, w, h };
 
 		button = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, i, ch_option, bounds, fontSize, mod);
 		button->state = GuiControlState::NORMAL;
