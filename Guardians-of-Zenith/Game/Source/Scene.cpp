@@ -98,7 +98,7 @@ bool Scene::Start()
 	app->blacksmith->Load();
 	app->house->Load();
 	app->monolith->Load();
-	//app->lakedungeon->Load();
+	app->lakedungeon->Load();
 	// L04: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
 		app->map->mapData.width,
@@ -127,7 +127,6 @@ bool Scene::Start()
 
 	}
 
-	EnemyT = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Movment.png");
 	NPC1 = app->tex->Load("Assets/Entities/NPC/npc_1.png");
 	NPC2 = app->tex->Load("Assets/Entities/NPC/npc_2.png");
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
@@ -206,10 +205,10 @@ bool Scene::Update(float dt)
 		app->house->Draw();
 		//app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil_Days.ogg");
 	}
-	//if (app->Instance == 4) {
-	//	app->lakedungeon->Draw();
-	//  app->audio->PlayMusic("Assets/Soundtrack/Music/The_Riverlands.ogg");
-	//}
+	if (app->Instance == 4) {
+		app->lakedungeon->Draw();
+	  app->audio->PlayMusic("Assets/Soundtrack/Music/The_Riverlands.ogg");
+	}
 	//if (app->Instance == 5) {
 	//	app->forestdungeon->Draw();
 	//  app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea_Forest_OST_Version.ogg");
@@ -334,8 +333,7 @@ bool Scene::Update(float dt)
 	}
 	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
 
-	//Enemy and npc draw
-	app->render->DrawTexture(EnemyT, 1089, 208, &ET);
+	//Npc draw
 	app->render->DrawTexture(NPC1, 148, -280, &N1T);
 	app->render->DrawTexture(NPC2, 224, -710, &N2T);
 	app->render->DrawTexture(NPC3, 483, 545, &N3T);
