@@ -44,6 +44,8 @@ public:
 
 	bool Pause();
 
+	void PlayMusic();
+
 public:
 
 	//fading
@@ -117,6 +119,16 @@ public:
 	};
 
 	SELECTED option = SELECTED::NONE;
+
+	enum MUSIC {
+		TOWN,
+		HOME,
+		TAVERN,
+		BLACKSMITH,
+		NONE
+	};
+
+	MUSIC playing = MUSIC::NONE;
 };
 
 #endif // __SCENE_H__
