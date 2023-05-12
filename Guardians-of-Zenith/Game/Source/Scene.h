@@ -105,8 +105,12 @@ private:
 	PhysBody* colliderPuzzle4;
 	PhysBody* colliderPuzzle5;
 	PhysBody* colliderPuzzle6;
+	PhysBody* colliderPuzzle1Block;
 
 	int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6;
+
+	//Puzzle1
+	int stage = 0;
 
 
 public:
