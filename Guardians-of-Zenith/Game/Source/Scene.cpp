@@ -145,6 +145,10 @@ bool Scene::Start()
 	colliderPuzzle3->body->SetFixedRotation(true);
 	colliderPuzzle3->body->SetLinearDamping(12);
 
+	colliderPuzzle1Block = app->physics->CreateRectangle(3440, 178, 32, 120, STATIC);
+	colliderPuzzle1Block->body->SetFixedRotation(true);
+	colliderPuzzle1Block->body->SetLinearDamping(50);
+
 	return true;
 }
 
@@ -238,9 +242,120 @@ bool Scene::Update(float dt)
 	colliderPuzzle1->GetPosition(x1, y1);
 	colliderPuzzle2->GetPosition(x2, y2);
 	colliderPuzzle3->GetPosition(x3, y3);
-	app->render->DrawTexture(Stone, x1, y1);
-	app->render->DrawTexture(Stone, x2, y2);
-	app->render->DrawTexture(Stone, x3, y3);
+
+	//Draw stones order
+	if (stage == 0) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 1 && colliderPuzzle1->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 1 && colliderPuzzle2->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 1 && colliderPuzzle3->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x3, y3);
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+	}
+	if (stage == 2 && colliderPuzzle1->body->IsActive() == false && colliderPuzzle2->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 2 && colliderPuzzle1->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x3, y3);
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+	}
+	if (stage == 2 && colliderPuzzle2->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x3, y3);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x1, y1);
+	}
+	if (stage == 3) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+
+	//Lake puzzle 1 stage 1
+
+	if (((x1 <= 3452 && x1 >= 3415 && y1 <=250) || (x2 <= 3452 && x2 >= 3415 && y2 <= 250) || (x3 <= 3452 && x3 >= 3415 && y3 <= 250)) && stage == 0) {
+		colliderPuzzle1Block->body->SetActive(false);
+	}
+	else if (stage == 0){
+		colliderPuzzle1Block->body->SetActive(true);
+	}
+
+	if (y1 < 210 && stage == 0) {
+		colliderPuzzle1->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
+		stage++;
+	}
+	if (y2 < 210 && stage == 0) {
+		colliderPuzzle2->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
+		stage++;
+	}
+	if (y3 < 210 && stage == 0) {
+		colliderPuzzle3->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
+		stage++;
+	}
+
+	//Lake puzzle 1 stage 2
+
+	if (((x1 <= 3452 && x1 >= 3415 && y1 <= 208) || (x2 <= 3452 && x2 >= 3415 && y2 <= 208) || (x3 <= 3452 && x3 >= 3415 && y3 <= 208)) && stage == 1) {
+		colliderPuzzle1Block->body->SetActive(false);
+	}
+	else if (stage == 1) {
+		colliderPuzzle1Block->body->SetActive(true);
+	}
+
+	if (y1 < 180 && stage == 1) {
+		colliderPuzzle1->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
+		stage++;
+	}
+	if (y2 < 180 && stage == 1) {
+		colliderPuzzle2->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
+		stage++;
+	}
+	if (y3 < 180 && stage == 1) {
+		colliderPuzzle3->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
+		stage++;
+	}
+	//Lake puzzle 1 stage 3
+
+	if (((x1 <= 3452 && x1 >= 3415 && y1 <= 175) || (x2 <= 3452 && x2 >= 3415 && y2 <= 175) || (x3 <= 3452 && x3 >= 3415 && y3 <= 175)) && stage == 2) {
+		colliderPuzzle1Block->body->SetActive(false);
+	}
+	else if (stage == 2) {
+		colliderPuzzle1Block->body->SetActive(true);
+	}
+
+	if (y1 < 150 && stage == 2) {
+		colliderPuzzle1->body->SetActive(false);
+		stage++;
+	}
+	if (y2 < 150 && stage == 2) {
+		colliderPuzzle2->body->SetActive(false);
+		stage++;
+	}
+	if (y3 < 150 && stage == 2) {
+		colliderPuzzle3->body->SetActive(false);
+		stage++;
+	}
+
 
 	//Pathfinding
 	destination = app->map->WorldToMap(app->scene->player->position.x, app->scene->player->position.y+4);
