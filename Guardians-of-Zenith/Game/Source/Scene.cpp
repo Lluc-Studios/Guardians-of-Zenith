@@ -132,6 +132,12 @@ bool Scene::Start()
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
 
+	//Lake puzzle
+	PhysBody* colliderPuzzle1;
+
+	colliderPuzzle1 = app->physics->CreateRectangle(3350, 350, 32, 32, DYNAMIC);
+	colliderPuzzle1->body->SetFixedRotation(true);
+
 	return true;
 }
 
