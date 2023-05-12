@@ -99,7 +99,11 @@ private:
 
 	//Lake puzzle
 	PhysBody* colliderPuzzle1;
-	float32 speedx1 = 0, speedy1 = 0;
+	PhysBody* colliderPuzzle2;
+	PhysBody* colliderPuzzle3;
+	PhysBody* colliderPuzzle4;
+	PhysBody* colliderPuzzle5;
+	PhysBody* colliderPuzzle6;
 
 
 public:

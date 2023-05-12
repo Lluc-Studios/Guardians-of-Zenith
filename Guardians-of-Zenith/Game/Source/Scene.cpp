@@ -134,8 +134,15 @@ bool Scene::Start()
 
 	//Lake puzzle
 
-	colliderPuzzle1 = app->physics->CreateRectangle(3350, 350, 32, 32, DYNAMIC);
+	colliderPuzzle1 = app->physics->CreateRectangle(3380, 430, 32, 32, DYNAMIC);
 	colliderPuzzle1->body->SetFixedRotation(true);
+	colliderPuzzle1->body->SetLinearDamping(12);
+	colliderPuzzle2 = app->physics->CreateRectangle(3190, 320, 32, 32, DYNAMIC);
+	colliderPuzzle2->body->SetFixedRotation(true);
+	colliderPuzzle2->body->SetLinearDamping(12);
+	colliderPuzzle3 = app->physics->CreateRectangle(3600, 300, 32, 32, DYNAMIC);
+	colliderPuzzle3->body->SetFixedRotation(true);
+	colliderPuzzle3->body->SetLinearDamping(12);
 
 	return true;
 }
@@ -225,9 +232,6 @@ bool Scene::Update(float dt)
 	if (app->Instance == 7) {
 		app->monolith->Draw();
 	}
-
-	//Lake puzzle
-	colliderPuzzle1->body->SetLinearVelocity({speedx1,speedy1});
 
 	//Pathfinding
 	destination = app->map->WorldToMap(app->scene->player->position.x, app->scene->player->position.y+4);
@@ -410,6 +414,9 @@ bool Scene::PostUpdate()
 
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		ret = false;
+
+	//Lake dungeon
+	
 
 	return ret;
 }
