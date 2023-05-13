@@ -26,6 +26,15 @@
 	 <!-- player Starting pos, x: 500 y: 220-->
     <player x="560" y="340" width="64" height="16" texturepath="Assets/Entities/Characters/Laurea_Directions.png"/>
 
+	  <item name="Healing potion" texturepath="Assets/Textures/Objects/hpotion.png"/>
+	  <item name="Mana potion" texturepath="Assets/Textures/Objects/mpotion.png"/>
+	  <item name="Attack elixir" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
+	  <item name="Defense elixir" texturepath="Assets/Textures/Objects/DefElixir.png"/>
+	  <item name="Old necklace" texturepath="Assets/Textures/Objects/Necklace.png"/>
+	  <item name="Manuscripts" texturepath="Assets/Textures/Objects/Manuscript.png"/>
+	  <item name="Zenith's history book" texturepath="Assets/Textures/Objects/ZenithBook.png"/>
+	  
+
 	  <!--enemy x="1270" y="190" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
 	<enemy x="2220" y="400" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
 	<enemy x="2900" y="380" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>

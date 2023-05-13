@@ -20,6 +20,7 @@
 #include "ForestDungeon.h"
 #include "CaveDungeon.h"
 #include "Monolith.h"
+#include "Inventory.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -59,9 +60,8 @@ bool Scene::Awake(pugi::xml_node& config)
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
 	player->parameters = config.child("player");
 
-	Item* trophy =(Item*)app->entityManager->CreateEntity(EntityType::ITEM);
-	trophy->parameters = config.child("trophy");
-	trophy->score = 200; 
+	//Item* trophy =(Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+	//trophy->parameters = config.child("trophy");
 
 	for (pugi::xml_node en1Node = config.child("enemy"); en1Node; en1Node = en1Node.next_sibling("enemy")) {
 		Enemy* grounded_e = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
@@ -679,6 +679,26 @@ bool Scene::PostUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		ret = false;
 
+	// TODO 3: Make the inventoryOn bool true when pressing a key
+	if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+	{
+		app->inventory->inventoryOn = !app->inventory->inventoryOn;
+	}
+
+	// TODO 3: Some interface for the inventory
+	if (app->inventory->inventoryOn)
+	{
+		app->inventory->rect = { 150, 100, 1280 - 300, 720 - 200 };
+		app->render->DrawRectangle({ app->scene->player->position.x + (-640 * app->ScalingMultiplier), app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 80);
+
+		//app->render->DrawRectangle(app->inventory->rect, 0, 0, 0, 50);
+
+		//	TODO 4: Show the items' sprites in the inventory
+		for (int i = 0; i < app->inventory->nrOfItems; i++)
+		{
+			app->render->DrawTexture(app->inventory->texture, 182 + 32 * i, 132);
+		}
+	}
 	return ret;
 }
 

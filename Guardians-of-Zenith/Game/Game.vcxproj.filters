@@ -63,6 +63,7 @@
     <ClCompile Include="Source\Monolith.cpp">
       <Filter>Maps</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Inventory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Source\Monolith.h">
       <Filter>Maps</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Inventory.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

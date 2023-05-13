@@ -22,6 +22,7 @@
 #include "DeathMenu.h"
 #include "Pathfinding.h"
 #include "Combat.h"
+#include "Inventory.h"
 
 #include "DialogueSystem.h"
 #include "GuiManager.h"
@@ -62,7 +63,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	combat = new Combat();
 	dialogueSystem = new DialogueSystem();
 	guiManager = new GuiManager();
-
+	inventory = new Inventory();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -91,6 +92,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(combat);
 	AddModule(dialogueSystem);
 	AddModule(guiManager);
+	AddModule(inventory);
 	//tavern->active = false;
 	deathmenu->active = false;
 	mainmenu->active = false;

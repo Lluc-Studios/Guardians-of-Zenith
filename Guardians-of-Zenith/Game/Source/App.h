@@ -37,7 +37,7 @@ class PathFinding;
 class Combat;
 class DialogueSystem;
 class GuiManager;
-
+class Inventory;
 
 class App
 {
@@ -124,6 +124,7 @@ public:
 	Combat* combat;
 	GuiManager* guiManager;
 	DialogueSystem* dialogueSystem;
+	Inventory* inventory;
 
 
 	//This int determines which instance is loaded, 0 = Town, 1 = Tavern, 2 = Blacksmith, 3 = House, 4 = Lake Dungeon, 5 = Forest Dungeon, 6 = Cave Dungeon
