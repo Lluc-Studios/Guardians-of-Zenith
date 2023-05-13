@@ -4097,9 +4097,6 @@ void Combat::ExitCombat()
 {
 	//Enable map print
 	app->Instance = SaveInstance;
-	if (option == COMBATMENU::LOSE) {
-		app->Instance = 0;
-	}
 	app->scene->player->active = true;
 	InCombat = false;
 	AttackMenu = false;
