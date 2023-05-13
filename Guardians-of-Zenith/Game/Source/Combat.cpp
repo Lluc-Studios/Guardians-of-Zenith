@@ -3903,109 +3903,188 @@ void Combat::StartCombat()
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
 	LoadLucca(app->scene->player->lucca);
+
+	//Slime
 	if (Preset == 1) {
-		LoadEnemy(app->entityManager->slimeFrog);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->slimeFrog);
+		}
+		if (EnemyVariation == 1) {
+			LoadEnemy(app->entityManager->poisonSlimeFrog);
+		}
+		if (EnemyVariation == 2) {
+			LoadEnemy(app->entityManager->infernalSlimeFrog);
+		}
+		if (EnemyVariation == 3) {
+			LoadEnemy(app->entityManager->electricSlimeFrog);
+		}
+		if (EnemyVariation == 4) {
+			LoadEnemy(app->entityManager->demonicSlimeFrog);
+		}
 		E2dead = true;
 		E3dead = true;
 	}
 	if (Preset == 2) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		E2dead = true;
+		LoadEnemy(app->entityManager->slimeFrog);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->slimeFrog);
+		}
+		if (EnemyVariation == 1) {
+			LoadEnemy(app->entityManager->poisonSlimeFrog);
+		}
+		if (EnemyVariation == 2) {
+			LoadEnemy(app->entityManager->infernalSlimeFrog);
+		}
+		if (EnemyVariation == 3) {
+			LoadEnemy(app->entityManager->electricSlimeFrog);
+		}
+		if (EnemyVariation == 4) {
+			LoadEnemy(app->entityManager->demonicSlimeFrog);
+		}
 		E3dead = true;
 	}
 	if (Preset == 3) {
-		LoadEnemy(app->entityManager->slimeFrog);
-		LoadEnemy(app->entityManager->slimeFrog);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->slimeFrog);
+		}
+		if (EnemyVariation == 1) {
+			LoadEnemy(app->entityManager->poisonSlimeFrog);
+		}
+		if (EnemyVariation == 2) {
+			LoadEnemy(app->entityManager->infernalSlimeFrog);
+		}
+		if (EnemyVariation == 3) {
+			LoadEnemy(app->entityManager->electricSlimeFrog);
+		}
+		if (EnemyVariation == 4) {
+			LoadEnemy(app->entityManager->demonicSlimeFrog);
+		}
+		LoadEnemy(app->entityManager->waterlilyfish);
 		E3dead = true;
 	}
 	if (Preset == 4) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->waterlilyfish);
-		E3dead = true;
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->slimeFrog);
+		}
+		if (EnemyVariation == 1) {
+			LoadEnemy(app->entityManager->poisonSlimeFrog);
+		}
+		if (EnemyVariation == 2) {
+			LoadEnemy(app->entityManager->infernalSlimeFrog);
+		}
+		if (EnemyVariation == 3) {
+			LoadEnemy(app->entityManager->electricSlimeFrog);
+		}
+		if (EnemyVariation == 4) {
+			LoadEnemy(app->entityManager->demonicSlimeFrog);
+		}
 	}
 	if (Preset == 5) {
 		LoadEnemy(app->entityManager->slimeFrog);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->slimeFrog);
+		}
+		if (EnemyVariation == 1) {
+			LoadEnemy(app->entityManager->poisonSlimeFrog);
+		}
+		if (EnemyVariation == 2) {
+			LoadEnemy(app->entityManager->infernalSlimeFrog);
+		}
+		if (EnemyVariation == 3) {
+			LoadEnemy(app->entityManager->electricSlimeFrog);
+		}
+		if (EnemyVariation == 4) {
+			LoadEnemy(app->entityManager->demonicSlimeFrog);
+		}
 		LoadEnemy(app->entityManager->waterlilyfish);
-		E3dead = true;
 	}
 	if (Preset == 6) {
-		LoadEnemy(app->entityManager->slimeFrog);
-		LoadEnemy(app->entityManager->slimeFrog);
-		LoadEnemy(app->entityManager->slimeFrog);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->slimeFrog);
+		}
+		if (EnemyVariation == 1) {
+			LoadEnemy(app->entityManager->poisonSlimeFrog);
+		}
+		if (EnemyVariation == 2) {
+			LoadEnemy(app->entityManager->infernalSlimeFrog);
+		}
+		if (EnemyVariation == 3) {
+			LoadEnemy(app->entityManager->electricSlimeFrog);
+		}
+		if (EnemyVariation == 4) {
+			LoadEnemy(app->entityManager->demonicSlimeFrog);
+		}
+		LoadEnemy(app->entityManager->waterlilyfish);
+		LoadEnemy(app->entityManager->waterlilyfish);
 	}
+	//Lily
 	if (Preset == 7) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->waterlilyfish);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->waterlilyfish);
+		}
+		if (EnemyVariation >= 1) {
+			LoadEnemy(app->entityManager->droughtwaterlilyfish);
+		}
+		E2dead = true;
+		E3dead = true;
 	}
 	if (Preset == 8) {
-		LoadEnemy(app->entityManager->slimeFrog);
-		LoadEnemy(app->entityManager->slimeFrog);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->waterlilyfish);
+		}
+		if (EnemyVariation >= 1) {
+			LoadEnemy(app->entityManager->droughtwaterlilyfish);
+		}
 		LoadEnemy(app->entityManager->waterlilyfish);
+		E3dead = true;
 	}
 	if (Preset == 9) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->waterlilyfish);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->waterlilyfish);
+		}
+		if (EnemyVariation >= 1) {
+			LoadEnemy(app->entityManager->droughtwaterlilyfish);
+		}
 		LoadEnemy(app->entityManager->slimeFrog);
+		E3dead = true;
 	}
 	if (Preset == 10) {
-		LoadEnemy(app->entityManager->naiadongoddess);
 		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->waterlilyfish);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->waterlilyfish);
+		}
+		if (EnemyVariation >= 1) {
+			LoadEnemy(app->entityManager->droughtwaterlilyfish);
+		}
 	}
 	if (Preset == 11) {
-		LoadEnemy(app->entityManager->poisonSlimeFrog);
-		E2dead = true;
-		E3dead = true;
+		LoadEnemy(app->entityManager->waterlilyfish);
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->waterlilyfish);
+		}
+		if (EnemyVariation >= 1) {
+			LoadEnemy(app->entityManager->droughtwaterlilyfish);
+		}
+		LoadEnemy(app->entityManager->slimeFrog);
 	}
 	if (Preset == 12) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		E2dead = true;
-		E3dead = true;
+		if (EnemyVariation == 0) {
+			LoadEnemy(app->entityManager->waterlilyfish);
+		}
+		if (EnemyVariation >= 1) {
+			LoadEnemy(app->entityManager->droughtwaterlilyfish);
+		}
+		LoadEnemy(app->entityManager->slimeFrog);
+		LoadEnemy(app->entityManager->slimeFrog);
 	}
+	//Boss
 	if (Preset == 13) {
-		LoadEnemy(app->entityManager->poisonSlimeFrog);
-		LoadEnemy(app->entityManager->poisonSlimeFrog);
-		E3dead = true;
-	}
-	if (Preset == 14) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->infernalSlimeFrog);
-		E3dead = true;
-	}
-	if (Preset == 15) {
-		LoadEnemy(app->entityManager->poisonSlimeFrog);
-		LoadEnemy(app->entityManager->waterlilyfish);
-		E3dead = true;
-	}
-	if (Preset == 16) {
-		LoadEnemy(app->entityManager->poisonSlimeFrog);
-		LoadEnemy(app->entityManager->slimeFrog);
-		LoadEnemy(app->entityManager->infernalSlimeFrog);
-	}
-	if (Preset == 17) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->infernalSlimeFrog);
-	}
-	if (Preset == 18) {
-		LoadEnemy(app->entityManager->slimeFrog);
-		LoadEnemy(app->entityManager->infernalSlimeFrog);
-		LoadEnemy(app->entityManager->waterlilyfish);
-	}
-	if (Preset == 19) {
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->waterlilyfish);
-		LoadEnemy(app->entityManager->slimeFrog);
-	}
-	if (Preset == 20) {
 		LoadEnemy(app->entityManager->naiadongoddess);
+		LoadEnemy(app->entityManager->slimeFrog);
 		LoadEnemy(app->entityManager->waterlilyfish);
-		//LoadEnemy(app->entityManager->poisonSlimeFrog);
-		LoadEnemy(app->entityManager->droughtwaterlilyfish);
-		//LoadEnemy(app->entityManager->dryadon); 
-		//LoadEnemy(app->entityManager->deadLifeMantis);
-		//LoadEnemy(app->entityManager->mutantPlant);
 	}
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;

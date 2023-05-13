@@ -502,33 +502,50 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
-	case ColliderType::ENEMY:
-		LOG("Collision Enemy");
+	case ColliderType::ENEMYSLIME:
+		LOG("Collision Slime");
 		PresetChance = rand() % 100 + 1;
-		if (HardMode == false) {
-			if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 1;
-			if (PresetChance >= 21 && PresetChance <= 35) app->combat->Preset = 2;
-			if (PresetChance >= 36 && PresetChance <= 50) app->combat->Preset = 3;
-			if (PresetChance >= 51 && PresetChance <= 65) app->combat->Preset = 4;
-			if (PresetChance >= 66 && PresetChance <= 80) app->combat->Preset = 5;
-			if (PresetChance >= 81 && PresetChance <= 85) app->combat->Preset = 6;
-			if (PresetChance >= 86 && PresetChance <= 90) app->combat->Preset = 7;
-			if (PresetChance >= 91 && PresetChance <= 95) app->combat->Preset = 8;
-			if (PresetChance >= 96 && PresetChance <= 100) app->combat->Preset = 9;
-		}
-		if (HardMode == true) {
-			if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 11;
-			if (PresetChance >= 21 && PresetChance <= 35) app->combat->Preset = 12;
-			if (PresetChance >= 36 && PresetChance <= 50) app->combat->Preset = 13;
-			if (PresetChance >= 51 && PresetChance <= 65) app->combat->Preset = 14;
-			if (PresetChance >= 66 && PresetChance <= 80) app->combat->Preset = 15;
-			if (PresetChance >= 81 && PresetChance <= 85) app->combat->Preset = 16;
-			if (PresetChance >= 86 && PresetChance <= 90) app->combat->Preset = 17;
-			if (PresetChance >= 91 && PresetChance <= 95) app->combat->Preset = 18;
-			if (PresetChance >= 96 && PresetChance <= 100) app->combat->Preset = 19;
-		}
-		if (boss == true && HardMode == false) app->combat->Preset = 10;
-		if (boss == true && HardMode == true) app->combat->Preset = 20;
+		PresetVariation = rand() % 100 + 1;
+		if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 1;
+		if (PresetChance >= 21 && PresetChance <= 40) app->combat->Preset = 2;
+		if (PresetChance >= 41 && PresetChance <= 60) app->combat->Preset = 3;
+		if (PresetChance >= 61 && PresetChance <= 75) app->combat->Preset = 4;
+		if (PresetChance >= 76 && PresetChance <= 90) app->combat->Preset = 5;
+		if (PresetChance >= 91 && PresetChance <= 100) app->combat->Preset = 6;
+		if (PresetVariation <= 85) app->combat->EnemyVariation = 0;
+		if (PresetVariation >= 86 && PresetVariation <= 89) app->combat->EnemyVariation = 1;
+		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
+		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
+		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+		app->combat->StartCombat();
+		break;
+	case ColliderType::ENEMYLILY:
+		LOG("Collision Lily");
+		PresetChance = rand() % 100 + 1;
+		PresetVariation = rand() % 100 + 1;
+		if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 7;
+		if (PresetChance >= 21 && PresetChance <= 40) app->combat->Preset = 8;
+		if (PresetChance >= 41 && PresetChance <= 60) app->combat->Preset = 9;
+		if (PresetChance >= 61 && PresetChance <= 75) app->combat->Preset = 10;
+		if (PresetChance >= 76 && PresetChance <= 90) app->combat->Preset = 11;
+		if (PresetChance >= 91 && PresetChance <= 100) app->combat->Preset = 12;
+		if (PresetVariation <= 85) app->combat->EnemyVariation = 0;
+		if (PresetVariation >= 86 && PresetVariation <= 89) app->combat->EnemyVariation = 1;
+		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
+		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
+		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+		app->combat->StartCombat();
+		break;
+	case ColliderType::ENEMYNAIADON:
+		LOG("Collision Naiadon");
+		PresetVariation = rand() % 100 + 1;
+		app->combat->Preset = 13;
+		if (PresetVariation <= 85) app->combat->EnemyVariation = 0;
+		if (PresetVariation >= 86 && PresetVariation <= 89) app->combat->EnemyVariation = 1;
+		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
+		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
+		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+
 		app->combat->StartCombat();
 		break;
 	case ColliderType::TAVERN:
@@ -790,12 +807,6 @@ void Player::Move() {
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
-	}
-	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
-		boss = !boss;
-	}
-	if (app->input->GetKey(SDL_SCANCODE_V) == KEY_DOWN) {
-		HardMode = !HardMode;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) {
 		LevelToMax();

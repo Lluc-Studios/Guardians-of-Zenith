@@ -136,6 +136,48 @@ bool Scene::Start()
 	Unpressed = app->tex->Load("Assets/Textures/Unpressed.png");
 	Pressed = app->tex->Load("Assets/Textures/Pressed.png");
 	Puzzle2Wall = app->tex->Load("Assets/Textures/Water_dungeon_door.png");
+	Slime = app->tex->Load("Assets/Entities/enemies/FrogBasic.png");
+	Lily = app->tex->Load("Assets/Entities/enemies/LilyBasic.png");
+	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
+
+	//Lake enemies
+	
+	Slime1 = app->physics->CreateRectangle(3400, -20, 32, 32, STATIC);
+	Slime1->ctype = ColliderType::ENEMYSLIME;
+	Slime2 = app->physics->CreateRectangle(3624, 44, 32, 32, STATIC);
+	Slime2->ctype = ColliderType::ENEMYSLIME;
+	Slime3 = app->physics->CreateRectangle(3624, -404, 32, 32, STATIC);
+	Slime3->ctype = ColliderType::ENEMYSLIME;
+	Slime4 = app->physics->CreateRectangle(3176, -372, 32, 32, STATIC);
+	Slime4->ctype = ColliderType::ENEMYSLIME;
+	Slime5 = app->physics->CreateRectangle(3208, -212, 32, 32, STATIC);
+	Slime5->ctype = ColliderType::ENEMYSLIME;
+	Slime6 = app->physics->CreateRectangle(2952, -820, 32, 32, STATIC);
+	Slime6->ctype = ColliderType::ENEMYSLIME;
+	Slime7 = app->physics->CreateRectangle(2920, -1140, 32, 32, STATIC);
+	Slime7->ctype = ColliderType::ENEMYSLIME;
+	Slime8 = app->physics->CreateRectangle(3240, -1140, 32, 32, STATIC);
+	Slime8->ctype = ColliderType::ENEMYSLIME;
+	Slime9 = app->physics->CreateRectangle(3848, -1172, 32, 32, STATIC);
+	Slime9->ctype = ColliderType::ENEMYSLIME;
+	Slime10 = app->physics->CreateRectangle(3688, -1012, 32, 32, STATIC);
+	Slime10->ctype = ColliderType::ENEMYSLIME;
+	Slime11 = app->physics->CreateRectangle(3816, -724, 32, 32, STATIC);
+	Slime11->ctype = ColliderType::ENEMYSLIME;
+
+	Lily1 = app->physics->CreateRectangle(3624, -244, 64, 43, STATIC);
+	Lily1->ctype = ColliderType::ENEMYLILY;
+	Lily2 = app->physics->CreateRectangle(3784, -852, 64, 43, STATIC);
+	Lily2->ctype = ColliderType::ENEMYLILY;
+	Lily3 = app->physics->CreateRectangle(3432, -852, 64, 43, STATIC);
+	Lily3->ctype = ColliderType::ENEMYLILY;
+	Lily4 = app->physics->CreateRectangle(3240, -1012, 64, 43, STATIC);
+	Lily4->ctype = ColliderType::ENEMYLILY;
+	Lily5 = app->physics->CreateRectangle(3016, -1012, 64, 43, STATIC);
+	Lily5->ctype = ColliderType::ENEMYLILY;
+
+	Naiadon1 = app->physics->CreateRectangle(3459, -1814, 118, 125, STATIC);
+	Naiadon1->ctype = ColliderType::ENEMYNAIADON;
 
 	//Lake puzzle
 
@@ -263,6 +305,29 @@ bool Scene::Update(float dt)
 	colliderPuzzle4->GetPosition(x4, y4);
 	colliderPuzzle5->GetPosition(x5, y5);
 	colliderPuzzle6->GetPosition(x6, y6);
+
+	//Draw enemies lake
+
+	app->render->DrawTexture(Slime, 3384, -36);
+	app->render->DrawTexture(Slime, 3608, 28);
+	app->render->DrawTexture(Slime, 3608, -420);
+	app->render->DrawTexture(Slime, 3160, -388);
+	app->render->DrawTexture(Slime, 3192, -228);
+	app->render->DrawTexture(Slime, 2936, -836);
+	app->render->DrawTexture(Slime, 2904, -1156);
+	app->render->DrawTexture(Slime, 3224, -1156);
+	app->render->DrawTexture(Slime, 3832, -1188);
+	app->render->DrawTexture(Slime, 3672, -1028);
+	app->render->DrawTexture(Slime, 3800, -740);
+
+	app->render->DrawTexture(Lily, 3592, -265);
+	app->render->DrawTexture(Lily, 3752, -873);
+	app->render->DrawTexture(Lily, 3400, -873);
+	app->render->DrawTexture(Lily, 3208, -1033);
+	app->render->DrawTexture(Lily, 2984, -1033);
+
+	app->render->DrawTexture(Naiadon, 3400, -1876);
+
 
 	//Draw textures
 	app->render->DrawTexture(Tp, 3520, 415);

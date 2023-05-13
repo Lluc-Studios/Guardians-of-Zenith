@@ -86,6 +86,9 @@ private:
 	SDL_Texture* Unpressed;
 	SDL_Texture* Pressed;
 	SDL_Texture* Puzzle2Wall;
+	SDL_Texture* Slime;
+	SDL_Texture* Lily;
+	SDL_Texture* Naiadon;
 
 	bool Pressed1 = false, Pressed2 = false, Pressed3 = false;
 
@@ -103,6 +106,29 @@ private:
 
 	//Mando 
 	bool Start_pressed = false;
+
+	//Lake enemies
+
+	PhysBody* Slime1;
+	PhysBody* Slime2;
+	PhysBody* Slime3;
+	PhysBody* Slime4;
+	PhysBody* Slime5;
+	PhysBody* Slime6;
+	PhysBody* Slime7;
+	PhysBody* Slime8;
+	PhysBody* Slime9;
+	PhysBody* Slime10;
+	PhysBody* Slime11;
+
+	PhysBody* Lily1;
+	PhysBody* Lily2;
+	PhysBody* Lily3;
+	PhysBody* Lily4;
+	PhysBody* Lily5;
+
+	PhysBody* Naiadon1;
+
 
 	//Lake puzzle
 

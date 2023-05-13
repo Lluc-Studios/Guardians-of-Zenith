@@ -104,10 +104,7 @@ public:
 
 	int timer = 0;
 	bool limitFPS = true;
-	int PresetChance = 0;
-
-	//for debugging
-	bool boss = false;
+	int PresetChance = 0, PresetVariation = 0;
 
 	//dialogue
 	bool isDialogue = false;
@@ -161,8 +158,6 @@ private:
 
 	SDL_Texture* texture;
 	const char* texturePath;
-
-	bool HardMode = false;
 
 	//Fx
 	int Step1, Step2, StepMetalic1, StepMetalic2, DeathSound, Swing, DamageFx, aux, tpFX = -1;
