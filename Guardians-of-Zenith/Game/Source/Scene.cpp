@@ -824,8 +824,10 @@ bool Scene::PostUpdate()
 	bool ret = true;
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		if(!app->combat->InCombat)
+		if (!app->combat->InCombat) {
 			isPaused = !isPaused;
+			app->inventory->inventoryOn = false;
+		}
 
 	if (app->input->controllers.Start != 0 && !Start_pressed)
 	{
@@ -850,7 +852,10 @@ bool Scene::PostUpdate()
 	// TODO 3: Make the inventoryOn bool true when pressing a key
 	if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 	{
-		app->inventory->inventoryOn = !app->inventory->inventoryOn;
+		if (!app->combat->InCombat) {
+			app->inventory->inventoryOn = !app->inventory->inventoryOn;
+			isPaused = false;
+		}
 	}
 
 	// TODO 3: Some interface for the inventory
