@@ -30,7 +30,7 @@ bool CaveDungeon::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Cave dungeon.tmx";
+    mapFileName = "Assets/Maps/Cave_dungeon.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path
