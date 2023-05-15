@@ -24,6 +24,7 @@
 
 #include "Defs.h"
 #include "Log.h"
+#include<iostream>
 
 Scene::Scene() : Module()
 {
@@ -111,11 +112,6 @@ bool Scene::Start()
 
 	app->win->SetTitle(title.GetString());
 
-	//Initialize trophy texture
-	//coinTex = app->tex->Load("Assets/Textures/goldCoin.png");
-	//trophyTex = app->tex->Load("Assets/Textures/trophy.png");
-	//BGtexture = app->tex->Load("Assets/Maps/parallax1.png");
-
 	// L12 Create walkability map
 	if (retLoad) {
 		int w, h;
@@ -127,6 +123,8 @@ bool Scene::Start()
 		RELEASE_ARRAY(data);
 
 	}
+	invTex = app->tex->Load("Assets/Textures/UI_inventory_640x360.png");
+	invArrowTex = app->tex->Load("Assets/Textures/UI_inventory_arrow_20x20.png");
 
 	NPC1 = app->tex->Load("Assets/Entities/NPC/npc_1.png");
 	NPC2 = app->tex->Load("Assets/Entities/NPC/npc_2.png");
@@ -858,15 +856,42 @@ bool Scene::PostUpdate()
 	// TODO 3: Some interface for the inventory
 	if (app->inventory->inventoryOn)
 	{
-		app->inventory->rect = { 150, 100, 1280 - 300, 720 - 200 };
 		app->render->DrawRectangle({ app->scene->player->position.x + (-640 * app->ScalingMultiplier), app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 80);
 
 		//app->render->DrawRectangle(app->inventory->rect, 0, 0, 0, 50);
-
+		SDL_Rect rect = { 0, 0, 640, 360};
+		app->render->DrawTexture(invTex, app->scene->player->position.x-420, app->scene->player->position.y-180, &rect);
+		rect = { 0, 0, 20, 20 }; 
+		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 220, app->scene->player->position.y, &rect);
+		if (app->inventory->nrOfHpPot > 0) {
+			//char amount = static_cast<char>(app->inventory->nrOfHpPot);
+			string amountStr = std::to_string(app->inventory->nrOfHpPot);
+			const char* amount = amountStr.c_str();
+			app->render->DrawText(60, 140, WF, "Healing potion", 16);
+			app->render->DrawText(300, 140, WF, amount, 16);
+		}
+		if (app->inventory->nrOfMpPot > 0) {
+			string amountStr = std::to_string(app->inventory->nrOfMpPot);
+			const char* amount = amountStr.c_str(); 
+			app->render->DrawText(60, 170, WF, "Mana potion", 16);
+			app->render->DrawText(300, 170, WF, amount, 16);
+		}
+		if (app->inventory->nrOfAtkElx > 0) {
+			string amountStr = std::to_string(app->inventory->nrOfAtkElx);
+			const char* amount = amountStr.c_str(); 
+			app->render->DrawText(60, 200, WF, "Attack elixir", 16);
+			app->render->DrawText(300, 200, WF, amount, 16);
+		}
+		if (app->inventory->nrOfDefElx > 0) {
+			string amountStr = std::to_string(app->inventory->nrOfDefElx);
+			const char* amount = amountStr.c_str(); 
+			app->render->DrawText(60, 230, WF, "Deffense elixir", 16);
+			app->render->DrawText(300, 230, WF, amount, 16);
+		}
 		//	TODO 4: Show the items' sprites in the inventory
 		for (int i = 0; i < app->inventory->nrOfItems; i++)
 		{
-			app->render->DrawTexture(app->inventory->texture, 182 + 32 * i, 132);
+			app->render->DrawTexture(app->inventory->texture, player->position.x + 32 * i, player->position.y);
 		}
 	}
 	return ret;

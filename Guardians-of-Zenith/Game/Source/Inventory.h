@@ -36,4 +36,7 @@ public:
 	unsigned cap;
 	unsigned nrOfItems;
 
+	int nrOfHpPot, nrOfMpPot, nrOfAtkElx, nrOfDefElx, necklace, manuscript, book;
+	int itemsInv[7] = { nrOfHpPot, nrOfMpPot, nrOfAtkElx, nrOfDefElx, necklace, manuscript, book };
+
 };
