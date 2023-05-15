@@ -3678,6 +3678,12 @@ bool Combat::Update(float dt)
 		}
 	}
 	
+	//To test loosing combat
+	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
+	{
+		option = COMBATMENU::LOSE;
+	}
+
 	return true;
 }
 
@@ -3734,17 +3740,16 @@ bool Combat::PostUpdate()
 
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			EXPwon = 0;
-			SaveInstance = 3;
-			app->scene->player->tpHouse = true;
-			app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
+			app->scene->player->lose = true;
+			app->scene->fade = true;
+			app->scene->player->Teleport_Point(3, app->scene->player->tpHouse_pos);
 			ExitCombat();
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
 			EXPwon = 0;
-			SaveInstance = 3;
-			app->scene->player->tpHouse = true;
-			app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
+			app->scene->fade = true;
+			app->scene->player->Teleport_Point(3, app->scene->player->tpHouse_pos);
 			ExitCombat();
 			A_pressed = true;
 		}

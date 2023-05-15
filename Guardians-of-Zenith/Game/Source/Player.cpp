@@ -232,7 +232,6 @@ bool Player::Update(float dt)
 	//}
 	//attackCD--;
 	
-
 	//Death
 	if (alive != true) {
 		Death(); 
@@ -245,94 +244,18 @@ bool Player::Update(float dt)
 	position.y = METERS_TO_PIXELS((pbody->body->GetTransform().p.y) - height / 2);
 
 	//Tp
-	if (tp1) {
-		position.x = 210;
-		position.y = -40;
+	if (tp) {
+		position.x = tp_pos[0];
+		position.y = tp_pos[1];
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp1 = false; 
+		//printf("Instance = %d \n Pos.x = %d \n Pos.y = %d \n", future_instance, tp[0], tp[1]);
+		tp = false;
 	}
-	if (tp2) {
-		position.x = 690;
-		position.y = 900;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp2 = false;
-	}
-	if (tp3) {
-		position.x = 240;
-		position.y = -460;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp3 = false;
-	}
-	if (tp4) {
-		position.x = 1745;
-		position.y = 910;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp4 = false;
-	}
-	if (tp5) {
-		position.x = -330;
-		position.y = 330;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp5 = false;
-	}
-	if (tp6) {
-		position.x = 560;
-		position.y = 320;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp6 = false;
-	}
-	if (tp7) {
-		position.x = 3450;
-		position.y = 420;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp7 = false;
-	}
-	if (tp8) {
-		position.x = 1015;
-		position.y = 190;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp8 = false;
-	}
-	if (tp9) {
-		position.x = 185;
-		position.y = -175;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp9 = false;
-	}
-	if (tp10) {
-		position.x = 1015;
-		position.y = 190;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp10 = false;
-	}
-	if (tp11) {
-		position.x = -1250;
-		position.y = 2150;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp11 = false;
-	}
-	if (tp12) {
-		position.x = 1715;
-		position.y = -830;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp12 = false;
-	}
-	if (tp13) {
-		position.x = 1370;
-		position.y = -80;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp13 = false;
-	}
-	if (tp14) {
-		position.x = 1010;
-		position.y = -830;
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-		tp14 = false;
-	}
+
 	//Tp when you lose a combat
 	if (tpHouse) {
-		position.x = -520;
-		position.y = 150;
+		position.x = tpHouse_pos[0];
+		position.y = tpHouse_pos[1];
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		laurea.chp = laurea.hp;
 		laurea.cmp = laurea.mp;
@@ -544,16 +467,16 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision WALL");
 
 		break; 
-	case ColliderType::TELEPORT:
-		if (physB->id == 1) {
-			tp1 = true; 
-		}
-		else if (physB->id == 2) {
-			tp2 = true; 
-		}
-		app->audio->PlayFxWithVolume(tpFX, 0, 50);
-		LOG("COLLISION TP: %i, position: %i, %i", physB->id);
-		break;
+	//case ColliderType::TELEPORT:
+	//	if (physB->id == 1) {
+	//		tp1 = true; 
+	//	}
+	//	else if (physB->id == 2) {
+	//		tp2 = true; 
+	//	}
+	//	app->audio->PlayFxWithVolume(tpFX, 0, 50);
+	//	LOG("COLLISION TP: %i, position: %i, %i", physB->id);
+	//	break;
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
@@ -607,60 +530,116 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->combat->StartCombat();
 		break;
 	case ColliderType::TAVERN:
-		LOG("Collision Tavern");
-		MapTeleport(1);
+		LOG("Teleport_Tavern");
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(1, tp1);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::TOWNTAVERN:
 		LOG("Collision Town");
-		MapTeleport(2);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(0, tp2);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::BLACKSMITH:
 		LOG("Collision Blacksmith");
-		MapTeleport(3);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(2, tp3);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::TOWNBLACKSMITH:
 		LOG("Collision Town");
-		MapTeleport(4);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(0, tp4);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::HOUSE:
 		LOG("Collision House");
-		MapTeleport(5);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(3, tp5);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::TOWNHOUSE:
 		LOG("Collision Town");
-		MapTeleport(6);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(0, tp6);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::LAKEDUNGEON:
 		LOG("Collision Lake Dungeon");
-		MapTeleport(7);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(4, tp7);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::TOWNLAKEDUNGEON:
 		LOG("Collision Town");
-		MapTeleport(8);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(7, tp8);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::FORESTDUNGEON:
 		LOG("Collision Forest Dungeon");
-		MapTeleport(9);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(5, tp9);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::TOWNFORESTDUNGEON:
 		LOG("Collision Town");
-		MapTeleport(10);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(7, tp10);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::CAVEDUNGEON:
 		LOG("Collision Cave Dungeon");
-		MapTeleport(11);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(6, tp11);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::TOWNCAVEDUNGEON:
 		LOG("Collision Town");
-		MapTeleport(12);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(0, tp12);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::MONOLITH:
 		LOG("Collision Monolith");
-		MapTeleport(13);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(7, tp13);
+			auxBool = true;
+		}
 		break;
 	case ColliderType::TOWNMONOLITH:
 		LOG("Collision Town");
-		MapTeleport(14);
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(0, tp14);
+			auxBool = true;
+		}
 		break;
 
 	case ColliderType::BED:
@@ -719,11 +698,17 @@ bool Player::IsAlive() {
 
 bool Player::LoadState(pugi::xml_node& data) {
 
-	map = data.child("player_stats").attribute("map").as_int();
-	MapTeleport(map);
-	playerState = (State)data.child("player_stats").attribute("state").as_int();
-	position.x = data.child("player_stats").attribute("position_x").as_int();
-	position.y = data.child("player_stats").attribute("position_y").as_int();
+	facing = (DIRECTION)data.child("player_stats").attribute("facing").as_int();
+	tp_savegame[0] = data.child("player_stats").attribute("position_x").as_int()+32;
+	tp_savegame[1] = data.child("player_stats").attribute("position_y").as_int()+8;
+	future_instance = data.child("player_stats").attribute("instance").as_int();
+	
+	//Teleport player last position save
+	if (auxBool == false) {
+		app->scene->fade = true;
+		Teleport_Point(future_instance, tp_savegame);
+		auxBool = true;
+	}
 
 	laurea.chp = data.child("laurea_stats").append_attribute("laurea_CHP").as_float();
 	laurea.cmp = data.child("laurea_stats").append_attribute("laurea_CMP").as_float();
@@ -740,15 +725,16 @@ bool Player::LoadState(pugi::xml_node& data) {
 	lucca.lvl = data.child("lucca_stats").append_attribute("lucca_LVL").as_float();
 	lucca.exp = data.child("lucca_stats").append_attribute("lucca_EXP").as_float();
 
+	//playerState = (State)data.child("player_stats").attribute("state").as_int();
 	return true;
 }
 
 bool Player::SaveState(pugi::xml_node& data) {
 	pugi::xml_node player_stats = data.append_child("player_stats");
+	data.child("player_stats").append_attribute("facing") = (int)facing;
 	data.child("player_stats").append_attribute("position_x") = position.x;
 	data.child("player_stats").append_attribute("position_y") = position.y;
-	data.child("player_stats").append_attribute("state") =	(int)playerState;
-	data.child("player_stats").append_attribute("map") = map;
+	data.child("player_stats").append_attribute("instance") = future_instance;
 
 	pugi::xml_node laurea_stats = data.append_child("laurea_stats");
 	data.child("laurea_stats").append_attribute("laurea_CHP") = laurea.chp;
@@ -768,6 +754,7 @@ bool Player::SaveState(pugi::xml_node& data) {
 	data.child("lucca_stats").append_attribute("lucca_LVL") = lucca.lvl;
 	data.child("lucca_stats").append_attribute("lucca_EXP") = lucca.exp;
 
+	//data.child("player_stats").append_attribute("state") =(int)playerState;
 	return true; 
 }
 
@@ -788,139 +775,6 @@ void Player::LevelToMax() {
 	laurea.exp = laurea.EXPneeded;
 	lapis.exp = lapis.EXPneeded;
 	lucca.exp = lucca.EXPneeded;
-}
-
-void Player::MapTeleport(int level) {
-	switch (level)
-	{
-	case 1:
-		LOG("Teleport_Tavern");
-		if (auxBool == false) {
-			app->scene->selected = 1;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 1;
-		}
-		break;
-	case 2:
-		LOG("Teleport_Town");
-		if (auxBool == false) {
-			app->scene->selected = 2;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 2;
-		}
-		break;
-	case 3:
-		LOG("Teleport_Blacksmith");
-		if (auxBool == false) {
-			app->scene->selected = 3;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 3;
-		}
-		break;
-	case 4:
-		LOG("Teleport_Town");
-		if (auxBool == false) {
-			app->scene->selected = 4;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 4;
-		}
-		break;
-	case 5:
-		LOG("Teleport_House");
-		if (auxBool == false) {
-			app->scene->selected = 5;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 5;
-		}
-		break;
-	case 6:
-		LOG("Teleport_Town");
-		if (auxBool == false) {
-			app->scene->selected = 6;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 6;
-		}
-		break;
-	case 7:
-		LOG("Teleport_Lake Dungeon");
-		if (auxBool == false) {
-			app->scene->selected = 7;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 7;
-		}
-		break;
-	case 8:
-		LOG("Teleport_Town");
-		if (auxBool == false) {
-			app->scene->selected = 8;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 8;
-		}
-		break;
-	case 9:
-		LOG("Teleport_Forest Dungeon");
-		if (auxBool == false) {
-			app->scene->selected = 9;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 9;
-		}
-		break;
-	case 10:
-		LOG("Teleport_Town");
-		if (auxBool == false) {
-			app->scene->selected = 10;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 10;
-		}
-		break;
-	case 11:
-		LOG("Teleport_Cave Dungeon");
-		if (auxBool == false) {
-			app->scene->selected = 11;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 11;
-		}
-		break;
-	case 12:
-		LOG("Teleport_Town");
-		if (auxBool == false) {
-			app->scene->selected = 12;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 12;
-		}
-		break;
-	case 13:
-		LOG("Teleport_Monolith");
-		if (auxBool == false) {
-			app->scene->selected = 13;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 13;
-		}
-		break;
-	case 14:
-		LOG("Teleport_Town");
-		if (auxBool == false) {
-			app->scene->selected = 14;
-			app->scene->fade = true;
-			auxBool = true;
-			map = 14;
-		}
-		break;
-	}
-
 }
 
 void Player::Move() {
@@ -961,21 +815,25 @@ void Player::Move() {
 	{
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
+		currentAnim = &playerRunL;
 	}
 	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
+		currentAnim = &playerRunR;
 	}
 	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
+		currentAnim = &playerRunUp;
 	}
 	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
+		&playerRunDown;
 	}
 	
 
@@ -1012,10 +870,6 @@ void Player::Move() {
 		}
 
 	}
-
-
-
-
 	//Set the velocity of the pbody of the player
 	pbody->body->SetLinearVelocity(vel);
 }
@@ -1047,7 +901,6 @@ void Player::Move() {
 //
 //	
 //}
-
 
 void Player::debugKeys() {
 
@@ -1093,3 +946,14 @@ void Player::Death() {
 		app->deathmenu->active = true;
 	}
 }
+
+//Take the instance and the coordinates of the teleportation point
+void Player::Teleport_Point(int Instance ,int TELEPORT_POSITION[2]) {
+
+	future_instance = Instance;
+	tp_pos[0] = TELEPORT_POSITION[0];
+	tp_pos[1] = TELEPORT_POSITION[1];
+
+}
+
+

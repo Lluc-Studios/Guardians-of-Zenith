@@ -21,6 +21,7 @@
 #include "CaveDungeon.h"
 #include "Monolith.h"
 #include "Inventory.h"
+#include "Player.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -689,91 +690,56 @@ bool Scene::Update(float dt)
 		fading += 10;
 		if (fading >= 255) {
 			fading == 255;
-			if (selected == 1) {
-				app->Instance = 1;
-				app->scene->player->tp1 = true;
+
+			if (app->scene->player->lose = true) {
+				app->Instance = app->scene->player->future_instance;
+				app->scene->player->tp = true;
+				app->scene->player->lose = false;
 				fade = false;
+			}
+			else {
+				app->Instance = app->scene->player->future_instance;
+				app->scene->player->tp = true;
+				fade = false;
+			}
+			switch (app->scene->player->future_instance)
+			{
+			case 0:
+				LOG("Music_Town");
+				app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
+				break;
+			case 1:
+				LOG("Music_Tavern");
 				app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
-			}
-			if (selected == 2) {
-				app->Instance = 0;
-				app->scene->player->tp2 = true;
-				fade = false;
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-			}
-			if (selected == 3) {
-				app->Instance = 2;
-				app->scene->player->tp3 = true;
-				fade = false;
+				break;
+			case 2:
+				LOG("Music_Blacksmith");
 				app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
-			}
-			if (selected == 4) {
-				app->Instance = 0;
-				app->scene->player->tp4 = true;
-				fade = false;
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-			}
-			if (selected == 5) {
-				app->Instance = 3;
-				app->scene->player->tp5 = true;
-				fade = false;
+				break;
+			case 3:
+				LOG("Music_House");
 				app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
-			}
-			if (selected == 6) {
-				app->Instance = 0;
-				app->scene->player->tp6 = true;
-				fade = false;
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-			}
-			if (selected == 7) {
-				app->Instance = 4;
-				app->scene->player->tp7 = true;
-				fade = false;
+				break;
+			case 4:
+				LOG("Music_LakeDaugeon");
 				app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
-			}
-			if (selected == 8) {
-				app->Instance = 0;
-				app->scene->player->tp8 = true;
-				fade = false;
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-			}
-			if (selected == 9) {
-				app->Instance = 5;
-				app->scene->player->tp9 = true;
-				fade = false;
+				break;
+			case 5:
+				LOG("Music_ForestDaugeon");
 				app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
-			}
-			if (selected == 10) {
-				app->Instance = 0;
-				app->scene->player->tp10 = true;
-				fade = false;
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-			}
-			if (selected == 11) {
-				app->Instance = 6;
-				app->scene->player->tp11 = true;
-				fade = false;
+				break;
+			case 6:
+				LOG("Music_CaveDaugeon");
 				app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
-			}
-			if (selected == 12) {
-				app->Instance = 7;
-				app->scene->player->tp12 = true;
-				fade = false;
+				break;
+			case 7:
+				LOG("Music_Monolith");
 				app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
+				break;
 			}
-			if (selected == 13) {
-				app->Instance = 7;
-				app->scene->player->tp13 = true;
-				fade = false;
-				app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
-			}
-			if (selected == 14) {
-				app->Instance = 7;
-				app->scene->player->tp14 = true;
-				fade = false;
-				app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
-			}
+
 		}
+
 	}
 	if (fading > 0 && fade == false) {
 		fading -= 10;
@@ -968,7 +934,8 @@ bool Scene::Pause()
 
 void Scene::RestartCave()
 {
-	app->scene->player->tp11 = true;
+	app->scene->fade = true;
+	app->scene->player->Teleport_Point(0, app->scene->player->tp12);
 
 	TPressed1 = false;
 	TPressed2 = false;
@@ -1025,22 +992,5 @@ void Scene::RestartCave()
 	TBroken25 = false;
 	TBroken26 = false;
 	TBroken27 = false;
-
 }
 
-void Scene::TeleportPlayer(int Instance, int position_x, int position_y)
-{
-	//fading
-	fading += 10;
-	if (fading >= 255) {
-		fading == 255;
-		app->Instance = Instance;
-		app->scene->player->pbody->body->SetTransform({ PIXEL_TO_METERS(position_x), PIXEL_TO_METERS(position_y) }, 0);
-		fade = false;	
-	}
-	fading -= 10;
-	if (fading <= 0) {
-			fading = 0;
-	}
-	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
-}

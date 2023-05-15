@@ -28,6 +28,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - F2: Show collisions
 - C: Next combat will appear the boss
 - V: Next combat enemies can poison and burn you
+- K: To lose combat
 - F10: God mode
 
 ## Developers

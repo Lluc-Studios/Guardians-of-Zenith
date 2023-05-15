@@ -44,7 +44,7 @@ public:
 
 	bool Pause();
 
-	void TeleportPlayer(int Instance, int position_x, int position_y);
+	void PlayMusic();
 
 	void RestartCave();
 
@@ -70,9 +70,6 @@ public:
 	bool isPaused = false;
 
 	bool options = false;
-
-
-
 
 private:
 	bool Music = false, PF = false;

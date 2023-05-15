@@ -58,7 +58,7 @@ public:
 
 	void LevelToMax();
 
-	void MapTeleport(int level);
+	void Teleport_Point(int Instance, int TELEPORT_POSITION[2]);
 
 public:
 	// stats
@@ -133,24 +133,33 @@ public:
 
 	iPoint x;
 
-	bool tp1 = false;
-	bool tp2 = false;
-	bool tp3 = false;
-	bool tp4 = false;
-	bool tp5 = false;
-	bool tp6 = false;
-	bool tp7 = false;
-	bool tp8 = false;
-	bool tp9 = false;
-	bool tp10 = false;
-	bool tp11 = false;
-	bool tp12 = false;
-	bool tp13 = false;
-	bool tp14 = false;
-
+	bool tp = false;
 	bool tpHouse = false;
 
-	int map = 1;
+	int future_instance = 0;
+	int tp_pos[2] = {0,0};
+
+	int tp_savegame[2] = {0,0};
+
+
+	int tp1[2] = { 210,-40};
+	int tp2[2] = { 690,900 };
+	int tp3[2] = { 240,-460};
+	int tp4[2] = { 1745,910};
+	int tp5[2] = { -330,330};
+	int tp6[2] = { 560 ,320 };
+	int tp7[2] = { 3450 ,420 };
+	int tp8[2] = { 1015, 190};
+	int tp9[2] = { 180,-175};
+	int tp10[2] = { 1015, 190};
+	int tp11[2] = { -1250, 2150 };
+	int tp12[2] = { 1715,-830 };
+	int tp13[2] = { 1370,-80 };
+	int tp14[2] = { 1010,-830 };
+
+	int tpHouse_pos[2] = { -520,150 };
+
+	bool lose = false; 
 
 	//Uint32 TotalTime, Time = 0;
 
