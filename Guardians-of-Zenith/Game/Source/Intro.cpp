@@ -77,6 +77,7 @@ bool Intro::Update(float dt)
 		//app->physics->active = true;
 		app->mainmenu->active = true;
 		app->intro->active = false;
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Rocky-Tundra-OST-Version.ogg");
 
 		//app->audio->PlayFxWithVolume(menuMusic);
 
@@ -97,6 +98,7 @@ bool Intro::Update(float dt)
 		app->physics->active = true;
 		app->scene->CanPlayerMove = true;
 		app->intro->active = false;
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
 	}
 
 	return true;

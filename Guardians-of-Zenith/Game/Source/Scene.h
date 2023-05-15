@@ -44,8 +44,6 @@ public:
 
 	bool Pause();
 
-	void PlayMusic();
-
 	void TeleportPlayer(int Instance, int position_x, int position_y);
 
 	void RestartCave();
@@ -183,16 +181,6 @@ public:
 	};
 
 	SELECTED option = SELECTED::NONE;
-
-	enum MUSIC {
-		TOWN,
-		HOME,
-		TAVERN,
-		BLACKSMITH,
-		NONE
-	};
-
-	MUSIC playing = MUSIC::NONE;
 };
 
 #endif // __SCENE_H__

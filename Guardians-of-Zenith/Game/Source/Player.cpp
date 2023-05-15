@@ -572,6 +572,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
 	case ColliderType::ENEMYLILY:
@@ -589,6 +590,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
 	case ColliderType::ENEMYNAIADON:
@@ -601,6 +603,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
 	case ColliderType::TAVERN:

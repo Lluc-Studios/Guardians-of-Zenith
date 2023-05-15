@@ -149,7 +149,7 @@ bool Combat::Update(float dt)
 			C3FROZEN = false;
 			FinishTurn();
 		}
-		// Posion
+		// Poison
 		if (C1POISON != 0 && FinishedTurn1 == false && Turn[0] != 0) {
 			C1POISON--;
 			C1CHP -= C1MHP * 0.03;
@@ -1347,6 +1347,18 @@ bool Combat::Update(float dt)
 					}
 					if (option == COMBATMENU::ESCAPE) {
 						EXPwon = 0;
+						switch (SaveInstance)
+						{
+						case 4:
+							app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
+							break;
+						case 5:
+							app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
+							break;
+						case 6:
+							app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
+							break;
+						}
 						ExitCombat();
 					}
 				}
@@ -3681,10 +3693,34 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux, 16);
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+			switch (SaveInstance)
+			{
+			case 4:
+				app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
+				break;
+			case 5:
+				app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
+				break;
+			case 6:
+				app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
+				break;
+			}
 			ExitCombat();
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
+			switch (SaveInstance)
+			{
+			case 4:
+				app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
+				break;
+			case 5:
+				app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
+				break;
+			case 6:
+				app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
+				break;
+			}
 			ExitCombat();
 			A_pressed = true;
 		}
@@ -3700,6 +3736,7 @@ bool Combat::PostUpdate()
 			EXPwon = 0;
 			SaveInstance = 3;
 			app->scene->player->tpHouse = true;
+			app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
 			ExitCombat();
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
@@ -3707,6 +3744,7 @@ bool Combat::PostUpdate()
 			EXPwon = 0;
 			SaveInstance = 3;
 			app->scene->player->tpHouse = true;
+			app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
 			ExitCombat();
 			A_pressed = true;
 		}

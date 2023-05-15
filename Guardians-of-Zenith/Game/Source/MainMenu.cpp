@@ -100,7 +100,7 @@ bool MainMenu::Update(float dt)
 		app->physics->active = true;
 		app->scene->CanPlayerMove = true;
 		app->mainmenu->active = false;
-
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
 	}
 
 	//Funcion para detectar el raton en la parte principal del menu
