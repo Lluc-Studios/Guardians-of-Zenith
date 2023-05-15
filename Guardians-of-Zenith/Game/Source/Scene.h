@@ -76,6 +76,9 @@ private:
 	SDL_Texture* img;
 	SDL_Texture* MapAdjustment;
 
+	SDL_Texture* invTex;
+	SDL_Texture* invArrowTex;
+
 	SDL_Texture* coinTex;
 	SDL_Texture* trophyTex;
 	SDL_Texture* BGtexture;
@@ -98,7 +101,11 @@ private:
 	SDL_Texture* BrokenTile;
 
 	bool TPressed1 = false, TPressed2 = false, TPressed3 = false, TPressed4 = false, TPressed5 = false, TPressed6 = false, TPressed7 = false, TPressed8 = false, TPressed9 = false;
+	bool TPressed10 = false, TPressed11 = false, TPressed12 = false, TPressed13 = false, TPressed14 = false, TPressed15 = false, TPressed16 = false, TPressed17 = false, TPressed18 = false;
+	bool TPressed19 = false, TPressed20 = false, TPressed21 = false, TPressed22 = false, TPressed23 = false, TPressed24 = false, TPressed25 = false, TPressed26 = false, TPressed27 = false;
 	bool TBroken1 = false, TBroken2 = false, TBroken3 = false, TBroken4 = false, TBroken5 = false, TBroken6 = false, TBroken7 = false, TBroken8 = false, TBroken9 = false;
+	bool TBroken10 = false, TBroken11 = false, TBroken12 = false, TBroken13 = false, TBroken14= false, TBroken15 = false, TBroken16 = false, TBroken17 = false, TBroken18 = false;
+	bool TBroken19 = false, TBroken20 = false, TBroken21 = false, TBroken22 = false, TBroken23 = false, TBroken24 = false, TBroken25 = false, TBroken26 = false, TBroken27 = false;
 
 	//Others
 

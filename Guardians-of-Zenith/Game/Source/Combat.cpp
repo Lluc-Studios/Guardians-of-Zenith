@@ -19,7 +19,7 @@
 
 Combat::Combat() : Module()
 {
-	name.Create("Combat Module");
+	name.Create("Combat_Module");
 }
 
 // Destructor

@@ -181,8 +181,14 @@ private:
 
 	Animation playerIdleR;
 	Animation playerIdleL;
+	Animation playerIdleUp;
+	Animation playerIdleDown;
+
 	Animation playerRunR;
 	Animation playerRunL;
+	Animation playerRunUp;
+	Animation playerRunDown;
+
 	Animation playerAttackR;
 	Animation playerAttackL;
 	Animation playerDie;

@@ -24,6 +24,7 @@
 
 #include "Defs.h"
 #include "Log.h"
+#include<iostream>
 
 Scene::Scene() : Module()
 {
@@ -111,11 +112,6 @@ bool Scene::Start()
 
 	app->win->SetTitle(title.GetString());
 
-	//Initialize trophy texture
-	//coinTex = app->tex->Load("Assets/Textures/goldCoin.png");
-	//trophyTex = app->tex->Load("Assets/Textures/trophy.png");
-	//BGtexture = app->tex->Load("Assets/Maps/parallax1.png");
-
 	// L12 Create walkability map
 	if (retLoad) {
 		int w, h;
@@ -127,6 +123,8 @@ bool Scene::Start()
 		RELEASE_ARRAY(data);
 
 	}
+	invTex = app->tex->Load("Assets/Textures/UI_inventory_640x360.png");
+	invArrowTex = app->tex->Load("Assets/Textures/UI_inventory_arrow_20x20.png");
 
 	NPC1 = app->tex->Load("Assets/Entities/NPC/npc_1.png");
 	NPC2 = app->tex->Load("Assets/Entities/NPC/npc_2.png");
@@ -561,6 +559,111 @@ bool Scene::Update(float dt)
 	if ((app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) && TBroken8 == true) RestartCave();
 	if ((app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) && TBroken9 == true) RestartCave();
 
+	//Puzzle2 Normal Draw
+
+	if (TBroken10 == false) app->render->DrawTexture(DefaultTile, -1520, 1408);
+	if (TBroken11 == false) app->render->DrawTexture(DefaultTile, -1488, 1408);
+	if (TBroken12 == false) app->render->DrawTexture(DefaultTile, -1456, 1408);
+	if (TBroken13 == false) app->render->DrawTexture(DefaultTile, -1424, 1408);
+	if (TBroken14 == false) app->render->DrawTexture(DefaultTile, -1392, 1408);
+	if (TBroken15 == false) app->render->DrawTexture(DefaultTile, -1360, 1408);
+	if (TBroken16 == false) app->render->DrawTexture(DefaultTile, -1520, 1440);
+	if (TBroken17 == false) app->render->DrawTexture(DefaultTile, -1488, 1440);
+	if (TBroken18 == false) app->render->DrawTexture(DefaultTile, -1456, 1440);
+	if (TBroken19 == false) app->render->DrawTexture(DefaultTile, -1424, 1440);
+	if (TBroken20 == false) app->render->DrawTexture(DefaultTile, -1392, 1440);
+	if (TBroken21 == false) app->render->DrawTexture(DefaultTile, -1360, 1440);
+	if (TBroken22 == false) app->render->DrawTexture(DefaultTile, -1520, 1472);
+	if (TBroken23 == false) app->render->DrawTexture(DefaultTile, -1488, 1472);
+	if (TBroken24 == false) app->render->DrawTexture(DefaultTile, -1456, 1472);
+	if (TBroken25 == false) app->render->DrawTexture(DefaultTile, -1424, 1472);
+	if (TBroken26 == false) app->render->DrawTexture(DefaultTile, -1392, 1472);
+	if (TBroken27 == false) app->render->DrawTexture(DefaultTile, -1360, 1472);
+
+
+	//Puzzle2 Detect if pressed
+
+	if (app->scene->player->position.x >= -1556 && app->scene->player->position.x <= -1514 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) TPressed10 = true;
+	if (app->scene->player->position.x >= -1524 && app->scene->player->position.x <= -1482 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) TPressed11 = true;
+	if (app->scene->player->position.x >= -1492 && app->scene->player->position.x <= -1450 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) TPressed12 = true;
+	if (app->scene->player->position.x >= -1460 && app->scene->player->position.x <= -1418 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) TPressed13 = true;
+	if (app->scene->player->position.x >= -1428 && app->scene->player->position.x <= -1386 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) TPressed14 = true;
+	if (app->scene->player->position.x >= -1396 && app->scene->player->position.x <= -1354 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) TPressed15 = true;
+	if (app->scene->player->position.x >= -1556 && app->scene->player->position.x <= -1514 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) TPressed16 = true;
+	if (app->scene->player->position.x >= -1524 && app->scene->player->position.x <= -1482 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) TPressed17 = true;
+	if (app->scene->player->position.x >= -1492 && app->scene->player->position.x <= -1450 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) TPressed18 = true;
+	if (app->scene->player->position.x >= -1460 && app->scene->player->position.x <= -1418 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) TPressed19 = true;
+	if (app->scene->player->position.x >= -1428 && app->scene->player->position.x <= -1386 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) TPressed20 = true;
+	if (app->scene->player->position.x >= -1396 && app->scene->player->position.x <= -1354 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) TPressed21 = true;
+	if (app->scene->player->position.x >= -1556 && app->scene->player->position.x <= -1514 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) TPressed22 = true;
+	if (app->scene->player->position.x >= -1524 && app->scene->player->position.x <= -1482 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) TPressed23 = true;
+	if (app->scene->player->position.x >= -1492 && app->scene->player->position.x <= -1450 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) TPressed24 = true;
+	if (app->scene->player->position.x >= -1460 && app->scene->player->position.x <= -1418 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) TPressed25 = true;
+	if (app->scene->player->position.x >= -1428 && app->scene->player->position.x <= -1386 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) TPressed26 = true;
+	if (app->scene->player->position.x >= -1396 && app->scene->player->position.x <= -1354 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) TPressed27 = true;
+
+	//Puzzle2 Detect if left and break
+
+	if ((app->scene->player->position.x < -1556 || app->scene->player->position.x > -1514 || app->scene->player->position.y < 1397 || app->scene->player->position.y > 1432) && TPressed10 == true) TBroken10 = true;
+	if ((app->scene->player->position.x < -1524 || app->scene->player->position.x > -1482 || app->scene->player->position.y < 1397 || app->scene->player->position.y > 1432) && TPressed11 == true) TBroken11 = true;
+	if ((app->scene->player->position.x < -1492 || app->scene->player->position.x > -1450 || app->scene->player->position.y < 1397 || app->scene->player->position.y > 1432) && TPressed12 == true) TBroken12 = true;
+	if ((app->scene->player->position.x < -1460 || app->scene->player->position.x > -1418 || app->scene->player->position.y < 1397 || app->scene->player->position.y > 1432) && TPressed13 == true) TBroken13 = true;
+	if ((app->scene->player->position.x < -1428 || app->scene->player->position.x > -1386 || app->scene->player->position.y < 1397 || app->scene->player->position.y > 1432) && TPressed14 == true) TBroken14 = true;
+	if ((app->scene->player->position.x < -1396 || app->scene->player->position.x > -1354 || app->scene->player->position.y < 1397 || app->scene->player->position.y > 1432) && TPressed15 == true) TBroken15 = true;
+	if ((app->scene->player->position.x < -1556 || app->scene->player->position.x > -1514 || app->scene->player->position.y < 1429 || app->scene->player->position.y > 1464) && TPressed16 == true) TBroken16 = true;
+	if ((app->scene->player->position.x < -1524 || app->scene->player->position.x > -1482 || app->scene->player->position.y < 1429 || app->scene->player->position.y > 1464) && TPressed17 == true) TBroken17 = true;
+	if ((app->scene->player->position.x < -1492 || app->scene->player->position.x > -1450 || app->scene->player->position.y < 1429 || app->scene->player->position.y > 1464) && TPressed18 == true) TBroken18 = true;
+	if ((app->scene->player->position.x < -1460 || app->scene->player->position.x > -1418 || app->scene->player->position.y < 1429 || app->scene->player->position.y > 1464) && TPressed19 == true) TBroken19 = true;
+	if ((app->scene->player->position.x < -1428 || app->scene->player->position.x > -1386 || app->scene->player->position.y < 1429 || app->scene->player->position.y > 1464) && TPressed20 == true) TBroken20 = true;
+	if ((app->scene->player->position.x < -1396 || app->scene->player->position.x > -1354 || app->scene->player->position.y < 1429 || app->scene->player->position.y > 1464) && TPressed21 == true) TBroken21 = true;
+	if ((app->scene->player->position.x < -1556 || app->scene->player->position.x > -1514 || app->scene->player->position.y < 1461 || app->scene->player->position.y > 1496) && TPressed22 == true) TBroken22 = true;
+	if ((app->scene->player->position.x < -1524 || app->scene->player->position.x > -1482 || app->scene->player->position.y < 1461 || app->scene->player->position.y > 1496) && TPressed23 == true) TBroken23 = true;
+	if ((app->scene->player->position.x < -1492 || app->scene->player->position.x > -1450 || app->scene->player->position.y < 1461 || app->scene->player->position.y > 1496) && TPressed24 == true) TBroken24 = true;
+	if ((app->scene->player->position.x < -1460 || app->scene->player->position.x > -1418 || app->scene->player->position.y < 1461 || app->scene->player->position.y > 1496) && TPressed25 == true) TBroken25 = true;
+	if ((app->scene->player->position.x < -1428 || app->scene->player->position.x > -1386 || app->scene->player->position.y < 1461 || app->scene->player->position.y > 1496) && TPressed26 == true) TBroken26 = true;
+	if ((app->scene->player->position.x < -1396 || app->scene->player->position.x > -1354 || app->scene->player->position.y < 1461 || app->scene->player->position.y > 1496) && TPressed27 == true) TBroken27 = true;
+
+	//Puzzle2 Draw Broken
+
+	if (TBroken10 == true) app->render->DrawTexture(BrokenTile, -1520, 1408);
+	if (TBroken11 == true) app->render->DrawTexture(BrokenTile, -1488, 1408);
+	if (TBroken12 == true) app->render->DrawTexture(BrokenTile, -1456, 1408);
+	if (TBroken13 == true) app->render->DrawTexture(BrokenTile, -1424, 1408);
+	if (TBroken14 == true) app->render->DrawTexture(BrokenTile, -1392, 1408);
+	if (TBroken15 == true) app->render->DrawTexture(BrokenTile, -1360, 1408);
+	if (TBroken16 == true) app->render->DrawTexture(BrokenTile, -1520, 1440);
+	if (TBroken17 == true) app->render->DrawTexture(BrokenTile, -1488, 1440);
+	if (TBroken18 == true) app->render->DrawTexture(BrokenTile, -1456, 1440);
+	if (TBroken19 == true) app->render->DrawTexture(BrokenTile, -1424, 1440);
+	if (TBroken20 == true) app->render->DrawTexture(BrokenTile, -1392, 1440);
+	if (TBroken21 == true) app->render->DrawTexture(BrokenTile, -1360, 1440);
+	if (TBroken22 == true) app->render->DrawTexture(BrokenTile, -1520, 1472);
+	if (TBroken23 == true) app->render->DrawTexture(BrokenTile, -1488, 1472);
+	if (TBroken24 == true) app->render->DrawTexture(BrokenTile, -1456, 1472);
+	if (TBroken25 == true) app->render->DrawTexture(BrokenTile, -1424, 1472);
+	if (TBroken26 == true) app->render->DrawTexture(BrokenTile, -1392, 1472);
+	if (TBroken27 == true) app->render->DrawTexture(BrokenTile, -1360, 1472);
+
+	//Puzzle2 Detect if fallen
+
+	if ((app->scene->player->position.x >= -1556 && app->scene->player->position.x <= -1514 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) && TBroken10 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1524 && app->scene->player->position.x <= -1482 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) && TBroken11 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1492 && app->scene->player->position.x <= -1450 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) && TBroken12 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1460 && app->scene->player->position.x <= -1418 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) && TBroken13 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1428 && app->scene->player->position.x <= -1386 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) && TBroken14 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1396 && app->scene->player->position.x <= -1354 && app->scene->player->position.y >= 1397 && app->scene->player->position.y <= 1432) && TBroken15 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1556 && app->scene->player->position.x <= -1514 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) && TBroken16 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1524 && app->scene->player->position.x <= -1482 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) && TBroken17 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1492 && app->scene->player->position.x <= -1450 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) && TBroken18 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1460 && app->scene->player->position.x <= -1418 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) && TBroken19 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1428 && app->scene->player->position.x <= -1386 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) && TBroken20 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1396 && app->scene->player->position.x <= -1354 && app->scene->player->position.y >= 1429 && app->scene->player->position.y <= 1464) && TBroken21 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1556 && app->scene->player->position.x <= -1514 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) && TBroken22 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1524 && app->scene->player->position.x <= -1482 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) && TBroken23 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1492 && app->scene->player->position.x <= -1450 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) && TBroken24 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1460 && app->scene->player->position.x <= -1418 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) && TBroken25 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1428 && app->scene->player->position.x <= -1386 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) && TBroken26 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1396 && app->scene->player->position.x <= -1354 && app->scene->player->position.y >= 1461 && app->scene->player->position.y <= 1496) && TBroken27 == true) RestartCave();
 
 	//Pathfinding
 	destination = app->map->WorldToMap(app->scene->player->position.x, app->scene->player->position.y+4);
@@ -721,8 +824,10 @@ bool Scene::PostUpdate()
 	bool ret = true;
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		if(!app->combat->InCombat)
+		if (!app->combat->InCombat) {
 			isPaused = !isPaused;
+			app->inventory->inventoryOn = false;
+		}
 
 	if (app->input->controllers.Start != 0 && !Start_pressed)
 	{
@@ -747,21 +852,51 @@ bool Scene::PostUpdate()
 	// TODO 3: Make the inventoryOn bool true when pressing a key
 	if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 	{
-		app->inventory->inventoryOn = !app->inventory->inventoryOn;
+		if (!app->combat->InCombat) {
+			app->inventory->inventoryOn = !app->inventory->inventoryOn;
+			isPaused = false;
+		}
 	}
 
 	// TODO 3: Some interface for the inventory
 	if (app->inventory->inventoryOn)
 	{
-		app->inventory->rect = { 150, 100, 1280 - 300, 720 - 200 };
 		app->render->DrawRectangle({ app->scene->player->position.x + (-640 * app->ScalingMultiplier), app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 80);
 
 		//app->render->DrawRectangle(app->inventory->rect, 0, 0, 0, 50);
-
+		SDL_Rect rect = { 0, 0, 640, 360};
+		app->render->DrawTexture(invTex, app->scene->player->position.x-420, app->scene->player->position.y-180, &rect);
+		rect = { 0, 0, 20, 20 }; 
+		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 260, app->scene->player->position.y-44, &rect);
+		if (app->inventory->nrOfHpPot > 0) {
+			//char amount = static_cast<char>(app->inventory->nrOfHpPot);
+			string amountStr = std::to_string(app->inventory->nrOfHpPot);
+			const char* amount = amountStr.c_str();
+			app->render->DrawText(60, 140, WF, "Healing potion", 16);
+			app->render->DrawText(300, 140, WF, amount, 16);
+		}
+		if (app->inventory->nrOfMpPot > 0) {
+			string amountStr = std::to_string(app->inventory->nrOfMpPot);
+			const char* amount = amountStr.c_str(); 
+			app->render->DrawText(60, 170, WF, "Mana potion", 16);
+			app->render->DrawText(300, 170, WF, amount, 16);
+		}
+		if (app->inventory->nrOfAtkElx > 0) {
+			string amountStr = std::to_string(app->inventory->nrOfAtkElx);
+			const char* amount = amountStr.c_str(); 
+			app->render->DrawText(60, 200, WF, "Attack elixir", 16);
+			app->render->DrawText(300, 200, WF, amount, 16);
+		}
+		if (app->inventory->nrOfDefElx > 0) {
+			string amountStr = std::to_string(app->inventory->nrOfDefElx);
+			const char* amount = amountStr.c_str(); 
+			app->render->DrawText(60, 230, WF, "Deffense elixir", 16);
+			app->render->DrawText(300, 230, WF, amount, 16);
+		}
 		//	TODO 4: Show the items' sprites in the inventory
 		for (int i = 0; i < app->inventory->nrOfItems; i++)
 		{
-			app->render->DrawTexture(app->inventory->texture, 182 + 32 * i, 132);
+			app->render->DrawTexture(app->inventory->texture, player->position.x + 32 * i, player->position.y);
 		}
 	}
 	return ret;
@@ -859,6 +994,24 @@ void Scene::RestartCave()
 	TPressed7 = false;
 	TPressed8 = false;
 	TPressed9 = false;
+	TPressed10 = false;
+	TPressed11 = false;
+	TPressed12 = false;
+	TPressed13 = false;
+	TPressed14 = false;
+	TPressed15 = false;
+	TPressed16 = false;
+	TPressed17 = false;
+	TPressed18 = false;
+	TPressed19 = false;
+	TPressed20 = false;
+	TPressed21 = false;
+	TPressed22 = false;
+	TPressed23 = false;
+	TPressed24 = false;
+	TPressed25 = false;
+	TPressed26 = false;
+	TPressed27 = false;
 
 	TBroken1 = false;
 	TBroken2 = false;
@@ -869,5 +1022,23 @@ void Scene::RestartCave()
 	TBroken7 = false;
 	TBroken8 = false;
 	TBroken9 = false;
+	TBroken10 = false;
+	TBroken11 = false;
+	TBroken12 = false;
+	TBroken13 = false;
+	TBroken14 = false;
+	TBroken15 = false;
+	TBroken16 = false;
+	TBroken17 = false;
+	TBroken18 = false;
+	TBroken19 = false;
+	TBroken20 = false;
+	TBroken21 = false;
+	TBroken22 = false;
+	TBroken23 = false;
+	TBroken24 = false;
+	TBroken25 = false;
+	TBroken26 = false;
+	TBroken27 = false;
 
 }

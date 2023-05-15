@@ -17,6 +17,7 @@
 #include "Combat.h"
 #include "time.h"
 #include "External/SDL/include/SDL_gamecontroller.h"
+#include "Animation.h"
 
 
 #include "GuiManager.h"
@@ -83,10 +84,59 @@ bool Player::Start() {
 	
 
 
-	////Animations
-	//playerIdleR.PushBack({ 0 * width,0 * height,width,height });
-	//playerIdleL.PushBack({ 0 * width,1 * height,width,height });
+	////Animations Idle
+	playerIdleL.PushBack({ 0, 0, 32, 32 });
+	playerIdleL.PushBack({ 32, 0, 32, 32 });
+	playerIdleL.loop = true;
+	playerIdleL.speed = 0.04f;
 
+	playerIdleR.PushBack({ 32*2, 0, 32, 32 });
+	playerIdleR.PushBack({ 32*3, 0, 32, 32 });
+	playerIdleR.loop = true;
+	playerIdleR.speed = 0.04f;
+
+	playerIdleDown.PushBack({ 0, 32, 32, 32 });
+	playerIdleDown.PushBack({ 32, 32, 32, 32 });
+	playerIdleDown.loop = true;
+	playerIdleDown.speed = 0.04f;
+
+	playerIdleUp.PushBack({ 32 * 2, 32, 32, 32 });
+	playerIdleUp.PushBack({ 32 * 3, 32, 32, 32 });
+	playerIdleUp.loop = true;
+	playerIdleUp.speed = 0.04f;
+
+	////Animations Run
+
+	playerRunL.PushBack({ 32 * 0, 32 * 2, 32, 32 });
+	playerRunL.PushBack({ 32 * 1, 32 * 2, 32, 32 });
+	playerRunL.PushBack({ 32 * 2, 32 * 2, 32, 32 });
+	playerRunL.PushBack({ 32 * 3, 32 * 2, 32, 32 });
+	playerRunL.loop = true;
+	playerRunL.speed = 0.07f;
+
+	playerRunR.PushBack({ 32 * 0, 32 * 3, 32, 32 });
+	playerRunR.PushBack({ 32 * 1, 32 * 3, 32, 32 });
+	playerRunR.PushBack({ 32 * 2, 32 * 3, 32, 32 });
+	playerRunR.PushBack({ 32 * 3, 32 * 3, 32, 32 });
+	playerRunR.loop = true;
+	playerRunR.speed = 0.07f;
+
+	playerRunDown.PushBack({ 32 * 0, 32 * 4, 32, 32 });
+	playerRunDown.PushBack({ 32 * 1, 32 * 4, 32, 32 });
+	playerRunDown.PushBack({ 32 * 2, 32 * 4, 32, 32 });
+	playerRunDown.PushBack({ 32 * 3, 32 * 4, 32, 32 });
+	playerRunDown.loop = true;
+	playerRunDown.speed = 0.07f;
+
+	playerRunUp.PushBack({ 32 * 0, 32 * 5, 32, 32 });
+	playerRunUp.PushBack({ 32 * 1, 32 * 5, 32, 32 });
+	playerRunUp.PushBack({ 32 * 2, 32 * 5, 32, 32 });
+	playerRunUp.PushBack({ 32 * 3, 32 * 5, 32, 32 });
+	playerRunUp.loop = true;
+	playerRunUp.speed = 0.07f;
+
+	currentAnim = &playerIdleL;
+	
 	//playerAttackR.PushBack({ 0 * width,6 * height,width,height });
 	//playerAttackL.PushBack({ 0 * width,7 * height,width,height });
 
@@ -109,7 +159,6 @@ bool Player::Start() {
 	//playerDie.loop = false;
 	//playerDie.speed = 0.3f;
 
-	//currentAnim = &playerIdleR;
 
 	return true;
 }
@@ -299,17 +348,23 @@ bool Player::Update(float dt)
 	app->render->camera.y = -1 * (position.y * app->win->GetScale() - app->render->camera.h / 2);
 
 	//Player draw
+
+	currentAnim->Update();
+	SDL_Rect rect = currentAnim->GetCurrentFrame();
+
+	app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rect);
+
 	if (facing == DIRECTION::RIGHT) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectRight);
+		//app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectRight);
 	}
 	if (facing == DIRECTION::LEFT) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectLeft);
+		/*app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectLeft);*/
 	}
 	if (facing == DIRECTION::DOWN) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectDown);
+		//app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectDown);
 	}
 	if (facing == DIRECTION::UP) {
-		app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
+		//app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
 	}
 
 	//NPCs
@@ -795,18 +850,22 @@ void Player::Move() {
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
+		currentAnim = &playerRunL;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
+		currentAnim = &playerRunR;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
+		currentAnim = &playerRunUp;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
+		currentAnim = &playerRunDown;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) {
 		LevelToMax();
@@ -846,18 +905,29 @@ void Player::Move() {
 	//	}
 	//}
 
-	//if (facing == DIRECTION::RIGHT && vel.x == 0) {
-	//	currentAnim = &playerIdleR;
-	//}
-	//if (facing == DIRECTION::LEFT && vel.x == 0) {
-	//	currentAnim = &playerIdleL;
-	//}
-	//if (facing == DIRECTION::RIGHT && vel.x != 0) {
-	//	currentAnim = &playerRunR;
-	//}
-	//if (facing == DIRECTION::LEFT && vel.x != 0) {
-	//	currentAnim = &playerRunL;
-	//}
+
+	//Return to idle 
+	if (app->input->GetKey(SDL_SCANCODE_W) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_S) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_IDLE) {
+
+		if (facing == DIRECTION::RIGHT && vel.x == 0) {
+			currentAnim = &playerIdleR;
+		}
+		if (facing == DIRECTION::LEFT && vel.x == 0) {
+			currentAnim = &playerIdleL;
+		}
+		if (facing == DIRECTION::UP && vel.x == 0) {
+			currentAnim = &playerIdleUp;
+		}
+		if (facing == DIRECTION::DOWN && vel.x == 0) {
+			currentAnim = &playerIdleL;
+		}
+
+	}
+
+
 
 
 	//Set the velocity of the pbody of the player

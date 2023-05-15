@@ -15,6 +15,8 @@ Inventory::Inventory(unsigned cap) : Module()
 	this->cap = cap;
 	this->nrOfItems = 0;
 	this->items = new Item * [cap];
+	nrOfHpPot = 1;
+	nrOfMpPot = 1;
 }
 
 
@@ -35,6 +37,7 @@ bool Inventory::Start()
 	{
 		this->items[i] = nullptr;
 	}
+
 	return true;
 }
 
