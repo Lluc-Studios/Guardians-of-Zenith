@@ -140,6 +140,8 @@ bool Scene::Start()
 	Slime = app->tex->Load("Assets/Entities/enemies/FrogBasic.png");
 	Lily = app->tex->Load("Assets/Entities/enemies/LilyBasic.png");
 	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
+	DefaultTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Default.png");
+	BrokenTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Broken.png");
 
 	//Lake enemies
 	
@@ -496,6 +498,24 @@ bool Scene::Update(float dt)
 		colliderPuzzle3->body->SetActive(false);
 		stage++;
 	}
+
+	//Cave Puzzle
+
+	if (TBroken1 == false) app->render->DrawTexture(DefaultTile, -1296, 1984);
+	if (TBroken2 == false) app->render->DrawTexture(DefaultTile, -1264, 1984);
+	if (TBroken3 == false) app->render->DrawTexture(DefaultTile, -1232, 1984);
+	if (TBroken4 == false) app->render->DrawTexture(DefaultTile, -1296, 2016);
+	if (TBroken5 == false) app->render->DrawTexture(DefaultTile, -1264, 2016);
+	if (TBroken6 == false) app->render->DrawTexture(DefaultTile, -1232, 2016);
+	if (TBroken7 == false) app->render->DrawTexture(DefaultTile, -1296, 2048);
+	if (TBroken8 == false) app->render->DrawTexture(DefaultTile, -1264, 2048);
+	if (TBroken9 == false) app->render->DrawTexture(DefaultTile, -1232, 2048);
+
+	if (app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >=2005 && app->scene->player->position.y <= 2040) TPressed5 = true;
+
+	if ((app->scene->player->position.x < -1300|| app->scene->player->position.x > -1258 || app->scene->player->position.y < 2005 || app->scene->player->position.y > 2040) && TPressed5 == true) TBroken5 = true;
+
+	if (TBroken5 == true) app->render->DrawTexture(BrokenTile, -1264, 2016);
 
 
 	//Pathfinding

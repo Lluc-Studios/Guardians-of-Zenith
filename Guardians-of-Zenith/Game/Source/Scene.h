@@ -90,6 +90,16 @@ private:
 	SDL_Texture* Lily;
 	SDL_Texture* Naiadon;
 
+	//Cave dungeon
+	
+	SDL_Texture* DefaultTile;
+	SDL_Texture* BrokenTile;
+
+	bool TPressed1 = false, TPressed2 = false, TPressed3 = false, TPressed4 = false, TPressed5 = false, TPressed6 = false, TPressed7 = false, TPressed8 = false, TPressed9 = false;
+	bool TBroken1 = false, TBroken2 = false, TBroken3 = false, TBroken4 = false, TBroken5 = false, TBroken6 = false, TBroken7 = false, TBroken8 = false, TBroken9 = false;
+
+	//Others
+
 	bool Pressed1 = false, Pressed2 = false, Pressed3 = false;
 
 	SDL_Rect ET = { 0,0,64,64 };
