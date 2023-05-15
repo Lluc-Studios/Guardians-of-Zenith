@@ -718,11 +718,9 @@ bool Player::LoadState(pugi::xml_node& data) {
 
 	map = data.child("player_stats").attribute("map").as_int();
 	MapTeleport(map);
+	playerState = (State)data.child("player_stats").attribute("state").as_int();
 	position.x = data.child("player_stats").attribute("position_x").as_int();
 	position.y = data.child("player_stats").attribute("position_y").as_int();
-	playerState = (State)data.child("player_stats").attribute("state").as_int();
-
-	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 
 	laurea.chp = data.child("laurea_stats").append_attribute("laurea_CHP").as_float();
 	laurea.cmp = data.child("laurea_stats").append_attribute("laurea_CMP").as_float();

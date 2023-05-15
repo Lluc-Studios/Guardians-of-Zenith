@@ -74,11 +74,11 @@ bool Scene::Awake(pugi::xml_node& config)
 		flying_e->parameters = en2Node;
 	}
 
-	for (pugi::xml_node tpNode = config.child("teleport"); tpNode; tpNode = tpNode.next_sibling("teleport"))
-	{
-		Teleport* tp = (Teleport*)app->entityManager->CreateEntity(EntityType::TELEPORT);
-		tp->parameters = tpNode;
-	}
+	//for (pugi::xml_node tpNode = config.child("teleport"); tpNode; tpNode = tpNode.next_sibling("teleport"))
+	//{
+	//	Teleport* tp = (Teleport*)app->entityManager->CreateEntity(EntityType::TELEPORT);
+	//	tp->parameters = tpNode;
+	//}
 
 	villageMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Guidance Island OST Version.ogg");
 
@@ -1041,4 +1041,21 @@ void Scene::RestartCave()
 	TBroken26 = false;
 	TBroken27 = false;
 
+}
+
+void Scene::TeleportPlayer(int Instance, int position_x, int position_y)
+{
+	//fading
+	fading += 10;
+	if (fading >= 255) {
+		fading == 255;
+		app->Instance = Instance;
+		app->scene->player->pbody->body->SetTransform({ PIXEL_TO_METERS(position_x), PIXEL_TO_METERS(position_y) }, 0);
+		fade = false;	
+	}
+	fading -= 10;
+	if (fading <= 0) {
+			fading = 0;
+	}
+	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
 }
