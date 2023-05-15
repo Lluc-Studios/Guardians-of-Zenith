@@ -46,6 +46,8 @@ public:
 
 	void PlayMusic();
 
+	void RestartCave();
+
 public:
 
 	//fading

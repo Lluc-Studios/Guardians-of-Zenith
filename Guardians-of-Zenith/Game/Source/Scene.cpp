@@ -501,6 +501,8 @@ bool Scene::Update(float dt)
 
 	//Cave Puzzle
 
+	//Puzzle1 Normal Draw
+
 	if (TBroken1 == false) app->render->DrawTexture(DefaultTile, -1296, 1984);
 	if (TBroken2 == false) app->render->DrawTexture(DefaultTile, -1264, 1984);
 	if (TBroken3 == false) app->render->DrawTexture(DefaultTile, -1232, 1984);
@@ -510,6 +512,8 @@ bool Scene::Update(float dt)
 	if (TBroken7 == false) app->render->DrawTexture(DefaultTile, -1296, 2048);
 	if (TBroken8 == false) app->render->DrawTexture(DefaultTile, -1264, 2048);
 	if (TBroken9 == false) app->render->DrawTexture(DefaultTile, -1232, 2048);
+
+	//Puzzle1 Detect if pressed
 
 	if (app->scene->player->position.x >= -1332 && app->scene->player->position.x <= -1290 && app->scene->player->position.y >= 1973 && app->scene->player->position.y <= 2008) TPressed1 = true;
 	if (app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 1973 && app->scene->player->position.y <= 2008) TPressed2 = true;
@@ -521,6 +525,8 @@ bool Scene::Update(float dt)
 	if (app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) TPressed8 = true;
 	if (app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) TPressed9 = true;
 
+	//Puzzle1 Detect if left and break
+
 	if ((app->scene->player->position.x < -1332 || app->scene->player->position.x > -1290 || app->scene->player->position.y < 1973 || app->scene->player->position.y > 2008) && TPressed1 == true) TBroken1 = true;
 	if ((app->scene->player->position.x < -1300 || app->scene->player->position.x > -1258 || app->scene->player->position.y < 1973 || app->scene->player->position.y > 2008) && TPressed2 == true) TBroken2 = true;
 	if ((app->scene->player->position.x < -1268 || app->scene->player->position.x > -1226 || app->scene->player->position.y < 1973 || app->scene->player->position.y > 2008) && TPressed3 == true) TBroken3 = true;
@@ -531,6 +537,8 @@ bool Scene::Update(float dt)
 	if ((app->scene->player->position.x < -1300 || app->scene->player->position.x > -1258 || app->scene->player->position.y < 2037 || app->scene->player->position.y > 2072) && TPressed8 == true) TBroken8 = true;
 	if ((app->scene->player->position.x < -1268 || app->scene->player->position.x > -1226 || app->scene->player->position.y < 2037 || app->scene->player->position.y > 2072) && TPressed9 == true) TBroken9 = true;
 
+	//Puzzle1 Draw Broken
+
 	if (TBroken1 == true) app->render->DrawTexture(BrokenTile, -1296, 1984);
 	if (TBroken2 == true) app->render->DrawTexture(BrokenTile, -1264, 1984);
 	if (TBroken3 == true) app->render->DrawTexture(BrokenTile, -1232, 1984);
@@ -540,6 +548,18 @@ bool Scene::Update(float dt)
 	if (TBroken7 == true) app->render->DrawTexture(BrokenTile, -1296, 2048);
 	if (TBroken8 == true) app->render->DrawTexture(BrokenTile, -1264, 2048);
 	if (TBroken9 == true) app->render->DrawTexture(BrokenTile, -1232, 2048);
+
+	//Puzzle1 Detect if fallen
+
+	if ((app->scene->player->position.x >= -1332 && app->scene->player->position.x <= -1290 && app->scene->player->position.y >= 1973 && app->scene->player->position.y <= 2008) && TBroken1 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 1973 && app->scene->player->position.y <= 2008) && TBroken2 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 1973 && app->scene->player->position.y <= 2008) && TBroken3 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1332 && app->scene->player->position.x <= -1290 && app->scene->player->position.y >= 2005 && app->scene->player->position.y <= 2040) && TBroken4 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 2005 && app->scene->player->position.y <= 2040) && TBroken5 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 2005 && app->scene->player->position.y <= 2040) && TBroken6 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1332 && app->scene->player->position.x <= -1290 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) && TBroken7 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) && TBroken8 == true) RestartCave();
+	if ((app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) && TBroken9 == true) RestartCave();
 
 
 	//Pathfinding
@@ -824,4 +844,30 @@ void Scene::PlayMusic()
 	default:
 		break;
 	}
+}
+
+void Scene::RestartCave()
+{
+	app->scene->player->tp11 = true;
+
+	TPressed1 = false;
+	TPressed2 = false;
+	TPressed3 = false;
+	TPressed4 = false;
+	TPressed5 = false;
+	TPressed6 = false;
+	TPressed7 = false;
+	TPressed8 = false;
+	TPressed9 = false;
+
+	TBroken1 = false;
+	TBroken2 = false;
+	TBroken3 = false;
+	TBroken4 = false;
+	TBroken5 = false;
+	TBroken6 = false;
+	TBroken7 = false;
+	TBroken8 = false;
+	TBroken9 = false;
+
 }
