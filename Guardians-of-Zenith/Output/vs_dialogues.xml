@@ -68,7 +68,7 @@
   <dialogueTree ID="2">
 	<node id="0" text="Welcome to the village smithing shop. Need anything?">
 		<choice id="0" option="Yes, one Glock with 40 calibear rounds and some magazines, please." nextNode="1" eventReturn="1"/>
-		<choice id="1" option="I would like to buy some armor." nextNode="-2" eventReturn="1"/>
+		<choice id="1" option="I would like to buy some armor." nextNode="2" eventReturn="1"/>
 	</node>
 
 	<node id="1" text="All of it costs 9.99 bucks. Can I ask you what use are you going to give it?">
@@ -78,7 +78,7 @@
 
 	<node id="-1" text ="Alright then. Come back soon!"></node>
 
-	<node id="-2" text="I am sorry, but now we are out of stock. Maybe you can come again when alpha is released. Come back soon!"></node>
+	<node id="2" text="I am sorry, but now we are out of stock. Maybe you can come again when alpha is released. Come back soon!"></node>
 	</dialogueTree>
 
   <!--Timmy (Ninio)-->
