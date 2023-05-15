@@ -12,6 +12,7 @@
 #include "Physics.h"
 #include "ModuleFonts.h"
 #include "Player.h"
+#include "Inventory.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -1320,9 +1321,17 @@ bool Combat::Update(float dt)
 					EnemySelect = false;
 					option = COMBATMENU::ATTACK1;
 				}
+				if (InventoryMenu == true && AllySelect == false) {
+					InventoryMenu = false;
+					option = COMBATMENU::INVENTORY;
+				}
+				else if (AttackMenu == true && AllySelect == true) {
+					AllySelect = false;
+					option = COMBATMENU::INVENTORY1;
+				}
 			}
 			if ((app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && TeamTurn == 1) || (app->input->controllers.A != 0 && !A_pressed && TeamTurn == 1)) {
-				if (AttackMenu == false) {
+				if (AttackMenu == false && InventoryMenu == false) {
 					if (option == COMBATMENU::ATTACK) {
 						AttackMenu = true;
 						option = COMBATMENU::ATTACK1;
@@ -1343,7 +1352,9 @@ bool Combat::Update(float dt)
 						}
 					}
 					if (option == COMBATMENU::INVENTORY) {
-
+						InventoryMenu = true;
+						option = COMBATMENU::INVENTORY1;
+						cd = 1;
 					}
 					if (option == COMBATMENU::ESCAPE) {
 						EXPwon = 0;
@@ -1361,6 +1372,60 @@ bool Combat::Update(float dt)
 						}
 						ExitCombat();
 					}
+				}
+				if (InventoryMenu == true &&  AllySelect == false) {
+					if (option == COMBATMENU::INVENTORY1) {
+						AllySelect = true;
+						ItemSelected = 1;
+						option = COMBATMENU::ALLYSELECT1;
+						cd = 1;
+					}
+					if (option == COMBATMENU::INVENTORY2) {
+						AllySelect = true;
+						ItemSelected = 2;
+						option = COMBATMENU::ALLYSELECT1;
+						cd = 1;
+					}
+					if (option == COMBATMENU::INVENTORY3) {
+						AllySelect = true;
+						ItemSelected = 3;
+						option = COMBATMENU::ALLYSELECT1;
+						cd = 1;
+					}
+					if (option == COMBATMENU::INVENTORY4) {
+						AllySelect = true;
+						ItemSelected = 4;
+						option = COMBATMENU::ALLYSELECT1;
+						cd = 1;
+					}
+					//if (app->inventory->nrOfHpPot > 0) {
+					//	//char amount = static_cast<char>(app->inventory->nrOfHpPot);
+					//	string amountStr = std::to_string(app->inventory->nrOfHpPot);
+					//	const char* amount = amountStr.c_str();
+					//	//app->render->DrawText(60, 140, WF, "Healing potion", 16);
+					//	//app->render->DrawText(300, 140, WF, amount, 16);
+					//	app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
+					//	app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, "Healing potion", 16);
+
+					//}
+					//if (app->inventory->nrOfMpPot > 0) {
+					//	string amountStr = std::to_string(app->inventory->nrOfMpPot);
+					//	const char* amount = amountStr.c_str();
+					//	app->render->DrawText(60, 170, WF, "Mana potion", 16);
+					//	app->render->DrawText(300, 170, WF, amount, 16);
+					//}
+					//if (app->inventory->nrOfAtkElx > 0) {
+					//	string amountStr = std::to_string(app->inventory->nrOfAtkElx);
+					//	const char* amount = amountStr.c_str();
+					//	app->render->DrawText(60, 200, WF, "Attack elixir", 16);
+					//	app->render->DrawText(300, 200, WF, amount, 16);
+					//}
+					//if (app->inventory->nrOfDefElx > 0) {
+					//	string amountStr = std::to_string(app->inventory->nrOfDefElx);
+					//	const char* amount = amountStr.c_str();
+					//	app->render->DrawText(60, 230, WF, "Deffense elixir", 16);
+					//	app->render->DrawText(300, 230, WF, amount, 16);
+					//}
 				}
 				if (AttackMenu == true && cd == 0 && EnemySelect == false) {
 					if (option == COMBATMENU::ATTACK1) {

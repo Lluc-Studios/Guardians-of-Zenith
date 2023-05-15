@@ -28,8 +28,15 @@ public:
 		ALLY1,
 		ALLY2,
 		ALLY3,
+		ALLYSELECT1,
+		ALLYSELECT2,
+		ALLYSELECT3,
 		WIN,
 		LOSE,
+		INVENTORY1,
+		INVENTORY2,
+		INVENTORY3,
+		INVENTORY4,
 		NONE
 	};
 
@@ -82,6 +89,7 @@ public:
 	COMBATMENU option = COMBATMENU::ATTACK;
 
 	int AttackSelected = 0;
+	int ItemSelected = 0;
 	int cd = 0;
 
 	SDL_Texture* BG;
@@ -95,6 +103,9 @@ public:
 
 	bool AttackMenu = false;
 	bool EnemySelect = false;
+	bool AllySelect = false;
+
+	bool InventoryMenu = false;
 
 	bool EnemyAdone = false;
 
@@ -316,6 +327,9 @@ private:
 
 	bool E3dead = false, E3Check = false;
 	int E3POISON = 0;
+
+	//Inventory
+	
 
 	//Other variables
 
