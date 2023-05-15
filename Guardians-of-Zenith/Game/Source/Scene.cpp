@@ -862,7 +862,7 @@ bool Scene::PostUpdate()
 		SDL_Rect rect = { 0, 0, 640, 360};
 		app->render->DrawTexture(invTex, app->scene->player->position.x-420, app->scene->player->position.y-180, &rect);
 		rect = { 0, 0, 20, 20 }; 
-		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 220, app->scene->player->position.y, &rect);
+		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 260, app->scene->player->position.y-44, &rect);
 		if (app->inventory->nrOfHpPot > 0) {
 			//char amount = static_cast<char>(app->inventory->nrOfHpPot);
 			string amountStr = std::to_string(app->inventory->nrOfHpPot);
