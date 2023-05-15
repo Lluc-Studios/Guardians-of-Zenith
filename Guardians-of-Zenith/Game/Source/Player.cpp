@@ -17,6 +17,7 @@
 #include "Combat.h"
 #include "time.h"
 #include "External/SDL/include/SDL_gamecontroller.h"
+#include "Animation.h"
 
 
 #include "GuiManager.h"
@@ -83,10 +84,57 @@ bool Player::Start() {
 	
 
 
-	////Animations
-	//playerIdleR.PushBack({ 0 * width,0 * height,width,height });
-	//playerIdleL.PushBack({ 0 * width,1 * height,width,height });
+	////Animations Idle
+	playerIdleL.PushBack({ 0, 0, 32, 32 });
+	playerIdleL.PushBack({ 32, 0, 32, 32 });
+	playerIdleL.loop = true;
+	playerIdleL.speed = 0.04f;
 
+	playerIdleR.PushBack({ 32*2, 0, 32, 32 });
+	playerIdleR.PushBack({ 32*3, 0, 32, 32 });
+	playerIdleR.loop = true;
+	playerIdleR.speed = 0.04f;
+
+	playerIdleUp.PushBack({ 0, 32, 32, 32 });
+	playerIdleUp.PushBack({ 32, 32, 32, 32 });
+	playerIdleUp.loop = true;
+	playerIdleUp.speed = 0.04f;
+
+	playerIdleDown.PushBack({ 32 * 2, 32, 32, 32 });
+	playerIdleDown.PushBack({ 32 * 3, 32, 32, 32 });
+	playerIdleDown.loop = true;
+	playerIdleDown.speed = 0.04f;
+
+	////Animations Run
+
+	playerRunL.PushBack({ 32 * 0, 32 * 2, 32, 32 });
+	playerRunL.PushBack({ 32 * 1, 32 * 2, 32, 32 });
+	playerRunL.PushBack({ 32 * 2, 32 * 2, 32, 32 });
+	playerRunL.PushBack({ 32 * 3, 32 * 2, 32, 32 });
+	playerRunL.loop = true;
+	playerRunL.speed = 0.04f;
+
+	playerRunR.PushBack({ 32 * 0, 32 * 3, 32, 32 });
+	playerRunR.PushBack({ 32 * 1, 32 * 3, 32, 32 });
+	playerRunR.PushBack({ 32 * 2, 32 * 3, 32, 32 });
+	playerRunR.PushBack({ 32 * 3, 32 * 3, 32, 32 });
+	playerRunR.loop = true;
+	playerRunR.speed = 0.04f;
+
+	playerRunDown.PushBack({ 32 * 0, 32 * 4, 32, 32 });
+	playerRunDown.PushBack({ 32 * 1, 32 * 4, 32, 32 });
+	playerRunDown.PushBack({ 32 * 2, 32 * 4, 32, 32 });
+	playerRunDown.PushBack({ 32 * 3, 32 * 4, 32, 32 });
+	playerRunDown.loop = true;
+	playerRunDown.speed = 0.04f;
+
+	playerRunUp.PushBack({ 32 * 0, 32 * 5, 32, 32 });
+	playerRunUp.PushBack({ 32 * 1, 32 * 5, 32, 32 });
+	playerRunUp.PushBack({ 32 * 2, 32 * 5, 32, 32 });
+	playerRunUp.PushBack({ 32 * 3, 32 * 5, 32, 32 });
+	playerRunUp.loop = true;
+	playerRunUp.speed = 0.04f;
+	
 	//playerAttackR.PushBack({ 0 * width,6 * height,width,height });
 	//playerAttackL.PushBack({ 0 * width,7 * height,width,height });
 
