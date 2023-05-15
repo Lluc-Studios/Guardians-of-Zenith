@@ -58,6 +58,8 @@ public:
 
 	void LevelToMax();
 
+	void MapTeleport(int level);
+
 public:
 	// stats
 	struct Laurea
@@ -148,6 +150,7 @@ public:
 
 	bool tpHouse = false;
 
+	int map = 1;
 
 	//Uint32 TotalTime, Time = 0;
 

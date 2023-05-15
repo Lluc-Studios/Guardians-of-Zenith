@@ -3485,7 +3485,7 @@ PUGI__NS_BEGIN
 
     PUGI__FN void node_output_attributes(xml_buffered_writer& writer, xml_node_struct* node, unsigned int flags)
     {
-        const char_t* default_name = PUGIXML_TEXT(":anonymous");
+        const char_t* default_name = PUGIXML_TEXT("anonymous");
 
         for (xml_attribute_struct* a = node->first_attribute; a; a = a->next_attribute)
         {
@@ -3502,7 +3502,7 @@ PUGI__NS_BEGIN
 
     PUGI__FN bool node_output_start(xml_buffered_writer& writer, xml_node_struct* node, unsigned int flags)
     {
-        const char_t* default_name = PUGIXML_TEXT(":anonymous");
+        const char_t* default_name = PUGIXML_TEXT("anonymous");
         const char_t* name = node->name ? node->name : default_name;
 
         writer.write('<');
@@ -3527,7 +3527,7 @@ PUGI__NS_BEGIN
 
     PUGI__FN void node_output_end(xml_buffered_writer& writer, xml_node_struct* node)
     {
-        const char_t* default_name = PUGIXML_TEXT(":anonymous");
+        const char_t* default_name = PUGIXML_TEXT("anonymous");
         const char_t* name = node->name ? node->name : default_name;
 
         writer.write('<', '/');
@@ -3537,7 +3537,7 @@ PUGI__NS_BEGIN
 
     PUGI__FN void node_output_simple(xml_buffered_writer& writer, xml_node_struct* node, unsigned int flags)
     {
-        const char_t* default_name = PUGIXML_TEXT(":anonymous");
+        const char_t* default_name = PUGIXML_TEXT("anonymous");
 
         switch (PUGI__NODETYPE(node))
         {

@@ -37,7 +37,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - Github account: [Seregero00](https://github.com/seregero00)
 
 **Enric Arxer Cortés**
-- Art, UI
+- Art, Code
 - Github account: [Luxary-92](https://github.com/Luxary-92)
 
 **Iván Bermúdez Sagra**
@@ -61,7 +61,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - Github account: [GHOSTVCL](https://github.com/GHOSTVCL)
 
 **Daniel Mañas Calvo**
-- Art, Audio
+- Art, UI
 - Github account: [Hacienda69](https://github.com/Hacienda69)
 
 **Maksym Polupan**

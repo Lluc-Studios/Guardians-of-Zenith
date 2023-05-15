@@ -605,116 +605,61 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::TAVERN:
 		LOG("Collision Tavern");
-		if (auxBool == false) {
-			app->scene->selected = 1;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(1);
 		break;
 	case ColliderType::TOWNTAVERN:
 		LOG("Collision Town");
-		if (auxBool == false) {
-			app->scene->selected = 2;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(2);
 		break;
 	case ColliderType::BLACKSMITH:
 		LOG("Collision Blacksmith");
-		if (auxBool == false) {
-			app->scene->selected = 3;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(3);
 		break;
 	case ColliderType::TOWNBLACKSMITH:
 		LOG("Collision Town");
-		if (auxBool == false) {
-			app->scene->selected = 4;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(4);
 		break;
 	case ColliderType::HOUSE:
 		LOG("Collision House");
-		if (auxBool == false) {
-			app->scene->selected = 5;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(5);
 		break;
 	case ColliderType::TOWNHOUSE:
 		LOG("Collision Town");
-		if (auxBool == false) {
-			app->scene->selected = 6;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(6);
 		break;
 	case ColliderType::LAKEDUNGEON:
 		LOG("Collision Lake Dungeon");
-		if (auxBool == false) {
-			app->scene->selected = 7;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(7);
 		break;
 	case ColliderType::TOWNLAKEDUNGEON:
 		LOG("Collision Town");
-		if (auxBool == false) {
-			app->scene->selected = 8;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(8);
 		break;
 	case ColliderType::FORESTDUNGEON:
 		LOG("Collision Forest Dungeon");
-		if (auxBool == false) {
-			app->scene->selected = 9;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(9);
 		break;
 	case ColliderType::TOWNFORESTDUNGEON:
 		LOG("Collision Town");
-		if (auxBool == false) {
-			app->scene->selected = 10;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(10);
 		break;
 	case ColliderType::CAVEDUNGEON:
 		LOG("Collision Cave Dungeon");
-		if (auxBool == false) {
-			app->scene->selected = 11;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(11);
 		break;
 	case ColliderType::TOWNCAVEDUNGEON:
 		LOG("Collision Town");
-		if (auxBool == false) {
-			app->scene->selected = 12;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(12);
 		break;
 	case ColliderType::MONOLITH:
 		LOG("Collision Monolith");
-		if (auxBool == false) {
-			app->scene->selected = 13;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(13);
 		break;
 	case ColliderType::TOWNMONOLITH:
 		LOG("Collision Town");
-		if (auxBool == false) {
-			app->scene->selected = 14;
-			app->scene->fade = true;
-			auxBool = true;
-		}
+		MapTeleport(14);
 		break;
+
 	case ColliderType::BED:
 		LOG("Collision Bed");
 		laurea.chp = laurea.hp;
@@ -771,9 +716,12 @@ bool Player::IsAlive() {
 
 bool Player::LoadState(pugi::xml_node& data) {
 
+	map = data.child("player_stats").attribute("map").as_int();
+	MapTeleport(map);
 	position.x = data.child("player_stats").attribute("position_x").as_int();
 	position.y = data.child("player_stats").attribute("position_y").as_int();
 	playerState = (State)data.child("player_stats").attribute("state").as_int();
+
 	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 
 	laurea.chp = data.child("laurea_stats").append_attribute("laurea_CHP").as_float();
@@ -799,16 +747,20 @@ bool Player::SaveState(pugi::xml_node& data) {
 	data.child("player_stats").append_attribute("position_x") = position.x;
 	data.child("player_stats").append_attribute("position_y") = position.y;
 	data.child("player_stats").append_attribute("state") =	(int)playerState;
+	data.child("player_stats").append_attribute("map") = map;
+
 	pugi::xml_node laurea_stats = data.append_child("laurea_stats");
 	data.child("laurea_stats").append_attribute("laurea_CHP") = laurea.chp;
 	data.child("laurea_stats").append_attribute("laurea_CMP") = laurea.cmp;
 	data.child("laurea_stats").append_attribute("laurea_LVL") = laurea.lvl;
 	data.child("laurea_stats").append_attribute("laurea_EXP") = laurea.exp;
+
 	pugi::xml_node lapis_stats = data.append_child("lapis_stats");
 	data.child("lapis_stats").append_attribute("lapis_CHP") = lapis.chp;
 	data.child("lapis_stats").append_attribute("lapis_CMP") = lapis.cmp;
 	data.child("lapis_stats").append_attribute("lapis_LVL") = lapis.lvl;
 	data.child("lapis_stats").append_attribute("lapis_EXP") = lapis.exp;
+
 	pugi::xml_node lucca_stats = data.append_child("lucca_stats");
 	data.child("lucca_stats").append_attribute("lucca_CHP") = lucca.chp;
 	data.child("lucca_stats").append_attribute("lucca_CMP") = lucca.cmp;
@@ -835,6 +787,139 @@ void Player::LevelToMax() {
 	laurea.exp = laurea.EXPneeded;
 	lapis.exp = lapis.EXPneeded;
 	lucca.exp = lucca.EXPneeded;
+}
+
+void Player::MapTeleport(int level) {
+	switch (level)
+	{
+	case 1:
+		LOG("Teleport_Tavern");
+		if (auxBool == false) {
+			app->scene->selected = 1;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 1;
+		}
+		break;
+	case 2:
+		LOG("Teleport_Town");
+		if (auxBool == false) {
+			app->scene->selected = 2;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 2;
+		}
+		break;
+	case 3:
+		LOG("Teleport_Blacksmith");
+		if (auxBool == false) {
+			app->scene->selected = 3;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 3;
+		}
+		break;
+	case 4:
+		LOG("Teleport_Town");
+		if (auxBool == false) {
+			app->scene->selected = 4;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 4;
+		}
+		break;
+	case 5:
+		LOG("Teleport_House");
+		if (auxBool == false) {
+			app->scene->selected = 5;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 5;
+		}
+		break;
+	case 6:
+		LOG("Teleport_Town");
+		if (auxBool == false) {
+			app->scene->selected = 6;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 6;
+		}
+		break;
+	case 7:
+		LOG("Teleport_Lake Dungeon");
+		if (auxBool == false) {
+			app->scene->selected = 7;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 7;
+		}
+		break;
+	case 8:
+		LOG("Teleport_Town");
+		if (auxBool == false) {
+			app->scene->selected = 8;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 8;
+		}
+		break;
+	case 9:
+		LOG("Teleport_Forest Dungeon");
+		if (auxBool == false) {
+			app->scene->selected = 9;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 9;
+		}
+		break;
+	case 10:
+		LOG("Teleport_Town");
+		if (auxBool == false) {
+			app->scene->selected = 10;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 10;
+		}
+		break;
+	case 11:
+		LOG("Teleport_Cave Dungeon");
+		if (auxBool == false) {
+			app->scene->selected = 11;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 11;
+		}
+		break;
+	case 12:
+		LOG("Teleport_Town");
+		if (auxBool == false) {
+			app->scene->selected = 12;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 12;
+		}
+		break;
+	case 13:
+		LOG("Teleport_Monolith");
+		if (auxBool == false) {
+			app->scene->selected = 13;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 13;
+		}
+		break;
+	case 14:
+		LOG("Teleport_Town");
+		if (auxBool == false) {
+			app->scene->selected = 14;
+			app->scene->fade = true;
+			auxBool = true;
+			map = 14;
+		}
+		break;
+	}
+
 }
 
 void Player::Move() {
