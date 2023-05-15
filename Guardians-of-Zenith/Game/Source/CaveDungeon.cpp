@@ -17,7 +17,7 @@
 
 CaveDungeon::CaveDungeon() : Module(), mapLoaded(false)
 {
-    name.Create("Cave Dungeon");
+    name.Create("Cave_Dungeon");
 }
 
 // Destructor

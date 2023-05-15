@@ -415,7 +415,7 @@ bool App::LoadFromFile()
 
 	if (result == NULL)
 	{
-		LOG("Could not load xml file savegame.xml. pugi error: %s", result.description());
+		LOG("Could not load xml file save_game.xml. pugi error: %s", result.description());
 		ret = false;
 	}
 	else

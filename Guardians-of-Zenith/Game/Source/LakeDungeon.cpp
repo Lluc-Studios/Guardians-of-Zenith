@@ -17,7 +17,7 @@
 
 LakeDungeon::LakeDungeon() : Module(), mapLoaded(false)
 {
-    name.Create("Lake Dungeon");
+    name.Create("Lake_Dungeon");
 }
 
 // Destructor
