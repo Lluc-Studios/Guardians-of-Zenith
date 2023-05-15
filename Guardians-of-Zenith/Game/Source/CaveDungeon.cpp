@@ -89,8 +89,8 @@ void CaveDungeon::Draw()
                     iPoint pos = MapToWorld(x, y);
 
                     app->render->DrawTexture(tileset->texture,
-                        pos.x-2000,
-                        pos.y,
+                        pos.x - 2000,
+                        pos.y - 640,
                         &r);
                 }
             }
@@ -534,16 +534,16 @@ void CaveDungeon::CreateColliders(ColDataC c) {
     PhysBody* collider1;
 
     if (c.type == ColTypesC::FLOORC) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)-2000, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)-2000, (c.y + c.height / 2)-640, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2) - 2000, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2) - 2000, (c.y + c.height / 2) - 640, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 235) {
-        collider1 = app->physics->CreateCircle((c.x + c.width / 2) - 2000, (c.y + c.height / 2), c.width / 2, bodyType::STATIC);
+        collider1 = app->physics->CreateCircle((c.x + c.width / 2) - 2000, (c.y + c.height / 2) - 640, c.width / 2, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle((c.x + c.width / 2) - 2000, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2) - 2000, (c.y + c.height / 2) - 640, c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {
