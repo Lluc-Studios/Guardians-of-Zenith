@@ -257,14 +257,14 @@ bool Player::Update(float dt)
 		tp10 = false;
 	}
 	if (tp11) {
-		position.x = 185;
-		position.y = -175;
+		position.x = -1250;
+		position.y = 2150;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp11 = false;
 	}
 	if (tp12) {
-		position.x = 1015;
-		position.y = 190;
+		position.x = 1715;
+		position.y = -830;
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tp12 = false;
 	}

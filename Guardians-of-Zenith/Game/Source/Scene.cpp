@@ -99,6 +99,7 @@ bool Scene::Start()
 	app->house->Load();
 	app->monolith->Load();
 	app->lakedungeon->Load();
+	app->cavedungeon->Load();
 	// L04: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
 		app->map->mapData.width,
@@ -290,10 +291,10 @@ bool Scene::Update(float dt)
 	//	app->forestdungeon->Draw();
 	//  app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea_Forest_OST_Version.ogg");
 	//}
-	//if (app->Instance == 6) {
-	//	app->cavedungeon->Draw();
-	//  app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined_World.ogg");
-	//}
+	if (app->Instance == 6) {
+		app->cavedungeon->Draw();
+	  app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined_World.ogg");
+	}
 	if (app->Instance == 7) {
 		app->monolith->Draw();
 	}
@@ -584,7 +585,7 @@ bool Scene::Update(float dt)
 				fade = false;
 			}
 			if (selected == 12) {
-				app->Instance = 0;
+				app->Instance = 7;
 				app->scene->player->tp12 = true;
 				fade = false;
 			}

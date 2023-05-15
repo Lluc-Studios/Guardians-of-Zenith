@@ -30,7 +30,7 @@ bool CaveDungeon::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Tavern.tmx";
+    mapFileName = "Assets/Maps/Cave dungeon.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path
@@ -89,8 +89,8 @@ void CaveDungeon::Draw()
                     iPoint pos = MapToWorld(x, y);
 
                     app->render->DrawTexture(tileset->texture,
-                        pos.x,
-                        pos.y-250,
+                        pos.x-2000,
+                        pos.y,
                         &r);
                 }
             }
@@ -534,16 +534,16 @@ void CaveDungeon::CreateColliders(ColDataC c) {
     PhysBody* collider1;
 
     if (c.type == ColTypesC::FLOORC) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)-2000, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2) - 2000, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 235) {
-        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2), c.width / 2, bodyType::STATIC);
+        collider1 = app->physics->CreateCircle((c.x + c.width / 2) - 2000, (c.y + c.height / 2), c.width / 2, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2) - 2000, (c.y + c.height / 2), c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {
