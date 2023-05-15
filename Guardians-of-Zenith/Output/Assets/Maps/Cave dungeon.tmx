@@ -9027,7 +9027,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="5" name="Rocks puzzle" width="40" height="75" visible="0">
+ <layer id="5" name="Rocks puzzle" width="40" height="75">
   <properties>
    <property name="Draw" type="bool" value="true"/>
   </properties>
@@ -12034,7 +12034,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="6" name="Collsions" visible="0">
+ <objectgroup id="6" name="Collsions">
   <object id="1" x="672" y="1408.67" width="7.66667" height="94.6667"/>
   <object id="2" x="472.53" y="1408.55" width="7.66667" height="94.6667"/>
   <object id="3" x="792.667" y="1604.42" width="7.66667" height="378.417"/>
@@ -12148,7 +12148,7 @@
   <object id="112" x="792.5" y="2239.75" width="8.25" height="144.25"/>
   <object id="113" x="703" y="2240.25" width="7.5" height="143.5"/>
  </objectgroup>
- <objectgroup id="7" name="Monolith" visible="0">
+ <objectgroup id="7" name="Monolith">
   <properties>
    <property name="Type" type="int" value="19"/>
   </properties>
