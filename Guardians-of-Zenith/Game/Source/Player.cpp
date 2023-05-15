@@ -95,15 +95,15 @@ bool Player::Start() {
 	playerIdleR.loop = true;
 	playerIdleR.speed = 0.04f;
 
-	playerIdleUp.PushBack({ 0, 32, 32, 32 });
-	playerIdleUp.PushBack({ 32, 32, 32, 32 });
-	playerIdleUp.loop = true;
-	playerIdleUp.speed = 0.04f;
-
-	playerIdleDown.PushBack({ 32 * 2, 32, 32, 32 });
-	playerIdleDown.PushBack({ 32 * 3, 32, 32, 32 });
+	playerIdleDown.PushBack({ 0, 32, 32, 32 });
+	playerIdleDown.PushBack({ 32, 32, 32, 32 });
 	playerIdleDown.loop = true;
 	playerIdleDown.speed = 0.04f;
+
+	playerIdleUp.PushBack({ 32 * 2, 32, 32, 32 });
+	playerIdleUp.PushBack({ 32 * 3, 32, 32, 32 });
+	playerIdleUp.loop = true;
+	playerIdleUp.speed = 0.04f;
 
 	////Animations Run
 
@@ -905,18 +905,28 @@ void Player::Move() {
 	//	}
 	//}
 
-	//if (facing == DIRECTION::RIGHT && vel.x == 0) {
-	//	currentAnim = &playerIdleR;
-	//}
-	//if (facing == DIRECTION::LEFT && vel.x == 0) {
-	//	currentAnim = &playerIdleL;
-	//}
-	//if (facing == DIRECTION::UP && vel.x == 0) {
-	//	currentAnim = &playerIdleUp;
-	//}
-	//if (facing == DIRECTION::DOWN && vel.x == 0) {
-	//	currentAnim = &playerIdleDown;
-	//}
+
+	//Return to idle 
+	if (app->input->GetKey(SDL_SCANCODE_W) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_S) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_IDLE) {
+
+		if (facing == DIRECTION::RIGHT && vel.x == 0) {
+			currentAnim = &playerIdleR;
+		}
+		if (facing == DIRECTION::LEFT && vel.x == 0) {
+			currentAnim = &playerIdleL;
+		}
+		if (facing == DIRECTION::UP && vel.x == 0) {
+			currentAnim = &playerIdleUp;
+		}
+		if (facing == DIRECTION::DOWN && vel.x == 0) {
+			currentAnim = &playerIdleL;
+		}
+
+	}
+
 
 
 
