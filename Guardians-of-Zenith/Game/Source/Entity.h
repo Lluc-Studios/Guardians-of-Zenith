@@ -103,6 +103,8 @@ public:
 	iPoint position;       
 	bool renderable = true;
 	bool deleteEntity;
+
+	string itemName;
 };
 
 #endif // __ENTITY_H__

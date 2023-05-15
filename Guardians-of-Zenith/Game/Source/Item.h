@@ -20,6 +20,8 @@ public:
 
 	bool Update();
 
+	bool PostUpdate();
+
 	bool CleanUp();
 
 	void OnCollision(PhysBody* physA, PhysBody* physB);
@@ -28,12 +30,12 @@ public:
 
 	bool isPicked = false;
 
-	int score;
-
 private:
 
 	SDL_Texture* texture;
 	const char* texturePath;
+
+	SDL_Rect rect;
 
 	//DONE 4: Add a physics to an item
 	PhysBody* pbody;

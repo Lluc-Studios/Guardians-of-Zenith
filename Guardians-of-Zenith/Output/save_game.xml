@@ -20,6 +20,7 @@
 	<Lake Dungeon />
 	<Lake Dungeon />
 	<Cave Dungeon />
+	<Monolith />
 	<:anonymous />
 	<pathfinding />
 	<menu />
@@ -27,6 +28,7 @@
 	<Combat Module />
 	<dialogue />
 	<guiManager />
+	<Inventory />
 	<renderer>
 		<camera x="-476" y="-304" />
 	</renderer>
