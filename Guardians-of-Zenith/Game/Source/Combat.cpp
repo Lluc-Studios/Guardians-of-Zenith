@@ -2804,13 +2804,13 @@ bool Combat::Update(float dt)
 						case 1:
 							if (app->inventory->nrOfHpPot < 1)
 							{
-								LOG("aaaaaaaaaaaaaaaaaaaaa");
 								option = COMBATMENU::NOITEM;
 							}
 							else {
 								C1CHP = C1MHP;
 								FinishTurn();
 								app->inventory->nrOfHpPot--;
+								app->audio->PlayFxWithVolume(healingPotiFX, 0, 70);
 							}
 							break;
 						case 2:
@@ -2820,6 +2820,7 @@ bool Combat::Update(float dt)
 								C1CMP = C1MMP;
 								FinishTurn();
 								app->inventory->nrOfMpPot--;
+								app->audio->PlayFxWithVolume(manaPotiFX, 0, 70);
 							}
 							break;
 						case 3:
@@ -2829,6 +2830,7 @@ bool Combat::Update(float dt)
 								C1ATK *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfAtkElx--;
+								app->audio->PlayFxWithVolume(strengthEliFX, 0, 70);
 							}
 							break;
 						case 4:
@@ -2838,6 +2840,7 @@ bool Combat::Update(float dt)
 								C1DEF *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfDefElx--;
+								app->audio->PlayFxWithVolume(defEliFX, 0, 70);
 							}
 							break;
 						default:
@@ -2854,6 +2857,7 @@ bool Combat::Update(float dt)
 								C2CHP = C2MHP;
 								FinishTurn();
 								app->inventory->nrOfHpPot--;
+								app->audio->PlayFxWithVolume(healingPotiFX, 0, 70);
 							}
 							break;
 						case 2:
@@ -2863,6 +2867,7 @@ bool Combat::Update(float dt)
 								C2CMP = C2MMP;
 								FinishTurn();
 								app->inventory->nrOfMpPot--;
+								app->audio->PlayFxWithVolume(manaPotiFX, 0, 70);
 							}
 							break;
 						case 3:
@@ -2872,6 +2877,7 @@ bool Combat::Update(float dt)
 								C2ATK *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfAtkElx--;
+								app->audio->PlayFxWithVolume(strengthEliFX, 0, 70);
 							}
 							break;
 						case 4:
@@ -2881,6 +2887,7 @@ bool Combat::Update(float dt)
 								C2DEF *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfDefElx--;
+								app->audio->PlayFxWithVolume(defEliFX, 0, 70);
 							}
 							break;
 						default:
@@ -2899,6 +2906,7 @@ bool Combat::Update(float dt)
 								C3CHP = C3MHP;
 								FinishTurn();
 								app->inventory->nrOfHpPot--;
+								app->audio->PlayFxWithVolume(healingPotiFX, 0, 70);
 							}
 							break;
 						case 2:
@@ -2908,6 +2916,7 @@ bool Combat::Update(float dt)
 								C3CMP = C3MMP;
 								FinishTurn();
 								app->inventory->nrOfMpPot--;
+								app->audio->PlayFxWithVolume(manaPotiFX, 0, 70);
 							}
 							break;
 						case 3:
@@ -2917,6 +2926,7 @@ bool Combat::Update(float dt)
 								C3ATK *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfAtkElx--;
+								app->audio->PlayFxWithVolume(strengthEliFX, 0, 70);
 							}
 							break;
 						case 4:
@@ -2926,6 +2936,7 @@ bool Combat::Update(float dt)
 								C3DEF *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfDefElx--;
+								app->audio->PlayFxWithVolume(defEliFX, 0, 70);
 							}
 							break;
 						default:
