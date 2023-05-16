@@ -975,6 +975,47 @@ bool Scene::Update(float dt)
 	if ((app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 277 && app->scene->player->position.y <= 312) && TBroken70 == true) RestartCave();
 	if ((app->scene->player->position.x >= -1236 && app->scene->player->position.x <= -1194 && app->scene->player->position.y >= 277 && app->scene->player->position.y <= 312) && TBroken71 == true) RestartCave();
 
+	//Cave Blocks
+	
+	if (B1Block == false) {
+		app->render->DrawTexture(Blocking, -1264, 1952);
+	}
+	else {
+		Block1->body->SetActive(false);
+	}
+	if (B2Block == false) {
+		app->render->DrawTexture(Blocking, -1424, 1376);
+	}
+	else {
+		Block2->body->SetActive(false);
+	}
+	if (B3Block == false) {
+		app->render->DrawTexture(Blocking, -1360, 160);
+	}
+	else {
+		Block3->body->SetActive(false);
+	}
+
+	//Cave blocks all pressed
+
+	if (app->scene->player->position.y > 2149) {
+		Reload = true;
+		RestartCave();
+	}
+	else {
+		Reload = false;
+	}
+
+	if (TPressed1 == true && TPressed2 == true && TPressed3 == true && TPressed4 == true && TPressed5 == true && TPressed6 == true && TPressed7 == true && TPressed8 == true && TPressed9 == true) {
+		B1Block = true;
+	}
+	if (TPressed10 == true && TPressed11 == true && TPressed12 == true && TPressed13 == true && TPressed14 == true && TPressed15 == true && TPressed16 == true && TPressed17 == true && TPressed18 == true && TPressed19 == true && TPressed20 == true && TPressed21 == true && TPressed22 == true && TPressed23 == true && TPressed24 == true && TPressed25 == true && TPressed26 == true && TPressed27 == true) {
+		B2Block = true;
+	}
+	if (TPressed28 == true && TPressed29 == true && TPressed30 == true && TPressed31 == true && TPressed32 == true && TPressed33 == true && TPressed34 == true && TPressed35 == true && TPressed36 == true && TPressed37 == true && TPressed38 == true && TPressed39 == true && TPressed40 == true && TPressed41 == true && TPressed42 == true && TPressed43 == true && TPressed44 == true && TPressed45 == true && TPressed46 == true && TPressed47 == true && TPressed48 == true && TPressed49 == true && TPressed50 == true && TPressed51 == true && TPressed52 == true && TPressed53 == true && TPressed54 == true && TPressed55 == true && TPressed56 == true && TPressed57 == true && TPressed58 == true && TPressed59 == true && TPressed60 == true && TPressed61 == true && TPressed62 == true && TPressed63 == true && TPressed64 == true && TPressed65 == true && TPressed66 == true && TPressed67 == true && TPressed68 == true && TPressed69 == true && TPressed70 == true && TPressed71 == true) {
+		B3Block = true;
+	}
+
 	//Pathfinding
 	destination = app->map->WorldToMap(app->scene->player->position.x, app->scene->player->position.y+4);
 	AuxPlayer = destination;
@@ -1276,8 +1317,10 @@ bool Scene::Pause()
 
 void Scene::RestartCave()
 {
-	app->scene->fade = true;
-	app->scene->player->Teleport_Point(6, app->scene->player->tp11);
+	if (Reload == false) {
+		app->scene->fade = true;
+		app->scene->player->Teleport_Point(6, app->scene->player->tp11);
+	}
 
 	TPressed1 = false;
 	TPressed2 = false;
@@ -1423,5 +1466,11 @@ void Scene::RestartCave()
 	TBroken70 = false;
 	TBroken71 = false;
 
+	B1Block = false;
+	B2Block = false;
+	B3Block = false;
+	Block1->body->SetActive(true);
+	Block2->body->SetActive(true);
+	Block2->body->SetActive(true);
 }
 
