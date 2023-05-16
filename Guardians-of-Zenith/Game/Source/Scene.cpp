@@ -146,6 +146,16 @@ bool Scene::Start()
 	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
 	DefaultTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Default.png");
 	BrokenTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Broken.png");
+	TownPNG = app->tex->Load("Assets/Maps/Town.png");
+	WaterPNG = app->tex->Load("Assets/Maps/Water_dungeon.png");
+	ForestPNG = app->tex->Load("Assets/Maps/Forest_dungeon.png");
+	Pilar1A = app->tex->Load("Assets/Textures/Puzzles/Tower_1_On.png");
+	Pilar1N = app->tex->Load("Assets/Textures/Puzzles/Tower_1_Off.png");
+	Pilar2A = app->tex->Load("Assets/Textures/Puzzles/Tower_2_On.png");
+	Pilar2N = app->tex->Load("Assets/Textures/Puzzles/Tower_2_Off.png");
+	Pilar3A = app->tex->Load("Assets/Textures/Puzzles/Tower_3_On.png");
+	Pilar3N = app->tex->Load("Assets/Textures/Puzzles/Tower_3_Off.png");
+	ForestDoor = app->tex->Load("Assets/Textures/Puzzles/Door_forest_dungeon.png");
 
 	//Lake enemies
 	
@@ -216,6 +226,19 @@ bool Scene::Start()
 
 	colliderPuzzle2Block = app->physics->CreateRectangle(3455, -1385, 128, 128, STATIC);
 
+	//Forest puzzle
+
+	P1 = app->physics->CreateRectangle(752, 4336, 32, 64, STATIC);
+	P1->ctype = ColliderType::PILAR1;
+
+	P2 = app->physics->CreateRectangle(2288, 4112, 32, 64, STATIC);
+	P2->ctype = ColliderType::PILAR2;
+
+	P3 = app->physics->CreateRectangle(2288, 5488, 32, 64, STATIC);
+	P3->ctype = ColliderType::PILAR3;
+
+	Fdoor = app->physics->CreateRectangle(1280, 3440, 128, 128, STATIC);
+
 	return true;
 }
 
@@ -268,7 +291,8 @@ bool Scene::Update(float dt)
 
 	// Draw map
 	if (app->Instance == 0) {
-		app->map->Draw();
+		//app->map->Draw();
+		app->render->DrawTexture(TownPNG, 0, 0);
 	}
 	if (app->Instance == 1) {
 		app->tavern->Draw();
@@ -281,11 +305,13 @@ bool Scene::Update(float dt)
 		app->house->Draw();
 	}
 	if (app->Instance == 4) {
-		app->lakedungeon->Draw();
+		//app->lakedungeon->Draw();
+		app->render->DrawTexture(WaterPNG, 2500, -2500);
 	}
-	//if (app->Instance == 5) {
-	//	app->forestdungeon->Draw();
-	//}
+	if (app->Instance == 5) {
+		//app->forestdungeon->Draw();
+		app->render->DrawTexture(ForestPNG, 0, 2000);
+	}
 	if (app->Instance == 6) {
 		app->cavedungeon->Draw();
 	}
@@ -489,6 +515,36 @@ bool Scene::Update(float dt)
 	if (y3 < 150 && stage == 2) {
 		colliderPuzzle3->body->SetActive(false);
 		stage++;
+	}
+
+	//Forest puzzle
+	
+	if (P1Active == false) {
+		app->render->DrawTexture(Pilar1N, 736, 4304);
+	}
+	else {
+		app->render->DrawTexture(Pilar1A, 736, 4304);
+	}
+	if (P2Active == false) {
+		app->render->DrawTexture(Pilar2N, 2272, 4080);
+	}
+	else {
+		app->render->DrawTexture(Pilar2A, 2272, 4080);
+	}
+	if (P3Active == false) {
+		app->render->DrawTexture(Pilar3N, 2272, 5456);
+	}
+	else {
+		app->render->DrawTexture(Pilar3A, 2272, 5456);
+	}
+	if (P1Active == true && P2Active == true && P3Active == true) {
+		FdoorActive = true;
+	}
+	if (FdoorActive == false) {
+		app->render->DrawTexture(ForestDoor, 1216, 3376);
+	}
+	else {
+		Fdoor->body->SetActive(false);
 	}
 
 	//Cave Puzzle

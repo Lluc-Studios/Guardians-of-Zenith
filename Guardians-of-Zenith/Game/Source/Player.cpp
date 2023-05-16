@@ -663,7 +663,18 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			auxBool = true;
 		}
 		break;
-
+	case ColliderType::PILAR1:
+		LOG("Collision Pilar 1");
+		app->scene->P1Active = true;
+		break;
+	case ColliderType::PILAR2:
+		LOG("Collision Pilar 2");
+		app->scene->P2Active = true;
+		break;
+	case ColliderType::PILAR3:
+		LOG("Collision Pilar 3");
+		app->scene->P3Active = true;
+		break;
 	case ColliderType::BED:
 		LOG("Collision Bed");
 		laurea.chp = laurea.hp;

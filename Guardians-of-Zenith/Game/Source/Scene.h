@@ -71,6 +71,10 @@ public:
 
 	bool options = false;
 
+	bool P1Active = false;
+	bool P2Active = false;
+	bool P3Active = false;
+
 private:
 	bool Music = false, PF = false;
 	SDL_Texture* img;
@@ -78,6 +82,10 @@ private:
 
 	SDL_Texture* invTex;
 	SDL_Texture* invArrowTex;
+
+	SDL_Texture* TownPNG;
+	SDL_Texture* WaterPNG;
+	SDL_Texture* ForestPNG;
 
 	SDL_Texture* coinTex;
 	SDL_Texture* trophyTex;
@@ -116,6 +124,18 @@ private:
 	bool TBroken46 = false, TBroken47 = false, TBroken48 = true, TBroken49 = false, TBroken50 = false, TBroken51 = false, TBroken52 = false, TBroken53 = false, TBroken54 = false;
 	bool TBroken55 = false, TBroken56 = false, TBroken57 = false, TBroken58 = false, TBroken59 = false, TBroken60 = false, TBroken61 = true, TBroken62 = false, TBroken63 = false;
 	bool TBroken64 = false, TBroken65 = false, TBroken66 = false, TBroken67 = false, TBroken68 = false, TBroken69 = true, TBroken70 = false, TBroken71 = false;
+
+	//Forest dungeon
+	
+	SDL_Texture* Pilar1A;
+	SDL_Texture* Pilar1N;
+	SDL_Texture* Pilar2A;
+	SDL_Texture* Pilar2N;
+	SDL_Texture* Pilar3A;
+	SDL_Texture* Pilar3N;
+	SDL_Texture* ForestDoor;
+
+	bool FdoorActive = false;
 
 	//Others
 
@@ -178,9 +198,15 @@ private:
 
 	int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6;
 
-	//Puzzle1
+	//Puzzle stage
 	int stage = 0;
 
+	//Forest puzzle
+
+	PhysBody* P1;
+	PhysBody* P2;
+	PhysBody* P3;
+	PhysBody* Fdoor;
 
 public:
 	enum class SELECTED {
