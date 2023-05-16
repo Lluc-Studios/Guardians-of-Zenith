@@ -284,32 +284,32 @@ bool Combat::Update(float dt)
 		}
 		//Render text
 
-		switch (app->scene->player->future_instance)
+		switch (SaveInstance)
 		{
-			case 0:
-				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
-			case 1:
-				app->render->DrawTexture(BG_Tavern, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
-			case 2:
-				app->render->DrawTexture(BG_Blackmith, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
-			case 3:
-				app->render->DrawTexture(BG_House, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
-			case 4:
-				app->render->DrawTexture(BG_Lake, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
-			case 5:
-				app->render->DrawTexture(BG_Forest, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
-			case 6:
-				app->render->DrawTexture(BG_Cave, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
-			case 7:
-				app->render->DrawTexture(BG_Monolitos, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
-				break;
+		case 0:
+			app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
+		case 1:
+			app->render->DrawTexture(BG_Tavern, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
+		case 2:
+			app->render->DrawTexture(BG_Blackmith, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
+		case 3:
+			app->render->DrawTexture(BG_House, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
+		case 4:
+			app->render->DrawTexture(BG_Lake, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
+		case 5:
+			app->render->DrawTexture(BG_Forest, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
+		case 6:
+			app->render->DrawTexture(BG_Cave, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
+		case 7:
+			app->render->DrawTexture(BG_Monolitos, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+			break;
 		}
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,115,160 }, 0, 0, 255, 150);
@@ -1668,14 +1668,37 @@ bool Combat::Update(float dt)
 						app->audio->PlayFxWithVolume(looseFX, 0, 70);
 						switch (SaveInstance)
 						{
+						case 0:
+							LOG("Music_Town");
+							app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
+							break;
+						case 1:
+							LOG("Music_Tavern");
+							app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
+							break;
+						case 2:
+							LOG("Music_Blacksmith");
+							app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
+							break;
+						case 3:
+							LOG("Music_House");
+							app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
+							break;
 						case 4:
+							LOG("Music_LakeDaugeon");
 							app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
 							break;
 						case 5:
+							LOG("Music_ForestDaugeon");
 							app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
 							break;
 						case 6:
+							LOG("Music_CaveDaugeon");
 							app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
+							break;
+						case 7:
+							LOG("Music_Monolith");
+							app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
 							break;
 						}
 						ExitCombat();
@@ -4076,15 +4099,38 @@ bool Combat::PostUpdate()
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			switch (SaveInstance)
 			{
-			case 4:
-				app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
-				break;
-			case 5:
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
-				break;
-			case 6:
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
-				break;
+				case 0:
+					LOG("Music_Town");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
+					break;
+				case 1:
+					LOG("Music_Tavern");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
+					break;
+				case 2:
+					LOG("Music_Blacksmith");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
+					break;
+				case 3:
+					LOG("Music_House");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
+					break;
+				case 4:
+					LOG("Music_LakeDaugeon");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
+					break;
+				case 5:
+					LOG("Music_ForestDaugeon");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
+					break;
+				case 6:
+					LOG("Music_CaveDaugeon");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
+					break;
+				case 7:
+					LOG("Music_Monolith");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
+					break;
 			}
 			ExitCombat();
 		}
@@ -4092,15 +4138,38 @@ bool Combat::PostUpdate()
 		{
 			switch (SaveInstance)
 			{
-			case 4:
-				app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
-				break;
-			case 5:
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
-				break;
-			case 6:
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
-				break;
+				case 0:
+					LOG("Music_Town");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
+					break;
+				case 1:
+					LOG("Music_Tavern");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
+					break;
+				case 2:
+					LOG("Music_Blacksmith");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
+					break;
+				case 3:
+					LOG("Music_House");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
+					break;
+				case 4:
+					LOG("Music_LakeDaugeon");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
+					break;
+				case 5:
+					LOG("Music_ForestDaugeon");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
+					break;
+				case 6:
+					LOG("Music_CaveDaugeon");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
+					break;
+				case 7:
+					LOG("Music_Monolith");
+					app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
+					break;
 			}
 			ExitCombat();
 			A_pressed = true;
