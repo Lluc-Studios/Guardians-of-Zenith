@@ -76,6 +76,7 @@ bool Player::Start() {
 	MonolithFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Monolith FX.wav");
 	sirenFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Enemies/Siren.wav");
 	tavernerFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Taverner FX.wav");
+	puzzleFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Puzzle sound.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -738,14 +739,29 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::PILAR1:
 		LOG("Collision Pilar 1");
 		app->scene->P1Active = true;
+
+		if (pilar1Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFx, 0, 70);
+			pilar1Fx = true;
+		}
 		break;
 	case ColliderType::PILAR2:
 		LOG("Collision Pilar 2");
 		app->scene->P2Active = true;
+
+		if (pilar2Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFx, 0, 70);
+			pilar2Fx = true;
+		}
 		break;
 	case ColliderType::PILAR3:
 		LOG("Collision Pilar 3");
 		app->scene->P3Active = true;
+
+		if (pilar3Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFx, 0, 70);
+			pilar3Fx = true;
+		}
 		break;
 	case ColliderType::BED:
 		LOG("Collision Bed");

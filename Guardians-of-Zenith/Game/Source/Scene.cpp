@@ -1003,6 +1003,9 @@ bool Scene::Update(float dt)
 
 	if (app->scene->player->position.y > 2149) {
 		Reload = true;
+		block1Fx = false;
+		block2Fx = false;
+		block3Fx = false;
 		RestartCave();
 	}
 	else {
@@ -1011,12 +1014,24 @@ bool Scene::Update(float dt)
 
 	if (TPressed1 == true && TPressed2 == true && TPressed3 == true && TPressed4 == true && TPressed5 == true && TPressed6 == true && TPressed7 == true && TPressed8 == true && TPressed9 == true) {
 		B1Block = true;
+		if (block1Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			block1Fx = true;
+		}
 	}
 	if (TPressed10 == true && TPressed11 == true && TPressed12 == true && TPressed13 == true && TPressed14 == true && TPressed15 == true && TPressed16 == true && TPressed17 == true && TPressed18 == true && TPressed19 == true && TPressed20 == true && TPressed21 == true && TPressed22 == true && TPressed23 == true && TPressed24 == true && TPressed25 == true && TPressed26 == true && TPressed27 == true) {
 		B2Block = true;
+		if (block2Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			block2Fx = true;
+		}
 	}
 	if (TPressed28 == true && TPressed29 == true && TPressed30 == true && TPressed31 == true && TPressed32 == true && TPressed33 == true && TPressed34 == true && TPressed35 == true && TPressed36 == true && TPressed37 == true && TPressed38 == true && TPressed39 == true && TPressed40 == true && TPressed41 == true && TPressed42 == true && TPressed43 == true && TPressed44 == true && TPressed45 == true && TPressed46 == true && TPressed47 == true && TPressed48 == true && TPressed49 == true && TPressed50 == true && TPressed51 == true && TPressed52 == true && TPressed53 == true && TPressed54 == true && TPressed55 == true && TPressed56 == true && TPressed57 == true && TPressed58 == true && TPressed59 == true && TPressed60 == true && TPressed61 == true && TPressed62 == true && TPressed63 == true && TPressed64 == true && TPressed65 == true && TPressed66 == true && TPressed67 == true && TPressed68 == true && TPressed69 == true && TPressed70 == true && TPressed71 == true) {
 		B3Block = true;
+		if (block3Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			block3Fx = true;
+		}
 	}
 
 	//Pathfinding

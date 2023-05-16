@@ -184,6 +184,9 @@ private:
 	int Step1, Step2, StepMetalic1, StepMetalic2, DeathSound, Swing, DamageFx, aux, tpFX = -1;
 	int doorFX, startBattleFX, MonolithFX, sirenFX;
 	int tavernerFX;
+	int puzzleFx;
+
+	bool pilar1Fx = false, pilar2Fx = false, pilar3Fx = false;
 
 	int width;
 	int height;

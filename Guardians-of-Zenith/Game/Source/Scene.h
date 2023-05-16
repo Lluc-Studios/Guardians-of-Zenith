@@ -155,6 +155,7 @@ private:
 
 	bool Pressed1 = false, Pressed2 = false, Pressed3 = false;
 	bool pressed1Fx = false, pressed2Fx = false, pressed3Fx = false;
+	bool block1Fx = false, block2Fx = false, block3Fx = false;
 
 	//FX
 	int change, select, play;
