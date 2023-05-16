@@ -42,7 +42,7 @@ bool Combat::Start()
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
-	Character3 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
+	Character3 = app->tex->Load("Assets/Entities/Characters/Lucca_Combat.png");
 	Character1Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
 	Character2Frozen = app->tex->Load("Assets/Entities/Characters/Lapis_Combat_Frozen.png");
 	Character3Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
