@@ -418,6 +418,7 @@ private:
 	//FX
 	int change, select, looseFX, winFX;
 	int LaureaAttackFX, LapisAttackFX, LuccaAttackFX;
+	int healingPotiFX, manaPotiFX, strengthEliFX, defEliFX;
 
 
 };

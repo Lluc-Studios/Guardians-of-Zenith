@@ -94,6 +94,10 @@ bool Combat::Start()
 	LuccaAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Bow attack.wav");
 	looseFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Loose FX.wav");
 	winFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
+	healingPotiFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Health potion.wav");
+	manaPotiFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Mana potion.wav");
+	strengthEliFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Strength elixir.wav");
+	defEliFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Defense elixir.wav");
 
 	//Random number generation
 	srand((unsigned int)time(NULL));
