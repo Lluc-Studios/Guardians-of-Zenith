@@ -105,6 +105,12 @@ private:
 
 	//Cave dungeon
 	
+	PhysBody* Block1;
+	PhysBody* Block2;
+	PhysBody* Block3;
+
+	SDL_Texture* Blocking;
+
 	SDL_Texture* DefaultTile;
 	SDL_Texture* BrokenTile;
 

@@ -146,9 +146,9 @@ bool Scene::Start()
 	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
 	DefaultTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Default.png");
 	BrokenTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Broken.png");
-	TownPNG = app->tex->Load("Assets/Maps/Town.png");
-	WaterPNG = app->tex->Load("Assets/Maps/Water_dungeon.png");
-	ForestPNG = app->tex->Load("Assets/Maps/Forest_dungeon.png");
+	TownPNG = app->tex->Load("Assets/Maps/Tileset as Png/Town.png");
+	WaterPNG = app->tex->Load("Assets/Maps/Tileset as Png/Water_dungeon.png");
+	ForestPNG = app->tex->Load("Assets/Maps/Tileset as Png/Forest_dungeon.png");
 	Pilar1A = app->tex->Load("Assets/Textures/Puzzles/Tower_1_On.png");
 	Pilar1N = app->tex->Load("Assets/Textures/Puzzles/Tower_1_Off.png");
 	Pilar2A = app->tex->Load("Assets/Textures/Puzzles/Tower_2_On.png");
@@ -156,6 +156,7 @@ bool Scene::Start()
 	Pilar3A = app->tex->Load("Assets/Textures/Puzzles/Tower_3_On.png");
 	Pilar3N = app->tex->Load("Assets/Textures/Puzzles/Tower_3_Off.png");
 	ForestDoor = app->tex->Load("Assets/Textures/Puzzles/Door_forest_dungeon.png");
+	Blocking = app->tex->Load("Assets/Textures/Puzzles/Door_cave_dungeon.png");
 
 	//Lake enemies
 	
@@ -238,6 +239,12 @@ bool Scene::Start()
 	P3->ctype = ColliderType::PILAR3;
 
 	Fdoor = app->physics->CreateRectangle(1280, 3440, 128, 128, STATIC);
+
+	//Cave puzzle
+
+	Block1 = app->physics->CreateRectangle(-1248, 1968, 32, 32, STATIC);
+	Block2 = app->physics->CreateRectangle(-1408, 1392, 32, 32, STATIC);
+	Block3 = app->physics->CreateRectangle(-1344, 176, 32, 32, STATIC);
 
 	return true;
 }
