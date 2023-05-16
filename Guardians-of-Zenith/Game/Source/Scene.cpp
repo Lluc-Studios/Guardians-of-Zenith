@@ -1059,44 +1059,8 @@ bool Scene::Update(float dt)
 				app->scene->player->tp = true;
 				fade = false;
 			}
-			switch (app->scene->player->future_instance)
-			{
-			case 0:
-				LOG("Music_Town");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-				break;
-			case 1:
-				LOG("Music_Tavern");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
-				break;
-			case 2:
-				LOG("Music_Blacksmith");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
-				break;
-			case 3:
-				LOG("Music_House");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
-				break;
-			case 4:
-				LOG("Music_LakeDaugeon");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
-				break;
-			case 5:
-				LOG("Music_ForestDaugeon");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
-				break;
-			case 6:
-				LOG("Music_CaveDaugeon");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
-				break;
-			case 7:
-				LOG("Music_Monolith");
-				app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
-				break;
-			}
-
+			app->audio->Audio_Instance(app->scene->player->future_instance);
 		}
-
 	}
 	if (fading > 0 && fade == false) {
 		fading -= 10;
