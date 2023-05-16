@@ -35,7 +35,7 @@ bool Intro::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Intro::Start()
 {
-	logo = app->tex->Load("Assets/Textures/LlucStudios.png");
+	logo = app->tex->Load("Assets/Textures/Scenes/LlucStudios.png");
 	introFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Intro_Emanem.wav");
 	menuMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Rocky Tundra OST Version.ogg");
 

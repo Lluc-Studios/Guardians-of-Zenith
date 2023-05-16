@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="24">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="24">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
-  <image source="Main Tilesets/Tileset_Interiors.png" width="640" height="608"/>
+  <image source="Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
  <layer id="1" name="Fondo" width="16" height="13">
   <properties>

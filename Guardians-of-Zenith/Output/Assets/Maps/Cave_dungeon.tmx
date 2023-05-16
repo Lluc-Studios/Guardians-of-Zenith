@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="95" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="191">
  <tileset firstgid="1" name="Tileset_Cave" tilewidth="32" tileheight="32" tilecount="500" columns="25">
-  <image source="Main Tilesets/Tileset_Cave.png" width="800" height="640"/>
+  <image source="Tilesets/Tileset_Cave.png" width="800" height="640"/>
  </tileset>
  <tileset firstgid="501" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="6">
-  <image source="Main Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
+  <image source="Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
  </tileset>
  <tileset firstgid="525" name="Tileset_Forest" tilewidth="32" tileheight="32" tilecount="506" columns="23">
-  <image source="Main Tilesets/Tileset_Forest.png" width="736" height="704"/>
+  <image source="Tilesets/Tileset_Forest.png" width="736" height="704"/>
  </tileset>
  <layer id="1" name="Suelo" width="40" height="95">
   <properties>
