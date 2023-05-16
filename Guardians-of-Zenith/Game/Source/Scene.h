@@ -104,12 +104,16 @@ private:
 	SDL_Texture* Naiadon;
 
 	//Cave dungeon
+
+	bool Reload = false;
 	
 	PhysBody* Block1;
 	PhysBody* Block2;
 	PhysBody* Block3;
 
 	SDL_Texture* Blocking;
+
+	bool B1Block = false, B2Block = false, B3Block = false;
 
 	SDL_Texture* DefaultTile;
 	SDL_Texture* BrokenTile;
