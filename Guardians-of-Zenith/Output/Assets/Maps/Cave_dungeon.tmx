@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="95" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="236">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="95" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="244">
  <tileset firstgid="1" name="Tileset_Cave" tilewidth="32" tileheight="32" tilecount="500" columns="25">
   <image source="Tilesets/Tileset_Cave.png" width="800" height="640"/>
  </tileset>
@@ -15322,6 +15322,10 @@
   <object id="228" x="610.273" y="2034" width="12.5455" height="14.1818"/>
   <object id="234" x="623.273" y="814.364" width="9.09091" height="8.72727"/>
   <object id="235" x="680" y="813.636" width="9.09091" height="8.72727"/>
+  <object id="236" x="577.947" y="2144.41" width="22.7728" height="36.5227"/>
+  <object id="237" x="519.947" y="2144.07" width="22.7728" height="36.5227"/>
+  <object id="238" x="674.364" y="960.239" width="22.7728" height="36.5227"/>
+  <object id="239" x="615.864" y="959.989" width="22.7728" height="36.5227"/>
  </objectgroup>
  <objectgroup id="8" name="Elipse">
   <properties>
@@ -15465,28 +15469,28 @@
   <object id="216" x="703.833" y="2749.96" width="18.3333" height="18.3333">
    <ellipse/>
   </object>
-  <object id="221" x="575.083" y="2143.42" width="44.6667" height="44.6667">
-   <ellipse/>
-  </object>
-  <object id="222" x="497.917" y="2143.42" width="44.6667" height="44.6667">
-   <ellipse/>
-  </object>
   <object id="224" x="620.212" y="2019.21" width="29.6667" height="29.6667">
    <ellipse/>
   </object>
   <object id="225" x="531.348" y="2017.89" width="29.6667" height="29.6667">
    <ellipse/>
   </object>
-  <object id="229" x="672.667" y="959.848" width="44.6667" height="44.6667">
-   <ellipse/>
-  </object>
-  <object id="230" x="594.212" y="960.758" width="44.6667" height="44.6667">
-   <ellipse/>
-  </object>
   <object id="232" x="594.545" y="800.545" width="28.7273" height="28.7273">
    <ellipse/>
   </object>
   <object id="233" x="688.545" y="801.455" width="28.7273" height="28.7273">
+   <ellipse/>
+  </object>
+  <object id="240" x="512.458" y="2173.71" width="18.3333" height="18.3333">
+   <ellipse/>
+  </object>
+  <object id="241" x="589.208" y="2173.33" width="18.3333" height="18.3333">
+   <ellipse/>
+  </object>
+  <object id="242" x="609.167" y="988.5" width="18.3333" height="18.3333">
+   <ellipse/>
+  </object>
+  <object id="243" x="685.833" y="989.167" width="18.3333" height="18.3333">
    <ellipse/>
   </object>
  </objectgroup>
