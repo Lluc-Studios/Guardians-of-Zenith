@@ -39,7 +39,10 @@ bool Combat::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Combat::Start()
 {
-	BG = app->tex->Load("Assets/Textures/Temporary.png");
+	BG = app->tex->Load("Assets/Textures/Combat_Background/Combat_Town.png");
+	BG_Lake = app->tex->Load("Assets/Textures/Combat_Background/Combat_Lake.png");
+	BG_Forest = app->tex->Load("Assets/Textures/Combat_Background/Combat_Forest.png");
+	BG_Cave = app->tex->Load("Assets/Textures/Combat_Background/Combat_Cave.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Lucca_Combat.png");
@@ -269,7 +272,42 @@ bool Combat::Update(float dt)
 			E1DefenseBuffCheck = true;
 		}
 		//Render text
-		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
+
+		switch (app->scene->player->future_instance)
+		{
+			case 0:
+				LOG("Load Combat Background Town ");
+				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+			case 1:
+				LOG("Music_Tavern");
+				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+			case 2:
+				LOG("Music_Blacksmith");
+				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+			case 3:
+				LOG("Music_House");
+				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+			case 4:
+				LOG("Load Combat Background LakeDaugeon");
+				app->render->DrawTexture(BG_Lake, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+			case 5:
+				LOG("Load Combat Background ForestDaugeon");
+				app->render->DrawTexture(BG_Forest, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+			case 6:
+				LOG("Load Combat Background CaveDaugeon");
+				app->render->DrawTexture(BG_Cave, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+			case 7:
+				LOG("Music_Monolith");
+				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				break;
+		}
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,115,160 }, 0, 0, 255, 150);
 		if (option != COMBATMENU::NONE) {
@@ -889,12 +927,12 @@ bool Combat::Update(float dt)
 		if (CurrentCharacters >= 1) {
 			//Draw player
 			if (Turn[0] == 1) {
-				app->render->DrawRectangle({ app->scene->player->position.x - 101 , app->scene->player->position.y - 61,64,66 }, 255, 255, 255, 120);
+				app->render->DrawRectangle({ app->scene->player->position.x - 96 , app->scene->player->position.y - 52,64,64 }, 255, 255, 255, 120);
 			}
 			if (C1dead == false) {
-				app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+				app->render->DrawTexture(Character1, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
 				if (C1FROZEN == true) {
-					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
 					app->render->DrawTexture(Frozen, app->scene->player->position.x - 40, app->scene->player->position.y + 77);
 				}
 				if (C1POISON != 0) {
@@ -966,12 +1004,12 @@ bool Combat::Update(float dt)
 			if (CurrentCharacters >= 2) {
 				//Draw player
 				if (Turn[0] == 2) {
-					app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y + 9,64,66 }, 255, 255, 255, 120);
+					app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y + 12,64,64 }, 255, 255, 255, 120);
 				}
 				if (C2dead == false) {
-					app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+					app->render->DrawTexture(Character2, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
 					if (C2FROZEN == true) {
-						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
 						app->render->DrawTexture(Frozen, app->scene->player->position.x + 110, app->scene->player->position.y + 77);
 					}
 					if (C2POISON != 0) {
@@ -1043,12 +1081,12 @@ bool Combat::Update(float dt)
 				if (CurrentCharacters == 3) {
 					//Draw player
 					if (Turn[0] == 3) {
-						app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 121,64,66 }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 116,64,64 }, 255, 255, 255, 120);
 					}
 					if (C3dead == false) {
-						app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+						app->render->DrawTexture(Character3, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
 						if (C3FROZEN == true) {
-							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
 							app->render->DrawTexture(Frozen, app->scene->player->position.x + 270, app->scene->player->position.y + 77);
 						}
 						if (C3POISON != 0) {

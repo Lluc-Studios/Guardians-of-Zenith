@@ -93,6 +93,9 @@ public:
 	int cd = 0;
 
 	SDL_Texture* BG;
+	SDL_Texture* BG_Lake;
+	SDL_Texture* BG_Forest;
+	SDL_Texture* BG_Cave;
 
 	//Preset for enemy teams
 	int Preset = 0, EnemyVariation = 0;
