@@ -86,7 +86,6 @@
 	<!--THIS IS NOT FUNCTIONAL-->
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile path="Assets/Maps/Town.tmx" path1="Assets/Maps/Tavern.tmx" path2="Assets/Maps/Forge.tmx" path3="Assets/Maps/House.tmx"/>
   </map>
 	
   

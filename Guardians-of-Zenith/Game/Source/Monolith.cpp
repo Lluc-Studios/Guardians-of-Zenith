@@ -30,7 +30,7 @@ bool Monolith::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Zona Monolitos v1.tmx";
+    mapFileName = "Assets/Maps/Zona_monolitos.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path

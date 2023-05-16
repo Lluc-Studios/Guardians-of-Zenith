@@ -4,7 +4,7 @@
   <property name="Type" type="int" value="235"/>
  </properties>
  <tileset firstgid="1" name="Tileset_Monoliths" tilewidth="32" tileheight="32" tilecount="440" columns="20">
-  <image source="Main Tilesets/Tileset_Monoliths.png" width="640" height="704"/>
+  <image source="Tilesets/Tileset_Monoliths.png" width="640" height="704"/>
  </tileset>
  <layer id="8" name="Floor" width="54" height="51">
   <properties>

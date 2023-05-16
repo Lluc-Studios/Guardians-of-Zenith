@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="60" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="260">
  <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="500" columns="25">
-  <image source="Main Tilesets/Tileset_Lake.png" width="800" height="640"/>
+  <image source="Tilesets/Tileset_Lake.png" width="800" height="640"/>
  </tileset>
  <tileset firstgid="501" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="6">
-  <image source="Main Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
+  <image source="Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
  </tileset>
  <layer id="1" name="Water" width="60" height="100">
   <properties>
