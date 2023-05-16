@@ -157,6 +157,8 @@ public:
     // Called each loop iteration
     void Draw();
 
+	void Draw_Top();
+
     // Called before quitting
     bool CleanUp();
 

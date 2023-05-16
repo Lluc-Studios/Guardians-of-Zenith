@@ -102,6 +102,7 @@ void Map::Draw()
 
 }
 
+
 // L12: Create walkability map for pathfinding
 bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 {

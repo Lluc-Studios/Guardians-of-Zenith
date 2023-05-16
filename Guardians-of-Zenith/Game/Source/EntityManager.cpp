@@ -8,6 +8,7 @@
 #include "App.h"
 #include "Textures.h"
 #include "Scene.h"
+#include "ForestDungeon.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -58,6 +59,7 @@ bool EntityManager::Start() {
 		if (pEntity->active == false) continue;
 		ret = item->data->Start();
 	}
+	app->forestdungeon->Draw_Top();
 
 	return ret;
 }
