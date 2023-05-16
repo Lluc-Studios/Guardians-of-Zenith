@@ -8,7 +8,7 @@
 	<anonymous />
 	<scene />
 	<entitymanager>
-		<player_stats facing="3" position_x="1367" position_y="-740" instance="7" />
+		<player_stats facing="2" position_x="516" position_y="576" instance="0" />
 		<laurea_stats laurea_CHP="350" laurea_CMP="50" laurea_LVL="1" laurea_EXP="0" />
 		<lapis_stats lapis_CHP="250" lapis_CMP="100" lapis_LVL="1" lapis_EXP="0" />
 		<lucca_stats lucca_CHP="200" lucca_CMP="115" lucca_LVL="1" lucca_EXP="0" />
@@ -30,6 +30,6 @@
 	<guiManager />
 	<Inventory />
 	<renderer>
-		<camera x="-2090" y="1856" />
+		<camera x="-388" y="-776" />
 	</renderer>
 </save_state>
