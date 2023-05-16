@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="40" height="95" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="289">
+
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="40" height="95" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="289">
+
  <tileset firstgid="1" name="Tileset_Cave" tilewidth="32" tileheight="32" tilecount="500" columns="25">
   <image source="Tilesets/Tileset_Cave.png" width="800" height="640"/>
  </tileset>
@@ -19179,7 +19181,7 @@
   <object id="287" x="542.969" y="863.125" width="1.8125" height="2"/>
   <object id="288" x="542.969" y="863.125" width="1.8125" height="2"/>
  </objectgroup>
- <objectgroup id="8" name="Elipse">
+ <objectgroup id="8" name="Elipse" visible="0">
   <properties>
    <property name="Type" type="int" value="235"/>
   </properties>
