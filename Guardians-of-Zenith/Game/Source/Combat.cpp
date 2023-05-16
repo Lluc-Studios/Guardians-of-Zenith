@@ -269,7 +269,7 @@ bool Combat::Update(float dt)
 			E1DefenseBuffCheck = true;
 		}
 		//Render text
-		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 250);
+		app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,115,160 }, 0, 0, 255, 150);
 		if (option != COMBATMENU::NONE) {
