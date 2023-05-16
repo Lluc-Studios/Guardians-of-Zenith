@@ -1175,11 +1175,11 @@ void Scene::RestartCave()
 
 	TPressed1 = false;
 	TPressed2 = false;
-	TPressed3 = false;
+	TPressed3 = true;
 	TPressed4 = false;
 	TPressed5 = false;
 	TPressed6 = false;
-	TPressed7 = false;
+	TPressed7 = true;
 	TPressed8 = false;
 	TPressed9 = false;
 	TPressed10 = false;
@@ -1189,7 +1189,7 @@ void Scene::RestartCave()
 	TPressed14 = false;
 	TPressed15 = false;
 	TPressed16 = false;
-	TPressed17 = false;
+	TPressed17 = true;
 	TPressed18 = false;
 	TPressed19 = false;
 	TPressed20 = false;
@@ -1197,7 +1197,7 @@ void Scene::RestartCave()
 	TPressed22 = false;
 	TPressed23 = false;
 	TPressed24 = false;
-	TPressed25 = false;
+	TPressed25 = true;
 	TPressed26 = false;
 	TPressed27 = false;
 	TPressed28 = false;
@@ -1216,11 +1216,11 @@ void Scene::RestartCave()
 	TPressed41 = false;
 	TPressed42 = false;
 	TPressed43 = false;
-	TPressed44 = false;
+	TPressed44 = true;
 	TPressed45 = false;
 	TPressed46 = false;
 	TPressed47 = false;
-	TPressed48 = false;
+	TPressed48 = true;
 	TPressed49 = false;
 	TPressed50 = false;
 	TPressed51 = false;
@@ -1233,7 +1233,7 @@ void Scene::RestartCave()
 	TPressed58 = false;
 	TPressed59 = false;
 	TPressed60 = false;
-	TPressed61 = false;
+	TPressed61 = true;
 	TPressed62 = false;
 	TPressed63 = false;
 	TPressed64 = false;
@@ -1241,17 +1241,17 @@ void Scene::RestartCave()
 	TPressed66 = false;
 	TPressed67 = false;
 	TPressed68 = false;
-	TPressed69 = false;
+	TPressed69 = true;
 	TPressed70 = false;
 	TPressed71 = false;
 
 	TBroken1 = false;
 	TBroken2 = false;
-	TBroken3 = false;
+	TBroken3 = true;
 	TBroken4 = false;
 	TBroken5 = false;
 	TBroken6 = false;
-	TBroken7 = false;
+	TBroken7 = true;
 	TBroken8 = false;
 	TBroken9 = false;
 	TBroken10 = false;
@@ -1261,7 +1261,7 @@ void Scene::RestartCave()
 	TBroken14 = false;
 	TBroken15 = false;
 	TBroken16 = false;
-	TBroken17 = false;
+	TBroken17 = true;
 	TBroken18 = false;
 	TBroken19 = false;
 	TBroken20 = false;
@@ -1269,7 +1269,7 @@ void Scene::RestartCave()
 	TBroken22 = false;
 	TBroken23 = false;
 	TBroken24 = false;
-	TBroken25 = false;
+	TBroken25 = true;
 	TBroken26 = false;
 	TBroken27 = false;
 	TBroken28 = false;
@@ -1288,11 +1288,11 @@ void Scene::RestartCave()
 	TBroken41 = false;
 	TBroken42 = false;
 	TBroken43 = false;
-	TBroken44 = false;
+	TBroken44 = true;
 	TBroken45 = false;
 	TBroken46 = false;
 	TBroken47 = false;
-	TBroken48 = false;
+	TBroken48 = true;
 	TBroken49 = false;
 	TBroken50 = false;
 	TBroken51 = false;
@@ -1305,7 +1305,7 @@ void Scene::RestartCave()
 	TBroken58 = false;
 	TBroken59 = false;
 	TBroken60 = false;
-	TBroken61 = false;
+	TBroken61 = true;
 	TBroken62 = false;
 	TBroken63 = false;
 	TBroken64 = false;
@@ -1313,7 +1313,7 @@ void Scene::RestartCave()
 	TBroken66 = false;
 	TBroken67 = false;
 	TBroken68 = false;
-	TBroken69 = false;
+	TBroken69 = true;
 	TBroken70 = false;
 	TBroken71 = false;
 
