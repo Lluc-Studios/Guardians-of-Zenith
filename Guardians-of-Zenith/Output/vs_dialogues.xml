@@ -47,18 +47,15 @@
 
   <!--Bill (Tabernero)-->
   <dialogueTree ID="1">
-    <node id="0" text="Hello friend, what do I serve you?">
-        <choice id="0" option="Good morning, I would like to drink a bottle of water from BonArea." nextNode="1" eventReturn="1"/>
-        <choice id="1" option="A gin tonic, with lemon, ice and the little umbrella." nextNode="2" eventReturn="1"/>
+    <node id="0" text="Ah, adventurer! I'm glad you're here. I desperately need some assistance. You see, my tavern is running low on supplies, and I can't serve my customers without them. I need you to head into the forest and defeat five enemies for me. Can you handle it?">
+        <choice id="0" option="Five enemies? That sounds easy! I'll finish it in no time." nextNode="1" eventReturn="1"/>
+        <choice id="1" option="Hmm, I'm not sure if I'm ready for that. Can you offer any other tasks?" nextNode="2" eventReturn="1"/>
     </node>
 
-    <node id="1" text="Here you go. It is 100 bucks, cash or card?">
-        <choice id="0" option="No way I am paying that, I am leaving." nextNode="-1" eventReturn="1"/>
-		<choice id="0" option="Charge it on my friend Lluc account." nextNode="-1" eventReturn="1"/>
+    <node id="1" text="Excellent! I knew I could rely on you. The forest can be dangerous, so make sure you're prepared. Return to me once you've defeated five enemies so that I can reward you properly.">
     </node>
 
-    <node id="2" text="It will be 50 bucks, cash or card?">
-        <choice id="0" option="Wow, I did not know the little umbrellas prize got raised again, cash." nextNode="-1"  eventReturn="1"/>
+    <node id="2" text="No problem, adventurer. Come again when you are prepared for this task and I will have a reward waiting for you.">
     </node>
    
     <node id="-1" text ="Good. Have a good day!"></node>

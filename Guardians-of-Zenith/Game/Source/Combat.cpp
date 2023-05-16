@@ -43,12 +43,18 @@ bool Combat::Start()
 	BG_Lake = app->tex->Load("Assets/Textures/Combat_Background/Combat_Lake.png");
 	BG_Forest = app->tex->Load("Assets/Textures/Combat_Background/Combat_Forest.png");
 	BG_Cave = app->tex->Load("Assets/Textures/Combat_Background/Combat_Cave.png");
+	BG_Monolitos = app->tex->Load("Assets/Textures/Combat_Background/Combat_Monolitos.png");
+	BG_House = app->tex->Load("Assets/Textures/Combat_Background/Combat_House.png");
+	BG_Tavern = app->tex->Load("Assets/Textures/Combat_Background/Combat_Tavern.png");
+	BG_Blackmith = app->tex->Load("Assets/Textures/Combat_Background/Combat_Blackmith.png");
+
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Lucca_Combat.png");
 	Character1Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
 	Character2Frozen = app->tex->Load("Assets/Entities/Characters/Lapis_Combat_Frozen.png");
 	Character3Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
+
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish_Combat.png");
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess_Combat.png");
@@ -284,13 +290,13 @@ bool Combat::Update(float dt)
 				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 				break;
 			case 1:
-				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				app->render->DrawTexture(BG_Tavern, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 				break;
 			case 2:
-				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				app->render->DrawTexture(BG_Blackmith, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 				break;
 			case 3:
-				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				app->render->DrawTexture(BG_House, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 				break;
 			case 4:
 				app->render->DrawTexture(BG_Lake, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
@@ -302,7 +308,7 @@ bool Combat::Update(float dt)
 				app->render->DrawTexture(BG_Cave, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 				break;
 			case 7:
-				app->render->DrawTexture(BG, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
+				app->render->DrawTexture(BG_Monolitos, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 				break;
 		}
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);

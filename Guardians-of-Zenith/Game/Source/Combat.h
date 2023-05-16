@@ -96,6 +96,10 @@ public:
 	SDL_Texture* BG_Lake;
 	SDL_Texture* BG_Forest;
 	SDL_Texture* BG_Cave;
+	SDL_Texture* BG_Monolitos;
+	SDL_Texture* BG_House;
+	SDL_Texture* BG_Tavern;
+	SDL_Texture* BG_Blackmith;
 
 	//Preset for enemy teams
 	int Preset = 0, EnemyVariation = 0;
