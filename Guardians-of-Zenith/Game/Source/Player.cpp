@@ -74,6 +74,7 @@ bool Player::Start() {
 	doorFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Door Fx.wav");
 	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start battle FX.wav");
 	MonolithFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Monolith FX.wav");
+	sirenFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Enemies/Siren.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -543,7 +544,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;

@@ -20,6 +20,12 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - Mouse to move in menus
 
 ### Gamepad
+**In map:**
+- Left joystick: Move
+
+**Combat UI:**
+- Left joystick: Up/Down
+- A: Select
 
 ## Features
 
