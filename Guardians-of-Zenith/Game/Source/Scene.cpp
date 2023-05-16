@@ -150,9 +150,9 @@ bool Scene::Start()
 	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
 	DefaultTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Default.png");
 	BrokenTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Broken.png");
-	TownPNG = app->tex->Load("Assets/Maps/Tileset as Png/Town.png");
-	WaterPNG = app->tex->Load("Assets/Maps/Tileset as Png/Water_dungeon.png");
-	ForestPNG = app->tex->Load("Assets/Maps/Tileset as Png/Forest_dungeon.png");
+	TownPNG = app->tex->Load("Assets/Maps/Maps_Png/Town.png");
+	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Water_dungeon.png");
+	ForestPNG = app->tex->Load("Assets/Maps/Maps_Png/Forest_dungeon.png");
 	Pilar1A = app->tex->Load("Assets/Textures/Puzzles/Tower_1_On.png");
 	Pilar1N = app->tex->Load("Assets/Textures/Puzzles/Tower_1_Off.png");
 	Pilar2A = app->tex->Load("Assets/Textures/Puzzles/Tower_2_On.png");
