@@ -2820,13 +2820,73 @@ bool Combat::Update(float dt)
 				if (AllySelect == true && cd == 0)
 				{
 					if (option == COMBATMENU::ALLYSELECT1 && C1dead == false) {
-						LOG("ALLYSELECT1");
+						switch (ItemSelected)
+						{
+						case 1:
+							C1CHP = C1MHP;
+							FinishTurn();
+							break;
+						case 2:
+							C1CMP = C1MMP;
+							FinishTurn();
+							break;
+						case 3:
+							C1ATK *= 1.5;
+							FinishTurn();
+							break;
+						case 4:
+							C1DEF *= 1.5;
+							FinishTurn();
+							break;
+						default:
+							break;
+						}
 					}
 					if (option == COMBATMENU::ALLYSELECT2 && C2dead == false) {
-						LOG("ALLYSELECT2");
+						switch (ItemSelected)
+						{
+						case 1:
+							C2CHP = C2MHP;
+							FinishTurn();
+							break;
+						case 2:
+							C2CMP = C2MMP;
+							FinishTurn();
+							break;
+						case 3:
+							C2ATK *= 1.5;
+							FinishTurn();
+							break;
+						case 4:
+							C2DEF *= 1.5;
+							FinishTurn();
+							break;
+						default:
+							break;
+						}
 					}
 					if (option == COMBATMENU::ALLYSELECT3 && C3dead == false) {
-						LOG("ALLYSELECT3");
+						switch (ItemSelected)
+						{
+						case 1:
+							C3CHP = C3MHP;
+							FinishTurn();
+							break;
+						case 2:
+							C3CMP = C3MMP;
+							FinishTurn();
+							break;
+						case 3:
+							C3ATK *= 1.5;
+							FinishTurn();
+							break;
+						case 4:
+							C3DEF *= 1.5;
+							FinishTurn();
+							break;
+						default:
+							break;
+						}
 					}
 				}
 				A_pressed = true;
