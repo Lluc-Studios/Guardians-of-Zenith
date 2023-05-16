@@ -30,7 +30,7 @@ bool ForestDungeon::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = "Assets/Maps/Tavern.tmx";
+    mapFileName = "Assets/Maps/Forest_dungeon.tmx";
     mapFolder = "Assets/Maps/";
 
     ////Initialize the path
@@ -90,7 +90,7 @@ void ForestDungeon::Draw()
 
                     app->render->DrawTexture(tileset->texture,
                         pos.x,
-                        pos.y-250,
+                        pos.y + 2000,
                         &r);
                 }
             }
@@ -570,16 +570,16 @@ void ForestDungeon::CreateColliders(ColDataF c) {
     PhysBody* collider1;
 
     if (c.type == ColTypesF::FLOORF) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2) + 2000, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 4) {
-        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangleSensor((c.x + c.width / 2)+2, (c.y + c.height / 2) + 2000, c.width, c.height, bodyType::STATIC);
     }
     else if (c.type == 235) {
-        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2), c.width / 2, bodyType::STATIC);
+        collider1 = app->physics->CreateCircle((c.x + c.width / 2) + 2, (c.y + c.height / 2) + 2000, c.width / 2, bodyType::STATIC);
     }
     else {
-        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2)-250, c.width, c.height, bodyType::STATIC);
+        collider1 = app->physics->CreateRectangle((c.x + c.width / 2)+2, (c.y + c.height / 2) + 2000, c.width, c.height, bodyType::STATIC);
     }
 
     if (c.type == 0) {

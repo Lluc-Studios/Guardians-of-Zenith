@@ -630,7 +630,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision Town");
 		if (auxBool == false) {
 			app->scene->fade = true;
-			Teleport_Point(0, tp12);
+			Teleport_Point(7, tp12);
 			auxBool = true;
 		}
 		break;

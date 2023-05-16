@@ -100,6 +100,7 @@ bool Scene::Start()
 	app->house->Load();
 	app->monolith->Load();
 	app->lakedungeon->Load();
+	app->forestdungeon->Load();
 	app->cavedungeon->Load();
 	// L04: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
@@ -183,7 +184,7 @@ bool Scene::Start()
 	//Lake puzzle
 
 	MonoTP = app->physics->CreateRectangle(3537, 448, 32, 64, STATIC);
-	MonoTP->ctype = ColliderType::TOWNMONOLITH;
+	MonoTP->ctype = ColliderType::TOWNLAKEDUNGEON;
 
 	colliderPuzzle1 = app->physics->CreateRectangle(3380, 430, 32, 32, DYNAMIC);
 	colliderPuzzle1->body->SetFixedRotation(true);
@@ -282,10 +283,10 @@ bool Scene::Update(float dt)
 	if (app->Instance == 4) {
 		app->lakedungeon->Draw();
 	}
-	//if (app->Instance == 5) {
-	//	app->forestdungeon->Draw();
-	//  app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea_Forest_OST_Version.ogg");
-	//}
+	if (app->Instance == 5) {
+		app->forestdungeon->Draw();
+	  app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea_Forest_OST_Version.ogg");
+	}
 	if (app->Instance == 6) {
 		app->cavedungeon->Draw();
 	}
