@@ -318,6 +318,16 @@ bool Player::Update(float dt)
 
 				app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
 			}
+			if (app->input->controllers.A != 0)
+			{
+				buttonE = false;
+				NPC_02 = false;
+				NPC_03 = false;
+				NPC_04 = false;
+				isBill = true;
+
+				app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
+			}
 		}
 		if (NPC_02 )
 		{
@@ -334,12 +344,32 @@ bool Player::Update(float dt)
 				NPC2 = true;
 
 			}
+			if (app->input->controllers.A != 0)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_03 = false;
+				NPC_04 = false;
+				isDialogue = false;
+				NPC2 = true;
+			}
+
 		}
 		if (NPC_03 )
 		{
 			app->render->DrawTexture(PressE, 483 + 8, 545 - 15);
 
 			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_02 = false;
+				NPC_04 = false;
+				NPC = true;
+			}
+			if (app->input->controllers.A != 0)
 			{
 				buttonE = false;
 				//isBill = true;
@@ -363,6 +393,15 @@ bool Player::Update(float dt)
 				isDialogue = true;
 
 			}
+			if (app->input->controllers.A != 0)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_03 = false;
+				NPC_02 = false;
+				isDialogue = true;
+			}
 		}
 
 	}
@@ -384,6 +423,10 @@ bool Player::Update(float dt)
 		{
 			isDialogue = false;
 		}
+		if (app->input->controllers.B != 0)
+		{
+			isDialogue = false;
+		}
 	}
 	//Bill
 	if (isBill && app->dialogueSystem->activeTree == nullptr)
@@ -402,6 +445,10 @@ bool Player::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN 
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			isBill = false;
+		}
+		if (app->input->controllers.B != 0)
 		{
 			isBill = false;
 		}
@@ -427,6 +474,10 @@ bool Player::Update(float dt)
 		{
 			NPC2 = false;
 		}
+		if (app->input->controllers.B != 0)
+		{
+			NPC2 = false;
+		}
 	}
 
 	//NPC
@@ -446,6 +497,10 @@ bool Player::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN 
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			NPC = false;
+		}
+		if (app->input->controllers.B != 0)
 		{
 			NPC = false;
 		}
