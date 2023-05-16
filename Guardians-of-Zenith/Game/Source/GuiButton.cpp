@@ -62,14 +62,14 @@ bool GuiButton::Draw(Render* render)
 		if (id == 1)
 		{
 			i = 25;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
 		if (id == 0)
 		{
 			i = -10;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
-		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 200, 200, 200, 255, true, false);
+		render->DrawRectangle({ bounds.x + 70, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 200, 200, 200, 255, true, false);
 
 	} break;
 
@@ -78,14 +78,14 @@ bool GuiButton::Draw(Render* render)
 		if (id == 1)
 		{
 			i = 25;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
 		if (id == 0)
 		{
 			i = -10;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
-		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 128, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x + 70, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 128, 255, 255, true, false);
 
 	}	break;
 
@@ -94,14 +94,14 @@ bool GuiButton::Draw(Render* render)
 		if (id == 1)
 		{
 			i = 25;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
 		if (id == 0)
 		{
 			i = -10;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
-		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 255, 0, 255, 255, true, false);
+		render->DrawRectangle({ bounds.x + 70, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 255, 0, 255, 255, true, false);
 
 	} break;
 
@@ -110,14 +110,14 @@ bool GuiButton::Draw(Render* render)
 		if (id == 1)
 		{
 			i = 25;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
 		if (id == 0)
 		{
 			i = -10;
-			j = bounds.w / 2;
+			j = bounds.w;
 		}
-		render->DrawRectangle({ bounds.x + 80, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 255, 0, 255, true, false);
+		render->DrawRectangle({ bounds.x + 70, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 0, 255, 0, 255, true, false);
 
 	} break;
 
@@ -125,11 +125,11 @@ bool GuiButton::Draw(Render* render)
 		break;
 	}
 
-	int size = fontSize	;
+	int size = fontSize;
 	int x = bounds.w / size * 0.5;
 	int y = bounds.h - size / 4;
 
-	app->render->DrawText(bounds.x + x, bounds.y, { 0, 0, 0 }, text.GetString(), size);
+	app->render->DrawText(bounds.x + x - 20, bounds.y, { 0, 0, 0 }, text.GetString(), size);
 
 	return false;
 }

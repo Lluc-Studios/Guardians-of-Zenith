@@ -23,8 +23,8 @@
   <!--Lapis-->
   <dialogueTree ID="0">
     <node id="0" text="First of all good morning, my name is Lapis. And I am a water spirit.">
-        <choice id="0" option="Glad to meet you, I am Laurea. Why are you here, are not you supposed to be in the water zone?" nextNode="1" eventReturn="1"/>
-		<choice id="1" option="That's a good fact you know, but I don't remember asking." nextNode="2" eventReturn="1"/>
+        <choice id="0" option="Why are you here, are not you supposed to be in the water zone?" nextNode="1" eventReturn="1"/>
+		<choice id="1" option="I don't remember asking." nextNode="2" eventReturn="1"/>
 	</node>
 
     <node id="1" text="Yes I should, but the dungeon is still in WIP because we are in the Vertical Slice.">
@@ -63,36 +63,32 @@
   
   <!--Sera (Herreria)-->
   <dialogueTree ID="2">
-	<node id="0" text="Welcome to the village smithing shop. Need anything?">
-		<choice id="0" option="Yes, one Glock with 40 calibear rounds and some magazines, please." nextNode="1" eventReturn="1"/>
-		<choice id="1" option="I would like to buy some armor." nextNode="2" eventReturn="1"/>
+	<node id="0" text="Ah, adventurer, thank you for coming. It's been weighing on my heart, but I've lost my late wife's precious necklace. I believe it might have fallen into the lake. Can you help me find it?">
+		<choice id="0" option="I'll search the lake and do my best to find the necklace for you." nextNode="1" eventReturn="1"/>
+		<choice id="1" option="Is there any other thing that I need to know?" nextNode="2" eventReturn="1"/>
 	</node>
 
-	<node id="1" text="All of it costs 9.99 bucks. Can I ask you what use are you going to give it?">
-		<choice id="0" option="I gotta visit some friend that owes me money." nextNode="-1" eventReturn="1"/>
-		<choice id="1" option="I am pretending to turn this game into an FPS, I do not really like RPG games." nextNode="-1" eventReturn="1"/>
+	<node id="1" text="Thank you, kind soul. I'm grateful for your willingness to help. The lake can be tricky, so please be cautious. Return to me once you've found the necklace, and I'll reward you generously.">
 	</node>
 
 	<node id="-1" text ="Alright then. Come back soon!"></node>
 
-	<node id="2" text="I am sorry, but now we are out of stock. Maybe you can come again when alpha is released. Come back soon!"></node>
+	<node id="2" text="There are rumors that there is a powerful creature gathering precious stones in the lake, maybe the necklace is on its treasure. If you find it, return to me and I'll reward you generously."></node>
 	</dialogueTree>
 
   <!--Timmy (Ninio)-->
   <dialogueTree ID="3">
-	<node id="0" text="Hi, I lost my soccer ball and I do not know where is it. Would you help me finding it?">
-		<choice id="0" option="Where did you see it the last time?" nextNode="1" eventReturn="1"/>
-		<choice id="1" option="Sorry kid, I must go to home. The Barcelona-Madrid is about to start on TV." nextNode="2" eventReturn="1"/>
+	<node id="0" text="Greetings, adventurer! I'm relieved you're here. During my research trip, I misplaced four crucial manuscripts that contain vital information about the origin of this island. I need your help to find them so that we can create a comprehensive book on our island's history. Will you undertake this important quest?">
+		<choice id="0" option="Count on me!  I'll help you find those manuscripts." nextNode="1" eventReturn="1"/>
+		<choice id="1" option="Can you provide any hints or information to narrow down the search areas?" nextNode="2" eventReturn="1"/>
 	</node>
 
-	<node id="1" text="I was playing near tho the woods and suddenly it disapeared. If you find it I will give you something I found wandering there.">
-		<choice id="0" option="Deal, when the developers decide to start working on sidequests I will go and search for it." nextNode="-1" eventReturn="1"/>
-		<choice id="1" option="I have changed my mind. Try to get another guy to help you." nextNode="2" eventReturn="1"/>
+	<node id="1" text="Thank you, adventurer! Your dedication to uncovering our island's history is commendable. The manuscripts could be anywhere, so search thoroughly. Once you've collected all four, bring them back to me, and I'll reward you generously.">
 	</node>
 
 	<node id="-1" text ="I do not know what this developer thing means, but thank you."></node>
 
-	<node id="2" text="Oh, it is okay. I will keep looking for it myself."></node>
+	<node id="2" text="I understand it's a challenging endeavor. Let me give you a clue: Each manuscript is hidden in a significant landmark of our island. Explore the ruins, the cave system, the forest, and the lake. Good luck! Return to me with all the manuscripts and I’ll reward you generously."></node>
   </dialogueTree>
 	
 </dialogues>
