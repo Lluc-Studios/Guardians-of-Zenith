@@ -120,10 +120,14 @@ private:
 	//Others
 
 	bool Pressed1 = false, Pressed2 = false, Pressed3 = false;
+	bool pressed1Fx = false, pressed2Fx = false, pressed3Fx = false;
 
-	//Pause menu FX
+	//FX
 	int change, select, play;
+	int puzzleFX;
+
 	bool alreadyChangeFX = false;
+
 
 	SDL_Rect ET = { 0,0,64,64 };
 	SDL_Rect N1T = { 0,0,32,32 };

@@ -87,6 +87,7 @@ bool Scene::Awake(pugi::xml_node& config)
 	change = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/ChangeSelection.wav");
 	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
 	play = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Play.wav");
+	puzzleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/puzzle sound.wav");
 
 	return ret;
 }
@@ -337,21 +338,37 @@ bool Scene::Update(float dt)
 
 	if (Pressed1 == true) {
 		app->render->DrawTexture(Pressed, 3040, -449);
+		
+		if (pressed1Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			pressed1Fx = true;
+		}
 	}
 	if (Pressed1 == false) {
 		app->render->DrawTexture(Unpressed, 3040, -449);
+		pressed1Fx = false;
 	}
 	if (Pressed2 == true) {
 		app->render->DrawTexture(Pressed, 3008, -705);
+		if (pressed2Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			pressed2Fx = true;
+		}
 	}
 	if (Pressed2 == false) {
 		app->render->DrawTexture(Unpressed, 3008, -705);
+		pressed2Fx = false;
 	}
 	if (Pressed3 == true) {
 		app->render->DrawTexture(Pressed, 4000, -1153);
+		if (pressed3Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			pressed3Fx = true;
+		}
 	}
 	if (Pressed3 == false) {
 		app->render->DrawTexture(Unpressed, 4000, -1153);
+		pressed3Fx = false;
 	}
 
 	if ((x4 >=3009 && x4 <= 3071 && y4 >= -480 && y4 <=-433) || (x5 >= 3009 && x5 <= 3071 && y5 >= -480 && y5 <= -433) || (x6 >= 3009 && x6 <= 3071 && y6 >= -480 && y6 <= -433)) {

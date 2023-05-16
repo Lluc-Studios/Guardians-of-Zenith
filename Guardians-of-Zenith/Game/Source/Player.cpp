@@ -586,7 +586,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::HOUSE:
 		LOG("Collision House");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(3, tp5);
 			auxBool = true;
@@ -595,7 +595,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNHOUSE:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(0, tp6);
 			auxBool = true;
@@ -604,6 +604,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::LAKEDUNGEON:
 		LOG("Collision Lake Dungeon");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(4, tp7);
 			auxBool = true;
@@ -612,6 +613,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNLAKEDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(7, tp8);
 			auxBool = true;
@@ -620,6 +622,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::FORESTDUNGEON:
 		LOG("Collision Forest Dungeon");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(5, tp9);
 			auxBool = true;
@@ -628,6 +631,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNFORESTDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(7, tp10);
 			auxBool = true;
@@ -636,6 +640,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::CAVEDUNGEON:
 		LOG("Collision Cave Dungeon");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(6, tp11);
 			auxBool = true;
@@ -644,6 +649,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNCAVEDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(7, tp12);
 			auxBool = true;
@@ -652,7 +658,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::MONOLITH:
 		LOG("Collision Monolith");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(7, tp13);
 			auxBool = true;
@@ -661,7 +666,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNMONOLITH:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(0, tp14);
 			auxBool = true;
