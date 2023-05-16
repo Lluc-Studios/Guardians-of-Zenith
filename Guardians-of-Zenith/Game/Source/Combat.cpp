@@ -2789,20 +2789,43 @@ bool Combat::Update(float dt)
 						switch (ItemSelected)
 						{
 						case 1:
-							C1CHP = C1MHP;
-							FinishTurn();
+							if (app->inventory->nrOfHpPot < 1)
+							{
+								LOG("aaaaaaaaaaaaaaaaaaaaa");
+								option = COMBATMENU::NOITEM;
+							}
+							else {
+								C1CHP = C1MHP;
+								FinishTurn();
+								app->inventory->nrOfHpPot--;
+							}
 							break;
 						case 2:
-							C1CMP = C1MMP;
-							FinishTurn();
+							if (app->inventory->nrOfMpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C1CMP = C1MMP;
+								FinishTurn();
+								app->inventory->nrOfMpPot--;
+							}
 							break;
 						case 3:
-							C1ATK *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfAtkElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C1ATK *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfAtkElx--;
+							}
 							break;
 						case 4:
-							C1DEF *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfDefElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C1DEF *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfDefElx--;
+							}
 							break;
 						default:
 							break;
@@ -2812,43 +2835,85 @@ bool Combat::Update(float dt)
 						switch (ItemSelected)
 						{
 						case 1:
-							C2CHP = C2MHP;
-							FinishTurn();
+							if (app->inventory->nrOfHpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2CHP = C2MHP;
+								FinishTurn();
+								app->inventory->nrOfHpPot--;
+							}
 							break;
 						case 2:
-							C2CMP = C2MMP;
-							FinishTurn();
+							if (app->inventory->nrOfMpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2CMP = C2MMP;
+								FinishTurn();
+								app->inventory->nrOfMpPot--;
+							}
 							break;
 						case 3:
-							C2ATK *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfAtkElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2ATK *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfAtkElx--;
+							}
 							break;
 						case 4:
-							C2DEF *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfDefElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2DEF *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfDefElx--;
+							}
 							break;
 						default:
 							break;
 						}
 					}
+					LOG("hp potions: %i", app->inventory->nrOfHpPot);
 					if (option == COMBATMENU::ALLYSELECT3 && C3dead == false) {
 						switch (ItemSelected)
 						{
+
 						case 1:
-							C3CHP = C3MHP;
-							FinishTurn();
+							if(app->inventory->nrOfHpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3CHP = C3MHP;
+								FinishTurn();
+								app->inventory->nrOfHpPot--;
+							}
 							break;
 						case 2:
-							C3CMP = C3MMP;
-							FinishTurn();
+							if (app->inventory->nrOfMpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3CMP = C3MMP;
+								FinishTurn();
+								app->inventory->nrOfMpPot--;
+							}
 							break;
 						case 3:
-							C3ATK *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfAtkElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3ATK *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfAtkElx--;
+							}
 							break;
 						case 4:
-							C3DEF *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfDefElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3DEF *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfDefElx--;
+							}
 							break;
 						default:
 							break;
@@ -4344,7 +4409,25 @@ bool Combat::PostUpdate()
 			app->render->DrawText(155, 220, WF, "also deals high damage to enemies without a shield", 16);
 		}
 	}
+	LOG("OPTION: %i", option);
+	if (option == COMBATMENU::NOITEM) {
+		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "No items left", 16);
 
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
+			option = COMBATMENU::INVENTORY1;
+			AllySelect = false;
+		}
+		if (app->input->controllers.A != 0 && !A_pressed)
+		{
+			option = COMBATMENU::INVENTORY1;
+			AllySelect = false;
+		}
+		else if (app->input->controllers.A == 0)
+		{
+			A_pressed = false;
+		}
+
+	}
 	return ret;
 }
 

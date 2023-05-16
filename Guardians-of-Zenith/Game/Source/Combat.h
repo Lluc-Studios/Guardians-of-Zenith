@@ -37,6 +37,7 @@ public:
 		INVENTORY2,
 		INVENTORY3,
 		INVENTORY4,
+		NOITEM,
 		NONE
 	};
 
