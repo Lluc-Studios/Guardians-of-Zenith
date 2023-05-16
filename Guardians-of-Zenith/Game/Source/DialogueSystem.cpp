@@ -26,6 +26,7 @@ bool DialogueSystem::Awake(pugi::xml_node& config)
 bool DialogueSystem::Start()
 {
 	textBox_tex = app->tex->Load(textBox_path);
+	dialogueFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Dialogue FX.wav");
 	return true;
 }
 
@@ -51,6 +52,8 @@ bool DialogueSystem::Update(float dt)
 bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 {
 	LOG("Event by %d ", control->id);
+
+	app->audio->PlayFxWithVolume(dialogueFX, 0, 70);
 
 	// TODO 4: Buttons ID match the choice ID. Use it to access to its attributes
 	playerInput = activeTree->activeNode->choicesList[control->id];

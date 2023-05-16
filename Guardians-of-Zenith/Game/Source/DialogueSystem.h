@@ -43,6 +43,9 @@ public:
 
 private:
 	pugi::xml_document dialogues;
+
+	int dialogueFX;
+
 };
 
 #endif // __DIALOGSYSTEM_H__
