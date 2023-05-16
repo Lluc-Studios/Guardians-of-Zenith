@@ -39,8 +39,9 @@ bool MainMenu::Start()
 {
 	//mainmenu = app->tex->Load("Assets/Textures/main_menu.png");
 
-	change = app->audio->LoadFx("Assets/Soundtrack/Fx/ChangeSelection.wav");
-	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Select.wav");
+	change = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/ChangeSelection.wav");
+	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
+	play = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Play.wav");
 
 	MX = 125 + app->audio->volume;
 	FX = 125 + app->audio->fxvolume/2;
@@ -107,11 +108,11 @@ bool MainMenu::Update(float dt)
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
 		if (option == SELECTED::START) {
 			app->scene->player->InitializePlayers();
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(play, 0, 70);
 			fadeOut = true;
 		}
 		if (option == SELECTED::CONTINUE) {
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(play, 0, 70);
 			fadeOut = true;
 			app->LoadGameRequest();
 		}
@@ -120,6 +121,7 @@ bool MainMenu::Update(float dt)
 			options = true;
 		}
 		if (option == SELECTED::EXIT) {
+			app->audio->PlayFxWithVolume(play, 0, 70);
 			ret = false;
 		}
 	}

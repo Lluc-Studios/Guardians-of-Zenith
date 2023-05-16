@@ -166,6 +166,9 @@ public:
 	int auxCounter = 0;
 	bool auxBool = false;
 
+	int doorFX;
+
+
 private:
 
 	SDL_Texture* texture;

@@ -81,7 +81,12 @@ bool Scene::Awake(pugi::xml_node& config)
 	//	tp->parameters = tpNode;
 	//}
 
+
+	//Load music & FX
 	villageMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Guidance Island OST Version.ogg");
+	change = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/ChangeSelection.wav");
+	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
+	play = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Play.wav");
 
 	return ret;
 }
@@ -223,11 +228,6 @@ bool Scene::PreUpdate()
 bool Scene::Update(float dt)
 {
 
-	//if (Music == false) {
-	//	app->audio->PlayFx(villageMusic, 10);
-	//	Music = true;
-	//}
-
 	// L03: DONE 3: Request App to Load / Save when pressing the keys F5 (save) / F6 (load)
 	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 		app->SaveGameRequest();
@@ -284,7 +284,6 @@ bool Scene::Update(float dt)
 	}
 	//if (app->Instance == 5) {
 	//	app->forestdungeon->Draw();
-	//  app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea_Forest_OST_Version.ogg");
 	//}
 	if (app->Instance == 6) {
 		app->cavedungeon->Draw();
@@ -997,11 +996,14 @@ bool Scene::Update(float dt)
 		{
 		case Scene::SELECTED::SAVEGAME:
 			app->SaveGameRequest();
+			app->audio->PlayFxWithVolume(select, 0, 70);
 			break;
 		case Scene::SELECTED::OPTIONS:
+			app->audio->PlayFxWithVolume(select, 0, 70);
 			options = true;
 			break;
 		case Scene::SELECTED::MAINMENU:
+			app->audio->PlayFxWithVolume(play, 0, 70);
 			isPaused = false;
 			app->mainmenu->fading = 255;
 			app->mainmenu->fading2 = 0;
@@ -1016,6 +1018,7 @@ bool Scene::Update(float dt)
 			app->audio->PlayMusic("Assets/Soundtrack/Music/Rocky-Tundra-OST-Version.ogg");
 			break;
 		case Scene::SELECTED::EXIT:
+			app->audio->PlayFxWithVolume(play, 0, 70);
 			return false;
 			break;
 		case Scene::SELECTED::NONE:
@@ -1151,18 +1154,38 @@ bool Scene::Pause()
 		if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 45 * 2 && y <= 26 + 55 * 2) {
 			app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
 			option = SELECTED::SAVEGAME;
+			if (alreadyChangeFX == false) {
+				app->audio->PlayFxWithVolume(change, 0, 70);
+				alreadyChangeFX = true;
+			}
 		}
 		else if (x >= 640 / 2 - 24 && x <= 664 && y >= 26 + 65 * 2 && y <= 26 + 75 * 2) {
 			app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
 			option = SELECTED::OPTIONS;
+			if (alreadyChangeFX == false) {
+				app->audio->PlayFxWithVolume(change, 0, 70);
+				alreadyChangeFX = true;
+			}
 		}
 		else if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 85 * 2 && y <= 26 + 95 * 2) {
 			app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
 			option = SELECTED::MAINMENU;
+			if (alreadyChangeFX == false) {
+				app->audio->PlayFxWithVolume(change, 0, 70);
+				alreadyChangeFX = true;
+			}
 		}
 		else if (x >= 640 / 2 - 16 && x <= 664 && y >= 26 + 105 * 2 && y <= 26 + 115 * 2) {
 			app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
 			option = SELECTED::EXIT;
+			if(alreadyChangeFX == false){ 
+				app->audio->PlayFxWithVolume(change, 0, 70); 
+				alreadyChangeFX = true;
+			}
+		}
+		else { 
+			if(alreadyChangeFX)
+			alreadyChangeFX = false;
 		}
 	}
 	return true;

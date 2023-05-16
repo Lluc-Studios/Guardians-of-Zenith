@@ -407,6 +407,11 @@ private:
 	//Mando
 	bool A_pressed = false;
 
+
+	//FX
+	int change, select;
+
+
 };
 
 #endif // __COMBAT_H__

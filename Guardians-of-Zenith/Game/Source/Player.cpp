@@ -61,14 +61,16 @@ bool Player::Start() {
 	attackHitbox->ctype = ColliderType::PLAYER_ATTACK;
 
 	//Sounds
-	Step1 = app->audio->LoadFx("Assets/Sounds/Player/FootGravel1.wav");
-	Step2 = app->audio->LoadFx("Assets/Sounds/Player/FootGravel2.wav");
-	StepMetalic1 = app->audio->LoadFx("Assets/Sounds/Player/StepMetal1.wav");
-	StepMetalic2 = app->audio->LoadFx("Assets/Sounds/Player/StepMetal2.wav");
-	DeathSound = app->audio->LoadFx("Assets/Sounds/Player/Fire2.wav");
-	Swing = app->audio->LoadFx("Assets/Sounds/Player/Swing.wav");
-	DamageFx = app->audio->LoadFx("Assets/Sounds/Enemy/Dead2.wav");
-	tpFX = app->audio->LoadFx("Assets/Sounds/TeleportSound.wav");
+	//Step1 = app->audio->LoadFx("Assets/Sounds/Player/FootGravel1.wav");
+	//Step2 = app->audio->LoadFx("Assets/Sounds/Player/FootGravel2.wav");
+	//StepMetalic1 = app->audio->LoadFx("Assets/Sounds/Player/StepMetal1.wav");
+	//StepMetalic2 = app->audio->LoadFx("Assets/Sounds/Player/StepMetal2.wav");
+	//DeathSound = app->audio->LoadFx("Assets/Sounds/Player/Fire2.wav");
+	//Swing = app->audio->LoadFx("Assets/Sounds/Player/Swing.wav");
+	//DamageFx = app->audio->LoadFx("Assets/Sounds/Enemy/Dead2.wav");
+	//tpFX = app->audio->LoadFx("Assets/Sounds/TeleportSound.wav");
+
+	doorFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Door Fx.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -541,6 +543,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TAVERN:
 		LOG("Teleport_Tavern");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(1, tp1);
 			auxBool = true;
@@ -549,6 +552,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNTAVERN:
 		LOG("Collision Town");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(0, tp2);
 			auxBool = true;
@@ -557,6 +561,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BLACKSMITH:
 		LOG("Collision Blacksmith");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(2, tp3);
 			auxBool = true;
@@ -565,6 +570,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNBLACKSMITH:
 		LOG("Collision Town");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(0, tp4);
 			auxBool = true;
@@ -573,6 +579,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::HOUSE:
 		LOG("Collision House");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(3, tp5);
 			auxBool = true;
@@ -581,6 +588,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNHOUSE:
 		LOG("Collision Town");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(doorFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(0, tp6);
 			auxBool = true;

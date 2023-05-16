@@ -53,7 +53,7 @@ public:
 
 	SELECTED option = SELECTED::NONE;
 
-	int change, select, fading = 255, fading2 = 0, MX,FX, RGB = 150, RGB1 = 150;
+	int change, select, play, fading = 255, fading2 = 0, MX,FX, RGB = 150, RGB1 = 150;
 	bool fadeIn = true, fadeOut = false, options = false, FS = false, VS = true;
 
 	SDL_Color WF = { 255, 255, 255 };

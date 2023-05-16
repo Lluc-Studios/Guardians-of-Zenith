@@ -121,6 +121,10 @@ private:
 
 	bool Pressed1 = false, Pressed2 = false, Pressed3 = false;
 
+	//Pause menu FX
+	int change, select, play;
+	bool alreadyChangeFX = false;
+
 	SDL_Rect ET = { 0,0,64,64 };
 	SDL_Rect N1T = { 0,0,32,32 };
 	SDL_Rect N2T = { 0,0,32,32 };
