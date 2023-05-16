@@ -963,10 +963,10 @@ void Player::Move() {
 		&& app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_IDLE
 		&& app->input->GetKey(SDL_SCANCODE_S) == KeyState::KEY_IDLE
 		&& app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_IDLE
-		&& app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT
-		&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT
-		&& app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT
-		&& app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT ){
+		&& app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE){
 
 		if (facing == DIRECTION::RIGHT && vel.x == 0) {
 			currentAnim = &playerIdleR;
