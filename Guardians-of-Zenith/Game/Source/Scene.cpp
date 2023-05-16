@@ -1170,6 +1170,8 @@ bool Scene::Pause()
 
 void Scene::RestartCave()
 {
+	app->scene->fade = true;
+	app->scene->player->Teleport_Point(6, app->scene->player->tp11);
 
 	TPressed1 = false;
 	TPressed2 = false;
@@ -1198,6 +1200,50 @@ void Scene::RestartCave()
 	TPressed25 = false;
 	TPressed26 = false;
 	TPressed27 = false;
+	TPressed28 = false;
+	TPressed29 = false;
+	TPressed30 = false;
+	TPressed31 = false;
+	TPressed32 = false;
+	TPressed33 = false;
+	TPressed34 = false;
+	TPressed35 = false;
+	TPressed36 = false;
+	TPressed37 = false;
+	TPressed38 = false;
+	TPressed39 = false;
+	TPressed40 = false;
+	TPressed41 = false;
+	TPressed42 = false;
+	TPressed43 = false;
+	TPressed44 = false;
+	TPressed45 = false;
+	TPressed46 = false;
+	TPressed47 = false;
+	TPressed48 = false;
+	TPressed49 = false;
+	TPressed50 = false;
+	TPressed51 = false;
+	TPressed52 = false;
+	TPressed53 = false;
+	TPressed54 = false;
+	TPressed55 = false;
+	TPressed56 = false;
+	TPressed57 = false;
+	TPressed58 = false;
+	TPressed59 = false;
+	TPressed60 = false;
+	TPressed61 = false;
+	TPressed62 = false;
+	TPressed63 = false;
+	TPressed64 = false;
+	TPressed65 = false;
+	TPressed66 = false;
+	TPressed67 = false;
+	TPressed68 = false;
+	TPressed69 = false;
+	TPressed70 = false;
+	TPressed71 = false;
 
 	TBroken1 = false;
 	TBroken2 = false;
@@ -1226,5 +1272,50 @@ void Scene::RestartCave()
 	TBroken25 = false;
 	TBroken26 = false;
 	TBroken27 = false;
+	TBroken28 = false;
+	TBroken29 = false;
+	TBroken30 = false;
+	TBroken31 = false;
+	TBroken32 = false;
+	TBroken33 = false;
+	TBroken34 = false;
+	TBroken35 = false;
+	TBroken36 = false;
+	TBroken37 = false;
+	TBroken38 = false;
+	TBroken39 = false;
+	TBroken40 = false;
+	TBroken41 = false;
+	TBroken42 = false;
+	TBroken43 = false;
+	TBroken44 = false;
+	TBroken45 = false;
+	TBroken46 = false;
+	TBroken47 = false;
+	TBroken48 = false;
+	TBroken49 = false;
+	TBroken50 = false;
+	TBroken51 = false;
+	TBroken52 = false;
+	TBroken53 = false;
+	TBroken54 = false;
+	TBroken55 = false;
+	TBroken56 = false;
+	TBroken57 = false;
+	TBroken58 = false;
+	TBroken59 = false;
+	TBroken60 = false;
+	TBroken61 = false;
+	TBroken62 = false;
+	TBroken63 = false;
+	TBroken64 = false;
+	TBroken65 = false;
+	TBroken66 = false;
+	TBroken67 = false;
+	TBroken68 = false;
+	TBroken69 = false;
+	TBroken70 = false;
+	TBroken71 = false;
+
 }
 
