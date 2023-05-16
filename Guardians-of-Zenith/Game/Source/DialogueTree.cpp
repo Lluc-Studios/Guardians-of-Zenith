@@ -18,7 +18,19 @@ void DialogueNode::SplitText(SString text_, int fontSize_, int max_chars_line_)
 		for (int j = 0; j <= line.length() / max_chars_line_; j++)	// <= -> in case of decimal, get the round up number 
 		{
 			a = max_chars_line_ + startIndex;
+			if (a > line.size())
+			{
+				a = line.size() - startIndex;
+			}
+
 			b = line.find_first_of(" ", a);	// find first " " (space) from last trimmed to the end. 
+
+			if (b == -1)
+			{
+				b = line.find_first_of(".", a);
+			}
+
+			b++;
 
 			// If we reached the end of the word or the end of the input.
 			string temp;
