@@ -141,21 +141,27 @@ public:
 
 	int tp_savegame[2] = {0,0};
 
-
+	//Tabern
 	int tp1[2] = { 210,-40};
 	int tp2[2] = { 690,900 };
+	//Blackith
 	int tp3[2] = { 240,-460};
 	int tp4[2] = { 1745,910};
+	//House
 	int tp5[2] = { -330,330};
 	int tp6[2] = { 560 ,320 };
+	//Lake Daugeon
 	int tp7[2] = { 3450 ,420 };
-	int tp8[2] = { 1015, 190};
-	int tp9[2] = { 180,-175};
-	int tp10[2] = { 1015, 190};
+	int tp8[2] = { 978, -853 };
+	//Forest Daugeon
+	int tp9[2] = { 1473,5648};
+	int tp10[2] = { 1362,-1022 };
+	//Cave Daugeon
 	int tp11[2] = { -1250, 2150 };
 	int tp12[2] = { 1715,-830 };
-	int tp13[2] = { 1370,-80 };
-	int tp14[2] = { 1010,-830 };
+	//Monoliths
+	int tp13[2] = { 1367,-94 };
+	int tp14[2] = { 1121,249 };
 
 	int tpHouse_pos[2] = { -520,150 };
 

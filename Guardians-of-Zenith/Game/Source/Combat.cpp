@@ -42,7 +42,7 @@ bool Combat::Start()
 	BG = app->tex->Load("Assets/Textures/Temporary.png");
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
-	Character3 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
+	Character3 = app->tex->Load("Assets/Entities/Characters/Lucca_Combat.png");
 	Character1Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
 	Character2Frozen = app->tex->Load("Assets/Entities/Characters/Lapis_Combat_Frozen.png");
 	Character3Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
@@ -729,35 +729,115 @@ bool Combat::Update(float dt)
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
 				app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 121,64,66 }, 255, 255, 255, 120);
 			}
+			//LOG("option: %i, inventoryMenu: %i, AllySelect: %i", option, InventoryMenu, AllySelect);
 			if (option == COMBATMENU::INVENTORY1 && InventoryMenu == true && AllySelect == false) {
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
-				LOG("aaaaaaaaaaaaaaaaaaaa");
 				if (app->inventory->nrOfHpPot > 0) {
-					//char amount = static_cast<char>(app->inventory->nrOfHpPot);
 					string amountStr = std::to_string(app->inventory->nrOfHpPot);
 					const char* amount = amountStr.c_str();
-					app->render->DrawText(60, 140, WF, "Healing potion", 16);
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, "Healing potion", 16);
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, "HP potion", 16);
 					app->render->DrawText(60 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, WF, amount, 16);
 				}
-
 				if (app->inventory->nrOfMpPot > 0) {
 					string amountStr = std::to_string(app->inventory->nrOfMpPot);
 					const char* amount = amountStr.c_str();
-					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, "Mana potion", 16);
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, "MP potion", 16);
 					app->render->DrawText(60 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, amount, 16);
 				}
 				if (app->inventory->nrOfAtkElx > 0) {
 					string amountStr = std::to_string(app->inventory->nrOfAtkElx);
 					const char* amount = amountStr.c_str();
-					app->render->DrawText(60, 200, WF, "Attack elixir", 16);
-					app->render->DrawText(300, 200, WF, amount, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, "ATK elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, amount, 16);
 				}
 				if (app->inventory->nrOfDefElx > 0) {
 					string amountStr = std::to_string(app->inventory->nrOfDefElx);
 					const char* amount = amountStr.c_str();
-					app->render->DrawText(60, 230, WF, "Deffense elixir", 16);
-					app->render->DrawText(300, 230, WF, amount, 16);
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, GF, "DEF elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, GF, amount, 16);
+				}
+			}
+			LOG("iiiiiiiiiiiiiiii option: %i", option);
+			if (option == COMBATMENU::INVENTORY2 && InventoryMenu == true && AllySelect == false) {
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 55,115,20 }, 255, 255, 255, WhiteFading);
+				if (app->inventory->nrOfHpPot > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfHpPot);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, "HP potion", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, amount, 16);
+				}
+				if (app->inventory->nrOfMpPot > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfMpPot);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, "MP potion", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, WF, amount, 16);
+				}
+				if (app->inventory->nrOfAtkElx > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfAtkElx);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, "ATK elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, amount, 16);
+				}
+				if (app->inventory->nrOfDefElx > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfDefElx);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, GF, "DEF elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, GF, amount, 16);
+				}
+			}
+			if (option == COMBATMENU::INVENTORY3 && InventoryMenu == true && AllySelect == false) {
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 95,115,20 }, 255, 255, 255, WhiteFading);
+				if (app->inventory->nrOfHpPot > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfHpPot);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, "HP potion", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, amount, 16);
+				}
+				if (app->inventory->nrOfMpPot > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfMpPot);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, "MP potion", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, amount, 16);
+				}
+				if (app->inventory->nrOfAtkElx > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfAtkElx);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, "ATK elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, WF, amount, 16);
+				}
+				if (app->inventory->nrOfDefElx > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfDefElx);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, GF, "DEF elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, GF, amount, 16);
+				}
+			}
+			if (option == COMBATMENU::INVENTORY4 && InventoryMenu == true && AllySelect == false) {
+				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 135,115,20 }, 255, 255, 255, WhiteFading);
+				if (app->inventory->nrOfHpPot > 0) {
+					//char amount = static_cast<char>(app->inventory->nrOfHpPot);
+					string amountStr = std::to_string(app->inventory->nrOfHpPot);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, "HP potion", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 100 * app->ScalingMultiplier, GF, amount, 16);
+				}
+				if (app->inventory->nrOfMpPot > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfMpPot);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, "MP potion", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 120 * app->ScalingMultiplier, GF, amount, 16);
+				}
+				if (app->inventory->nrOfAtkElx > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfAtkElx);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, "ATK elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 140 * app->ScalingMultiplier, GF, amount, 16);
+				}
+				if (app->inventory->nrOfDefElx > 0) {
+					string amountStr = std::to_string(app->inventory->nrOfDefElx);
+					const char* amount = amountStr.c_str();
+					app->render->DrawText(10 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, WF, "DEF elixir", 16);
+					app->render->DrawText(60 * app->ScalingMultiplier - 10, 160 * app->ScalingMultiplier, WF, amount, 16);
 				}
 			}
 		}
@@ -1306,6 +1386,18 @@ bool Combat::Update(float dt)
 						app->audio->PlayFxWithVolume(change, 0, 70);
 					}
 				}
+				if (InventoryMenu == true && AllySelect == false)
+				{
+					if (option == COMBATMENU::INVENTORY4) {
+						option = COMBATMENU::INVENTORY3;
+					}
+					else if (option == COMBATMENU::INVENTORY3) {
+						option = COMBATMENU::INVENTORY2;
+					}
+					else if (option == COMBATMENU::INVENTORY2) {
+						option = COMBATMENU::INVENTORY1;
+					}
+				}
 			}
 			if ((app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN && TeamTurn == 1) || (app->input->controllers.j1_y >= 32767 && TeamTurn == 1)) {
 				if (AttackMenu == false) {
@@ -1368,6 +1460,18 @@ bool Combat::Update(float dt)
 						app->audio->PlayFxWithVolume(change, 0, 70);
 					}
 				}
+				if (InventoryMenu == true && AllySelect == false) {
+					if (option == COMBATMENU::INVENTORY1) {
+						option = COMBATMENU::INVENTORY2;
+					}
+					else if (option == COMBATMENU::INVENTORY2) {
+						option = COMBATMENU::INVENTORY3;
+					}
+					else if (option == COMBATMENU::INVENTORY3) {
+						option = COMBATMENU::INVENTORY4;
+					}
+				}
+
 			}
 			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN && TeamTurn == 1) {
 				FinishTurn();
@@ -1440,28 +1544,28 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::INVENTORY1) {
 						AllySelect = false;
 						ItemSelected = 1;
-						option = COMBATMENU::ALLYSELECT1;
+						//option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
 						app->audio->PlayFxWithVolume(select, 0, 70);
 					}
 					if (option == COMBATMENU::INVENTORY2) {
 						AllySelect = false;
 						ItemSelected = 2;
-						option = COMBATMENU::ALLYSELECT1;
+						//option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
 						app->audio->PlayFxWithVolume(select, 0, 70);
 					}
 					if (option == COMBATMENU::INVENTORY3) {
 						AllySelect = false;
 						ItemSelected = 3;
-						option = COMBATMENU::ALLYSELECT1;
+						//option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
 						app->audio->PlayFxWithVolume(select, 0, 70);
 					}
 					if (option == COMBATMENU::INVENTORY4) {
 						AllySelect = false;
 						ItemSelected = 4;
-						option = COMBATMENU::ALLYSELECT1;
+						//option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
 						app->audio->PlayFxWithVolume(select, 0, 70);
 					}
