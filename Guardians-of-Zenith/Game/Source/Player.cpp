@@ -297,69 +297,71 @@ bool Player::Update(float dt)
 		//app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
 	}
 	
+
 	if (buttonE && position.x < (copypos.x + 15) && position.x > (copypos.x - 15) && position.y < (copypos.y + 15) && position.y >(copypos.y - 15))
 	{
-		app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
-	}
+		/*app->render->DrawTexture(PressE, position.x + 25, position.y - 35);*/
 
-	//NPCs
-	if (NPC_01 && position == copypos)
-	{
-		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
+			//NPCs
+		if (NPC_01 )
+		{
+			app->render->DrawTexture(PressE, 148 + 8, -280 - 15);
 
-		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
-		{
-			buttonE = false;
-			NPC_02 = false;
-			NPC_03 = false;
-			NPC_04 = false;
-			isBill = true;
+			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+			{
+				buttonE = false;
+				NPC_02 = false;
+				NPC_03 = false;
+				NPC_04 = false;
+				isBill = true;
+			}
 		}
-	}
-	if (NPC_02 && position == copypos)
-	{
-		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
+		if (NPC_02 )
+		{
+			app->render->DrawTexture(PressE, 224 + 8, -710 - 15);
 
-		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
-		{
-			buttonE = false;
-			//isBill = true;
-			NPC_01 = false;
-			NPC_03 = false;
-			NPC_04 = false;
-			isDialogue = false;
-			NPC2 = true;
-			
-		}
-	}
-	if (NPC_03 && position == copypos)
-	{
-		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
+			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_03 = false;
+				NPC_04 = false;
+				isDialogue = false;
+				NPC2 = true;
 
-		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
-		{
-			buttonE = false;
-			//isBill = true;
-			NPC_01 = false;
-			NPC_02 = false;
-			NPC_04 = false;
-			NPC = true;
+			}
 		}
-	}
-	if (NPC_04 && position == copypos)
-	{
-		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
-		
-		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+		if (NPC_03 )
 		{
-			buttonE = false;
-			//isBill = true;
-			NPC_01 = false;
-			NPC_03 = false;
-			NPC_02 = false;
-			isDialogue = true;
-		
+			app->render->DrawTexture(PressE, 483 + 8, 545 - 15);
+
+			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_02 = false;
+				NPC_04 = false;
+				NPC = true;
+			}
 		}
+		if (NPC_04 )
+		{
+			app->render->DrawTexture(PressE, 1110 + 8, 790 - 15);
+
+			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_03 = false;
+				NPC_02 = false;
+				isDialogue = true;
+
+			}
+		}
+
 	}
 
 	//Lapis
@@ -395,7 +397,8 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN 
+			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			isBill = false;
 		}
@@ -416,7 +419,8 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN 
+			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			NPC2 = false;
 		}
@@ -437,7 +441,8 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN 
+			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			NPC = false;
 		}
@@ -698,7 +703,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		//Draw E
 		copypos = position;
 		buttonE = true;
-		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
 		NPC_02 = false;
 		NPC_03 = false;
 		NPC_04 = false;
@@ -708,7 +712,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		//Collision in blacksmith
 		copypos = position;
 		buttonE = true;
-		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
 		NPC_01 = false;
 		NPC_03 = false;
 		NPC_04 = false;
@@ -718,7 +721,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		//Collision in town
 		copypos = position;
 		buttonE = true;
-		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
 		NPC_01 = false;
 		NPC_02 = false;
 		NPC_04 = false;

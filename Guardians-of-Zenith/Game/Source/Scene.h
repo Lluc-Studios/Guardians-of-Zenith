@@ -90,9 +90,13 @@ private:
 	SDL_Texture* coinTex;
 	SDL_Texture* trophyTex;
 	SDL_Texture* BGtexture;
+	//Tavernero
 	SDL_Texture* NPC1;
+	//Herrara
 	SDL_Texture* NPC2;
+	//Chica Wasap
 	SDL_Texture* NPC3;
+
 	SDL_Texture* LAPIS;
 	SDL_Texture* Stone;
 	SDL_Texture* Tp;

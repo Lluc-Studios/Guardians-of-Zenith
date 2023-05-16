@@ -133,8 +133,11 @@ bool Scene::Start()
 	invTex = app->tex->Load("Assets/Textures/UI/UI_inventory_640x360.png");
 	invArrowTex = app->tex->Load("Assets/Textures/UI_inventory_arrow_20x20.png");
 
+	//Tavernero
 	NPC1 = app->tex->Load("Assets/Entities/NPC/npc_1.png");
+	//Herrara
 	NPC2 = app->tex->Load("Assets/Entities/NPC/npc_2.png");
+	//Chica Wasap
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
 	Stone = app->tex->Load("Assets/Textures/Puzzles/Stone.png");
