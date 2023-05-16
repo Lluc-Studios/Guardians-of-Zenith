@@ -75,7 +75,7 @@ bool Player::Start() {
 	//LFH = app->tex->Load("Assets/Textures/HALF.png");
 	//LFL = app->tex->Load("Assets/Textures/LOW.png");
 	//LFE = app->tex->Load("Assets/Textures/EMPTY.png");
-	Dialogue = app->tex->Load("Assets/Textures/globotexto2.png");
+	Dialogue = app->tex->Load("Assets/Textures/UI/globotexto_small.png");
 	PressE = app->tex->Load("Assets/Textures/Objects/Interact_Botton.png");
 
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };

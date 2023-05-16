@@ -123,7 +123,7 @@ bool Scene::Start()
 		RELEASE_ARRAY(data);
 
 	}
-	invTex = app->tex->Load("Assets/Textures/UI_inventory_640x360.png");
+	invTex = app->tex->Load("Assets/Textures/UI/UI_inventory_640x360.png");
 	invArrowTex = app->tex->Load("Assets/Textures/UI_inventory_arrow_20x20.png");
 
 	NPC1 = app->tex->Load("Assets/Entities/NPC/npc_1.png");
@@ -131,7 +131,7 @@ bool Scene::Start()
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
 	Stone = app->tex->Load("Assets/Textures/Puzzles/Stone.png");
-	Tp = app->tex->Load("Assets/Textures/MonolitoTP.png");
+	Tp = app->tex->Load("Assets/Textures/Puzzles/MonolitoTP.png");
 	Unpressed = app->tex->Load("Assets/Textures/Puzzles/Unpressed.png");
 	Pressed = app->tex->Load("Assets/Textures/Puzzles/Pressed.png");
 	Puzzle2Wall = app->tex->Load("Assets/Textures/Puzzles/Door_water_dungeon.png");

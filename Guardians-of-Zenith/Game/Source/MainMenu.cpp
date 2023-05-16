@@ -45,7 +45,7 @@ bool MainMenu::Start()
 	MX = 125 + app->audio->volume;
 	FX = 125 + app->audio->fxvolume/2;
 	BG = app->tex->Load("Assets/Textures/new_mainmenu.png");
-	Buttons = app->tex->Load("Assets/Textures/Buttons_scale4.png");
+	Buttons = app->tex->Load("Assets/Textures/Scenes/Title_Buttons.png");
 
 	fading = 255;
 	fading2 = 0;
