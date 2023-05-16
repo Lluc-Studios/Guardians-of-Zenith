@@ -125,7 +125,7 @@ bool GuiButton::Draw(Render* render)
 		break;
 	}
 
-	int size = fontSize - 2	;
+	int size = fontSize	;
 	int x = bounds.w / size * 0.5;
 	int y = bounds.h - size / 4;
 
