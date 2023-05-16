@@ -289,14 +289,20 @@ bool Player::Update(float dt)
 	if (facing == DIRECTION::UP) {
 		//app->render->DrawTexture(texture, position.x + 16, position.y - 19, &rectUp);
 	}
+	
+	if (buttonE && position.x < (copypos.x + 15) && position.x > (copypos.x - 15) && position.y < (copypos.y + 15) && position.y >(copypos.y - 15))
+	{
+		app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
+	}
 
 	//NPCs
 	if (NPC_01 && position == copypos)
 	{
-		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
 
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
+			buttonE = false;
 			NPC_02 = false;
 			NPC_03 = false;
 			NPC_04 = false;
@@ -305,10 +311,11 @@ bool Player::Update(float dt)
 	}
 	if (NPC_02 && position == copypos)
 	{
-		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
 
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
+			buttonE = false;
 			//isBill = true;
 			NPC_01 = false;
 			NPC_03 = false;
@@ -320,10 +327,11 @@ bool Player::Update(float dt)
 	}
 	if (NPC_03 && position == copypos)
 	{
-		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
 
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
+			buttonE = false;
 			//isBill = true;
 			NPC_01 = false;
 			NPC_02 = false;
@@ -333,10 +341,11 @@ bool Player::Update(float dt)
 	}
 	if (NPC_04 && position == copypos)
 	{
-		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
+		//app->render->DrawTexture(PressE, position.x + 25, position.y - 35);
 		
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 		{
+			buttonE = false;
 			//isBill = true;
 			NPC_01 = false;
 			NPC_03 = false;
@@ -655,6 +664,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		//Collision in tabern
 		//Draw E
 		copypos = position;
+		buttonE = true;
 		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
 		NPC_02 = false;
 		NPC_03 = false;
@@ -664,6 +674,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::NPC2:
 		//Collision in blacksmith
 		copypos = position;
+		buttonE = true;
 		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
 		NPC_01 = false;
 		NPC_03 = false;
@@ -673,6 +684,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::NPC3:
 		//Collision in town
 		copypos = position;
+		buttonE = true;
 		app->render->DrawTexture(PressE, position.x + 320, position.y + 160);
 		NPC_01 = false;
 		NPC_02 = false;
@@ -682,6 +694,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::LAPIS:
 		//Collision in town
 		copypos = position;
+		buttonE = true;
 		NPC_01 = false;
 		NPC_03 = false;
 		NPC_02 = false;
