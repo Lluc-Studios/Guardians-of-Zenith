@@ -7,28 +7,28 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 ## Controls
 ### Keyboard & mouse
 **In map:**
-- WASD or Arrow Keys: Move
-- E: Start dialogue
-- Space or Enter: Finish dialogue
+- **WASD** or **Arrow Keys**: Move
+- **E**: Interact with NPC's
+- **Space** or **Enter**: Finish dialogue
 
 **Combat UI:**
-- W/S or Arrow Keys : Up/Down
-- Space or Enter: Select
-- Q: Back
+- **W/S** or **Arrow Keys** : Up/Down
+- **Space** or **Enter**: Select
+- **Q**: Back
 
 **Menus UI:**
-- ESC (ingame): Pause menu
+- **ESC (ingame)**: Pause menu
 - Mouse to move in menus
 
 ### Gamepad
 **In map:**
-- Left joystick: Move
-- A: Interact with NPC's
-- B: Finish dialogue
+- **Left joystick**: Move
+- **A**: Interact with NPC's
+- **B**: Finish dialogue
 
 **Combat UI:**
-- Left joystick: Up/Down
-- A: Select
+- **Left joystick**: Up/Down
+- **A**: Select
 
 ## Features
 
