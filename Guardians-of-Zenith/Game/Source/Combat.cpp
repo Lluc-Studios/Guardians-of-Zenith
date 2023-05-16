@@ -51,9 +51,7 @@ bool Combat::Start()
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Lucca_Combat.png");
-	Character1Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
-	Character2Frozen = app->tex->Load("Assets/Entities/Characters/Lapis_Combat_Frozen.png");
-	Character3Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
+	Character_Frozen = app->tex->Load("Assets/Entities/Characters/Combat_Frozen.png");
 
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish_Combat.png");
@@ -1004,7 +1002,7 @@ bool Combat::Update(float dt)
 			if (C1dead == false) {
 				app->render->DrawTexture(Character1, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
 				if (C1FROZEN == true) {
-					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
+					app->render->DrawTexture(Character_Frozen, app->scene->player->position.x - 97, app->scene->player->position.y - 69);
 					app->render->DrawTexture(Frozen, app->scene->player->position.x - 40, app->scene->player->position.y + 77);
 				}
 				if (C1POISON != 0) {
@@ -1081,7 +1079,7 @@ bool Combat::Update(float dt)
 				if (C2dead == false) {
 					app->render->DrawTexture(Character2, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
 					if (C2FROZEN == true) {
-						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
+						app->render->DrawTexture(Character_Frozen, app->scene->player->position.x - 161, app->scene->player->position.y -5);
 						app->render->DrawTexture(Frozen, app->scene->player->position.x + 110, app->scene->player->position.y + 77);
 					}
 					if (C2POISON != 0) {
@@ -1158,7 +1156,7 @@ bool Combat::Update(float dt)
 					if (C3dead == false) {
 						app->render->DrawTexture(Character3, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
 						if (C3FROZEN == true) {
-							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
+							app->render->DrawTexture(Character_Frozen, app->scene->player->position.x - 161, app->scene->player->position.y - 133);
 							app->render->DrawTexture(Frozen, app->scene->player->position.x + 270, app->scene->player->position.y + 77);
 						}
 						if (C3POISON != 0) {
@@ -4109,6 +4107,14 @@ bool Combat::Update(float dt)
 		option = COMBATMENU::LOSE;
 	}
 
+	//Test Forzen
+	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		C1FROZEN = true;
+		C2FROZEN = true;
+		C3FROZEN = true;
+	}
+
 	return true;
 }
 
@@ -4125,11 +4131,13 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
 		app->audio->PlayFxWithVolume(winFX, 0, 70);
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+			//Audio
 			app->audio->Audio_Instance(SaveInstance);
 			ExitCombat();
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
+			//Audio
 			app->audio->Audio_Instance(SaveInstance);
 			ExitCombat();
 			A_pressed = true;

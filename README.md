@@ -25,14 +25,21 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 
 ## Debug
+
+### General
+
 - F1: Skip intro and main menu
 - F2: Show collisions
 - F9: Exit game
 - F10: God mode
 - Y: Level Up Characters
-- K: To lose combat
+
+### Combat
+
 - C: Start Combat
 - T: Skip Combat Turn
+- F: Test Freeze status
+- K: To lose combat
 
 ## Developers
 
