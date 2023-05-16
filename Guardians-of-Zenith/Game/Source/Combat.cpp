@@ -90,12 +90,16 @@ bool Combat::Start()
 	LaureaAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Sword attack.wav");
 	LapisAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Magic attack.wav");
 	LuccaAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Bow attack.wav");
+	LaureaHurtFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Laurea hurt.wav");
+	LapisHurtFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Lapis hurt.wav");
+	LuccaHurtFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Lucca hurt.wav");
 	looseFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Loose FX.wav");
 	winFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
 	healingPotiFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Health potion.wav");
 	manaPotiFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Mana potion.wav");
 	strengthEliFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Strength elixir.wav");
 	defEliFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Defense elixir.wav");
+
 
 	//Random number generation
 	srand((unsigned int)time(NULL));
@@ -119,6 +123,11 @@ bool Combat::Update(float dt)
 			cd = 0;
 		}
 	}
+
+	int C1HP_Aux = C1CHP;
+	int C2HP_Aux = C2CHP;
+	int C3HP_Aux = C3CHP;
+
 
 	if (InCombat == true) {
 
@@ -4183,6 +4192,13 @@ bool Combat::Update(float dt)
 		C2FROZEN = true;
 		C3FROZEN = true;
 	}
+
+
+	//Play Fx if a character hp is lower than the last frame
+	if (C1HP_Aux > C1CHP) { app->audio->PlayFxWithVolume(LaureaHurtFX, 0, 70); }
+	if (C2HP_Aux > C2CHP) { app->audio->PlayFxWithVolume(LapisHurtFX, 0, 70); }
+	if (C3HP_Aux > C3CHP) { app->audio->PlayFxWithVolume(LuccaHurtFX, 0, 70); }
+
 
 	return true;
 }
