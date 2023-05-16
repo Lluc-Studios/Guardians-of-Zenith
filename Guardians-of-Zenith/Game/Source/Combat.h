@@ -412,7 +412,8 @@ private:
 
 
 	//FX
-	int change, select;
+	int change, select, looseFX;
+	int LaureaAttackFX, LapisAttackFX, LuccaAttackFX;
 
 
 };

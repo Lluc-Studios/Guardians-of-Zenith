@@ -1041,12 +1041,14 @@ bool Scene::PostUpdate()
 		if (!app->combat->InCombat) {
 			isPaused = !isPaused;
 			app->inventory->inventoryOn = false;
+			app->audio->PlayFxWithVolume(select, 0, 70);
 		}
 
 	if (app->input->controllers.Start != 0 && !Start_pressed)
 	{
 		isPaused = !isPaused;
 		Start_pressed = true;
+		app->audio->PlayFxWithVolume(select, 0, 70);
 	}
 	else if (app->input->controllers.Start == 0)
 	{

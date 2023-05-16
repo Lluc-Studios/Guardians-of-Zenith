@@ -71,7 +71,7 @@ bool Player::Start() {
 	//tpFX = app->audio->LoadFx("Assets/Sounds/TeleportSound.wav");
 
 	doorFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Door Fx.wav");
-	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start Battle Fx.wav");
+	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start battle FX.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -974,6 +974,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg"); 
 		app->combat->StartCombat();
 	}

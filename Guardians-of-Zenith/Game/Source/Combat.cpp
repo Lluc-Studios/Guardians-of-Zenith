@@ -83,6 +83,10 @@ bool Combat::Start()
 	//Load Fx
 	change = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/ChangeSelection.wav");
 	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
+	LaureaAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Sword attack.wav");
+	LapisAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Magic attack.wav");
+	LuccaAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Bow attack.wav");
+	looseFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Loose FX.wav");
 
 	//Random number generation
 	srand((unsigned int)time(NULL));
@@ -1518,18 +1522,22 @@ bool Combat::Update(float dt)
 				if (AttackMenu == true && EnemySelect == false) {
 					AttackMenu = false;
 					option = COMBATMENU::ATTACK;
+					app->audio->PlayFxWithVolume(select, 0, 70);
 				}
 				else if (AttackMenu == true && EnemySelect == true) {
 					EnemySelect = false;
 					option = COMBATMENU::ATTACK1;
+					app->audio->PlayFxWithVolume(select, 0, 70);
 				}
 				if (InventoryMenu == true && AllySelect == false) {
 					InventoryMenu = false;
 					option = COMBATMENU::INVENTORY;
+					app->audio->PlayFxWithVolume(select, 0, 70);
 				}
 				else if (InventoryMenu == true && AllySelect == true) {
 					AllySelect = false;
 					option = COMBATMENU::INVENTORY1;
+					app->audio->PlayFxWithVolume(select, 0, 70);
 				}
 			}
 			if ((app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && TeamTurn == 1) || (app->input->controllers.A != 0 && !A_pressed && TeamTurn == 1)) {
@@ -1563,6 +1571,7 @@ bool Combat::Update(float dt)
 					}
 					if (option == COMBATMENU::ESCAPE) {
 						EXPwon = 0;
+						app->audio->PlayFxWithVolume(looseFX, 0, 70);
 						switch (SaveInstance)
 						{
 						case 4:
@@ -1702,6 +1711,7 @@ bool Combat::Update(float dt)
 				if (EnemySelect == true && cd == 0) {
 					if (option == COMBATMENU::ENEMY1 && E1dead == false) {
 						if (Turn[0] == 1) {
+							app->audio->PlayFxWithVolume(LaureaAttackFX, 0, 70);
 							if (AttackSelected == 1) {
 								if (E1CES == 0) {
 									multiplier = 1;
@@ -1815,6 +1825,7 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (Turn[0] == 2) {
+							app->audio->PlayFxWithVolume(LapisAttackFX, 0, 70);
 							if (AttackSelected == 1) {
 								if (E1CES == 0) {
 									multiplier = 1;
@@ -1943,6 +1954,7 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (Turn[0] == 3) {
+							app->audio->PlayFxWithVolume(LuccaAttackFX, 0, 70);
 							if (AttackSelected == 1) {
 								if (E1CES == 0) {
 									multiplier = 1;
