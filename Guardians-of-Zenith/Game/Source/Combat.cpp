@@ -1666,41 +1666,9 @@ bool Combat::Update(float dt)
 					if (option == COMBATMENU::ESCAPE) {
 						EXPwon = 0;
 						app->audio->PlayFxWithVolume(looseFX, 0, 70);
-						switch (SaveInstance)
-						{
-						case 0:
-							LOG("Music_Town");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-							break;
-						case 1:
-							LOG("Music_Tavern");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
-							break;
-						case 2:
-							LOG("Music_Blacksmith");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
-							break;
-						case 3:
-							LOG("Music_House");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
-							break;
-						case 4:
-							LOG("Music_LakeDaugeon");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
-							break;
-						case 5:
-							LOG("Music_ForestDaugeon");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
-							break;
-						case 6:
-							LOG("Music_CaveDaugeon");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
-							break;
-						case 7:
-							LOG("Music_Monolith");
-							app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
-							break;
-						}
+						//Audio
+						app->audio->Audio_Instance(SaveInstance);
+						
 						ExitCombat();
 					}
 				}
@@ -4157,80 +4125,12 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
 		app->audio->PlayFxWithVolume(winFX, 0, 70);
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-			switch (SaveInstance)
-			{
-				case 0:
-					LOG("Music_Town");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-					break;
-				case 1:
-					LOG("Music_Tavern");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
-					break;
-				case 2:
-					LOG("Music_Blacksmith");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
-					break;
-				case 3:
-					LOG("Music_House");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
-					break;
-				case 4:
-					LOG("Music_LakeDaugeon");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
-					break;
-				case 5:
-					LOG("Music_ForestDaugeon");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
-					break;
-				case 6:
-					LOG("Music_CaveDaugeon");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
-					break;
-				case 7:
-					LOG("Music_Monolith");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
-					break;
-			}
+			app->audio->Audio_Instance(SaveInstance);
 			ExitCombat();
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
-			switch (SaveInstance)
-			{
-				case 0:
-					LOG("Music_Town");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Guidance-Island-OST-Version.ogg");
-					break;
-				case 1:
-					LOG("Music_Tavern");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Guardia-Millennial-Fair.ogg");
-					break;
-				case 2:
-					LOG("Music_Blacksmith");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Blacksmith.ogg");
-					break;
-				case 3:
-					LOG("Music_House");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Tranquil-Days.ogg");
-					break;
-				case 4:
-					LOG("Music_LakeDaugeon");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/The-Riverlands.ogg");
-					break;
-				case 5:
-					LOG("Music_ForestDaugeon");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Azalea-Forest-OST-Version.ogg");
-					break;
-				case 6:
-					LOG("Music_CaveDaugeon");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/Ruined-World.ogg");
-					break;
-				case 7:
-					LOG("Music_Monolith");
-					app->audio->PlayMusic("Assets/Soundtrack/Music/soul-loop.ogg");
-					break;
-			}
+			app->audio->Audio_Instance(SaveInstance);
 			ExitCombat();
 			A_pressed = true;
 		}

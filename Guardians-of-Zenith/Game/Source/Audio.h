@@ -34,6 +34,8 @@ public:
 	// Modified PlayFx with volume adjustments
 	bool PlayFxWithVolume(unsigned int fx, int repeat = 0, int volume = 30);
 
+	void Audio_Instance(int instance);
+
 	int volume, fxvolume;
 private:
 	_Mix_Music* music;
