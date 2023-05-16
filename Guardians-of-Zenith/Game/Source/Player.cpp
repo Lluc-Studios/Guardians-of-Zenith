@@ -245,6 +245,7 @@ bool Player::Update(float dt)
 
 	//Tp
 	if (tp) {
+
 		position.x = tp_pos[0];
 		position.y = tp_pos[1];
 		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
@@ -256,7 +257,7 @@ bool Player::Update(float dt)
 	if (tpHouse) {
 		position.x = tpHouse_pos[0];
 		position.y = tpHouse_pos[1];
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x - width / 2), PIXEL_TO_METERS(position.y - height / 2) }, 0);
 		laurea.chp = laurea.hp;
 		laurea.cmp = laurea.mp;
 		lapis.chp = lapis.hp;
@@ -712,8 +713,8 @@ bool Player::IsAlive() {
 bool Player::LoadState(pugi::xml_node& data) {
 
 	facing = (DIRECTION)data.child("player_stats").attribute("facing").as_int();
-	tp_savegame[0] = data.child("player_stats").attribute("position_x").as_int()+32;
-	tp_savegame[1] = data.child("player_stats").attribute("position_y").as_int()+8;
+	tp_savegame[0] = data.child("player_stats").attribute("position_x").as_int();
+	tp_savegame[1] = data.child("player_stats").attribute("position_y").as_int();
 	future_instance = data.child("player_stats").attribute("instance").as_int();
 	
 	//Teleport player last position save
@@ -745,8 +746,8 @@ bool Player::LoadState(pugi::xml_node& data) {
 bool Player::SaveState(pugi::xml_node& data) {
 	pugi::xml_node player_stats = data.append_child("player_stats");
 	data.child("player_stats").append_attribute("facing") = (int)facing;
-	data.child("player_stats").append_attribute("position_x") = position.x;
-	data.child("player_stats").append_attribute("position_y") = position.y;
+	data.child("player_stats").append_attribute("position_x") = position.x +32;
+	data.child("player_stats").append_attribute("position_y") = position.y +8;
 	data.child("player_stats").append_attribute("instance") = future_instance;
 
 	pugi::xml_node laurea_stats = data.append_child("laurea_stats");

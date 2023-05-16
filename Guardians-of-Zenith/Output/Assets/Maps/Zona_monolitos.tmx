@@ -2555,6 +2555,9 @@
   </data>
  </layer>
  <layer id="61" name="Sadow" width="54" height="47">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -4956,65 +4959,65 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="449"/>
    <tile gid="444"/>
    <tile gid="445"/>
    <tile gid="445"/>
    <tile gid="446"/>
+   <tile gid="449"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="447"/>
+   <tile gid="447"/>
+   <tile gid="447"/>
+   <tile gid="447"/>
    <tile/>
    <tile/>
    <tile/>
@@ -7446,14 +7449,14 @@
    <tile gid="265"/>
    <tile gid="266"/>
    <tile gid="267"/>
+   <tile gid="284"/>
+   <tile gid="285"/>
+   <tile gid="286"/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="287"/>
+   <tile gid="288"/>
+   <tile gid="289"/>
    <tile/>
    <tile gid="225"/>
    <tile gid="226"/>
@@ -7500,14 +7503,14 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="304"/>
+   <tile gid="305"/>
+   <tile gid="306"/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="307"/>
+   <tile gid="308"/>
+   <tile gid="309"/>
    <tile/>
    <tile gid="245"/>
    <tile gid="246"/>
@@ -7554,14 +7557,14 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile gid="284"/>
-   <tile gid="285"/>
+   <tile gid="324"/>
+   <tile gid="325"/>
+   <tile gid="326"/>
    <tile gid="286"/>
    <tile gid="287"/>
-   <tile gid="288"/>
-   <tile gid="289"/>
-   <tile/>
+   <tile gid="327"/>
+   <tile gid="328"/>
+   <tile gid="329"/>
    <tile/>
    <tile gid="265"/>
    <tile gid="266"/>
@@ -7608,14 +7611,14 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile gid="304"/>
-   <tile gid="305"/>
-   <tile gid="306"/>
-   <tile gid="307"/>
-   <tile gid="308"/>
-   <tile gid="309"/>
-   <tile/>
+   <tile gid="344"/>
+   <tile gid="345"/>
+   <tile gid="394"/>
+   <tile gid="395"/>
+   <tile gid="396"/>
+   <tile gid="397"/>
+   <tile gid="348"/>
+   <tile gid="349"/>
    <tile/>
    <tile/>
    <tile/>
@@ -7814,7 +7817,7 @@
   <properties>
    <property name="Type" type="int" value="26"/>
   </properties>
-  <object id="53" x="827.167" y="1444.67" width="71" height="23"/>
+  <object id="53" x="814.167" y="1434.67" width="100.25" height="23"/>
  </objectgroup>
  <objectgroup id="57" name="Forest_Dungeon">
   <properties>

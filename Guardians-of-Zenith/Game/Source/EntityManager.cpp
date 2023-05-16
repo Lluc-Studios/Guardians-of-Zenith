@@ -59,7 +59,6 @@ bool EntityManager::Start() {
 		if (pEntity->active == false) continue;
 		ret = item->data->Start();
 	}
-	app->forestdungeon->Draw_Top();
 
 	return ret;
 }
