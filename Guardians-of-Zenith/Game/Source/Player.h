@@ -172,7 +172,7 @@ public:
 	int auxCounter = 0;
 	bool auxBool = false;
 
-	int doorFX;
+	int doorFX, startBattleFX;
 
 
 private:
