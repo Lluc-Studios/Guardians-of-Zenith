@@ -946,7 +946,24 @@ void Player::debugKeys() {
 	{
 		limitFPS = !limitFPS;
 	}
-
+	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN)
+	{
+		PresetChance = rand() % 100 + 1;
+		PresetVariation = rand() % 100 + 1;
+		if (PresetChance >= 1 && PresetChance <= 20) app->combat->Preset = 1;
+		if (PresetChance >= 21 && PresetChance <= 40) app->combat->Preset = 2;
+		if (PresetChance >= 41 && PresetChance <= 60) app->combat->Preset = 3;
+		if (PresetChance >= 61 && PresetChance <= 75) app->combat->Preset = 4;
+		if (PresetChance >= 76 && PresetChance <= 90) app->combat->Preset = 5;
+		if (PresetChance >= 91 && PresetChance <= 100) app->combat->Preset = 6;
+		if (PresetVariation <= 85) app->combat->EnemyVariation = 0;
+		if (PresetVariation >= 86 && PresetVariation <= 89) app->combat->EnemyVariation = 1;
+		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
+		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
+		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg"); 
+		app->combat->StartCombat();
+	}
 }
 
 void Player::Death() {
