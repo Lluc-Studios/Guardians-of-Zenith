@@ -37,6 +37,7 @@ public:
 		INVENTORY2,
 		INVENTORY3,
 		INVENTORY4,
+		NOITEM,
 		NONE
 	};
 
@@ -136,6 +137,7 @@ private:
 	SDL_Texture* Character1;
 	SDL_Texture* Character2;
 	SDL_Texture* Character3;
+	SDL_Texture* Character_Frozen;
 	SDL_Texture* Character1Frozen;
 	SDL_Texture* Character2Frozen;
 	SDL_Texture* Character3Frozen;

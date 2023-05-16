@@ -51,9 +51,7 @@ bool Combat::Start()
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Lucca_Combat.png");
-	Character1Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
-	Character2Frozen = app->tex->Load("Assets/Entities/Characters/Lapis_Combat_Frozen.png");
-	Character3Frozen = app->tex->Load("Assets/Entities/Characters/Laurea_Combat_Frozen.png");
+	Character_Frozen = app->tex->Load("Assets/Entities/Characters/Combat_Frozen.png");
 
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish_Combat.png");
@@ -1008,7 +1006,7 @@ bool Combat::Update(float dt)
 			if (C1dead == false) {
 				app->render->DrawTexture(Character1, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
 				if (C1FROZEN == true) {
-					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
+					app->render->DrawTexture(Character_Frozen, app->scene->player->position.x - 97, app->scene->player->position.y - 69);
 					app->render->DrawTexture(Frozen, app->scene->player->position.x - 40, app->scene->player->position.y + 77);
 				}
 				if (C1POISON != 0) {
@@ -1085,7 +1083,7 @@ bool Combat::Update(float dt)
 				if (C2dead == false) {
 					app->render->DrawTexture(Character2, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
 					if (C2FROZEN == true) {
-						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
+						app->render->DrawTexture(Character_Frozen, app->scene->player->position.x - 161, app->scene->player->position.y -5);
 						app->render->DrawTexture(Frozen, app->scene->player->position.x + 110, app->scene->player->position.y + 77);
 					}
 					if (C2POISON != 0) {
@@ -1162,7 +1160,7 @@ bool Combat::Update(float dt)
 					if (C3dead == false) {
 						app->render->DrawTexture(Character3, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
 						if (C3FROZEN == true) {
-							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
+							app->render->DrawTexture(Character_Frozen, app->scene->player->position.x - 161, app->scene->player->position.y - 133);
 							app->render->DrawTexture(Frozen, app->scene->player->position.x + 270, app->scene->player->position.y + 77);
 						}
 						if (C3POISON != 0) {
@@ -2795,20 +2793,43 @@ bool Combat::Update(float dt)
 						switch (ItemSelected)
 						{
 						case 1:
-							C1CHP = C1MHP;
-							FinishTurn();
+							if (app->inventory->nrOfHpPot < 1)
+							{
+								LOG("aaaaaaaaaaaaaaaaaaaaa");
+								option = COMBATMENU::NOITEM;
+							}
+							else {
+								C1CHP = C1MHP;
+								FinishTurn();
+								app->inventory->nrOfHpPot--;
+							}
 							break;
 						case 2:
-							C1CMP = C1MMP;
-							FinishTurn();
+							if (app->inventory->nrOfMpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C1CMP = C1MMP;
+								FinishTurn();
+								app->inventory->nrOfMpPot--;
+							}
 							break;
 						case 3:
-							C1ATK *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfAtkElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C1ATK *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfAtkElx--;
+							}
 							break;
 						case 4:
-							C1DEF *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfDefElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C1DEF *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfDefElx--;
+							}
 							break;
 						default:
 							break;
@@ -2818,43 +2839,85 @@ bool Combat::Update(float dt)
 						switch (ItemSelected)
 						{
 						case 1:
-							C2CHP = C2MHP;
-							FinishTurn();
+							if (app->inventory->nrOfHpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2CHP = C2MHP;
+								FinishTurn();
+								app->inventory->nrOfHpPot--;
+							}
 							break;
 						case 2:
-							C2CMP = C2MMP;
-							FinishTurn();
+							if (app->inventory->nrOfMpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2CMP = C2MMP;
+								FinishTurn();
+								app->inventory->nrOfMpPot--;
+							}
 							break;
 						case 3:
-							C2ATK *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfAtkElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2ATK *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfAtkElx--;
+							}
 							break;
 						case 4:
-							C2DEF *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfDefElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C2DEF *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfDefElx--;
+							}
 							break;
 						default:
 							break;
 						}
 					}
+					LOG("hp potions: %i", app->inventory->nrOfHpPot);
 					if (option == COMBATMENU::ALLYSELECT3 && C3dead == false) {
 						switch (ItemSelected)
 						{
+
 						case 1:
-							C3CHP = C3MHP;
-							FinishTurn();
+							if(app->inventory->nrOfHpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3CHP = C3MHP;
+								FinishTurn();
+								app->inventory->nrOfHpPot--;
+							}
 							break;
 						case 2:
-							C3CMP = C3MMP;
-							FinishTurn();
+							if (app->inventory->nrOfMpPot < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3CMP = C3MMP;
+								FinishTurn();
+								app->inventory->nrOfMpPot--;
+							}
 							break;
 						case 3:
-							C3ATK *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfAtkElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3ATK *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfAtkElx--;
+							}
 							break;
 						case 4:
-							C3DEF *= 1.5;
-							FinishTurn();
+							if (app->inventory->nrOfDefElx < 1)
+								option = COMBATMENU::NOITEM;
+							else {
+								C3DEF *= 1.5;
+								FinishTurn();
+								app->inventory->nrOfDefElx--;
+							}
 							break;
 						default:
 							break;
@@ -4113,6 +4176,14 @@ bool Combat::Update(float dt)
 		option = COMBATMENU::LOSE;
 	}
 
+	//Test Forzen
+	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		C1FROZEN = true;
+		C2FROZEN = true;
+		C3FROZEN = true;
+	}
+
 	return true;
 }
 
@@ -4129,11 +4200,13 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
 		app->audio->PlayFxWithVolume(winFX, 0, 70);
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+			//Audio
 			app->audio->Audio_Instance(SaveInstance);
 			ExitCombat();
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
+			//Audio
 			app->audio->Audio_Instance(SaveInstance);
 			ExitCombat();
 			A_pressed = true;
@@ -4340,7 +4413,25 @@ bool Combat::PostUpdate()
 			app->render->DrawText(155, 220, WF, "also deals high damage to enemies without a shield", 16);
 		}
 	}
+	LOG("OPTION: %i", option);
+	if (option == COMBATMENU::NOITEM) {
+		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "No items left", 16);
 
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
+			option = COMBATMENU::INVENTORY1;
+			AllySelect = false;
+		}
+		if (app->input->controllers.A != 0 && !A_pressed)
+		{
+			option = COMBATMENU::INVENTORY1;
+			AllySelect = false;
+		}
+		else if (app->input->controllers.A == 0)
+		{
+			A_pressed = false;
+		}
+
+	}
 	return ret;
 }
 
