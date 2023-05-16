@@ -18,6 +18,7 @@
 #include "time.h"
 #include "External/SDL/include/SDL_gamecontroller.h"
 #include "Animation.h"
+#include "Inventory.h"
 
 
 #include "GuiManager.h"
@@ -411,6 +412,7 @@ bool Player::Update(float dt)
 	if (isDialogue && app->dialogueSystem->activeTree == nullptr)
 	{
 		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 0);
+		lapisMission = true;
 	}
 	if (!isDialogue && !isBill && !NPC2 && !NPC)
 	{
@@ -432,7 +434,16 @@ bool Player::Update(float dt)
 	//Bill
 	if (isBill && app->dialogueSystem->activeTree == nullptr)
 	{
-		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 1);
+
+		if (lapisMission)
+		{
+			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 6);
+		}
+		else
+		{
+			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 1);
+		}
+		
 	}
 
 	if (!isBill && !isDialogue && !NPC2 && !NPC)
@@ -458,7 +469,16 @@ bool Player::Update(float dt)
 	//NPC2
 	if (NPC2 && app->dialogueSystem->activeTree == nullptr)
 	{
-		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 2);
+
+		if (app->inventory->necklace == 1)
+		{
+			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 5);
+		}
+		else
+		{
+			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 2);
+		}
+		
 	}
 
 	if (!isBill && !isDialogue && !NPC2 && !NPC)
@@ -484,7 +504,16 @@ bool Player::Update(float dt)
 	//NPC
 	if (NPC && app->dialogueSystem->activeTree == nullptr)
 	{
-		dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 3);
+		if (app->inventory->manuscript==1)
+		{
+			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 4);
+		}
+		else
+		{
+			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 3);
+		}
+		
+	
 	}
 
 	if (!isBill && !isDialogue && !NPC2 && !NPC)

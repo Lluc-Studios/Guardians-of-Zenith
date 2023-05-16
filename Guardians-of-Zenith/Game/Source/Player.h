@@ -121,7 +121,7 @@ public:
 	bool NPC_04 = false;
 	iPoint copypos;
 
-
+	bool lapisMission = false;
 	bool DeathAnimationFinished = false;
 
 	PhysBody* pbody;

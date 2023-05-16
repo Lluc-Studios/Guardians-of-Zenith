@@ -23,16 +23,16 @@
   <!--Lapis-->
   <dialogueTree ID="0">
     <node id="0" text="First of all good morning, my name is Lapis. And I am a water spirit.">
-        <choice id="0" option="Why are you here, are not you supposed to be in the water zone?" nextNode="1" eventReturn="1"/>
-		<choice id="1" option="I don't remember asking." nextNode="2" eventReturn="1"/>
+        <choice id="0" option="I need the pendant that Bill gave you." nextNode="1" eventReturn="1"/>
+		<choice id="1" option="Shut up and give me the pendant" nextNode="2" eventReturn="1"/>
 	</node>
 
-    <node id="1" text="Yes I should, but the dungeon is still in WIP because we are in the Vertical Slice.">
-        <choice id="0" option="Well, that explains why I am not animated…" nextNode="3"  eventReturn="1"/>
+    <node id="1" text="Yes, here you go, I thought he had given it to me">
+        
     </node>
 
-    <node id="2" text="I’m sorry, sometimes I speak too much XD.">
-        <choice id="0" option="Thanks for the information. Anything else?" nextNode="3" eventReturn="1"/>
+    <node id="2" text="okay sorry, here you go, you don't have to be so aggressive">
+       
     </node>
     
     <node id="3" text="You look strong, do you want us to work toghether? Is it necessary to have at least 2 playable characters… And if you refuse me you might get bad qualifications.">
@@ -47,12 +47,12 @@
 
   <!--Bill (Tabernero)-->
   <dialogueTree ID="1">
-    <node id="0" text="Ah, adventurer! I'm glad you're here. I desperately need some assistance. You see, my tavern is running low on supplies, and I can't serve my customers without them. I need you to head into the forest and defeat five enemies for me. Can you handle it?">
-        <choice id="0" option="Five enemies? That sounds easy! I'll finish it in no time." nextNode="1" eventReturn="1"/>
+    <node id="0" text="Ah, adventurer! I'm glad you're here. I have a wedding and I need my pendant that Lapis has it, find him, he will give you my pendant and bring it back to me please!">
+        <choice id="0" option="Okay, that sounds easy! I'll finish it in no time." nextNode="1" eventReturn="1"/>
         <choice id="1" option="Hmm, I'm not sure if I'm ready for that. Can you offer any other tasks?" nextNode="2" eventReturn="1"/>
     </node>
 
-    <node id="1" text="Excellent! I knew I could rely on you. The forest can be dangerous, so make sure you're prepared. Return to me once you've defeated five enemies so that I can reward you properly.">
+    <node id="1" text="Excellent! I knew I could rely on you. I can reward you properly.">
     </node>
 
     <node id="2" text="No problem, adventurer. Come again when you are prepared for this task and I will have a reward waiting for you.">
@@ -91,5 +91,22 @@
 	<node id="2" text="I understand it's a challenging endeavor. Let me give you a clue: Each manuscript is hidden in a significant landmark of our island. Explore the ruins, the cave system, the forest, and the lake. Good luck! Return to me with all the manuscripts and I’ll reward you generously."></node>
   </dialogueTree>
 	
-</dialogues>
+  <!--Aswers)-->
+  <dialogueTree ID="4">
+	<node id="0" text="Thank you for helping me gather all the manuscripts! Here is your reward.">
+	</node>
 
+  </dialogueTree>
+	
+  <dialogueTree ID="5">
+	<node id="0" text="Thank you for returning my wife’s necklace! Here is your reward.">
+	</node>
+
+  </dialogueTree>
+
+  <dialogueTree ID="6">
+	<node id="0" text="Thank you for giving me my pendant, I owe you one!">
+	</node>
+
+  </dialogueTree>
+</dialogues>
