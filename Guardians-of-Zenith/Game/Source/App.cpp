@@ -266,7 +266,7 @@ void App::FinishUpdate()
 	delayTimer.Start();
 	if (maxFrameDuration > 0 && delay > 0) {
 		SDL_Delay(delay);
-		LOG("We waited for %f milliseconds and the real delay is % f", delay, delayTimer.ReadMs());
+		//LOG("We waited for %f milliseconds and the real delay is % f", delay, delayTimer.ReadMs());
 		dt = maxFrameDuration;
 	}
 	else {
