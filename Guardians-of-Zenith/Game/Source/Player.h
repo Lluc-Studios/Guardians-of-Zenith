@@ -172,7 +172,7 @@ public:
 	int auxCounter = 0;
 	bool auxBool = false;
 
-	int doorFX, startBattleFX;
+
 
 
 private:
@@ -182,6 +182,7 @@ private:
 
 	//Fx
 	int Step1, Step2, StepMetalic1, StepMetalic2, DeathSound, Swing, DamageFx, aux, tpFX = -1;
+	int doorFX, startBattleFX, MonolithFX;
 
 	int width;
 	int height;

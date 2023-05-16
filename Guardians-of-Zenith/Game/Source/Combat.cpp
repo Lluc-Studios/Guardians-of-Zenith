@@ -87,6 +87,7 @@ bool Combat::Start()
 	LapisAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Magic attack.wav");
 	LuccaAttackFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Bow attack.wav");
 	looseFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Loose FX.wav");
+	winFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
 
 	//Random number generation
 	srand((unsigned int)time(NULL));
@@ -4037,9 +4038,11 @@ bool Combat::Update(float dt)
 		//Combat end
 		if (E1dead == true && E2dead == true && E3dead == true) {
 			option = COMBATMENU::WIN;
+			app->audio->PlayFxWithVolume(winFX, 0, 70);
 		}
 		if (C1dead == true && C2dead == true && C3dead == true) {
 			option = COMBATMENU::LOSE;
+			app->audio->PlayFxWithVolume(looseFX, 0, 70);
 		}
 	}
 	
@@ -4063,6 +4066,7 @@ bool Combat::PostUpdate()
 		sprintf_s(Aux, "%d", EXPwon);
 		app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux, 16);
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
+		app->audio->PlayFxWithVolume(winFX, 0, 70);
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			switch (SaveInstance)
 			{
@@ -4102,6 +4106,7 @@ bool Combat::PostUpdate()
 	}
 	if (option == COMBATMENU::LOSE) {
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
+		app->audio->PlayFxWithVolume(looseFX, 0, 70);
 
 		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			EXPwon = 0;
