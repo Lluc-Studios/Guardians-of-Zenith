@@ -1647,7 +1647,8 @@ bool Combat::Update(float dt)
 					app->audio->PlayFxWithVolume(select, 0, 70);
 				}
 			}
-			if ((app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && TeamTurn == 1) || (app->input->controllers.A != 0 && !A_pressed && TeamTurn == 1)) {
+			if ((app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN 
+				 || (app->input->controllers.A != 0 && !A_pressed)) &&TeamTurn == 1) {
 				if (AttackMenu == false && InventoryMenu == false) {
 					if (option == COMBATMENU::ATTACK) {
 						AttackMenu = true;
@@ -4169,7 +4170,7 @@ bool Combat::Update(float dt)
 			app->render->DrawText(11, 120 * app->ScalingMultiplier, YF, Aname, 16);
 			app->render->DrawText(11, 130 * app->ScalingMultiplier, WF, "against", 16);
 			app->render->DrawText(11, 140 * app->ScalingMultiplier, YF, Cname, 16);
-			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+			if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 				FinishTurn();
 			}
 			if (app->input->controllers.A != 0)
@@ -4228,7 +4229,7 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux, 16);
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
 		app->audio->PlayFxWithVolume(winFX, 0, 70);
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			//Audio
 			app->audio->Audio_Instance(SaveInstance);
 			ExitCombat();
@@ -4249,7 +4250,7 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
 		app->audio->PlayFxWithVolume(looseFX, 0, 70);
 
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			EXPwon = 0;
 			app->scene->player->lose = true;
 			app->scene->fade = true;

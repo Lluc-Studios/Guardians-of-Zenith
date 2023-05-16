@@ -7,12 +7,13 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 ## Controls
 ### Keyboard & mouse
 **In map:**
-- WASD: Move
-- Enter: Finish dialogue
+- WASD or Arrow Keys: Move
+- E: Start dialogue
+- Space or Enter: Finish dialogue
 
 **Combat UI:**
-- W/S: Up/Down
-- Space: Select
+- W/S or Arrow Keys : Up/Down
+- Space or Enter: Select
 - Q: Back
 
 **Menus UI:**
@@ -34,7 +35,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 ## Debug
 
-### General
+**General**
 
 - F1: Skip intro and main menu
 - F2: Show collisions
@@ -42,7 +43,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - F10: God mode
 - Y: Level Up Characters
 
-### Combat
+**Combat**
 
 - C: Start Combat
 - T: Skip Combat Turn
