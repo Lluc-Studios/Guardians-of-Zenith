@@ -75,6 +75,7 @@ bool Player::Start() {
 	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start battle FX.wav");
 	MonolithFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Monolith FX.wav");
 	sirenFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Enemies/Siren.wav");
+	tavernerFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Taverner FX.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -314,6 +315,8 @@ bool Player::Update(float dt)
 			NPC_03 = false;
 			NPC_04 = false;
 			isBill = true;
+
+			app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
 		}
 	}
 	if (NPC_02 && position == copypos)
