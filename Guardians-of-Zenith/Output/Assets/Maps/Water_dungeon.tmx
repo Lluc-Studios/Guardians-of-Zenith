@@ -42055,7 +42055,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="5" name="Puzzle" width="60" height="100">
+ <layer id="5" name="Puzzle" width="60" height="100" visible="0">
   <data>
    <tile/>
    <tile/>
@@ -48059,7 +48059,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="7" name="Collisions">
+ <objectgroup id="7" name="Collisions" visible="0">
   <object id="1" x="306.273" y="1170.61" width="589.629" height="11"/>
   <object id="2" x="1023.97" y="1169.61" width="591.467" height="12"/>
   <object id="4" x="782.606" y="1181.94" width="99" height="129"/>
@@ -48230,7 +48230,7 @@
   <object id="256" x="614" y="1611.75" width="156.75" height="9"/>
   <object id="259" x="1383.33" y="1416.33" width="229.333" height="7.66667"/>
  </objectgroup>
- <objectgroup id="14" name="Elipses">
+ <objectgroup id="14" name="Elipses" visible="0">
   <properties>
    <property name="Type" type="int" value="235"/>
   </properties>

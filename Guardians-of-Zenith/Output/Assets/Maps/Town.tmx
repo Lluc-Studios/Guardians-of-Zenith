@@ -22308,7 +22308,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="5" name="Collisions">
+ <objectgroup id="5" name="Collisions" visible="0">
   <object id="1" x="312.705" y="311.462" width="14.363" height="1172.55"/>
   <object id="3" x="572.917" y="309.86" width="30.583" height="10"/>
   <object id="5" x="1190.91" y="192.53" width="344.424" height="62.803"/>
@@ -22435,7 +22435,7 @@
   <object id="292" x="328.182" y="304.909" width="123.455" height="11.0909"/>
   <object id="293" x="604.333" y="305.333" width="445.333" height="10.3333"/>
  </objectgroup>
- <objectgroup id="17" name="Elipse">
+ <objectgroup id="17" name="Elipse" visible="0">
   <properties>
    <property name="Type" type="int" value="235"/>
   </properties>
@@ -22572,37 +22572,37 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup id="9" name="House_Entry">
+ <objectgroup id="9" name="House_Entry" visible="0">
   <properties>
    <property name="Type" type="int" value="12"/>
   </properties>
   <object id="184" x="546.867" y="316.026" width="25.8901" height="3.16668"/>
  </objectgroup>
- <objectgroup id="7" name="Tavern_Entry">
+ <objectgroup id="7" name="Tavern_Entry" visible="0">
   <properties>
    <property name="Type" type="int" value="8"/>
   </properties>
   <object id="32" x="677.208" y="894.33" width="21.5776" height="2.53032"/>
  </objectgroup>
- <objectgroup id="6" name="SmithingShop_Entry">
+ <objectgroup id="6" name="SmithingShop_Entry" visible="0">
   <properties>
    <property name="Type" type="int" value="10"/>
   </properties>
   <object id="30" x="1732.92" y="892.834" width="22.145" height="3.85603"/>
  </objectgroup>
- <objectgroup id="11" name="NPC3">
+ <objectgroup id="11" name="NPC3" visible="0">
   <properties>
    <property name="Type" type="int" value="24"/>
   </properties>
   <object id="188" x="491" y="544" width="17" height="31"/>
  </objectgroup>
- <objectgroup id="12" name="Lapis">
+ <objectgroup id="12" name="Lapis" visible="0">
   <properties>
    <property name="Type" type="int" value="25"/>
   </properties>
   <object id="191" x="1114.67" y="791.333" width="20.6667" height="34.6667"/>
  </objectgroup>
- <objectgroup id="19" name="Monolith">
+ <objectgroup id="19" name="Monolith" visible="0">
   <properties>
    <property name="Type" type="int" value="27"/>
   </properties>
