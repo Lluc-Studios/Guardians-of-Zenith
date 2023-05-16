@@ -13,6 +13,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 **Combat UI:**
 - W/S: Up/Down
 - Space: Select
+- Q: Back
 
 **Menus UI:**
 - ESC (ingame): Pause menu
@@ -26,10 +27,12 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 ## Debug
 - F1: Skip intro and main menu
 - F2: Show collisions
-- C: Next combat will appear the boss
-- V: Next combat enemies can poison and burn you
-- K: To lose combat
+- F9: Exit game
 - F10: God mode
+- Y: Level Up Characters
+- K: To lose combat
+- C: Start Combat
+- T: Skip Combat Turn
 
 ## Developers
 
