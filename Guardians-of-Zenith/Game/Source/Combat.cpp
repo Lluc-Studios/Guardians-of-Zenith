@@ -1446,7 +1446,8 @@ bool Combat::Update(float dt)
 
 		//Inputs
 		if (TeamTurn == 1) {
-			if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN && TeamTurn == 1) || (app->input->controllers.j1_y <= -32767 && TeamTurn == 1)) {
+			if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN 
+				|| (app->input->controllers.j1_y <= -32767)) && TeamTurn == 1) {
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::DEFEND) {
 						option = COMBATMENU::ATTACK;
@@ -1533,7 +1534,8 @@ bool Combat::Update(float dt)
 					}
 				}
 			}
-			if ((app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN && TeamTurn == 1) || (app->input->controllers.j1_y >= 32767 && TeamTurn == 1)) {
+			if ((app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN
+				|| (app->input->controllers.j1_y <= -32767)) && TeamTurn == 1) {
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::INVENTORY) {
 						option = COMBATMENU::ESCAPE;

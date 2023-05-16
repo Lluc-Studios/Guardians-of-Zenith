@@ -22,6 +22,8 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 ### Gamepad
 **In map:**
 - Left joystick: Move
+- A: Interact with NPC's
+- B: Finish dialogue
 
 **Combat UI:**
 - Left joystick: Up/Down

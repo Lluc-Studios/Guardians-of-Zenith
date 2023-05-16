@@ -318,6 +318,16 @@ bool Player::Update(float dt)
 
 				app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
 			}
+			if (app->input->controllers.A != 0)
+			{
+				buttonE = false;
+				NPC_02 = false;
+				NPC_03 = false;
+				NPC_04 = false;
+				isBill = true;
+
+				app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
+			}
 		}
 		if (NPC_02 )
 		{
@@ -334,12 +344,32 @@ bool Player::Update(float dt)
 				NPC2 = true;
 
 			}
+			if (app->input->controllers.A != 0)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_03 = false;
+				NPC_04 = false;
+				isDialogue = false;
+				NPC2 = true;
+			}
+
 		}
 		if (NPC_03 )
 		{
 			app->render->DrawTexture(PressE, 483 + 8, 545 - 15);
 
 			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_02 = false;
+				NPC_04 = false;
+				NPC = true;
+			}
+			if (app->input->controllers.A != 0)
 			{
 				buttonE = false;
 				//isBill = true;
@@ -363,6 +393,15 @@ bool Player::Update(float dt)
 				isDialogue = true;
 
 			}
+			if (app->input->controllers.A != 0)
+			{
+				buttonE = false;
+				//isBill = true;
+				NPC_01 = false;
+				NPC_03 = false;
+				NPC_02 = false;
+				isDialogue = true;
+			}
 		}
 
 	}
@@ -384,6 +423,10 @@ bool Player::Update(float dt)
 		{
 			isDialogue = false;
 		}
+		if (app->input->controllers.B != 0)
+		{
+			isDialogue = false;
+		}
 	}
 	//Bill
 	if (isBill && app->dialogueSystem->activeTree == nullptr)
@@ -402,6 +445,10 @@ bool Player::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN 
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			isBill = false;
+		}
+		if (app->input->controllers.B != 0)
 		{
 			isBill = false;
 		}
@@ -427,6 +474,10 @@ bool Player::Update(float dt)
 		{
 			NPC2 = false;
 		}
+		if (app->input->controllers.B != 0)
+		{
+			NPC2 = false;
+		}
 	}
 
 	//NPC
@@ -446,6 +497,10 @@ bool Player::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN 
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			NPC = false;
+		}
+		if (app->input->controllers.B != 0)
 		{
 			NPC = false;
 		}
@@ -838,26 +893,28 @@ void Player::Move() {
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) {
 		vel = b2Vec2(0, 0);
 	}
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
+	if ((app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT )&& app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 		currentAnim = &playerRunL;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
+	if ((app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 		currentAnim = &playerRunR;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
+	if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
 		currentAnim = &playerRunUp;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
+	if ((app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_DOWN ) == KEY_REPEAT)&& app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
 		currentAnim = &playerRunDown;
 	}
+
+	//Debug to max level
 	if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) {
 		LevelToMax();
 	}
@@ -905,7 +962,11 @@ void Player::Move() {
 	if (app->input->GetKey(SDL_SCANCODE_W) == KeyState::KEY_IDLE
 		&& app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_IDLE
 		&& app->input->GetKey(SDL_SCANCODE_S) == KeyState::KEY_IDLE
-		&& app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_IDLE) {
+		&& app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+		&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE){
 
 		if (facing == DIRECTION::RIGHT && vel.x == 0) {
 			currentAnim = &playerIdleR;
@@ -984,6 +1045,8 @@ void Player::debugKeys() {
 	{
 		limitFPS = !limitFPS;
 	}
+
+
 	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN)
 	{
 		PresetChance = rand() % 100 + 1;
