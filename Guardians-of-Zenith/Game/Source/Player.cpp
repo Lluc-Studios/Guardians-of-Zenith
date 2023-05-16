@@ -315,6 +315,8 @@ bool Player::Update(float dt)
 				NPC_03 = false;
 				NPC_04 = false;
 				isBill = true;
+
+				app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
 			}
 		}
 		if (NPC_02 )
