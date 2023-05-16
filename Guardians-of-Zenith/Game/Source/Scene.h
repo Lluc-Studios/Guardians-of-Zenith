@@ -100,22 +100,22 @@ private:
 	SDL_Texture* DefaultTile;
 	SDL_Texture* BrokenTile;
 
-	bool TPressed1 = false, TPressed2 = false, TPressed3 = false, TPressed4 = false, TPressed5 = false, TPressed6 = false, TPressed7 = false, TPressed8 = false, TPressed9 = false;
-	bool TPressed10 = false, TPressed11 = false, TPressed12 = false, TPressed13 = false, TPressed14 = false, TPressed15 = false, TPressed16 = false, TPressed17 = false, TPressed18 = false;
-	bool TPressed19 = false, TPressed20 = false, TPressed21 = false, TPressed22 = false, TPressed23 = false, TPressed24 = false, TPressed25 = false, TPressed26 = false, TPressed27 = false;
+	bool TPressed1 = false, TPressed2 = false, TPressed3 = true, TPressed4 = false, TPressed5 = false, TPressed6 = false, TPressed7 = true, TPressed8 = false, TPressed9 = false;
+	bool TPressed10 = false, TPressed11 = false, TPressed12 = false, TPressed13 = false, TPressed14 = false, TPressed15 = false, TPressed16 = false, TPressed17 = true, TPressed18 = false;
+	bool TPressed19 = false, TPressed20 = false, TPressed21 = false, TPressed22 = false, TPressed23 = false, TPressed24 = false, TPressed25 = true, TPressed26 = false, TPressed27 = false;
 	bool TPressed28 = false, TPressed29 = false, TPressed30 = false, TPressed31 = false, TPressed32 = false, TPressed33 = false, TPressed34 = false, TPressed35 = false, TPressed36 = false;
-	bool TPressed37 = false, TPressed38 = false, TPressed39 = false, TPressed40 = false, TPressed41 = false, TPressed42 = false, TPressed43 = false, TPressed44 = false, TPressed45 = false;
-	bool TPressed46 = false, TPressed47 = false, TPressed48 = false, TPressed49 = false, TPressed50 = false, TPressed51 = false, TPressed52 = false, TPressed53 = false, TPressed54 = false;
-	bool TPressed55 = false, TPressed56 = false, TPressed57 = false, TPressed58 = false, TPressed59 = false, TPressed60 = false, TPressed61 = false, TPressed62 = false, TPressed63 = false;
-	bool TPressed64 = false, TPressed65 = false, TPressed66 = false, TPressed67 = false, TPressed68 = false, TPressed69 = false, TPressed70 = false, TPressed71 = false;
-	bool TBroken1 = false, TBroken2 = false, TBroken3 = false, TBroken4 = false, TBroken5 = false, TBroken6 = false, TBroken7 = false, TBroken8 = false, TBroken9 = false;
-	bool TBroken10 = false, TBroken11 = false, TBroken12 = false, TBroken13 = false, TBroken14= false, TBroken15 = false, TBroken16 = false, TBroken17 = false, TBroken18 = false;
-	bool TBroken19 = false, TBroken20 = false, TBroken21 = false, TBroken22 = false, TBroken23 = false, TBroken24 = false, TBroken25 = false, TBroken26 = false, TBroken27 = false;
+	bool TPressed37 = false, TPressed38 = false, TPressed39 = false, TPressed40 = false, TPressed41 = false, TPressed42 = false, TPressed43 = false, TPressed44 = true, TPressed45 = false;
+	bool TPressed46 = false, TPressed47 = false, TPressed48 = true, TPressed49 = false, TPressed50 = false, TPressed51 = false, TPressed52 = false, TPressed53 = false, TPressed54 = false;
+	bool TPressed55 = false, TPressed56 = false, TPressed57 = false, TPressed58 = false, TPressed59 = false, TPressed60 = false, TPressed61 = true, TPressed62 = false, TPressed63 = false;
+	bool TPressed64 = false, TPressed65 = false, TPressed66 = false, TPressed67 = false, TPressed68 = false, TPressed69 = true, TPressed70 = false, TPressed71 = false;
+	bool TBroken1 = false, TBroken2 = false, TBroken3 = true, TBroken4 = false, TBroken5 = false, TBroken6 = false, TBroken7 = true, TBroken8 = false, TBroken9 = false;
+	bool TBroken10 = false, TBroken11 = false, TBroken12 = false, TBroken13 = false, TBroken14= false, TBroken15 = false, TBroken16 = false, TBroken17 = true, TBroken18 = false;
+	bool TBroken19 = false, TBroken20 = false, TBroken21 = false, TBroken22 = false, TBroken23 = false, TBroken24 = false, TBroken25 = true, TBroken26 = false, TBroken27 = false;
 	bool TBroken28 = false, TBroken29 = false, TBroken30 = false, TBroken31 = false, TBroken32 = false, TBroken33 = false, TBroken34 = false, TBroken35 = false, TBroken36 = false;
-	bool TBroken37 = false, TBroken38 = false, TBroken39 = false, TBroken40 = false, TBroken41 = false, TBroken42 = false, TBroken43 = false, TBroken44 = false, TBroken45 = false;
-	bool TBroken46 = false, TBroken47 = false, TBroken48 = false, TBroken49 = false, TBroken50 = false, TBroken51 = false, TBroken52 = false, TBroken53 = false, TBroken54 = false;
-	bool TBroken55 = false, TBroken56 = false, TBroken57 = false, TBroken58 = false, TBroken59 = false, TBroken60 = false, TBroken61 = false, TBroken62 = false, TBroken63 = false;
-	bool TBroken64 = false, TBroken65 = false, TBroken66 = false, TBroken67 = false, TBroken68 = false, TBroken69 = false, TBroken70 = false, TBroken71 = false;
+	bool TBroken37 = false, TBroken38 = false, TBroken39 = false, TBroken40 = false, TBroken41 = false, TBroken42 = false, TBroken43 = false, TBroken44 = true, TBroken45 = false;
+	bool TBroken46 = false, TBroken47 = false, TBroken48 = true, TBroken49 = false, TBroken50 = false, TBroken51 = false, TBroken52 = false, TBroken53 = false, TBroken54 = false;
+	bool TBroken55 = false, TBroken56 = false, TBroken57 = false, TBroken58 = false, TBroken59 = false, TBroken60 = false, TBroken61 = true, TBroken62 = false, TBroken63 = false;
+	bool TBroken64 = false, TBroken65 = false, TBroken66 = false, TBroken67 = false, TBroken68 = false, TBroken69 = true, TBroken70 = false, TBroken71 = false;
 
 	//Others
 
