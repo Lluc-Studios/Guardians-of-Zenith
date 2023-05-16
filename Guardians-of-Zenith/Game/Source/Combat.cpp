@@ -889,12 +889,12 @@ bool Combat::Update(float dt)
 		if (CurrentCharacters >= 1) {
 			//Draw player
 			if (Turn[0] == 1) {
-				app->render->DrawRectangle({ app->scene->player->position.x - 101 , app->scene->player->position.y - 61,64,66 }, 255, 255, 255, 120);
+				app->render->DrawRectangle({ app->scene->player->position.x - 96 , app->scene->player->position.y - 52,64,64 }, 255, 255, 255, 120);
 			}
 			if (C1dead == false) {
-				app->render->DrawTexture(Character1, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+				app->render->DrawTexture(Character1, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
 				if (C1FROZEN == true) {
-					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 100, app->scene->player->position.y - 60);
+					app->render->DrawTexture(Character1Frozen, app->scene->player->position.x - 97, app->scene->player->position.y - 52);
 					app->render->DrawTexture(Frozen, app->scene->player->position.x - 40, app->scene->player->position.y + 77);
 				}
 				if (C1POISON != 0) {
@@ -966,12 +966,12 @@ bool Combat::Update(float dt)
 			if (CurrentCharacters >= 2) {
 				//Draw player
 				if (Turn[0] == 2) {
-					app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y + 9,64,66 }, 255, 255, 255, 120);
+					app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y + 12,64,64 }, 255, 255, 255, 120);
 				}
 				if (C2dead == false) {
-					app->render->DrawTexture(Character2, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+					app->render->DrawTexture(Character2, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
 					if (C2FROZEN == true) {
-						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 160, app->scene->player->position.y + 10);
+						app->render->DrawTexture(Character2Frozen, app->scene->player->position.x - 161, app->scene->player->position.y + 12);
 						app->render->DrawTexture(Frozen, app->scene->player->position.x + 110, app->scene->player->position.y + 77);
 					}
 					if (C2POISON != 0) {
@@ -1043,12 +1043,12 @@ bool Combat::Update(float dt)
 				if (CurrentCharacters == 3) {
 					//Draw player
 					if (Turn[0] == 3) {
-						app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 121,64,66 }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x - 161 , app->scene->player->position.y - 116,64,64 }, 255, 255, 255, 120);
 					}
 					if (C3dead == false) {
-						app->render->DrawTexture(Character3, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+						app->render->DrawTexture(Character3, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
 						if (C3FROZEN == true) {
-							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 160, app->scene->player->position.y - 120);
+							app->render->DrawTexture(Character3Frozen, app->scene->player->position.x - 161, app->scene->player->position.y - 116);
 							app->render->DrawTexture(Frozen, app->scene->player->position.x + 270, app->scene->player->position.y + 77);
 						}
 						if (C3POISON != 0) {
