@@ -70,8 +70,10 @@ bool Player::Start() {
 	//DamageFx = app->audio->LoadFx("Assets/Sounds/Enemy/Dead2.wav");
 	//tpFX = app->audio->LoadFx("Assets/Sounds/TeleportSound.wav");
 
+	//Load FX
 	doorFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Door Fx.wav");
 	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start battle FX.wav");
+	MonolithFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Monolith FX.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -584,7 +586,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::HOUSE:
 		LOG("Collision House");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(3, tp5);
 			auxBool = true;
@@ -593,7 +595,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNHOUSE:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(0, tp6);
 			auxBool = true;
@@ -650,6 +652,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::MONOLITH:
 		LOG("Collision Monolith");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(7, tp13);
 			auxBool = true;
@@ -658,6 +661,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNMONOLITH:
 		LOG("Collision Town");
 		if (auxBool == false) {
+			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
 			app->scene->fade = true;
 			Teleport_Point(0, tp14);
 			auxBool = true;
