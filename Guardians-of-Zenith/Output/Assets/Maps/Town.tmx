@@ -6,8 +6,8 @@
  <tileset firstgid="463" name="Tileset_Cave" tilewidth="32" tileheight="32" tilecount="500" columns="25">
   <image source="Tilesets/Tileset_Cave.png" width="800" height="640"/>
  </tileset>
- <tileset firstgid="963" name="Loading_Zones" tilewidth="32" tileheight="32" tilecount="9" columns="3">
-  <image source="Tilesets/Loading_Zones.png" width="96" height="96"/>
+ <tileset firstgid="963" name="Loading_Zones" tilewidth="32" tileheight="32" tilecount="15" columns="5">
+  <image source="Tilesets/Loading_Zones.png" width="160" height="96"/>
  </tileset>
  <layer id="2" name="Grass" width="70" height="53">
   <properties>
@@ -11197,12 +11197,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
    <tile/>
    <tile/>
    <tile/>
@@ -11267,12 +11267,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
    <tile/>
    <tile/>
    <tile/>
@@ -11337,12 +11337,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
    <tile/>
    <tile/>
    <tile/>
@@ -11407,12 +11407,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
    <tile/>
    <tile/>
    <tile/>
@@ -11477,12 +11477,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
    <tile/>
    <tile/>
    <tile/>
@@ -11547,12 +11547,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
-   <tile gid="969"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
+   <tile gid="973"/>
    <tile/>
    <tile/>
    <tile/>

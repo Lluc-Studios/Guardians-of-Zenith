@@ -6,8 +6,8 @@
  <tileset firstgid="1" name="Tileset_Monoliths" tilewidth="32" tileheight="32" tilecount="440" columns="20">
   <image source="Tilesets/Tileset_Monoliths.png" width="640" height="704"/>
  </tileset>
- <tileset firstgid="441" name="Loading_Zones" tilewidth="32" tileheight="32" tilecount="9" columns="3">
-  <image source="Tilesets/Loading_Zones.png" width="96" height="96"/>
+ <tileset firstgid="441" name="Loading_Zones" tilewidth="32" tileheight="32" tilecount="15" columns="5">
+  <image source="Tilesets/Loading_Zones.png" width="160" height="96"/>
  </tileset>
  <layer id="8" name="Floor" width="54" height="47">
   <properties>
@@ -4959,65 +4959,65 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="449"/>
-   <tile gid="444"/>
-   <tile gid="445"/>
-   <tile gid="445"/>
+   <tile gid="453"/>
    <tile gid="446"/>
-   <tile gid="449"/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
    <tile gid="447"/>
    <tile gid="447"/>
-   <tile gid="447"/>
-   <tile gid="447"/>
+   <tile gid="448"/>
+   <tile gid="453"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="451"/>
+   <tile gid="451"/>
+   <tile gid="451"/>
+   <tile gid="451"/>
    <tile/>
    <tile/>
    <tile/>
@@ -5068,10 +5068,10 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="447"/>
-   <tile gid="447"/>
-   <tile gid="447"/>
-   <tile gid="447"/>
+   <tile gid="451"/>
+   <tile gid="451"/>
+   <tile gid="451"/>
+   <tile gid="451"/>
    <tile/>
    <tile/>
    <tile/>
