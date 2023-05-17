@@ -31,7 +31,7 @@
         
     </node>
 
-    <node id="2" text="okay sorry, here you go, you don't have to be so aggressive">
+    <node id="2" text="Okay sorry, here you go, you don't have to be so aggressive">
        
     </node>
     
@@ -86,9 +86,7 @@
 	<node id="1" text="Thank you, adventurer! Your dedication to uncovering our island's history is commendable. The manuscripts could be anywhere, so search thoroughly. Once you've collected all four, bring them back to me, and I'll reward you generously.">
 	</node>
 
-	<node id="-1" text ="I do not know what this developer thing means, but thank you."></node>
-
-	<node id="2" text="I understand it's a challenging endeavor. Let me give you a clue: Each manuscript is hidden in a significant landmark of our island. Explore the ruins, the cave system, the forest, and the lake. Good luck! Return to me with all the manuscripts and I’ll reward you generously."></node>
+	<node id="2" text="I understand it's a challenging endeavor. Let me give you a clue: Each manuscript is hidden in a significant landmark of our island. Explore the ruins, the cave system, the forest, and the lake. Good luck! Return to me with all the manuscripts and I will reward you generously."></node>
   </dialogueTree>
 	
   <!--Aswers)-->
