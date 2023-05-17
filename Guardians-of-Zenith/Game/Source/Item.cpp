@@ -10,6 +10,7 @@
 #include "Physics.h"
 #include "Player.h"
 #include "Inventory.h"
+#include "Combat.h"
 
 Item::Item() : Entity(EntityType::ITEM)
 {
@@ -22,10 +23,9 @@ bool Item::Awake() {
 
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
+	id = parameters.attribute("id").as_int();
 	itemName = parameters.attribute("name").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
-
-
 
 	return true;
 }
@@ -34,15 +34,19 @@ bool Item::Start() {
 
 	//initilize textures
 	texture = app->tex->Load(texturePath);
-	
 
 	// L07 DONE 4: Add a physics to an item - initialize the physics body
-	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 8, bodyType::STATIC);
-	coinFX = app->audio->LoadFx("Assets/Sounds/CoinSoundEffect.wav");
-	pbody->ctype = ColliderType::ITEM; 
+	pbody = app->physics->CreateRectangleSensor(position.x + 16, position.y + 16, 16, 16, bodyType::STATIC);
 	pbody->listener = this;
-	if (itemName == "Healing Potion")
-		app->inventory->addItem(*this); 
+
+	coinFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Play.wav");
+	pbody->ctype = ColliderType::ITEM; 
+
+	app->scene->texturas[id - 1] = texture;
+	app->scene->itemPos[id - 1] = position;
+	app->scene->itemPicked[id - 1] = isPicked;
+	app->scene->itemBody[id - 1] = pbody;
+
 	return true;
 }
 
@@ -52,21 +56,7 @@ bool Item::Update()
 }
 
 bool Item::PostUpdate()
-{
-	
-	// L07 DONE 4: Add a physics to an item - update the position of the object from the physics.  
-	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x) - 16;
-	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y) - 16;
-
-	app->render->DrawTexture(texture, position.x + 8, position.y + 8);
-
-	if (isPicked) {
-		app->audio->PlayFxWithVolume(coinFX, 0, 50);
-		active = false; 
-		pbody->body->SetActive(false);
-		return true; 
-	}
-		
+{		
 	return true;
 }
 
@@ -79,7 +69,39 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 	switch (physB->ctype)
 	{
 	case ColliderType::PLAYER:
-		isPicked = true; 
+		isPicked = true;
+		app->scene->itemPicked[id-1] = isPicked;
+		physA->body->DestroyFixture(physA->body->GetFixtureList());
+		if (!handledCollision) {
+			//app->inventory->addItem(*this);
+			switch (id)
+			{
+			case 1:
+				app->inventory->nrOfHpPot++;
+				break;
+			case 2:
+				app->inventory->nrOfMpPot++;
+				break;
+			case 3:
+				app->inventory->nrOfAtkElx++;
+				break;
+			case 4:
+				app->inventory->nrOfDefElx++;
+				break;
+			case 5:
+				app->inventory->necklace++;
+				break;
+			case 6:
+				app->inventory->manuscript++;
+				break;
+			case 7:
+				app->inventory->book++;
+				break;
+			default:
+				break;
+			}
+		}
 		break;
 	}
+	handledCollision = true; // Set flag to indicate collision has been handled to avoid adding the item more than once
 }

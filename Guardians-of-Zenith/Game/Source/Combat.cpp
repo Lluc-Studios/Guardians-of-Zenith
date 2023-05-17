@@ -4443,7 +4443,6 @@ bool Combat::PostUpdate()
 			app->render->DrawText(155, 220, WF, "also deals high damage to enemies without a shield", 16);
 		}
 	}
-	LOG("OPTION: %i", option);
 	if (option == COMBATMENU::NOITEM) {
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "No items left", 16);
 

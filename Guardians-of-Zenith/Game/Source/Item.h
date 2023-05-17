@@ -29,6 +29,8 @@ public:
 public:
 
 	bool isPicked = false;
+	int id = 0;
+	bool handledCollision = false;
 
 private:
 
@@ -41,6 +43,7 @@ private:
 	PhysBody* pbody;
 	
 	int coinFX = -1;
+
 
 };
 

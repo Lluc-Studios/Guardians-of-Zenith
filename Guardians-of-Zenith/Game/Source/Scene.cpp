@@ -22,6 +22,7 @@
 #include "Monolith.h"
 #include "Inventory.h"
 #include "Player.h"
+#include "Item.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -1209,15 +1210,36 @@ bool Scene::PostUpdate()
 		if (app->inventory->nrOfDefElx > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfDefElx);
 			const char* amount = amountStr.c_str(); 
-			app->render->DrawText(60, 230, WF, "Deffense elixir", 16);
+			app->render->DrawText(60, 230, WF, "Defense elixir", 16);
 			app->render->DrawText(300, 230, WF, amount, 16);
 		}
+		if (app->inventory->necklace > 0) {
+			string amountStr = std::to_string(app->inventory->nrOfDefElx);
+			const char* amount = amountStr.c_str();
+			app->render->DrawText(60, 260, WF, "Defense elixir", 16);
+			app->render->DrawText(300, 260, WF, amount, 16);
+		}
 		//	TODO 4: Show the items' sprites in the inventory
-		for (int i = 0; i < app->inventory->nrOfItems; i++)
-		{
-			app->render->DrawTexture(app->inventory->texture, player->position.x + 32 * i, player->position.y);
+		//for (int i = 0; i < app->inventory->nrOfItems; i++)
+		//{
+		//	app->render->DrawTexture(app->inventory->texture, player->position.x + 32 * i, player->position.y);
+		//}
+	}
+
+	// a
+	//SDL_rect rect = { 0,0,32,32 };
+
+	for (int i = 0; i < 7; i++)
+	{
+		if(itemPicked[i]==false)
+			app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
+		else {
+			active = false;
+			itemBody[i]->body->SetActive(false);
+			return true;
 		}
 	}
+
 	return ret;
 }
 

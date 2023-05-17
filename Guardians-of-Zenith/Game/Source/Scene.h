@@ -237,6 +237,12 @@ public:
 	};
 
 	SELECTED option = SELECTED::NONE;
+
+	SDL_Texture* texturas[7];
+	iPoint itemPos[7];
+	bool itemPicked[7];
+	PhysBody* itemBody[7];
+
 };
 
 #endif // __SCENE_H__

@@ -26,13 +26,13 @@
 	 <!-- player Starting pos, x: 500 y: 220-->
     <player x="560" y="340" width="64" height="16" texturepath="Assets/Entities/Characters/Laurea_Directions.png"/>
 
-	<item name="Healing potion" texturepath="Assets/Textures/Objects/hpotion.png"/>
-	<item name="Mana potion" texturepath="Assets/Textures/Objects/mpotion.png"/>
-	<item name="Attack elixir" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
-	<item name="Defense elixir" texturepath="Assets/Textures/Objects/DefElixir.png"/>
-	<item name="Old necklace" texturepath="Assets/Textures/Objects/Necklace.png"/>
-	<item name="Manuscripts" texturepath="Assets/Textures/Objects/Manuscript.png"/>
-	<item name="Zenith's history book" texturepath="Assets/Textures/Objects/ZenithBook.png"/>
+	<item id="1" name="Healing potion" x="" y="" texturepath="Assets/Textures/Objects/hpotion.png"/>
+	<item id="2" name="Mana potion" x="" Y="" texturepath="Assets/Textures/Objects/mpotion.png"/>
+	<item id="3" name="Attack elixir" x="" y="" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
+	<item id="4" name="Defense elixir" x="" y="" texturepath="Assets/Textures/Objects/DefElixir.png"/>
+	<item id="5" name="Old necklace" x="400" y="593" texturepath="Assets/Textures/Objects/Necklace.png"/>
+	<item id="6" name="Manuscripts" x="" y="" texturepath="Assets/Textures/Objects/Manuscript.png"/>
+	<item id="7" name="Zenith's history book" x="" y="" texturepath="Assets/Textures/Objects/ZenithBook.png"/>
 	  
 
 	  <!--enemy x="1270" y="190" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
