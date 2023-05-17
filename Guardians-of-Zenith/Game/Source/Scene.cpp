@@ -369,7 +369,7 @@ bool Scene::Update(float dt)
 		colliderPuzzle2Block->body->SetActive(false);
 	}
 	else {
-		app->render->DrawTexture(Puzzle2Wall, 3396, -1444);
+		app->render->DrawTexture(Puzzle2Wall, 3396, -1444-32);
 		colliderPuzzle2Block->body->SetActive(true);
 	}
 

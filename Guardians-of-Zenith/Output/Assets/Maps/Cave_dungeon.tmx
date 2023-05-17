@@ -3820,6 +3820,9 @@
   </data>
  </layer>
  <layer id="10" name="Loadin zone" width="40" height="95">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -19044,7 +19047,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="6" name="Collisions">
+ <objectgroup id="6" name="Collisions" visible="0">
   <object id="1" x="672" y="2048.67" width="7.66667" height="94.6667"/>
   <object id="2" x="472.53" y="2048.55" width="7.66667" height="94.6667"/>
   <object id="3" x="792.667" y="2244.42" width="7.66667" height="347.508"/>
@@ -19345,7 +19348,7 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup id="7" name="Monolith">
+ <objectgroup id="7" name="Monolith" visible="0">
   <properties>
    <property name="Type" type="int" value="19"/>
   </properties>
