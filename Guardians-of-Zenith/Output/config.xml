@@ -20,9 +20,13 @@
   <audio>
     <music volume="30"/>
     <fx volume="70"/>
-  </audio> 
+  </audio>
 
-  <scene>
+	<intro>
+		<intro logoanim="Assets/Textures/Scenes/anim_logo.png"/>
+	</intro>
+	
+	<scene>
 	 <!-- player Starting pos, x: 500 y: 220-->
     <player x="560" y="340" width="64" height="16" texturepath="Assets/Entities/Characters/Laurea_Directions.png"/>
 

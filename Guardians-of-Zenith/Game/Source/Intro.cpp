@@ -35,11 +35,29 @@ bool Intro::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Intro::Start()
 {
-	logo = app->tex->Load("Assets/Textures/Scenes/LlucStudios.png");
+	//logo = app->tex->Load("Assets/Textures/Scenes/LlucStudios.png");
 	introFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Intro_Emanem.wav");
 	menuMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Rocky Tundra OST Version.ogg");
+	//logoanim = app->tex->Load("Assets/Textures/Scenes/anim_logo.png");
 
 	app->audio->PlayFxWithVolume(introFx);
+
+	fadeo.PushBack({ 0, 0, 640, 360 }); //1
+	fadeo.PushBack({ 640, 0, 640, 360 }); //2
+	fadeo.PushBack({ 1280, 0, 640, 360 }); //3
+	fadeo.PushBack({ 0, 360, 640, 360 }); //4
+	fadeo.PushBack({ 640, 360, 640, 360 }); //5
+	fadeo.PushBack({ 1280, 360, 640, 360 }); //6
+	fadeo.PushBack({ 0, 720, 640, 360 }); //7
+	fadeo.PushBack({ 640, 720, 640, 360 }); //8
+	fadeo.PushBack({ 1280, 720, 640, 360 }); //9
+	fadeo.PushBack({ 0, 1080, 640, 360 }); //10
+	fadeo.PushBack({ 640, 1080, 640, 360 }); //11
+	fadeo.PushBack({ 1280, 1080, 640, 360 }); //12
+	fadeo.loop = true;
+	fadeo.speed = 0.04f;
+
+	currentAnim = &fadeo;
 
 	return true;
 }

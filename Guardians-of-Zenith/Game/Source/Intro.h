@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Player.h"
+#include "Animation.h"
 #include "Item.h"
 
 
@@ -39,6 +40,14 @@ private:
 	int fading = 255, counter = 0;
 	bool fadeIn = true;
 	SDL_Texture* logo;
+
+	SDL_Texture* logoanim;
+	const char* texturePath;
+
+	Animation* currentAnim = nullptr;
+
+	Animation fadeo;
+	Animation idle;
 	
 	char introFx;
 	char menuMusic;
