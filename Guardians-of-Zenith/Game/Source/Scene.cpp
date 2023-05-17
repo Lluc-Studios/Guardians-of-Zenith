@@ -1216,7 +1216,7 @@ bool Scene::PostUpdate()
 		if (app->inventory->necklace > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfDefElx);
 			const char* amount = amountStr.c_str();
-			app->render->DrawText(60, 260, WF, "Defense elixir", 16);
+			app->render->DrawText(60, 260, WF, "Old necklace", 16);
 			app->render->DrawText(300, 260, WF, amount, 16);
 		}
 		//	TODO 4: Show the items' sprites in the inventory
@@ -1234,7 +1234,6 @@ bool Scene::PostUpdate()
 		if(itemPicked[i]==false)
 			app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
 		else {
-			active = false;
 			itemBody[i]->body->SetActive(false);
 			return true;
 		}
