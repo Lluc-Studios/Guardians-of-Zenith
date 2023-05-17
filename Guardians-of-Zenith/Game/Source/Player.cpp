@@ -78,6 +78,7 @@ bool Player::Start() {
 	sirenFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Enemies/Siren.wav");
 	tavernerFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Taverner FX.wav");
 	puzzleFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Puzzle sound.wav");
+	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -407,6 +408,28 @@ bool Player::Update(float dt)
 		}
 
 	}
+	//if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+	//{
+	//	win = true;
+	//}
+	//WIN
+	if (win)
+	{
+		app->render->DrawText(200, winy, { 0, 0, 255 },"MISSION COMPLETE", 24);
+		if (winy > -100)
+		{
+			winy -= 4;
+		}
+		else
+		{
+			win = false;
+		}
+		
+	}
+	else
+	{
+		winy = 500;
+	}
 
 	//Lapis
 	if (isDialogue && app->dialogueSystem->activeTree == nullptr)
@@ -438,6 +461,8 @@ bool Player::Update(float dt)
 		if (lapisMission)
 		{
 			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 6);
+			win = true;
+			app->audio->PlayFx(winSound);
 		}
 		else
 		{
@@ -473,6 +498,8 @@ bool Player::Update(float dt)
 		if (app->inventory->necklace == 1)
 		{
 			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 5);
+			win = true;
+			app->audio->PlayFx(winSound);
 		}
 		else
 		{
@@ -507,6 +534,8 @@ bool Player::Update(float dt)
 		if (app->inventory->manuscript==1)
 		{
 			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 4);
+			win = true;
+			app->audio->PlayFx(winSound);
 		}
 		else
 		{

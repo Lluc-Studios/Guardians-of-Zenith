@@ -121,6 +121,9 @@ public:
 	bool NPC_04 = false;
 	iPoint copypos;
 
+	bool win = false;
+
+	int winy = 500;
 	bool lapisMission = false;
 	bool DeathAnimationFinished = false;
 
@@ -185,6 +188,7 @@ private:
 	int doorFX, startBattleFX, MonolithFX, sirenFX;
 	int tavernerFX;
 	int puzzleFx;
+	int winSound;
 
 	bool pilar1Fx = false, pilar2Fx = false, pilar3Fx = false;
 
