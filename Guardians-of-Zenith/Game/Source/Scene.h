@@ -86,6 +86,7 @@ private:
 	SDL_Texture* TownPNG;
 	SDL_Texture* WaterPNG;
 	SDL_Texture* ForestPNG;
+	SDL_Texture* ForestPNG_Sadow;
 
 	SDL_Texture* coinTex;
 	SDL_Texture* trophyTex;

@@ -43,6 +43,7 @@ bool Scene::Awake(pugi::xml_node& config)
 	LOG("Loading Scene");
 	bool ret = true;
 
+
 	// iterate all objects in the scene
 	// Check https://pugixml.org/docs/quickstart.html#access
 
@@ -141,19 +142,14 @@ bool Scene::Start()
 	//Chica Wasap
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
+	//Puzzles
 	Stone = app->tex->Load("Assets/Textures/Puzzles/Stone.png");
 	Tp = app->tex->Load("Assets/Textures/Puzzles/MonolitoTP.png");
 	Unpressed = app->tex->Load("Assets/Textures/Puzzles/Unpressed.png");
 	Pressed = app->tex->Load("Assets/Textures/Puzzles/Pressed.png");
 	Puzzle2Wall = app->tex->Load("Assets/Textures/Puzzles/Door_water_dungeon.png");
-	Slime = app->tex->Load("Assets/Entities/enemies/FrogBasic.png");
-	Lily = app->tex->Load("Assets/Entities/enemies/LilyBasic.png");
-	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
 	DefaultTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Default.png");
 	BrokenTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Broken.png");
-	TownPNG = app->tex->Load("Assets/Maps/Maps_Png/Town.png");
-	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Water_dungeon.png");
-	ForestPNG = app->tex->Load("Assets/Maps/Maps_Png/Forest_dungeon.png");
 	Pilar1A = app->tex->Load("Assets/Textures/Puzzles/Tower_1_On.png");
 	Pilar1N = app->tex->Load("Assets/Textures/Puzzles/Tower_1_Off.png");
 	Pilar2A = app->tex->Load("Assets/Textures/Puzzles/Tower_2_On.png");
@@ -162,6 +158,14 @@ bool Scene::Start()
 	Pilar3N = app->tex->Load("Assets/Textures/Puzzles/Tower_3_Off.png");
 	ForestDoor = app->tex->Load("Assets/Textures/Puzzles/Door_forest_dungeon.png");
 	Blocking = app->tex->Load("Assets/Textures/Puzzles/Door_cave_dungeon.png");
+	//Enemy
+	Slime = app->tex->Load("Assets/Entities/enemies/FrogBasic.png");
+	Lily = app->tex->Load("Assets/Entities/enemies/LilyBasic.png");
+	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
+	//Maps
+	TownPNG = app->tex->Load("Assets/Maps/Maps_Png/Town.png");
+	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Water_dungeon.png");
+	ForestPNG = app->tex->Load("Assets/Maps/Maps_Png/Forest_dungeon.png");
 
 	//Lake enemies
 	

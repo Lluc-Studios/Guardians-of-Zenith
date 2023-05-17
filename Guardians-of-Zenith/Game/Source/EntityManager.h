@@ -77,6 +77,9 @@ public:
 	CombatEnemy gashadokuro{ 3000,3000,1000,1000,500,50,20,3,800, 2, -1,"Gashadokuro", "Laurea","Lapis", "Bone punch", 60, 0,0, "Bonemerang", 50, 1,0, "Hellfire", 50, 0,3, "Defense up", 0, 2,0 };
 	List<Entity*> entities;
 
+
+	SDL_Texture* ForestPNG_Sadow;
+
 	bool debug = false; 
 
 };

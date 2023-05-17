@@ -48,6 +48,8 @@ bool EntityManager::Start() {
 
 	bool ret = true; 
 
+	ForestPNG_Sadow = app->tex->Load("Assets/Maps/Maps_Png/Forest_dungeon_Sadow.png");
+
 	//Iterates over the entities and calls Start
 	ListItem<Entity*>* item;
 	Entity* pEntity = NULL;
@@ -146,6 +148,11 @@ bool EntityManager::Update(float dt)
 
 		if (pEntity->active == false) continue;
 		ret = item->data->Update(dt);
+	}
+
+	if (app->Instance == 5) {
+		//app->forestdungeon->Draw();
+		app->render->DrawTexture(ForestPNG_Sadow, 0, 2000);
 	}
 
 	return ret;
