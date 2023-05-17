@@ -53,6 +53,24 @@ bool MainMenu::Start()
 	fadeIn = true;
 	fadeOut = false;
 
+	titleanim = app->tex->Load("Assets/Textures/Scenes/anim_title.png");
+
+	title.PushBack({ 0, 0, 640, 360 }); //1
+	title.PushBack({ 640, 0, 640, 360 }); //2
+	title.PushBack({ 1280, 0, 640, 360 }); //3
+	title.PushBack({ 0, 360, 640, 360 }); //4
+	title.PushBack({ 640, 360, 640, 360 }); //5
+	title.PushBack({ 1280, 360, 640, 360 }); //6
+	title.PushBack({ 0, 720, 640, 360 }); //7
+	title.PushBack({ 640, 720, 640, 360 }); //8
+	title.PushBack({ 1280, 720, 640, 360 }); //9
+	title.PushBack({ 0, 1080, 640, 360 }); //10
+	title.PushBack({ 640, 1080, 640, 360 }); //11
+	title.PushBack({ 1280, 1080, 640, 360 }); //12
+	title.loop = false;
+	title.speed = 0.08f;
+
+	currentAnim = &title;
 	return true;
 }
 
@@ -70,7 +88,11 @@ bool MainMenu::Update(float dt)
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
 
-	app->render->DrawTexture(BG,0,0);
+	currentAnim->Update();
+	SDL_Rect rect = currentAnim->GetCurrentFrame();
+
+	app->render->DrawTexture(titleanim, 0, 0, &rect);
+
 	//app->render->DrawTexture(Buttons, 450, 120, &B5);
 	//app->render->DrawTexture(Buttons, 450, 180, &B6);
 	//app->render->DrawTexture(Buttons, 450, 240, &B7);

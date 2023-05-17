@@ -77,6 +77,11 @@ private:
 	SDL_Rect B7 = { 106,74,106,38 };
 	SDL_Rect B8 = { 106,111,106,38 };
 
+	SDL_Texture* titleanim;
+
+	Animation* currentAnim = nullptr;
+
+	Animation title;
 };
 
 #endif // __MAINMENU_H__
