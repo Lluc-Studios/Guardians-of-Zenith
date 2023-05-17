@@ -296,288 +296,9 @@ bool Scene::Update(float dt)
 		}
 		pathActive = false;
 	}
-
-	//Camera on player
-	/*app->render->camera.x = -1 * (player->position.x * app->win->GetScale() - app->render->camera.w / 2);
-	app->render->camera.y = -1 * (player->position.y * app->win->GetScale() - app->render->camera.h / 2);*/
-
-	// Draw map
-	if (app->Instance == 0) {
-		//app->map->Draw();
-		app->render->DrawTexture(TownPNG, 0, 0);
-	}
-	if (app->Instance == 1) {
-		app->tavern->Draw();
-	}
-	//DO NOT TOUCH!!!
-	if (app->Instance == 2) {
-		app->blacksmith->Draw();
-	}
-	if (app->Instance == 3) {
-		app->house->Draw();
-	}
-	if (app->Instance == 4) {
-		//app->lakedungeon->Draw();
-		app->render->DrawTexture(WaterPNG, 2500, -2500);
-	}
-	if (app->Instance == 5) {
-		//app->forestdungeon->Draw();
-		app->render->DrawTexture(ForestPNG, 0, 2000);
-	}
-	if (app->Instance == 6) {
-		app->cavedungeon->Draw();
-	}
-	if (app->Instance == 7) {
-		app->monolith->Draw();
-	}
-
-	//Lake dungeon
-	colliderPuzzle1->GetPosition(x1, y1);
-	colliderPuzzle2->GetPosition(x2, y2);
-	colliderPuzzle3->GetPosition(x3, y3);
-	colliderPuzzle4->GetPosition(x4, y4);
-	colliderPuzzle5->GetPosition(x5, y5);
-	colliderPuzzle6->GetPosition(x6, y6);
-
-	//Draw enemies lake
-
-	app->render->DrawTexture(Slime, 3384, -36);
-	app->render->DrawTexture(Slime, 3608, 28);
-	app->render->DrawTexture(Slime, 3608, -420);
-	app->render->DrawTexture(Slime, 3160, -388);
-	app->render->DrawTexture(Slime, 3192, -228);
-	app->render->DrawTexture(Slime, 2936, -836);
-	app->render->DrawTexture(Slime, 2904, -1156);
-	app->render->DrawTexture(Slime, 3224, -1156);
-	app->render->DrawTexture(Slime, 3832, -1188);
-	app->render->DrawTexture(Slime, 3672, -1028);
-	app->render->DrawTexture(Slime, 3800, -740);
-
-	app->render->DrawTexture(Lily, 3592, -265);
-	app->render->DrawTexture(Lily, 3752, -873);
-	app->render->DrawTexture(Lily, 3400, -873);
-	app->render->DrawTexture(Lily, 3208, -1033);
-	app->render->DrawTexture(Lily, 2984, -1033);
-
-	app->render->DrawTexture(Naiadon, 3400, -1876);
-
-
-	//Draw textures
-	app->render->DrawTexture(Tp, 3520, 415);
-
-	if (Pressed1 == true && Pressed2 == true && Pressed3 == true) {
-		colliderPuzzle2Block->body->SetActive(false);
-	}
-	else {
-		app->render->DrawTexture(Puzzle2Wall, 3396, -1444-32);
-		colliderPuzzle2Block->body->SetActive(true);
-	}
-
-	if (Pressed1 == true) {
-		app->render->DrawTexture(Pressed, 3040, -449);
-		
-		if (pressed1Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
-			pressed1Fx = true;
-		}
-	}
-	if (Pressed1 == false) {
-		app->render->DrawTexture(Unpressed, 3040, -449);
-		pressed1Fx = false;
-	}
-	if (Pressed2 == true) {
-		app->render->DrawTexture(Pressed, 3008, -705);
-		if (pressed2Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
-			pressed2Fx = true;
-		}
-	}
-	if (Pressed2 == false) {
-		app->render->DrawTexture(Unpressed, 3008, -705);
-		pressed2Fx = false;
-	}
-	if (Pressed3 == true) {
-		app->render->DrawTexture(Pressed, 4000, -1153);
-		if (pressed3Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
-			pressed3Fx = true;
-		}
-	}
-	if (Pressed3 == false) {
-		app->render->DrawTexture(Unpressed, 4000, -1153);
-		pressed3Fx = false;
-	}
-
-	if ((x4 >=3009 && x4 <= 3071 && y4 >= -480 && y4 <=-433) || (x5 >= 3009 && x5 <= 3071 && y5 >= -480 && y5 <= -433) || (x6 >= 3009 && x6 <= 3071 && y6 >= -480 && y6 <= -433)) {
-		Pressed1 = true;
-	}
-	else {
-		Pressed1 = false;
-	}
-	if ((x4 >= 2978 && x4 <= 3039 && y4 >= -736 && y4 <= -689) || (x5 >= 2978 && x5 <= 3039 && y5 >= -736 && y5 <= -689) || (x6 >= 2978 && x6 <= 3039 && y6 >= -736 && y6 <= -689)) {
-		Pressed2 = true;
-	}
-	else {
-		Pressed2 = false;
-	}
-	if ((x4 >= 3969 && x4 <= 4031 && y4 >= -1184 && y4 <= -1137) || (x5 >= 3969 && x5 <= 4031 && y5 >= -1184 && y5 <= -1137) || (x6 >= 3969 && x6 <= 4031 && y6 >= -1184 && y6 <= -1137)) {
-		Pressed3 = true;
-	}
-	else {
-		Pressed3 = false;
-	}
-
-	//Draw stones order
-
-	app->render->DrawTexture(Stone, x4, y4);
-	app->render->DrawTexture(Stone, x5, y5);
-	app->render->DrawTexture(Stone, x6, y6);
-
-	if (stage == 0) {
-		app->render->DrawTexture(Stone, x1, y1);
-		app->render->DrawTexture(Stone, x2, y2);
-		app->render->DrawTexture(Stone, x3, y3);
-	}
-	if (stage == 1 && colliderPuzzle1->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, x1, y1);
-		app->render->DrawTexture(Stone, x2, y2);
-		app->render->DrawTexture(Stone, x3, y3);
-	}
-	if (stage == 1 && colliderPuzzle2->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, x2, y2);
-		app->render->DrawTexture(Stone, x1, y1);
-		app->render->DrawTexture(Stone, x3, y3);
-	}
-	if (stage == 1 && colliderPuzzle3->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, x3, y3);
-		app->render->DrawTexture(Stone, x1, y1);
-		app->render->DrawTexture(Stone, x2, y2);
-	}
-	if (stage == 2 && colliderPuzzle1->body->IsActive() == false && colliderPuzzle2->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, x1, y1);
-		app->render->DrawTexture(Stone, x2, y2);
-		app->render->DrawTexture(Stone, x3, y3);
-	}
-	if (stage == 2 && colliderPuzzle1->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, x3, y3);
-		app->render->DrawTexture(Stone, x1, y1);
-		app->render->DrawTexture(Stone, x2, y2);
-	}
-	if (stage == 2 && colliderPuzzle2->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, x3, y3);
-		app->render->DrawTexture(Stone, x2, y2);
-		app->render->DrawTexture(Stone, x1, y1);
-	}
-	if (stage == 3) {
-		app->render->DrawTexture(Stone, x1, y1);
-		app->render->DrawTexture(Stone, x2, y2);
-		app->render->DrawTexture(Stone, x3, y3);
-	}
-
-	//Lake puzzle 1 stage 1
-
-	if (((x1 <= 3452 && x1 >= 3415 && y1 <=250) || (x2 <= 3452 && x2 >= 3415 && y2 <= 250) || (x3 <= 3452 && x3 >= 3415 && y3 <= 250)) && stage == 0) {
-		colliderPuzzle1Block->body->SetActive(false);
-	}
-	else if (stage == 0){
-		colliderPuzzle1Block->body->SetActive(true);
-	}
-
-	if (y1 < 210 && stage == 0) {
-		colliderPuzzle1->body->SetActive(false);
-		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
-		stage++;
-	}
-	if (y2 < 210 && stage == 0) {
-		colliderPuzzle2->body->SetActive(false);
-		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
-		stage++;
-	}
-	if (y3 < 210 && stage == 0) {
-		colliderPuzzle3->body->SetActive(false);
-		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
-		stage++;
-	}
-
-	//Lake puzzle 1 stage 2
-
-	if (((x1 <= 3452 && x1 >= 3415 && y1 <= 208) || (x2 <= 3452 && x2 >= 3415 && y2 <= 208) || (x3 <= 3452 && x3 >= 3415 && y3 <= 208)) && stage == 1) {
-		colliderPuzzle1Block->body->SetActive(false);
-	}
-	else if (stage == 1) {
-		colliderPuzzle1Block->body->SetActive(true);
-	}
-
-	if (y1 < 180 && stage == 1) {
-		colliderPuzzle1->body->SetActive(false);
-		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
-		stage++;
-	}
-	if (y2 < 180 && stage == 1) {
-		colliderPuzzle2->body->SetActive(false);
-		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
-		stage++;
-	}
-	if (y3 < 180 && stage == 1) {
-		colliderPuzzle3->body->SetActive(false);
-		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
-		stage++;
-	}
-	//Lake puzzle 1 stage 3
-
-	if (((x1 <= 3452 && x1 >= 3415 && y1 <= 175) || (x2 <= 3452 && x2 >= 3415 && y2 <= 175) || (x3 <= 3452 && x3 >= 3415 && y3 <= 175)) && stage == 2) {
-		colliderPuzzle1Block->body->SetActive(false);
-	}
-	else if (stage == 2) {
-		colliderPuzzle1Block->body->SetActive(true);
-	}
-
-	if (y1 < 150 && stage == 2) {
-		colliderPuzzle1->body->SetActive(false);
-		stage++;
-	}
-	if (y2 < 150 && stage == 2) {
-		colliderPuzzle2->body->SetActive(false);
-		stage++;
-	}
-	if (y3 < 150 && stage == 2) {
-		colliderPuzzle3->body->SetActive(false);
-		stage++;
-	}
-
-	//Forest puzzle
-	
-	if (P1Active == false) {
-		app->render->DrawTexture(Pilar1N, 736, 4304);
-	}
-	else {
-		app->render->DrawTexture(Pilar1A, 736, 4304);
-	}
-	if (P2Active == false) {
-		app->render->DrawTexture(Pilar2N, 2272, 4080);
-	}
-	else {
-		app->render->DrawTexture(Pilar2A, 2272, 4080);
-	}
-	if (P3Active == false) {
-		app->render->DrawTexture(Pilar3N, 2272, 5456);
-	}
-	else {
-		app->render->DrawTexture(Pilar3A, 2272, 5456);
-	}
-	if (P1Active == true && P2Active == true && P3Active == true) {
-		FdoorActive = true;
-	}
-	if (FdoorActive == false) {
-		app->render->DrawTexture(ForestDoor, 1216, 3376);
-	}
-	else {
-		Fdoor->body->SetActive(false);
-	}
-
 	//Cave Puzzle
 
-	//Puzzle1 Normal Draw
+//Puzzle1 Normal Draw
 
 	if (TBroken1 == false) app->render->DrawTexture(DefaultTile, -1296, 1984);
 	if (TBroken2 == false) app->render->DrawTexture(DefaultTile, -1264, 1984);
@@ -595,7 +316,7 @@ bool Scene::Update(float dt)
 	if (app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 1973 && app->scene->player->position.y <= 2008) TPressed2 = true;
 	if (app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 1973 && app->scene->player->position.y <= 2008) TPressed3 = true;
 	if (app->scene->player->position.x >= -1332 && app->scene->player->position.x <= -1290 && app->scene->player->position.y >= 2005 && app->scene->player->position.y <= 2040) TPressed4 = true;
-	if (app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >=2005 && app->scene->player->position.y <= 2040) TPressed5 = true;
+	if (app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 2005 && app->scene->player->position.y <= 2040) TPressed5 = true;
 	if (app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 2005 && app->scene->player->position.y <= 2040) TPressed6 = true;
 	if (app->scene->player->position.x >= -1332 && app->scene->player->position.x <= -1290 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) TPressed7 = true;
 	if (app->scene->player->position.x >= -1300 && app->scene->player->position.x <= -1258 && app->scene->player->position.y >= 2037 && app->scene->player->position.y <= 2072) TPressed8 = true;
@@ -979,22 +700,298 @@ bool Scene::Update(float dt)
 	if ((app->scene->player->position.x >= -1268 && app->scene->player->position.x <= -1226 && app->scene->player->position.y >= 277 && app->scene->player->position.y <= 312) && TBroken70 == true) RestartCave();
 	if ((app->scene->player->position.x >= -1236 && app->scene->player->position.x <= -1194 && app->scene->player->position.y >= 277 && app->scene->player->position.y <= 312) && TBroken71 == true) RestartCave();
 
+
+
+    // Draw map
+	if (app->Instance == 0) {
+		//app->map->Draw();
+		app->render->DrawTexture(TownPNG, 0, 0);
+	}
+	if (app->Instance == 1) {
+		app->tavern->Draw();
+	}
+	//DO NOT TOUCH!!!
+	if (app->Instance == 2) {
+		app->blacksmith->Draw();
+	}
+	if (app->Instance == 3) {
+		app->house->Draw();
+	}
+	if (app->Instance == 4) {
+		//app->lakedungeon->Draw();
+		app->render->DrawTexture(WaterPNG, 2500, -2500);
+	}
+	if (app->Instance == 5) {
+		//app->forestdungeon->Draw();
+		app->render->DrawTexture(ForestPNG, 0, 2000);
+	}
+	if (app->Instance == 6) {
+		app->cavedungeon->Draw();
+	}
+	if (app->Instance == 7) {
+		app->monolith->Draw();
+	}
+
+	//Lake dungeon
+	colliderPuzzle1->GetPosition(x1, y1);
+	colliderPuzzle2->GetPosition(x2, y2);
+	colliderPuzzle3->GetPosition(x3, y3);
+	colliderPuzzle4->GetPosition(x4, y4);
+	colliderPuzzle5->GetPosition(x5, y5);
+	colliderPuzzle6->GetPosition(x6, y6);
+
+	//Draw enemies lake
+
+	app->render->DrawTexture(Slime, 3384, -36);
+	app->render->DrawTexture(Slime, 3608, 28);
+	app->render->DrawTexture(Slime, 3608, -420);
+	app->render->DrawTexture(Slime, 3160, -388);
+	app->render->DrawTexture(Slime, 3192, -228);
+	app->render->DrawTexture(Slime, 2936, -836);
+	app->render->DrawTexture(Slime, 2904, -1156);
+	app->render->DrawTexture(Slime, 3224, -1156);
+	app->render->DrawTexture(Slime, 3832, -1188);
+	app->render->DrawTexture(Slime, 3672, -1028);
+	app->render->DrawTexture(Slime, 3800, -740);
+
+	app->render->DrawTexture(Lily, 3592, -265);
+	app->render->DrawTexture(Lily, 3752, -873);
+	app->render->DrawTexture(Lily, 3400, -873);
+	app->render->DrawTexture(Lily, 3208, -1033);
+	app->render->DrawTexture(Lily, 2984, -1033);
+
+	app->render->DrawTexture(Naiadon, 3400, -1876);
+
+
+	//Draw textures
+	app->render->DrawTexture(Tp, 3520, 415);
+
+	if (Pressed1 == true && Pressed2 == true && Pressed3 == true) {
+		colliderPuzzle2Block->body->SetActive(false);
+	}
+	else {
+		app->render->DrawTexture(Puzzle2Wall, 3396, -1444-32);
+		colliderPuzzle2Block->body->SetActive(true);
+	}
+
+	if (Pressed1 == true) {
+		app->render->DrawTexture(Pressed, 3040, -449);
+		
+		if (pressed1Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			pressed1Fx = true;
+		}
+	}
+	if (Pressed1 == false) {
+		app->render->DrawTexture(Unpressed, 3040, -449);
+		pressed1Fx = false;
+	}
+	if (Pressed2 == true) {
+		app->render->DrawTexture(Pressed, 3008, -705);
+		if (pressed2Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			pressed2Fx = true;
+		}
+	}
+	if (Pressed2 == false) {
+		app->render->DrawTexture(Unpressed, 3008, -705);
+		pressed2Fx = false;
+	}
+	if (Pressed3 == true) {
+		app->render->DrawTexture(Pressed, 4000, -1153);
+		if (pressed3Fx == false) {
+			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			pressed3Fx = true;
+		}
+	}
+	if (Pressed3 == false) {
+		app->render->DrawTexture(Unpressed, 4000, -1153);
+		pressed3Fx = false;
+	}
+
+	if ((x4 >=3009 && x4 <= 3071 && y4 >= -480 && y4 <=-433) || (x5 >= 3009 && x5 <= 3071 && y5 >= -480 && y5 <= -433) || (x6 >= 3009 && x6 <= 3071 && y6 >= -480 && y6 <= -433)) {
+		Pressed1 = true;
+	}
+	else {
+		Pressed1 = false;
+	}
+	if ((x4 >= 2978 && x4 <= 3039 && y4 >= -736 && y4 <= -689) || (x5 >= 2978 && x5 <= 3039 && y5 >= -736 && y5 <= -689) || (x6 >= 2978 && x6 <= 3039 && y6 >= -736 && y6 <= -689)) {
+		Pressed2 = true;
+	}
+	else {
+		Pressed2 = false;
+	}
+	if ((x4 >= 3969 && x4 <= 4031 && y4 >= -1184 && y4 <= -1137) || (x5 >= 3969 && x5 <= 4031 && y5 >= -1184 && y5 <= -1137) || (x6 >= 3969 && x6 <= 4031 && y6 >= -1184 && y6 <= -1137)) {
+		Pressed3 = true;
+	}
+	else {
+		Pressed3 = false;
+	}
+
+	//Draw stones order
+
+	app->render->DrawTexture(Stone, x4, y4);
+	app->render->DrawTexture(Stone, x5, y5);
+	app->render->DrawTexture(Stone, x6, y6);
+
+	if (stage == 0) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 1 && colliderPuzzle1->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 1 && colliderPuzzle2->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 1 && colliderPuzzle3->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x3, y3);
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+	}
+	if (stage == 2 && colliderPuzzle1->body->IsActive() == false && colliderPuzzle2->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+	if (stage == 2 && colliderPuzzle1->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x3, y3);
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+	}
+	if (stage == 2 && colliderPuzzle2->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
+		app->render->DrawTexture(Stone, x3, y3);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x1, y1);
+	}
+	if (stage == 3) {
+		app->render->DrawTexture(Stone, x1, y1);
+		app->render->DrawTexture(Stone, x2, y2);
+		app->render->DrawTexture(Stone, x3, y3);
+	}
+
+	//Lake puzzle 1 stage 1
+
+	if (((x1 <= 3452 && x1 >= 3415 && y1 <=250) || (x2 <= 3452 && x2 >= 3415 && y2 <= 250) || (x3 <= 3452 && x3 >= 3415 && y3 <= 250)) && stage == 0) {
+		colliderPuzzle1Block->body->SetActive(false);
+	}
+	else if (stage == 0){
+		colliderPuzzle1Block->body->SetActive(true);
+	}
+
+	if (y1 < 210 && stage == 0) {
+		colliderPuzzle1->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
+		stage++;
+	}
+	if (y2 < 210 && stage == 0) {
+		colliderPuzzle2->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
+		stage++;
+	}
+	if (y3 < 210 && stage == 0) {
+		colliderPuzzle3->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,4.5 }, 0);
+		stage++;
+	}
+
+	//Lake puzzle 1 stage 2
+
+	if (((x1 <= 3452 && x1 >= 3415 && y1 <= 208) || (x2 <= 3452 && x2 >= 3415 && y2 <= 208) || (x3 <= 3452 && x3 >= 3415 && y3 <= 208)) && stage == 1) {
+		colliderPuzzle1Block->body->SetActive(false);
+	}
+	else if (stage == 1) {
+		colliderPuzzle1Block->body->SetActive(true);
+	}
+
+	if (y1 < 180 && stage == 1) {
+		colliderPuzzle1->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
+		stage++;
+	}
+	if (y2 < 180 && stage == 1) {
+		colliderPuzzle2->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
+		stage++;
+	}
+	if (y3 < 180 && stage == 1) {
+		colliderPuzzle3->body->SetActive(false);
+		colliderPuzzle1Block->body->SetTransform({ 107.5,3.5 }, 0);
+		stage++;
+	}
+	//Lake puzzle 1 stage 3
+
+	if (((x1 <= 3452 && x1 >= 3415 && y1 <= 175) || (x2 <= 3452 && x2 >= 3415 && y2 <= 175) || (x3 <= 3452 && x3 >= 3415 && y3 <= 175)) && stage == 2) {
+		colliderPuzzle1Block->body->SetActive(false);
+	}
+	else if (stage == 2) {
+		colliderPuzzle1Block->body->SetActive(true);
+	}
+
+	if (y1 < 150 && stage == 2) {
+		colliderPuzzle1->body->SetActive(false);
+		stage++;
+	}
+	if (y2 < 150 && stage == 2) {
+		colliderPuzzle2->body->SetActive(false);
+		stage++;
+	}
+	if (y3 < 150 && stage == 2) {
+		colliderPuzzle3->body->SetActive(false);
+		stage++;
+	}
+
+	//Forest puzzle
+	
+	if (P1Active == false) {
+		app->render->DrawTexture(Pilar1N, 736, 4304);
+	}
+	else {
+		app->render->DrawTexture(Pilar1A, 736, 4304);
+	}
+	if (P2Active == false) {
+		app->render->DrawTexture(Pilar2N, 2272, 4080);
+	}
+	else {
+		app->render->DrawTexture(Pilar2A, 2272, 4080);
+	}
+	if (P3Active == false) {
+		app->render->DrawTexture(Pilar3N, 2272, 5456);
+	}
+	else {
+		app->render->DrawTexture(Pilar3A, 2272, 5456);
+	}
+	if (P1Active == true && P2Active == true && P3Active == true) {
+		FdoorActive = true;
+	}
+	if (FdoorActive == false) {
+		app->render->DrawTexture(ForestDoor, 1216, 3376);
+	}
+	else {
+		Fdoor->body->SetActive(false);
+	}
+
 	//Cave Blocks
 	
 	if (B1Block == false) {
-		app->render->DrawTexture(Blocking, -1264, 1952);
+		app->render->DrawTexture(Blocking, -1264, 1952-64);
 	}
 	else {
 		Block1->body->SetActive(false);
 	}
 	if (B2Block == false) {
-		app->render->DrawTexture(Blocking, -1424, 1376);
+		app->render->DrawTexture(Blocking, -1424, 1376-64);
 	}
 	else {
 		Block2->body->SetActive(false);
 	}
 	if (B3Block == false) {
-		app->render->DrawTexture(Blocking, -1360, 160);
+		app->render->DrawTexture(Blocking, -1360, 160-64);
 	}
 	else {
 		Block3->body->SetActive(false);
