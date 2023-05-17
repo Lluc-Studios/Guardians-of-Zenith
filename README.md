@@ -31,7 +31,17 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 - **A**: Select
 
 ## Features
-
+- Animated logo screen & title screen.
+- 3 Playable characters with differents stats, level scaling and ultimate attacks.
+- Town map, 4 location maps, 3 dungeons. 
+- Puzzles in each dungeon.
+- Enemies & boss in water dungeon.
+- Turn-based battle system, with strengths and weaknesses, states, ultimate attacks, inventory.
+- NPCs with branching dialogs.
+- Missions.
+- Pause menu, options menu, inventory menu.
+- Music for different zones and fx for different actions.
+- Gamepad integration.
 
 ## Debug
 
@@ -39,6 +49,8 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 - F1: Skip intro and main menu
 - F2: Show collisions
+- F5: Save game
+- 56: Load game
 - F9: Exit game
 - F10: God mode
 - Y: Level Up Characters
