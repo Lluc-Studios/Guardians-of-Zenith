@@ -3,6 +3,9 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 ## Media
 ![Town](https://user-images.githubusercontent.com/99950357/233486706-97faa5a2-f088-4c95-8cc4-85acd46a7afd.PNG)
+![Dialogue](https://github.com/Lluc-Studios/Guardians-of-Zenith/assets/99950357/201f418c-d835-40aa-a5ad-6054f5a72b10)
+![Combat](https://github.com/Lluc-Studios/Guardians-of-Zenith/assets/99950357/69510eb6-02e1-4d5e-be0a-7c8a00d2673e)
+![Puzzle](https://github.com/Lluc-Studios/Guardians-of-Zenith/assets/99950357/d2cbcb7e-f2f7-4137-b704-ace5969a194d)
 
 ## Controls
 ### Keyboard & mouse
