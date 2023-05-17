@@ -38,7 +38,7 @@ bool Intro::Start()
 	//logo = app->tex->Load("Assets/Textures/Scenes/LlucStudios.png");
 	introFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Intro_Emanem.wav");
 	menuMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Rocky Tundra OST Version.ogg");
-	//logoanim = app->tex->Load("Assets/Textures/Scenes/anim_logo.png");
+	logoanim = app->tex->Load("Assets/Textures/Scenes/anim_logo.png");
 
 	app->audio->PlayFxWithVolume(introFx);
 
@@ -54,8 +54,8 @@ bool Intro::Start()
 	fadeo.PushBack({ 0, 1080, 640, 360 }); //10
 	fadeo.PushBack({ 640, 1080, 640, 360 }); //11
 	fadeo.PushBack({ 1280, 1080, 640, 360 }); //12
-	fadeo.loop = true;
-	fadeo.speed = 0.04f;
+	fadeo.loop = false;
+	fadeo.speed = 0.08f;
 
 	currentAnim = &fadeo;
 
@@ -70,7 +70,7 @@ bool Intro::PreUpdate()
 
 // Called each loop iteration
 bool Intro::Update(float dt)
-{
+{	
 	//Initial fade in
 	if (fadeIn == true) {
 		if (fading >= 1) { fading--; };
@@ -79,7 +79,10 @@ bool Intro::Update(float dt)
 		if (fading <= 254) { fading++; };
 	}
 
-	app->render->DrawTexture(logo,0,0);
+	currentAnim->Update();
+	SDL_Rect rect = currentAnim->GetCurrentFrame();
+
+	app->render->DrawTexture(logoanim, 0, 0, &rect);
 	app->render->DrawRectangle({ 0,0,5000,5000 }, 0, 0, 0, fading);
 	counter++;
 
