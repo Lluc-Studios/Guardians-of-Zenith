@@ -1681,7 +1681,7 @@ bool Combat::Update(float dt)
 						EXPwon = 0;
 						app->audio->PlayFxWithVolume(looseFX, 0, 70);
 						//Audio
-						app->audio->Audio_Instance(SaveInstance);
+						app->audio->Audio_Instance(app->Instance);
 						
 						ExitCombat();
 					}
@@ -4231,13 +4231,13 @@ bool Combat::PostUpdate()
 		app->audio->PlayFxWithVolume(winFX, 0, 70);
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			//Audio
-			app->audio->Audio_Instance(SaveInstance);
+			app->audio->Audio_Instance(app->Instance);
 			ExitCombat();
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
 			//Audio
-			app->audio->Audio_Instance(SaveInstance);
+			app->audio->Audio_Instance(app->Instance);
 			ExitCombat();
 			A_pressed = true;
 		}

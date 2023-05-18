@@ -1079,7 +1079,7 @@ bool Scene::Update(float dt)
 				app->scene->player->tp = true;
 				fade = false;
 			}
-			app->audio->Audio_Instance(app->scene->player->future_instance);
+			app->audio->Audio_Instance(app->Instance);
 		}
 	}
 	if (fading > 0 && fade == false) {
