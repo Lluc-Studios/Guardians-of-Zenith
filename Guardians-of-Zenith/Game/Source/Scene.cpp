@@ -1090,11 +1090,20 @@ bool Scene::Update(float dt)
 	}
 	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
 
-	//Npc draw
-	app->render->DrawTexture(NPC1, 148, -280, &N1T);
-	app->render->DrawTexture(NPC2, 224, -710, &N2T);
-	app->render->DrawTexture(NPC3, 483, 545, &N3T);
-	app->render->DrawTexture(LAPIS, 1110, 790, &LAPIS1);
+	//Npc drawç
+	//Town
+	if (app->Instance == 0) {
+		app->render->DrawTexture(NPC3, 483, 545, &N3T);
+		app->render->DrawTexture(LAPIS, 1110, 790, &LAPIS1);
+	}
+	//Tavern
+	if (app->Instance == 1) {
+		app->render->DrawTexture(NPC1, 148, -280, &N1T);
+	}
+	//Blacksmith
+	if (app->Instance == 2) {
+		app->render->DrawTexture(NPC2, 224, -710, &N2T);
+	}
 
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
 	{
@@ -1232,7 +1241,8 @@ bool Scene::PostUpdate()
 
 	for (int i = 0; i < 7; i++)
 	{
-		if(itemPicked[i]==false)
+		if(itemPicked[i]==false && app->Instance != 1
+								&& app->Instance != 3)
 			app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
 		else {
 			itemBody[i]->body->SetActive(false);
