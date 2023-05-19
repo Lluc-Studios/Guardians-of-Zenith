@@ -10,28 +10,35 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 ## Controls
 ### Keyboard & mouse
 **In map:**
-- **WASD** or **Arrow Keys**: Move
-- **E**: Interact with NPC's
-- **Space** or **Enter**: Finish dialogue
+| Movement Player | Interact with NPC's | Finish dialogue|
+|---|---|---|
+|WASD|E|SPACE|
+|Arrow Keys||ENTER|
 
 **Combat UI:**
-- **W/S** or **Arrow Keys** : Up/Down
-- **Space** or **Enter**: Select
-- **Q**: Back
+| Up/Down | Select | Back|
+|---|---|---|
+|W/S|SPACE|Q|
+|Arrow Keys|ENTER||
 
 **Menus UI:**
-- **ESC (ingame)**: Pause menu
-- Mouse to move in menus
+
+|Pause menu| Navigate Menus |
+|---|---|
+|ESC (ingame)|Mouse|
 
 ### Gamepad
 **In map:**
-- **Left joystick**: Move
-- **A**: Interact with NPC's
-- **B**: Finish dialogue
+
+| Movement Player | Interact with NPC's | Finish dialogue|
+|---|---|---|
+|Left joystick|A|B|
 
 **Combat UI:**
-- **Left joystick**: Up/Down
-- **A**: Select
+
+| Up/Down | Select | Back|
+|---|---|---|
+|Left joystick|A||
 
 ## Features
 - Animated logo screen & title screen.
@@ -50,62 +57,33 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 **General**
 
-- F1: Skip intro and main menu
-- F2: Show collisions
-- F5: Save game
-- 56: Load game
-- F9: Exit game
-- F10: God mode
-- Y: Level Up Characters
+|  Skip intro and main menu | Show collisions | Save game|Load game|
+|---|---|---|---|
+|F1|F2|F5|F6|
+
+|  Exit game |  God mode |Level Up Characters|
+|---|---|---|
+|F9|F10|Level Up Characters|
 
 **Combat**
 
-- C: Start Combat
-- T: Skip Combat Turn
-- F: Test Freeze status
-- K: To lose combat
+|  Start Combat | Skip Combat Turn | Test Freeze status|To lose combat|
+|---|---|---|---|
+|C|T|F|K|
 
 ## Developers
 
-**Sergio Corona Gómez**
-- Team Lead, Management
-- Github account: [Seregero00](https://github.com/seregero00)
+| Sergio Corona Gómez | Iván Bermúdez Sagra | Marc Escandell Alonso | Joan Giol Pozo | Adrian Ramirez Perez |
+|---|---|---|---|---|
+| Team Lead | Design |Design | Design | Design |
+|   Management    |  Management  | Audio | Code | UI |
+| Github account: [Seregero00](https://github.com/seregero00) | Github account: [IvanBSupc](https://github.com/IvanBSupc) | Github account: [MrMonkey420](https://github.com/MrMonkey420) | Github account: [GHOSTVCL](https://github.com/GHOSTVCL) |Github account: [AdriRamirez](https://github.com/AdriRamirez) |
 
-**Enric Arxer Cortés**
-- Art, Code
-- Github account: [Luxary-92](https://github.com/Luxary-92)
-
-**Iván Bermúdez Sagra**
-- Management, Design
-- Github account: [IvanBSupc](https://github.com/IvanBSupc)
-
-**Nixon Correa Albarracín**
-- Code, QA
-- Github account: [Nixonbit3](https://github.com/Nixonbit3)
-
-**Marc Escandell Alonso**
-- Design, Audio
-- Github account: [MrMonkey420](https://github.com/MrMonkey420)
-
-**Lluc Estruch Andreu**
-- Code, QA
-- Github account: [Llucaieaie](https://github.com/Llucaieaie)
-
-**Joan Giol Pozo**
-- Design, Code
-- Github account: [GHOSTVCL](https://github.com/GHOSTVCL)
-
-**Daniel Mañas Calvo**
-- Art, UI
-- Github account: [Hacienda69](https://github.com/Hacienda69)
-
-**Maksym Polupan**
-- Code, UI
-- Github account: [Maksym203](https://github.com/Maksym203)
-
-**Adrian Ramirez Perez**
-- Design, UI
-- Github account: [AdriRamirez](https://github.com/AdriRamirez)
+| Lluc Estruch Andreu | Nixon Correa Albarracín  |Maksym Polupan|Enric Arxer Cortés|Daniel Mañas Calvo|
+|---|---|---|---|---|
+| QA | QA |UI|Art|Art|
+|Code|Code|Code|Code|UI|
+| Github account: [Llucaieaie](https://github.com/Llucaieaie) | Github account: [Nixonbit3](https://github.com/Nixonbit3) |Github account: [Maksym203](https://github.com/Maksym203)|Github account: [Luxary-92](https://github.com/Luxary-92)|Github account: [Hacienda69](https://github.com/Hacienda69)|
 
 ## Wiki Index sections
 
