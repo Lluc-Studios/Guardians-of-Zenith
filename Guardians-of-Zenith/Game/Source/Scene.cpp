@@ -300,9 +300,10 @@ bool Scene::Update(float dt)
 		}
 		pathActive = false;
 	}
+
 	//Cave Puzzle
 
-//Puzzle1 Normal Draw
+	//Puzzle1 Normal Draw
 
 	if (TBroken1 == false) app->render->DrawTexture(DefaultTile, -1296, 1984);
 	if (TBroken2 == false) app->render->DrawTexture(DefaultTile, -1264, 1984);
