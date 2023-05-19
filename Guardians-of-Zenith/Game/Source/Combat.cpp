@@ -4446,7 +4446,7 @@ bool Combat::PostUpdate()
 	if (option == COMBATMENU::NOITEM) {
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "No items left", 16);
 
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP || app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_UP) {
 			option = COMBATMENU::INVENTORY1;
 			AllySelect = false;
 		}

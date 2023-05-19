@@ -445,7 +445,8 @@ bool Player::Update(float dt)
 	{
 		app->render->DrawTexture(Dialogue, position.x - 270, position.y - 160);
 
-		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN
+			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			isDialogue = false;
 		}
