@@ -739,6 +739,7 @@ bool Scene::Update(float dt)
 
 
 	//Lake dungeon
+	app->render->DrawTexture(Tp, 3520, 415);
 	//Draw enemies lake
 	app->render->DrawTexture(Slime, 3384, -36);
 	app->render->DrawTexture(Slime, 3608, 28);
@@ -793,8 +794,7 @@ bool Scene::Update(float dt)
 		Fdoor->body->SetActive(false);
 	}
 
-	//Cave Blocks
-	
+	//Cave Blocks	
 	if (B1Block == false) {
 		app->render->DrawTexture(Blocking, -1264, 1952-64);
 	}
@@ -815,7 +815,6 @@ bool Scene::Update(float dt)
 	}
 
 	//Cave blocks all pressed
-
 	if (app->scene->player->position.y > 2149) {
 		Reload = true;
 		block1Fx = false;
@@ -880,7 +879,7 @@ bool Scene::Update(float dt)
 		fading += 10;
 		if (fading >= 255) {
 			fading == 255;
-			if (app->scene->player->lose = true) {
+			if (app->scene->player->lose == true) {
 				app->Instance = app->scene->player->future_instance;
 				app->scene->player->tpHouse = true;
 				app->scene->player->lose = false;
@@ -1295,6 +1294,7 @@ void Scene::RestartCave()
 
 bool Scene::LoadState(pugi::xml_node& data) {
 
+	//Lake Puzzle
 	rock_1[0] = data.child("LakePuzzle").attribute("Rock_1_x").as_int();
 	rock_1[1] = data.child("LakePuzzle").attribute("Rock_1_y").as_int();
 	rock_2[0] = data.child("LakePuzzle").attribute("Rock_2_x").as_int();
@@ -1307,28 +1307,41 @@ bool Scene::LoadState(pugi::xml_node& data) {
 	rock_5[1] = data.child("LakePuzzle").attribute("Rock_5_y").as_int();
 	rock_6[0] = data.child("LakePuzzle").attribute("Rock_6_x").as_int();
 	rock_6[1] = data.child("LakePuzzle").attribute("Rock_6_y").as_int();
-
+	stage = data.child("LakePuzzle").attribute("Stage").as_int();
 	Puzzle_Lake();
+
+	//Forest Puzzle
+	P1Active = data.child("ForestPuzzle").attribute("Tower_1").as_bool();
+	P2Active = data.child("ForestPuzzle").attribute("Tower_2").as_bool();
+	P3Active = data.child("ForestPuzzle").attribute("Tower_3").as_bool();
+
 
 	return true;
 }
 
 bool Scene::SaveState(pugi::xml_node& data) {
 
-	//Lake Puzzles
+	//Lake Puzzle
 	pugi::xml_node LakePuzzle = data.append_child("LakePuzzle");
-	data.child("LakePuzzle").append_attribute("Rock_1_x") = rock_1[0];
-	data.child("LakePuzzle").append_attribute("Rock_1_y") = rock_1[1];
-	data.child("LakePuzzle").append_attribute("Rock_2_x") = rock_2[0];
-	data.child("LakePuzzle").append_attribute("Rock_2_y") = rock_2[1];
-	data.child("LakePuzzle").append_attribute("Rock_3_x") = rock_3[0];
-	data.child("LakePuzzle").append_attribute("Rock_3_y") = rock_3[1];
-	data.child("LakePuzzle").append_attribute("Rock_4_x") = rock_4[0];
-	data.child("LakePuzzle").append_attribute("Rock_4_y") = rock_4[1];
-	data.child("LakePuzzle").append_attribute("Rock_5_x") = rock_5[0];
-	data.child("LakePuzzle").append_attribute("Rock_5_y") = rock_5[1];
-	data.child("LakePuzzle").append_attribute("Rock_6_x") = rock_6[0];
-	data.child("LakePuzzle").append_attribute("Rock_6_y") = rock_6[1];
+	LakePuzzle.append_attribute("Rock_1_x") = rock_1[0];
+	LakePuzzle.append_attribute("Rock_1_y") = rock_1[1];
+	LakePuzzle.append_attribute("Rock_2_x") = rock_2[0];
+	LakePuzzle.append_attribute("Rock_2_y") = rock_2[1];
+	LakePuzzle.append_attribute("Rock_3_x") = rock_3[0];
+	LakePuzzle.append_attribute("Rock_3_y") = rock_3[1];
+	LakePuzzle.append_attribute("Rock_4_x") = rock_4[0];
+	LakePuzzle.append_attribute("Rock_4_y") = rock_4[1];
+	LakePuzzle.append_attribute("Rock_5_x") = rock_5[0];
+	LakePuzzle.append_attribute("Rock_5_y") = rock_5[1];
+	LakePuzzle.append_attribute("Rock_6_x") = rock_6[0];
+	LakePuzzle.append_attribute("Rock_6_y") = rock_6[1];
+	LakePuzzle.append_attribute("Stage") = stage;
+
+	//Forest
+	pugi::xml_node ForestPuzzle = data.append_child("ForestPuzzle");
+	data.child("ForestPuzzle").append_attribute("Tower_1") = P1Active;
+	data.child("ForestPuzzle").append_attribute("Tower_2") = P2Active;
+	data.child("ForestPuzzle").append_attribute("Tower_3") = P3Active;
 
 	return true;
 }
@@ -1344,7 +1357,6 @@ void Scene::Puzzle_Lake() {
 	colliderPuzzle6->GetPosition(rock_6[0], rock_6[1]);
 
 	//Draw textures
-	app->render->DrawTexture(Tp, 3520, 415);
 
 	if (Pressed1 == true && Pressed2 == true && Pressed3 == true) {
 		colliderPuzzle2Block->body->SetActive(false);

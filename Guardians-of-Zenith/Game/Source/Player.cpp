@@ -606,16 +606,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision WALL");
 
 		break; 
-	//case ColliderType::TELEPORT:
-	//	if (physB->id == 1) {
-	//		tp1 = true; 
-	//	}
-	//	else if (physB->id == 2) {
-	//		tp2 = true; 
-	//	}
-	//	app->audio->PlayFxWithVolume(tpFX, 0, 50);
-	//	LOG("COLLISION TP: %i, position: %i, %i", physB->id);
-	//	break;
+
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
@@ -1108,16 +1099,6 @@ void Player::debugKeys() {
 		}
 	}
 
-	//if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN) {
-	//	position.x = parameters.attribute("x").as_int();
-	//	position.y = parameters.attribute("y").as_int();
-	//	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
-	//}
-
-	//if (app->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN) {
-	//	alive = false;
-	//}
-
 	if (app->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN)
 	{
 		limitFPS = !limitFPS;
@@ -1143,6 +1124,36 @@ void Player::debugKeys() {
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg"); 
 		app->combat->StartCombat();
 	}
+
+	//Teleport Daigeons
+	//Lake
+	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN)
+	{
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(4, tp7);
+			auxBool = true;
+		}
+	}
+	//Forest
+	if (app->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+	{
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(5, tp9);
+			auxBool = true;
+		}
+	}
+	//Cave
+	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+	{
+		if (auxBool == false) {
+			app->scene->fade = true;
+			Teleport_Point(6, tp11);
+			auxBool = true;
+		}
+	}
+
 }
 
 void Player::Death() {

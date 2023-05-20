@@ -155,7 +155,7 @@ public:
 	int tp6[2] = { 560 ,320 };
 	//Lake Daugeon
 	int tp7[2] = { 3450 ,420 };
-	int tp8[2] = { 978, -853 };
+	int tp8[2] = { 1009, -844 };
 	//Forest Daugeon
 	int tp9[2] = { 1473,5648};
 	int tp10[2] = { 1362,-1022 };
@@ -165,7 +165,6 @@ public:
 	//Monoliths
 	int tp13[2] = { 1367,-94 };
 	int tp14[2] = { 1121,249 };
-
 	int tpHouse_pos[2] = { -497,118 };
 
 	bool lose = false; 

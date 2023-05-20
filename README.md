@@ -65,6 +65,10 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 |---|---|---|
 |F9|F10|Level Up Characters|
 
+|  Teleport to Lake Dungeon |  Teleport to Forest Dungeon |Teleport to Cave Dungeon|
+|---|---|---|
+|I|O|P|
+
 **Combat**
 
 |  Start Combat | Skip Combat Turn | Test Freeze status|To lose combat|
