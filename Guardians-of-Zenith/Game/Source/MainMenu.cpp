@@ -150,6 +150,7 @@ bool MainMenu::Update(float dt)
 	//Condicional para dibujar los ajustes cuando se seleccionan las 'opciones'
 	if (options == true) {
 		Options(0,0);
+		app->mainmenu->Options(0,0);
 	}
 	//Funcion para detectar sobre que boton esta el ratón
 	if (options == false) {

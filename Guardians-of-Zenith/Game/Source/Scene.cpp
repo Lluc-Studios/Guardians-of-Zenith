@@ -760,7 +760,7 @@ bool Scene::Update(float dt)
 
 	app->render->DrawTexture(Naiadon, 3400, -1876);
 
-	//Puzzle
+	//Puzzle Lake
 	Puzzle_Lake();
 
 	//Forest Dungeon
@@ -880,10 +880,9 @@ bool Scene::Update(float dt)
 		fading += 10;
 		if (fading >= 255) {
 			fading == 255;
-
 			if (app->scene->player->lose = true) {
 				app->Instance = app->scene->player->future_instance;
-				app->scene->player->tp = true;
+				app->scene->player->tpHouse = true;
 				app->scene->player->lose = false;
 				fade = false;
 			}
@@ -1335,6 +1334,7 @@ bool Scene::SaveState(pugi::xml_node& data) {
 }
 
 void Scene::Puzzle_Lake() {
+
 	//Draw Coliders
 	colliderPuzzle1->GetPosition(rock_1[0], rock_1[1]);
 	colliderPuzzle2->GetPosition(rock_2[0], rock_2[1]);
@@ -1455,7 +1455,6 @@ void Scene::Puzzle_Lake() {
 	}
 
 	//Lake puzzle 1 stage 1
-
 	if (((rock_1[0] <= 3452 && rock_1[0] >= 3415 && rock_1[1] <= 250) || (rock_2[0] <= 3452 && rock_2[0] >= 3415 && rock_2[1] <= 250) || (rock_3[0] <= 3452 && rock_3[0] >= 3415 && rock_3[1] <= 250)) && stage == 0) {
 		colliderPuzzle1Block->body->SetActive(false);
 	}

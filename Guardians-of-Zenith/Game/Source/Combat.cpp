@@ -4260,6 +4260,7 @@ bool Combat::PostUpdate()
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
 			EXPwon = 0;
+			app->scene->player->lose = true;
 			app->scene->fade = true;
 			app->scene->player->Teleport_Point(3, app->scene->player->tpHouse_pos);
 			ExitCombat();

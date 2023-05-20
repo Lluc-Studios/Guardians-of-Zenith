@@ -265,15 +265,15 @@ bool Player::Update(float dt)
 
 	//Tp when you lose a combat
 	if (tpHouse) {
-		position.x = tpHouse_pos[0];
-		position.y = tpHouse_pos[1];
-		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x - width / 2), PIXEL_TO_METERS(position.y - height / 2) }, 0);
 		laurea.chp = laurea.hp;
 		laurea.cmp = laurea.mp;
 		lapis.chp = lapis.hp;
 		lapis.cmp = lapis.mp;
 		lucca.chp = lucca.hp;
 		lucca.cmp = lucca.mp;
+		position.x = tpHouse_pos[0];
+		position.y = tpHouse_pos[1];
+		pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0);
 		tpHouse = false;
 	}
 

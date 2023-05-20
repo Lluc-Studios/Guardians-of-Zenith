@@ -166,7 +166,7 @@ public:
 	int tp13[2] = { 1367,-94 };
 	int tp14[2] = { 1121,249 };
 
-	int tpHouse_pos[2] = { -520,150 };
+	int tpHouse_pos[2] = { -497,118 };
 
 	bool lose = false; 
 

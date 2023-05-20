@@ -33,14 +33,6 @@ bool LakeDungeon::Awake(pugi::xml_node& config)
     mapFileName = "Assets/Maps/Water_Dungeon.tmx";
     mapFolder = "Assets/Maps/";
 
-    ////Initialize the path
-    //frontier.Push(iPoint(20, 14), 0);
-    //visited.Add(iPoint(20, 14));
-    //breadcrumbs.Add(iPoint(20, 14));
-
-    //// L09 DONE 4: Initialize destination point
-    //destination = iPoint(25, 14);
-
     return ret;
 }
 
@@ -62,11 +54,6 @@ void LakeDungeon::Draw()
         imageLayerItem = imageLayerItem->next;
     }
    
-    //app->render->DrawTexture(BGtexture,  -1 * (app->render->camera.x / (int)app->win->GetScale()),-1 * (app->render->camera.y / (int)app->win->GetScale()));
-   // app->render->DrawRectangle({ -1 * (app->render->camera.x / (int)app->win->GetScale()),-1 * (app->render->camera.y / (int)app->win->GetScale()),app->render->camera.w,app->render->camera.h }, 0, 255, 0, 50);
-
-
-
     ListItem<MapLayerL*>* mapLayerItem;
     mapLayerItem = mapData.maplayers.start;
 
