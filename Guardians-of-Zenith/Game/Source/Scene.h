@@ -48,6 +48,8 @@ public:
 
 	void RestartCave();
 
+	void Puzzle_Lake();
+
 public:
 
 	//fading
@@ -216,7 +218,7 @@ private:
 	PhysBody* colliderPuzzle1Block;
 	PhysBody* colliderPuzzle2Block;
 
-	int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6;
+	int rock_1[2], rock_2[2], rock_3[2], rock_4[2], rock_5[2], rock_6[2];
 
 	//Puzzle stage
 	int stage = 0;

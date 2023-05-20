@@ -6,9 +6,11 @@
 	<audio />
 	<intro />
 	<anonymous />
-	<scene />
+	<scene>
+		<LakePuzzle Rock_1_x="3431" Rock_1_y="209" Rock_2_x="3423" Rock_2_y="179" Rock_3_x="3428" Rock_3_y="149" Rock_4_x="3760" Rock_4_y="-305" Rock_5_x="3920" Rock_5_y="-721" Rock_6_x="2864" Rock_6_y="-1297" />
+	</scene>
 	<entitymanager>
-		<player_stats facing="3" position_x="-1293" position_y="1683" instance="6" />
+		<player_stats facing="4" position_x="3376" position_y="327" instance="4" />
 		<laurea_stats laurea_CHP="0" laurea_CMP="0" laurea_LVL="0" laurea_EXP="0" />
 		<lapis_stats lapis_CHP="0" lapis_CMP="0" lapis_LVL="0" lapis_EXP="0" />
 		<lucca_stats lucca_CHP="0" lucca_CMP="0" lucca_LVL="0" lucca_EXP="0" />
@@ -30,6 +32,6 @@
 	<guiManager />
 	<Inventory />
 	<renderer>
-		<camera x="3230" y="-2990" />
+		<camera x="-6108" y="-278" />
 	</renderer>
 </save_state>

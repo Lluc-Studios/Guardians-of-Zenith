@@ -877,6 +877,7 @@ bool Player::IsAlive() {
 	return alive; 
 }
 
+
 bool Player::LoadState(pugi::xml_node& data) {
 
 	facing = (DIRECTION)data.child("player_stats").attribute("facing").as_int();
@@ -911,6 +912,7 @@ bool Player::LoadState(pugi::xml_node& data) {
 }
 
 bool Player::SaveState(pugi::xml_node& data) {
+
 	pugi::xml_node player_stats = data.append_child("player_stats");
 	data.child("player_stats").append_attribute("facing") = (int)facing;
 	data.child("player_stats").append_attribute("position_x") = position.x +32;
