@@ -159,9 +159,9 @@ bool Scene::Start()
 	ForestDoor = app->tex->Load("Assets/Textures/Puzzles/Door_forest_dungeon.png");
 	Blocking = app->tex->Load("Assets/Textures/Puzzles/Door_cave_dungeon.png");
 	//Enemy
-	Slime = app->tex->Load("Assets/Entities/enemies/FrogBasic.png");
-	Lily = app->tex->Load("Assets/Entities/enemies/LilyBasic.png");
-	Naiadon = app->tex->Load("Assets/Entities/enemies/NaiadonBasic.png");
+	Slime = app->tex->Load("Assets/Entities/enemies/Frog_Overwold.png");
+	Lily = app->tex->Load("Assets/Entities/enemies/Lily_Overwold.png");
+	Naiadon = app->tex->Load("Assets/Entities/enemies/Naiadon_Overwold.png");
 	//Maps
 	TownPNG = app->tex->Load("Assets/Maps/Maps_Png/Town.png");
 	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Water_dungeon.png");
