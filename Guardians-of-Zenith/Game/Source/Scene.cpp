@@ -159,9 +159,9 @@ bool Scene::Start()
 	ForestDoor = app->tex->Load("Assets/Textures/Puzzles/Door_forest_dungeon.png");
 	Blocking = app->tex->Load("Assets/Textures/Puzzles/Door_cave_dungeon.png");
 	//Enemy
-	Slime = app->tex->Load("Assets/Entities/enemies/Frog_Overwold.png");
-	Lily = app->tex->Load("Assets/Entities/enemies/Lily_Overwold.png");
-	Naiadon = app->tex->Load("Assets/Entities/enemies/Naiadon_Overwold.png");
+	Slime = app->tex->Load("Assets/Entities/enemies/Frog_Map.png");
+	Lily = app->tex->Load("Assets/Entities/enemies/Lily_Map.png");
+	Naiadon = app->tex->Load("Assets/Entities/enemies/Naiadon_Map.png");
 	//Maps
 	TownPNG = app->tex->Load("Assets/Maps/Maps_Png/Town.png");
 	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Water_dungeon.png");
@@ -192,16 +192,16 @@ bool Scene::Start()
 	Slime11 = app->physics->CreateRectangle(3816, -724, 32, 32, STATIC);
 	Slime11->ctype = ColliderType::ENEMYSLIME;
 
-	//Lily3 = app->physics->CreateRectangle(3624, -244, 64, 43, STATIC);
-	//Lily3->ctype = ColliderType::ENEMYLILY;
-	//Lily2 = app->physics->CreateRectangle(3784, -852, 64, 43, STATIC);
-	//Lily2->ctype = ColliderType::ENEMYLILY;
-	//Lily3 = app->physics->CreateRectangle(3432, -852, 64, 43, STATIC);
-	//Lily3->ctype = ColliderType::ENEMYLILY;
-	//Lily4 = app->physics->CreateRectangle(3240, -1012, 64, 43, STATIC);
-	//Lily4->ctype = ColliderType::ENEMYLILY;
-	//Lily5 = app->physics->CreateRectangle(3016, -1012, 64, 43, STATIC);
-	//Lily5->ctype = ColliderType::ENEMYLILY;
+	Lily3 = app->physics->CreateRectangle(3624, -244, 64, 43, STATIC);
+	Lily3->ctype = ColliderType::ENEMYLILY;
+	Lily2 = app->physics->CreateRectangle(3784, -852, 64, 43, STATIC);
+	Lily2->ctype = ColliderType::ENEMYLILY;
+	Lily3 = app->physics->CreateRectangle(3432, -852, 64, 43, STATIC);
+	Lily3->ctype = ColliderType::ENEMYLILY;
+	Lily4 = app->physics->CreateRectangle(3240, -1012, 64, 43, STATIC);
+	Lily4->ctype = ColliderType::ENEMYLILY;
+	Lily5 = app->physics->CreateRectangle(3016, -1012, 64, 43, STATIC);
+	Lily5->ctype = ColliderType::ENEMYLILY;
 
 	Naiadon1 = app->physics->CreateRectangle(3459, -1814, 118, 125, STATIC);
 	Naiadon1->ctype = ColliderType::ENEMYNAIADON;
