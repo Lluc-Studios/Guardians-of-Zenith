@@ -61,9 +61,9 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 |---|---|---|---|
 |F1|F2|F5|F6|
 
-|  Exit game |  God mode |Y|
+|  Exit game |God mode|Level Up Characters|
 |---|---|---|
-|F9|F10|Level Up Characters|
+|F9|F10|Y|
 
 |  Teleport to Lake Dungeon |  Teleport to Forest Dungeon |Teleport to Cave Dungeon|
 |---|---|---|
