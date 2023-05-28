@@ -5242,27 +5242,31 @@ void Combat::TurnEnemyAsset(float Enemy_name) {
 	if (Enemy_name == 1) {
 		app->render->DrawTexture(TurnEnemy1, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	if (Enemy_name == 2) {
+	else if (Enemy_name == 2) {
 		app->render->DrawTexture(TurnEnemy2, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	if (Enemy_name == 3) {
+	else if (Enemy_name == 3) {
 		app->render->DrawTexture(TurnEnemy3, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	if (Enemy_name == 4) {
+	else if (Enemy_name == 4) {
 		app->render->DrawTexture(TurnEnemy4, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	if (Enemy_name == 5) {
+	else if (Enemy_name == 5) {
 		app->render->DrawTexture(TurnEnemy5, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	if (Enemy_name == 6) {
+	else if (Enemy_name == 6) {
 		app->render->DrawTexture(TurnEnemy6, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	if (Enemy_name == 7) {
+	else if (Enemy_name == 7) {
 		app->render->DrawTexture(TurnEnemy7, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	if (Enemy_name == 8) {
+	else if (Enemy_name == 8) {
 		app->render->DrawTexture(TurnEnemy8, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
+	else {
+		app->render->DrawTexture(TurnEnemyD, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+
 	return;
 }
 
