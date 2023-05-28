@@ -81,6 +81,8 @@ public:
 	void LoadLucca(Player::Lucca lucca);
 	void LoadEnemy(EntityManager::CombatEnemy enemy);
 
+	void TurnEnemyAsset(float Enemy_name);
+
 public:
 
 	bool GodMode = false;
@@ -164,6 +166,21 @@ private:
 	SDL_Texture* Bleed;
 	SDL_Texture* Electrified;
 
+	//Truns textures
+	SDL_Texture* TurnAlly;
+	SDL_Texture* TurnEnemyD;
+	SDL_Texture* TurnLaurea;
+	SDL_Texture* TurnLapis;
+	SDL_Texture* TurnLucca;
+	SDL_Texture* TurnEnemy1;
+	SDL_Texture* TurnEnemy2;
+	SDL_Texture* TurnEnemy3;
+	SDL_Texture* TurnEnemy4;
+	SDL_Texture* TurnEnemy5;
+	SDL_Texture* TurnEnemy6;
+	SDL_Texture* TurnEnemy7;
+	SDL_Texture* TurnEnemy8;
+
 	//Character1
 	float C1MHP = 1000, C1CHP = 900;
 	float C1MMP = 250, C1CMP = 200;
@@ -192,6 +209,7 @@ private:
 	const char* C1A6name = "Shield wall";
 
 	bool C1Block = false, C1dead = false, C1Check = false, C1FROZEN = false, C1BLEED = false;
+
 	int C1POISON = 0, C1BURN= 0, C1ELEC = 0;
 
 	//Character2
@@ -287,6 +305,9 @@ private:
 	int E1DefenseBuff = 0;
 	bool E1DefenseBuffCheck = false;
 
+
+	float E1_asset;
+
 	//Enemy2
 	float E2MHP = 1000, E2CHP = 1000, E2MES = 0, E2CES = 0;
 	float E2ATK, E2DEF, E2EXP;
@@ -312,6 +333,8 @@ private:
 	bool E2dead = false, E2Check = false;
 	int E2POISON = 0;
 
+	float E2_asset;
+
 	//Enemy3
 	float E3MHP = 1000, E3CHP = 150, E3MES = 0, E3CES = 0;
 	float E3ATK, E3DEF, E3EXP;
@@ -336,6 +359,8 @@ private:
 
 	bool E3dead = false, E3Check = false;
 	int E3POISON = 0;
+
+	float E3_asset;
 
 	//Inventory
 	

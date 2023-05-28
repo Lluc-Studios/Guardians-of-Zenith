@@ -100,6 +100,21 @@ bool Combat::Start()
 	strengthEliFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Strength elixir.wav");
 	defEliFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Defense elixir.wav");
 
+	//Draw turns
+	TurnAlly = app->tex->Load("Assets/Textures/Types/Turn_ally.png");
+	TurnLaurea = app->tex->Load("Assets/Textures/Types/Turn_Laurea.png");
+	TurnLapis = app->tex->Load("Assets/Textures/Types/Turn_Lapis.png");
+	TurnLucca = app->tex->Load("Assets/Textures/Types/Turn_Lucca.png");
+
+	TurnEnemyD = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
+	TurnEnemy1 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrog.png");
+	TurnEnemy2 = app->tex->Load("Assets/Textures/Types/Turn_LilyFish.png");
+	TurnEnemy3 = app->tex->Load("Assets/Textures/Types/Turn_NaiadonGoddess.png");
+	TurnEnemy4 = app->tex->Load("Assets/Textures/Types/Turn_PoisonFrog.png");
+	TurnEnemy5 = app->tex->Load("Assets/Textures/Types/Turn_FireFrog.png");
+	TurnEnemy6 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrogElectric.png");
+	TurnEnemy7 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrogDemonic.png");
+	TurnEnemy8 = app->tex->Load("Assets/Textures/Types/Turn_DroughtLilyFish.png");
 
 	//Random number generation
 	srand((unsigned int)time(NULL));
@@ -293,8 +308,8 @@ bool Combat::Update(float dt)
 			E1DEF += E1DEF * 0.5;
 			E1DefenseBuffCheck = true;
 		}
-		//Render text
-
+		
+		//Background combat
 		switch (SaveInstance)
 		{
 		case 0:
@@ -322,6 +337,7 @@ bool Combat::Update(float dt)
 			app->render->DrawTexture(BG_Monolitos, app->scene->player->position.x - 290, app->scene->player->position.y - 180);
 			break;
 		}
+		//Render text
 		app->render->DrawTexture(ClassChart, app->scene->player->position.x-280, app->scene->player->position.y -170);
 		app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y,115,160 }, 0, 0, 255, 150);
 		if (option != COMBATMENU::NONE) {
@@ -994,16 +1010,36 @@ bool Combat::Update(float dt)
 				E3Check = true;
 				}
 			}
-			else if (Turn[i] >= 1 && Turn[i] <= 3) {
+			//Laurea
+			else if (Turn[i] == 1) {
 				TurnPos++;
-				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10),app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 39) + offset * 10),app->scene->player->position.y - 164,18,18 }, 0, 200, 0);
+				app->render->DrawTexture(TurnLaurea, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165 );
 			}
-			else if (Turn[i] >= 4) {
+			//Lapis
+			else if (Turn[i] == 2) {
 				TurnPos++;
-				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10),app->scene->player->position.y - 165,20,20 }, 0, 0, 0);
-				app->render->DrawRectangle({ ((app->scene->player->position.x + (21 * TurnPos) - 39) + offset * 10),app->scene->player->position.y - 164,18,18 }, 200, 0, 0);
+				app->render->DrawTexture(TurnLapis, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 			}
+			//Lucca
+			else if (Turn[i] == 3 ) {
+				TurnPos++;
+				app->render->DrawTexture(TurnLucca, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+			}
+
+			//Enemies
+			else if (Turn[i] == 4) {
+				TurnPos++;
+				TurnEnemyAsset(E1_asset);
+			}
+			else if (Turn[i] == 5) {
+				TurnPos++;
+				TurnEnemyAsset(E2_asset);
+			}
+			else if (Turn[i] == 6) {
+				TurnPos++;
+				TurnEnemyAsset(E3_asset);
+			}
+			
 		}
 
 		//Draw allies and their stats
@@ -4978,9 +5014,11 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 {
 	//Loading speed
 	if (CurrentEnemies == 2) {
+
+		E3_asset = enemy.asset;
+
 		E3speed = enemy.spe;
 		CurrentEnemies++;
-
 		E3EXP = enemy.exp;
 		E3MHP = enemy.hp;
 		E3CHP = enemy.chp;
@@ -5045,11 +5083,15 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 8) {
 			E3asset = Enemy8;
 		}
+
+
 	}
 	if (CurrentEnemies == 1) {
+
+		E2_asset = enemy.asset;
+
 		E2speed = enemy.spe;
 		CurrentEnemies++;
-
 		E2EXP = enemy.exp;
 		E2MHP = enemy.hp;
 		E2CHP = enemy.chp;
@@ -5077,6 +5119,7 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		E2A4target = enemy.A4target;
 		E2A4effect = enemy.A4effect;
 		E2class = enemy.Eclass;
+
 		if (enemy.boss == 2) {
 			E2BOSS = 64;
 		}
@@ -5114,8 +5157,14 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 8) {
 			E2asset = Enemy8;
 		}
+
+
+
 	}
 	if (CurrentEnemies == 0) {
+
+		E1_asset = enemy.asset;
+
 		E1speed = enemy.spe;
 		CurrentEnemies++;
 
@@ -5183,8 +5232,40 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 8) {
 			E1asset = Enemy8;
 		}
+
+
 	}
 }
+
+void Combat::TurnEnemyAsset(float Enemy_name) {
+
+	if (Enemy_name == 1) {
+		app->render->DrawTexture(TurnEnemy1, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	if (Enemy_name == 2) {
+		app->render->DrawTexture(TurnEnemy2, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	if (Enemy_name == 3) {
+		app->render->DrawTexture(TurnEnemy3, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	if (Enemy_name == 4) {
+		app->render->DrawTexture(TurnEnemy4, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	if (Enemy_name == 5) {
+		app->render->DrawTexture(TurnEnemy5, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	if (Enemy_name == 6) {
+		app->render->DrawTexture(TurnEnemy6, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	if (Enemy_name == 7) {
+		app->render->DrawTexture(TurnEnemy7, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	if (Enemy_name == 8) {
+		app->render->DrawTexture(TurnEnemy8, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	return;
+}
+
 
 void Combat::RemoveEntityFromList(int id) {
 	for (int i = 0; i < 6; i++) {
