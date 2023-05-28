@@ -61,7 +61,7 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 |---|---|---|---|
 |F1|F2|F5|F6|
 
-|  Exit game |  God mode |Level Up Characters|
+|  Exit game |  God mode |Y|
 |---|---|---|
 |F9|F10|Level Up Characters|
 
@@ -73,7 +73,11 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 |  Start Combat | Skip Combat Turn | Test Freeze status|To lose combat|
 |---|---|---|---|
-|C|T|F|K|
+|C|T|F|B|
+
+|  Start Boss Lake | Start Boss Forest | Start Boss Cave|
+|---|---|---|
+|K|L|Ñ|
 
 ## Developers
 

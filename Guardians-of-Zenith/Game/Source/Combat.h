@@ -140,9 +140,7 @@ private:
 	SDL_Texture* Character2;
 	SDL_Texture* Character3;
 	SDL_Texture* Character_Frozen;
-	SDL_Texture* Character1Frozen;
-	SDL_Texture* Character2Frozen;
-	SDL_Texture* Character3Frozen;
+
 	SDL_Texture* Enemy1;
 	SDL_Texture* Enemy2;
 	SDL_Texture* Enemy3;
@@ -151,8 +149,16 @@ private:
 	SDL_Texture* Enemy6;
 	SDL_Texture* Enemy7;
 	SDL_Texture* Enemy8;
+	SDL_Texture* Enemy9;
+	SDL_Texture* Enemy10;
+	SDL_Texture* Enemy11;
+	SDL_Texture* Enemy12;
+	SDL_Texture* Enemy13;
+	SDL_Texture* Enemy14;
+
 	SDL_Texture* EnemyUnknown;
 	SDL_Texture* EnemyBossUnknown;
+
 	SDL_Texture* ClassTank;
 	SDL_Texture* ClassMage;
 	SDL_Texture* ClassArcher;
@@ -168,10 +174,11 @@ private:
 
 	//Truns textures
 	SDL_Texture* TurnAlly;
-	SDL_Texture* TurnEnemyD;
 	SDL_Texture* TurnLaurea;
 	SDL_Texture* TurnLapis;
 	SDL_Texture* TurnLucca;
+
+	SDL_Texture* TurnEnemyD;
 	SDL_Texture* TurnEnemy1;
 	SDL_Texture* TurnEnemy2;
 	SDL_Texture* TurnEnemy3;
@@ -180,6 +187,12 @@ private:
 	SDL_Texture* TurnEnemy6;
 	SDL_Texture* TurnEnemy7;
 	SDL_Texture* TurnEnemy8;
+	SDL_Texture* TurnEnemy9;
+	SDL_Texture* TurnEnemy10;
+	SDL_Texture* TurnEnemy11;
+	SDL_Texture* TurnEnemy12;
+	SDL_Texture* TurnEnemy13;
+	SDL_Texture* TurnEnemy14;
 
 	//Character1
 	float C1MHP = 1000, C1CHP = 900;

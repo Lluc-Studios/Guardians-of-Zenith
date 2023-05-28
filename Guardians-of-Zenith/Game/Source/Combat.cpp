@@ -52,7 +52,7 @@ bool Combat::Start()
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
 	Character3 = app->tex->Load("Assets/Entities/Characters/Lucca_Combat.png");
 	Character_Frozen = app->tex->Load("Assets/Entities/Characters/Combat_Frozen.png");
-
+	//Enemies Lake
 	Enemy1 = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
 	Enemy2 = app->tex->Load("Assets/Entities/Enemies/LilyFish_Combat.png");
 	Enemy3 = app->tex->Load("Assets/Entities/Enemies/NaiadonGoddess_Combat.png");
@@ -61,6 +61,15 @@ bool Combat::Start()
 	Enemy6 = app->tex->Load("Assets/Entities/Enemies/SlimeFrogElectric_Combat.png");
 	Enemy7 = app->tex->Load("Assets/Entities/Enemies/SlimeFrogDemonic_Combat.png");
 	Enemy8 = app->tex->Load("Assets/Entities/Enemies/DroughtLilyFish_Combat.png");
+	//Enemies Forest
+	Enemy9 = app->tex->Load("Assets/Entities/Enemies/Mantis_Combat.png");
+	Enemy10 = app->tex->Load("Assets/Entities/Enemies/Mushroom_Combat.png");
+	Enemy11 = app->tex->Load("Assets/Entities/Enemies/Driadon_Combat.png");
+	//Enemies Cave
+	Enemy12 = app->tex->Load("");
+	Enemy13 = app->tex->Load("");
+	Enemy14 = app->tex->Load("");
+
 	EnemyUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownEnemy.png");
 	EnemyBossUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownBoss.png");
 	E1asset = app->tex->Load("Assets/Entities/Enemies/SlimeFrog_Combat.png");
@@ -105,7 +114,7 @@ bool Combat::Start()
 	TurnLaurea = app->tex->Load("Assets/Textures/Types/Turn_Laurea.png");
 	TurnLapis = app->tex->Load("Assets/Textures/Types/Turn_Lapis.png");
 	TurnLucca = app->tex->Load("Assets/Textures/Types/Turn_Lucca.png");
-
+	//Enemies Lake
 	TurnEnemyD = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
 	TurnEnemy1 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrog.png");
 	TurnEnemy2 = app->tex->Load("Assets/Textures/Types/Turn_LilyFish.png");
@@ -115,6 +124,15 @@ bool Combat::Start()
 	TurnEnemy6 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrogElectric.png");
 	TurnEnemy7 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrogDemonic.png");
 	TurnEnemy8 = app->tex->Load("Assets/Textures/Types/Turn_DroughtLilyFish.png");
+	//Enemies Forest
+	TurnEnemy9 = app->tex->Load("");
+	TurnEnemy10 = app->tex->Load("");
+	TurnEnemy11 = app->tex->Load("Assets/Textures/Types/Turn_DryadonGod.png");
+	//Enemies Cave
+	TurnEnemy12 = app->tex->Load("");
+	TurnEnemy13 = app->tex->Load("");
+	TurnEnemy14 = app->tex->Load("");
+
 
 	//Random number generation
 	srand((unsigned int)time(NULL));
@@ -146,6 +164,12 @@ bool Combat::Update(float dt)
 
 	if (InCombat == true) {
 
+		//Play Fx if a character hp is lower than the last frame
+		if (C1HP_Aux > C1CHP) { app->audio->PlayFxWithVolume(LaureaHurtFX, 0, 70); }
+		if (C2HP_Aux > C2CHP) { app->audio->PlayFxWithVolume(LapisHurtFX, 0, 70); }
+		if (C3HP_Aux > C3CHP) { app->audio->PlayFxWithVolume(LuccaHurtFX, 0, 70); }
+
+		//DEBUG
 		if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
 			GodMode = !GodMode;
 		}
@@ -714,10 +738,10 @@ bool Combat::Update(float dt)
 				app->render->DrawRectangle({ app->scene->player->position.x - 280,app->scene->player->position.y + 15,115,20 }, 255, 255, 255, WhiteFading);
 				if (E1dead == false) {
 					if (E1BOSS == 0) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - 35 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
 					}
 					if (E1BOSS == 64) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,120 + E1BOSS,120 + E1BOSS }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS- 26, app->scene->player->position.y - 71 - E1BOSS+5,120 + E1BOSS,120 + E1BOSS }, 255, 255, 255, 120);
 					}
 				}
 			}
@@ -1284,20 +1308,20 @@ bool Combat::Update(float dt)
 			if (E1dead == false) {
 				if (Turn[0] == 4) {
 					if (E1BOSS == 0) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 114 , app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - 35, app->scene->player->position.y - 71,66,66 }, 255, 255, 255, 120);
 					}
 					if (E1BOSS == 64) {
-						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS, app->scene->player->position.y - 71 - E1BOSS,120 + E1BOSS,120 + E1BOSS }, 255, 255, 255, 120);
+						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS - 35, app->scene->player->position.y - 71 - E1BOSS,120 + E1BOSS,120 + E1BOSS }, 255, 255, 255, 120);
 					}
 				}
-				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS, app->scene->player->position.y - 70-E1BOSS);
+				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS-35, app->scene->player->position.y - 70-E1BOSS);
 				//Int to string convert
 				sprintf_s(Aux, "%.0f", E1MHP);
-				app->render->DrawRectangle({ app->scene->player->position.x + 115,app->scene->player->position.y + (E1BOSS/10*9),64,10 }, 0, 0, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + 115 - 35,app->scene->player->position.y + (E1BOSS/10*9),64,10 }, 0, 0, 0);
 				HpBarLengthE1 = (E1CHP * 62) / E1MHP;
-				app->render->DrawRectangle({ app->scene->player->position.x + 116,app->scene->player->position.y + 1 + (E1BOSS / 10 * 9),HpBarLengthE1,8 }, 0, 200, 0);
+				app->render->DrawRectangle({ app->scene->player->position.x + 116 - 35,app->scene->player->position.y + 1 + (E1BOSS / 10 * 9),HpBarLengthE1,8 }, 0, 200, 0);
 				EsBarLengthE1 = (E1CES * 60) / E1MES;
-				app->render->DrawRectangle({ app->scene->player->position.x + 117,app->scene->player->position.y + 2 + (E1BOSS / 10 * 9),EsBarLengthE1,6 }, 0, 255, 255);
+				app->render->DrawRectangle({ app->scene->player->position.x + 117 - 35,app->scene->player->position.y + 2 + (E1BOSS / 10 * 9),EsBarLengthE1,6 }, 0, 255, 255);
 				//Draw enemy class
 				if (E1class == 1) {
 					E1 = ClassTank;
@@ -1308,7 +1332,7 @@ bool Combat::Update(float dt)
 				if (E1class == 3) {
 					E1 = ClassArcher;
 				}
-				app->render->DrawTexture(E1, app->scene->player->position.x + 95, app->scene->player->position.y - 3 + (E1BOSS / 10 * 9));
+				app->render->DrawTexture(E1, app->scene->player->position.x + 95 - 35, app->scene->player->position.y - 3 + (E1BOSS / 10 * 9));
 			}
 			if (CurrentEnemies >= 2) {
 				//Draw enemy
@@ -1717,9 +1741,8 @@ bool Combat::Update(float dt)
 						EXPwon = 0;
 						app->audio->PlayFxWithVolume(looseFX, 0, 70);
 						//Audio
-						app->audio->Audio_Instance(app->Instance);
-						
 						ExitCombat();
+						app->audio->Audio_Instance(app->Instance);
 					}
 				}
 				if (InventoryMenu == true && cd == 0 && AllySelect == false) {
@@ -4227,28 +4250,24 @@ bool Combat::Update(float dt)
 			option = COMBATMENU::LOSE;
 			app->audio->PlayFxWithVolume(looseFX, 0, 70);
 		}
+		//DEBUG
+
+
+		//Test Forzen
+		if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+		{
+			C1FROZEN = true;
+			C2FROZEN = true;
+			C3FROZEN = true;
+		}
+
+		//To test loosing combat
+		if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
+		{
+			option = COMBATMENU::LOSE;
+		}
 	}
 	
-	//To test loosing combat
-	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
-	{
-		option = COMBATMENU::LOSE;
-	}
-
-	//Test Forzen
-	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
-	{
-		C1FROZEN = true;
-		C2FROZEN = true;
-		C3FROZEN = true;
-	}
-
-
-	//Play Fx if a character hp is lower than the last frame
-	if (C1HP_Aux > C1CHP) { app->audio->PlayFxWithVolume(LaureaHurtFX, 0, 70); }
-	if (C2HP_Aux > C2CHP) { app->audio->PlayFxWithVolume(LapisHurtFX, 0, 70); }
-	if (C3HP_Aux > C3CHP) { app->audio->PlayFxWithVolume(LuccaHurtFX, 0, 70); }
-
 
 	return true;
 }
@@ -4267,15 +4286,16 @@ bool Combat::PostUpdate()
 		app->audio->PlayFxWithVolume(winFX, 0, 70);
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			//Audio
-			app->audio->Audio_Instance(app->Instance);
 			ExitCombat();
+			app->audio->Audio_Instance(app->Instance);
 		}
 		if (app->input->controllers.A != 0 && !A_pressed)
 		{
 			//Audio
-			app->audio->Audio_Instance(app->Instance);
 			ExitCombat();
+			app->audio->Audio_Instance(app->Instance);
 			A_pressed = true;
+
 		}
 		else if (app->input->controllers.A == 0)
 		{
@@ -5083,7 +5103,24 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 8) {
 			E3asset = Enemy8;
 		}
-
+		if (enemy.asset == 9) {
+			E3asset = Enemy9;
+		}
+		if (enemy.asset == 10) {
+			E3asset = Enemy10;
+		}
+		if (enemy.asset == 11) {
+			E3asset = Enemy11;
+		}
+		if (enemy.asset == 12) {
+			E3asset = Enemy12;
+		}
+		if (enemy.asset == 13) {
+			E3asset = Enemy13;
+		}
+		if (enemy.asset == 14) {
+			E3asset = Enemy14;
+		}
 
 	}
 	if (CurrentEnemies == 1) {
@@ -5157,8 +5194,24 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 8) {
 			E2asset = Enemy8;
 		}
-
-
+		if (enemy.asset == 9) {
+			E2asset = Enemy9;
+		}
+		if (enemy.asset == 10) {
+			E2asset = Enemy10;
+		}
+		if (enemy.asset == 11) {
+			E2asset = Enemy11;
+		}
+		if (enemy.asset == 12) {
+			E2asset = Enemy12;
+		}
+		if (enemy.asset == 13) {
+			E2asset = Enemy13;
+		}
+		if (enemy.asset == 14) {
+			E2asset = Enemy14;
+		}
 
 	}
 	if (CurrentEnemies == 0) {
@@ -5232,8 +5285,24 @@ void Combat::LoadEnemy(EntityManager::CombatEnemy enemy)
 		if (enemy.asset == 8) {
 			E1asset = Enemy8;
 		}
-
-
+		if (enemy.asset == 9) {
+			E1asset = Enemy9;
+		}
+		if (enemy.asset == 10) {
+			E1asset = Enemy10;
+		}
+		if (enemy.asset == 11) {
+			E1asset = Enemy11;
+		}
+		if (enemy.asset == 12) {
+			E1asset = Enemy12;
+		}
+		if (enemy.asset == 13) {
+			E1asset = Enemy13;
+		}
+		if (enemy.asset == 14) {
+			E1asset = Enemy14;
+		}
 	}
 }
 
@@ -5262,6 +5331,15 @@ void Combat::TurnEnemyAsset(float Enemy_name) {
 	}
 	else if (Enemy_name == 8) {
 		app->render->DrawTexture(TurnEnemy8, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 9) {
+		app->render->DrawTexture(TurnEnemy9, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 10) {
+		app->render->DrawTexture(TurnEnemy10, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 11) {
+		app->render->DrawTexture(TurnEnemy11, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
 	else {
 		app->render->DrawTexture(TurnEnemyD, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);

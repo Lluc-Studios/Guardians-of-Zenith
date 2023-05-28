@@ -1125,6 +1125,34 @@ void Player::debugKeys() {
 		app->combat->StartCombat();
 	}
 
+	//Boss Lake
+	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
+	{
+		PresetVariation = rand() % 100 + 1;
+		app->combat->Preset = 13;
+		if (PresetVariation <= 85) app->combat->EnemyVariation = 0;
+		if (PresetVariation >= 86 && PresetVariation <= 89) app->combat->EnemyVariation = 1;
+		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
+		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
+		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+
+		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	{
+		printf("Forest Boss\n");
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_SEMICOLON) == KEY_DOWN)
+	{
+		printf("Cave Boss\n");
+	}
+
+
+
 	//Teleport Daigeons
 	//Lake
 	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN)
