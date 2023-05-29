@@ -145,6 +145,7 @@ private:
 
 	SDL_Texture* LAPIS;
 	SDL_Texture* Stone;
+	SDL_Texture* StoneDeep;
 	SDL_Texture* Tp;
 	SDL_Texture* Unpressed;
 	SDL_Texture* Pressed;

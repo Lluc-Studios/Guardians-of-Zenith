@@ -5332,15 +5332,6 @@ void Combat::TurnEnemyAsset(float Enemy_name) {
 	else if (Enemy_name == 8) {
 		app->render->DrawTexture(TurnEnemy8, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
-	else if (Enemy_name == 9) {
-		app->render->DrawTexture(TurnEnemy9, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
-	}
-	else if (Enemy_name == 10) {
-		app->render->DrawTexture(TurnEnemy10, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
-	}
-	else if (Enemy_name == 11) {
-		app->render->DrawTexture(TurnEnemy11, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
-	}
 	else {
 		app->render->DrawTexture(TurnEnemyD, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}

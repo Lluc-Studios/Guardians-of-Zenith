@@ -3,8 +3,8 @@
  <tileset firstgid="1" name="Tileset_Lake" tilewidth="32" tileheight="32" tilecount="500" columns="25">
   <image source="Tilesets/Tileset_Lake.png" width="800" height="640"/>
  </tileset>
- <tileset firstgid="501" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="6">
-  <image source="Tilesets/Tileset_Puzzle.png" width="192" height="128"/>
+ <tileset firstgid="501" name="Tileset_Puzzle" tilewidth="32" tileheight="32" tilecount="24" columns="5">
+  <image source="Tilesets/Tileset_Puzzle.png" width="160" height="128"/>
  </tileset>
  <layer id="1" name="Water" width="60" height="100">
   <properties>
@@ -42055,7 +42055,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="5" name="Puzzle" width="60" height="100" visible="0">
+ <layer id="5" name="Puzzle" width="60" height="100">
   <data>
    <tile/>
    <tile/>
@@ -44624,7 +44624,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="507"/>
+   <tile gid="506"/>
    <tile/>
    <tile/>
    <tile/>
@@ -45433,7 +45433,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="507"/>
+   <tile gid="506"/>
    <tile/>
    <tile/>
    <tile/>
@@ -45914,7 +45914,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="507"/>
+   <tile gid="506"/>
    <tile/>
    <tile/>
    <tile/>
@@ -47066,6 +47066,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="516"/>
    <tile/>
    <tile/>
    <tile/>
@@ -47125,6 +47126,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="516"/>
    <tile/>
    <tile/>
    <tile/>
@@ -47309,6 +47311,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="501"/>
    <tile/>
    <tile/>
    <tile/>
@@ -47355,6 +47358,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="501"/>
    <tile/>
    <tile/>
    <tile/>
@@ -47540,11 +47544,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="501"/>
    <tile/>
    <tile/>
    <tile/>

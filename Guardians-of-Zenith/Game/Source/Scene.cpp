@@ -143,11 +143,12 @@ bool Scene::Start()
 	NPC3 = app->tex->Load("Assets/Entities/NPC/npc_3.png");
 	LAPIS = app->tex->Load("Assets/Entities/Characters/Lapis_Directions.png");
 	//Puzzles
-	Stone = app->tex->Load("Assets/Textures/Puzzles/Stone.png");
+	Stone = app->tex->Load("Assets/Textures/Puzzles/Stone_Default.png");
+	StoneDeep = app->tex->Load("Assets/Textures/Puzzles/Stone_Deep.png");
 	Tp = app->tex->Load("Assets/Textures/Puzzles/MonolitoTP.png");
-	Unpressed = app->tex->Load("Assets/Textures/Puzzles/Unpressed.png");
-	Pressed = app->tex->Load("Assets/Textures/Puzzles/Pressed.png");
-	Puzzle2Wall = app->tex->Load("Assets/Textures/Puzzles/Door_water_dungeon.png");
+	Unpressed = app->tex->Load("Assets/Textures/Puzzles/Plate_Unpressed.png");
+	Pressed = app->tex->Load("Assets/Textures/Puzzles/Plate_Pressed.png");
+	Puzzle2Wall = app->tex->Load("Assets/Textures/Puzzles/Door_lake_dungeon.png");
 	DefaultTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Default.png");
 	BrokenTile = app->tex->Load("Assets/Textures/Puzzles/CrackedGround_Broken.png");
 	Pilar1A = app->tex->Load("Assets/Textures/Puzzles/Tower_1_On.png");
@@ -164,7 +165,7 @@ bool Scene::Start()
 	Naiadon = app->tex->Load("Assets/Entities/enemies/Naiadon_Map.png");
 	//Maps
 	TownPNG = app->tex->Load("Assets/Maps/Maps_Png/Town.png");
-	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Water_dungeon.png");
+	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Lake_dungeon.png");
 	ForestPNG = app->tex->Load("Assets/Maps/Maps_Png/Forest_dungeon.png");
 
 	//Lake enemies
@@ -238,13 +239,13 @@ bool Scene::Start()
 
 	//Forest puzzle
 
-	P1 = app->physics->CreateRectangle(752, 4336, 32, 64, STATIC);
+	P1 = app->physics->CreateRectangle(752 - 16, 4336, 32, 52, STATIC);
 	P1->ctype = ColliderType::PILAR1;
 
-	P2 = app->physics->CreateRectangle(2288, 4112, 32, 64, STATIC);
+	P2 = app->physics->CreateRectangle(2288 - 16, 4112, 32, 52, STATIC);
 	P2->ctype = ColliderType::PILAR2;
 
-	P3 = app->physics->CreateRectangle(2288, 5488, 32, 64, STATIC);
+	P3 = app->physics->CreateRectangle(2288 - 16, 5488, 32, 52, STATIC);
 	P3->ctype = ColliderType::PILAR3;
 
 	Fdoor = app->physics->CreateRectangle(1280, 3440, 128, 128, STATIC);
@@ -767,22 +768,22 @@ bool Scene::Update(float dt)
 	//Forest Dungeon
 	//Forest puzzle	
 	if (P1Active == false) {
-		app->render->DrawTexture(Pilar1N, 736, 4304);
+		app->render->DrawTexture(Pilar1N, 736-16, 4304);
 	}
 	else {
-		app->render->DrawTexture(Pilar1A, 736, 4304);
+		app->render->DrawTexture(Pilar1A, 736 - 16, 4304);
 	}
 	if (P2Active == false) {
-		app->render->DrawTexture(Pilar2N, 2272, 4080);
+		app->render->DrawTexture(Pilar2N, 2272 - 16, 4080);
 	}
 	else {
-		app->render->DrawTexture(Pilar2A, 2272, 4080);
+		app->render->DrawTexture(Pilar2A, 2272 - 16, 4080);
 	}
 	if (P3Active == false) {
-		app->render->DrawTexture(Pilar3N, 2272, 5456);
+		app->render->DrawTexture(Pilar3N, 2272 - 16, 5456);
 	}
 	else {
-		app->render->DrawTexture(Pilar3A, 2272, 5456);
+		app->render->DrawTexture(Pilar3A, 2272 - 16, 5456);
 	}
 	if (P1Active == true && P2Active == true && P3Active == true) {
 		FdoorActive = true;
@@ -1431,17 +1432,17 @@ void Scene::Puzzle_Lake() {
 		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
 	}
 	if (stage == 1 && colliderPuzzle1->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, rock_1[0], rock_1[1]);
+		app->render->DrawTexture(StoneDeep, rock_1[0], rock_1[1]);
 		app->render->DrawTexture(Stone, rock_2[0], rock_2[1]);
 		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
 	}
 	if (stage == 1 && colliderPuzzle2->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, rock_2[0], rock_2[1]);
+		app->render->DrawTexture(StoneDeep, rock_2[0], rock_2[1]);
 		app->render->DrawTexture(Stone, rock_1[0], rock_1[1]);
 		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
 	}
 	if (stage == 1 && colliderPuzzle3->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
+		app->render->DrawTexture(StoneDeep, rock_3[0], rock_3[1]);
 		app->render->DrawTexture(Stone, rock_1[0], rock_1[1]);
 		app->render->DrawTexture(Stone, rock_2[0], rock_2[1]);
 	}
@@ -1451,19 +1452,19 @@ void Scene::Puzzle_Lake() {
 		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
 	}
 	if (stage == 2 && colliderPuzzle1->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
-		app->render->DrawTexture(Stone, rock_1[0], rock_1[1]);
+		app->render->DrawTexture(StoneDeep, rock_3[0], rock_3[1]);
+		app->render->DrawTexture(StoneDeep, rock_1[0], rock_1[1]);
 		app->render->DrawTexture(Stone, rock_2[0], rock_2[1]);
 	}
 	if (stage == 2 && colliderPuzzle2->body->IsActive() == false && colliderPuzzle3->body->IsActive() == false) {
-		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
-		app->render->DrawTexture(Stone, rock_2[0], rock_2[1]);
+		app->render->DrawTexture(StoneDeep, rock_3[0], rock_3[1]);
+		app->render->DrawTexture(StoneDeep, rock_2[0], rock_2[1]);
 		app->render->DrawTexture(Stone, rock_1[0], rock_1[1]);
 	}
 	if (stage == 3) {
-		app->render->DrawTexture(Stone, rock_1[0], rock_1[1]);
-		app->render->DrawTexture(Stone, rock_2[0], rock_2[1]);
-		app->render->DrawTexture(Stone, rock_3[0], rock_3[1]);
+		app->render->DrawTexture(StoneDeep, rock_1[0], rock_1[1]);
+		app->render->DrawTexture(StoneDeep, rock_2[0], rock_2[1]);
+		app->render->DrawTexture(StoneDeep, rock_3[0], rock_3[1]);
 	}
 
 	//Lake puzzle 1 stage 1
