@@ -1,5 +1,6 @@
 #include "GuiButton.h"
 
+
 GuiButton::GuiButton(uint32 id, SDL_Rect bounds, const char* text, int fontSize) : GuiControl(GuiControlType::BUTTON, id)
 {
 	this->bounds = bounds;
@@ -46,6 +47,19 @@ bool GuiButton::Update(float dt)
 		{
 			state = GuiControlState::NORMAL;
 		}
+
+		if (id == 0 && app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_DOWN)
+		{
+			state = GuiControlState::PRESSED;
+			NotifyObserver();
+		}
+
+		if (id == 1 && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_DOWN)
+		{
+			state = GuiControlState::PRESSED;
+			NotifyObserver();
+		}
+
 	}
 
 	return false;
@@ -102,7 +116,7 @@ bool GuiButton::Draw(Render* render)
 			j = bounds.w;
 		}
 		render->DrawRectangle({ bounds.x + 70, bounds.y + 125 + i, bounds.w + 180 + j, bounds.h + 25 }, 255, 0, 255, 255, true, false);
-
+	
 	} break;
 
 	case GuiControlState::PRESSED:
