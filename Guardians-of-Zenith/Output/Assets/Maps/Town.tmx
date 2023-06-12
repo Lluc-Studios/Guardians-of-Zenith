@@ -18951,7 +18951,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="5" name="Collisions">
+ <objectgroup id="5" name="Collisions" visible="0">
   <object id="1" x="312.705" y="311.462" width="14.363" height="718.55"/>
   <object id="3" x="572.917" y="309.86" width="30.583" height="10"/>
   <object id="5" x="1190.91" y="192.53" width="344.424" height="62.803"/>
@@ -19013,7 +19013,7 @@
   <object id="292" x="328.182" y="304.909" width="123.455" height="11.0909"/>
   <object id="293" x="604.333" y="305.333" width="445.333" height="10.3333"/>
  </objectgroup>
- <objectgroup id="17" name="Elipse">
+ <objectgroup id="17" name="Elipse" visible="0">
   <properties>
    <property name="Type" type="int" value="235"/>
   </properties>
@@ -19162,7 +19162,7 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup id="9" name="House_Entry">
+ <objectgroup id="9" name="House_Entry" visible="0">
   <properties>
    <property name="Type" type="int" value="12"/>
   </properties>
