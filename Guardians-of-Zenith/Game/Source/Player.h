@@ -155,13 +155,13 @@ public:
 	int tp6[2] = { 560 ,320 };
 	//Lake Daugeon
 	int tp7[2] = { 3450 ,420 };
-	int tp8[2] = { 1009, -844 };
+	int tp8[2] = { 1009, -760 };
 	//Forest Daugeon
 	int tp9[2] = { 1473,5648};
-	int tp10[2] = { 1362,-1022 };
+	int tp10[2] = { 1200,-844 };
 	//Cave Daugeon
 	int tp11[2] = { -1250, 2203 };
-	int tp12[2] = { 1715,-830 };
+	int tp12[2] = { 1395,-760 };
 	//Monoliths
 	int tp13[2] = { 1200,-304 };
 	int tp14[2] = { 1121,249 };
