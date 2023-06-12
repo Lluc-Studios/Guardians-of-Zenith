@@ -35,16 +35,16 @@
 	<item id="3" name="Healing potion" x="-990" y="754" instance="6" texturepath="Assets/Textures/Objects/hpotion.png"/>
 	<item id="4" name="Mana potion" x="926" y="3861" instance="5" texturepath="Assets/Textures/Objects/mpotion.png"/>
 	<item id="5" name="Mana potion" x="-1570" y="2000" instance="6" texturepath="Assets/Textures/Objects/mpotion.png"/>
-	<item id="6" name="Attack elixir" x="1430" y="1505" instance="0" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
+	<item id="6" name="Attack elixir" x="340" y="820" instance="0" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
 	<item id="7" name="Attack elixir" x="547" y="5505" instance="5" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
 	<item id="8" name="Defense elixir" x="3830" y="-452" instance="4" texturepath="Assets/Textures/Objects/DefElixir.png"/>
 	<item id="9" name="Defense elixir" x="1862" y="4938" instance="5" texturepath="Assets/Textures/Objects/DefElixir.png"/>
-	<item id="10" name="Old necklace" x="400" y="593" instance="0" texturepath="Assets/Textures/Objects/Necklace.png"/>
+	<item id="10" name="Old necklace" x="372" y="-81" instance="1" texturepath="Assets/Textures/Objects/Necklace.png"/>
 	<item id="11" name="Manuscripts" x="315" y="1445" instance="0" texturepath="Assets/Textures/Objects/Manuscript.png"/>
 	<item id="12" name="Manuscripts" x="3177" y="-1620" instance="4" texturepath="Assets/Textures/Objects/Manuscript.png"/>
 	<item id="13" name="Manuscripts" x="1137" y="3237" instance="5" texturepath="Assets/Textures/Objects/Manuscript.png"/>
 	<item id="14" name="Manuscripts" x="-1765" y="816" instance="6" texturepath="Assets/Textures/Objects/Manuscript.png"/>
-	<item id="15" name="Zenith's history book" x="460" y="593" instance="0" texturepath="Assets/Textures/Objects/ZenithBook.png"/>
+	<item id="15" name="Zenith's history book" x="1890" y="88" instance="0" texturepath="Assets/Textures/Objects/ZenithBook.png"/>
 	  
 
 	  <!--enemy x="1270" y="190" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>
