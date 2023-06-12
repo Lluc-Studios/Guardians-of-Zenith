@@ -26,6 +26,7 @@ bool Item::Awake() {
 	id = parameters.attribute("id").as_int();
 	itemName = parameters.attribute("name").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
+	instance = parameters.attribute("instance").as_int();
 
 	return true;
 }
@@ -47,6 +48,7 @@ bool Item::Start() {
 	app->scene->itemPos[id - 1] = position;
 	app->scene->itemPicked[id - 1] = isPicked;
 	app->scene->itemBody[id - 1] = pbody;
+	app->scene->itemInstance[id - 1] = instance;
 
 	return true;
 }
@@ -70,6 +72,7 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 	switch (physB->ctype)
 	{
 	case ColliderType::PLAYER:
+		LOG("Collision ITEM");
 		isPicked = true;
 		app->scene->itemPicked[id-1] = isPicked;
 		physA->body->DestroyFixture(physA->body->GetFixtureList());
@@ -81,21 +84,45 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 				app->inventory->nrOfHpPot++;
 				break;
 			case 2:
-				app->inventory->nrOfMpPot++;
+				app->inventory->nrOfHpPot++;
 				break;
 			case 3:
-				app->inventory->nrOfAtkElx++;
+				app->inventory->nrOfHpPot++;
 				break;
 			case 4:
-				app->inventory->nrOfDefElx++;
+				app->inventory->nrOfMpPot++;
 				break;
 			case 5:
-				app->inventory->necklace++;
+				app->inventory->nrOfMpPot++;
 				break;
 			case 6:
-				app->inventory->manuscript++;
+				app->inventory->nrOfAtkElx++;
 				break;
 			case 7:
+				app->inventory->nrOfAtkElx++;
+				break;
+			case 8:
+				app->inventory->nrOfDefElx++;
+				break;
+			case 9:
+				app->inventory->nrOfDefElx++;
+				break;
+			case 10:
+				app->inventory->necklace++;
+				break;
+			case 11:
+				app->inventory->manuscript++;
+				break;
+			case 12:
+				app->inventory->manuscript++;
+				break;
+			case 13:
+				app->inventory->manuscript++;
+				break;
+			case 14:
+				app->inventory->manuscript++;
+				break;
+			case 15:
 				app->inventory->book++;
 				break;
 			default:

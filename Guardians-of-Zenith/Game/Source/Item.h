@@ -30,6 +30,7 @@ public:
 
 	bool isPicked = false;
 	int id = 0;
+	int instance;
 	bool handledCollision = false;
 
 private:
