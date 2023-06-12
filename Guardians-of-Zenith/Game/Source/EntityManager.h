@@ -72,9 +72,9 @@ public:
 	CombatEnemy deadLifeMantis{ 500,500,0,0,140,50,25,2,60, 1, 9,"Dead leaf mantis", "Laurea","Lapis", "Claw cut", 50, 0,0, "Poison bite", 60, 0,2 };
 	CombatEnemy mutantPlant{ 800,800,0,0,80,70,8,3,55, 1, 10,"Mutant mushroom", "Lucca","Laurea", "Spore", 50, 1,0, "Vine whip", 60, 0,0 };
 	CombatEnemy dryadon{ 2500,2500,500,500,450,45,10,2,550, 2, 11,"Dryadon", "Lucca","Laurea", "Polearm attack", 70, 0,0, "Dark spell", 50, 1,0, "Poison sting", 45, 0,2, "Damage up", 0, 2,0 };
-	CombatEnemy pixie{ 700,700,0,0,110,50,13,2,120, 1, 0,"Pixie", "Lucca","Laurea", "Scratch", 70, 0,0, "Magic spell", 35, 0,-1 };
-	CombatEnemy spectrum{ 1000,1000,0,0,50,40,12,1,100, 1, 0,"Spectrum", "Lapis","Lucca", "Soul drain", 50, 0,0, "Vine whip", 80, 0,3 };
-	CombatEnemy gashadokuro{ 3000,3000,1000,1000,500,50,20,3,800, 2, -1,"Gashadokuro", "Laurea","Lapis", "Bone punch", 60, 0,0, "Bonemerang", 50, 1,0, "Hellfire", 50, 0,3, "Defense up", 0, 2,0 };
+	CombatEnemy pixie{ 700,700,0,0,110,50,13,2,120, 1, 12,"Pixie", "Lucca","Laurea", "Scratch", 70, 0,0, "Magic spell", 35, 0,-1 };
+	CombatEnemy spectrum{ 1000,1000,0,0,50,40,12,1,100, 1, 13,"Spectrum", "Lapis","Lucca", "Soul drain", 50, 0,0, "Vine whip", 80, 0,3 };
+	CombatEnemy gashadokuro{ 3000,3000,1000,1000,500,50,20,3,800, 2, 14,"Gashadokuro", "Laurea","Lapis", "Bone punch", 60, 0,0, "Bonemerang", 50, 1,0, "Hellfire", 50, 0,3, "Defense up", 0, 2,0 };
 	List<Entity*> entities;
 
 

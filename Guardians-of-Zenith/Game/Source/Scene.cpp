@@ -23,6 +23,7 @@
 #include "Inventory.h"
 #include "Player.h"
 #include "Item.h"
+#include "time.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -160,9 +161,9 @@ bool Scene::Start()
 	ForestDoor = app->tex->Load("Assets/Textures/Puzzles/Door_forest_dungeon.png");
 	Blocking = app->tex->Load("Assets/Textures/Puzzles/Door_cave_dungeon.png");
 	//Enemy
-	Slime = app->tex->Load("Assets/Entities/enemies/Frog_Map.png");
-	Lily = app->tex->Load("Assets/Entities/enemies/Lily_Map.png");
 	Naiadon = app->tex->Load("Assets/Entities/enemies/Naiadon_Map.png");
+	Driadon = app->tex->Load("Assets/Entities/enemies/Driadon_Map.png");
+	Gasha = app->tex->Load("Assets/Entities/enemies/Gashadokuro_Map.png");
 	//Maps
 	TownPNG = app->tex->Load("Assets/Maps/Maps_Png/Town.png");
 	WaterPNG = app->tex->Load("Assets/Maps/Maps_Png/Lake_dungeon.png");
@@ -170,42 +171,46 @@ bool Scene::Start()
 
 	//Lake enemies
 	
-	Slime1 = app->physics->CreateRectangle(3400, -20, 32, 32, STATIC);
-	Slime1->ctype = ColliderType::ENEMYSLIME;
-	Slime2 = app->physics->CreateRectangle(3624, 44, 32, 32, STATIC);
-	Slime2->ctype = ColliderType::ENEMYSLIME;
-	Slime3 = app->physics->CreateRectangle(3624, -404, 32, 32, STATIC);
-	Slime3->ctype = ColliderType::ENEMYSLIME;
-	Slime4 = app->physics->CreateRectangle(3176, -372, 32, 32, STATIC);
-	Slime4->ctype = ColliderType::ENEMYSLIME;
-	Slime5 = app->physics->CreateRectangle(3208, -212, 32, 32, STATIC);
-	Slime5->ctype = ColliderType::ENEMYSLIME;
-	Slime6 = app->physics->CreateRectangle(2952, -820, 32, 32, STATIC);
-	Slime6->ctype = ColliderType::ENEMYSLIME;
-	Slime7 = app->physics->CreateRectangle(2920, -1140, 32, 32, STATIC);
-	Slime7->ctype = ColliderType::ENEMYSLIME;
-	Slime8 = app->physics->CreateRectangle(3240, -1140, 32, 32, STATIC);
-	Slime8->ctype = ColliderType::ENEMYSLIME;
-	Slime9 = app->physics->CreateRectangle(3848, -1172, 32, 32, STATIC);
-	Slime9->ctype = ColliderType::ENEMYSLIME;
-	Slime10 = app->physics->CreateRectangle(3688, -1012, 32, 32, STATIC);
-	Slime10->ctype = ColliderType::ENEMYSLIME;
-	Slime11 = app->physics->CreateRectangle(3816, -724, 32, 32, STATIC);
-	Slime11->ctype = ColliderType::ENEMYSLIME;
+	//Slime1 = app->physics->CreateRectangle(3400, -20, 32, 32, STATIC);
+	//Slime1->ctype = ColliderType::ENEMYSLIME;
+	//Slime2 = app->physics->CreateRectangle(3624, 44, 32, 32, STATIC);
+	//Slime2->ctype = ColliderType::ENEMYSLIME;
+	//Slime3 = app->physics->CreateRectangle(3624, -404, 32, 32, STATIC);
+	//Slime3->ctype = ColliderType::ENEMYSLIME;
+	//Slime4 = app->physics->CreateRectangle(3176, -372, 32, 32, STATIC);
+	//Slime4->ctype = ColliderType::ENEMYSLIME;
+	//Slime5 = app->physics->CreateRectangle(3208, -212, 32, 32, STATIC);
+	//Slime5->ctype = ColliderType::ENEMYSLIME;
+	//Slime6 = app->physics->CreateRectangle(2952, -820, 32, 32, STATIC);
+	//Slime6->ctype = ColliderType::ENEMYSLIME;
+	//Slime7 = app->physics->CreateRectangle(2920, -1140, 32, 32, STATIC);
+	//Slime7->ctype = ColliderType::ENEMYSLIME;
+	//Slime8 = app->physics->CreateRectangle(3240, -1140, 32, 32, STATIC);
+	//Slime8->ctype = ColliderType::ENEMYSLIME;
+	//Slime9 = app->physics->CreateRectangle(3848, -1172, 32, 32, STATIC);
+	//Slime9->ctype = ColliderType::ENEMYSLIME;
+	//Slime10 = app->physics->CreateRectangle(3688, -1012, 32, 32, STATIC);
+	//Slime10->ctype = ColliderType::ENEMYSLIME;
+	//Slime11 = app->physics->CreateRectangle(3816, -724, 32, 32, STATIC);
+	//Slime11->ctype = ColliderType::ENEMYSLIME;
 
-	Lily3 = app->physics->CreateRectangle(3624, -244, 64, 43, STATIC);
-	Lily3->ctype = ColliderType::ENEMYLILY;
-	Lily2 = app->physics->CreateRectangle(3784, -852, 64, 43, STATIC);
-	Lily2->ctype = ColliderType::ENEMYLILY;
-	Lily3 = app->physics->CreateRectangle(3432, -852, 64, 43, STATIC);
-	Lily3->ctype = ColliderType::ENEMYLILY;
-	Lily4 = app->physics->CreateRectangle(3240, -1012, 64, 43, STATIC);
-	Lily4->ctype = ColliderType::ENEMYLILY;
-	Lily5 = app->physics->CreateRectangle(3016, -1012, 64, 43, STATIC);
-	Lily5->ctype = ColliderType::ENEMYLILY;
+	//Lily3 = app->physics->CreateRectangle(3624, -244, 64, 43, STATIC);
+	//Lily3->ctype = ColliderType::ENEMYLILY;
+	//Lily2 = app->physics->CreateRectangle(3784, -852, 64, 43, STATIC);
+	//Lily2->ctype = ColliderType::ENEMYLILY;
+	//Lily3 = app->physics->CreateRectangle(3432, -852, 64, 43, STATIC);
+	//Lily3->ctype = ColliderType::ENEMYLILY;
+	//Lily4 = app->physics->CreateRectangle(3240, -1012, 64, 43, STATIC);
+	//Lily4->ctype = ColliderType::ENEMYLILY;
+	//Lily5 = app->physics->CreateRectangle(3016, -1012, 64, 43, STATIC);
+	//Lily5->ctype = ColliderType::ENEMYLILY;
 
 	Naiadon1 = app->physics->CreateRectangle(3459, -1814, 118, 125, STATIC);
 	Naiadon1->ctype = ColliderType::ENEMYNAIADON;
+	Driadon1 = app->physics->CreateRectangle(1265, 2373, 118, 125, STATIC);
+	Driadon1->ctype = ColliderType::ENEMYDRIADON;
+	Gasha1 = app->physics->CreateRectangle(-1338, -400, 118, 125, STATIC);
+	Gasha1->ctype = ColliderType::ENEMYGASHA;
 
 	//Lake puzzle
 
@@ -300,6 +305,97 @@ bool Scene::Update(float dt)
 			app->map->PropagateDijkstra();
 		}
 		pathActive = false;
+	}
+
+	//Enemy encounter
+	if (((app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)) && app->Instance == 4) {
+		WaterTimer++;
+	}
+	if (((app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)) && app->Instance == 5) {
+		ForestTimer++;
+	}
+	if (((app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) || (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)) && app->Instance == 6) {
+		CaveTimer++;
+	}
+
+	if (WaterTimer >= 500) {
+		WaterTimer = 0;
+		LOG("Collision Slime");
+		PresetChanceS = rand() % 100 + 1;
+		PresetVariationS = rand() % 100 + 1;
+		Team = rand() % 2 + 1;
+		if (Team == 1) {
+			if (PresetChanceS >= 1 && PresetChanceS <= 20) app->combat->Preset = 1;
+			if (PresetChanceS >= 21 && PresetChanceS <= 40) app->combat->Preset = 2;
+			if (PresetChanceS >= 41 && PresetChanceS <= 60) app->combat->Preset = 3;
+			if (PresetChanceS >= 61 && PresetChanceS <= 75) app->combat->Preset = 4;
+			if (PresetChanceS >= 76 && PresetChanceS <= 90) app->combat->Preset = 5;
+			if (PresetChanceS >= 91 && PresetChanceS <= 100) app->combat->Preset = 6;
+			if (PresetVariationS <= 85) app->combat->EnemyVariation = 0;
+			if (PresetVariationS >= 86 && PresetVariationS <= 89) app->combat->EnemyVariation = 1;
+			if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
+			if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
+			if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
+			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+			app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+			app->combat->StartCombat();
+		}
+		if (Team == 2) {
+			LOG("Collision Lily");
+			PresetChanceS = rand() % 100 + 1;
+			PresetVariationS = rand() % 100 + 1;
+			if (PresetChanceS >= 1 && PresetChanceS <= 20) app->combat->Preset = 7;
+			if (PresetChanceS >= 21 && PresetChanceS <= 40) app->combat->Preset = 8;
+			if (PresetChanceS >= 41 && PresetChanceS <= 60) app->combat->Preset = 9;
+			if (PresetChanceS >= 61 && PresetChanceS <= 75) app->combat->Preset = 10;
+			if (PresetChanceS >= 76 && PresetChanceS <= 90) app->combat->Preset = 11;
+			if (PresetChanceS >= 91 && PresetChanceS <= 100) app->combat->Preset = 12;
+			if (PresetVariationS <= 85) app->combat->EnemyVariation = 0;
+			if (PresetVariationS >= 86 && PresetVariationS <= 89) app->combat->EnemyVariation = 1;
+			if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
+			if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
+			if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
+			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+			app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+			app->combat->StartCombat();
+		}
+	}
+
+	if (ForestTimer >= 500) {
+		ForestTimer = 0;
+		LOG("Collision Forest enemy");
+		PresetChanceS = rand() % 100 + 1;
+		if (PresetChanceS >= 1 && PresetChanceS <= 25) app->combat->Preset = 16;
+		if (PresetChanceS >= 26 && PresetChanceS <= 50) app->combat->Preset = 17;
+		if (PresetChanceS >= 51 && PresetChanceS <= 60) app->combat->Preset = 18;
+		if (PresetChanceS >= 61 && PresetChanceS <= 70) app->combat->Preset = 19;
+		if (PresetChanceS >= 71 && PresetChanceS <= 80) app->combat->Preset = 20;
+		if (PresetChanceS >= 81 && PresetChanceS <= 85) app->combat->Preset = 21;
+		if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 22;
+		if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 23;
+		if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 24;
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+	}
+
+	if (CaveTimer >= 500) {
+		CaveTimer = 0;
+		LOG("Collision Cave enemy");
+		PresetChanceS = rand() % 100 + 1;
+		if (PresetChanceS >= 1 && PresetChanceS <= 25) app->combat->Preset = 25;
+		if (PresetChanceS >= 26 && PresetChanceS <= 50) app->combat->Preset = 26;
+		if (PresetChanceS >= 51 && PresetChanceS <= 60) app->combat->Preset = 27;
+		if (PresetChanceS >= 61 && PresetChanceS <= 70) app->combat->Preset = 28;
+		if (PresetChanceS >= 71 && PresetChanceS <= 80) app->combat->Preset = 29;
+		if (PresetChanceS >= 81 && PresetChanceS <= 85) app->combat->Preset = 30;
+		if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 31;
+		if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 32;
+		if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 33;
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+
 	}
 
 	//Cave Puzzle
@@ -742,25 +838,27 @@ bool Scene::Update(float dt)
 	//Lake dungeon
 	app->render->DrawTexture(Tp, 3520, 415);
 	//Draw enemies lake
-	app->render->DrawTexture(Slime, 3384, -36);
-	app->render->DrawTexture(Slime, 3608, 28);
-	app->render->DrawTexture(Slime, 3608, -420);
-	app->render->DrawTexture(Slime, 3160, -388);
-	app->render->DrawTexture(Slime, 3192, -228);
-	app->render->DrawTexture(Slime, 2936, -836);
-	app->render->DrawTexture(Slime, 2904, -1156);
-	app->render->DrawTexture(Slime, 3224, -1156);
-	app->render->DrawTexture(Slime, 3832, -1188);
-	app->render->DrawTexture(Slime, 3672, -1028);
-	app->render->DrawTexture(Slime, 3800, -740);
+	//app->render->DrawTexture(Slime, 3384, -36);
+	//app->render->DrawTexture(Slime, 3608, 28);
+	//app->render->DrawTexture(Slime, 3608, -420);
+	//app->render->DrawTexture(Slime, 3160, -388);
+	//app->render->DrawTexture(Slime, 3192, -228);
+	//app->render->DrawTexture(Slime, 2936, -836);
+	//app->render->DrawTexture(Slime, 2904, -1156);
+	//app->render->DrawTexture(Slime, 3224, -1156);
+	//app->render->DrawTexture(Slime, 3832, -1188);
+	//app->render->DrawTexture(Slime, 3672, -1028);
+	//app->render->DrawTexture(Slime, 3800, -740);
 
-	app->render->DrawTexture(Lily, 3592, -265);
-	app->render->DrawTexture(Lily, 3752, -873);
-	app->render->DrawTexture(Lily, 3400, -873);
-	app->render->DrawTexture(Lily, 3208, -1033);
-	app->render->DrawTexture(Lily, 2984, -1033);
+	//app->render->DrawTexture(Lily, 3592, -265);
+	//app->render->DrawTexture(Lily, 3752, -873);
+	//app->render->DrawTexture(Lily, 3400, -873);
+	//app->render->DrawTexture(Lily, 3208, -1033);
+	//app->render->DrawTexture(Lily, 2984, -1033);
 
 	app->render->DrawTexture(Naiadon, 3400, -1876);
+	app->render->DrawTexture(Driadon, 1206, 2311);
+	app->render->DrawTexture(Gasha, -1402, -462);
 
 	//Puzzle Lake
 	Puzzle_Lake();
@@ -902,7 +1000,7 @@ bool Scene::Update(float dt)
 	}
 	app->render->DrawRectangle({ -3000,-3000,10000,10000 }, 0, 0, 0, fading);
 
-	//Npc drawç
+	//Npc drawE
 	//Town
 	if (app->Instance == 0) {
 		app->render->DrawTexture(NPC3, 483, 545, &N3T);

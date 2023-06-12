@@ -90,8 +90,10 @@ public:
 
 	bool block1Fx = false, block2Fx = false, block3Fx = false;
 
+	//Enemy encounter
+	int WaterTimer = 0, ForestTimer = 0, CaveTimer = 0;
+	int PresetChanceS = 0, PresetVariationS = 0, Team = 0;
 
-	
 	//Forest Puzzle
 	bool P1Active = false;
 	bool P2Active = false;
@@ -150,9 +152,9 @@ private:
 	SDL_Texture* Unpressed;
 	SDL_Texture* Pressed;
 	SDL_Texture* Puzzle2Wall;
-	SDL_Texture* Slime;
-	SDL_Texture* Lily;
 	SDL_Texture* Naiadon;
+	SDL_Texture* Driadon;
+	SDL_Texture* Gasha;
 
 	//Cave dungeon
 
@@ -221,7 +223,8 @@ private:
 	PhysBody* Lily5;
 
 	PhysBody* Naiadon1;
-
+	PhysBody* Driadon1;
+	PhysBody* Gasha1;
 
 	//Lake puzzle
 

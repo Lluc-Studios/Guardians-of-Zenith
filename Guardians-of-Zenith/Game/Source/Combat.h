@@ -155,6 +155,8 @@ private:
 	SDL_Texture* Enemy12;
 	SDL_Texture* Enemy13;
 	SDL_Texture* Enemy14;
+	SDL_Texture* Enemy15;
+
 
 	SDL_Texture* EnemyUnknown;
 	SDL_Texture* EnemyBossUnknown;

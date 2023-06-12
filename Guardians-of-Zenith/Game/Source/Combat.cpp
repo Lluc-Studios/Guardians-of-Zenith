@@ -66,9 +66,9 @@ bool Combat::Start()
 	Enemy10 = app->tex->Load("Assets/Entities/Enemies/Mushroom_Combat.png");
 	Enemy11 = app->tex->Load("Assets/Entities/Enemies/Driadon_Combat.png");
 	//Enemies Cave
-	Enemy12 = app->tex->Load("");
-	Enemy13 = app->tex->Load("");
-	Enemy14 = app->tex->Load("");
+	Enemy12 = app->tex->Load("Assets/Entities/Enemies/Pixie_Combat.png");
+	Enemy13 = app->tex->Load("Assets/Entities/Enemies/Spectrum_Combat.png");
+	Enemy14 = app->tex->Load("Assets/Entities/Enemies/Gashadokuro_Combat.png");
 
 	EnemyUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownEnemy.png");
 	EnemyBossUnknown = app->tex->Load("Assets/Entities/Enemies/UnknownBoss.png");
@@ -4709,11 +4709,98 @@ void Combat::StartCombat()
 		LoadEnemy(app->entityManager->slimeFrog);
 		LoadEnemy(app->entityManager->slimeFrog);
 	}
+	if (Preset == 16) {
+		LoadEnemy(app->entityManager->deadLifeMantis);
+	}
+	if (Preset == 17) {
+		LoadEnemy(app->entityManager->mutantPlant);
+	}
+	if (Preset == 18) {
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->deadLifeMantis);
+	}
+	if (Preset == 19) {
+		LoadEnemy(app->entityManager->mutantPlant);
+		LoadEnemy(app->entityManager->mutantPlant);
+	}
+	if (Preset == 20) {
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->mutantPlant);
+	}
+	if (Preset == 21) {
+		LoadEnemy(app->entityManager->mutantPlant);
+		LoadEnemy(app->entityManager->mutantPlant);
+		LoadEnemy(app->entityManager->mutantPlant);
+	}
+	if (Preset == 22) {
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->deadLifeMantis);
+	}
+	if (Preset == 23) {
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->mutantPlant);
+	}
+	if (Preset == 24) {
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->mutantPlant);
+		LoadEnemy(app->entityManager->mutantPlant);
+	}
+	if (Preset == 25) {
+		LoadEnemy(app->entityManager->spectrum);
+	}
+	if (Preset == 26) {
+		LoadEnemy(app->entityManager->pixie);
+	}
+	if (Preset == 27) {
+		LoadEnemy(app->entityManager->spectrum);
+		LoadEnemy(app->entityManager->spectrum);
+	}
+	if (Preset == 28) {
+		LoadEnemy(app->entityManager->pixie);
+		LoadEnemy(app->entityManager->pixie);
+	}
+	if (Preset == 29) {
+		LoadEnemy(app->entityManager->spectrum);
+		LoadEnemy(app->entityManager->pixie);
+	}
+	if (Preset == 30) {
+		LoadEnemy(app->entityManager->spectrum);
+		LoadEnemy(app->entityManager->spectrum);
+		LoadEnemy(app->entityManager->spectrum);
+	}
+	if (Preset == 31) {
+		LoadEnemy(app->entityManager->pixie);
+		LoadEnemy(app->entityManager->pixie);
+		LoadEnemy(app->entityManager->pixie);
+	}
+	if (Preset == 32) {
+		LoadEnemy(app->entityManager->spectrum);
+		LoadEnemy(app->entityManager->spectrum);
+		LoadEnemy(app->entityManager->pixie);
+	}
+	if (Preset == 33) {
+		LoadEnemy(app->entityManager->spectrum);
+		LoadEnemy(app->entityManager->pixie);
+		LoadEnemy(app->entityManager->pixie);
+	}
+
 	//Boss
 	if (Preset == 13) {
 		LoadEnemy(app->entityManager->naiadongoddess);
 		LoadEnemy(app->entityManager->slimeFrog);
 		LoadEnemy(app->entityManager->waterlilyfish);
+	}
+	if (Preset == 14) {
+		LoadEnemy(app->entityManager->dryadon);
+		LoadEnemy(app->entityManager->deadLifeMantis);
+		LoadEnemy(app->entityManager->mutantPlant);
+	}
+	if (Preset == 15) {
+		LoadEnemy(app->entityManager->gashadokuro);
+		LoadEnemy(app->entityManager->pixie);
+		LoadEnemy(app->entityManager->spectrum);
 	}
 	TurnOrder();
 	EXPwon = E1EXP + E2EXP + E3EXP;

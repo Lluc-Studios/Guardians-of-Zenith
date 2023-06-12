@@ -662,6 +662,34 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
+	case ColliderType::ENEMYDRIADON:
+		LOG("Collision Dryadon");
+		PresetVariation = rand() % 100 + 1;
+		app->combat->Preset = 14;
+		if (PresetVariation <= 85) app->combat->EnemyVariation = 0;
+		if (PresetVariation >= 86 && PresetVariation <= 89) app->combat->EnemyVariation = 1;
+		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
+		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
+		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+
+		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+		break;
+	case ColliderType::ENEMYGASHA:
+		LOG("Collision Gasha");
+		PresetVariation = rand() % 100 + 1;
+		app->combat->Preset = 15;
+		if (PresetVariation <= 85) app->combat->EnemyVariation = 0;
+		if (PresetVariation >= 86 && PresetVariation <= 89) app->combat->EnemyVariation = 1;
+		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
+		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
+		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
+
+		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+		break;
 	case ColliderType::TAVERN:
 		LOG("Teleport_Tavern");
 		if (auxBool == false) {
