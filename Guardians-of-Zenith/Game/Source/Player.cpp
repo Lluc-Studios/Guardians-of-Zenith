@@ -1189,6 +1189,7 @@ void Player::debugKeys() {
 		app->combat->StartCombat();
 	}
 
+	//Boss Forest
 	if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
 		LOG("Boss Dryadon");
@@ -1205,6 +1206,7 @@ void Player::debugKeys() {
 		app->combat->StartCombat();
 	}
 
+	// Boss Cave 
 	if (app->input->GetKey(SDL_SCANCODE_SEMICOLON) == KEY_DOWN)
 	{
 		LOG("Boss Gasha");
@@ -1221,7 +1223,61 @@ void Player::debugKeys() {
 		app->combat->StartCombat();
 	}
 
+	if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
+	{
+		LOG("Collision Lily");
+		app->scene->PresetChanceS = rand() % 100 + 1;
+		app->scene->PresetVariationS = rand() % 100 + 1;
+		if (app->scene->PresetChanceS >= 1 && app->scene->PresetChanceS <= 20) app->combat->Preset = 7;
+		if (app->scene->PresetChanceS >= 21 && app->scene->PresetChanceS <= 40) app->combat->Preset = 8;
+		if (app->scene->PresetChanceS >= 41 && app->scene->PresetChanceS <= 60) app->combat->Preset = 9;
+		if (app->scene->PresetChanceS >= 61 && app->scene->PresetChanceS <= 75) app->combat->Preset = 10;
+		if (app->scene->PresetChanceS >= 76 && app->scene->PresetChanceS <= 90) app->combat->Preset = 11;
+		if (app->scene->PresetChanceS >= 91 && app->scene->PresetChanceS <= 100) app->combat->Preset = 12;
+		if (app->scene->PresetVariationS <= 85) app->combat->EnemyVariation = 0;
+		if (app->scene->PresetVariationS >= 86 && app->scene->PresetVariationS <= 89) app->combat->EnemyVariation = 1;
+		if (app->scene->PresetVariationS >= 90 && app->scene->PresetVariationS <= 93) app->combat->EnemyVariation = 2;
+		if (app->scene->PresetVariationS >= 94 && app->scene->PresetVariationS <= 97) app->combat->EnemyVariation = 3;
+		if (app->scene->PresetVariationS >= 98 && app->scene->PresetVariationS <= 100) app->combat->EnemyVariation = 4;
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+	}
+	if (app->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
+	{
 
+		LOG("Collision Forest enemy");
+		app->scene->PresetChanceS = rand() % 100 + 1;
+		if (app->scene->PresetChanceS >= 1 && app->scene->PresetChanceS <= 25) app->combat->Preset = 16;
+		if (app->scene->PresetChanceS >= 26 && app->scene->PresetChanceS <= 50) app->combat->Preset = 17;
+		if (app->scene->PresetChanceS >= 51 && app->scene->PresetChanceS <= 60) app->combat->Preset = 18;
+		if (app->scene->PresetChanceS >= 61 && app->scene->PresetChanceS <= 70) app->combat->Preset = 19;
+		if (app->scene->PresetChanceS >= 71 && app->scene->PresetChanceS <= 80) app->combat->Preset = 20;
+		if (app->scene->PresetChanceS >= 81 && app->scene->PresetChanceS <= 85) app->combat->Preset = 21;
+		if (app->scene->PresetChanceS >= 86 && app->scene->PresetChanceS <= 90) app->combat->Preset = 22;
+		if (app->scene->PresetChanceS >= 91 && app->scene->PresetChanceS <= 95) app->combat->Preset = 23;
+		if (app->scene->PresetChanceS >= 96 && app->scene->PresetChanceS <= 100) app->combat->Preset = 24;
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+	}
+	if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+	{
+		LOG("Collision Cave enemy");
+		app->scene->PresetChanceS = rand() % 100 + 1;
+		if (app->scene->PresetChanceS >= 1 && app->scene->PresetChanceS <= 25) app->combat->Preset = 25;
+		if (app->scene->PresetChanceS >= 26 && app->scene->PresetChanceS <= 50) app->combat->Preset = 26;
+		if (app->scene->PresetChanceS >= 51 && app->scene->PresetChanceS <= 60) app->combat->Preset = 27;
+		if (app->scene->PresetChanceS >= 61 && app->scene->PresetChanceS <= 70) app->combat->Preset = 28;
+		if (app->scene->PresetChanceS >= 71 && app->scene->PresetChanceS <= 80) app->combat->Preset = 29;
+		if (app->scene->PresetChanceS >= 81 && app->scene->PresetChanceS <= 85) app->combat->Preset = 30;
+		if (app->scene->PresetChanceS >= 86 && app->scene->PresetChanceS <= 90) app->combat->Preset = 31;
+		if (app->scene->PresetChanceS >= 91 && app->scene->PresetChanceS <= 95) app->combat->Preset = 32;
+		if (app->scene->PresetChanceS >= 96 && app->scene->PresetChanceS <= 100) app->combat->Preset = 33;
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+		app->combat->StartCombat();
+	}
 
 	//Teleport Daigeons
 	//Lake

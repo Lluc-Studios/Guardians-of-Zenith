@@ -71,13 +71,18 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 
 **Combat**
 
-|  Start Combat | Skip Combat Turn | Test Freeze status|To lose combat|
+|  Start Combat Slimefrog | Skip Combat Turn | Test Freeze status|To lose combat|
 |---|---|---|---|
 |C|T|F|B|
 
 |  Start Boss Lake | Start Boss Forest | Start Boss Cave|
 |---|---|---|
 |K|L|Ñ|
+
+
+|  Start Combat Fish | Start Combat Forest | Start Combat Cave|
+|---|---|---|
+|B|N|M|
 
 ## Developers
 
