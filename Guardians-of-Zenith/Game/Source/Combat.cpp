@@ -125,13 +125,13 @@ bool Combat::Start()
 	TurnEnemy7 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrogDemonic.png");
 	TurnEnemy8 = app->tex->Load("Assets/Textures/Types/Turn_DroughtLilyFish.png");
 	//Enemies Forest
-	TurnEnemy9 = app->tex->Load("");
-	TurnEnemy10 = app->tex->Load("");
+	TurnEnemy9 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
+	TurnEnemy10 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
 	TurnEnemy11 = app->tex->Load("Assets/Textures/Types/Turn_DryadonGod.png");
 	//Enemies Cave
-	TurnEnemy12 = app->tex->Load("");
-	TurnEnemy13 = app->tex->Load("");
-	TurnEnemy14 = app->tex->Load("");
+	TurnEnemy12 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
+	TurnEnemy13 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
+	TurnEnemy14 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
 
 
 	//Random number generation
@@ -1314,7 +1314,13 @@ bool Combat::Update(float dt)
 						app->render->DrawRectangle({ app->scene->player->position.x + 114 - E1BOSS - 35, app->scene->player->position.y - 71 - E1BOSS,120 + E1BOSS,120 + E1BOSS }, 255, 255, 255, 120);
 					}
 				}
-				app->render->DrawTexture(E1asset, app->scene->player->position.x + 115-E1BOSS-35, app->scene->player->position.y - 70-E1BOSS);
+				if (E1_asset == 10) {
+					app->render->DrawTexture(E1asset, app->scene->player->position.x + 115 - E1BOSS - 35, app->scene->player->position.y - 70 - E1BOSS- 10);
+				}
+				else {
+					app->render->DrawTexture(E1asset, app->scene->player->position.x + 115 - E1BOSS - 35, app->scene->player->position.y - 70 - E1BOSS);
+				}
+
 				//Int to string convert
 				sprintf_s(Aux, "%.0f", E1MHP);
 				app->render->DrawRectangle({ app->scene->player->position.x + 115 - 35,app->scene->player->position.y + (E1BOSS/10*9),64,10 }, 0, 0, 0);
@@ -1340,7 +1346,13 @@ bool Combat::Update(float dt)
 					if (Turn[0] == 5) {
 						app->render->DrawRectangle({ app->scene->player->position.x + 199 + (E1BOSS / 2), app->scene->player->position.y - 131,66,66 }, 255, 255, 255, 120);
 					}
-					app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 + (E1BOSS/2), app->scene->player->position.y - 130);
+					if (E2_asset == 10) {
+						app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 + (E1BOSS / 2), app->scene->player->position.y - 130-10);
+					}
+					else {
+						app->render->DrawTexture(E2asset, app->scene->player->position.x + 200 + (E1BOSS / 2), app->scene->player->position.y - 130);
+					}
+					
 					//Int to string convert
 					sprintf_s(Aux, "%.0f", E2MHP);
 					app->render->DrawRectangle({ app->scene->player->position.x + 200 + (E1BOSS / 2),app->scene->player->position.y - 60,64,10 }, 0, 0, 0);
@@ -1364,7 +1376,13 @@ bool Combat::Update(float dt)
 						if (Turn[0] == 6) {
 							app->render->DrawRectangle({ app->scene->player->position.x + 199 + (E1BOSS / 2), app->scene->player->position.y - 11,66,66 }, 255, 255, 255, 120);
 						}
-						app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 + (E1BOSS / 2), app->scene->player->position.y - 10);
+						if (E3_asset == 10) {
+							app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 + (E1BOSS / 2), app->scene->player->position.y - 10-10);
+						}
+						else {
+							app->render->DrawTexture(E3asset, app->scene->player->position.x + 200 + (E1BOSS / 2), app->scene->player->position.y - 10);
+						}
+
 						//Int to string convert
 						sprintf_s(Aux, "%.0f", E3MHP);
 						app->render->DrawRectangle({ app->scene->player->position.x + 200 + (E1BOSS / 2),app->scene->player->position.y + 60,64,10 }, 0, 0, 0);
@@ -5418,6 +5436,24 @@ void Combat::TurnEnemyAsset(float Enemy_name) {
 	}
 	else if (Enemy_name == 8) {
 		app->render->DrawTexture(TurnEnemy8, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 9) {
+		app->render->DrawTexture(TurnEnemy9, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 10) {
+		app->render->DrawTexture(TurnEnemy10, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 11) {
+		app->render->DrawTexture(TurnEnemy11, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 12) {
+		app->render->DrawTexture(TurnEnemy12, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 13) {
+		app->render->DrawTexture(TurnEnemy13, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
+	}
+	else if (Enemy_name == 14) {
+		app->render->DrawTexture(TurnEnemy14, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
 	}
 	else {
 		app->render->DrawTexture(TurnEnemyD, ((app->scene->player->position.x + (21 * TurnPos) - 40) + offset * 10), app->scene->player->position.y - 165);
