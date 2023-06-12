@@ -112,18 +112,34 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 				break;
 			case 11:
 				app->inventory->manuscript++;
+				app->scene->player->laurea.lvl++;
+				app->scene->player->lapis.lvl++;
+				app->scene->player->lucca.lvl++;
 				break;
 			case 12:
 				app->inventory->manuscript++;
+				app->scene->player->laurea.lvl++;
+				app->scene->player->lapis.lvl++;
+				app->scene->player->lucca.lvl++; 
 				break;
 			case 13:
 				app->inventory->manuscript++;
+				app->scene->player->laurea.lvl++;
+				app->scene->player->lapis.lvl++;
+				app->scene->player->lucca.lvl++;
 				break;
 			case 14:
 				app->inventory->manuscript++;
+				app->scene->player->laurea.lvl++;
+				app->scene->player->lapis.lvl++;
+				app->scene->player->lucca.lvl++;
 				break;
 			case 15:
 				app->inventory->book++;
+				app->scene->player->laurea.lvl += 5;
+				app->scene->player->lapis.lvl += 5;
+				app->scene->player->lucca.lvl += 5;
+
 				break;
 			default:
 				break;

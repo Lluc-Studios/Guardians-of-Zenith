@@ -1151,15 +1151,11 @@ bool Scene::PostUpdate()
 			app->render->DrawText(60, 300, WF, "Zenith's history book", 16);
 			app->render->DrawText(300, 300, WF, amount, 16);
 		}
-		//	TODO 4: Show the items' sprites in the inventory
-		//for (int i = 0; i < app->inventory->nrOfItems; i++)
-		//{
-		//	app->render->DrawTexture(app->inventory->texture, player->position.x + 32 * i, player->position.y);
-		//}
-	}
 
-	// a
-	//SDL_rect rect = { 0,0,32,32 };
+		// Show team stats
+		app->render->DrawRectangle({ app->scene->player->position.x + 70, app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 150);
+		app->combat->ShowStatsInventory();
+	}
 
 	for (int i = 0; i < 15; i++)
 	{

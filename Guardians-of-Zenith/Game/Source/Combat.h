@@ -83,6 +83,7 @@ public:
 
 	void TurnEnemyAsset(float Enemy_name);
 
+	void ShowStatsInventory();
 public:
 
 	bool GodMode = false;
@@ -197,12 +198,12 @@ private:
 	SDL_Texture* TurnEnemy14;
 
 	//Character1
-	float C1MHP = 1000, C1CHP = 900;
-	float C1MMP = 250, C1CMP = 200;
+	float C1MHP = 350, C1CHP = 350;
+	float C1MMP = 50, C1CMP = 50;
 	float C1ATK, C1DEF,LIMIT1, limitCount1;
 	float C1speed = 0;
-	const char* C1NAME;
-	float C1lvl;
+	const char* C1NAME = "Laurea";
+	float C1lvl = 1;
 	int C1class = 1;
 
 	float C1A1lvl = 1, C1A1target = 0, C1A1dmg = 20, C1A1mp = 0;
@@ -228,12 +229,12 @@ private:
 	int C1POISON = 0, C1BURN= 0, C1ELEC = 0;
 
 	//Character2
-	float C2MHP = 1000, C2CHP = 320;
-	float C2MMP = 250, C2CMP = 100;
+	float C2MHP = 250, C2CHP = 250;
+	float C2MMP = 100, C2CMP = 100;
 	float C2ATK, C2DEF, LIMIT2, limitCount2;
 	float C2speed = 0;
-	const char* C2NAME;
-	float C2lvl;
+	const char* C2NAME = "Lapis";
+	float C2lvl = 1;
 	int C2class = 2;
 
 	float C2A1lvl = 1, C2A1target = 0, C2A1dmg = 20, C2A1mp = 0;
@@ -258,12 +259,12 @@ private:
 	int C2POISON = 0, C2BURN = 0, C2ELEC = 0;
 
 	//Character3
-	float C3MHP = 1000, C3CHP = 500;
-	float C3MMP = 250, C3CMP = 250;
+	float C3MHP = 200, C3CHP = 200;
+	float C3MMP = 115, C3CMP = 115;
 	float C3ATK, C3DEF, LIMIT3, limitCount3;
 	float C3speed = 0;
-	const char* C3NAME;
-	float C3lvl;
+	const char* C3NAME = "Lucca";
+	float C3lvl = 1;
 	int C3class = 3;
 
 	float C3A1lvl = 1, C3A1target = 0, C3A1dmg = 20, C3A1mp = 0;

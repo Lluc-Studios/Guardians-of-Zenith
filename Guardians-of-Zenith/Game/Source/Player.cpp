@@ -222,6 +222,25 @@ bool Player::Update(float dt)
 		}
 	}
 
+	// Level Up Fx
+	//if (auxLvlUp)
+	//{
+	//	app->render->DrawText(200, winy, { 34, 113, 179 }, "MISSION COMPLETE", 24);
+	//	if (winy > -100)
+	//	{
+	//		winy -= 4;
+	//	}
+	//	else
+	//	{
+	//		win = false;
+	//	}
+
+	//}
+	//else
+	//{
+	//	winy = 500;
+	//}
+
 	debugKeys();
 
 	if (playerState != State::ATTACKING)
