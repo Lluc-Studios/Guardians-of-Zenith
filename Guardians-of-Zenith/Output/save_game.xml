@@ -11,7 +11,7 @@
 		<ForestPuzzle Tower_1="false" Tower_2="false" Tower_3="false" />
 	</scene>
 	<entitymanager>
-		<player_stats facing="1" position_x="560" position_y="340" instance="0" />
+		<player_stats facing="1" position_x="581" position_y="340" instance="0" />
 		<laurea_stats laurea_CHP="350" laurea_CMP="50" laurea_LVL="1" laurea_EXP="0" />
 		<lapis_stats lapis_CHP="250" lapis_CMP="100" lapis_LVL="1" lapis_EXP="0" />
 		<lucca_stats lucca_CHP="200" lucca_CMP="115" lucca_LVL="1" lucca_EXP="0" />
@@ -33,6 +33,6 @@
 	<guiManager />
 	<Inventory />
 	<renderer>
-		<camera x="-476" y="-304" />
+		<camera x="-518" y="-304" />
 	</renderer>
 </save_state>
