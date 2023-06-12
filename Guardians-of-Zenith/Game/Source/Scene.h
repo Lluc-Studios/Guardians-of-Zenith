@@ -248,10 +248,11 @@ public:
 
 	SELECTED option = SELECTED::NONE;
 
-	SDL_Texture* texturas[7];
-	iPoint itemPos[7];
-	bool itemPicked[7];
-	PhysBody* itemBody[7];
+	SDL_Texture* texturas[15];
+	iPoint itemPos[15];
+	bool itemPicked[15];
+	PhysBody* itemBody[15];
+	int itemInstance[15];
 
 };
 

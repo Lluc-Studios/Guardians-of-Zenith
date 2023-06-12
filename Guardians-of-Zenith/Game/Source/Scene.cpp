@@ -1161,10 +1161,9 @@ bool Scene::PostUpdate()
 	// a
 	//SDL_rect rect = { 0,0,32,32 };
 
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 15; i++)
 	{
-		if(itemPicked[i]==false && app->Instance != 1
-								&& app->Instance != 3)
+		if(itemPicked[i]==false && app->Instance == itemInstance[i])
 			app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
 		else {
 			itemBody[i]->body->SetActive(false);
