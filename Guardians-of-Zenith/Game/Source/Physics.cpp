@@ -7,6 +7,7 @@
 #include "Defs.h"
 #include "Log.h"
 #include "Render.h"
+#include "Scene.h"
 #include "Player.h"
 #include "Window.h"
 #include "Box2D/Box2D/Box2D.h"
@@ -200,6 +201,24 @@ bool Physics::PostUpdate()
 	// You need to provide your own macro to translate meters to pixels
 	if (debug)
 	{
+		string instanceStr = std::to_string(app->Instance);
+		const char* instance = instanceStr.c_str();
+
+		app->render->DrawText(20, 16, WF, "Instance: ", 16);
+		app->render->DrawText(100, 16, WF, instance, 16);
+
+		string playerPosXStr = std::to_string(app->scene->player->position.x);
+		const char* playerPosX = playerPosXStr.c_str();
+
+		app->render->DrawText(20, 36, WF, "X: ", 16);
+		app->render->DrawText(50, 36, WF, playerPosX, 16);
+
+		string playerPosYStr = std::to_string(app->scene->player->position.y);
+		const char* playerPosY = playerPosYStr.c_str();
+
+		app->render->DrawText(20, 52, WF, "Y: ", 16);
+		app->render->DrawText(50, 52, WF, playerPosY, 16);
+
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 		{
 			for (b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext())

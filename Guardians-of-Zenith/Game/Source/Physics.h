@@ -117,4 +117,6 @@ private:
 
 	b2MouseJoint* mouse_joint;
 	b2Body* ground;
+
+	SDL_Color WF = { 255, 255, 255 };
 };
