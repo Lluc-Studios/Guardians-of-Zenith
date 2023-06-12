@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="24">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="27">
  <tileset firstgid="1" name="Tileset_Interiors" tilewidth="32" tileheight="32" tilecount="380" columns="20">
   <image source="Tilesets/Tileset_Interiors.png" width="640" height="608"/>
  </tileset>
@@ -1294,62 +1294,60 @@
   </data>
  </layer>
  <objectgroup id="6" name="Collisions">
-  <object id="1" x="320.727" y="89.303" width="166.167" height="62.6667"/>
-  <object id="3" x="25.2726" y="84.8674" width="6.57609" height="266.542"/>
-  <object id="4" x="25.0453" y="352.083" width="134.872" height="7.042">
+  <object id="1" x="319.971" y="151.938" width="128.985" height="0.03125"/>
+  <object id="3" x="31.8154" y="181.711" width="0.0333333" height="170.374"/>
+  <object id="4" x="31.8109" y="352.083" width="128.048" height="0.03125">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="5" x="224.676" y="79.1214" width="18.3059" height="94.5014"/>
+  <object id="5" x="242.929" y="88.6431" width="0.0531222" height="93.0435"/>
   <object id="6" x="289.163" y="288.278" width="61.917" height="58.2917"/>
   <object id="7" x="64.3475" y="255.945" width="61.917" height="58.2917"/>
-  <object id="8" x="448.962" y="151.792" width="37.9511" height="207.042"/>
-  <object id="11" x="31.6665" y="85" width="294.216" height="3.6667"/>
+  <object id="8" x="448.962" y="151.792" width="0.0486111" height="200.309"/>
+  <object id="11" x="242.972" y="88.6087" width="44.9415" height="0.0580043"/>
   <object id="13" x="288.255" y="192.499" width="61.917" height="58.2917"/>
-  <object id="14" x="31.0415" y="159.604" width="211.97" height="22.1196"/>
-  <object id="16" x="287.838" y="87.0806" width="32.167" height="40.2917"/>
-  <object id="17" x="256.159" y="352.083" width="192.188" height="7.2295">
+  <object id="14" x="31.8384" y="181.667" width="211.142" height="0.0571"/>
+  <object id="16" x="287.838" y="88.6584" width="32.167" height="38.7139"/>
+  <object id="17" x="256.116" y="352.083" width="192.844" height="0.0195313">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="18" x="224.071" y="383.896" width="39.4166" height="31.95">
+  <object id="18" x="224.071" y="383.896" width="0.03125" height="16.0906">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="19" x="153.118" y="384.068" width="38.6894" height="31.9511">
+  <object id="19" x="191.773" y="383.884" width="0.0342014" height="16.0935">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="20" x="153.118" y="358.324" width="6.74295" height="25.5383">
+  <object id="20" x="159.845" y="352.109" width="0.015625" height="31.7531">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="21" x="256.114" y="358.027" width="7.37363" height="25.7883">
+  <object id="21" x="256.114" y="352.086" width="0.0333333" height="31.8464">
    <properties>
     <property name="Type" type="int" value="9"/>
    </properties>
   </object>
-  <object id="23" x="191.564" y="409.115" width="32.8712" height="6.31474">
-   <properties>
-    <property name="Type" type="int" value="9"/>
-   </properties>
-  </object>
+  <object id="24" x="319.977" y="127.363" width="0.0531222" height="24.6185"/>
+  <object id="25" x="159.865" y="383.882" width="31.9193" height="0.0571"/>
+  <object id="26" x="224.065" y="383.899" width="32.0526" height="0.0571"/>
  </objectgroup>
  <objectgroup id="7" name="ExitTavern">
   <properties>
    <property name="Type" type="int" value="9"/>
   </properties>
-  <object id="15" x="191.941" y="399.96" width="31.6512" height="5.193"/>
+  <object id="15" x="191.804" y="399.96" width="32.2879" height="0.0325833"/>
  </objectgroup>
  <objectgroup id="9" name="NPC1">
   <properties>
    <property name="Type" type="int" value="22"/>
   </properties>
-  <object id="22" x="128" y="171.25" width="65" height="14.0833"/>
+  <object id="22" x="128" y="181.25" width="65" height="4.0833"/>
  </objectgroup>
 </map>

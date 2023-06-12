@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="72" nextobjectid="172">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="44" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="72" nextobjectid="175">
  <properties>
   <property name="Type" type="int" value="235"/>
  </properties>
@@ -5974,8 +5974,10 @@
   </data>
  </layer>
  <objectgroup id="54" name="Collisions">
-  <object id="7" x="755" y="950.67" width="23" height="487.333"/>
-  <object id="8" x="623.667" y="948" width="30.0003" height="492"/>
+  <object id="7" x="755" y="950.67" width="0.0539773" height="259.343"/>
+  <object id="172" x="652.453" y="950.768" width="0.0539773" height="259.163"/>
+  <object id="173" x="613.536" y="950.766" width="38.9329" height="0.0187812"/>
+  <object id="174" x="755.049" y="950.674" width="34.1517" height="0.0187812"/>
  </objectgroup>
  <objectgroup id="60" name="Elipse">
   <properties>
@@ -6114,17 +6116,17 @@
    <ellipse/>
   </object>
  </objectgroup>
+ <objectgroup id="59" name="Town">
+  <properties>
+   <property name="Type" type="int" value="26"/>
+  </properties>
+  <object id="53" x="652.505" y="1209.92" width="102.526" height="0.0263889"/>
+ </objectgroup>
  <objectgroup id="56" name="Water_Dungeon" visible="0">
   <properties>
    <property name="Type" type="int" value="14"/>
   </properties>
   <object id="49" x="490.667" y="641.333" width="39" height="93"/>
- </objectgroup>
- <objectgroup id="59" name="Town" visible="0">
-  <properties>
-   <property name="Type" type="int" value="26"/>
-  </properties>
-  <object id="53" x="654.167" y="1210.67" width="100.25" height="23"/>
  </objectgroup>
  <objectgroup id="57" name="Forest_Dungeon" visible="0">
   <properties>
