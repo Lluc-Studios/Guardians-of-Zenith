@@ -19012,9 +19012,6 @@
   <object id="229" x="1049.63" y="214.992" width="0.03125" height="100.668"/>
   <object id="292" x="327.071" y="315.955" width="124.933" height="0.0444444"/>
   <object id="293" x="604.02" y="315.655" width="445.646" height="0.0117187"/>
-  <object id="310" x="2012" y="313" width="21" height="45"/>
-  <object id="314" x="1875" y="68.5" width="88.5" height="20"/>
-  <object id="315" x="1941" y="90" width="22.5" height="58"/>
   <object id="322" x="1190.91" y="214.99" width="0.03125" height="40.3397"/>
   <object id="323" x="1537.78" y="255.333" width="0.0078125" height="191.64"/>
  </objectgroup>
@@ -19164,24 +19161,6 @@
    <ellipse/>
   </object>
   <object id="308" x="1770.63" y="992.917" width="74.75" height="75.5">
-   <ellipse/>
-  </object>
-  <object id="316" x="1817.25" y="160.25" width="91.5" height="92.5">
-   <ellipse/>
-  </object>
-  <object id="317" x="1778.5" y="65" width="100" height="97">
-   <ellipse/>
-  </object>
-  <object id="318" x="1934" y="128.5" width="94" height="94">
-   <ellipse/>
-  </object>
-  <object id="319" x="1957.5" y="225" width="94" height="94">
-   <ellipse/>
-  </object>
-  <object id="320" x="1963.5" y="351.5" width="94" height="94">
-   <ellipse/>
-  </object>
-  <object id="321" x="1928.5" y="445.5" width="103.5" height="103.5">
    <ellipse/>
   </object>
  </objectgroup>
