@@ -15123,8 +15123,8 @@
    <tile gid="156"/>
    <tile gid="157"/>
    <tile/>
-   <tile gid="177"/>
-   <tile gid="178"/>
+   <tile/>
+   <tile/>
    <tile gid="179"/>
    <tile gid="177"/>
    <tile gid="178"/>
@@ -15147,9 +15147,9 @@
    <tile gid="155"/>
    <tile gid="156"/>
    <tile gid="157"/>
-   <tile gid="155"/>
-   <tile gid="156"/>
-   <tile gid="157"/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -15193,9 +15193,9 @@
    <tile gid="178"/>
    <tile gid="179"/>
    <tile/>
-   <tile gid="199"/>
-   <tile gid="200"/>
-   <tile gid="201"/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile gid="199"/>
    <tile gid="200"/>
    <tile gid="201"/>
@@ -15217,8 +15217,8 @@
    <tile gid="177"/>
    <tile gid="178"/>
    <tile gid="179"/>
-   <tile gid="177"/>
-   <tile gid="178"/>
+   <tile/>
+   <tile/>
    <tile gid="155"/>
    <tile gid="156"/>
    <tile gid="157"/>
