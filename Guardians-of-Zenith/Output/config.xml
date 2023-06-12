@@ -33,8 +33,8 @@
 	<item id="1" name="Healing potion" x="1855" y="670" instance="0" texturepath="Assets/Textures/Objects/hpotion.png"/>
 	<item id="2" name="Healing potion" x="3755" y="-30" instance="4" texturepath="Assets/Textures/Objects/hpotion.png"/>
 	<item id="3" name="Healing potion" x="-990" y="754" instance="6" texturepath="Assets/Textures/Objects/hpotion.png"/>
-	<item id="4" name="Mana potion" x="739" Y="5047" instance="5" texturepath="Assets/Textures/Objects/mpotion.png"/>
-	<item id="5" name="Mana potion" x="-1570" Y="2000" instance="6" texturepath="Assets/Textures/Objects/mpotion.png"/>
+	<item id="4" name="Mana potion" x="926" y="3861" instance="5" texturepath="Assets/Textures/Objects/mpotion.png"/>
+	<item id="5" name="Mana potion" x="-1570" y="2000" instance="6" texturepath="Assets/Textures/Objects/mpotion.png"/>
 	<item id="6" name="Attack elixir" x="1430" y="1505" instance="0" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
 	<item id="7" name="Attack elixir" x="547" y="5505" instance="5" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
 	<item id="8" name="Defense elixir" x="3830" y="-452" instance="4" texturepath="Assets/Textures/Objects/DefElixir.png"/>

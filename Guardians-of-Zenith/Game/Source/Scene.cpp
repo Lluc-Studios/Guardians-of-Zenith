@@ -1163,11 +1163,17 @@ bool Scene::PostUpdate()
 
 	for (int i = 0; i < 15; i++)
 	{
-		if(itemPicked[i]==false && app->Instance == itemInstance[i])
-			app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
-		else {
-			itemBody[i]->body->SetActive(false);
+		if (itemInstance[i] == app->Instance)
+		{
+			if (itemPicked[i] == false) {
+				itemBody[i]->body->SetActive(true);
+				app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
+			}
+			else {
+				itemBody[i]->body->SetActive(false);
+			}
 		}
+
 	}
 
 	return true;
