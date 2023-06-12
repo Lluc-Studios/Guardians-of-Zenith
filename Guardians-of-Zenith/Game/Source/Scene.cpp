@@ -1014,32 +1014,44 @@ bool Scene::PostUpdate()
 			//char amount = static_cast<char>(app->inventory->nrOfHpPot);
 			string amountStr = std::to_string(app->inventory->nrOfHpPot);
 			const char* amount = amountStr.c_str();
-			app->render->DrawText(60, 140, WF, "Healing potion", 16);
-			app->render->DrawText(300, 140, WF, amount, 16);
+			app->render->DrawText(60, 120, WF, "Healing potion", 16);
+			app->render->DrawText(300, 120, WF, amount, 16);
 		}
 		if (app->inventory->nrOfMpPot > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfMpPot);
 			const char* amount = amountStr.c_str(); 
-			app->render->DrawText(60, 170, WF, "Mana potion", 16);
-			app->render->DrawText(300, 170, WF, amount, 16);
+			app->render->DrawText(60, 150, WF, "Mana potion", 16);
+			app->render->DrawText(300, 150, WF, amount, 16);
 		}
 		if (app->inventory->nrOfAtkElx > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfAtkElx);
 			const char* amount = amountStr.c_str(); 
-			app->render->DrawText(60, 200, WF, "Attack elixir", 16);
-			app->render->DrawText(300, 200, WF, amount, 16);
+			app->render->DrawText(60, 180, WF, "Attack elixir", 16);
+			app->render->DrawText(300, 180, WF, amount, 16);
 		}
 		if (app->inventory->nrOfDefElx > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfDefElx);
 			const char* amount = amountStr.c_str(); 
-			app->render->DrawText(60, 230, WF, "Defense elixir", 16);
-			app->render->DrawText(300, 230, WF, amount, 16);
+			app->render->DrawText(60, 210, WF, "Defense elixir", 16);
+			app->render->DrawText(300, 210, WF, amount, 16);
 		}
 		if (app->inventory->necklace > 0) {
-			string amountStr = std::to_string(app->inventory->nrOfDefElx);
+			string amountStr = std::to_string(app->inventory->necklace);
 			const char* amount = amountStr.c_str();
-			app->render->DrawText(60, 260, WF, "Old necklace", 16);
-			app->render->DrawText(300, 260, WF, amount, 16);
+			app->render->DrawText(60, 240, WF, "Old necklace", 16);
+			app->render->DrawText(300, 240, WF, amount, 16);
+		}
+		if (app->inventory->manuscript > 0) {
+			string amountStr = std::to_string(app->inventory->manuscript);
+			const char* amount = amountStr.c_str();
+			app->render->DrawText(60, 270, WF, "Manuscript", 16);
+			app->render->DrawText(300, 270, WF, amount, 16);
+		}
+		if (app->inventory->book > 0) {
+			string amountStr = std::to_string(app->inventory->book);
+			const char* amount = amountStr.c_str();
+			app->render->DrawText(60, 300, WF, "Zenith's history book", 16);
+			app->render->DrawText(300, 300, WF, amount, 16);
 		}
 		//	TODO 4: Show the items' sprites in the inventory
 		//for (int i = 0; i < app->inventory->nrOfItems; i++)
@@ -1058,11 +1070,10 @@ bool Scene::PostUpdate()
 			app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
 		else {
 			itemBody[i]->body->SetActive(false);
-			return true;
 		}
 	}
 
-	return ret;
+	return true;
 }
 
 // Called before quitting

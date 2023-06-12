@@ -32,6 +32,7 @@ bool Item::Awake() {
 
 bool Item::Start() {
 
+	isPicked = false;
 	//initilize textures
 	texture = app->tex->Load(texturePath);
 

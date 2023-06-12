@@ -35,8 +35,8 @@
 	<item id="3" name="Attack elixir" x="" y="" texturepath="Assets/Textures/Objects/AtkElixir.png"/>
 	<item id="4" name="Defense elixir" x="" y="" texturepath="Assets/Textures/Objects/DefElixir.png"/>
 	<item id="5" name="Old necklace" x="400" y="593" texturepath="Assets/Textures/Objects/Necklace.png"/>
-	<item id="6" name="Manuscripts" x="" y="" texturepath="Assets/Textures/Objects/Manuscript.png"/>
-	<item id="7" name="Zenith's history book" x="" y="" texturepath="Assets/Textures/Objects/ZenithBook.png"/>
+	<item id="6" name="Manuscripts" x="430" y="593" texturepath="Assets/Textures/Objects/Manuscript.png"/>
+	<item id="7" name="Zenith's history book" x="460" y="593" texturepath="Assets/Textures/Objects/ZenithBook.png"/>
 	  
 
 	  <!--enemy x="1270" y="190" width="64" height="64" texturepath="Assets/Textures/grounded_enemy.png"/>

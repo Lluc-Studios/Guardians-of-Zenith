@@ -17,6 +17,11 @@ Inventory::Inventory(unsigned cap) : Module()
 	this->items = new Item * [cap];
 	nrOfHpPot = 1;
 	nrOfMpPot = 1;
+	nrOfAtkElx = 1;
+	nrOfDefElx = 1;
+	necklace = 0;
+	manuscript = 0;
+	book = 0;
 }
 
 
