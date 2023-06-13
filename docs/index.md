@@ -7,7 +7,7 @@ Hi! This page has been written by [Iván Bermúdez Sagra](http://github.com/Ivan
 ## Features
 
 ## Trailer
-<iframe width="700" height="560" src="https://www.youtube.com/watch?v=mPnxSs_5x4Y" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mPnxSs_5x4Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ## Controls
 
 ## Screenshots
