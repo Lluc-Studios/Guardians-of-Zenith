@@ -25,12 +25,10 @@
     </ClCompile>
     <ClCompile Include="Source\ModuleFonts.cpp" />
     <ClCompile Include="Source\MainMenu.cpp" />
-    <ClCompile Include="Source\Saw.cpp" />
     <ClCompile Include="Source\DeathMenu.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Pathfinding.cpp" />
     <ClCompile Include="Source\App.cpp" />
-    <ClCompile Include="Source\Enemy2.cpp" />
     <ClCompile Include="Source\Teleport.cpp" />
     <ClCompile Include="Source\Combat.cpp" />
     <ClCompile Include="Source\Map.cpp">
@@ -116,7 +114,6 @@
     </ClInclude>
     <ClInclude Include="Source\ModuleFonts.h" />
     <ClInclude Include="Source\MainMenu.h" />
-    <ClInclude Include="Source\Saw.h" />
     <ClInclude Include="Source\DeathMenu.h" />
     <ClInclude Include="Source\MemLeaks.h">
       <Filter>Utils</Filter>
@@ -126,7 +123,6 @@
     <ClInclude Include="Source\PQueue.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Enemy2.h" />
     <ClInclude Include="Source\Teleport.h" />
     <ClInclude Include="Source\Combat.h" />
     <ClInclude Include="Source\Map.h">

@@ -1,10 +1,8 @@
 #include "EntityManager.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Enemy2.h"
 #include "Item.h"
 #include "Teleport.h"
-#include "Saw.h"
 #include "App.h"
 #include "Textures.h"
 #include "Scene.h"
@@ -98,17 +96,10 @@ Entity* EntityManager::CreateEntity(EntityType type)
 		entity = new Enemy();
 		break;
 
-	case EntityType::ENEMY2:
-		entity = new Enemy2();
-		break;
-
 	case EntityType::ITEM:
 		entity = new Item();
 		break;
 
-	case EntityType::SAW:
-		entity = new Saw();
-		break;
 	case EntityType::TELEPORT:
 		entity = new Teleport();
 		break;

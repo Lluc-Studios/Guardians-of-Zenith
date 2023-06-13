@@ -54,37 +54,11 @@ bool Scene::Awake(pugi::xml_node& config)
 		Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
 		item->parameters = itemNode;
 	}
-	
 
-	for (pugi::xml_node sawNode = config.child("saw"); sawNode; sawNode = sawNode.next_sibling("saw"))
-	{
-		Saw* saw = (Saw*)app->entityManager->CreateEntity(EntityType::SAW);
-		saw->parameters = sawNode;
-	}
 
 	//L02: DONE 3: Instantiate the player using the entity manager
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
 	player->parameters = config.child("player");
-
-	//Item* trophy =(Item*)app->entityManager->CreateEntity(EntityType::ITEM);
-	//trophy->parameters = config.child("trophy");
-
-	//for (pugi::xml_node en1Node = config.child("enemy"); en1Node; en1Node = en1Node.next_sibling("enemy")) {
-	//	Enemy* grounded_e = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
-	//	grounded_e->parameters = en1Node;
-	//}
-
-	//for (pugi::xml_node en2Node = config.child("enemy2"); en2Node; en2Node = en2Node.next_sibling("enemy2")) {
-	//	Enemy2* flying_e = (Enemy2*)app->entityManager->CreateEntity(EntityType::ENEMY2);
-	//	flying_e->parameters = en2Node;
-	//}
-
-	//for (pugi::xml_node tpNode = config.child("teleport"); tpNode; tpNode = tpNode.next_sibling("teleport"))
-	//{
-	//	Teleport* tp = (Teleport*)app->entityManager->CreateEntity(EntityType::TELEPORT);
-	//	tp->parameters = tpNode;
-	//}
-
 
 	//Load music & FX
 	villageMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Guidance Island OST Version.ogg");
