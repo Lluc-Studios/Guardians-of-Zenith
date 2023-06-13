@@ -1130,13 +1130,15 @@ bool Scene::PostUpdate()
 	// TODO 3: Some interface for the inventory
 	if (app->inventory->inventoryOn)
 	{
+		CanPlayerMove = false;
+
 		app->render->DrawRectangle({ app->scene->player->position.x + (-640 * app->ScalingMultiplier), app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 80);
 
 		//app->render->DrawRectangle(app->inventory->rect, 0, 0, 0, 50);
-		SDL_Rect rect = { 0, 0, 640, 360};
-		app->render->DrawTexture(invTex, app->scene->player->position.x-420, app->scene->player->position.y-180, &rect);
-		rect = { 0, 0, 20, 20 }; 
-		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 260, app->scene->player->position.y-44, &rect);
+		SDL_Rect rect = { 0, 0, 640, 360 };
+		app->render->DrawTexture(invTex, app->scene->player->position.x - 420, app->scene->player->position.y - 180, &rect);
+		rect = { 0, 0, 20, 20 };
+		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 260, app->scene->player->position.y - 44, &rect);
 		if (app->inventory->nrOfHpPot > 0) {
 			//char amount = static_cast<char>(app->inventory->nrOfHpPot);
 			string amountStr = std::to_string(app->inventory->nrOfHpPot);
@@ -1146,19 +1148,19 @@ bool Scene::PostUpdate()
 		}
 		if (app->inventory->nrOfMpPot > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfMpPot);
-			const char* amount = amountStr.c_str(); 
+			const char* amount = amountStr.c_str();
 			app->render->DrawText(60, 150, WF, "Mana potion", 16);
 			app->render->DrawText(300, 150, WF, amount, 16);
 		}
 		if (app->inventory->nrOfAtkElx > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfAtkElx);
-			const char* amount = amountStr.c_str(); 
+			const char* amount = amountStr.c_str();
 			app->render->DrawText(60, 180, WF, "Attack elixir", 16);
 			app->render->DrawText(300, 180, WF, amount, 16);
 		}
 		if (app->inventory->nrOfDefElx > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfDefElx);
-			const char* amount = amountStr.c_str(); 
+			const char* amount = amountStr.c_str();
 			app->render->DrawText(60, 210, WF, "Defense elixir", 16);
 			app->render->DrawText(300, 210, WF, amount, 16);
 		}
@@ -1185,6 +1187,8 @@ bool Scene::PostUpdate()
 		app->render->DrawRectangle({ app->scene->player->position.x + 70, app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 150);
 		app->combat->ShowStatsInventory();
 	}
+	else
+		CanPlayerMove = true;
 
 	for (int i = 0; i < 15; i++)
 	{

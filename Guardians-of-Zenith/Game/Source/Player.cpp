@@ -1035,11 +1035,10 @@ void Player::LevelToMax() {
 void Player::Move() {
 
 	float speed = 5;
-	//if (app->Instance == 0) {
-	//	speed = 10;
-	//}
-	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
-	if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) && app->combat->InCombat == false) {
+
+	vel = b2Vec2(0, 0);
+
+	if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) && app->combat->InCombat == false) {
 		vel = b2Vec2(0, 0);
 	}
 	if (((app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT )&& app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
@@ -1068,25 +1067,25 @@ void Player::Move() {
 		LevelToMax();
 	}
 
-	if (app->input->controllers.j1_x > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_x > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 		currentAnim = &playerRunR;
 	}
-	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 		currentAnim = &playerRunL;
 	}
-	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
 		currentAnim = &playerRunDown;
 	}
-	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;

@@ -140,24 +140,24 @@ bool Enemy::Update()
 		}
 	}
 
-	if (enemyPath.Count() > 1) {
-		DetectPlayer(playerPos, enemyPos);
-		if (state == EnemyState::MOVING) {
-			if (enemyPath.At(1)->x - enemyPath.At(0)->x > 0) {
-				if (pbody->body->GetLinearVelocity().x < speed) {
-					pbody->body->ApplyForce(b2Vec2(1.0f, 0.0f), pbody->body->GetWorldCenter(), true);
-				}
-			}
-			else if (enemyPath.At(1)->x - enemyPath.At(0)->x < 0) {
-				if (pbody->body->GetLinearVelocity().x > -speed) {
-					pbody->body->ApplyForce(b2Vec2(-1.0f, 0.0f), pbody->body->GetWorldCenter(), true);
-				}
-			}
-			else {
-				pbody->body->ApplyForce(b2Vec2(-pbody->body->GetLinearVelocity().x * 0.1f, 0.0f), pbody->body->GetWorldCenter(), true);
-			}
-		}
-	}
+	//if (enemyPath.Count() > 1) {
+	//	DetectPlayer(playerPos, enemyPos);
+	//	if (state == EnemyState::MOVING) {
+	//		if (enemyPath.At(1)->x - enemyPath.At(0)->x > 0) {
+	//			if (pbody->body->GetLinearVelocity().x < speed) {
+	//				pbody->body->ApplyForce(b2Vec2(1.0f, 0.0f), pbody->body->GetWorldCenter(), true);
+	//			}
+	//		}
+	//		else if (enemyPath.At(1)->x - enemyPath.At(0)->x < 0) {
+	//			if (pbody->body->GetLinearVelocity().x > -speed) {
+	//				pbody->body->ApplyForce(b2Vec2(-1.0f, 0.0f), pbody->body->GetWorldCenter(), true);
+	//			}
+	//		}
+	//		else {
+	//			pbody->body->ApplyForce(b2Vec2(-pbody->body->GetLinearVelocity().x * 0.1f, 0.0f), pbody->body->GetWorldCenter(), true);
+	//		}
+	//	}
+	//}
 
 	return true;
 }
