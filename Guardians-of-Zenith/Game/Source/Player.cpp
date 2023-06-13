@@ -1043,25 +1043,25 @@ void Player::Move() {
 	{
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
-		currentAnim = &playerRunL;
+		currentAnim = &playerRunR;
 	}
 	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
-		currentAnim = &playerRunR;
+		currentAnim = &playerRunL;
 	}
 	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
-		currentAnim = &playerRunUp;
+		currentAnim = &playerRunDown;
 	}
 	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
-		&playerRunDown;
+		currentAnim = &playerRunUp;
 	}
 	
 
