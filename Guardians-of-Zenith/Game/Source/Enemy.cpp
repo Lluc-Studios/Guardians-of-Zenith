@@ -173,31 +173,6 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
 		break;
-	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
-		jumping = false;
-		break;
-	case ColliderType::FLOOR:
-		LOG("Collision FLOOR");
-		break;
-	case ColliderType::SPIKES:
-		LOG("Collision SPIKES");
-		break;
-	case ColliderType::WALL:
-		LOG("Collision WALL");
-		break;
-	case ColliderType::PLAYER_ATTACK:
-		LOG("Enemy hit");
-		if (life == 1) {
-			life--;
-			Death();
-			//app->scene->player->score += 100;
-		}
-		if (life == 2) {
-			life--;
-			app->audio->PlayFxWithVolume(dedFx, 0, app->audio->fxvolume);
-		}
-		break;
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;

@@ -605,31 +605,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
 		break;
-	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
-		break;
-	case ColliderType::FLOOR:
-		LOG("Collision FLOOR");
-		break;
-	case ColliderType::SPIKES:
-		LOG("Collision SPIKES");
-		if (invincible == false) {
-			if (life != 1 && lifeAux == 0) {
-				app->audio->PlayFxWithVolume(DamageFx, 0, app->audio->fxvolume);
-				life--;
-				lifeAux++;
-			}
-			else if (life == 1 && lifeAux == 0) {
-				life = 0;
-				alive = false;
-			}
-		}
-		break;
-	case ColliderType::WALL:
-		LOG("Collision WALL");
-
-		break; 
-
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
@@ -1043,25 +1018,25 @@ void Player::Move() {
 	{
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
-		currentAnim = &playerRunL;
+		currentAnim = &playerRunR;
 	}
 	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
-		currentAnim = &playerRunR;
+		currentAnim = &playerRunL;
 	}
 	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
-		currentAnim = &playerRunUp;
+		currentAnim = &playerRunDown;
 	}
 	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
 	{
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
-		&playerRunDown;
+		currentAnim = &playerRunUp;
 	}
 	
 
@@ -1228,7 +1203,7 @@ void Player::debugKeys() {
 		app->combat->StartCombat();
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
+	/*if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
 	{
 		LOG("Collision Lily");
 		app->scene->PresetChanceS = rand() % 100 + 1;
@@ -1250,7 +1225,6 @@ void Player::debugKeys() {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
 	{
-
 		LOG("Collision Forest enemy");
 		app->scene->PresetChanceS = rand() % 100 + 1;
 		if (app->scene->PresetChanceS >= 1 && app->scene->PresetChanceS <= 25) app->combat->Preset = 16;
@@ -1282,7 +1256,7 @@ void Player::debugKeys() {
 		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
-	}
+	}*/
 
 	//Teleport Daigeons
 	//Lake

@@ -24,6 +24,7 @@
 #include "Player.h"
 #include "Item.h"
 #include "time.h"
+#include "External/SDL/include/SDL_gamecontroller.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -209,7 +210,7 @@ bool Scene::Start()
 	Naiadon1->ctype = ColliderType::ENEMYNAIADON;
 	Driadon1 = app->physics->CreateRectangle(1265, 2373, 118, 125, STATIC);
 	Driadon1->ctype = ColliderType::ENEMYDRIADON;
-	Gasha1 = app->physics->CreateRectangle(-1338, -400, 118, 125, STATIC);
+	Gasha1 = app->physics->CreateRectangle(-1338+10, -400+10, 118, 125+10, STATIC);
 	Gasha1->ctype = ColliderType::ENEMYGASHA;
 
 	//Lake puzzle
@@ -1254,7 +1255,7 @@ bool Scene::Pause()
 
 		// Buttons and gamepad
 		if (option == SELECTED::NONE) {
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*//*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::SAVEGAME;
 				PlaySelectFx();
 
@@ -1262,38 +1263,45 @@ bool Scene::Pause()
 		}
 		else if (option == SELECTED::SAVEGAME) {
 			app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
-			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::OPTIONS;
 				PlaySelectFx();
 			}
 		}
 		else if (option == SELECTED::OPTIONS) {
 			app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
 				option = SELECTED::SAVEGAME;
 				PlaySelectFx();
 			}
-			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::MAINMENU;
 				PlaySelectFx();
 			}
 		}
 		else if (option == SELECTED::MAINMENU) {
 			app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
 				option = SELECTED::OPTIONS;
 				PlaySelectFx();
 			}
-			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::EXIT;
 				PlaySelectFx();
 			}
 		}
 		else if (option == SELECTED::EXIT) {
 			app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
 				option = SELECTED::MAINMENU;
 				PlaySelectFx();
+			}
+		}
+		if (option == SELECTED::NONE) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
+				option = SELECTED::SAVEGAME;
+				PlaySelectFx();
+
 			}
 		}
 	}

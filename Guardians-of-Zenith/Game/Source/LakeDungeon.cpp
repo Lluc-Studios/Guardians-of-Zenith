@@ -533,19 +533,7 @@ void LakeDungeon::CreateColliders(ColDataL c) {
         collider1 = app->physics->CreateRectangle((c.x + c.width / 2) + 2500, (c.y + c.height / 2) - 2500, c.width, c.height, bodyType::STATIC);
     }
 
-    if (c.type == 0) {
-        collider1->ctype = ColliderType::PLATFORM;
-    }
-    else if (c.type == 1) {
-        collider1->ctype = ColliderType::SPIKES; 
-    }
-    else if (c.type == 2) {
-        collider1->ctype = ColliderType::FLOOR;
-    }
-    else if (c.type == 3) {
-        collider1->ctype = ColliderType::WALL;
-    }
-    else if (c.type == 8) {
+    if (c.type == 8) {
         collider1->ctype = ColliderType::TAVERN;
     }
     else if (c.type == 9) {

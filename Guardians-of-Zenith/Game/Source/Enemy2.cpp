@@ -51,21 +51,6 @@ bool Enemy2::Start() {
 	enemyIdleR.PushBack({ 0 * width,0 * height,width,height });
 	enemyIdleL.PushBack({ 0 * width,1 * height,width,height });
 
-	/*enemyDropR.PushBack({ 0 * width,4 * height,width,height });
-	enemyDropL.PushBack({ 0 * width,5 * height,width,height });
-
-	for (int i = 0; i < 3; i++) {
-		enemyRunR.PushBack({ i * width,2 * height,width,height });
-	}
-	enemyRunR.loop = true;
-	enemyRunR.speed = 0.3f;
-
-	for (int i = 0; i < 3; i++) {
-		enemyRunL.PushBack({ i * width,3 * height,width,height });
-	}
-	enemyRunL.loop = true;
-	enemyRunL.speed = 0.3f;*/
-
 	for (int i = 0; i < 3; i++) {
 		enemyDie.PushBack({ i * width,2 * height,width,height });
 	}
@@ -171,18 +156,6 @@ void Enemy2::OnCollision(PhysBody* physA, PhysBody* physB) {
 	{
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
-		break;
-	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
-		break;
-	case ColliderType::FLOOR:
-		LOG("Collision FLOOR");
-		break;
-	case ColliderType::SPIKES:
-		LOG("Collision SPIKES");
-		break;
-	case ColliderType::WALL:
-		LOG("Collision WALL");
 		break;
 	case ColliderType::PLAYER_ATTACK:
 		LOG("Enemy die");
