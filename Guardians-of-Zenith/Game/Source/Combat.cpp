@@ -127,13 +127,13 @@ bool Combat::Start()
 	TurnEnemy7 = app->tex->Load("Assets/Textures/Types/Turn_SlimeFrogDemonic.png");
 	TurnEnemy8 = app->tex->Load("Assets/Textures/Types/Turn_DroughtLilyFish.png");
 	//Enemies Forest
-	TurnEnemy9 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
-	TurnEnemy10 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
+	TurnEnemy9 = app->tex->Load("Assets/Textures/Types/Turn_Mantis.png");
+	TurnEnemy10 = app->tex->Load("Assets/Textures/Types/Turn_Mushroom.png");
 	TurnEnemy11 = app->tex->Load("Assets/Textures/Types/Turn_DryadonGod.png");
 	//Enemies Cave
-	TurnEnemy12 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
-	TurnEnemy13 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
-	TurnEnemy14 = app->tex->Load("Assets/Textures/Types/Turn_enemy.png");
+	TurnEnemy12 = app->tex->Load("Assets/Textures/Types/Turn_Pixie.png");
+	TurnEnemy13 = app->tex->Load("Assets/Textures/Types/Turn_Spectrum.png");
+	TurnEnemy14 = app->tex->Load("Assets/Textures/Types/Turn_Gashadokuro.png");
 
 
 	//Random number generation
