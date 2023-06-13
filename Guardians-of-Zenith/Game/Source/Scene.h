@@ -58,6 +58,10 @@ public:
 	
 	bool BW = false, BF = false, BC = false, BWC = false, BFC = false, BCC = false;
 
+	//Godmode
+	
+	int C1A = 0, C1D = 0, C2A = 0, C2D = 0, C3A = 0, C3D = 0;
+
 	//fading
 	int fading = 0, selected = 0;
 	bool fade = false;

@@ -219,6 +219,15 @@ bool Physics::PostUpdate()
 		app->render->DrawText(20, 52, WF, "Y: ", 16);
 		app->render->DrawText(50, 52, WF, playerPosY, 16);
 
+		app->render->DrawText(20, 68, WF, "Y to level up", 16);
+		app->render->DrawText(20, 84, WF, "T to skip turn", 16);
+		app->render->DrawText(20, 100, WF, "C to start combat with lake enemies", 16);
+		app->render->DrawText(20, 116, WF, "N to start combat with forest enemies", 16);
+		app->render->DrawText(20, 132, WF, "M to start combat with cave enemies", 16);
+		app->render->DrawText(20, 148, WF, "B to lose", 16);
+		app->render->DrawText(20, 164, WF, "F10 to GodMode", 16);
+
+
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 		{
 			for (b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext())

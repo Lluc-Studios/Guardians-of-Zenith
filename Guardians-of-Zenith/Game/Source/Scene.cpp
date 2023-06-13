@@ -285,16 +285,28 @@ bool Scene::Update(float dt)
 	}
 	//Only debug purpose, as it meses up the character stats and may buff or nerf them
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
-		int god = 100000;
-		if (app->scene->player->laurea.def == 100000) {
-			god = 100;
+		if (app->scene->player->laurea.def != 100000) {
+			C1D = app->scene->player->laurea.def;
+			C2D = app->scene->player->lapis.def;
+			C3D = app->scene->player->lucca.def;
+			C1A = app->scene->player->laurea.atk;
+			C2A = app->scene->player->lapis.atk;
+			C3A = app->scene->player->lucca.atk;
+			app->scene->player->laurea.def = 100000;
+			app->scene->player->lapis.def = 100000;
+			app->scene->player->lucca.def = 100000;
+			app->scene->player->laurea.atk = 100000;
+			app->scene->player->lapis.atk = 100000;
+			app->scene->player->lucca.atk = 100000;
 		}
-		app->scene->player->laurea.def = god;
-		app->scene->player->lapis.def = god;
-		app->scene->player->lucca.def = god;
-		app->scene->player->laurea.atk = god;
-		app->scene->player->lapis.atk = god;
-		app->scene->player->lucca.atk = god;
+		else if (app->scene->player->laurea.def == 100000) {
+			app->scene->player->laurea.def = C1D;
+			app->scene->player->lapis.def = C2D;
+			app->scene->player->lucca.def = C3D;
+			app->scene->player->laurea.atk = C1A;
+			app->scene->player->lapis.atk = C2A;
+			app->scene->player->lucca.atk = C3A;
+		}
 	}
 	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN) {
 		PF = !PF;
@@ -856,9 +868,24 @@ bool Scene::Update(float dt)
 	//app->render->DrawTexture(Lily, 3208, -1033);
 	//app->render->DrawTexture(Lily, 2984, -1033);
 
-	app->render->DrawTexture(Naiadon, 3400, -1876);
-	app->render->DrawTexture(Driadon, 1206, 2311);
-	app->render->DrawTexture(Gasha, -1402, -462);
+	if (BW == false) {
+		app->render->DrawTexture(Naiadon, 3400, -1876);
+	}
+	if (BF == false) {
+		app->render->DrawTexture(Driadon, 1206, 2311);
+	}
+	if (BC == false) {
+		app->render->DrawTexture(Gasha, -1402, -462);
+	}
+	if (BW == true) {
+		Naiadon1->body->SetActive(false);
+	}
+	if (BF == true) {
+		Driadon1->body->SetActive(false);
+	}
+	if (BC == true) {
+		Gasha1->body->SetActive(false);
+	}
 
 	//Puzzle Lake
 	Puzzle_Lake();

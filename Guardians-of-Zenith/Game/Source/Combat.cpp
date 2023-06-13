@@ -186,25 +186,25 @@ bool Combat::Update(float dt)
 		}
 
 		//DEBUG
-		if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
-			GodMode = !GodMode;
-		}
-		if (GodMode == true) {
-			C1DEF = 100000;
-			C1ATK = 100000;
-			C2DEF = 100000;
-			C2ATK = 100000;
-			C3DEF = 100000;
-			C3ATK = 100000;
-		}
-		if (GodMode == false) {
-			C1DEF = 100;
-			C1ATK = 100;
-			C2DEF = 100;
-			C2ATK = 100;
-			C3DEF = 100;
-			C3ATK = 100;
-		}
+		//if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
+		//	GodMode = !GodMode;
+		//}
+		//if (GodMode == true) {
+		//	C1DEF = 100000;
+		//	C1ATK = 100000;
+		//	C2DEF = 100000;
+		//	C2ATK = 100000;
+		//	C3DEF = 100000;
+		//	C3ATK = 100000;
+		//}
+		//if (GodMode == false) {
+		//	C1DEF = 100;
+		//	C1ATK = 100;
+		//	C2DEF = 100;
+		//	C2ATK = 100;
+		//	C3DEF = 100;
+		//	C3ATK = 100;
+		//}
 		//White fading
 		if (WhiteFading < 200 && Fading == false) {
 			WhiteFading += 5;
