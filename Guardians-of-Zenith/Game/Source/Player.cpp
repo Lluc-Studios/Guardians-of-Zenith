@@ -598,6 +598,10 @@ bool Player::Update(float dt)
 	}
 
 	//MenuQuest
+	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+	{
+		Qmenu = false;
+	}
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat)
 	{
 		Qmenu = !Qmenu;
