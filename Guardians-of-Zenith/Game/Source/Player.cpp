@@ -77,6 +77,7 @@ bool Player::Start() {
 	puzzleFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Puzzle sound.wav");
 	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
 	BedFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Health potion.wav");
+	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -601,6 +602,7 @@ bool Player::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat)
 	{
 		Qmenu = !Qmenu;
+		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 	}
 	if (Qmenu)
 	{

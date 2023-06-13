@@ -4357,7 +4357,6 @@ bool Combat::PostUpdate()
 			ExitCombat();
 			app->audio->Audio_Instance(app->Instance);
 			A_pressed = true;
-
 		}
 		else if (app->input->controllers.A == 0)
 		{
