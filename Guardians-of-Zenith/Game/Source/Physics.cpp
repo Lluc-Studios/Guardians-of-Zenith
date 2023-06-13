@@ -204,28 +204,29 @@ bool Physics::PostUpdate()
 		string instanceStr = std::to_string(app->Instance);
 		const char* instance = instanceStr.c_str();
 
-		app->render->DrawText(20, 16, WF, "Instance: ", 16);
-		app->render->DrawText(100, 16, WF, instance, 16);
+		app->render->DrawText(20, 18, WF, "Instance: ", 16);
+		app->render->DrawText(100, 18, WF, instance, 16);
 
 		string playerPosXStr = std::to_string(app->scene->player->position.x);
 		const char* playerPosX = playerPosXStr.c_str();
 
-		app->render->DrawText(20, 36, WF, "X: ", 16);
-		app->render->DrawText(50, 36, WF, playerPosX, 16);
+		app->render->DrawText(20, 36, WF, "Position X: ", 16);
+		app->render->DrawText(100, 36, WF, playerPosX, 16);
 
 		string playerPosYStr = std::to_string(app->scene->player->position.y);
 		const char* playerPosY = playerPosYStr.c_str();
 
-		app->render->DrawText(20, 52, WF, "Y: ", 16);
-		app->render->DrawText(50, 52, WF, playerPosY, 16);
+		app->render->DrawText(20, 52, WF, "Position Y: ", 16);
+		app->render->DrawText(100, 52, WF, playerPosY, 16);
 
-		app->render->DrawText(20, 68, WF, "Y to level up", 16);
-		app->render->DrawText(20, 84, WF, "T to skip turn", 16);
-		app->render->DrawText(20, 100, WF, "C to start combat with lake enemies", 16);
-		app->render->DrawText(20, 116, WF, "N to start combat with forest enemies", 16);
-		app->render->DrawText(20, 132, WF, "M to start combat with cave enemies", 16);
-		app->render->DrawText(20, 148, WF, "B to lose", 16);
-		app->render->DrawText(20, 164, WF, "F10 to GodMode", 16);
+		app->render->DrawText(20, 68, WF, "Y to level up the party", 16);
+		app->render->DrawText(20, 84, WF, "I to teleport to lake dungeon", 16);
+		app->render->DrawText(20, 100, WF, "O to teleport to forest dungeon", 16);
+		app->render->DrawText(20, 116, WF, "P to teleport to cave dungeon", 16);
+		app->render->DrawText(20, 132, WF, "C to start basic test combat", 16);
+		app->render->DrawText(20, 148, WF, "T to skip turn in combat", 16);
+		app->render->DrawText(20, 164, WF, "B to lose combat ", 16);
+		app->render->DrawText(20, 180, WF, "F10 to GodMode", 16);
 
 
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
