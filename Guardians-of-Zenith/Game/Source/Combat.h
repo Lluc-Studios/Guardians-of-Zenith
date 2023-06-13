@@ -425,7 +425,11 @@ private:
 	SDL_Texture* E2;
 	SDL_Texture* E3;
 
-	int TurnPos = 0, auxiliarPos = 0;
+	SDL_Texture* Lose;
+
+	bool AudioLose = false;
+
+	int TurnPos = 0, auxiliarPos = 0, playerX = 0, playerY = 0;
 
 	const char* M1 = "0";
 	const char* M2 = "0";

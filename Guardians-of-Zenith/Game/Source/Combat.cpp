@@ -47,6 +47,7 @@ bool Combat::Start()
 	BG_House = app->tex->Load("Assets/Textures/Combat_Background/Combat_House.png");
 	BG_Tavern = app->tex->Load("Assets/Textures/Combat_Background/Combat_Tavern.png");
 	BG_Blackmith = app->tex->Load("Assets/Textures/Combat_Background/Combat_Blackmith.png");
+	Lose = app->tex->Load("Assets/Textures/Scenes/losescreen.png");
 
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
@@ -4269,12 +4270,11 @@ bool Combat::Update(float dt)
 		}
 		if (C1dead == true && C2dead == true && C3dead == true) {
 			option = COMBATMENU::LOSE;
-			app->audio->PlayFxWithVolume(looseFX, 0, 70);
 		}
 		//DEBUG
 
 
-		//Test Forzen
+		//Test Frozen
 		if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 		{
 			C1FROZEN = true;
@@ -4325,7 +4325,13 @@ bool Combat::PostUpdate()
 	}
 	if (option == COMBATMENU::LOSE) {
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
-		app->audio->PlayFxWithVolume(looseFX, 0, 70);
+		if (AudioLose == false) {
+			app->audio->PlayFxWithVolume(looseFX, 0, 70);
+			AudioLose = true;
+		}
+		app->scene->player->pbody->GetPosition(playerX, playerY);
+		app->render->DrawRectangle({ playerX-1000,playerY-1000,5000,5000}, 0, 0, 0);
+		app->render->DrawTexture(Lose, playerX-313, playerY-181);
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			EXPwon = 0;
@@ -4553,6 +4559,8 @@ void Combat::StartCombat()
 	LoadLaurea(app->scene->player->laurea);
 	LoadLapis(app->scene->player->lapis);
 	LoadLucca(app->scene->player->lucca);
+
+	app->scene->player->pbody->body->SetType(b2BodyType::b2_staticBody);
 
 	//Slime
 	if (Preset == 1) {
@@ -4918,6 +4926,10 @@ void Combat::ExitCombat()
 	C1BLEED = false;
 	C2BLEED = false;
 	C3BLEED = false;
+
+	AudioLose = false;
+
+	app->scene->player->pbody->body->SetType(b2BodyType::b2_dynamicBody);
 
 	CleanUp();
 }
