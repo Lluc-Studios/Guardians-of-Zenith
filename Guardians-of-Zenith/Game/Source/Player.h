@@ -108,6 +108,12 @@ public:
 	bool limitFPS = true;
 	int PresetChance = 0, PresetVariation = 0;
 
+	//Questmenu
+	bool Qmenu = false;
+	bool Quest1 = false;
+	bool Quest2 = false;
+	bool Quest1Completed = false;
+
 	//dialogue
 	bool isDialogue = false;
 	bool isBill = false;
@@ -229,6 +235,7 @@ private:
 	SDL_Texture* LFE;
 	SDL_Texture* Dialogue;
 	SDL_Texture* PressE;
+	SDL_Texture* MenuQuest;
 
 	SDL_Rect rectDown = { 0,0,32,32 };
 	SDL_Rect rectUp = { 32,0,32,32 };

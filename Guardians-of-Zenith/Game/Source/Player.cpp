@@ -85,6 +85,7 @@ bool Player::Start() {
 	//LFE = app->tex->Load("Assets/Textures/EMPTY.png");
 	Dialogue = app->tex->Load("Assets/Textures/UI/globotexto_small.png");
 	PressE = app->tex->Load("Assets/Textures/Objects/Interact_Botton.png");
+	MenuQuest = app->tex->Load("Assets/Textures/UI/menu_quests.png");
 
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
@@ -327,7 +328,7 @@ bool Player::Update(float dt)
 		if (NPC_01 )
 		{
 			app->render->DrawTexture(PressE, 148 + 8, -280 - 15);
-
+			
 			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 			{
 				buttonE = false;
@@ -336,6 +337,7 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				isBill = true;
 				NPCname = 1;
+				Quest1 = true;
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -345,12 +347,13 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				isBill = true;
 				NPCname = 1;
+				Quest1 = true;
 			}
 		}
 		if (NPC_02 )
 		{
 			app->render->DrawTexture(PressE, 224 + 8, -710 - 15);
-
+			
 			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 			{
 				buttonE = false;
@@ -378,7 +381,7 @@ bool Player::Update(float dt)
 		if (NPC_03 )
 		{
 			app->render->DrawTexture(PressE, 483 + 8, 545 - 15);
-
+			
 			if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN)
 			{
 				buttonE = false;
@@ -388,6 +391,7 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				NPC = true;
 				NPCname = 3;
+				Quest2 = true;
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -398,6 +402,7 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				NPC = true;
 				NPCname = 3;
+				Quest2 = true;
 			}
 		}
 		if (NPC_04 )
@@ -590,6 +595,60 @@ bool Player::Update(float dt)
 		}
 	}
 
+	//MenuQuest
+	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat)
+	{
+		Qmenu = !Qmenu;
+	}
+	if (Qmenu)
+	{
+		//app->render->DrawTexture(MenuQuest, 237, 152);
+		app->render->DrawTexture(MenuQuest, position.x - 290, position.y - 180);
+		app->render->DrawText(170, 160, { 0, 0, 0 }, "Main mission", 16);
+		app->render->DrawText(300, 160, { 0, 0, 0 }, "Defeat 3 enemies", 16);
+
+		if (!Quest1)
+		{
+			app->render->DrawText(200, 220, { 0, 0, 0 }, "?", 18);
+			app->render->DrawText(380, 220, { 0, 0, 0 }, "?", 18);
+		}
+
+		if (!Quest2)
+		{
+			app->render->DrawText(200, 280, { 0, 0, 0 }, "?", 18);
+			app->render->DrawText(380, 280, { 0, 0, 0 }, "?", 18);
+		}
+
+		if (Quest1)
+		{
+			app->render->DrawText(170, 220, { 0, 0, 0 }, "Bill", 16);
+			app->render->DrawText(300, 220, { 0, 0, 0 }, "Return the pendant to Bill", 16);
+		}
+
+		if (Quest2)
+		{
+			app->render->DrawText(170, 280, { 0, 0, 0 }, "Sera", 16);
+			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Sera's Necklace", 16);
+		}
+		if (win)
+		{
+			Quest1Completed = true;
+		}
+		if (Quest1Completed)
+		{
+			app->render->DrawText(170, 220, { 0, 255, 0 }, "Bill", 16);
+			app->render->DrawText(300, 220, { 0, 255, 0 }, "Return the pendant to Bill", 16);
+		}
+		if (app->inventory->necklace > 0)
+		{
+			app->render->DrawText(170, 280, { 0, 0, 0 }, "Sera", 16);
+			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Sera's Necklace", 16);
+		}
+
+	}
+
+
+
 	return true;
 }
 
@@ -605,31 +664,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
 		break;
-	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
-		break;
-	case ColliderType::FLOOR:
-		LOG("Collision FLOOR");
-		break;
-	case ColliderType::SPIKES:
-		LOG("Collision SPIKES");
-		if (invincible == false) {
-			if (life != 1 && lifeAux == 0) {
-				app->audio->PlayFxWithVolume(DamageFx, 0, app->audio->fxvolume);
-				life--;
-				lifeAux++;
-			}
-			else if (life == 1 && lifeAux == 0) {
-				life = 0;
-				alive = false;
-			}
-		}
-		break;
-	case ColliderType::WALL:
-		LOG("Collision WALL");
-
-		break; 
-
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;
@@ -1006,11 +1040,10 @@ void Player::LevelToMax() {
 void Player::Move() {
 
 	float speed = 5;
-	//if (app->Instance == 0) {
-	//	speed = 10;
-	//}
-	vel = b2Vec2(0, pbody->body->GetLinearVelocity().y);
-	if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) && app->combat->InCombat == false) {
+
+	vel = b2Vec2(0, 0);
+
+	if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) && app->combat->InCombat == false) {
 		vel = b2Vec2(0, 0);
 	}
 	if (((app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT )&& app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
@@ -1039,25 +1072,25 @@ void Player::Move() {
 		LevelToMax();
 	}
 
-	if (app->input->controllers.j1_x > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_x > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 		currentAnim = &playerRunR;
 	}
-	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_x < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 		currentAnim = &playerRunL;
 	}
-	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_y > 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
 		currentAnim = &playerRunDown;
 	}
-	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused)
+	if (app->input->controllers.j1_y < 0 && app->scene->CanPlayerMove == true && !isDialogue && !app->scene->isPaused && !app->inventory->inventoryOn)
 	{
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;

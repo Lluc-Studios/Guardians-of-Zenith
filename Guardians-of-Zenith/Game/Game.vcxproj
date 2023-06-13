@@ -102,7 +102,6 @@
     <ClCompile Include="Source\DialogueSystem.cpp" />
     <ClCompile Include="Source\DialogueTree.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
-    <ClCompile Include="Source\Enemy2.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\ForestDungeon.cpp" />
     <ClCompile Include="Source\GuiButton.cpp" />
@@ -128,7 +127,6 @@
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\Tavern.cpp" />
     <ClCompile Include="Source\Teleport.cpp" />
-    <ClCompile Include="Source\Saw.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
@@ -142,7 +140,6 @@
     <ClInclude Include="Source\DialogueSystem.h" />
     <ClInclude Include="Source\DialogueTree.h" />
     <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\Enemy2.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
     <ClInclude Include="Source\ForestDungeon.h" />
@@ -169,7 +166,6 @@
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\PQueue.h" />
     <ClInclude Include="Source\Queue.h" />
-    <ClInclude Include="Source\Saw.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Audio.h" />
     <ClInclude Include="Source\Input.h" />

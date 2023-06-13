@@ -54,37 +54,11 @@ bool Scene::Awake(pugi::xml_node& config)
 		Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
 		item->parameters = itemNode;
 	}
-	
 
-	for (pugi::xml_node sawNode = config.child("saw"); sawNode; sawNode = sawNode.next_sibling("saw"))
-	{
-		Saw* saw = (Saw*)app->entityManager->CreateEntity(EntityType::SAW);
-		saw->parameters = sawNode;
-	}
 
 	//L02: DONE 3: Instantiate the player using the entity manager
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
 	player->parameters = config.child("player");
-
-	//Item* trophy =(Item*)app->entityManager->CreateEntity(EntityType::ITEM);
-	//trophy->parameters = config.child("trophy");
-
-	//for (pugi::xml_node en1Node = config.child("enemy"); en1Node; en1Node = en1Node.next_sibling("enemy")) {
-	//	Enemy* grounded_e = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
-	//	grounded_e->parameters = en1Node;
-	//}
-
-	//for (pugi::xml_node en2Node = config.child("enemy2"); en2Node; en2Node = en2Node.next_sibling("enemy2")) {
-	//	Enemy2* flying_e = (Enemy2*)app->entityManager->CreateEntity(EntityType::ENEMY2);
-	//	flying_e->parameters = en2Node;
-	//}
-
-	//for (pugi::xml_node tpNode = config.child("teleport"); tpNode; tpNode = tpNode.next_sibling("teleport"))
-	//{
-	//	Teleport* tp = (Teleport*)app->entityManager->CreateEntity(EntityType::TELEPORT);
-	//	tp->parameters = tpNode;
-	//}
-
 
 	//Load music & FX
 	villageMusic = app->audio->LoadFx("Assets/Soundtrack/Music/Guidance Island OST Version.ogg");
@@ -286,16 +260,28 @@ bool Scene::Update(float dt)
 	}
 	//Only debug purpose, as it meses up the character stats and may buff or nerf them
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
-		int god = 100000;
-		if (app->scene->player->laurea.def == 100000) {
-			god = 100;
+		if (app->scene->player->laurea.def != 100000) {
+			C1D = app->scene->player->laurea.def;
+			C2D = app->scene->player->lapis.def;
+			C3D = app->scene->player->lucca.def;
+			C1A = app->scene->player->laurea.atk;
+			C2A = app->scene->player->lapis.atk;
+			C3A = app->scene->player->lucca.atk;
+			app->scene->player->laurea.def = 100000;
+			app->scene->player->lapis.def = 100000;
+			app->scene->player->lucca.def = 100000;
+			app->scene->player->laurea.atk = 100000;
+			app->scene->player->lapis.atk = 100000;
+			app->scene->player->lucca.atk = 100000;
 		}
-		app->scene->player->laurea.def = god;
-		app->scene->player->lapis.def = god;
-		app->scene->player->lucca.def = god;
-		app->scene->player->laurea.atk = god;
-		app->scene->player->lapis.atk = god;
-		app->scene->player->lucca.atk = god;
+		else if (app->scene->player->laurea.def == 100000) {
+			app->scene->player->laurea.def = C1D;
+			app->scene->player->lapis.def = C2D;
+			app->scene->player->lucca.def = C3D;
+			app->scene->player->laurea.atk = C1A;
+			app->scene->player->lapis.atk = C2A;
+			app->scene->player->lucca.atk = C3A;
+		}
 	}
 	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN) {
 		PF = !PF;
@@ -834,7 +820,20 @@ bool Scene::Update(float dt)
 		app->monolith->Draw();
 	}
 
+	for (int i = 0; i < 15; i++)
+	{
+		if (itemInstance[i] == app->Instance)
+		{
+			if (itemPicked[i] == false) {
+				itemBody[i]->body->SetActive(true);
+				app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
+			}
+			else {
+				itemBody[i]->body->SetActive(false);
+			}
+		}
 
+	}
 
 	//Lake dungeon
 	app->render->DrawTexture(Tp, 3520, 415);
@@ -857,9 +856,24 @@ bool Scene::Update(float dt)
 	//app->render->DrawTexture(Lily, 3208, -1033);
 	//app->render->DrawTexture(Lily, 2984, -1033);
 
-	app->render->DrawTexture(Naiadon, 3400, -1876);
-	app->render->DrawTexture(Driadon, 1206, 2311);
-	app->render->DrawTexture(Gasha, -1402+5, -462+10);
+	if (BW == false) {
+		app->render->DrawTexture(Naiadon, 3400, -1876);
+	}
+	if (BF == false) {
+		app->render->DrawTexture(Driadon, 1206, 2311);
+	}
+	if (BC == false) {
+		app->render->DrawTexture(Gasha, -1402, -462);
+	}
+	if (BW == true) {
+		Naiadon1->body->SetActive(false);
+	}
+	if (BF == true) {
+		Driadon1->body->SetActive(false);
+	}
+	if (BC == true) {
+		Gasha1->body->SetActive(false);
+	}
 
 	//Puzzle Lake
 	Puzzle_Lake();
@@ -1103,13 +1117,15 @@ bool Scene::PostUpdate()
 	// TODO 3: Some interface for the inventory
 	if (app->inventory->inventoryOn)
 	{
+		CanPlayerMove = false;
+
 		app->render->DrawRectangle({ app->scene->player->position.x + (-640 * app->ScalingMultiplier), app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 80);
 
 		//app->render->DrawRectangle(app->inventory->rect, 0, 0, 0, 50);
-		SDL_Rect rect = { 0, 0, 640, 360};
-		app->render->DrawTexture(invTex, app->scene->player->position.x-420, app->scene->player->position.y-180, &rect);
-		rect = { 0, 0, 20, 20 }; 
-		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 260, app->scene->player->position.y-44, &rect);
+		SDL_Rect rect = { 0, 0, 640, 360 };
+		app->render->DrawTexture(invTex, app->scene->player->position.x - 420, app->scene->player->position.y - 180, &rect);
+		rect = { 0, 0, 20, 20 };
+		app->render->DrawTexture(invArrowTex, app->scene->player->position.x - 260, app->scene->player->position.y - 44, &rect);
 		if (app->inventory->nrOfHpPot > 0) {
 			//char amount = static_cast<char>(app->inventory->nrOfHpPot);
 			string amountStr = std::to_string(app->inventory->nrOfHpPot);
@@ -1119,19 +1135,19 @@ bool Scene::PostUpdate()
 		}
 		if (app->inventory->nrOfMpPot > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfMpPot);
-			const char* amount = amountStr.c_str(); 
+			const char* amount = amountStr.c_str();
 			app->render->DrawText(60, 150, WF, "Mana potion", 16);
 			app->render->DrawText(300, 150, WF, amount, 16);
 		}
 		if (app->inventory->nrOfAtkElx > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfAtkElx);
-			const char* amount = amountStr.c_str(); 
+			const char* amount = amountStr.c_str();
 			app->render->DrawText(60, 180, WF, "Attack elixir", 16);
 			app->render->DrawText(300, 180, WF, amount, 16);
 		}
 		if (app->inventory->nrOfDefElx > 0) {
 			string amountStr = std::to_string(app->inventory->nrOfDefElx);
-			const char* amount = amountStr.c_str(); 
+			const char* amount = amountStr.c_str();
 			app->render->DrawText(60, 210, WF, "Defense elixir", 16);
 			app->render->DrawText(300, 210, WF, amount, 16);
 		}
@@ -1158,21 +1174,8 @@ bool Scene::PostUpdate()
 		app->render->DrawRectangle({ app->scene->player->position.x + 70, app->scene->player->position.y + (-360 * app->ScalingMultiplier),1280 * app->ScalingMultiplier,720 * app->ScalingMultiplier }, 0, 0, 0, 150);
 		app->combat->ShowStatsInventory();
 	}
-
-	for (int i = 0; i < 15; i++)
-	{
-		if (itemInstance[i] == app->Instance)
-		{
-			if (itemPicked[i] == false) {
-				itemBody[i]->body->SetActive(true);
-				app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
-			}
-			else {
-				itemBody[i]->body->SetActive(false);
-			}
-		}
-
-	}
+	else
+		CanPlayerMove = true;
 
 	return true;
 }

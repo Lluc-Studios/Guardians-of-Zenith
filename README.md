@@ -80,10 +80,6 @@ RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project I
 |K|L|Ñ|
 
 
-|  Start Combat Fish | Start Combat Forest | Start Combat Cave|
-|---|---|---|
-|B|N|M|
-
 ## Developers
 
 | Sergio Corona Gómez | Iván Bermúdez Sagra | Marc Escandell Alonso | Joan Giol Pozo | Adrian Ramirez Perez |

@@ -114,34 +114,59 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 				break;
 			case 11:
 				app->inventory->manuscript++;
-				app->scene->player->laurea.lvl++;
-				app->scene->player->lapis.lvl++;
-				app->scene->player->lucca.lvl++;
+				app->scene->player->LevelToMax();
 				break;
 			case 12:
 				app->inventory->manuscript++;
-				app->scene->player->laurea.lvl++;
-				app->scene->player->lapis.lvl++;
-				app->scene->player->lucca.lvl++; 
+				app->scene->player->LevelToMax();
 				break;
 			case 13:
 				app->inventory->manuscript++;
-				app->scene->player->laurea.lvl++;
-				app->scene->player->lapis.lvl++;
-				app->scene->player->lucca.lvl++;
+				app->scene->player->LevelToMax();
 				break;
 			case 14:
 				app->inventory->manuscript++;
-				app->scene->player->laurea.lvl++;
-				app->scene->player->lapis.lvl++;
-				app->scene->player->lucca.lvl++;
+				app->scene->player->LevelToMax();
 				break;
 			case 15:
 				app->inventory->book++;
-				app->scene->player->laurea.lvl += 5;
-				app->scene->player->lapis.lvl += 5;
-				app->scene->player->lucca.lvl += 5;
-
+				for (int i = 0; i < 5; i++)
+				{
+					//Characters level up
+					if (app->scene->player->laurea.lvl <= 20) {
+						app->scene->player->laurea.lvl++;
+						app->scene->player->laurea.EXPneeded += (app->scene->player->laurea.EXPneeded * 0.1);
+						app->scene->player->laurea.exp = 0;
+						app->scene->player->laurea.hp += (app->scene->player->laurea.HPG * app->scene->player->laurea.HPC);
+						app->scene->player->laurea.chp += (app->scene->player->laurea.HPG * app->scene->player->laurea.HPC);
+						app->scene->player->laurea.mp += (app->scene->player->laurea.MPG * app->scene->player->laurea.MPC);
+						app->scene->player->laurea.cmp += (app->scene->player->laurea.MPG * app->scene->player->laurea.MPC);
+						app->scene->player->laurea.atk += (app->scene->player->laurea.ATKG * app->scene->player->laurea.ATKC);
+						app->scene->player->laurea.def += (app->scene->player->laurea.DEFG * app->scene->player->laurea.DEFC);
+					}
+					if (app->scene->player->lapis.lvl <= 20) {
+						app->scene->player->lapis.lvl++;
+						app->scene->player->lapis.EXPneeded += (app->scene->player->lapis.EXPneeded * 0.1);
+						app->scene->player->lapis.exp = 0;
+						app->scene->player->lapis.hp += (app->scene->player->lapis.HPG * app->scene->player->lapis.HPC);
+						app->scene->player->lapis.chp += (app->scene->player->lapis.HPG * app->scene->player->lapis.HPC);
+						app->scene->player->lapis.mp += (app->scene->player->lapis.MPG * app->scene->player->lapis.MPC);
+						app->scene->player->lapis.cmp += (app->scene->player->lapis.MPG * app->scene->player->lapis.MPC);
+						app->scene->player->lapis.atk += (app->scene->player->lapis.ATKG * app->scene->player->lapis.ATKC);
+						app->scene->player->lapis.def += (app->scene->player->lapis.DEFG * app->scene->player->lapis.DEFC);
+					}
+					if (app->scene->player->lucca.lvl <= 20) {
+						app->scene->player->lucca.lvl++;
+						app->scene->player->lucca.EXPneeded += (app->scene->player->lucca.EXPneeded * 0.1);
+						app->scene->player->lucca.exp = 0;
+						app->scene->player->lucca.hp += (app->scene->player->lucca.HPG * app->scene->player->lucca.HPC);
+						app->scene->player->lucca.chp += (app->scene->player->lucca.HPG * app->scene->player->lucca.HPC);
+						app->scene->player->lucca.mp += (app->scene->player->lucca.MPG * app->scene->player->lucca.MPC);
+						app->scene->player->lucca.cmp += (app->scene->player->lucca.MPG * app->scene->player->lucca.MPC);
+						app->scene->player->lucca.atk += (app->scene->player->lucca.ATKG * app->scene->player->lucca.ATKC);
+						app->scene->player->lucca.def += (app->scene->player->lucca.DEFG * app->scene->player->lucca.DEFC);
+					}
+				}
 				break;
 			default:
 				break;
