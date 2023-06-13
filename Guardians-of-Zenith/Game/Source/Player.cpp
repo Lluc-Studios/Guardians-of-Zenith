@@ -605,31 +605,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
 		break;
-	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
-		break;
-	case ColliderType::FLOOR:
-		LOG("Collision FLOOR");
-		break;
-	case ColliderType::SPIKES:
-		LOG("Collision SPIKES");
-		if (invincible == false) {
-			if (life != 1 && lifeAux == 0) {
-				app->audio->PlayFxWithVolume(DamageFx, 0, app->audio->fxvolume);
-				life--;
-				lifeAux++;
-			}
-			else if (life == 1 && lifeAux == 0) {
-				life = 0;
-				alive = false;
-			}
-		}
-		break;
-	case ColliderType::WALL:
-		LOG("Collision WALL");
-
-		break; 
-
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
 		break;

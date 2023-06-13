@@ -46,8 +46,6 @@ bool Saw::Start() {
 
 	pbody->body->SetGravityScale(0.0f);
 
-	pbody->ctype = ColliderType::SPIKES; 
-
 	currentPoint = p2;
 
 
