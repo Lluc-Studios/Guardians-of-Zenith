@@ -195,7 +195,7 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 		}
 		if (life == 2) {
 			life--;
-			app->audio->PlayFxWithVolume(dedFx, 0, 35);
+			app->audio->PlayFxWithVolume(dedFx, 0, app->audio->fxvolume);
 		}
 		break;
 	case ColliderType::UNKNOWN:
@@ -251,7 +251,7 @@ void Enemy::Patrol() {
 
 void Enemy::Death() {
 	pbody->body->SetActive(false);
-	app->audio->PlayFxWithVolume(dedFx, 0, 35);
+	app->audio->PlayFxWithVolume(dedFx, 0, app->audio->fxvolume);
 	currentAnim = &enemyDie;
 	alive = false;
 	if (currentAnim->HasFinished()) {

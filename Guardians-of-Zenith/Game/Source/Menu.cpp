@@ -65,34 +65,34 @@ bool Menu::Update(float dt)
 		if (fading == 0) { fadeIn = false; };
 	}
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && fadeIn == false) {
-		app->audio->PlayFxWithVolume(select,0,70);
+		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		PlaySelected = true;
 
 	}
 	if (app->input->controllers.A != 0)
 	{
-		app->audio->PlayFxWithVolume(select, 0, 70);
+		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		PlaySelected = true;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 		if (option == SELECTED::SECOND) {
 			option = SELECTED::FIRST;
-			app->audio->PlayFxWithVolume(change,0,70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 		if (option == SELECTED::THIRD) {
 			option = SELECTED::SECOND;
-			app->audio->PlayFxWithVolume(change,0,70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 
 	}
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 		if (option == SELECTED::SECOND) {
 			option = SELECTED::THIRD;
-			app->audio->PlayFxWithVolume(change,0,70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 		if (option == SELECTED::FIRST) {
 			option = SELECTED::SECOND;
-			app->audio->PlayFxWithVolume(change,0,70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 	}
 	tempX = -1*x;

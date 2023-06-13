@@ -53,7 +53,7 @@ bool DialogueSystem::OnGuiMouseClickEvent(GuiControl* control)
 {
 	LOG("Event by %d ", control->id);
 
-	app->audio->PlayFxWithVolume(dialogueFX, 0, 70);
+	app->audio->PlayFxWithVolume(dialogueFX, 0, app->audio->fxvolume);
 
 	// TODO 4: Buttons ID match the choice ID. Use it to access to its attributes
 	playerInput = activeTree->activeNode->choicesList[control->id];

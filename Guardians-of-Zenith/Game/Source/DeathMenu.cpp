@@ -76,7 +76,7 @@ bool DeathMenu::Update(float dt)
 		}
 	}
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-		app->audio->PlayFxWithVolume(select,0,70);
+		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		if (continue1 == true) {
 			app->scene->player->active = true;
 			app->scene->player->alive = true;
@@ -101,7 +101,7 @@ bool DeathMenu::Update(float dt)
 	}
 	if (app->input->controllers.A != 0)
 	{
-		app->audio->PlayFxWithVolume(select, 0, 70);
+		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		if (continue1 == true) {
 			app->scene->player->active = true;
 			app->scene->player->alive = true;
@@ -127,13 +127,13 @@ bool DeathMenu::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 		if (continue1 == false) {
 			continue1 = true;
-			app->audio->PlayFxWithVolume(change,0,70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 	}
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 		if (continue1 == true) {
 			continue1 = false;
-			app->audio->PlayFxWithVolume(change,0,70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 
 	}

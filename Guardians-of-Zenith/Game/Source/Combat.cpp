@@ -169,9 +169,9 @@ bool Combat::Update(float dt)
 		app->inventory->inventoryOn = false;
 
 		//Play Fx if a character hp is lower than the last frame
-		if (C1HP_Aux > C1CHP) { app->audio->PlayFxWithVolume(LaureaHurtFX, 0, 70); }
-		if (C2HP_Aux > C2CHP) { app->audio->PlayFxWithVolume(LapisHurtFX, 0, 70); }
-		if (C3HP_Aux > C3CHP) { app->audio->PlayFxWithVolume(LuccaHurtFX, 0, 70); }
+		if (C1HP_Aux > C1CHP) { app->audio->PlayFxWithVolume(LaureaHurtFX, 0, app->audio->fxvolume); }
+		if (C2HP_Aux > C2CHP) { app->audio->PlayFxWithVolume(LapisHurtFX, 0, app->audio->fxvolume); }
+		if (C3HP_Aux > C3CHP) { app->audio->PlayFxWithVolume(LuccaHurtFX, 0, app->audio->fxvolume); }
 
 		//Frog taking too long to kill isues fix
 
@@ -1546,61 +1546,61 @@ bool Combat::Update(float dt)
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::DEFEND) {
 						option = COMBATMENU::ATTACK;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::INVENTORY) {
 						option = COMBATMENU::DEFEND;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ESCAPE) {
 						option = COMBATMENU::INVENTORY;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
 				if (AttackMenu == true && EnemySelect == false) {
 					if (option == COMBATMENU::ATTACK2) {
 						option = COMBATMENU::ATTACK1;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK4) {
 						option = COMBATMENU::ATTACK2;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK5) {
 						option = COMBATMENU::ATTACK4;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK6) {
 						option = COMBATMENU::ATTACK5;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK3) {
 						option = COMBATMENU::ATTACK6;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
 				if (EnemySelect == true) {
 					if (option == COMBATMENU::ENEMY2 && E1dead == false) {
 						option = COMBATMENU::ENEMY1;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ENEMY3) {
 						if (E2dead == false) {
 							option = COMBATMENU::ENEMY2;
-							app->audio->PlayFxWithVolume(change, 0, 70);
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 						}
 						if (E2dead == true && E1dead == false) {
 							option = COMBATMENU::ENEMY1;
-							app->audio->PlayFxWithVolume(change, 0, 70);
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 						}
 					}
 					if (option == COMBATMENU::ALLY2) {
 						option = COMBATMENU::ALLY1;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ALLY3) {
 						option = COMBATMENU::ALLY2;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
 				if (AllySelect == true) {
@@ -1634,61 +1634,61 @@ bool Combat::Update(float dt)
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::INVENTORY) {
 						option = COMBATMENU::ESCAPE;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::DEFEND) {
 						option = COMBATMENU::INVENTORY;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK) {
 						option = COMBATMENU::DEFEND;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
 				if (AttackMenu == true && EnemySelect == false) {
 					if (option == COMBATMENU::ATTACK6) {
 						option = COMBATMENU::ATTACK3;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK5) {
 						option = COMBATMENU::ATTACK6;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK4) {
 						option = COMBATMENU::ATTACK5;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK2) {
 						option = COMBATMENU::ATTACK4;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK1) {
 						option = COMBATMENU::ATTACK2;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
 				if (EnemySelect == true) {
 					if (option == COMBATMENU::ENEMY2 && E3dead == false) {
 						option = COMBATMENU::ENEMY3;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ENEMY1) {
 						if (E2dead == false) {
 							option = COMBATMENU::ENEMY2;
-							app->audio->PlayFxWithVolume(change, 0, 70);
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 						}
 						if (E2dead == true && E3dead == false) {
 							option = COMBATMENU::ENEMY3;
-							app->audio->PlayFxWithVolume(change, 0, 70);
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 						}
 					}
 					if (option == COMBATMENU::ALLY2) {
 						option = COMBATMENU::ALLY3;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ALLY1) {
 						option = COMBATMENU::ALLY2;
-						app->audio->PlayFxWithVolume(change, 0, 70);
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
 				if (AllySelect == true) {
@@ -1724,22 +1724,22 @@ bool Combat::Update(float dt)
 				if (AttackMenu == true && EnemySelect == false) {
 					AttackMenu = false;
 					option = COMBATMENU::ATTACK;
-					app->audio->PlayFxWithVolume(select, 0, 70);
+					app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 				}
 				else if (AttackMenu == true && EnemySelect == true) {
 					EnemySelect = false;
 					option = COMBATMENU::ATTACK1;
-					app->audio->PlayFxWithVolume(select, 0, 70);
+					app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 				}
 				if (InventoryMenu == true && AllySelect == false) {
 					InventoryMenu = false;
 					option = COMBATMENU::INVENTORY;
-					app->audio->PlayFxWithVolume(select, 0, 70);
+					app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 				}
 				else if (InventoryMenu == true && AllySelect == true) {
 					AllySelect = false;
 					option = COMBATMENU::INVENTORY1;
-					app->audio->PlayFxWithVolume(select, 0, 70);
+					app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 				}
 			}
 			if ((app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN 
@@ -1749,10 +1749,10 @@ bool Combat::Update(float dt)
 						AttackMenu = true;
 						option = COMBATMENU::ATTACK1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::DEFEND) {
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 						if (Turn[0] == 1) {
 							C1Block = true;
 							FinishTurn();
@@ -1770,11 +1770,11 @@ bool Combat::Update(float dt)
 						InventoryMenu = true;
 						option = COMBATMENU::INVENTORY1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ESCAPE) {
 						EXPwon = 0;
-						app->audio->PlayFxWithVolume(looseFX, 0, 70);
+						app->audio->PlayFxWithVolume(looseFX, 0, app->audio->fxvolume);
 						//Audio
 						ExitCombat();
 						app->audio->Audio_Instance(app->Instance);
@@ -1786,28 +1786,28 @@ bool Combat::Update(float dt)
 						ItemSelected = 1;
 						option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::INVENTORY2) {
 						AllySelect = true;
 						ItemSelected = 2;
 						option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::INVENTORY3) {
 						AllySelect = true;
 						ItemSelected = 3;
 						option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::INVENTORY4) {
 						AllySelect = true;
 						ItemSelected = 4;
 						option = COMBATMENU::ALLYSELECT1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 				}
 				if (AttackMenu == true && cd == 0 && EnemySelect == false) {
@@ -1816,21 +1816,21 @@ bool Combat::Update(float dt)
 						AttackSelected = 1;
 						option = COMBATMENU::ENEMY1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK2) {
 						EnemySelect = true;
 						AttackSelected = 2;
 						option = COMBATMENU::ENEMY1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK3) {
 						EnemySelect = true;
 						AttackSelected = 3;
 						option = COMBATMENU::ENEMY1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK4) {
 						if (Turn[0] != 2) {
@@ -1838,14 +1838,14 @@ bool Combat::Update(float dt)
 							AttackSelected = 4;
 							option = COMBATMENU::ENEMY1;
 							cd = 1;
-							app->audio->PlayFxWithVolume(select, 0, 70);
+							app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 						}
 						if (Turn[0] == 2) {
 							EnemySelect = true;
 							AttackSelected = 4;
 							option = COMBATMENU::ALLY1;
 							cd = 1;
-							app->audio->PlayFxWithVolume(select, 0, 70);
+							app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 						}
 					}
 					if (option == COMBATMENU::ATTACK5) {
@@ -1853,7 +1853,7 @@ bool Combat::Update(float dt)
 						AttackSelected = 5;
 						option = COMBATMENU::ENEMY1;
 						cd = 1;
-						app->audio->PlayFxWithVolume(select, 0, 70);
+						app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 					}
 					if (option == COMBATMENU::ATTACK6) {
 						if (Turn[0] != 2) {
@@ -1861,14 +1861,14 @@ bool Combat::Update(float dt)
 							AttackSelected = 6;
 							option = COMBATMENU::ENEMY1;
 							cd = 1;
-							app->audio->PlayFxWithVolume(select, 0, 70);
+							app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 						}
 						if (Turn[0] == 2) {
 							EnemySelect = true;
 							AttackSelected = 6;
 							option = COMBATMENU::ALLY1;
 							cd = 1;
-							app->audio->PlayFxWithVolume(select, 0, 70);
+							app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 						}
 					}
 				}
@@ -1876,7 +1876,7 @@ bool Combat::Update(float dt)
 				if (EnemySelect == true && cd == 0) {
 					if (option == COMBATMENU::ENEMY1 && E1dead == false) {
 						if (Turn[0] == 1) {
-							app->audio->PlayFxWithVolume(LaureaAttackFX, 0, 70);
+							app->audio->PlayFxWithVolume(LaureaAttackFX, 0, app->audio->fxvolume);
 							if (AttackSelected == 1) {
 								if (E1CES == 0) {
 									multiplier = 1;
@@ -1990,7 +1990,7 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (Turn[0] == 2) {
-							app->audio->PlayFxWithVolume(LapisAttackFX, 0, 70);
+							app->audio->PlayFxWithVolume(LapisAttackFX, 0, app->audio->fxvolume);
 							if (AttackSelected == 1) {
 								if (E1CES == 0) {
 									multiplier = 1;
@@ -2119,7 +2119,7 @@ bool Combat::Update(float dt)
 							}
 						}
 						if (Turn[0] == 3) {
-							app->audio->PlayFxWithVolume(LuccaAttackFX, 0, 70);
+							app->audio->PlayFxWithVolume(LuccaAttackFX, 0, app->audio->fxvolume);
 							if (AttackSelected == 1) {
 								if (E1CES == 0) {
 									multiplier = 1;
@@ -2907,7 +2907,7 @@ bool Combat::Update(float dt)
 								C1CHP = C1MHP;
 								FinishTurn();
 								app->inventory->nrOfHpPot--;
-								app->audio->PlayFxWithVolume(healingPotiFX, 0, 70);
+								app->audio->PlayFxWithVolume(healingPotiFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 2:
@@ -2917,7 +2917,7 @@ bool Combat::Update(float dt)
 								C1CMP = C1MMP;
 								FinishTurn();
 								app->inventory->nrOfMpPot--;
-								app->audio->PlayFxWithVolume(manaPotiFX, 0, 70);
+								app->audio->PlayFxWithVolume(manaPotiFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 3:
@@ -2927,7 +2927,7 @@ bool Combat::Update(float dt)
 								C1ATK *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfAtkElx--;
-								app->audio->PlayFxWithVolume(strengthEliFX, 0, 70);
+								app->audio->PlayFxWithVolume(strengthEliFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 4:
@@ -2937,7 +2937,7 @@ bool Combat::Update(float dt)
 								C1DEF *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfDefElx--;
-								app->audio->PlayFxWithVolume(defEliFX, 0, 70);
+								app->audio->PlayFxWithVolume(defEliFX, 0, app->audio->fxvolume);
 							}
 							break;
 						default:
@@ -2954,7 +2954,7 @@ bool Combat::Update(float dt)
 								C2CHP = C2MHP;
 								FinishTurn();
 								app->inventory->nrOfHpPot--;
-								app->audio->PlayFxWithVolume(healingPotiFX, 0, 70);
+								app->audio->PlayFxWithVolume(healingPotiFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 2:
@@ -2964,7 +2964,7 @@ bool Combat::Update(float dt)
 								C2CMP = C2MMP;
 								FinishTurn();
 								app->inventory->nrOfMpPot--;
-								app->audio->PlayFxWithVolume(manaPotiFX, 0, 70);
+								app->audio->PlayFxWithVolume(manaPotiFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 3:
@@ -2974,7 +2974,7 @@ bool Combat::Update(float dt)
 								C2ATK *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfAtkElx--;
-								app->audio->PlayFxWithVolume(strengthEliFX, 0, 70);
+								app->audio->PlayFxWithVolume(strengthEliFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 4:
@@ -2984,7 +2984,7 @@ bool Combat::Update(float dt)
 								C2DEF *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfDefElx--;
-								app->audio->PlayFxWithVolume(defEliFX, 0, 70);
+								app->audio->PlayFxWithVolume(defEliFX, 0, app->audio->fxvolume);
 							}
 							break;
 						default:
@@ -3003,7 +3003,7 @@ bool Combat::Update(float dt)
 								C3CHP = C3MHP;
 								FinishTurn();
 								app->inventory->nrOfHpPot--;
-								app->audio->PlayFxWithVolume(healingPotiFX, 0, 70);
+								app->audio->PlayFxWithVolume(healingPotiFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 2:
@@ -3013,7 +3013,7 @@ bool Combat::Update(float dt)
 								C3CMP = C3MMP;
 								FinishTurn();
 								app->inventory->nrOfMpPot--;
-								app->audio->PlayFxWithVolume(manaPotiFX, 0, 70);
+								app->audio->PlayFxWithVolume(manaPotiFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 3:
@@ -3023,7 +3023,7 @@ bool Combat::Update(float dt)
 								C3ATK *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfAtkElx--;
-								app->audio->PlayFxWithVolume(strengthEliFX, 0, 70);
+								app->audio->PlayFxWithVolume(strengthEliFX, 0, app->audio->fxvolume);
 							}
 							break;
 						case 4:
@@ -3033,7 +3033,7 @@ bool Combat::Update(float dt)
 								C3DEF *= 1.5;
 								FinishTurn();
 								app->inventory->nrOfDefElx--;
-								app->audio->PlayFxWithVolume(defEliFX, 0, 70);
+								app->audio->PlayFxWithVolume(defEliFX, 0, app->audio->fxvolume);
 							}
 							break;
 						default:
@@ -4279,7 +4279,7 @@ bool Combat::Update(float dt)
 		//Combat end
 		if (E1dead == true && E2dead == true && E3dead == true) {
 			option = COMBATMENU::WIN;
-			app->audio->PlayFxWithVolume(winFX, 0, 70);
+			app->audio->PlayFxWithVolume(winFX, 0, app->audio->fxvolume);
 			if (app->scene->BWC == true) {
 				app->scene->BW = true;
 			}
@@ -4326,7 +4326,7 @@ bool Combat::PostUpdate()
 		sprintf_s(Aux, "%d", EXPwon);
 		app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux, 16);
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
-		app->audio->PlayFxWithVolume(winFX, 0, 70);
+		app->audio->PlayFxWithVolume(winFX, 0, app->audio->fxvolume);
 		if (app->scene->BW == true && app->scene->BF == true && app->scene->BC == true) {
 			app->scene->player->pbody->GetPosition(playerX, playerY);
 			app->render->DrawRectangle({ playerX - 1000,playerY - 1000,5000,5000 }, 24, 255, 239);
@@ -4354,7 +4354,7 @@ bool Combat::PostUpdate()
 	if (option == COMBATMENU::LOSE) {
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
 		if (AudioLose == false) {
-			app->audio->PlayFxWithVolume(looseFX, 0, 70);
+			app->audio->PlayFxWithVolume(looseFX, 0, app->audio->fxvolume);
 			AudioLose = true;
 		}
 		app->scene->player->pbody->GetPosition(playerX, playerY);

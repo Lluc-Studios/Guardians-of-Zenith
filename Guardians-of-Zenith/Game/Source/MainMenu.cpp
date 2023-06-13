@@ -126,20 +126,20 @@ bool MainMenu::Update(float dt)
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN/*GAMEPAD*/) {
 		if (option == SELECTED::START) {
 			app->scene->player->InitializePlayers();
-			app->audio->PlayFxWithVolume(play, 0, 70);
+			app->audio->PlayFxWithVolume(play, 0, app->audio->fxvolume);
 			fadeOut = true;
 		}
 		if (option == SELECTED::CONTINUE) {
-			app->audio->PlayFxWithVolume(play, 0, 70);
+			app->audio->PlayFxWithVolume(play, 0, app->audio->fxvolume);
 			fadeOut = true;
 			app->LoadGameRequest();
 		}
 		if (option == SELECTED::OPTIONS) {
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 			options = true;
 		}
 		if (option == SELECTED::EXIT) {
-			app->audio->PlayFxWithVolume(play, 0, 70);
+			app->audio->PlayFxWithVolume(play, 0, app->audio->fxvolume);
 			ret = false;
 		}
 	}
@@ -242,7 +242,7 @@ bool MainMenu::Update(float dt)
 void MainMenu::PlaySelectFx()
 {
 	if (alreadyChangeFX == false) {
-		app->audio->PlayFxWithVolume(change, 0, 70);
+		app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		alreadyChangeFX = true;
 	}
 }
@@ -306,7 +306,7 @@ void MainMenu::Options(int posx, int posy)
 		app->render->DrawRectangle({ posx + 6 + MX * app->ScalingMultiplier, posy + 56 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
 		if (option == SELECTED::NONE) {
 			option = SELECTED::MUSIC;
-			app->audio->PlayFxWithVolume(change, 0, 70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 		//Funcion para arrastrar el boton
 		if (option == SELECTED::MUSIC && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
@@ -324,7 +324,7 @@ void MainMenu::Options(int posx, int posy)
 		app->render->DrawRectangle({ posx + 6 + FX * app->ScalingMultiplier, posy + 81 * app->ScalingMultiplier,5 * app->ScalingMultiplier,6 * app->ScalingMultiplier }, 255, 255, 255);
 		if (option == SELECTED::NONE) {
 			option = SELECTED::FX;
-			app->audio->PlayFxWithVolume(change, 0, 70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 		//Funcion para arrastrar el boton
 		if (option == SELECTED::FX && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
@@ -340,13 +340,13 @@ void MainMenu::Options(int posx, int posy)
 		RGB = 255;
 		if (option == SELECTED::NONE) {
 			option = SELECTED::FS;
-			app->audio->PlayFxWithVolume(change, 0, 70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 		if (option == SELECTED::FS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
 			FS = !FS;
 			app->win->fullscreen = !app->win->fullscreen;
 			app->win->Fullscreen();
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		}
 
 	}
@@ -354,11 +354,11 @@ void MainMenu::Options(int posx, int posy)
 		RGB1 = 255;
 		if (option == SELECTED::NONE) {
 			option = SELECTED::VS;
-			app->audio->PlayFxWithVolume(change, 0, 70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 		if (option == SELECTED::VS && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
 			VS = !VS;
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		}
 
 	}
@@ -366,7 +366,7 @@ void MainMenu::Options(int posx, int posy)
 		app->render->DrawText(640 / 2 - 16, 148 * 2, WF, "Back", 16);
 		if (option == SELECTED::NONE) {
 			option = SELECTED::BACK;
-			app->audio->PlayFxWithVolume(change, 0, 70);
+			app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		}
 		if (option == SELECTED::BACK && app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN) {
 			options = false;

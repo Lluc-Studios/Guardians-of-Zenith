@@ -606,7 +606,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision SPIKES");
 		if (invincible == false) {
 			if (life != 1 && lifeAux == 0) {
-				app->audio->PlayFxWithVolume(DamageFx, 0, 50);
+				app->audio->PlayFxWithVolume(DamageFx, 0, app->audio->fxvolume);
 				life--;
 				lifeAux++;
 			}
@@ -639,7 +639,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
@@ -658,7 +658,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
@@ -672,7 +672,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 		app->scene->BWC = true;
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
@@ -686,7 +686,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 		app->scene->BFC = true;
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
@@ -700,14 +700,14 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 		app->scene->BCC = true;
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
 	case ColliderType::TAVERN:
 		LOG("Teleport_Tavern");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(1, tp1);
 			auxBool = true;
@@ -716,7 +716,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNTAVERN:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(0, tp2);
 			auxBool = true;
@@ -725,7 +725,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BLACKSMITH:
 		LOG("Collision Blacksmith");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(2, tp3);
 			auxBool = true;
@@ -734,7 +734,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNBLACKSMITH:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(0, tp4);
 			auxBool = true;
@@ -743,7 +743,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::HOUSE:
 		LOG("Collision House");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(3, tp5);
 			auxBool = true;
@@ -752,7 +752,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNHOUSE:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(doorFX, 0, 70);
+			app->audio->PlayFxWithVolume(doorFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(0, tp6);
 			auxBool = true;
@@ -761,7 +761,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::LAKEDUNGEON:
 		LOG("Collision Lake Dungeon");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(4, tp7);
 			auxBool = true;
@@ -770,7 +770,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNLAKEDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(7, tp8);
 			auxBool = true;
@@ -779,7 +779,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::FORESTDUNGEON:
 		LOG("Collision Forest Dungeon");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(5, tp9);
 			auxBool = true;
@@ -788,7 +788,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNFORESTDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(7, tp10);
 			auxBool = true;
@@ -797,7 +797,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::CAVEDUNGEON:
 		LOG("Collision Cave Dungeon");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(6, tp11);
 			auxBool = true;
@@ -806,7 +806,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TOWNCAVEDUNGEON:
 		LOG("Collision Town");
 		if (auxBool == false) {
-			app->audio->PlayFxWithVolume(MonolithFX, 0, 70);
+			app->audio->PlayFxWithVolume(MonolithFX, 0, app->audio->fxvolume);
 			app->scene->fade = true;
 			Teleport_Point(7, tp12);
 			auxBool = true;
@@ -833,7 +833,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->scene->P1Active = true;
 
 		if (pilar1Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFx, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFx, 0, app->audio->fxvolume);
 			pilar1Fx = true;
 		}
 		break;
@@ -842,7 +842,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->scene->P2Active = true;
 
 		if (pilar2Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFx, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFx, 0, app->audio->fxvolume);
 			pilar2Fx = true;
 		}
 		break;
@@ -851,7 +851,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->scene->P3Active = true;
 
 		if (pilar3Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFx, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFx, 0, app->audio->fxvolume);
 			pilar3Fx = true;
 		}
 		break;
@@ -1163,7 +1163,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg"); 
 		app->combat->StartCombat();
 	}
@@ -1180,7 +1180,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -1197,7 +1197,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -1214,7 +1214,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
-		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -1235,7 +1235,7 @@ void Player::debugKeys() {
 		if (app->scene->PresetVariationS >= 90 && app->scene->PresetVariationS <= 93) app->combat->EnemyVariation = 2;
 		if (app->scene->PresetVariationS >= 94 && app->scene->PresetVariationS <= 97) app->combat->EnemyVariation = 3;
 		if (app->scene->PresetVariationS >= 98 && app->scene->PresetVariationS <= 100) app->combat->EnemyVariation = 4;
-		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -1253,7 +1253,7 @@ void Player::debugKeys() {
 		if (app->scene->PresetChanceS >= 86 && app->scene->PresetChanceS <= 90) app->combat->Preset = 22;
 		if (app->scene->PresetChanceS >= 91 && app->scene->PresetChanceS <= 95) app->combat->Preset = 23;
 		if (app->scene->PresetChanceS >= 96 && app->scene->PresetChanceS <= 100) app->combat->Preset = 24;
-		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -1270,7 +1270,7 @@ void Player::debugKeys() {
 		if (app->scene->PresetChanceS >= 86 && app->scene->PresetChanceS <= 90) app->combat->Preset = 31;
 		if (app->scene->PresetChanceS >= 91 && app->scene->PresetChanceS <= 95) app->combat->Preset = 32;
 		if (app->scene->PresetChanceS >= 96 && app->scene->PresetChanceS <= 100) app->combat->Preset = 33;
-		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}

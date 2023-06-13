@@ -336,7 +336,7 @@ bool Scene::Update(float dt)
 			if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
 			if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
 			if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
-			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 			app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 			app->combat->StartCombat();
 		}
@@ -355,7 +355,7 @@ bool Scene::Update(float dt)
 			if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
 			if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
 			if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
-			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 			app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 			app->combat->StartCombat();
 		}
@@ -374,7 +374,7 @@ bool Scene::Update(float dt)
 		if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 22;
 		if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 23;
 		if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 24;
-		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -392,7 +392,7 @@ bool Scene::Update(float dt)
 		if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 31;
 		if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 32;
 		if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 33;
-		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, 70);
+		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 
@@ -928,21 +928,21 @@ bool Scene::Update(float dt)
 	if (TPressed1 == true && TPressed2 == true && TPressed3 == true && TPressed4 == true && TPressed5 == true && TPressed6 == true && TPressed7 == true && TPressed8 == true && TPressed9 == true) {
 		B1Block = true;
 		if (block1Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFX, 0, app->audio->fxvolume);
 			block1Fx = true;
 		}
 	}
 	if (TPressed10 == true && TPressed11 == true && TPressed12 == true && TPressed13 == true && TPressed14 == true && TPressed15 == true && TPressed16 == true && TPressed17 == true && TPressed18 == true && TPressed19 == true && TPressed20 == true && TPressed21 == true && TPressed22 == true && TPressed23 == true && TPressed24 == true && TPressed25 == true && TPressed26 == true && TPressed27 == true) {
 		B2Block = true;
 		if (block2Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFX, 0, app->audio->fxvolume);
 			block2Fx = true;
 		}
 	}
 	if (TPressed28 == true && TPressed29 == true && TPressed30 == true && TPressed31 == true && TPressed32 == true && TPressed33 == true && TPressed34 == true && TPressed35 == true && TPressed36 == true && TPressed37 == true && TPressed38 == true && TPressed39 == true && TPressed40 == true && TPressed41 == true && TPressed42 == true && TPressed43 == true && TPressed44 == true && TPressed45 == true && TPressed46 == true && TPressed47 == true && TPressed48 == true && TPressed49 == true && TPressed50 == true && TPressed51 == true && TPressed52 == true && TPressed53 == true && TPressed54 == true && TPressed55 == true && TPressed56 == true && TPressed57 == true && TPressed58 == true && TPressed59 == true && TPressed60 == true && TPressed61 == true && TPressed62 == true && TPressed63 == true && TPressed64 == true && TPressed65 == true && TPressed66 == true && TPressed67 == true && TPressed68 == true && TPressed69 == true && TPressed70 == true && TPressed71 == true) {
 		B3Block = true;
 		if (block3Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFX, 0, app->audio->fxvolume);
 			block3Fx = true;
 		}
 	}
@@ -1021,14 +1021,14 @@ bool Scene::Update(float dt)
 		{
 		case Scene::SELECTED::SAVEGAME:
 			app->SaveGameRequest();
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 			break;
 		case Scene::SELECTED::OPTIONS:
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 			options = true;
 			break;
 		case Scene::SELECTED::MAINMENU:
-			app->audio->PlayFxWithVolume(play, 0, 70);
+			app->audio->PlayFxWithVolume(play, 0, app->audio->fxvolume);
 			isPaused = false;
 			app->mainmenu->fading = 255;
 			app->mainmenu->fading2 = 0;
@@ -1043,7 +1043,7 @@ bool Scene::Update(float dt)
 			app->audio->PlayMusic("Assets/Soundtrack/Music/Rocky-Tundra-OST-Version.ogg");
 			break;
 		case Scene::SELECTED::EXIT:
-			app->audio->PlayFxWithVolume(play, 0, 70);
+			app->audio->PlayFxWithVolume(play, 0, app->audio->fxvolume);
 			return false;
 			break;
 		case Scene::SELECTED::NONE:
@@ -1065,14 +1065,14 @@ bool Scene::PostUpdate()
 		if (!app->combat->InCombat) {
 			isPaused = !isPaused;
 			app->inventory->inventoryOn = false;
-			app->audio->PlayFxWithVolume(select, 0, 70);
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		}
 
 	if (app->input->controllers.Start != 0 && !Start_pressed)
 	{
 		isPaused = !isPaused;
 		Start_pressed = true;
-		app->audio->PlayFxWithVolume(select, 0, 70);
+		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 	}
 	else if (app->input->controllers.Start == 0)
 	{
@@ -1095,6 +1095,7 @@ bool Scene::PostUpdate()
 		if (!app->combat->InCombat) {
 			app->inventory->inventoryOn = !app->inventory->inventoryOn;
 			isPaused = false;
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		}
 	}
 
@@ -1275,7 +1276,7 @@ bool Scene::Pause()
 void Scene::PlaySelectFx()
 {
 	if (alreadyChangeFX == false) {
-		app->audio->PlayFxWithVolume(change, 0, 70);
+		app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 		alreadyChangeFX = true;
 	}
 }
@@ -1518,7 +1519,7 @@ void Scene::Puzzle_Lake() {
 		app->render->DrawTexture(Pressed, 3040, -449);
 
 		if (pressed1Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFX, 0, app->audio->fxvolume);
 			pressed1Fx = true;
 		}
 	}
@@ -1529,7 +1530,7 @@ void Scene::Puzzle_Lake() {
 	if (Pressed2 == true) {
 		app->render->DrawTexture(Pressed, 3008, -705);
 		if (pressed2Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFX, 0, app->audio->fxvolume);
 			pressed2Fx = true;
 		}
 	}
@@ -1540,7 +1541,7 @@ void Scene::Puzzle_Lake() {
 	if (Pressed3 == true) {
 		app->render->DrawTexture(Pressed, 4000, -1153);
 		if (pressed3Fx == false) {
-			app->audio->PlayFxWithVolume(puzzleFX, 0, 70);
+			app->audio->PlayFxWithVolume(puzzleFX, 0, app->audio->fxvolume);
 			pressed3Fx = true;
 		}
 	}
