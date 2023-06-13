@@ -44,6 +44,8 @@ public:
 
 	bool Pause();
 
+	void PlaySelectFx();
+
 	void PlayMusic();
 
 	void RestartCave();
@@ -198,7 +200,7 @@ private:
 	SDL_Rect LAPIS1 = { 0,0,32,32 };
 
 	SDL_Color WF = { 255, 255, 255 };
-	SDL_Color GF = { 200, 200, 200 };
+	SDL_Color GF = { 150, 150, 150 };
 	SDL_Color YF = { 255, 255, 80 };
 
 	char  villageMusic;

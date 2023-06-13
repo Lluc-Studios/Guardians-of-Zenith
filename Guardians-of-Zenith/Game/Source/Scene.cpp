@@ -1015,7 +1015,7 @@ bool Scene::Update(float dt)
 		app->render->DrawTexture(NPC2, 224, -710, &N2T);
 	}
 
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE)==KeyState::KEY_DOWN /*GAMEPAD*/)
 	{
 		switch (option)
 		{
@@ -1183,7 +1183,7 @@ bool Scene::CleanUp()
 	app->tex->UnLoad(BGtexture);
 	return true;
 }
-
+ // Pause Menu
 bool Scene::Pause()
 {
 	if (!options)
@@ -1203,44 +1203,81 @@ bool Scene::Pause()
 		x = app->input->GetMousePositionX();
 		y = app->input->GetMousePositionY();
 
-		if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 45 * 2 && y <= 26 + 55 * 2) {
-			app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
+		if (x >= 320 - 32 && x <= 364 && y >= 26 + 45 * 2 && y <= 26 + 55 * 2) {
 			option = SELECTED::SAVEGAME;
-			if (alreadyChangeFX == false) {
-				app->audio->PlayFxWithVolume(change, 0, 70);
-				alreadyChangeFX = true;
-			}
+			PlaySelectFx();
 		}
-		else if (x >= 640 / 2 - 24 && x <= 664 && y >= 26 + 65 * 2 && y <= 26 + 75 * 2) {
-			app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
+		else if (x >= 320 - 24 && x <= 352 && y >= 26 + 65 * 2 && y <= 26 + 75 * 2) {
 			option = SELECTED::OPTIONS;
-			if (alreadyChangeFX == false) {
-				app->audio->PlayFxWithVolume(change, 0, 70);
-				alreadyChangeFX = true;
-			}
+			PlaySelectFx();
 		}
-		else if (x >= 640 / 2 - 32 && x <= 664 && y >= 26 + 85 * 2 && y <= 26 + 95 * 2) {
-			app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
+		else if (x >= 320 - 32 && x <= 364 && y >= 26 + 85 * 2 && y <= 26 + 95 * 2) {
 			option = SELECTED::MAINMENU;
-			if (alreadyChangeFX == false) {
-				app->audio->PlayFxWithVolume(change, 0, 70);
-				alreadyChangeFX = true;
-			}
+			PlaySelectFx();
 		}
-		else if (x >= 640 / 2 - 16 && x <= 664 && y >= 26 + 105 * 2 && y <= 26 + 115 * 2) {
-			app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
+		else if (x >= 320 - 16 && x <= 352 && y >= 26 + 105 * 2 && y <= 26 + 115 * 2) {
 			option = SELECTED::EXIT;
-			if(alreadyChangeFX == false){ 
-				app->audio->PlayFxWithVolume(change, 0, 70); 
-				alreadyChangeFX = true;
-			}
+			PlaySelectFx();
 		}
 		else { 
 			if(alreadyChangeFX)
 			alreadyChangeFX = false;
 		}
+
+		// Buttons and gamepad
+		if (option == SELECTED::NONE) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*//*GAMEPAD*/) {
+				option = SELECTED::SAVEGAME;
+				PlaySelectFx();
+
+			}
+		}
+		else if (option == SELECTED::SAVEGAME) {
+			app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
+			}
+		}
+		else if (option == SELECTED::OPTIONS) {
+			app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::SAVEGAME;
+				PlaySelectFx();
+			}
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::MAINMENU;
+				PlaySelectFx();
+			}
+		}
+		else if (option == SELECTED::MAINMENU) {
+			app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
+			}
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::EXIT;
+				PlaySelectFx();
+			}
+		}
+		else if (option == SELECTED::EXIT) {
+			app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::MAINMENU;
+				PlaySelectFx();
+			}
+		}
 	}
 	return true;
+}
+
+void Scene::PlaySelectFx()
+{
+	if (alreadyChangeFX == false) {
+		app->audio->PlayFxWithVolume(change, 0, 70);
+		alreadyChangeFX = true;
+	}
 }
 
 void Scene::RestartCave()
