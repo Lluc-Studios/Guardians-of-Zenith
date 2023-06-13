@@ -364,6 +364,7 @@ bool Player::Update(float dt)
 				isDialogue = false;
 				NPC2 = true;
 				NPCname = 2;
+				Quest2 = true;
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -375,6 +376,7 @@ bool Player::Update(float dt)
 				isDialogue = false;
 				NPC2 = true;
 				NPCname = 2;
+				Quest2 = true;
 			}
 
 		}
@@ -391,7 +393,7 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				NPC = true;
 				NPCname = 3;
-				Quest2 = true;
+				
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -402,7 +404,7 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				NPC = true;
 				NPCname = 3;
-				Quest2 = true;
+				
 			}
 		}
 		if (NPC_04 )
@@ -605,7 +607,7 @@ bool Player::Update(float dt)
 		//app->render->DrawTexture(MenuQuest, 237, 152);
 		app->render->DrawTexture(MenuQuest, position.x - 290, position.y - 180);
 		app->render->DrawText(170, 160, { 0, 0, 0 }, "Main mission", 16);
-		app->render->DrawText(300, 160, { 0, 0, 0 }, "Defeat 3 enemies", 16);
+		app->render->DrawText(300, 160, { 0, 0, 0 }, "Defeat bosses", 16);
 
 		if (!Quest1)
 		{
@@ -627,8 +629,8 @@ bool Player::Update(float dt)
 
 		if (Quest2)
 		{
-			app->render->DrawText(170, 280, { 0, 0, 0 }, "Sera", 16);
-			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Sera's Necklace", 16);
+			app->render->DrawText(170, 280, { 0, 0, 0 }, "Timmy", 16);
+			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Timmy's Necklace", 16);
 		}
 		if (win)
 		{
@@ -641,8 +643,8 @@ bool Player::Update(float dt)
 		}
 		if (app->inventory->necklace > 0)
 		{
-			app->render->DrawText(170, 280, { 0, 0, 0 }, "Sera", 16);
-			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Sera's Necklace", 16);
+			app->render->DrawText(170, 280, { 0, 255, 0 }, "Timmy", 16);
+			app->render->DrawText(300, 280, { 0, 255, 0 }, "Find Timmy's Necklace", 16);
 		}
 
 	}
@@ -1043,25 +1045,25 @@ void Player::Move() {
 
 	vel = b2Vec2(0, 0);
 
-	if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->scene->CanPlayerMove == true && !isDialogue) && app->combat->InCombat == false) {
+	if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->scene->CanPlayerMove == true && !Qmenu && !isDialogue) && app->combat->InCombat == false) {
 		vel = b2Vec2(0, 0);
 	}
-	if (((app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT )&& app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
+	if (((app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT )&& app->scene->CanPlayerMove == true && !Qmenu && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
 		vel = b2Vec2(-speed, 0);
 		facing = DIRECTION::LEFT;
 		currentAnim = &playerRunL;
 	}
-	if (((app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
+	if (((app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) && app->scene->CanPlayerMove == true && !Qmenu && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
 		vel = b2Vec2(speed, 0);
 		facing = DIRECTION::RIGHT;
 		currentAnim = &playerRunR;
 	}
-	if (((app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) && app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
+	if (((app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) && app->scene->CanPlayerMove == true && !Qmenu && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
 		vel = b2Vec2(0, -speed);
 		facing = DIRECTION::UP;
 		currentAnim = &playerRunUp;
 	}
-	if (((app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_DOWN ) == KEY_REPEAT)&& app->scene->CanPlayerMove == true && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
+	if (((app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_DOWN ) == KEY_REPEAT)&& app->scene->CanPlayerMove == true && !Qmenu && !isDialogue && !isBill && !NPC && !NPC2 && !app->scene->isPaused) && app->combat->InCombat == false) {
 		vel = b2Vec2(0, speed);
 		facing = DIRECTION::DOWN;
 		currentAnim = &playerRunDown;
