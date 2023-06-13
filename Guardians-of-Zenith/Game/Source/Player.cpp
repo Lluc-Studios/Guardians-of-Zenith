@@ -676,7 +676,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
-
+		app->scene->BWC = true;
 		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
@@ -690,7 +690,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
-
+		app->scene->BFC = true;
 		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
@@ -704,7 +704,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 90 && PresetVariation <= 93) app->combat->EnemyVariation = 2;
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
-
+		app->scene->BCC = true;
 		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();

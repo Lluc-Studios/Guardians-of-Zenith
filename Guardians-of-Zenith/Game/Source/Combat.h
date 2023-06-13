@@ -426,6 +426,7 @@ private:
 	SDL_Texture* E3;
 
 	SDL_Texture* Lose;
+	SDL_Texture* Win;
 
 	bool AudioLose = false;
 

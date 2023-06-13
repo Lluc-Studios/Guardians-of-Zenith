@@ -52,6 +52,10 @@ public:
 
 public:
 
+	//Win condition
+	
+	bool BW = false, BF = false, BC = false, BWC = false, BFC = false, BCC = false;
+
 	//fading
 	int fading = 0, selected = 0;
 	bool fade = false;

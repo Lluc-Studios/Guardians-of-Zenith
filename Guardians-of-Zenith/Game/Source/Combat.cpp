@@ -48,6 +48,7 @@ bool Combat::Start()
 	BG_Tavern = app->tex->Load("Assets/Textures/Combat_Background/Combat_Tavern.png");
 	BG_Blackmith = app->tex->Load("Assets/Textures/Combat_Background/Combat_Blackmith.png");
 	Lose = app->tex->Load("Assets/Textures/Scenes/losescreen.png");
+	Win = app->tex->Load("Assets/Textures/Scenes/winscreen.png");
 
 	Character1 = app->tex->Load("Assets/Entities/Characters/Laurea_Combat.png");
 	Character2 = app->tex->Load("Assets/Entities/Characters/Lapis_Combat.png");
@@ -171,6 +172,18 @@ bool Combat::Update(float dt)
 		if (C1HP_Aux > C1CHP) { app->audio->PlayFxWithVolume(LaureaHurtFX, 0, 70); }
 		if (C2HP_Aux > C2CHP) { app->audio->PlayFxWithVolume(LapisHurtFX, 0, 70); }
 		if (C3HP_Aux > C3CHP) { app->audio->PlayFxWithVolume(LuccaHurtFX, 0, 70); }
+
+		//Frog taking too long to kill isues fix
+
+		if ((E1_asset == 1 || E1_asset == 4 || E1_asset == 5 || E1_asset == 6 || E1_asset == 7) && E1CHP <= 10) {
+			E1CHP = 0;
+		}
+		if ((E2_asset == 1 || E2_asset == 4 || E2_asset == 5 || E2_asset == 6 || E2_asset == 7) && E2CHP <= 10) {
+			E2CHP = 0;
+		}
+		if ((E3_asset == 1 || E3_asset == 4 || E3_asset == 5 || E3_asset == 6 || E3_asset == 7) && E3CHP <= 10) {
+			E3CHP = 0;
+		}
 
 		//DEBUG
 		if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
@@ -4267,6 +4280,15 @@ bool Combat::Update(float dt)
 		if (E1dead == true && E2dead == true && E3dead == true) {
 			option = COMBATMENU::WIN;
 			app->audio->PlayFxWithVolume(winFX, 0, 70);
+			if (app->scene->BWC == true) {
+				app->scene->BW = true;
+			}
+			if (app->scene->BFC == true) {
+				app->scene->BF = true;
+			}
+			if (app->scene->BCC == true) {
+				app->scene->BC = true;
+			}
 		}
 		if (C1dead == true && C2dead == true && C3dead == true) {
 			option = COMBATMENU::LOSE;
@@ -4305,6 +4327,12 @@ bool Combat::PostUpdate()
 		app->render->DrawText(10 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, YF, Aux, 16);
 		app->render->DrawText(10 * app->ScalingMultiplier + 24, 120 * app->ScalingMultiplier, YF, "exp", 16);
 		app->audio->PlayFxWithVolume(winFX, 0, 70);
+		if (app->scene->BW == true && app->scene->BF == true && app->scene->BC == true) {
+			app->scene->player->pbody->GetPosition(playerX, playerY);
+			app->render->DrawRectangle({ playerX - 1000,playerY - 1000,5000,5000 }, 24, 255, 239);
+			app->render->DrawTexture(Win, playerX - 313, playerY - 180);
+			app->scene->player->Teleport_Point(3, app->scene->player->tpHouse_pos);
+		}
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			//Audio
 			ExitCombat();
@@ -4331,7 +4359,7 @@ bool Combat::PostUpdate()
 		}
 		app->scene->player->pbody->GetPosition(playerX, playerY);
 		app->render->DrawRectangle({ playerX-1000,playerY-1000,5000,5000}, 0, 0, 0);
-		app->render->DrawTexture(Lose, playerX-313, playerY-181);
+		app->render->DrawTexture(Lose, playerX-313, playerY-180);
 
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			EXPwon = 0;
@@ -4928,6 +4956,9 @@ void Combat::ExitCombat()
 	C3BLEED = false;
 
 	AudioLose = false;
+	app->scene->BWC = false;
+	app->scene->BFC = false;
+	app->scene->BCC = false;
 
 	app->scene->player->pbody->body->SetType(b2BodyType::b2_dynamicBody);
 
