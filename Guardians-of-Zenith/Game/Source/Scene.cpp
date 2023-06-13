@@ -1277,56 +1277,6 @@ bool Scene::Pause()
 
 			}
 		}
-		if (option == SELECTED::NONE) {
-			if (app->input->controllers.j1_y <= -32767 || app->input->controllers.j1_y >= 32767) {
-				option = SELECTED::SAVEGAME;
-				PlaySelectFx();
-
-			}
-		}
-		else if (option == SELECTED::SAVEGAME) {
-			app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
-			if (app->input->controllers.j1_y >= 32767) {
-				option = SELECTED::OPTIONS;
-				PlaySelectFx();
-			}
-		}
-		else if (option == SELECTED::OPTIONS) {
-			app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
-			if (app->input->controllers.j1_y <= -32767) {
-				option = SELECTED::SAVEGAME;
-				PlaySelectFx();
-			}
-			if (app->input->controllers.j1_y >= 32767) {
-				option = SELECTED::MAINMENU;
-				PlaySelectFx();
-			}
-		}
-		else if (option == SELECTED::MAINMENU) {
-			app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
-			if (app->input->controllers.j1_y <= -32767) {
-				option = SELECTED::OPTIONS;
-				PlaySelectFx();
-			}
-			if (app->input->controllers.j1_y >= 32767) {
-				option = SELECTED::EXIT;
-				PlaySelectFx();
-			}
-		}
-		else if (option == SELECTED::EXIT) {
-			app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
-			if (app->input->controllers.j1_y <= -32767) {
-				option = SELECTED::MAINMENU;
-				PlaySelectFx();
-			}
-		}
-		if (option == SELECTED::NONE) {
-			if (app->input->controllers.j1_y <= 32767 || app->input->controllers.j1_y >= 32767) {
-				option = SELECTED::SAVEGAME;
-				PlaySelectFx();
-
-			}
-		}
 	}
 	return true;
 }
