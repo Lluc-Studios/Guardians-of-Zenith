@@ -335,6 +335,7 @@ bool Player::Update(float dt)
 				NPC_03 = false;
 				NPC_04 = false;
 				isBill = true;
+				NPCname = 1;
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -343,6 +344,7 @@ bool Player::Update(float dt)
 				NPC_03 = false;
 				NPC_04 = false;
 				isBill = true;
+				NPCname = 1;
 			}
 		}
 		if (NPC_02 )
