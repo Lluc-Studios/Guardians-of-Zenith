@@ -128,8 +128,10 @@ public:
 	iPoint copypos;
 
 	bool win = false;
-
+	bool lvlUpFx = false;
 	int winy = 500;
+	int lvlupy = 500;
+
 	bool lapisMission = false;
 	bool DeathAnimationFinished = false;
 

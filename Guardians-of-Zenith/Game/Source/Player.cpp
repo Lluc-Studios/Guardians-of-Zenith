@@ -223,23 +223,26 @@ bool Player::Update(float dt)
 	}
 
 	// Level Up Fx
-	//if (auxLvlUp)
-	//{
-	//	app->render->DrawText(200, winy, { 34, 113, 179 }, "MISSION COMPLETE", 24);
-	//	if (winy > -100)
-	//	{
-	//		winy -= 4;
-	//	}
-	//	else
-	//	{
-	//		win = false;
-	//	}
+	if (lvlUpFx)
+	{
+		if(lvlupy == 500)
+			app->audio->PlayFx(winSound);
 
-	//}
-	//else
-	//{
-	//	winy = 500;
-	//}
+		app->render->DrawText(200, lvlupy, { 34, 113, 179 }, "LEVEL UP!", 24);
+		if (lvlupy > -100)
+		{
+			lvlupy -= 4;
+		}
+		else
+		{
+			lvlUpFx = false;
+		}
+
+	}
+	else
+	{
+		lvlupy = 500;
+	}
 
 	debugKeys();
 
