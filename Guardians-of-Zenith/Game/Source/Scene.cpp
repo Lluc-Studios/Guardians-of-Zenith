@@ -210,7 +210,7 @@ bool Scene::Start()
 	Naiadon1->ctype = ColliderType::ENEMYNAIADON;
 	Driadon1 = app->physics->CreateRectangle(1265, 2373, 118, 125, STATIC);
 	Driadon1->ctype = ColliderType::ENEMYDRIADON;
-	Gasha1 = app->physics->CreateRectangle(-1338, -400, 118, 125, STATIC);
+	Gasha1 = app->physics->CreateRectangle(-1338+10, -400+10, 118, 125+10, STATIC);
 	Gasha1->ctype = ColliderType::ENEMYGASHA;
 
 	//Lake puzzle
@@ -859,7 +859,7 @@ bool Scene::Update(float dt)
 
 	app->render->DrawTexture(Naiadon, 3400, -1876);
 	app->render->DrawTexture(Driadon, 1206, 2311);
-	app->render->DrawTexture(Gasha, -1402, -462);
+	app->render->DrawTexture(Gasha, -1402+5, -462+10);
 
 	//Puzzle Lake
 	Puzzle_Lake();
