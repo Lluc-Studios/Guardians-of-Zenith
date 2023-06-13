@@ -820,7 +820,20 @@ bool Scene::Update(float dt)
 		app->monolith->Draw();
 	}
 
+	for (int i = 0; i < 15; i++)
+	{
+		if (itemInstance[i] == app->Instance)
+		{
+			if (itemPicked[i] == false) {
+				itemBody[i]->body->SetActive(true);
+				app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
+			}
+			else {
+				itemBody[i]->body->SetActive(false);
+			}
+		}
 
+	}
 
 	//Lake dungeon
 	app->render->DrawTexture(Tp, 3520, 415);
@@ -1163,21 +1176,6 @@ bool Scene::PostUpdate()
 	}
 	else
 		CanPlayerMove = true;
-
-	for (int i = 0; i < 15; i++)
-	{
-		if (itemInstance[i] == app->Instance)
-		{
-			if (itemPicked[i] == false) {
-				itemBody[i]->body->SetActive(true);
-				app->render->DrawTexture(texturas[i], itemPos[i].x, itemPos[i].y);
-			}
-			else {
-				itemBody[i]->body->SetActive(false);
-			}
-		}
-
-	}
 
 	return true;
 }
