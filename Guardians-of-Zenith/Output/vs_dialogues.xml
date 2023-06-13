@@ -24,14 +24,14 @@
   <dialogueTree ID="0">
     <node id="0" text="First of all good morning, my name is Lapis. And I am a water spirit.">
         <choice id="0" option="I need the pendant that Bill gave you." nextNode="1" eventReturn="1"/>
-		<choice id="1" option="Shut up and give me the pendant" nextNode="2" eventReturn="1"/>
+		<choice id="1" option="Shut up and give me the pendant." nextNode="2" eventReturn="1"/>
 	</node>
 
-    <node id="1" text="Yes, here you go, I thought he had given it to me">
+    <node id="1" text="Yes, here you go, I thought he had given it to me.">
         
     </node>
 
-    <node id="2" text="Okay sorry, here you go, you don't have to be so aggressive">
+    <node id="2" text="Okay sorry, here you go, you don't have to be so aggressive.">
        
     </node>
     
@@ -49,10 +49,10 @@
   <dialogueTree ID="1">
     <node id="0" text="Ah, adventurer! I'm glad you're here. I have a wedding and I need my pendant that Lapis has it, find him, he will give you my pendant and bring it back to me please!">
         <choice id="0" option="Okay, that sounds easy! I'll finish it in no time." nextNode="1" eventReturn="1"/>
-        <choice id="1" option="Hmm, I'm not sure if I'm ready for that. Can you offer any other tasks?" nextNode="2" eventReturn="1"/>
+        <choice id="1" option="Hmm, I'm not sure if I'm ready for that." nextNode="2" eventReturn="1"/>
     </node>
 
-    <node id="1" text="Excellent! I knew I could rely on you. I can reward you properly.">
+    <node id="1" text="Excellent! I knew I could rely on you.">
     </node>
 
     <node id="2" text="No problem, adventurer. Come again when you are prepared for this task and I will have a reward waiting for you.">
@@ -68,12 +68,10 @@
 		<choice id="1" option="Is there any other thing that I need to know?" nextNode="2" eventReturn="1"/>
 	</node>
 
-	<node id="1" text="Thank you, kind soul. I'm grateful for your willingness to help. The lake can be tricky, so please be cautious. Return to me once you've found the necklace, and I'll reward you generously.">
+	<node id="1" text="Thank you, kind soul. I'm grateful for your willingness to help. The lake can be tricky, so please be cautious.">
 	</node>
 
-	<node id="-1" text ="Alright then. Come back soon!"></node>
-
-	<node id="2" text="There are rumors that there is a powerful creature gathering precious stones in the lake, maybe the necklace is on its treasure. If you find it, return to me and I'll reward you generously."></node>
+	<node id="2" text="There are rumors that there is a powerful creature gathering precious stones in the lake, maybe the necklace is on its treasure."></node>
 	</dialogueTree>
 
   <!--Timmy (Ninio)-->
@@ -89,7 +87,7 @@
 	<node id="2" text="I understand it's a challenging endeavor. Let me give you a clue: Each manuscript is hidden in a significant landmark of our island. Explore the ruins, the cave system, the forest, and the lake. Good luck! Return to me with all the manuscripts and I will reward you generously."></node>
   </dialogueTree>
 	
-  <!--Aswers)-->
+  <!--(Answers)-->
   <dialogueTree ID="4">
 	<node id="0" text="Thank you for helping me gather all the manuscripts! Here is your reward.">
 	</node>

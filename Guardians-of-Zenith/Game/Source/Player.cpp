@@ -1228,7 +1228,7 @@ void Player::debugKeys() {
 		app->combat->StartCombat();
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
+	/*if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
 	{
 		LOG("Collision Lily");
 		app->scene->PresetChanceS = rand() % 100 + 1;
@@ -1250,7 +1250,6 @@ void Player::debugKeys() {
 	}
 	if (app->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
 	{
-
 		LOG("Collision Forest enemy");
 		app->scene->PresetChanceS = rand() % 100 + 1;
 		if (app->scene->PresetChanceS >= 1 && app->scene->PresetChanceS <= 25) app->combat->Preset = 16;
@@ -1282,7 +1281,7 @@ void Player::debugKeys() {
 		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
-	}
+	}*/
 
 	//Teleport Daigeons
 	//Lake
