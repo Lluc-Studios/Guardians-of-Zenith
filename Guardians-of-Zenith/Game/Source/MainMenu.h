@@ -27,6 +27,8 @@ public:
 	// Called each loop iteration
 	bool Update(float dt);
 
+	void PlaySelectFx();
+
 	// Called before all Updates
 	bool PostUpdate();
 
@@ -82,6 +84,8 @@ private:
 	Animation* currentAnim = nullptr;
 
 	Animation title;
+
+	bool alreadyChangeFX = false;
 };
 
 #endif // __MAINMENU_H__

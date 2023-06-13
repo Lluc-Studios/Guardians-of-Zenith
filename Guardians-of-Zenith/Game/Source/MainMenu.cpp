@@ -93,10 +93,6 @@ bool MainMenu::Update(float dt)
 
 	app->render->DrawTexture(titleanim, 0, 0, &rect);
 
-	//app->render->DrawTexture(Buttons, 450, 120, &B5);
-	//app->render->DrawTexture(Buttons, 450, 180, &B6);
-	//app->render->DrawTexture(Buttons, 450, 240, &B7);
-	//app->render->DrawTexture(Buttons, 450, 300, &B8);
 	//Funcion llamada desde el menu de muerte para volver al menu principal (Se desactiva a si misma)
 	if (app->deathmenu->finished == true) {
 		fading = 255;
@@ -127,7 +123,7 @@ bool MainMenu::Update(float dt)
 	}
 
 	//Funcion para detectar el raton en la parte principal del menu
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN/*GAMEPAD*/) {
 		if (option == SELECTED::START) {
 			app->scene->player->InitializePlayers();
 			app->audio->PlayFxWithVolume(play, 0, 70);
@@ -154,70 +150,86 @@ bool MainMenu::Update(float dt)
 	}
 	//Funcion para detectar sobre que boton esta el ratón
 	if (options == false) {
+		//Button textures
+		app->render->DrawTexture(Buttons, 450, 120, &B1);
+		app->render->DrawTexture(Buttons, 450, 180, &B2);
+		app->render->DrawTexture(Buttons, 450, 240, &B3);
+		app->render->DrawTexture(Buttons, 450, 300, &B4);
+
 		int x, y;
 		x = app->input->GetMousePositionX();
 		y = app->input->GetMousePositionY();
 		if (x >= 450 && x <= 556 && y >= 120 && y <= 158 ) {
-			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "play", 16);
-			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
-			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
-			app->render->DrawTexture(Buttons, 450, 120, &B5);
-			app->render->DrawTexture(Buttons, 450, 180, &B2);
-			app->render->DrawTexture(Buttons, 450, 240, &B3);
-			app->render->DrawTexture(Buttons, 450, 300, &B4);
-			if (option == SELECTED::NONE) {
-				option = SELECTED::START;
-				app->audio->PlayFxWithVolume(change, 0, 70);
-			}
+
+			option = SELECTED::START;
+			PlaySelectFx();
 		}
 		else if (x >= 450 && x <= 556 && y >= 180 && y <= 216) {
-			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "play", 16);
-			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
-			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
-			app->render->DrawTexture(Buttons, 450, 120, &B1);
-			app->render->DrawTexture(Buttons, 450, 180, &B6);
-			app->render->DrawTexture(Buttons, 450, 240, &B3);
-			app->render->DrawTexture(Buttons, 450, 300, &B4);
-			if (option == SELECTED::NONE) {
-				option = SELECTED::CONTINUE;
-				app->audio->PlayFxWithVolume(change, 0, 70);
-			}
+
+			option = SELECTED::CONTINUE;
+			PlaySelectFx();
 		}
 		else if (x >= 450 && x <= 556  && y >= 240 && y <= 278) {
-			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
-			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, WF, "options", 16);
-			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
-			app->render->DrawTexture(Buttons, 450, 120, &B1);
-			app->render->DrawTexture(Buttons, 450, 180, &B2);
-			app->render->DrawTexture(Buttons, 450, 240, &B7);
-			app->render->DrawTexture(Buttons, 450, 300, &B4);
-			if (option == SELECTED::NONE) {
-				option = SELECTED::OPTIONS;
-				app->audio->PlayFxWithVolume(change, 0, 70);
+
+			option = SELECTED::OPTIONS;
+			PlaySelectFx();
+		}
+		else if (x >= 450 && x <= 556 && y >= 300 && y <= 338) {
+
+			option = SELECTED::EXIT;
+			PlaySelectFx();
+		}
+		else {
+			if (alreadyChangeFX)
+				alreadyChangeFX = false;
+		}
+
+		// Buttons and gamepad
+		if (option == SELECTED::NONE) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*//*GAMEPAD*/) {
+				option = SELECTED::START;
+				PlaySelectFx();
 			}
 		}
-		else if (x >= 450 && x <= 556 && y >= 300 && y <= 338 ) {
-			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
-			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
-			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "exit", 16);
-			app->render->DrawTexture(Buttons, 450, 120, &B1);
-			app->render->DrawTexture(Buttons, 450, 180, &B2);
-			app->render->DrawTexture(Buttons, 450, 240, &B3);
-			app->render->DrawTexture(Buttons, 450, 300, &B8);
-			if (option == SELECTED::NONE) {
+		else if (option == SELECTED::START) {
+			app->render->DrawTexture(Buttons, 450, 120, &B5);
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::CONTINUE;
+				PlaySelectFx();
+			}
+		}
+		else if (option == SELECTED::CONTINUE) {
+			app->render->DrawTexture(Buttons, 450, 180, &B6);
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::START;
+				PlaySelectFx();
+			}
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
+			}
+		}
+		else if (option == SELECTED::OPTIONS) {
+			app->render->DrawTexture(Buttons, 450, 240, &B7);
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::CONTINUE;
+				PlaySelectFx();
+			}
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
 				option = SELECTED::EXIT;
-				app->audio->PlayFxWithVolume(change, 0, 70);
+				PlaySelectFx();
+			}
+		}
+		else if (option == SELECTED::EXIT) {
+			app->render->DrawTexture(Buttons, 450, 300, &B8);
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
 			}
 		}
 		else {
-			app->render->DrawTexture(Buttons, 450, 120, &B1);
-			app->render->DrawTexture(Buttons, 450, 180, &B2);
-			app->render->DrawTexture(Buttons, 450, 240, &B3);
-			app->render->DrawTexture(Buttons, 450, 300, &B4);
-			//app->render->DrawText(145 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, GF, "play", 16);
-			//app->render->DrawText(137 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, GF, "options", 16);
-			//app->render->DrawText(145 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, GF, "exit", 16);
-			option = SELECTED::NONE;
+			if (alreadyChangeFX)
+				alreadyChangeFX = false;
 		}
 	}
 	//Rectangulos negros para realizar los fades
@@ -225,6 +237,14 @@ bool MainMenu::Update(float dt)
 	app->render->DrawRectangle({ 0,0,5000,5000 }, 0, 0, 0, fading2);
 
 	return ret;
+}
+
+void MainMenu::PlaySelectFx()
+{
+	if (alreadyChangeFX == false) {
+		app->audio->PlayFxWithVolume(change, 0, 70);
+		alreadyChangeFX = true;
+	}
 }
 
 // Called each loop iteration
