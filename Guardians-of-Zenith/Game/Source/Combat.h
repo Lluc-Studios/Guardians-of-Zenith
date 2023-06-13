@@ -84,6 +84,7 @@ public:
 	void TurnEnemyAsset(float Enemy_name);
 
 	void ShowStatsInventory();
+
 public:
 
 	bool GodMode = false;
@@ -467,6 +468,9 @@ private:
 	int change, select, looseFX, winFX;
 	int LaureaAttackFX, LapisAttackFX, LuccaAttackFX;
 	int LaureaHurtFX, LapisHurtFX, LuccaHurtFX;
+
+public:
+
 	int healingPotiFX, manaPotiFX, strengthEliFX, defEliFX;
 
 

@@ -41,7 +41,8 @@ bool Item::Start() {
 	pbody = app->physics->CreateRectangleSensor(position.x + 16, position.y + 16, 16, 16, bodyType::STATIC);
 	pbody->listener = this;
 
-	coinFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Play.wav");
+	//coinFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Play.wav");
+	PickupFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/PickupFx.wav");
 	pbody->ctype = ColliderType::ITEM; 
 
 	app->scene->texturas[id - 1] = texture;
@@ -74,6 +75,7 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::PLAYER:
 		LOG("Collision ITEM");
 		isPicked = true;
+		app->audio->PlayFxWithVolume(PickupFx, 0, app->audio->fxvolume);
 		app->scene->itemPicked[id-1] = isPicked;
 		physA->body->DestroyFixture(physA->body->GetFixtureList());
 		if (!handledCollision) {

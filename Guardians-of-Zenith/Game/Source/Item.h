@@ -43,7 +43,7 @@ private:
 	//DONE 4: Add a physics to an item
 	PhysBody* pbody;
 	
-	int coinFX = -1;
+	int coinFX = -1, PickupFx;
 
 
 };

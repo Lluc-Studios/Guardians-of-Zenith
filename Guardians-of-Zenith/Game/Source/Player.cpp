@@ -75,10 +75,9 @@ bool Player::Start() {
 	doorFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Door Fx.wav");
 	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start battle FX.wav");
 	MonolithFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Monolith FX.wav");
-	sirenFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Enemies/Siren.wav");
-	tavernerFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Taverner FX.wav");
 	puzzleFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Puzzle sound.wav");
 	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
+	BedFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Health potion.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -337,8 +336,6 @@ bool Player::Update(float dt)
 				NPC_03 = false;
 				NPC_04 = false;
 				isBill = true;
-
-				app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -347,8 +344,6 @@ bool Player::Update(float dt)
 				NPC_03 = false;
 				NPC_04 = false;
 				isBill = true;
-
-				app->audio->PlayFxWithVolume(tavernerFX, 0, 70);
 			}
 		}
 		if (NPC_02 )
@@ -677,7 +672,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 		app->scene->BWC = true;
-		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
@@ -691,7 +686,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 		app->scene->BFC = true;
-		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
@@ -705,7 +700,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 		app->scene->BCC = true;
-		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 		break;
@@ -868,6 +863,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		lapis.cmp = lapis.mp;
 		lucca.chp = lucca.hp;
 		lucca.cmp = lucca.mp;
+		app->audio->PlayFxWithVolume(BedFx, 0, app->audio->fxvolume);
 		break;
 	case ColliderType::NPC1:
 		//Collision in tabern
@@ -1184,7 +1180,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
-		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -1201,7 +1197,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
-		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
@@ -1218,7 +1214,7 @@ void Player::debugKeys() {
 		if (PresetVariation >= 94 && PresetVariation <= 97) app->combat->EnemyVariation = 3;
 		if (PresetVariation >= 98 && PresetVariation <= 100) app->combat->EnemyVariation = 4;
 
-		app->audio->PlayFxWithVolume(sirenFX, 0, 70);
+		app->audio->PlayFxWithVolume(startBattleFX, 0, 70);
 		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 		app->combat->StartCombat();
 	}
