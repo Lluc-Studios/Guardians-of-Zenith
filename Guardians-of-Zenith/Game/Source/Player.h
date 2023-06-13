@@ -128,8 +128,10 @@ public:
 	iPoint copypos;
 
 	bool win = false;
-
+	bool lvlUpFx = false;
 	int winy = 500;
+	int lvlupy = 500;
+
 	bool lapisMission = false;
 	bool DeathAnimationFinished = false;
 
@@ -194,7 +196,7 @@ private:
 	int Step1, Step2, StepMetalic1, StepMetalic2, DeathSound, Swing, DamageFx, aux, tpFX = -1;
 	int doorFX, MonolithFX;
 	int puzzleFx, QuestFx, BedFx;
-	int winSound;
+	int winSound, select;
 
 	bool pilar1Fx = false, pilar2Fx = false, pilar3Fx = false;
 

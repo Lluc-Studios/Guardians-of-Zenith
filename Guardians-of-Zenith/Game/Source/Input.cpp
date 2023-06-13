@@ -142,6 +142,10 @@ bool Input::PreUpdate()
 	controllers.X = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_X);
 	controllers.Y = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_Y);
 	controllers.Start = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_START);
+	controllers.DPADU = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
+	controllers.DPADD = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+	controllers.DPADL = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+	controllers.DPADR = SDL_GameControllerGetButton(sdl_controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
 
 	return true;
 }

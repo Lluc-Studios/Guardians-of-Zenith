@@ -77,6 +77,7 @@ bool Player::Start() {
 	puzzleFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Puzzle sound.wav");
 	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
 	BedFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Health potion.wav");
+	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
 
 	////Textures
 	//LFHH = app->tex->Load("Assets/Textures/FULL.png");
@@ -222,23 +223,26 @@ bool Player::Update(float dt)
 	}
 
 	// Level Up Fx
-	//if (auxLvlUp)
-	//{
-	//	app->render->DrawText(200, winy, { 34, 113, 179 }, "MISSION COMPLETE", 24);
-	//	if (winy > -100)
-	//	{
-	//		winy -= 4;
-	//	}
-	//	else
-	//	{
-	//		win = false;
-	//	}
+	if (lvlUpFx)
+	{
+		if(lvlupy == 500)
+			app->audio->PlayFx(winSound);
 
-	//}
-	//else
-	//{
-	//	winy = 500;
-	//}
+		app->render->DrawText(200, lvlupy, { 34, 113, 179 }, "LEVEL UP!", 24);
+		if (lvlupy > -100)
+		{
+			lvlupy -= 4;
+		}
+		else
+		{
+			lvlUpFx = false;
+		}
+
+	}
+	else
+	{
+		lvlupy = 500;
+	}
 
 	debugKeys();
 
@@ -605,6 +609,7 @@ bool Player::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat)
 	{
 		Qmenu = !Qmenu;
+		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 	}
 	if (Qmenu)
 	{
