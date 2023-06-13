@@ -7,6 +7,7 @@
 #include "Item.h"
 #include "Teleport.h"
 
+
 struct SDL_Texture;
 
 class Scene : public Module
@@ -244,6 +245,10 @@ private:
 	PhysBody* P2;
 	PhysBody* P3;
 	PhysBody* Fdoor;
+
+	int moveCounter = 0;
+	const int MOVE_DELAY = 10;
+
 
 public:
 	enum class SELECTED {

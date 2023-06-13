@@ -31,7 +31,7 @@ enum KeyState
 };
 
 struct GameController {
-	float j1_x, j1_y, j2_x, j2_y, LT, RT, A, B, X, Y, Start;
+	float j1_x, j1_y, j2_x, j2_y, LT, RT, A, B, X, Y, Start, DPADU, DPADD, DPADL, DPADR;
 };
 
 class Input : public Module
