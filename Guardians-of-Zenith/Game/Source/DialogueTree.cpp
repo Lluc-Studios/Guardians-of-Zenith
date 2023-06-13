@@ -4,6 +4,7 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Window.h"
+#include "Scene.h"
 
 using namespace std;
 
@@ -80,7 +81,22 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 		i2 += 0.05;
 		//positionx += positionx;
 	}
-
+	if (app->scene->player->NPCname == 1)
+	{
+		app->render->DrawText(80, 215, { 0, 0, 0 }, "Bill", 16);
+	}
+	if (app->scene->player->NPCname == 2)
+	{
+		app->render->DrawText(80, 215, { 0, 0, 0 }, "Timmy", 16);
+	}
+	if (app->scene->player->NPCname == 3)
+	{
+		app->render->DrawText(80, 215, { 0, 0, 0 }, "Sera", 16);
+	}
+	if (app->scene->player->NPCname == 4)
+	{
+		app->render->DrawText(80, 215, { 0, 0, 0 }, "Lapis", 16);
+	}
 	EventReturn(mod, pos);
 
 	if (!updateOptions)

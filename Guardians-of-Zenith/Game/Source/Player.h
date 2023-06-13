@@ -174,6 +174,8 @@ public:
 	int auxCounter = 0;
 	bool auxBool = false;
 
+	int NPCname = 0;
+
 	//shared
 	int startBattleFX;
 
