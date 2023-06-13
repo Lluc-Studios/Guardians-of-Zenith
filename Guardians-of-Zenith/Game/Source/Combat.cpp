@@ -5512,6 +5512,17 @@ void Combat::ShowStatsInventory()
 {
 	//Draw team stats in the inventory
 
+	//Party level
+	string LvlStr = std::to_string((int)app->scene->player->laurea.lvl);
+	const char* Lvl = LvlStr.c_str();
+
+	app->render->DrawText(185 * app->ScalingMultiplier, 10 * app->ScalingMultiplier, WF, "Lvl", 14);
+	app->render->DrawText(195 * app->ScalingMultiplier, 10 * app->ScalingMultiplier, WF, Lvl, 14);
+	app->render->DrawText(185 * app->ScalingMultiplier, 60 * app->ScalingMultiplier, WF, "Lvl", 14);
+	app->render->DrawText(195 * app->ScalingMultiplier, 60 * app->ScalingMultiplier, WF, Lvl, 14);
+	app->render->DrawText(185 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, WF, "Lvl", 14);
+	app->render->DrawText(195 * app->ScalingMultiplier, 110 * app->ScalingMultiplier, WF, Lvl, 14);
+
 	//Draw player
 	app->render->DrawTexture(Character1, app->scene->player->position.x + 70, app->scene->player->position.y - 140);
 
@@ -5520,22 +5531,22 @@ void Combat::ShowStatsInventory()
 
 	app->render->DrawText(225 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "HP", 12);
 	//Int to string convert
-	sprintf_s(Aux, "/ %.0f", C1MHP);
+	sprintf_s(Aux, "/ %.0f", app->scene->player->laurea.hp);
 	app->render->DrawText(255 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, Aux, 16);
 	sprintf_s(Aux, "%.0f", app->scene->player->laurea.chp);
 	app->render->DrawText(240 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, Aux, 16);
 	app->render->DrawRectangle({ 250 + app->scene->player->position.x - 90,-240 + app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 	//Calculate hp bar length
-	HpBarLengthC1 = (app->scene->player->laurea.chp * 98) / C1MHP;
+	HpBarLengthC1 = (app->scene->player->laurea.chp * 98) / app->scene->player->laurea.hp;
 	app->render->DrawRectangle({ 250 + app->scene->player->position.x - 89,-240 + app->scene->player->position.y + 116,HpBarLengthC1,8 }, 0, 200, 0);
 	app->render->DrawText(225 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "MP", 12);
-	sprintf_s(Aux, "/ %.0f", C1MMP);
+	sprintf_s(Aux, "/ %.0f", app->scene->player->laurea.mp);
 	app->render->DrawText(255 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, Aux, 16);
 	sprintf_s(Aux, "%.0f", app->scene->player->laurea.cmp);
 	app->render->DrawText(240 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, Aux, 16);
 	app->render->DrawRectangle({ 250 + app->scene->player->position.x - 90,-240 + app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 	//Calculate mp bar length
-	MpBarLengthC1 = (app->scene->player->laurea.cmp * 98) / C1MMP;
+	MpBarLengthC1 = (app->scene->player->laurea.cmp * 98) / app->scene->player->laurea.mp;
 	app->render->DrawRectangle({ 250 + app->scene->player->position.x - 89,-240 + app->scene->player->position.y + 156,MpBarLengthC1,8 }, 0, 0, 200);
 	
 	
@@ -5547,22 +5558,22 @@ void Combat::ShowStatsInventory()
 
 	app->render->DrawText(225 * app->ScalingMultiplier, 70 * app->ScalingMultiplier, WF, "HP", 12);
 	//Int to string convert
-	sprintf_s(Aux, "/ %.0f", C2MHP);
+	sprintf_s(Aux, "/ %.0f", app->scene->player->lapis.hp);
 	app->render->DrawText(255 * app->ScalingMultiplier, 70 * app->ScalingMultiplier, WF, Aux, 16);
 	sprintf_s(Aux, "%.0f", app->scene->player->lapis.chp);
 	app->render->DrawText(240 * app->ScalingMultiplier, 70 * app->ScalingMultiplier, WF, Aux, 16);
 	app->render->DrawRectangle({ 90 + app->scene->player->position.x + 70,-140 + app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 	//Calculate hp bar length 
-	HpBarLengthC2 = (app->scene->player->lapis.chp * 98) / C2MHP;
+	HpBarLengthC2 = (app->scene->player->lapis.chp * 98) / app->scene->player->lapis.hp;
 	app->render->DrawRectangle({ 90 + app->scene->player->position.x + 71,-140 + app->scene->player->position.y + 116,HpBarLengthC2,8 }, 0, 200, 0);
 	app->render->DrawText(225 * app->ScalingMultiplier, 90 * app->ScalingMultiplier, WF, "MP", 12);
-	sprintf_s(Aux, "/ %.0f", C2MMP);
+	sprintf_s(Aux, "/ %.0f", app->scene->player->lapis.mp);
 	app->render->DrawText(255 * app->ScalingMultiplier, 90 * app->ScalingMultiplier, WF, Aux, 16);
 	sprintf_s(Aux, "%.0f", app->scene->player->lapis.cmp);
 	app->render->DrawText(240 * app->ScalingMultiplier - 10, 90 * app->ScalingMultiplier, WF, Aux, 16);
 	app->render->DrawRectangle({ 90 + app->scene->player->position.x + 70,-140 + app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 	//Calculate mp bar length
-	MpBarLengthC2 = (app->scene->player->lapis.cmp * 98) / C2MMP;
+	MpBarLengthC2 = (app->scene->player->lapis.cmp * 98) / app->scene->player->lapis.mp;
 	app->render->DrawRectangle({ 90 + app->scene->player->position.x + 71,-140 + app->scene->player->position.y + 156,MpBarLengthC2,8 }, 0, 0, 200);
 
 	//Draw player
@@ -5573,23 +5584,64 @@ void Combat::ShowStatsInventory()
 
 	app->render->DrawText(225 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "HP", 12);
 	//Int to string convert
-	sprintf_s(Aux, "/ %.0f", C3MHP);
+	sprintf_s(Aux, "/ %.0f", app->scene->player->lucca.hp);
 	app->render->DrawText(255 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, Aux, 16);
 	sprintf_s(Aux, "%.0f", app->scene->player->lucca.chp);
 	app->render->DrawText(240 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, Aux, 16);
 	app->render->DrawRectangle({ -70 + app->scene->player->position.x + 230,-40 + app->scene->player->position.y + 115,100,10 }, 0, 0, 0);
 	//Calculate hp bar length 
-	HpBarLengthC3 = (app->scene->player->lucca.chp * 98) / C3MHP;
+	HpBarLengthC3 = (app->scene->player->lucca.chp * 98) / app->scene->player->lucca.hp;
 	app->render->DrawRectangle({ -70 + app->scene->player->position.x + 231,-40 + app->scene->player->position.y + 116,HpBarLengthC3,8 }, 0, 200, 0);
 	app->render->DrawText(225 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "MP", 12);
-	sprintf_s(Aux, "/ %.0f", C3MMP);
+	sprintf_s(Aux, "/ %.0f", app->scene->player->lucca.mp);
 	app->render->DrawText(255 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 	sprintf_s(Aux, "%.0f", app->scene->player->lucca.cmp);
 	app->render->DrawText(240 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 	app->render->DrawRectangle({ -70 + app->scene->player->position.x + 230,-40 + app->scene->player->position.y + 155,100,10 }, 0, 0, 0);
 	//Calculate mp bar length
-	MpBarLengthC3 = (app->scene->player->lucca.cmp * 98) / C3MMP;
+	MpBarLengthC3 = (app->scene->player->lucca.cmp * 98) / app->scene->player->lucca.mp;
 	app->render->DrawRectangle({ -70 + app->scene->player->position.x + 231,-40 + app->scene->player->position.y + 156,MpBarLengthC3,8 }, 0, 0, 200);
+
+
+	//Draw the rest of the stats
+	//Atk
+	app->render->DrawText(285 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, "Atk", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->laurea.atk);
+	app->render->DrawText(300 * app->ScalingMultiplier, 20 * app->ScalingMultiplier, WF, Aux, 16);
+
+	app->render->DrawText(285 * app->ScalingMultiplier, 70 * app->ScalingMultiplier, WF, "Atk", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->lapis.atk);
+	app->render->DrawText(300 * app->ScalingMultiplier, 70 * app->ScalingMultiplier, WF, Aux, 16);
+
+	app->render->DrawText(285 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, "Atk", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->lucca.atk);
+	app->render->DrawText(300 * app->ScalingMultiplier, 120 * app->ScalingMultiplier, WF, Aux, 16);
+
+	//Def
+	app->render->DrawText(285 * app->ScalingMultiplier, 30 * app->ScalingMultiplier, WF, "Def", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->laurea.def);
+	app->render->DrawText(300 * app->ScalingMultiplier, 30 * app->ScalingMultiplier, WF, Aux, 16);
+
+	app->render->DrawText(285 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, WF, "Def", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->lapis.def);
+	app->render->DrawText(300 * app->ScalingMultiplier, 80 * app->ScalingMultiplier, WF, Aux, 16);
+
+	app->render->DrawText(285 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, "Def", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->lucca.def);
+	app->render->DrawText(300 * app->ScalingMultiplier, 130 * app->ScalingMultiplier, WF, Aux, 16);
+
+	//Speed
+	app->render->DrawText(285 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, "Spe", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->laurea.spe);
+	app->render->DrawText(300 * app->ScalingMultiplier, 40 * app->ScalingMultiplier, WF, Aux, 16);
+
+	app->render->DrawText(285 * app->ScalingMultiplier, 90 * app->ScalingMultiplier, WF, "Spe", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->lapis.spe);
+	app->render->DrawText(300 * app->ScalingMultiplier, 90 * app->ScalingMultiplier, WF, Aux, 16);
+
+	app->render->DrawText(285 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, "Spe", 16);
+	sprintf_s(Aux, "%.0f", app->scene->player->lucca.spe);
+	app->render->DrawText(300 * app->ScalingMultiplier, 140 * app->ScalingMultiplier, WF, Aux, 16);
 }
 
 
