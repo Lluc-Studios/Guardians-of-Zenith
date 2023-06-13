@@ -20,7 +20,6 @@
 #include "Animation.h"
 #include "Inventory.h"
 
-
 #include "GuiManager.h"
 
 Player::Player() : Entity(EntityType::PLAYER)
@@ -359,7 +358,7 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				isDialogue = false;
 				NPC2 = true;
-
+				NPCname = 2;
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -370,6 +369,7 @@ bool Player::Update(float dt)
 				NPC_04 = false;
 				isDialogue = false;
 				NPC2 = true;
+				NPCname = 2;
 			}
 
 		}
@@ -385,6 +385,7 @@ bool Player::Update(float dt)
 				NPC_02 = false;
 				NPC_04 = false;
 				NPC = true;
+				NPCname = 3;
 			}
 			if (app->input->controllers.A != 0)
 			{
@@ -394,6 +395,7 @@ bool Player::Update(float dt)
 				NPC_02 = false;
 				NPC_04 = false;
 				NPC = true;
+				NPCname = 3;
 			}
 		}
 		if (NPC_04 )
@@ -408,6 +410,7 @@ bool Player::Update(float dt)
 				NPC_03 = false;
 				NPC_02 = false;
 				isDialogue = true;
+				NPCname = 4;
 
 			}
 			if (app->input->controllers.A != 0)
@@ -418,6 +421,7 @@ bool Player::Update(float dt)
 				NPC_03 = false;
 				NPC_02 = false;
 				isDialogue = true;
+				NPCname = 4;
 			}
 		}
 
@@ -463,6 +467,7 @@ bool Player::Update(float dt)
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			isDialogue = false;
+			NPCname = 0;
 		}
 		if (app->input->controllers.B != 0)
 		{
@@ -499,6 +504,7 @@ bool Player::Update(float dt)
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			isBill = false;
+			NPCname = 0;
 		}
 		if (app->input->controllers.B != 0)
 		{
@@ -536,6 +542,7 @@ bool Player::Update(float dt)
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			NPC2 = false;
+			NPCname = 0;
 		}
 		if (app->input->controllers.B != 0)
 		{
@@ -559,7 +566,7 @@ bool Player::Update(float dt)
 		
 	
 	}
-
+	
 	if (!isBill && !isDialogue && !NPC2 && !NPC)
 	{
 		app->dialogueSystem->CleanUp();
@@ -573,13 +580,13 @@ bool Player::Update(float dt)
 			|| app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
 			NPC = false;
+			NPCname = 0;
 		}
 		if (app->input->controllers.B != 0)
 		{
 			NPC = false;
 		}
 	}
-
 
 	return true;
 }
