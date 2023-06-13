@@ -1030,7 +1030,7 @@ bool Scene::Update(float dt)
 		app->render->DrawTexture(NPC2, 224, -710, &N2T);
 	}
 
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE)==KeyState::KEY_DOWN || app->input->controllers.A != 0)
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE)==KeyState::KEY_DOWN || app->input->controllers.A != 0 && !A_pressed)
 	{
 		switch (option)
 		{

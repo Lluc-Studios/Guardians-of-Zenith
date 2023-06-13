@@ -246,8 +246,11 @@ private:
 	PhysBody* P3;
 	PhysBody* Fdoor;
 
+
+	//Mando
 	int moveCounter = 0;
 	const int MOVE_DELAY = 10;
+	bool A_pressed = false;
 
 
 public:
