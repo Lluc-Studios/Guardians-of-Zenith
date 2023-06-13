@@ -1335,7 +1335,7 @@ bool Combat::Update(float dt)
 					app->render->DrawTexture(E1asset, app->scene->player->position.x + 115 - E1BOSS - 35, app->scene->player->position.y - 70 - E1BOSS- 10);
 				}
 				else {
-					app->render->DrawTexture(E1asset, app->scene->player->position.x + 115 - E1BOSS - 35, app->scene->player->position.y - 70 - E1BOSS);
+					app->render->DrawTexture(E1asset, app->scene->player->position.x + 115 - E1BOSS - 35, app->scene->player->position.y - 70 - E1BOSS - 5);
 				}
 
 				//Int to string convert
