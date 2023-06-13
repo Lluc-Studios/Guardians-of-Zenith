@@ -113,6 +113,7 @@ public:
 	bool Quest1 = false;
 	bool Quest2 = false;
 	bool Quest1Completed = false;
+	bool Quest2Completed = false;
 
 	//dialogue
 	bool isDialogue = false;

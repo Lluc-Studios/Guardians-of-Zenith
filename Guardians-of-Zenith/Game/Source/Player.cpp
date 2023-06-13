@@ -495,6 +495,7 @@ bool Player::Update(float dt)
 		{
 			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 6);
 			win = true;
+			Quest1Completed = true;
 			app->audio->PlayFx(winSound);
 		}
 		else
@@ -533,6 +534,7 @@ bool Player::Update(float dt)
 		{
 			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 5);
 			win = true;
+			Quest2Completed = true;
 			app->audio->PlayFx(winSound);
 		}
 		else
@@ -641,16 +643,13 @@ bool Player::Update(float dt)
 			app->render->DrawText(170, 280, { 0, 0, 0 }, "Timmy", 16);
 			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Timmy's Necklace", 16);
 		}
-		if (win)
-		{
-			Quest1Completed = true;
-		}
+
 		if (Quest1Completed)
 		{
 			app->render->DrawText(170, 220, { 0, 255, 0 }, "Bill", 16);
 			app->render->DrawText(300, 220, { 0, 255, 0 }, "Return the pendant to Bill", 16);
 		}
-		if (app->inventory->necklace > 0)
+		if (Quest2Completed)
 		{
 			app->render->DrawText(170, 280, { 0, 255, 0 }, "Timmy", 16);
 			app->render->DrawText(300, 280, { 0, 255, 0 }, "Find Timmy's Necklace", 16);
