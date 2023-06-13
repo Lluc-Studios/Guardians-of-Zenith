@@ -863,7 +863,7 @@ bool Scene::Update(float dt)
 		app->render->DrawTexture(Driadon, 1206, 2311);
 	}
 	if (BC == false) {
-		app->render->DrawTexture(Gasha, -1402, -462);
+		app->render->DrawTexture(Gasha, -1402 + 5, -462 + 10);
 	}
 	if (BW == true) {
 		Naiadon1->body->SetActive(false);
