@@ -430,6 +430,7 @@ private:
 	SDL_Texture* Win;
 
 	bool AudioLose = false;
+	bool AudioWin = false;
 
 	int TurnPos = 0, auxiliarPos = 0, playerX = 0, playerY = 0;
 
@@ -465,7 +466,7 @@ private:
 
 
 	//FX
-	int change, select, looseFX, winFX;
+	int change, select, looseFX, winFX, DefendFx;
 	int LaureaAttackFX, LapisAttackFX, LuccaAttackFX;
 	int LaureaHurtFX, LapisHurtFX, LuccaHurtFX;
 
