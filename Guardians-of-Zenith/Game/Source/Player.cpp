@@ -596,7 +596,7 @@ bool Player::Update(float dt)
 	}
 
 	//MenuQuest
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat)
 	{
 		Qmenu = !Qmenu;
 	}
@@ -638,6 +638,11 @@ bool Player::Update(float dt)
 		{
 			app->render->DrawText(170, 220, { 0, 255, 0 }, "Bill", 16);
 			app->render->DrawText(300, 220, { 0, 255, 0 }, "Return the pendant to Bill", 16);
+		}
+		if (app->inventory->necklace > 0)
+		{
+			app->render->DrawText(170, 280, { 0, 0, 0 }, "Sera", 16);
+			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Sera's Necklace", 16);
 		}
 
 	}
