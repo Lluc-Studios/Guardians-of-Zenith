@@ -223,23 +223,26 @@ bool Player::Update(float dt)
 	}
 
 	// Level Up Fx
-	//if (auxLvlUp)
-	//{
-	//	app->render->DrawText(200, winy, { 34, 113, 179 }, "MISSION COMPLETE", 24);
-	//	if (winy > -100)
-	//	{
-	//		winy -= 4;
-	//	}
-	//	else
-	//	{
-	//		win = false;
-	//	}
+	if (lvlUpFx)
+	{
+		if(lvlupy == 500)
+			app->audio->PlayFx(winSound);
 
-	//}
-	//else
-	//{
-	//	winy = 500;
-	//}
+		app->render->DrawText(200, lvlupy, { 34, 113, 179 }, "LEVEL UP!", 24);
+		if (lvlupy > -100)
+		{
+			lvlupy -= 4;
+		}
+		else
+		{
+			lvlUpFx = false;
+		}
+
+	}
+	else
+	{
+		lvlupy = 500;
+	}
 
 	debugKeys();
 
@@ -492,6 +495,7 @@ bool Player::Update(float dt)
 		{
 			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 6);
 			win = true;
+			Quest1Completed = true;
 			app->audio->PlayFx(winSound);
 		}
 		else
@@ -530,6 +534,7 @@ bool Player::Update(float dt)
 		{
 			dialogueID = app->dialogueSystem->LoadDialogue("vs_dialogues.xml", 5);
 			win = true;
+			Quest2Completed = true;
 			app->audio->PlayFx(winSound);
 		}
 		else
@@ -599,6 +604,10 @@ bool Player::Update(float dt)
 	}
 
 	//MenuQuest
+	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+	{
+		Qmenu = false;
+	}
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat)
 	{
 		Qmenu = !Qmenu;
@@ -634,16 +643,13 @@ bool Player::Update(float dt)
 			app->render->DrawText(170, 280, { 0, 0, 0 }, "Timmy", 16);
 			app->render->DrawText(300, 280, { 0, 0, 0 }, "Find Timmy's Necklace", 16);
 		}
-		if (win)
-		{
-			Quest1Completed = true;
-		}
+
 		if (Quest1Completed)
 		{
 			app->render->DrawText(170, 220, { 0, 255, 0 }, "Bill", 16);
 			app->render->DrawText(300, 220, { 0, 255, 0 }, "Return the pendant to Bill", 16);
 		}
-		if (app->inventory->necklace > 0)
+		if (Quest2Completed)
 		{
 			app->render->DrawText(170, 280, { 0, 255, 0 }, "Timmy", 16);
 			app->render->DrawText(300, 280, { 0, 255, 0 }, "Find Timmy's Necklace", 16);

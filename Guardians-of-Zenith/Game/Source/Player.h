@@ -113,6 +113,7 @@ public:
 	bool Quest1 = false;
 	bool Quest2 = false;
 	bool Quest1Completed = false;
+	bool Quest2Completed = false;
 
 	//dialogue
 	bool isDialogue = false;
@@ -128,8 +129,10 @@ public:
 	iPoint copypos;
 
 	bool win = false;
-
+	bool lvlUpFx = false;
 	int winy = 500;
+	int lvlupy = 500;
+
 	bool lapisMission = false;
 	bool DeathAnimationFinished = false;
 
