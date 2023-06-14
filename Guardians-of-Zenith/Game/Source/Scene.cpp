@@ -1107,13 +1107,21 @@ bool Scene::PostUpdate()
 	// TODO 3: Make the inventoryOn bool true when pressing a key
 	if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 	{
+		app->scene->player->Qmenu = false;
 		if (!app->combat->InCombat) {
 			app->inventory->inventoryOn = !app->inventory->inventoryOn;
 			isPaused = false;
 			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		}
 	}
-
+	if (app->input->controllers.Y != 0 && !Y_pressed)
+	{
+		if (!app->combat->InCombat) {
+			app->inventory->inventoryOn = !app->inventory->inventoryOn;
+			isPaused = false;
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
+		}
+	}
 	// TODO 3: Some interface for the inventory
 	if (app->inventory->inventoryOn)
 	{

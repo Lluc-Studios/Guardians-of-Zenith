@@ -224,9 +224,12 @@ bool Physics::PostUpdate()
 		app->render->DrawText(20, 100, WF, "O to teleport to forest dungeon", 16);
 		app->render->DrawText(20, 116, WF, "P to teleport to cave dungeon", 16);
 		app->render->DrawText(20, 132, WF, "C to start basic test combat", 16);
-		app->render->DrawText(20, 148, WF, "T to skip turn in combat", 16);
-		app->render->DrawText(20, 164, WF, "B to lose combat ", 16);
-		app->render->DrawText(20, 180, WF, "F10 to GodMode", 16);
+		app->render->DrawText(20, 148, WF, "K to start lake boss combat", 16);
+		app->render->DrawText(20, 164, WF, "L to start forest boss combat", 16);
+		app->render->DrawText(20, 180, WF, "Ñ to start cave dungeon combat", 16);
+		app->render->DrawText(20, 196, WF, "T to skip turn in combat", 16);
+		app->render->DrawText(20, 212, WF, "B to lose combat ", 16);
+		app->render->DrawText(20, 228, WF, "F10 to GodMode", 16);
 
 
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
