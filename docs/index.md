@@ -1,8 +1,13 @@
 # Guardians of Zenith
+
 ![mainmenu_final](https://github.com/Lluc-Studios/Guardians-of-Zenith/assets/99950357/119ad8f6-81ff-4c52-a766-280d6376a7b0)
+
 ## Introduction
+
 This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the Project II subject for Degree in Videogames Design and Development at [CITM](https://www.citm.upc.edu/) - [UPC](https://www.upc.edu/ca).
+
 ## Features
+
 - Animated logo screen & title screen.
 - 3 Playable characters with differents stats, level scaling and ultimate attacks.
 - Town map, 4 location maps, 3 dungeons. 
@@ -16,54 +21,67 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 - Gamecube gamepad integration.
 
 ## Trailer
+
 <iframe width="700" height="560" src="https://www.youtube.com/embed/mPnxSs_5x4Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Controls
+
 ### Keyboard & mouse
+
 **In map:**
+
 |Movement Player|Interact with NPC's|Select dialogue option|Finish dialogue|
 |---|---|---|---|
 |WASD|E|Up/Down key|SPACE or ENTER|
 |Arrow Keys||Mouse|Mouse|
 
 **Combat UI:**
+
 |Up/Down|Select|Back|
 |---|---|---|
 |W/S|SPACE|Q|
 |Arrow Keys|ENTER||
 
 **Menus UI:**
+
 |Pause menu|Inventory & Stats Menu|Quests Menu|
 |---|---|---|
 |ESC|Tab|Q|
 
 **Pause Menu & Options Menu Movement:**
+
 |Pause menu|Options Menu|
 |---|---|
 |W/S|Mouse|
 
 ### Gamepad
+
 **In map:**
+
 |Movement Player|Interact with NPC's|Finish dialogue|Select dialogue|
 |---|---|---|---|
 |Left joystick|A|B|DPADUP/DOWN|
 
 **Combat UI:**
+
 |Up/Down|Select|Back|
 |---|---|---|
 |DPADUP/DOWN|A|B|
 
 **Menus UI:**
+
 |Menu|Select|Inventory & Stats Menu| 
 |---|---|---|
 |DPADUP/DOWN|A|Y|
 
 **Pause Menu:**
+
 |Up/Down|Select|Open| 
 |---|---|---|
 |DPADUP/DOWN|A|Start|
 
 ## Debug
+
 **General**
 
 |Skip intro and main menu|Show collisions & debug buttons|Save game|Load game|
@@ -79,6 +97,7 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 |I|O|P|
 
 **Combat**
+
 |Start Combat Slimefrog|Skip Combat Turn|Test Freeze status|To lose combat|
 |---|---|---|---|
 |C|T|F|B|
@@ -88,6 +107,7 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 |K|L|Ñ|
 
 ## Screenshots
+
 **Town**
 ![Town](https://github.com/Lluc-Studios/Guardians-of-Zenith/assets/99950357/61715060-89b0-4073-bfee-d888a7d055b8)
 **Inventory**
@@ -102,6 +122,7 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 ![Dialogue](https://github.com/Lluc-Studios/Guardians-of-Zenith/assets/99950357/6dbf1e69-3588-4032-b0fe-7c1fd78afe4d)
 
 ## Team
+
 | Sergio Corona Gómez | Iván Bermúdez Sagra | Marc Escandell Alonso | Joan Giol Pozo | Adrian Ramirez Perez |
 |---|---|---|---|---|
 | Team Lead | Design |Design | Design | Design |
