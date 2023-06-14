@@ -53,8 +53,17 @@ bool GuiButton::Update(float dt)
 			state = GuiControlState::PRESSED;
 			NotifyObserver();
 		}
-
+		if (id == 0 && app->input->controllers.DPADU > 0)
+		{
+			state = GuiControlState::PRESSED;
+			NotifyObserver();
+		}
 		if (id == 1 && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_DOWN)
+		{
+			state = GuiControlState::PRESSED;
+			NotifyObserver();
+		}
+		if (id == 1 && app->input->controllers.DPADD > 0)
 		{
 			state = GuiControlState::PRESSED;
 			NotifyObserver();
