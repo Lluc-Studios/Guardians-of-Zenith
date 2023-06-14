@@ -37,14 +37,24 @@ Our project website: https://lluc-studios.github.io/Guardians-of-Zenith/
 
 ### Gamepad
 **In map:**
-| Movement Player | Interact with NPC's | Finish dialogue|
+| Movement Player | Interact with NPC's | Finish dialogue| 
 |---|---|---|
 |Left joystick|A|B|
 
 **Combat UI:**
 | Up/Down | Select | Back|
 |---|---|---|
-|Left joystick|A||
+|DPADUP/DOWN|A|B|
+
+**Menus UI:**
+|Menu|Select|Inventory & Stats Menu| 
+|---|---|---|
+|DPADUP/DOWN|A|Y|
+
+**Pause Menu:**
+|Up/Down|Select|Open| 
+|---|---|---|
+|DPADUP/DOWN|A|Start|
 
 ## Features
 - Animated logo screen & title screen.
