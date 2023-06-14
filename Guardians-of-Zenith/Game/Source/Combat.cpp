@@ -1741,7 +1741,7 @@ bool Combat::Update(float dt)
 			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN && TeamTurn == 1) {
 				FinishTurn();
 			}
-			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN || app->input->controllers.B != 0 && !B_pressed && TeamTurn == 1) {
+			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && TeamTurn == 1) {
 				if (AttackMenu == true && EnemySelect == false) {
 					AttackMenu = false;
 					option = COMBATMENU::ATTACK;
@@ -4308,24 +4308,12 @@ bool Combat::Update(float dt)
 			option = COMBATMENU::LOSE;
 		}
 		//DEBUG
-
-
-		//Test Frozen
-		if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
-		{
-			C1FROZEN = true;
-			C2FROZEN = true;
-			C3FROZEN = true;
-		}
-
 		//To test loosing combat
 		if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
 		{
 			option = COMBATMENU::LOSE;
 		}
 	}
-	
-
 	return true;
 }
 
@@ -4373,13 +4361,11 @@ bool Combat::PostUpdate()
 	}
 	if (option == COMBATMENU::LOSE) {
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
-		app->audio->PlayMusic("Assets/Soundtrack/Music/LoseMusic.ogg");
-
-		if (AudioLose != true) {
+		if (AudioLose == false) {
+			app->audio->PlayMusic("Assets/Soundtrack/Music/Silence.ogg");
 			app->audio->PlayFxWithVolume(looseFX, 0, app->audio->fxvolume);
 			AudioLose = true;
 		}
-
 		app->scene->player->pbody->GetPosition(playerX, playerY);
 		app->render->DrawRectangle({ playerX-1000,playerY-1000,5000,5000}, 0, 0, 0);
 		app->render->DrawTexture(Lose, playerX-313, playerY-180);
