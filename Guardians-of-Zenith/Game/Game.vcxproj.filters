@@ -157,6 +157,7 @@
       <Filter>Maps</Filter>
     </ClInclude>
     <ClInclude Include="Source\Inventory.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -171,5 +172,11 @@
     <Filter Include="Maps">
       <UniqueIdentifier>{38073a22-c1f1-42ae-ad7a-ee4cc58e2b58}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Output\Assets\Textures\logo.ico" />
   </ItemGroup>
 </Project>
