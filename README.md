@@ -37,12 +37,12 @@ Our project website: https://lluc-studios.github.io/Guardians-of-Zenith/
 
 ### Gamepad
 **In map:**
-| Movement Player | Interact with NPC's | Finish dialogue| 
-|---|---|---|
-|Left joystick|A|B|
+|Movement Player|Interact with NPC's|Finish dialogue|Select dialogue|
+|---|---|---|---|
+|Left joystick|A|B|DPADUP/DOWN|
 
 **Combat UI:**
-| Up/Down | Select | Back|
+|Up/Down|Select|Back|
 |---|---|---|
 |DPADUP/DOWN|A|B|
 
@@ -67,7 +67,7 @@ Our project website: https://lluc-studios.github.io/Guardians-of-Zenith/
 - Missions.
 - Pause menu, options menu, inventory menu, quests menu.
 - Music for different zones and fx for different actions.
-- Gamepad integration.
+- Gamecube gamepad integration.
 
 ## Debug
 **General**
