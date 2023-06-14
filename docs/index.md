@@ -49,6 +49,10 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 |---|---|---|
 |ESC|Tab|Q|
 
+|Skip lose screen|Skip win screen|
+|---|---|
+|Space|Space|
+
 **Pause Menu & Options Menu Movement:**
 
 |Pause menu|Options Menu|
