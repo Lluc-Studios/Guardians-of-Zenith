@@ -20,9 +20,9 @@
 
 <dialogues>
 	
-  <!--Lapis-->
+  <!--Sera-->
   <dialogueTree ID="0">
-    <node id="0" text="First of all good morning, my name is Lapis. And I am a water spirit.">
+    <node id="0" text="Hi adventurer. What do you want?">
         <choice id="0" option="I need the pendant that Bill gave you." nextNode="1" eventReturn="1"/>
 		<choice id="1" option="Shut up and give me the pendant." nextNode="2" eventReturn="1"/>
 	</node>
@@ -47,7 +47,7 @@
 
   <!--Bill (Tabernero)-->
   <dialogueTree ID="1">
-    <node id="0" text="Ah, adventurer! I'm glad you're here. I have a wedding and I need my pendant that Lapis has it, find him, he will give you my pendant and bring it back to me please!">
+    <node id="0" text="Ah, adventurer! I'm glad you're here. I have a wedding and I need my pendant that Sera has it, find him, he will give you my pendant and bring it back to me please!">
         <choice id="0" option="Okay, that sounds easy! I'll finish it in no time." nextNode="1" eventReturn="1"/>
         <choice id="1" option="Hmm, I'm not sure if I'm ready for that." nextNode="2" eventReturn="1"/>
     </node>
@@ -61,7 +61,7 @@
     <node id="-1" text ="Good. Have a good day!"></node>
   </dialogueTree>
   
-  <!--Sera (Herreria)-->
+  <!--Timmy (Herreria)-->
   <dialogueTree ID="2">
 	<node id="0" text="Ah, adventurer, thank you for coming. It's been weighing on my heart, but I've lost my late wife's precious necklace. I believe it might have fallen into the lake. Can you help me find it?">
 		<choice id="0" option="I'll search the lake and do my best to find the necklace for you." nextNode="1" eventReturn="1"/>
@@ -73,19 +73,6 @@
 
 	<node id="2" text="There are rumors that there is a powerful creature gathering precious stones in the lake, maybe the necklace is on its treasure."></node>
 	</dialogueTree>
-
-  <!--Timmy (Ninio)-->
-  <dialogueTree ID="3">
-	<node id="0" text="Greetings, adventurer! I'm relieved you're here. During my research trip, I misplaced four crucial manuscripts that contain vital information about the origin of this island. I need your help to find them so that we can create a comprehensive book on our island's history. Will you undertake this important quest?">
-		<choice id="0" option="Count on me!  I'll help you find those manuscripts." nextNode="1" eventReturn="1"/>
-		<choice id="1" option="Can you provide any hints or information to narrow down the search areas?" nextNode="2" eventReturn="1"/>
-	</node>
-
-	<node id="1" text="Thank you, adventurer! Your dedication to uncovering our island's history is commendable. The manuscripts could be anywhere, so search thoroughly. Once you've collected all four, bring them back to me, and I'll reward you generously.">
-	</node>
-
-	<node id="2" text="I understand it's a challenging endeavor. Let me give you a clue: Each manuscript is hidden in a significant landmark of our island. Explore the ruins, the cave system, the forest, and the lake. Good luck! Return to me with all the manuscripts and I will reward you generously."></node>
-  </dialogueTree>
 	
   <!--(Answers)-->
   <dialogueTree ID="4">
@@ -95,7 +82,7 @@
   </dialogueTree>
 	
   <dialogueTree ID="5">
-	<node id="0" text="Thank you for returning my wife’s necklace! Here is your reward.">
+	<node id="0" text="Thank you for returning my wife necklace! Here is your reward.">
 	</node>
 
   </dialogueTree>
