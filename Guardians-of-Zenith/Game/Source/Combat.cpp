@@ -1542,8 +1542,100 @@ bool Combat::Update(float dt)
 
 		//Inputs
 		if (TeamTurn == 1) {
-			if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN 
-				|| (app->input->controllers.DPADU > 0)) && TeamTurn == 1) {
+			if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && TeamTurn == 1)){
+				if (AttackMenu == false) {
+					if (option == COMBATMENU::DEFEND) {
+						option = COMBATMENU::ATTACK;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::INVENTORY) {
+						option = COMBATMENU::DEFEND;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ESCAPE) {
+						option = COMBATMENU::INVENTORY;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+				if (AttackMenu == true && EnemySelect == false) {
+					if (option == COMBATMENU::ATTACK2) {
+						option = COMBATMENU::ATTACK1;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK4) {
+						option = COMBATMENU::ATTACK2;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK5) {
+						option = COMBATMENU::ATTACK4;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK6) {
+						option = COMBATMENU::ATTACK5;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK3) {
+						option = COMBATMENU::ATTACK6;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+				if (EnemySelect == true) {
+					if (option == COMBATMENU::ENEMY2 && E1dead == false) {
+						option = COMBATMENU::ENEMY1;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ENEMY3) {
+						if (E2dead == false) {
+							option = COMBATMENU::ENEMY2;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+						if (E2dead == true && E1dead == false) {
+							option = COMBATMENU::ENEMY1;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+					}
+					if (option == COMBATMENU::ALLY2) {
+						option = COMBATMENU::ALLY1;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ALLY3) {
+						option = COMBATMENU::ALLY2;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+				if (AllySelect == true) {
+					if (option == COMBATMENU::ALLYSELECT2 && C1dead == false) {
+						option = COMBATMENU::ALLYSELECT1;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ALLYSELECT3) {
+						if (C2dead == false) {
+							option = COMBATMENU::ALLYSELECT2;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+						if (C2dead == true && C1dead == false) {
+							option = COMBATMENU::ALLYSELECT1;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+					}
+				}
+				if (InventoryMenu == true && AllySelect == false)
+				{
+					if (option == COMBATMENU::INVENTORY4) {
+						option = COMBATMENU::INVENTORY3;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					else if (option == COMBATMENU::INVENTORY3) {
+						option = COMBATMENU::INVENTORY2;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					else if (option == COMBATMENU::INVENTORY2) {
+						option = COMBATMENU::INVENTORY1;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+			}
+			if ((app->input->controllers.DPADU > 0)) {
 				moveCounter++;
 				if (moveCounter >= MOVE_DELAY) {
 				if (AttackMenu == false) {
@@ -1642,6 +1734,99 @@ bool Combat::Update(float dt)
 			}
 			if ((app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN
 				|| (app->input->controllers.DPADD > 0)) && TeamTurn == 1) {
+				if (AttackMenu == false) {
+					if (option == COMBATMENU::INVENTORY) {
+						option = COMBATMENU::ESCAPE;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::DEFEND) {
+						option = COMBATMENU::INVENTORY;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK) {
+						option = COMBATMENU::DEFEND;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+				if (AttackMenu == true && EnemySelect == false) {
+					if (option == COMBATMENU::ATTACK6) {
+						option = COMBATMENU::ATTACK3;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK5) {
+						option = COMBATMENU::ATTACK6;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK4) {
+						option = COMBATMENU::ATTACK5;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK2) {
+						option = COMBATMENU::ATTACK4;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ATTACK1) {
+						option = COMBATMENU::ATTACK2;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+				if (EnemySelect == true) {
+					if (option == COMBATMENU::ENEMY2 && E3dead == false) {
+						option = COMBATMENU::ENEMY3;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ENEMY1) {
+						if (E2dead == false) {
+							option = COMBATMENU::ENEMY2;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+						if (E2dead == true && E3dead == false) {
+							option = COMBATMENU::ENEMY3;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+					}
+					if (option == COMBATMENU::ALLY2) {
+						option = COMBATMENU::ALLY3;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ALLY1) {
+						option = COMBATMENU::ALLY2;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+				if (AllySelect == true) {
+					if (option == COMBATMENU::ALLYSELECT2 && C1dead == false) {
+						option = COMBATMENU::ALLYSELECT3;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					if (option == COMBATMENU::ALLYSELECT1) {
+						if (C2dead == false) {
+							option = COMBATMENU::ALLYSELECT2;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+						if (C2dead == true && C1dead == false) {
+							option = COMBATMENU::ALLYSELECT3;
+							app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+						}
+					}
+				}
+				if (InventoryMenu == true && AllySelect == false) {
+					if (option == COMBATMENU::INVENTORY1) {
+						option = COMBATMENU::INVENTORY2;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					else if (option == COMBATMENU::INVENTORY2) {
+						option = COMBATMENU::INVENTORY3;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+					else if (option == COMBATMENU::INVENTORY3) {
+						option = COMBATMENU::INVENTORY4;
+						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
+					}
+				}
+
+			}
+			if ((app->input->controllers.DPADD > 0)) {
 				moveCounter++;
 				if (moveCounter >= MOVE_DELAY) {
 				if (AttackMenu == false) {
@@ -1733,10 +1918,11 @@ bool Combat::Update(float dt)
 						option = COMBATMENU::INVENTORY4;
 						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
+				
 				}
 				moveCounter = 0;
 				}
-
+				
 			}
 			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN && TeamTurn == 1) {
 				FinishTurn();

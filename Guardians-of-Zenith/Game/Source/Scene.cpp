@@ -1113,7 +1113,14 @@ bool Scene::PostUpdate()
 			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 		}
 	}
-
+	if (app->input->controllers.Y != 0 && !Y_pressed)
+	{
+		if (!app->combat->InCombat) {
+			app->inventory->inventoryOn = !app->inventory->inventoryOn;
+			isPaused = false;
+			app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
+		}
+	}
 	// TODO 3: Some interface for the inventory
 	if (app->inventory->inventoryOn)
 	{

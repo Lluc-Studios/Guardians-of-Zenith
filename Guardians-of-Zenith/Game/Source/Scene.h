@@ -251,6 +251,8 @@ private:
 	int moveCounter = 0;
 	const int MOVE_DELAY = 10;
 	bool A_pressed = false;
+	bool Y_pressed = false;
+	
 
 
 public:
