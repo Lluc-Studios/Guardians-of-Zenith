@@ -89,13 +89,9 @@ bool DialogueTree::UpdateTree(float dt, Module* mod, iPoint pos)
 	{
 		app->render->DrawText(80, 215, { 0, 0, 0 }, "Timmy", 16);
 	}
-	if (app->scene->player->NPCname == 3)
-	{
-		app->render->DrawText(80, 215, { 0, 0, 0 }, "Sera", 16);
-	}
 	if (app->scene->player->NPCname == 4)
 	{
-		app->render->DrawText(80, 215, { 0, 0, 0 }, "Lapis", 16);
+		app->render->DrawText(80, 215, { 0, 0, 0 }, "Sera", 16);
 	}
 	EventReturn(mod, pos);
 

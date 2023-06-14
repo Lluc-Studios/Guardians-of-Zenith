@@ -1018,8 +1018,8 @@ bool Scene::Update(float dt)
 	//Npc drawE
 	//Town
 	if (app->Instance == 0) {
-		app->render->DrawTexture(NPC3, 483, 545, &N3T);
-		app->render->DrawTexture(LAPIS, 1110, 790, &LAPIS1);
+		app->render->DrawTexture(NPC3, 1110, 790, &N3T);
+		//app->render->DrawTexture(LAPIS, 1110, 790, &LAPIS1);
 	}
 	//Tavern
 	if (app->Instance == 1) {
