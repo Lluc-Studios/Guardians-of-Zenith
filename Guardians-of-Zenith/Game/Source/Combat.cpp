@@ -4365,11 +4365,13 @@ bool Combat::PostUpdate()
 	}
 	if (option == COMBATMENU::LOSE) {
 		app->render->DrawText(10 * app->ScalingMultiplier, 100 * app->ScalingMultiplier, YF, "You lost...", 16);
-		if (AudioLose == false) {
-			app->audio->PlayMusic("Assets/Soundtrack/Music/Silence.ogg");
+		app->audio->PlayMusic("Assets/Soundtrack/Music/LoseMusic.ogg");
+
+		if (AudioLose != true) {
 			app->audio->PlayFxWithVolume(looseFX, 0, app->audio->fxvolume);
 			AudioLose = true;
 		}
+
 		app->scene->player->pbody->GetPosition(playerX, playerY);
 		app->render->DrawRectangle({ playerX-1000,playerY-1000,5000,5000}, 0, 0, 0);
 		app->render->DrawTexture(Lose, playerX-313, playerY-180);

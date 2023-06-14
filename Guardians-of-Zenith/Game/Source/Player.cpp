@@ -75,7 +75,7 @@ bool Player::Start() {
 	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start battle FX.wav");
 	MonolithFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Monolith FX.wav");
 	puzzleFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Puzzle sound.wav");
-	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
+	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/QuestFx.wav");
 	BedFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Health potion.wav");
 	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
 
