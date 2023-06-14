@@ -94,9 +94,9 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 |---|---|---|---|
 |F1|F2|F5|F6|
 
-|Exit game|God mode|Level Up Characters|
-|---|---|---|
-|F9|F10|Y|
+|Exit game|God mode MAP|God mode COMBAT|Level Up Characters|
+|---|---|---|---|
+|F9|F10|F11|Y|
 
 |Teleport to Lake Dungeon|Teleport to Forest Dungeon|Teleport to Cave Dungeon|
 |---|---|---|
