@@ -14,6 +14,7 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 - Puzzles in each dungeon.
 - Enemies & bosses in all dungeons.
 - Turn-based battle system, with strengths and weaknesses, states, ultimate attacks, inventory.
+- Lose screen if you lose a battle, win screen if you defeat the 3 bosses.
 - NPCs with branching dialogs.
 - 3 Missions.
 - Consumable items for combat and collectible item for missions.
