@@ -12,10 +12,11 @@ This is a RPG project by [Lluc Studios](https://github.com/Lluc-Studios) for the
 - 3 Playable characters with differents stats, level scaling and ultimate attacks.
 - Town map, 4 location maps, 3 dungeons. 
 - Puzzles in each dungeon.
-- Enemies & boss all dungeons.
+- Enemies & bosses in all dungeons.
 - Turn-based battle system, with strengths and weaknesses, states, ultimate attacks, inventory.
 - NPCs with branching dialogs.
-- Missions.
+- 3 Missions.
+- Consumable items for combat and collectible item for missions.
 - Pause menu, options menu, inventory menu, quests menu.
 - Music for different zones and fx for different actions.
 - Gamecube gamepad integration.
