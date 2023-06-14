@@ -4352,7 +4352,7 @@ bool Combat::PostUpdate()
 			app->render->DrawRectangle({ playerX - 1000,playerY - 1000,5000,5000 }, 24, 255, 239);
 			app->render->DrawTexture(Win, playerX - 313, playerY - 180);
 			app->scene->player->Teleport_Point(3, app->scene->player->tpHouse_pos);
-			app->audio->PlayMusic("Assets/Soundtrack/Music/Cheers.ogg");
+			app->audio->PlayMusic("Assets/Soundtrack/Music/Cheer.ogg");
 		}
 		if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 			//Audio
@@ -4377,7 +4377,7 @@ bool Combat::PostUpdate()
 
 		if (AudioLose != true) {
 			app->audio->PlayFxWithVolume(looseFX, 0, app->audio->fxvolume);
-			AudioLose = true;
+			AudioLose = true;	
 		}
 
 		app->scene->player->pbody->GetPosition(playerX, playerY);
