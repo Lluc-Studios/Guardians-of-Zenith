@@ -463,6 +463,7 @@ private:
 
 	//Mando
 	bool A_pressed = false;
+	bool B_pressed = false;
 	int moveCounter = 0;
 	const int MOVE_DELAY = 10;
 

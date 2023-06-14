@@ -1741,7 +1741,7 @@ bool Combat::Update(float dt)
 			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN && TeamTurn == 1) {
 				FinishTurn();
 			}
-			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && TeamTurn == 1) {
+			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN || app->input->controllers.B != 0 && !B_pressed && TeamTurn == 1) {
 				if (AttackMenu == true && EnemySelect == false) {
 					AttackMenu = false;
 					option = COMBATMENU::ATTACK;
