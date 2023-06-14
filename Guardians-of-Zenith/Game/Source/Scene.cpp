@@ -1211,38 +1211,11 @@ bool Scene::Pause()
 		app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, GF, "Main menu", 16);
 		app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, GF, "Exit", 16);
 
-		// Marcar cuando el raton esta encima
-		int x, y;
-		x = app->input->GetMousePositionX();
-		y = app->input->GetMousePositionY();
-
-		if (x >= 320 - 32 && x <= 364 && y >= 26 + 45 * 2 && y <= 26 + 55 * 2) {
-			option = SELECTED::SAVEGAME;
-			PlaySelectFx();
-		}
-		else if (x >= 320 - 24 && x <= 352 && y >= 26 + 65 * 2 && y <= 26 + 75 * 2) {
-			option = SELECTED::OPTIONS;
-			PlaySelectFx();
-		}
-		else if (x >= 320 - 32 && x <= 364 && y >= 26 + 85 * 2 && y <= 26 + 95 * 2) {
-			option = SELECTED::MAINMENU;
-			PlaySelectFx();
-		}
-		else if (x >= 320 - 16 && x <= 352 && y >= 26 + 105 * 2 && y <= 26 + 115 * 2) {
-			option = SELECTED::EXIT;
-			PlaySelectFx();
-		}
-		else { 
-			if(alreadyChangeFX)
-			alreadyChangeFX = false;
-		}
-
 		// Buttons and gamepad
 		if (option == SELECTED::NONE) {
 			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::SAVEGAME;
 				PlaySelectFx();
-
 			}
 		}
 		else if (option == SELECTED::SAVEGAME) {
