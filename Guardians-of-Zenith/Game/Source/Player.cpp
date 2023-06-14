@@ -75,7 +75,7 @@ bool Player::Start() {
 	startBattleFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Start battle FX.wav");
 	MonolithFX = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Monolith FX.wav");
 	puzzleFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Puzzle sound.wav");
-	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/Win FX.wav");
+	winSound = app->audio->LoadFx("Assets/Soundtrack/Fx/Gameplay/QuestFx.wav");
 	BedFx = app->audio->LoadFx("Assets/Soundtrack/Fx/Player/Health potion.wav");
 	select = app->audio->LoadFx("Assets/Soundtrack/Fx/Menu/Select.wav");
 
@@ -86,7 +86,7 @@ bool Player::Start() {
 	//LFE = app->tex->Load("Assets/Textures/EMPTY.png");
 	Dialogue = app->tex->Load("Assets/Textures/UI/globotexto_small.png");
 	PressE = app->tex->Load("Assets/Textures/Objects/Interact_Botton.png");
-	MenuQuest = app->tex->Load("Assets/Textures/UI/menu_quests.png");
+	MenuQuest = app->tex->Load("Assets/Textures/UI/menu_quests_final.png");
 
 	char lookupTable[] = { "abcdefghijklmnopqrstuvwxyz0123456789" };
 	WF = app->font->Load("Assets/Fonts/FontWhiteDef.png", lookupTable, 1);
@@ -608,13 +608,16 @@ bool Player::Update(float dt)
 	{
 		Qmenu = false;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat)
+	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && !app->combat->InCombat && !isDialogue)
 	{
 		Qmenu = !Qmenu;
+		app->inventory->inventoryOn = false;
+		app->scene->isPaused = false;
 		app->audio->PlayFxWithVolume(select, 0, app->audio->fxvolume);
 	}
 	if (Qmenu)
 	{
+		!app->inventory->inventoryOn;
 		//app->render->DrawTexture(MenuQuest, 237, 152);
 		app->render->DrawTexture(MenuQuest, position.x - 290, position.y - 180);
 		app->render->DrawText(170, 160, { 0, 0, 0 }, "Main mission", 16);

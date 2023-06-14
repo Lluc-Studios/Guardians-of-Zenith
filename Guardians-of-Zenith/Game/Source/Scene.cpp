@@ -1107,6 +1107,7 @@ bool Scene::PostUpdate()
 	// TODO 3: Make the inventoryOn bool true when pressing a key
 	if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 	{
+		app->scene->player->Qmenu = false;
 		if (!app->combat->InCombat) {
 			app->inventory->inventoryOn = !app->inventory->inventoryOn;
 			isPaused = false;
