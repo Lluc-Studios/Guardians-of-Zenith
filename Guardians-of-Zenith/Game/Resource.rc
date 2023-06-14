@@ -52,7 +52,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1               ICON                    "C:\\Users\\cleve\\Documents\\GitHub\\Guardians-of-Zenith\\Guardians-of-Zenith\\Output\\Assets\\Textures\\logo.ico"
+//IDI_ICON1               ICON                    "C:\\Users\\cleve\\Documents\\GitHub\\Guardians-of-Zenith\\Guardians-of-Zenith\\Output\\Assets\\Textures\\logo.ico"
 
 #endif    // Español (España, alfabetización internacional) resources
 /////////////////////////////////////////////////////////////////////////////

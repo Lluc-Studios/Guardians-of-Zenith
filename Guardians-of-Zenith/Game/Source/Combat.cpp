@@ -5169,7 +5169,14 @@ void Combat::ExitCombat()
 	app->scene->BFC = false;
 	app->scene->BCC = false;
 
-	app->scene->player->pbody->body->SetType(b2BodyType::b2_dynamicBody);
+	if (app->scene->player->invincible == false) {
+
+		app->scene->player->pbody->body->SetType(b2_dynamicBody);	
+	}
+	else if (app->scene->player->invincible == true) {
+
+		app->scene->player->pbody->body->SetType(b2_kinematicBody);
+	}
 
 	CleanUp();
 }

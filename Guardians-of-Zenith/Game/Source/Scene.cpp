@@ -259,7 +259,7 @@ bool Scene::Update(float dt)
 		app->entityManager->debug = !app->entityManager->debug; 
 	}
 	//Only debug purpose, as it meses up the character stats and may buff or nerf them
-	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN) {
 		if (app->scene->player->laurea.def != 100000) {
 			C1D = app->scene->player->laurea.def;
 			C2D = app->scene->player->lapis.def;
@@ -305,85 +305,94 @@ bool Scene::Update(float dt)
 		CaveTimer++;
 	}
 
-	if (WaterTimer >= 500) {
-		WaterTimer = 0;
-		LOG("Collision Slime");
-		PresetChanceS = rand() % 100 + 1;
-		PresetVariationS = rand() % 100 + 1;
-		Team = rand() % 2 + 1;
-		if (Team == 1) {
-			if (PresetChanceS >= 1 && PresetChanceS <= 20) app->combat->Preset = 1;
-			if (PresetChanceS >= 21 && PresetChanceS <= 40) app->combat->Preset = 2;
-			if (PresetChanceS >= 41 && PresetChanceS <= 60) app->combat->Preset = 3;
-			if (PresetChanceS >= 61 && PresetChanceS <= 75) app->combat->Preset = 4;
-			if (PresetChanceS >= 76 && PresetChanceS <= 90) app->combat->Preset = 5;
-			if (PresetChanceS >= 91 && PresetChanceS <= 100) app->combat->Preset = 6;
-			if (PresetVariationS <= 85) app->combat->EnemyVariation = 0;
-			if (PresetVariationS >= 86 && PresetVariationS <= 89) app->combat->EnemyVariation = 1;
-			if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
-			if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
-			if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
-			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
-			app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
-			app->combat->StartCombat();
-		}
-		if (Team == 2) {
-			LOG("Collision Lily");
+	if (app->scene->player->invincible == false) {
+
+		if (WaterTimer >= 10) {
+			WaterTimer = 0;
+			LOG("Collision Slime");
 			PresetChanceS = rand() % 100 + 1;
 			PresetVariationS = rand() % 100 + 1;
-			if (PresetChanceS >= 1 && PresetChanceS <= 20) app->combat->Preset = 7;
-			if (PresetChanceS >= 21 && PresetChanceS <= 40) app->combat->Preset = 8;
-			if (PresetChanceS >= 41 && PresetChanceS <= 60) app->combat->Preset = 9;
-			if (PresetChanceS >= 61 && PresetChanceS <= 75) app->combat->Preset = 10;
-			if (PresetChanceS >= 76 && PresetChanceS <= 90) app->combat->Preset = 11;
-			if (PresetChanceS >= 91 && PresetChanceS <= 100) app->combat->Preset = 12;
-			if (PresetVariationS <= 85) app->combat->EnemyVariation = 0;
-			if (PresetVariationS >= 86 && PresetVariationS <= 89) app->combat->EnemyVariation = 1;
-			if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
-			if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
-			if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
+			Team = rand() % 2 + 1;
+			if (Team == 1) {
+				if (PresetChanceS >= 1 && PresetChanceS <= 20) app->combat->Preset = 1;
+				if (PresetChanceS >= 21 && PresetChanceS <= 40) app->combat->Preset = 2;
+				if (PresetChanceS >= 41 && PresetChanceS <= 60) app->combat->Preset = 3;
+				if (PresetChanceS >= 61 && PresetChanceS <= 75) app->combat->Preset = 4;
+				if (PresetChanceS >= 76 && PresetChanceS <= 90) app->combat->Preset = 5;
+				if (PresetChanceS >= 91 && PresetChanceS <= 100) app->combat->Preset = 6;
+				if (PresetVariationS <= 85) app->combat->EnemyVariation = 0;
+				if (PresetVariationS >= 86 && PresetVariationS <= 89) app->combat->EnemyVariation = 1;
+				if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
+				if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
+				if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
+				app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
+				app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+				app->combat->StartCombat();
+			}
+			if (Team == 2) {
+				LOG("Collision Lily");
+				PresetChanceS = rand() % 100 + 1;
+				PresetVariationS = rand() % 100 + 1;
+				if (PresetChanceS >= 1 && PresetChanceS <= 20) app->combat->Preset = 7;
+				if (PresetChanceS >= 21 && PresetChanceS <= 40) app->combat->Preset = 8;
+				if (PresetChanceS >= 41 && PresetChanceS <= 60) app->combat->Preset = 9;
+				if (PresetChanceS >= 61 && PresetChanceS <= 75) app->combat->Preset = 10;
+				if (PresetChanceS >= 76 && PresetChanceS <= 90) app->combat->Preset = 11;
+				if (PresetChanceS >= 91 && PresetChanceS <= 100) app->combat->Preset = 12;
+				if (PresetVariationS <= 85) app->combat->EnemyVariation = 0;
+				if (PresetVariationS >= 86 && PresetVariationS <= 89) app->combat->EnemyVariation = 1;
+				if (PresetVariationS >= 90 && PresetVariationS <= 93) app->combat->EnemyVariation = 2;
+				if (PresetVariationS >= 94 && PresetVariationS <= 97) app->combat->EnemyVariation = 3;
+				if (PresetVariationS >= 98 && PresetVariationS <= 100) app->combat->EnemyVariation = 4;
+				app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
+				app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+				app->combat->StartCombat();
+			}
+		}
+
+		if (ForestTimer >= 10) {
+			ForestTimer = 0;
+			LOG("Collision Forest enemy");
+			PresetChanceS = rand() % 100 + 1;
+			if (PresetChanceS >= 1 && PresetChanceS <= 25) app->combat->Preset = 16;
+			if (PresetChanceS >= 26 && PresetChanceS <= 50) app->combat->Preset = 17;
+			if (PresetChanceS >= 51 && PresetChanceS <= 60) app->combat->Preset = 18;
+			if (PresetChanceS >= 61 && PresetChanceS <= 70) app->combat->Preset = 19;
+			if (PresetChanceS >= 71 && PresetChanceS <= 80) app->combat->Preset = 20;
+			if (PresetChanceS >= 81 && PresetChanceS <= 85) app->combat->Preset = 21;
+			if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 22;
+			if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 23;
+			if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 24;
 			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
 			app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
 			app->combat->StartCombat();
 		}
-	}
 
-	if (ForestTimer >= 500) {
-		ForestTimer = 0;
-		LOG("Collision Forest enemy");
-		PresetChanceS = rand() % 100 + 1;
-		if (PresetChanceS >= 1 && PresetChanceS <= 25) app->combat->Preset = 16;
-		if (PresetChanceS >= 26 && PresetChanceS <= 50) app->combat->Preset = 17;
-		if (PresetChanceS >= 51 && PresetChanceS <= 60) app->combat->Preset = 18;
-		if (PresetChanceS >= 61 && PresetChanceS <= 70) app->combat->Preset = 19;
-		if (PresetChanceS >= 71 && PresetChanceS <= 80) app->combat->Preset = 20;
-		if (PresetChanceS >= 81 && PresetChanceS <= 85) app->combat->Preset = 21;
-		if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 22;
-		if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 23;
-		if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 24;
-		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
-		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
-		app->combat->StartCombat();
-	}
+		if (CaveTimer >= 10) {
+			CaveTimer = 0;
+			LOG("Collision Cave enemy");
+			PresetChanceS = rand() % 100 + 1;
+			if (PresetChanceS >= 1 && PresetChanceS <= 25) app->combat->Preset = 25;
+			if (PresetChanceS >= 26 && PresetChanceS <= 50) app->combat->Preset = 26;
+			if (PresetChanceS >= 51 && PresetChanceS <= 60) app->combat->Preset = 27;
+			if (PresetChanceS >= 61 && PresetChanceS <= 70) app->combat->Preset = 28;
+			if (PresetChanceS >= 71 && PresetChanceS <= 80) app->combat->Preset = 29;
+			if (PresetChanceS >= 81 && PresetChanceS <= 85) app->combat->Preset = 30;
+			if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 31;
+			if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 32;
+			if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 33;
+			app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
+			app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
+			app->combat->StartCombat();
 
-	if (CaveTimer >= 500) {
-		CaveTimer = 0;
-		LOG("Collision Cave enemy");
-		PresetChanceS = rand() % 100 + 1;
-		if (PresetChanceS >= 1 && PresetChanceS <= 25) app->combat->Preset = 25;
-		if (PresetChanceS >= 26 && PresetChanceS <= 50) app->combat->Preset = 26;
-		if (PresetChanceS >= 51 && PresetChanceS <= 60) app->combat->Preset = 27;
-		if (PresetChanceS >= 61 && PresetChanceS <= 70) app->combat->Preset = 28;
-		if (PresetChanceS >= 71 && PresetChanceS <= 80) app->combat->Preset = 29;
-		if (PresetChanceS >= 81 && PresetChanceS <= 85) app->combat->Preset = 30;
-		if (PresetChanceS >= 86 && PresetChanceS <= 90) app->combat->Preset = 31;
-		if (PresetChanceS >= 91 && PresetChanceS <= 95) app->combat->Preset = 32;
-		if (PresetChanceS >= 96 && PresetChanceS <= 100) app->combat->Preset = 33;
-		app->audio->PlayFxWithVolume(app->scene->player->startBattleFX, 0, app->audio->fxvolume);
-		app->audio->PlayMusic("Assets/Soundtrack/Music/Tension.ogg");
-		app->combat->StartCombat();
+		}
 
 	}
+	else if (app->scene->player->invincible == true) {
+
+	}
+
+
 
 	//Cave Puzzle
 	//Puzzle1 Normal Draw
