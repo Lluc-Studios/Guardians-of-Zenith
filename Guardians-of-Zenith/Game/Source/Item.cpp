@@ -115,18 +115,22 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 			case 11:
 				app->inventory->manuscript++;
 				app->scene->player->LevelToMax();
+				app->scene->player->lvlUpFx = true;
 				break;
 			case 12:
 				app->inventory->manuscript++;
 				app->scene->player->LevelToMax();
+				app->scene->player->lvlUpFx = true;
 				break;
 			case 13:
 				app->inventory->manuscript++;
 				app->scene->player->LevelToMax();
+				app->scene->player->lvlUpFx = true;
 				break;
 			case 14:
 				app->inventory->manuscript++;
 				app->scene->player->LevelToMax();
+				app->scene->player->lvlUpFx = true;
 				break;
 			case 15:
 				app->inventory->book++;
@@ -167,6 +171,7 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 						app->scene->player->lucca.def += (app->scene->player->lucca.DEFG * app->scene->player->lucca.DEFC);
 					}
 				}
+				app->scene->player->lvlUpFx = true;
 				break;
 			default:
 				break;

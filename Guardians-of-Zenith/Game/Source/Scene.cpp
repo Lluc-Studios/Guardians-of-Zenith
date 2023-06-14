@@ -1030,7 +1030,7 @@ bool Scene::Update(float dt)
 		app->render->DrawTexture(NPC2, 224, -710, &N2T);
 	}
 
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE)==KeyState::KEY_DOWN /*GAMEPAD*/)
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE)==KeyState::KEY_DOWN || app->input->controllers.A != 0 && !A_pressed)
 	{
 		switch (option)
 		{
@@ -1278,6 +1278,87 @@ bool Scene::Pause()
 				option = SELECTED::SAVEGAME;
 				PlaySelectFx();
 
+			}
+		}
+		if (option == SELECTED::NONE) {
+			if (app->input->controllers.DPADU > 0 || app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+					option = SELECTED::SAVEGAME;
+					PlaySelectFx();
+					moveCounter = 0;
+				}
+
+			}
+		}
+		else if (option == SELECTED::SAVEGAME) {
+			app->render->DrawText(640 / 2 - 32, 26 + 45 * 2, WF, "Save game", 16);
+			if (app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		else if (option == SELECTED::OPTIONS) {
+			app->render->DrawText(640 / 2 - 24, 26 + 65 * 2, WF, "Options", 16);
+			if (app->input->controllers.DPADU > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::SAVEGAME;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+			if (app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::MAINMENU;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		else if (option == SELECTED::MAINMENU) {
+			app->render->DrawText(640 / 2 - 32, 26 + 85 * 2, WF, "Main menu", 16);
+			if (app->input->controllers.DPADU > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+			if (app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::EXIT;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		else if (option == SELECTED::EXIT) {
+			app->render->DrawText(640 / 2 - 16, 26 + 105 * 2, WF, "Exit", 16);
+			if (app->input->controllers.DPADU > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::MAINMENU;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		if (option == SELECTED::NONE) {
+			if (app->input->controllers.DPADU > 0 || app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::SAVEGAME;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
 			}
 		}
 	}

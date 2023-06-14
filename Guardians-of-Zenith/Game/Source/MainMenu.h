@@ -86,6 +86,11 @@ private:
 	Animation title;
 
 	bool alreadyChangeFX = false;
+
+	//Mando
+	bool A_pressed = false;
+	int moveCounter = 0;
+	const int MOVE_DELAY = 10;
 };
 
 #endif // __MAINMENU_H__

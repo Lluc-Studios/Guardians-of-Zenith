@@ -123,7 +123,7 @@ bool MainMenu::Update(float dt)
 	}
 
 	//Funcion para detectar el raton en la parte principal del menu
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN/*GAMEPAD*/) {
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP || app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN || app->input->controllers.A != 0 && !A_pressed) {
 		if (option == SELECTED::START) {
 			app->scene->player->InitializePlayers();
 			app->audio->PlayFxWithVolume(play, 0, app->audio->fxvolume);
@@ -186,45 +186,119 @@ bool MainMenu::Update(float dt)
 
 		// Buttons and gamepad
 		if (option == SELECTED::NONE) {
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*//*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::START;
 				PlaySelectFx();
 			}
 		}
 		else if (option == SELECTED::START) {
 			app->render->DrawTexture(Buttons, 450, 120, &B5);
-			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::CONTINUE;
 				PlaySelectFx();
 			}
 		}
 		else if (option == SELECTED::CONTINUE) {
 			app->render->DrawTexture(Buttons, 450, 180, &B6);
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
 				option = SELECTED::START;
 				PlaySelectFx();
 			}
-			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::OPTIONS;
 				PlaySelectFx();
 			}
 		}
 		else if (option == SELECTED::OPTIONS) {
 			app->render->DrawTexture(Buttons, 450, 240, &B7);
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
 				option = SELECTED::CONTINUE;
 				PlaySelectFx();
 			}
-			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) {
 				option = SELECTED::EXIT;
 				PlaySelectFx();
 			}
 		}
 		else if (option == SELECTED::EXIT) {
 			app->render->DrawTexture(Buttons, 450, 300, &B8);
-			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN/*GAMEPAD*/) {
+			if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
 				option = SELECTED::OPTIONS;
 				PlaySelectFx();
+			}
+		}
+		else {
+			if (alreadyChangeFX)
+				alreadyChangeFX = false;
+		}
+		if (option == SELECTED::NONE) {
+			if (app->input->controllers.DPADU > 0 || app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::START;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		else if (option == SELECTED::START) {
+			app->render->DrawTexture(Buttons, 450, 120, &B5);
+			if (app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::CONTINUE;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		else if (option == SELECTED::CONTINUE) {
+			app->render->DrawTexture(Buttons, 450, 180, &B6);
+			if (app->input->controllers.DPADU > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::START;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+			if (app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		else if (option == SELECTED::OPTIONS) {
+			app->render->DrawTexture(Buttons, 450, 240, &B7);
+			if (app->input->controllers.DPADU > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::CONTINUE;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+			if (app->input->controllers.DPADD > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::EXIT;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
+			}
+		}
+		else if (option == SELECTED::EXIT) {
+			app->render->DrawTexture(Buttons, 450, 300, &B8);
+			if (app->input->controllers.DPADU > 0) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
+				option = SELECTED::OPTIONS;
+				PlaySelectFx();
+				moveCounter = 0;
+				}
 			}
 		}
 		else {

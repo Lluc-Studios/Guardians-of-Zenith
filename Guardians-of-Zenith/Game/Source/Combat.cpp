@@ -1543,7 +1543,9 @@ bool Combat::Update(float dt)
 		//Inputs
 		if (TeamTurn == 1) {
 			if ((app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN 
-				|| (app->input->controllers.j1_y <= -32767)) && TeamTurn == 1) {
+				|| (app->input->controllers.DPADU > 0)) && TeamTurn == 1) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::DEFEND) {
 						option = COMBATMENU::ATTACK;
@@ -1635,9 +1637,13 @@ bool Combat::Update(float dt)
 						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
+				moveCounter = 0;
+				}
 			}
 			if ((app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN
-				|| (app->input->controllers.j1_y <= -32767)) && TeamTurn == 1) {
+				|| (app->input->controllers.DPADD > 0)) && TeamTurn == 1) {
+				moveCounter++;
+				if (moveCounter >= MOVE_DELAY) {
 				if (AttackMenu == false) {
 					if (option == COMBATMENU::INVENTORY) {
 						option = COMBATMENU::ESCAPE;
@@ -1728,12 +1734,14 @@ bool Combat::Update(float dt)
 						app->audio->PlayFxWithVolume(change, 0, app->audio->fxvolume);
 					}
 				}
+				moveCounter = 0;
+				}
 
 			}
 			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN && TeamTurn == 1) {
 				FinishTurn();
 			}
-			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && TeamTurn == 1) {
+			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN || app->input->controllers.B != 0 && !B_pressed && TeamTurn == 1) {
 				if (AttackMenu == true && EnemySelect == false) {
 					AttackMenu = false;
 					option = COMBATMENU::ATTACK;
