@@ -307,7 +307,7 @@ bool Scene::Update(float dt)
 
 	if (app->scene->player->invincible == false) {
 
-		if (WaterTimer >= 10) {
+		if (WaterTimer >= 800) {
 			WaterTimer = 0;
 			LOG("Collision Slime");
 			PresetChanceS = rand() % 100 + 1;
@@ -350,7 +350,7 @@ bool Scene::Update(float dt)
 			}
 		}
 
-		if (ForestTimer >= 10) {
+		if (ForestTimer >= 800) {
 			ForestTimer = 0;
 			LOG("Collision Forest enemy");
 			PresetChanceS = rand() % 100 + 1;
@@ -368,7 +368,7 @@ bool Scene::Update(float dt)
 			app->combat->StartCombat();
 		}
 
-		if (CaveTimer >= 10) {
+		if (CaveTimer >= 800) {
 			CaveTimer = 0;
 			LOG("Collision Cave enemy");
 			PresetChanceS = rand() % 100 + 1;
