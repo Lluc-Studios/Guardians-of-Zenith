@@ -106,7 +106,7 @@ Our project website: https://lluc-studios.github.io/Guardians-of-Zenith/
 |---|---|---|---|---|
 |Team Lead|Design|Design|Design|Design|
 |Management|Management|Audio|Code|UI|
-| Github account: [Seregero00](https://github.com/seregero00) | Github account: [IvanBSupc](https://github.com/IvanBSupc) | Github account: [MrMonkey420](https://github.com/MrMonkey420) | Github account: [GHOSTVCL](https://github.com/GHOSTVCL) |Github account: [AdriRamirez](https://github.com/AdriRamirez) |
+| Github account: [Seregero00](https://github.com/seregero00) | Github account: [IBSilver](https://github.com/IBSilver) | Github account: [MrMonkey420](https://github.com/MrMonkey420) | Github account: [GHOSTVCL](https://github.com/GHOSTVCL) |Github account: [AdriRamirez](https://github.com/AdriRamirez) |
 
 |Lluc Estruch Andreu | Nixon Correa Albarracín|Maksym Polupan|Enric Arxer Cortés|Daniel Mañas Calvo|
 |---|---|---|---|---|
