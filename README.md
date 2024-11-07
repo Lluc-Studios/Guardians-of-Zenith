@@ -112,7 +112,7 @@ Our project website: https://lluc-studios.github.io/Guardians-of-Zenith/
 |---|---|---|---|---|
 |QA|QA|UI|Art|Art|
 |Code|Code|Code|Code|UI|
-| Github account: [Llucaieaie](https://github.com/Llucaieaie) | Github account: [Nixonbit3](https://github.com/Nixonbit3) |Github account: [Maksym203](https://github.com/Maksym203)|Github account: [Luxary-92](https://github.com/Luxary-92)|Github account: [Hacienda69](https://github.com/Hacienda69)|
+| Github account: [Llucaieaie](https://github.com/Llucaieaie) | Github account: [Nixonbit3](https://github.com/Nixonbit3) |Github account: [Maksym203](https://github.com/Maksym203)|Github account: [Luxary-Arxer](https://github.com/Luxary-Arxer)|Github account: [Hacienda69](https://github.com/Hacienda69)|
 
 ![Credits](https://github.com/Lluc-Studios/Guardians-of-Zenith/assets/99950357/f35897a3-e217-4c7b-8ed2-c601187bece9)
 
